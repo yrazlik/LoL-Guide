@@ -24,6 +24,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.fragments.AboutFragment;
+import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
 import com.yrazlik.loltr.fragments.AllChampionsFragment;
 import com.yrazlik.loltr.fragments.AllItemsFragment;
 import com.yrazlik.loltr.fragments.ContactFragment;
@@ -47,7 +48,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 	// Array of integers points to images stored in /res/drawable-ldpi/
 	int[] mFlags = new int[] { R.drawable.coin, R.drawable.champion,
-			R.drawable.item, R.drawable.rune, R.drawable.tv2, R.drawable.contact,
+			R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.tv2, R.drawable.contact,
 			R.drawable.info};
 
 	// Array of strings to initial counts
@@ -205,12 +206,23 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
                         @Override
                         public void run() {
-                            LiveChannelsFragment fragment = new LiveChannelsFragment();
+                            AllChampionSkinsFragment fragment = new AllChampionSkinsFragment();
                             ft.replace(R.id.content_frame, fragment);
                             ft.commit();
                         }
                     }, 250);
                 }else if(position == 5){
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            LiveChannelsFragment fragment = new LiveChannelsFragment();
+                            ft.replace(R.id.content_frame, fragment);
+                            ft.commit();
+                        }
+                    }, 250);
+                }else if(position == 6){
 					Handler handler = new Handler();
 					handler.postDelayed(new Runnable() {
 						
@@ -221,7 +233,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
 						}
 					}, 250);
-				}else if(position == 6){
+				}else if(position == 7){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 

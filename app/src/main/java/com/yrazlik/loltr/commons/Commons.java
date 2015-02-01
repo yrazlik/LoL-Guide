@@ -55,6 +55,7 @@ public class Commons {
 	public static final int ITEM_DETAIL_REQUEST = 12;
 	public static final int ALL_RUNES_REQUEST = 13;
     public static final int LIVE_CHANNELS_REQUEST = 14;
+    public static final int CHAMPION_SKINS_REQUEST = 15;
 	
 	public static final String SERVICE_BASE_URL = "https://tr.api.pvp.net/api/lol";
 	public static final String STATIC_DATA_BASE_URL = "https://global.api.pvp.net/api/lol";
@@ -67,7 +68,7 @@ public class Commons {
 	public static final String RUNES_IMAGES_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/rune/";
     public static final String LIVE_CHANNELS_URL = "https://api.twitch.tv/kraken/streams?game=League%20of%20Legends";
     public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/6563465cbcfc8effd1e082f7b47aa0e719bc99a0/championcosts";
-	
+	public static final String URL_CHAMPION_SKIN_BASE = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
 	public static ArrayList<Champion> weeklyFreeChampions;
 	public static ArrayList<Champion> allChampions;

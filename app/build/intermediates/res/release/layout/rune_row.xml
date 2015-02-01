@@ -6,8 +6,7 @@
     <com.yrazlik.loltr.view.RemoteImageView
         android:id="@+id/imageViewChampionImage"
         android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/japan" />
+        android:layout_height="80dp"/>
 
     <RelativeLayout
         android:id="@+id/relativeLayoutTextContainer"

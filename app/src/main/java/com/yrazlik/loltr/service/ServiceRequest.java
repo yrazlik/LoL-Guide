@@ -17,6 +17,7 @@ import com.yrazlik.loltr.responseclasses.AllItemsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionLegendResponse;
 import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
 import com.yrazlik.loltr.responseclasses.ChampionRpIpCostsResponse;
+import com.yrazlik.loltr.responseclasses.ChampionSkinsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionSpellsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionStrategyResponse;
 import com.yrazlik.loltr.responseclasses.ItemDetailResponse;
@@ -218,6 +219,7 @@ public class ServiceRequest {
 			case Commons.ALL_ITEMS_REQUEST:
 			case Commons.ITEM_DETAIL_REQUEST:
 			case Commons.ALL_RUNES_REQUEST:
+            case Commons.CHAMPION_SKINS_REQUEST:
 				return Commons.STATIC_DATA_BASE_URL;
 			case Commons.CHAMPION_RP_IP_COSTS_REQUEST:
 				return Commons.URL_CHAMPION_PRICES;
@@ -427,8 +429,10 @@ public class ServiceRequest {
 				return gson.fromJson(response, ItemDetailResponse.class);
 			case Commons.ALL_RUNES_REQUEST:
 				return gson.fromJson(response, RuneResponse.class);
-                case Commons.LIVE_CHANNELS_REQUEST:
-                    return gson.fromJson(response, LiveChannelsResponse.class);
+            case Commons.LIVE_CHANNELS_REQUEST:
+                return gson.fromJson(response, LiveChannelsResponse.class);
+            case Commons.CHAMPION_SKINS_REQUEST:
+                return gson.fromJson(response, ChampionSkinsResponse.class);
 			default:
 				return null;
 			}
