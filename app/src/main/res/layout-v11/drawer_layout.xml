@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="?android:attr/activatedBackgroundIndicator"   
+    android:layout_height="60dp" >
+     
+    <ImageView 
+	        android:id="@+id/flag"
+	        android:layout_width="45dp"
+	        android:layout_height="45dp"
+	        android:paddingLeft="10dp"
+	        android:paddingTop="10dp"
+	        android:paddingRight="10dp"
+	        android:paddingBottom="10dp"  
+	        android:layout_alignParentLeft="true"  	        
+	        android:layout_centerVertical="true" 
+	        android:contentDescription="@string/hello" />            
+        
+	        <TextView 
+		        android:id="@+id/country"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"		        		        
+		        android:layout_toRightOf="@id/flag"
+		        android:layout_centerVertical="true"
+		        android:textSize="15sp" />	        
+	        
+			<TextView 
+		        android:id="@+id/count"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"		                
+		        android:layout_marginRight="@dimen/count"
+		        android:layout_alignParentRight="true"
+		        android:layout_centerVertical="true"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:background="@drawable/counter_shape" 
+		        android:textSize="15sp" />
+	    
+</RelativeLayout>

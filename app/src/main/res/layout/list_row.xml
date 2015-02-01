@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp" >
+
+    <com.yrazlik.loltr.view.RemoteImageView
+        android:id="@+id/imageViewChampionImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutTextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/relativeLayoutPriceContainer"
+        android:layout_toRightOf="@+id/imageViewChampionImage" >
+
+        <TextView
+            android:id="@+id/textViewChampionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textViewDateInterval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewChampionName"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutPriceContainer"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rpContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageViewRp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rp"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:id="@+id/textViewRp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imageViewRp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="@string/question_mark" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ipContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rpContainer" >
+
+            <ImageView
+                android:id="@+id/imageViewIp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ip"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:id="@+id/textViewIp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imageViewIp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="@string/question_mark" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

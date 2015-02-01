@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:drawable="@drawable/line_label_1_pressed"
+        android:state_selected="true"/>
+    <item android:drawable="@drawable/line_label_1"/>
+
+</shape><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/drawable/tab_background.xml -->
