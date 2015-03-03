@@ -35,7 +35,7 @@ public class Commons {
 	
 	public static String TEXT = "AAA";
 	
-	public static final String LATEST_VERSION = "5.2.1";
+	public static final String LATEST_VERSION = "5.4.1";
 	
 	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
 	

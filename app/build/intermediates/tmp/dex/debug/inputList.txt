@@ -1,9 +1,11 @@
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/classes/debug
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-6658c117293958a7383bcbb346a57fefebf27ee4.jar
+/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-ad838e7777d3351df02ae643e2bac54870e1d7f1.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.4.0-75dea9b5f5241f9698ad4e891129e2dde06c1593.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-1bdbad299ca74e8416d1e9d86bcd79289970d495.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/gson-2.3-03c4567695276ab9b1f1f185de56be86e9aaa477.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/android-query-full.0.26.7-1a7d2180f676a7d28cafeaf8919acbb82611aa2f.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-445f106a1af6b33b097dfddbd5ed8049fe85148b.jar
+/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/Parse-1.8.2-8090b0a17450b254080eea4d55ec0cc263812ab4.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-2006d93c71c7bcbea5e165d41ef4e7d7dce85bc9.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-a81d220ce394fdb5a329d2b81737b27836ccb90f.jar
