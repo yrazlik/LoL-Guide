@@ -22,6 +22,7 @@ import android.widget.SimpleAdapter;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.parse.ParseAnalytics;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.fragments.AboutFragment;
 import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
@@ -71,11 +72,16 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);// Getting an array of country
+        try{
+            ParseAnalytics.trackAppOpened(getIntent());
+        }catch (Exception e){
 
+        }
         String s = "yasinrazlik";
 
         for(int i = 0; i<s.length(); i++){
-            s = s.substring(1,s.length()-i) + s.substring(0,1) + s.substring(s.length()-i);
+            s = s.substring(1,s.length()-i) + s.substring(0,1) + s.substring(s.length()-i
+        );
         }
 
         Log.d("INPLACE", s);
@@ -262,7 +268,16 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 0,
                 mDrawerList.getAdapter().getItemId(0));
         getSupportActionBar().setTitle(leftMenuItems[0]);
+/*
+        ParseQuery<ParseObject> costs = ParseQuery.getQuery("ChampionCosts");
+        costs.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseObjects, ParseException e) {
+                int i = 0;
+            }
+        });
 
+*/
 	}
 
 	@Override

@@ -31,4 +31,5 @@ dependencies {
     compile files('libs/android-query-full.0.26.7.jar')
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile fileTree(dir: 'libs', include: 'bolts-android-1.1.4.jar')
+    compile fileTree(dir: 'libs', include: 'ParseCrashReporting-*.jar')
 }

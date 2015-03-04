@@ -37,6 +37,13 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-6658c117293958a7383bcbb346a57fefebf27ee4.jar" />
     </item>
     <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/ParseCrashReporting-1.8.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ccf9e90414e7bb2cf09f4d7c77c42f70c690e118">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/ParseCrashReporting-1.8.2-90e69ae3e49a10ea9920f38c6f18c5ceb6954459.jar" />
+    </item>
+    <item
         jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
         jumboMode="false"
         revision="21.1.2"
