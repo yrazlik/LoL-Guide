@@ -9,10 +9,17 @@
         android:layout_height="wrap_content"
         >
 
-        <com.yrazlik.loltr.view.RemoteImageView
+        <ImageView
             android:id="@+id/championImage"
             android:layout_width="65dp"
             android:layout_height="65dp" />
+        <ProgressBar
+            android:id="@+id/imageProgress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+
+            />
 
         <TextView
             android:id="@+id/championName"

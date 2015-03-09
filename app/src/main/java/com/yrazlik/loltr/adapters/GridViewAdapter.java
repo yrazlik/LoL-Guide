@@ -1,24 +1,27 @@
 package com.yrazlik.loltr.adapters;
 
-import java.util.ArrayList;
-
-import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.data.Champion;
-import com.yrazlik.loltr.view.RemoteImageView;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.androidquery.AQuery;
+import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.data.Champion;
+
+import java.util.ArrayList;
 
 public class GridViewAdapter extends ArrayAdapter<Champion> {
 	private Context context;
 	private int layoutResourceId;
 	private ArrayList<Champion> data = new ArrayList<Champion>();
-	ViewHolder holder = null;
+	private ViewHolder holder = null;
+    private AQuery aq;
 
 	public GridViewAdapter(Context context, int layoutResourceId,
 			ArrayList<Champion> data) {
@@ -37,23 +40,23 @@ public class GridViewAdapter extends ArrayAdapter<Champion> {
 			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 			row = inflater.inflate(layoutResourceId, parent, false);
 			holder = new ViewHolder();
-			holder.championImage = (RemoteImageView) row.findViewById(R.id.championImage);
+			holder.championImage = (ImageView) row.findViewById(R.id.championImage);
 			holder.championName = (TextView) row.findViewById(R.id.championName);
-			
+            holder.progress = (ProgressBar) row.findViewById(R.id.imageProgress);
 			row.setTag(holder);
 		} else {
 			holder = (ViewHolder) row.getTag();
 		}
 		Champion champion = data.get(position);
 		holder.championName.setText(champion.getChampionName());
-		holder.championImage.setLocalURI(null);
-		holder.championImage.setRemoteURI(champion.getChampionImageUrl());
-		holder.championImage.loadImage();
+        aq = new AQuery(holder.championImage);
+        aq.progress(holder.progress).image(champion.getChampionImageUrl(), true, true);
 		return row;
 	}
 
 	static class ViewHolder {
-		RemoteImageView championImage;
+		ImageView championImage;
 		TextView championName;
+        ProgressBar progress;
 	}
 }

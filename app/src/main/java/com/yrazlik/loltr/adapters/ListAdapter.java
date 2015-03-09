@@ -1,11 +1,5 @@
 package com.yrazlik.loltr.adapters;
 
-import java.util.List;
-
-import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.data.Champion;
-import com.yrazlik.loltr.view.RemoteImageView;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -14,11 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.androidquery.AQuery;
+import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.data.Champion;
+
+import java.util.List;
 
 public class ListAdapter extends ArrayAdapter<Champion> {
 	
 	private Context mContext;
+    private AQuery aq;
 
 	public ListAdapter(Context context, int resource, List<Champion> objects) {
 		super(context, resource, objects);
@@ -33,13 +35,14 @@ public class ListAdapter extends ArrayAdapter<Champion> {
 			convertView = inflater.inflate(R.layout.list_row, parent, false);
 			
 			holder = new ViewHolder();
-			holder.championImage = (RemoteImageView)convertView.findViewById(R.id.imageViewChampionImage);
+			holder.championImage = (ImageView)convertView.findViewById(R.id.imageViewChampionImage);
 			holder.championName = (TextView)convertView.findViewById(R.id.textViewChampionName);
 			holder.dateInterval = (TextView)convertView.findViewById(R.id.textViewDateInterval);
 			holder.rpIcon = (ImageView)convertView.findViewById(R.id.imageViewRp);
 			holder.ipIcon = (ImageView)convertView.findViewById(R.id.imageViewIp);
 			holder.rpPrice = (TextView)convertView.findViewById(R.id.textViewRp);
 			holder.ipPrice = (TextView)convertView.findViewById(R.id.textViewIp);
+            holder.progress = (ProgressBar) convertView.findViewById(R.id.imageProgress);
 			convertView.setTag(holder);
 		}else{
 			holder = (ViewHolder) convertView.getTag();
@@ -47,9 +50,8 @@ public class ListAdapter extends ArrayAdapter<Champion> {
 		
 		Champion champion = getItem(position);
 		holder.championName.setText(champion.getChampionName());
-		holder.championImage.setLocalURI(null);
-		holder.championImage.setRemoteURI(champion.getChampionImageUrl());
-		holder.championImage.loadImage(true);
+        aq = new AQuery(holder.championImage);
+        aq.progress(holder.progress).image(champion.getChampionImageUrl(), true, true);
 		holder.dateInterval.setText(champion.getDateInterval());
 		Typeface typeFace = Typeface.createFromAsset(mContext.getAssets(), "fonts/dinproregular.ttf");
 		holder.championName.setTypeface(typeFace);
@@ -70,13 +72,14 @@ public class ListAdapter extends ArrayAdapter<Champion> {
 	}
 
 	static class ViewHolder {
-		public RemoteImageView championImage;
+		public ImageView championImage;
 		public TextView championName;
 		public TextView dateInterval;
 		public ImageView rpIcon;
 		public ImageView ipIcon;
 		public TextView rpPrice;
 		public TextView ipPrice;
+        public ProgressBar progress;
 	}
 
 }

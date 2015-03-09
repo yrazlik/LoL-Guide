@@ -31,6 +31,7 @@ import com.yrazlik.loltr.fragments.AllItemsFragment;
 import com.yrazlik.loltr.fragments.ContactFragment;
 import com.yrazlik.loltr.fragments.CountryFragment;
 import com.yrazlik.loltr.fragments.LiveChannelsFragment;
+import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
@@ -49,7 +50,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 	// Array of integers points to images stored in /res/drawable-ldpi/
 	int[] mFlags = new int[] { R.drawable.coin, R.drawable.champion,
-			R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.tv2, R.drawable.contact,
+			R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.contact,
 			R.drawable.info};
 
 	// Array of strings to initial counts
@@ -77,14 +78,14 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }catch (Exception e){
 
         }
-        String s = "yasinrazlik";
+      /*  String s = "yasinrazlik";
 
         for(int i = 0; i<s.length(); i++){
             s = s.substring(1,s.length()-i) + s.substring(0,1) + s.substring(s.length()-i
         );
         }
 
-        Log.d("INPLACE", s);
+        Log.d("INPLACE", s);*/
 
 		adView = (AdView)findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.Builder().build();
@@ -223,12 +224,23 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
                         @Override
                         public void run() {
+                           MatchInfoFragment fragment = new MatchInfoFragment();
+                           ft.replace(R.id.content_frame, fragment);
+                           ft.commit();
+                        }
+                    }, 250);
+                }else if(position == 6){
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
                             LiveChannelsFragment fragment = new LiveChannelsFragment();
                             ft.replace(R.id.content_frame, fragment);
                             ft.commit();
                         }
                     }, 250);
-                }else if(position == 6){
+                }else if(position == 7){
 					Handler handler = new Handler();
 					handler.postDelayed(new Runnable() {
 						
@@ -239,7 +251,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
 						}
 					}, 250);
-				}else if(position == 7){
+				}else if(position == 8){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 

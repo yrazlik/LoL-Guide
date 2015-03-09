@@ -1,7 +1,5 @@
 package com.yrazlik.loltr.adapters;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -13,19 +11,24 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.androidquery.AQuery;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Spell;
 import com.yrazlik.loltr.fragments.ChampionAbilitiesVideosFragment;
-import com.yrazlik.loltr.view.RemoteImageView;
+
+import java.util.List;
 
 public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 		OnClickListener {
 
 	private Context mContext;
 	private Typeface typeFace;
+    private AQuery aq;
 
 	public ChampionSpellsListAdapter(Context context, int resource,
 			List<Spell> objects) {
@@ -44,7 +47,7 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 					false);
 
 			holder = new ViewHolder();
-			holder.spellImage = (RemoteImageView) convertView
+			holder.spellImage = (ImageView) convertView
 					.findViewById(R.id.imageViewSpellImage);
 			holder.spellTitle = (TextView) convertView
 					.findViewById(R.id.textViewSpellTitle);
@@ -56,6 +59,7 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 					.findViewById(R.id.imageButtonPlayVideo);
 
             holder.textViewVideo = (TextView) convertView.findViewById(R.id.textViewVideo);
+            holder.progress = (ProgressBar) convertView.findViewById(R.id.imageProgress);
 			
 			convertView.setTag(holder);
 		} else {
@@ -66,17 +70,15 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 		holder.spellTitle.setText(championSpell.getName());
 		holder.spellBody.setText(championSpell.getSanitizedDescription());
 		holder.spellKey.setText(championSpell.getSpellKey());
-		holder.spellImage.setLocalURI(null);
+        aq = new AQuery(holder.spellImage);
+
 		if (championSpell.getName().contains("Pasif")) {
-			holder.spellImage
-					.setRemoteURI(Commons.CHAMPION_PASSIVE_IMAGE_BASE_URL
-							+ championSpell.getImage().getFull());
+            aq.progress(holder.progress).image(Commons.CHAMPION_PASSIVE_IMAGE_BASE_URL
+                    + championSpell.getImage().getFull(), true, true);
 		} else {
-			holder.spellImage
-					.setRemoteURI(Commons.CHAMPION_SPELL_IMAGE_BASE_URL
-							+ championSpell.getImage().getFull());
+            aq.progress(holder.progress).image(Commons.CHAMPION_SPELL_IMAGE_BASE_URL
+                    + championSpell.getImage().getFull(), true, true);
 		}
-		holder.spellImage.loadImage();
 		holder.spellKey.setTypeface(typeFace);
 		holder.spellBody.setTypeface(typeFace);
 		holder.spellTitle.setTypeface(typeFace);
@@ -90,12 +92,13 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 	}
 
 	static class ViewHolder {
-		public RemoteImageView spellImage;
+		public ImageView spellImage;
 		public TextView spellTitle;
 		public TextView spellBody;
 		public TextView spellKey;
 		public ImageButton playVideoButton;
         public TextView textViewVideo;
+        public ProgressBar progress;
 	}
 	
 	@Override

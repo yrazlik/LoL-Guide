@@ -2,11 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="60dp">
 
-    <com.yrazlik.loltr.view.RemoteImageView
+    <ImageView
         android:id="@+id/imageViewChannelLogo"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="10dp"/>
+    <ProgressBar
+        android:id="@+id/imageProgress"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="25dp"
+
+        />
 
     <TextView
         android:id="@+id/textViewChannelName"

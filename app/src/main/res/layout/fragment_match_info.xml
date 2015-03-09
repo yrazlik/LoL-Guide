@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/searchTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/searchC"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                style="?android:attr/listSeparatorTextViewStyle"/>
+
+            <EditText
+                android:id="@+id/summonerNameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchTitle"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:hint="@string/summonerName"/>
+
+            <TextView
+                android:id="@+id/selectRegionTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="@string/selectRegion"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/summonerNameET"/>
+
+           <Spinner
+               android:id="@+id/regionSpinner"
+               android:layout_toRightOf="@+id/selectRegionTV"
+               android:layout_marginLeft="15dp"
+               android:layout_marginTop="10dp"
+               android:layout_below="@+id/summonerNameET"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+
+
+           </Spinner>
+
+           <Button
+                android:id="@+id/searchButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/selectRegionTV"
+                android:layout_marginTop="10dp"
+                android:text="@string/search"/>
+
+            <FrameLayout
+                android:id="@+id/matchInfoContentFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/searchButton"
+                android:layout_marginTop="10dp">
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

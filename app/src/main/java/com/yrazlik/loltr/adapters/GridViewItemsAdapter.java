@@ -1,18 +1,20 @@
 package com.yrazlik.loltr.adapters;
 
-import java.util.ArrayList;
-
-import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.data.Items;
-import com.yrazlik.loltr.view.RemoteImageView;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+
+import com.androidquery.AQuery;
+import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.Items;
+
+import java.util.ArrayList;
 
 public class GridViewItemsAdapter extends ArrayAdapter<Items>{
 
@@ -20,6 +22,7 @@ public class GridViewItemsAdapter extends ArrayAdapter<Items>{
 	private int layoutResourceId;
 	private ArrayList<Items> data = new ArrayList<Items>();
 	private ViewHolder holder;
+    private AQuery aq;
 
 	public GridViewItemsAdapter(Context context, int layoutResourceId,
 			ArrayList<Items> data) {
@@ -38,21 +41,21 @@ public class GridViewItemsAdapter extends ArrayAdapter<Items>{
 			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 			row = inflater.inflate(layoutResourceId, parent, false);
 			holder = new ViewHolder();
-			holder.itemImage = (RemoteImageView) row.findViewById(R.id.itemImage);
-			
+			holder.itemImage = (ImageView) row.findViewById(R.id.itemImage);
+            holder.progress = (ProgressBar) row.findViewById(R.id.imageProgress);
 			row.setTag(holder);
 		} else {
 			holder = (ViewHolder) row.getTag();
 		}
 		Items item = data.get(position);
-		holder.itemImage.setLocalURI(null);
-		holder.itemImage.setRemoteURI(Commons.ITEM_IMAGES_BASE_URL + String.valueOf(item.getId()) + ".png");
-		holder.itemImage.loadImage();
+        aq = new AQuery(holder.itemImage);
+        aq.progress(holder.progress).image(Commons.ITEM_IMAGES_BASE_URL + String.valueOf(item.getId()) + ".png", true, true);
 		return row;
 	}
 	
 	static class ViewHolder {
-		RemoteImageView itemImage;
+		ImageView itemImage;
+        ProgressBar progress;
 	}
 
 }

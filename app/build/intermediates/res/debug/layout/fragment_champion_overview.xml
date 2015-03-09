@@ -25,12 +25,19 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="25dp" >
 
-                <com.yrazlik.loltr.view.RemoteImageView
+                <ImageView
                     android:id="@+id/imageViewChampionImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_centerVertical="true" />
+                <ProgressBar
+                    android:id="@+id/imageProgress"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/skorea" />
+                    android:layout_marginLeft="35dp"
+
+                    />
 
                 <RelativeLayout
                     android:id="@+id/relativeLayoutTitleContainer"

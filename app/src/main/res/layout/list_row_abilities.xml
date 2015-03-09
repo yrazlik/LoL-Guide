@@ -38,13 +38,21 @@
         android:layout_below="@+id/relativeLayoutSpellTitle"
         android:background="#F5E171">
         
-        <com.yrazlik.loltr.view.RemoteImageView
+        <ImageView
             android:id="@+id/imageViewSpellImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"/>
+        <ProgressBar
+            android:id="@+id/imageProgress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+
+            />
         
         <TextView android:id="@+id/textViewSpellBody"
             android:layout_width="match_parent"

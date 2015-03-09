@@ -8,6 +8,7 @@
         <item>Eşyalar</item>
         <item>Rünler</item>
         <item>Kostümler</item>
+        <item>Canlı Maç Sorgulama</item>
         <item>Canlı Yayınlar</item>
         <item>İletişim</item>
         <item>Hakkında</item>
@@ -301,10 +302,14 @@
     <string name="o">ö</string>
     <string name="offensiveItems">Ofansif Eşyalar</string>
     <string name="play">Oynat</string>
+    <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
     <string name="question_mark">\?\?\?</string>
     <string name="s">ş</string>
+    <string name="search">ARA</string>
+    <string name="searchC">ARAMA</string>
     <string name="searchHint">Şampiyon adı giriniz ...</string>
     <string name="searchItemHint">Eşya adı giriniz ...</string>
+    <string name="selectRegion">Bölge Seçiniz: </string>
     <string name="select_category">Kategori Seçiniz</string>
     <string name="send">Gönder</string>
     <string name="startingItems">Başlangıç Eşyaları</string>
@@ -316,6 +321,7 @@
     <eat-comment/>
     <string name="strategy">Strateji</string>
     <string name="suikastci">Suikastci</string>
+    <string name="summonerName">Oyuncu ismi giriniz...</string>
     <string name="support">Support</string>
     <string name="tags">Özellikler</string>
     <string name="tank">Tank</string>

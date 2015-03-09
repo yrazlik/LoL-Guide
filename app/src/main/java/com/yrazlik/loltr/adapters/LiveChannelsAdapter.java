@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.androidquery.AQuery;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Streams;
-import com.yrazlik.loltr.view.RemoteImageView;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class LiveChannelsAdapter extends ArrayAdapter<Streams>{
 
     private Context mContext;
     private Typeface typeFace;
+    private AQuery aq;
 
     public LiveChannelsAdapter(Context context, int resource,
                                      List<Streams> objects) {
@@ -40,10 +43,11 @@ public class LiveChannelsAdapter extends ArrayAdapter<Streams>{
                     false);
 
             holder = new ViewHolder();
-            holder.channelImage = (RemoteImageView) convertView
+            holder.channelImage = (ImageView) convertView
                     .findViewById(R.id.imageViewChannelLogo);
             holder.channelTitle = (TextView) convertView
                     .findViewById(R.id.textViewChannelName);
+            holder.progress = (ProgressBar) convertView.findViewById(R.id.imageProgress);
 
             convertView.setTag(holder);
         } else {
@@ -52,9 +56,8 @@ public class LiveChannelsAdapter extends ArrayAdapter<Streams>{
 
         Streams stream = getItem(position);
         holder.channelTitle.setText(stream.getChannel().getDisplay_name());
-        holder.channelImage.setLocalURI(null);
-        holder.channelImage.setRemoteURI(stream.getChannel().getLogo());
-        holder.channelImage.loadImage();
+        aq = new AQuery(holder.channelImage);
+        aq.progress(holder.progress).image(stream.getChannel().getLogo(), true, true);
 
         return convertView;
 
@@ -62,8 +65,9 @@ public class LiveChannelsAdapter extends ArrayAdapter<Streams>{
 
 
     static class ViewHolder {
-        public RemoteImageView channelImage;
+        public ImageView channelImage;
         public TextView channelTitle;
+        public ProgressBar progress;
     }
 
 

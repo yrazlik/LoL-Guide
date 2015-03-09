@@ -18,6 +18,7 @@
         <item>Eşyalar</item>
         <item>Rünler</item>
         <item>Kostümler</item>
+        <item>Canlı Maç Sorgulama</item>
         <item>Canlı Yayınlar</item>
         <item>İletişim</item>
         <item>Hakkında</item>
@@ -30,6 +31,7 @@
     <string name="contact_text">Şikayetlerinizi ve önerilerinizi aşağıdaki kutucuğa yazıp bize bildirebilirsiniz.</string>
     <string name="select_category">Kategori Seçiniz</string>
     <string name="menu">Menü</string>
+    <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
     <string name="video">Video</string>
     <string name="play">Oynat</string>
     <string name="mage">Mage</string>
@@ -67,6 +69,10 @@
     <string name="deffensiveItems">Defansif Eşyalar</string>
     <string name="offensiveItems">Ofansif Eşyalar</string>
     <string name="gold">Altın</string>
+    <string name="searchC">ARAMA</string>
+    <string name="search">ARA</string>
     <string name="loading">Yükleniyor...</string>
+    <string name="summonerName">Oyuncu ismi giriniz...</string>
+    <string name="selectRegion">Bölge Seçiniz: </string>
 
 </resources>

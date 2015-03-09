@@ -1,15 +1,5 @@
 package com.yrazlik.loltr.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.responseclasses.ItemDetailResponse;
-import com.yrazlik.loltr.service.ServiceRequest;
-import com.yrazlik.loltr.view.RemoteImageView;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,8 +8,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.androidquery.AQuery;
+import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.responseclasses.ItemDetailResponse;
+import com.yrazlik.loltr.service.ServiceRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ItemDetailFragment extends Fragment implements ResponseListener{
 
@@ -27,9 +29,11 @@ public class ItemDetailFragment extends Fragment implements ResponseListener{
 	public static final String EXTRA_ITEM_IMAGE_URL = "com.yrazlik.leagueoflegends.fragments.ItemDetailFragment.extraitemimageurl";
 	private int itemId;
 	private String itemImageUrl;
-	private RemoteImageView itemImage;
+	private ImageView itemImage;
 	private TextView itemName, itemGold, itemDescription, descriptionTitle;
 	private Typeface typeface;
+    private ProgressBar progress;
+    private AQuery aq;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -61,11 +65,13 @@ public class ItemDetailFragment extends Fragment implements ResponseListener{
 	}
 	
 	private void initUI(View v){
-		itemImage = (RemoteImageView)v.findViewById(R.id.imageViewItemImage);
+		itemImage = (ImageView)v.findViewById(R.id.imageViewItemImage);
 		itemGold = (TextView)v.findViewById(R.id.textViewItemGold);
 		itemDescription = (TextView)v.findViewById(R.id.textViewDetailedDescription);
 		itemName = (TextView)v.findViewById(R.id.textViewItemName);
 		descriptionTitle = (TextView)v.findViewById(R.id.textViewDescription);
+        progress = (ProgressBar) v.findViewById(R.id.imageProgress);
+        aq = new AQuery(itemImage);
 		typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/dinproregular.ttf");
 		itemName.setTypeface(typeface);
 		itemGold.setTypeface(typeface);
@@ -76,9 +82,7 @@ public class ItemDetailFragment extends Fragment implements ResponseListener{
 	@Override
 	public void onSuccess(Object response) {
 		if(response instanceof ItemDetailResponse){
-			itemImage.setLocalURI(null);
-			itemImage.setRemoteURI(itemImageUrl);
-			itemImage.loadImage();
+            aq.progress(progress).image(itemImageUrl, true, true);
 			ItemDetailResponse resp = (ItemDetailResponse)response;
 			String detailedDescription = "";
 			if(resp.getSanitizedDescription() != null){

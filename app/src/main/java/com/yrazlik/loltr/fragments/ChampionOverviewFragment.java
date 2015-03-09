@@ -1,20 +1,5 @@
 package com.yrazlik.loltr.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.adapters.GridViewItemsAdapter;
-import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.data.Blocks;
-import com.yrazlik.loltr.data.Items;
-import com.yrazlik.loltr.data.Recommended;
-import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
-import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
-import com.yrazlik.loltr.service.ServiceRequest;
-import com.yrazlik.loltr.view.RemoteImageView;
-
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -37,9 +22,25 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.androidquery.AQuery;
+import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.adapters.GridViewItemsAdapter;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.Blocks;
+import com.yrazlik.loltr.data.Items;
+import com.yrazlik.loltr.data.Recommended;
+import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
+import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
+import com.yrazlik.loltr.service.ServiceRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @SuppressLint("NewApi") public class ChampionOverviewFragment extends Fragment implements ResponseListener, OnItemClickListener{
 	
@@ -49,7 +50,7 @@ import android.widget.TextView;
 	private String champLogoImageUrl;
 	private String extraChampName;
 	
-	private RemoteImageView champLogo;
+	private ImageView champLogo;
 	private ImageView splashImage;
 	private TextView champName;
 	private TextView champTitle;
@@ -61,8 +62,10 @@ import android.widget.TextView;
 	private TextView tags;
 	private TextView tagsTitle;
 	public static int lastSelectedChampionId;
+    private AQuery aq;
 	private GridView gridviewStartingItems, gridviewEssentialItems, gridviewOffensiveItems, gridviewDeffensiveItems;
 	private GridViewItemsAdapter startingItemsAdapter, essentialItemsAdapter, offensiveItemsAdapter, deffensiveItemsAdapter;
+    private ProgressBar progress;
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -120,10 +123,10 @@ import android.widget.TextView;
 		gridviewOffensiveItems.setOnItemClickListener(this);
 		gridviewDeffensiveItems.setOnItemClickListener(this);
 		typeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/dinproregular.ttf");
-		champLogo = (RemoteImageView)v.findViewById(R.id.imageViewChampionImage);
-		champLogo.setLocalURI(null);
-		champLogo.setRemoteURI(champLogoImageUrl);
-		champLogo.loadImage();
+		champLogo = (ImageView)v.findViewById(R.id.imageViewChampionImage);
+		aq = new AQuery(champLogo);
+        progress = (ProgressBar)v.findViewById(R.id.imageProgress);
+        aq.progress(progress).image(champLogoImageUrl, true, true);
 		champName = (TextView)v.findViewById(R.id.textViewChampName);
 		champTitle = (TextView)v.findViewById(R.id.textViewChampTitle);
 		tags = (TextView)v.findViewById(R.id.textviewTags);
