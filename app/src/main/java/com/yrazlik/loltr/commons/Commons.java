@@ -73,6 +73,17 @@ public class Commons {
     public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/6563465cbcfc8effd1e082f7b47aa0e719bc99a0/championcosts";
 	public static final String URL_CHAMPION_SKIN_BASE = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
+    public static final String WEEKLY_FREE_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.weeklyfreechampionsfragment";
+    public static final String ALL_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsfragment";
+    public static final String ALL_ITEMS_FRAGMENT = "com.yrazlik.loltr.fragments.allitemsfragment";
+    public static final String RUNES_FRAGMENT = "com.yrazlik.loltr.fragments.runesfragment";
+    public static final String ALL_CHAMPIONS_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsskinsfragment";
+    public static final String MATCH_INFO_FRAGMENT = "com.yrazlik.loltr.fragments.matchinfofragment";
+    public static final String LIVE_CHANNELS_FRAGMENT = "com.yrazlik.loltr.fragments.livechannelsfragment";
+    public static final String CONTACT_FRAGMENT = "com.yrazlik.loltr.fragments.contactfragment";
+    public static final String ABOUT_FRAGMENT = "com.yrazlik.loltr.fragments.aboutfragment";
+
+
 	public static ArrayList<Champion> weeklyFreeChampions;
 	public static ArrayList<Champion> allChampions;
 	public static ArrayList<Items> allItems;

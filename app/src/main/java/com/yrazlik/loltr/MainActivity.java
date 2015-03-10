@@ -6,12 +6,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -67,25 +69,22 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 	final private String COUNT = "count";
 	private Commons commons;
     private AdView adView;
+    private Toolbar mToolBar;
 
     @SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);// Getting an array of country
+        mToolBar = (Toolbar) findViewById(R.id.toolbar);
+        if (mToolBar != null) {
+            setSupportActionBar(mToolBar);
+        }
         try{
             ParseAnalytics.trackAppOpened(getIntent());
         }catch (Exception e){
 
         }
-      /*  String s = "yasinrazlik";
-
-        for(int i = 0; i<s.length(); i++){
-            s = s.substring(1,s.length()-i) + s.substring(0,1) + s.substring(s.length()-i
-        );
-        }
-
-        Log.d("INPLACE", s);*/
 
 		adView = (AdView)findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.Builder().build();
@@ -130,9 +129,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 		// Creating a ToggleButton for NavigationDrawer with drawer event
 		// listener
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, R.string.drawer_open,
-				R.string.drawer_close) {
+		mDrawerToggle = new android.support.v7.app.ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.drawer_open, R.string.drawer_close) {
 
 			/** Called when drawer is closed */
 			public void onDrawerClosed(View view) {
@@ -160,6 +157,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 				FragmentManager fragmentManager = getSupportFragmentManager();
 				final FragmentTransaction ft = fragmentManager.beginTransaction();
 				mDrawerLayout.closeDrawer(mDrawer);
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 				
 				if(position == 0){
 					Handler handler = new Handler();
@@ -168,11 +166,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							WeeklyFreeChampionsFragment cFragment = new WeeklyFreeChampionsFragment();
-							ft.replace(R.id.content_frame, cFragment);
+							ft.replace(R.id.content_frame, cFragment);//.addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
 							ft.commit();
 							
 						}
-					}, 250);
+					}, 350);
 					
 				}else if(position == 1){
 					Handler handler = new Handler();
@@ -181,10 +179,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							AllChampionsFragment fragment = new AllChampionsFragment();
-							ft.replace(R.id.content_frame, fragment);
+							ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
 							ft.commit();
 						}
-					}, 250);
+					}, 350);
 				}else if(position == 2){
 					Handler handler = new Handler();
 					handler.postDelayed(new Runnable() {
@@ -192,10 +190,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							AllItemsFragment fragment = new AllItemsFragment();
-							ft.replace(R.id.content_frame, fragment);
+							ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
 							ft.commit();
 						}
-					}, 250);
+					}, 350);
 				}else if(position == 3){
 					Handler handler = new Handler();
 					handler.postDelayed(new Runnable() {
@@ -203,10 +201,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							RunesFragment fragment = new RunesFragment();
-							ft.replace(R.id.content_frame, fragment);
+							ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.RUNES_FRAGMENT);
 							ft.commit();
 						}
-					}, 250);
+					}, 350);
 				}else if(position == 4){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -214,10 +212,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         @Override
                         public void run() {
                             AllChampionSkinsFragment fragment = new AllChampionSkinsFragment();
-                            ft.replace(R.id.content_frame, fragment);
+                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ALL_CHAMPIONS_SKINS_FRAGMENT);
                             ft.commit();
                         }
-                    }, 250);
+                    }, 350);
                 }else if(position == 5){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -225,10 +223,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         @Override
                         public void run() {
                            MatchInfoFragment fragment = new MatchInfoFragment();
-                           ft.replace(R.id.content_frame, fragment);
+                           ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.MATCH_INFO_FRAGMENT);
                            ft.commit();
                         }
-                    }, 250);
+                    }, 350);
                 }else if(position == 6){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -236,10 +234,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         @Override
                         public void run() {
                             LiveChannelsFragment fragment = new LiveChannelsFragment();
-                            ft.replace(R.id.content_frame, fragment);
+                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.LIVE_CHANNELS_FRAGMENT);
                             ft.commit();
                         }
-                    }, 250);
+                    }, 350);
                 }else if(position == 7){
 					Handler handler = new Handler();
 					handler.postDelayed(new Runnable() {
@@ -247,10 +245,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
                             ContactFragment fragment = new ContactFragment();
-                            ft.replace(R.id.content_frame, fragment);
+                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.CONTACT_FRAGMENT);
                             ft.commit();
 						}
-					}, 250);
+					}, 350);
 				}else if(position == 8){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -259,10 +257,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         public void run() {
                             Log.d("TAGGG", "MainActivityOnClick");
                             AboutFragment fragment = new AboutFragment();
-                            ft.replace(R.id.content_frame, fragment);
+                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ABOUT_FRAGMENT);
                             ft.commit();
                         }
-                    }, 250);
+                    }, 350);
                 }
 				// Closing the drawer
 				
@@ -384,19 +382,30 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage(getResources().getString(R.string.areyousure)).setPositiveButton("Evet", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        })
-                .setNegativeButton("Hayir", new DialogInterface.OnClickListener() {
+        if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
+            mDrawerLayout.closeDrawer(Gravity.START);
+        }else {
+            int count = getSupportFragmentManager().getBackStackEntryCount();
+            if (count == 0) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage(getResources().getString(R.string.areyousure)).setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        finish();
                     }
-                }).show();
+                })
+                        .setNegativeButton("Hayir", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
+            } else {
+                getSupportFragmentManager().popBackStack();
+            }
+        }
+
+
     }
 
 
