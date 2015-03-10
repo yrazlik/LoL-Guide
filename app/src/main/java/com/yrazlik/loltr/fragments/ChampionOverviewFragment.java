@@ -65,7 +65,7 @@ import java.util.HashMap;
     private AQuery aq;
 	private GridView gridviewStartingItems, gridviewEssentialItems, gridviewOffensiveItems, gridviewDeffensiveItems;
 	private GridViewItemsAdapter startingItemsAdapter, essentialItemsAdapter, offensiveItemsAdapter, deffensiveItemsAdapter;
-    private ProgressBar progress;
+    private ProgressBar progress, progressStartingItems, progressEssentialItems, progressOffensiveItems, progressDeffensiveItems;
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -126,6 +126,10 @@ import java.util.HashMap;
 		champLogo = (ImageView)v.findViewById(R.id.imageViewChampionImage);
 		aq = new AQuery(champLogo);
         progress = (ProgressBar)v.findViewById(R.id.imageProgress);
+        progressStartingItems = (ProgressBar)v.findViewById(R.id.progressStartingItems);
+        progressEssentialItems = (ProgressBar)v.findViewById(R.id.progressEssentialItems);
+        progressOffensiveItems = (ProgressBar)v.findViewById(R.id.progressOffensiveItems);
+        progressDeffensiveItems = (ProgressBar)v.findViewById(R.id.progressDeffensiveItems);
         aq.progress(progress).image(champLogoImageUrl, true, true);
 		champName = (TextView)v.findViewById(R.id.textViewChampName);
 		champTitle = (TextView)v.findViewById(R.id.textViewChampTitle);
@@ -253,22 +257,27 @@ import java.util.HashMap;
 							startingItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
 							gridviewStartingItems.setAdapter(startingItemsAdapter);
 							startingItemsAdapter.notifyDataSetChanged();
+                            progressStartingItems.setVisibility(View.GONE);
 						}else if(b.getType().equals("essential")){
 							essentialItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
 							gridviewEssentialItems.setAdapter(essentialItemsAdapter);
 							essentialItemsAdapter.notifyDataSetChanged();
+                            progressEssentialItems.setVisibility(View.GONE);
 						}else if(b.getType().equals("offensive")){
 							offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
 							gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
 							offensiveItemsAdapter.notifyDataSetChanged();
+                            progressOffensiveItems.setVisibility(View.GONE);
 						}else if(b.getType().equals("defensive")){
 							deffensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
 							gridviewDeffensiveItems.setAdapter(deffensiveItemsAdapter);
 							deffensiveItemsAdapter.notifyDataSetChanged();
+                            progressDeffensiveItems.setVisibility(View.GONE);
 						}else if(b.getType().equals("ability_scaling")){
 							offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
 							gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
 							offensiveItemsAdapter.notifyDataSetChanged();
+                            progressOffensiveItems.setVisibility(View.GONE);
 						}
 					}
 					break;
