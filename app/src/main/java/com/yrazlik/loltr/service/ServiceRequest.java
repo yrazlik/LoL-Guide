@@ -22,6 +22,7 @@ import com.yrazlik.loltr.responseclasses.ChampionSpellsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionStrategyResponse;
 import com.yrazlik.loltr.responseclasses.ItemDetailResponse;
 import com.yrazlik.loltr.responseclasses.LiveChannelsResponse;
+import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.responseclasses.RuneResponse;
 import com.yrazlik.loltr.responseclasses.StaticDataWithAltImagesResponse;
@@ -209,7 +210,6 @@ public class ServiceRequest {
 	private String getServiceEndpointUrl(int requestId){
 		switch(requestId){
 			case Commons.WEEKLY_FREE_CHAMPIONS_REQUEST:
-            case Commons.SUMMONER_INFO_REQUEST:
 				return Commons.SERVICE_BASE_URL;
 			case Commons.STATIC_DATA_WITH_ALT_IMAGES_REQUEST:
 			case Commons.CHAMPION_OVERVIEW_REQUEST:
@@ -230,7 +230,9 @@ public class ServiceRequest {
             case Commons.LIVE_CHANNELS_REQUEST:
                 return Commons.LIVE_CHANNELS_URL;
             case Commons.MATCH_INFO_REQUEST:
-                return Commons.SPECTATOR_SERVICE_BASE_URL_TR;
+                return Commons.SPECTATOR_SERVICE_BASE_URL_NA;
+            case Commons.SUMMONER_INFO_REQUEST:
+                return Commons.SERVICE_BASE_URL_NA;
 			default:
 				return "";
 		}
@@ -439,6 +441,8 @@ public class ServiceRequest {
                 return gson.fromJson(response, ChampionSkinsResponse.class);
             case Commons.SUMMONER_INFO_REQUEST:
                 return gson.fromJson(response, SummonerInfoResponse.class);
+            case Commons.MATCH_INFO_REQUEST:
+                return gson.fromJson(response, MatchInfoResponse.class);
 			default:
 				return null;
 			}

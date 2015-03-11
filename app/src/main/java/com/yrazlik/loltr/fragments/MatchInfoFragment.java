@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.activities.MatchInfoActivity;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.SummonerDto;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
@@ -22,6 +25,7 @@ import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by yrazlik on 3/4/15.
@@ -51,7 +55,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
                 }else{
                     String summonerName = summonerNameET.getText().toString();
                     ArrayList<String> pathParams = new ArrayList<String>();
-                    pathParams.add("tr");
+                    pathParams.add("na");
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");
@@ -71,15 +75,34 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
     public void onSuccess(Object response) {
         if(response instanceof SummonerInfoResponse){
             SummonerInfoResponse resp = (SummonerInfoResponse)response;
-            ArrayList<String> pathParams = new ArrayList<String>();
-            pathParams.add(String.valueOf(resp.getId()));
-            HashMap<String, String> queryParams = new HashMap<String, String>();
-            queryParams.put("api_key", Commons.API_KEY);
 
-            ServiceRequest.getInstance().makeGetRequest(Commons.MATCH_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
+            String summonerId = null;
+
+            for (Map.Entry<String, SummonerDto> entry : resp.entrySet())
+            {
+                if(entry.getValue() != null) {
+                    summonerId = String.valueOf(entry.getValue().getId());
+                }
+                break;
+            }
+
+            if(summonerId != null && !summonerId.equals("")){
+                ArrayList<String> pathParams = new ArrayList<String>();
+                pathParams.add(String.valueOf(summonerId));
+                HashMap<String, String> queryParams = new HashMap<String, String>();
+                queryParams.put("api_key", Commons.API_KEY);
+
+                ServiceRequest.getInstance().makeGetRequest(Commons.MATCH_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
+            }else {
+                Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_SHORT).show();
+            }
+
+
         }else if(response instanceof MatchInfoResponse){
             MatchInfoResponse resp = (MatchInfoResponse) response;
-            
+            Intent i = new Intent(getContext(), MatchInfoActivity.class);
+            i.putExtra("MATCH_INFO_RESPONSE", resp);
+            startActivity(i);
         }
 
     }

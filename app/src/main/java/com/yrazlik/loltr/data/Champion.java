@@ -1,6 +1,8 @@
 package com.yrazlik.loltr.data;
 
-public class Champion {
+import java.io.Serializable;
+
+public class Champion implements Serializable{
 	
 	private String championImageUrl;
 	private String championName;
@@ -16,6 +18,9 @@ public class Champion {
     private boolean active;
     private boolean freeToPlay;
     private String key;
+    private long teamId;
+    private int pickTurn;
+    private long championId;
 	
 	public String getChampionImageUrl() {
 		return championImageUrl;
@@ -101,10 +106,28 @@ public class Champion {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
-	
 
+    public long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(long teamId) {
+        this.teamId = teamId;
+    }
+
+    public int getPickTurn() {
+        return pickTurn;
+    }
+
+    public void setPickTurn(int pickTurn) {
+        this.pickTurn = pickTurn;
+    }
+
+    public long getChampionId() {
+        return championId;
+    }
+
+    public void setChampionId(long championId) {
+        this.championId = championId;
+    }
 }

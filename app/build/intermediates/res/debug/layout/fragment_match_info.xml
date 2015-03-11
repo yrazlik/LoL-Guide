@@ -62,15 +62,6 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/search"/>
 
-            <FrameLayout
-                android:id="@+id/matchInfoContentFrame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/searchButton"
-                android:layout_marginTop="10dp">
-
-            </FrameLayout>
-
         </RelativeLayout>
 
     </ScrollView>

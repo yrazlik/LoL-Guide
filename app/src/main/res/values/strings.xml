@@ -74,5 +74,7 @@
     <string name="loading">Yükleniyor...</string>
     <string name="summonerName">Oyuncu ismi giriniz...</string>
     <string name="selectRegion">Bölge Seçiniz: </string>
-
+    <string name="anErrorOccured">Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyiniz. </string>
+    <string name="team1">TAKIM 1</string>
+    <string name="team2">TAKIM 2</string>
 </resources>

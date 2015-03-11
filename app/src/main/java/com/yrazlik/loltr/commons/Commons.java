@@ -59,8 +59,10 @@ public class Commons {
     public static final int SUMMONER_INFO_REQUEST = 16;
     public static final int MATCH_INFO_REQUEST = 17;
 
+    public static final String SPECTATOR_SERVICE_BASE_URL_NA = "https://na.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1";
     public static final String SPECTATOR_SERVICE_BASE_URL_TR = "https://tr.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
 	public static final String SERVICE_BASE_URL = "https://tr.api.pvp.net/api/lol";
+    public static final String SERVICE_BASE_URL_NA = "https://na.api.pvp.net/api/lol";
 	public static final String STATIC_DATA_BASE_URL = "https://global.api.pvp.net/api/lol";
 	public static final String CHAMPION_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/champion/";
 	public static final String CHAMPION_SPLASH_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading";

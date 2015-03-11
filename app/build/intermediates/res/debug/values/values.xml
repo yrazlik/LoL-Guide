@@ -233,6 +233,7 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
+    <string name="anErrorOccured">Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyiniz. </string>
     <string name="app_name">LoL TR</string>
     <string name="areyousure">Uygulamadan çıkmak istiyor musunuz?</string>
     <string name="assasin">Assassin</string>
@@ -325,6 +326,8 @@
     <string name="support">Support</string>
     <string name="tags">Özellikler</string>
     <string name="tank">Tank</string>
+    <string name="team1">TAKIM 1</string>
+    <string name="team2">TAKIM 2</string>
     <string name="u">ü</string>
     <string name="video">Video</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_strings.xml -->
