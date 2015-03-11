@@ -39,6 +39,20 @@
             android:layout_marginTop="5dp"
             android:text="oh yeah baby"/>
 
+        <ImageView
+            android:id="@+id/detailInfoArrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/detailInfoArrow"
+            android:layout_centerVertical="true"
+            android:text="@string/detailInfo"/>
+
 
     </RelativeLayout>
 

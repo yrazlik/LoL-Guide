@@ -51,8 +51,8 @@ public class MatchInfoAdapter extends ArrayAdapter<Summoner>{
 
         aq = new AQuery(holder.champImage);
         aq.progress(holder.progress).image("http://ddragon.leagueoflegends.com/cdn/5.4.1/img/champion/Tristana.png", true, true);
-        holder.champName.setText("Tristana");
-        holder.userName.setText(summoner.getSummonerName());
+        holder.champName.setText(mContext.getString(R.string.chosenChampion) + " " + "Tristana");
+        holder.userName.setText(mContext.getString(R.string.player) + " " + summoner.getSummonerName());
 
 
         return convertView;

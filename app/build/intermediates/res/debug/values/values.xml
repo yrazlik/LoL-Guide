@@ -239,6 +239,7 @@
     <string name="assasin">Assassin</string>
     <string name="buyucu">Büyücü</string>
     <string name="c">ç</string>
+    <string name="chosenChampion">Şampiyon:</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text">An application requires an update to the Android Wear app.</string>
@@ -281,6 +282,7 @@
     <eat-comment/>
     <string name="deffensiveItems">Defansif Eşyalar</string>
     <string name="destek">Destek</string>
+    <string name="detailInfo">Detay</string>
     <string name="dovuscu">Dövüscü</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="drawer_open">Open navigation drawer</string>
@@ -298,11 +300,16 @@
     <string name="loading">Yükleniyor...</string>
     <string name="mage">Mage</string>
     <string name="marksman">Marksman</string>
+    <string name="matchInfo">Maç Bilgisi</string>
+    <string name="matchTime">Maç Süresi</string>
     <string name="menu">Menü</string>
     <string name="nisanci">Nisancı</string>
     <string name="o">ö</string>
     <string name="offensiveItems">Ofansif Eşyalar</string>
     <string name="play">Oynat</string>
+    <string name="player">Oyuncu:</string>
+    <string name="playerDetail">Oyuncu Detayı</string>
+    <string name="playerNotCurrentlyPlaying">Belirtilen oyuncu su an herhangi bir oyunda oynamıyor.</string>
     <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
     <string name="question_mark">\?\?\?</string>
     <string name="s">ş</string>

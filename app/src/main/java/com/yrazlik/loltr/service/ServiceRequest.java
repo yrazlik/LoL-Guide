@@ -230,9 +230,9 @@ public class ServiceRequest {
             case Commons.LIVE_CHANNELS_REQUEST:
                 return Commons.LIVE_CHANNELS_URL;
             case Commons.MATCH_INFO_REQUEST:
-                return Commons.SPECTATOR_SERVICE_BASE_URL_NA;
+                return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
             case Commons.SUMMONER_INFO_REQUEST:
-                return Commons.SERVICE_BASE_URL_NA;
+                return Commons.SERVICE_BASE_URL_CURRENT;
 			default:
 				return "";
 		}

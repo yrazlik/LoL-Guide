@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +35,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
 
     private Spinner regionSpinner;
     private ArrayAdapter<String> spinnerAdapter;
-    private String[] regions = {"TR1"};//, "NA1", "BR1", "LA1", "LA2", "OC1", "EUN1", "RU", "EUW1", "KR", "PBE1"};
+    private String[] regions = {"TR1", "EUW1", "NA1", "EUN1", "OC1",};// "BR1", "LA1", "LA2", "RU", "KR", "PBE1"};
     private Button searchButton;
     private EditText summonerNameET;
 
@@ -46,6 +47,38 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
         searchButton = (Button)v.findViewById(R.id.searchButton);
         summonerNameET = (EditText)v.findViewById(R.id.summonerNameET);
         spinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, regions);
+        regionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL;
+                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_TR;
+                        break;
+                    case 1:
+                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_EUW;
+                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUW;
+                        break;
+                    case 2:
+                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_NA;
+                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_NA;
+                        break;
+                    case 3:
+                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_EUNE;
+                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUNE;
+                        break;
+                    case 4:
+                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_OCE;
+                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_OC;
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         regionSpinner.setAdapter(spinnerAdapter);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +92,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");
+                    summonerName = summonerName.replaceAll("\\s","");
                     pathParams.add(summonerName);
                     HashMap<String, String> queryParams = new HashMap<String, String>();
                     queryParams.put("api_key", Commons.API_KEY);
@@ -109,7 +143,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
 
     @Override
     public void onFailure(Object response) {
-
+        Toast.makeText(getContext(), R.string.playerNotCurrentlyPlaying, Toast.LENGTH_SHORT).show();
     }
 
     @Override

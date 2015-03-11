@@ -77,4 +77,11 @@
     <string name="anErrorOccured">Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyiniz. </string>
     <string name="team1">TAKIM 1</string>
     <string name="team2">TAKIM 2</string>
+    <string name="matchTime">Maç Süresi</string>
+    <string name="playerNotCurrentlyPlaying">Belirtilen oyuncu su an herhangi bir oyunda oynamıyor.</string>
+    <string name="matchInfo">Maç Bilgisi</string>
+    <string name="player">Oyuncu:</string>
+    <string name="chosenChampion">Şampiyon:</string>
+    <string name="playerDetail">Oyuncu Detayı</string>
+    <string name="detailInfo">Detay</string>
 </resources>

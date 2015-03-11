@@ -56,7 +56,9 @@
         </activity>
         <activity
             android:name="com.yrazlik.loltr.activities.MatchInfoActivity"
-            android:screenOrientation="portrait" >
+            android:parentActivityName="com.yrazlik.loltr.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
