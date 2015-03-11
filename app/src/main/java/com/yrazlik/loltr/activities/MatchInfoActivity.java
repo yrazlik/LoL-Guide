@@ -1,5 +1,6 @@
 package com.yrazlik.loltr.activities;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,23 +8,34 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.MatchInfoAdapter;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Summoner;
+import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
+import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
  * Created by yrazlik on 3/10/15.
  */
-public class MatchInfoActivity extends ActionBarActivity{
+public class MatchInfoActivity extends ActionBarActivity implements ResponseListener{
 
     private MatchInfoResponse response;
     private Gson gson;
@@ -34,6 +46,8 @@ public class MatchInfoActivity extends ActionBarActivity{
     private TextView matchTime;
     private long counter;
     private ImageView backButton;
+    private ProgressBar loadingProgress;
+    private ScrollView scrollContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +63,8 @@ public class MatchInfoActivity extends ActionBarActivity{
         matchTime = (TextView)findViewById(R.id.matchTime);
         gson = new Gson();
         response = (MatchInfoResponse) getIntent().getSerializableExtra("MATCH_INFO_RESPONSE");
+        loadingProgress = (ProgressBar)findViewById(R.id.loadingProgress);
+        scrollContent = (ScrollView)findViewById(R.id.scrollContent);
 
         if(response != null){
             team1LV = (ListView) findViewById(R.id.team1LV);
@@ -75,21 +91,23 @@ public class MatchInfoActivity extends ActionBarActivity{
                     }
                 }
 
-                team1Adapter = new MatchInfoAdapter(MatchInfoActivity.this, R.layout.match_info_detail_listrow, team1Summoners);
-                team2Adapter = new MatchInfoAdapter(MatchInfoActivity.this, R.layout.match_info_detail_listrow, team2Summoners);
+                ArrayList<String> pathParams = new ArrayList<String>();
+                pathParams.add("static-data");
+                pathParams.add("tr");
+                pathParams.add("v1.2");
+                pathParams.add("champion");
+                HashMap<String, String> queryParams = new HashMap<String, String>();
+                queryParams.put("version", Commons.LATEST_VERSION);
+                queryParams.put("champData", "altimages");
+                queryParams.put("api_key", Commons.API_KEY);
 
-               // RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 60*team1Summoners.size());
-              //  team1LV.setLayoutParams(params);
-                Resources resources = getResources();
-                DisplayMetrics metrics = resources.getDisplayMetrics();
-                float px1 = (team1Summoners.size()*60+20) * (metrics.densityDpi / 160f);
-                float px2 = (team2Summoners.size()*60+20) * (metrics.densityDpi / 160f);
-                team1LV.getLayoutParams().height = Math.round(px1);
-                team2LV.getLayoutParams().height = Math.round(px2);
-                team1LV.setAdapter(team1Adapter);
-                team2LV.setAdapter(team2Adapter);
-                matchTime.setText(getTime(response.getGameLength()));
-                startTimer(response.getGameLength());
+                if(Commons.allChampions == null || Commons.allChampions.size() <= 0) {
+                    ServiceRequest.getInstance().makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
+                }else{
+                    setAdapters();
+                }
+
+
             }
 
         }else{
@@ -115,6 +133,52 @@ public class MatchInfoActivity extends ActionBarActivity{
         }, 0, 1000);
     }
 
+    private void setAdapters(){
+      //  ArrayList<Summoner>team1SummonersWithNames = new ArrayList<Summoner>();
+      //  ArrayList<Summoner>team2SummonersWithNames = new ArrayList<Summoner>();
+
+        for(Summoner s : team1Summoners){
+            for(Champion c : Commons.allChampions){
+                if(c.getId() == s.getChampionId()){
+                    s.setChampName(c.getChampionName());
+                    s.setKey(c.getKey());
+                    break;
+                }
+            }
+        }
+
+        for(Summoner s : team2Summoners){
+            for(Champion c : Commons.allChampions){
+                if(c.getId() == s.getChampionId()){
+                    s.setChampName(c.getChampionName());
+                    s.setKey(c.getKey());
+                    break;
+                }
+            }
+        }
+
+
+        team1Adapter = new MatchInfoAdapter(MatchInfoActivity.this, R.layout.match_info_detail_listrow, team1Summoners);
+        team2Adapter = new MatchInfoAdapter(MatchInfoActivity.this, R.layout.match_info_detail_listrow, team2Summoners);
+        Resources resources = getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px1 = (team1Summoners.size()*60+20) * (metrics.densityDpi / 160f);
+        float px2 = (team2Summoners.size()*60+20) * (metrics.densityDpi / 160f);
+        team1LV.getLayoutParams().height = Math.round(px1);
+        team2LV.getLayoutParams().height = Math.round(px2);
+        team1LV.setAdapter(team1Adapter);
+        team2LV.setAdapter(team2Adapter);
+        matchTime.setText(getTime(response.getGameLength()));
+        try{
+            loadingProgress.setVisibility(View.GONE);
+            scrollContent.setVisibility(View.VISIBLE);
+        }catch (Exception e){}
+
+        startTimer(response.getGameLength());
+
+
+    }
+
     private String getTime(long secs){
 
         String hours =  String.valueOf(secs / 3600);
@@ -137,4 +201,49 @@ public class MatchInfoActivity extends ActionBarActivity{
         return hours + ":" + minutes + ":" + seconds;
     }
 
+    @Override
+    public void onSuccess(Object response) {
+
+        if(response instanceof AllChampionsResponse){
+            AllChampionsResponse resp = (AllChampionsResponse) response;
+            Map<String, Map<String, String>> data = resp.getData();
+            if(Commons.allChampions != null){
+                Commons.allChampions.clear();
+            }else{
+                Commons.allChampions = new ArrayList<Champion>();
+            }
+            for(Map.Entry<String, Map<String, String>> entry : data.entrySet()){
+                String key = entry.getKey();
+                String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
+                Champion c = new Champion();
+                c.setChampionImageUrl(imageUrl);
+                c.setChampionName(entry.getValue().get("name"));
+                c.setId(Integer.parseInt(entry.getValue().get("id")));
+                c.setKey(entry.getValue().get("key"));
+                Commons.allChampions.add(c);
+            }
+            if(Commons.allChampions != null) {
+                Collections.sort(Commons.allChampions, new Comparator<Champion>() {
+                    @Override
+                    public int compare(Champion c1, Champion c2) {
+                        return c1.getChampionName().compareTo(c2.getChampionName());
+                    }
+                });
+            }
+
+            setAdapters();
+
+        }
+
+    }
+
+    @Override
+    public void onFailure(Object response) {
+
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
 }

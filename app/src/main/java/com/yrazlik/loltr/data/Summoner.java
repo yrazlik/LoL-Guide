@@ -13,6 +13,8 @@ public class Summoner implements Serializable{
     private long championId;
     private long teamId;
     private long summonerId;
+    private String champName;
+    private String key;
 
     public boolean isBot() {
         return bot;
@@ -60,5 +62,21 @@ public class Summoner implements Serializable{
 
     public void setSummonerId(long summonerId) {
         this.summonerId = summonerId;
+    }
+
+    public String getChampName() {
+        return champName;
+    }
+
+    public void setChampName(String champName) {
+        this.champName = champName;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

@@ -463,4 +463,13 @@ public class ServiceRequest {
 		return progressDialog;
 	}
 
+    public static Dialog hideLoading(Context context, String message) {
+
+        if (progressDialog == null) {
+            progressDialog.hide();
+        }
+
+        return progressDialog;
+    }
+
 }

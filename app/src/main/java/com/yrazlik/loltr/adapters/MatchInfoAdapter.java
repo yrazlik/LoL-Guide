@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Summoner;
 
 import java.util.List;
@@ -50,8 +51,8 @@ public class MatchInfoAdapter extends ArrayAdapter<Summoner>{
         Summoner summoner = getItem(position);
 
         aq = new AQuery(holder.champImage);
-        aq.progress(holder.progress).image("http://ddragon.leagueoflegends.com/cdn/5.4.1/img/champion/Tristana.png", true, true);
-        holder.champName.setText(mContext.getString(R.string.chosenChampion) + " " + "Tristana");
+        aq.progress(holder.progress).image("http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/champion/" + summoner.getKey() + ".png", true, true);
+        holder.champName.setText(mContext.getString(R.string.chosenChampion) + " " + summoner.getChampName());
         holder.userName.setText(mContext.getString(R.string.player) + " " + summoner.getSummonerName());
 
 
