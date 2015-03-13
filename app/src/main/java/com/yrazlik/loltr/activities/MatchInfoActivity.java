@@ -193,6 +193,10 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
 
     private String getTime(long secs){
 
+        if(secs < 0){
+            secs = (-1)*secs;
+        }
+
         String hours =  String.valueOf(secs / 3600);
         String minutes = String.valueOf((secs/60));
         String seconds = String.valueOf(secs % 60);
