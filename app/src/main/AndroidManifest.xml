@@ -51,6 +51,14 @@
                 <category android:name="android.intent.category.default"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activities.PlayerMatchInfoDetailActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".fragments.LiveChannelActivity"
             android:screenOrientation="landscape">
 

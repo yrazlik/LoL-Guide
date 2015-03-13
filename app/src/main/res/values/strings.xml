@@ -84,4 +84,6 @@
     <string name="chosenChampion">Şampiyon:</string>
     <string name="playerDetail">Oyuncu Detayı</string>
     <string name="detailInfo">Detay</string>
+    <string name="leagueInfo">Lig Bilgisi</string>
+    <string name="matchHistory">Karşılaşma Geçmişi</string>
 </resources>

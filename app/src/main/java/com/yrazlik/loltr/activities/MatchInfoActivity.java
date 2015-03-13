@@ -1,11 +1,13 @@
 package com.yrazlik.loltr.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -35,7 +37,7 @@ import java.util.TimerTask;
 /**
  * Created by yrazlik on 3/10/15.
  */
-public class MatchInfoActivity extends ActionBarActivity implements ResponseListener{
+public class MatchInfoActivity extends ActionBarActivity implements ResponseListener, AdapterView.OnItemClickListener{
 
     private MatchInfoResponse response;
     private Gson gson;
@@ -69,6 +71,8 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
         if(response != null){
             team1LV = (ListView) findViewById(R.id.team1LV);
             team2LV = (ListView) findViewById(R.id.team2LV);
+            team1LV.setOnItemClickListener(this);
+            team2LV.setOnItemClickListener(this);
             ArrayList<Summoner>allSummoners = response.getParticipants();
             teamIds = new ArrayList<Long>();
             for(Summoner s : allSummoners){
@@ -245,5 +249,19 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
     @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(parent.getId() == team1LV.getId() || parent.getId() == team2LV.getId()){
+
+            Summoner s = (Summoner)parent.getAdapter().getItem(position);
+            Intent i = new Intent(MatchInfoActivity.this, PlayerMatchInfoDetailActivity.class);
+            i.putExtra("EXTRA_USERNAME", s.getSummonerName());
+            i.putExtra("EXTRA_USERID", s.getSummonerId());
+            i.putExtra("EXTRA_CHAMP_IMAGE_URL", "http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/champion/" + s.getKey() + ".png");
+
+            startActivity(i);
+        }
     }
 }

@@ -66,6 +66,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.yrazlik.loltr.activities.PlayerMatchInfoDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.yrazlik.loltr.fragments.LiveChannelActivity"
             android:screenOrientation="landscape" >
         </activity>

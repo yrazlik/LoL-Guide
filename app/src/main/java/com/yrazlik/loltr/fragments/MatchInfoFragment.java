@@ -88,7 +88,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
                 }else{
                     String summonerName = summonerNameET.getText().toString();
                     ArrayList<String> pathParams = new ArrayList<String>();
-                    pathParams.add("na");
+                    pathParams.add("euw");
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");
