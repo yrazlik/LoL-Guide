@@ -27,6 +27,7 @@ import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.responseclasses.RuneResponse;
 import com.yrazlik.loltr.responseclasses.StaticDataWithAltImagesResponse;
+import com.yrazlik.loltr.responseclasses.StatsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
 
@@ -47,8 +48,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -453,13 +452,7 @@ public class ServiceRequest {
             case Commons.LEAGUE_INFO_REQUEST:
                 return gson.fromJson(response, LeagueInfoResponse.class);
                 case Commons.STATS_REQUEST:
-                    JSONObject obj = null;
-                    try {
-                        obj = new JSONObject(response);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    return obj;
+                return gson.fromJson(response, StatsResponse.class);
 			default:
 				return null;
 			}

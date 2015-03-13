@@ -9,17 +9,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.LeagueDto;
+import com.yrazlik.loltr.data.PlayerStatsSummaryDto;
 import com.yrazlik.loltr.data.SummonerDto;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.Entries;
 import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
+import com.yrazlik.loltr.responseclasses.StatsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +40,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
     private TextView userNameTV, slashTV, userLevelTV, leagueTV, leagueNameTV, totalRankedWinCountTV, totalWonMatchCountTV, totalRankedLoseCountTV;
     private ProgressBar progress, progressLevel, progressLeagueBadge, progressLegue, progressLeagueName, progresstotalWinCount, progressWonMatchCount;
     private ImageView backButton, leagueBadge;
+    private AdView adView;
 
     private String selectedRegion;
 
@@ -45,6 +48,9 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_match_info_detail);
+        adView = (AdView)findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         getExtras();
         champImageIV = (ImageView)findViewById(R.id.champImage);
         userNameTV = (TextView)findViewById(R.id.userName);
@@ -172,7 +178,18 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
                 break;
             }
 
-        }else if(response instanceof JSONObject){
+        }else if(response instanceof StatsResponse){
+
+            StatsResponse resp = (StatsResponse) response;
+            int wins = 0;
+            for(PlayerStatsSummaryDto dto : resp.getPlayerStatSummaries()){
+                if(dto.getPlayerStatSummaryType().equalsIgnoreCase("Unranked")){
+                    wins = dto.getWins();
+                    break;
+                }
+            }
+            progressWonMatchCount.setVisibility(View.GONE);
+            totalWonMatchCountTV.setText(getString(R.string.wonMatchCount) + " " +wins + "");
 
         }
 

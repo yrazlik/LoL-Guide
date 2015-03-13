@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#E8E6DC">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/searchC"
+                android:textColor="#4CBA8E"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
                 style="?android:attr/listSeparatorTextViewStyle"/>
@@ -28,6 +30,7 @@
                 android:layout_below="@+id/searchTitle"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:singleLine="true"
                 android:hint="@string/summonerName"/>
 
@@ -37,6 +40,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:text="@string/selectRegion"
+                android:textColor="#4CBA8E"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/summonerNameET"/>
@@ -48,6 +53,7 @@
                android:layout_marginTop="10dp"
                android:layout_below="@+id/summonerNameET"
                android:layout_width="match_parent"
+               android:layout_marginRight="10dp"
                android:layout_height="wrap_content">
 
 
@@ -59,7 +65,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/selectRegionTV"
-                android:layout_marginTop="10dp"
+                android:background="#3B90CE"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/white"
                 android:text="@string/search"/>
 
         </RelativeLayout>

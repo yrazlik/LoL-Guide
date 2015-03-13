@@ -89,4 +89,5 @@
     <string name="lvl">Lvl.</string>
     <string name="league">Lig</string>
     <string name="unranked">UNRANKED</string>
+    <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
 </resources>
