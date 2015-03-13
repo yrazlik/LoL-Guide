@@ -38,6 +38,7 @@ public class Commons {
 	public static final String LATEST_VERSION = "5.4.1";
 	
 	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
+    public static final String CURRENT_SEASON = "SEASON2015";
 	
 	public static final String TAG = "com.yrazlik.leagueoflegends";
 	
@@ -58,6 +59,8 @@ public class Commons {
     public static final int CHAMPION_SKINS_REQUEST = 15;
     public static final int SUMMONER_INFO_REQUEST = 16;
     public static final int MATCH_INFO_REQUEST = 17;
+    public static final int LEAGUE_INFO_REQUEST = 18;
+    public static final int STATS_REQUEST = 19;
 
 
     public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://tr.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";

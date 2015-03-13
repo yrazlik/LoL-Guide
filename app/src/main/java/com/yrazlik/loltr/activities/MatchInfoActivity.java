@@ -50,6 +50,7 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
     private ImageView backButton;
     private ProgressBar loadingProgress;
     private ScrollView scrollContent;
+    private String selectedRegion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
         matchTime = (TextView)findViewById(R.id.matchTime);
         gson = new Gson();
         response = (MatchInfoResponse) getIntent().getSerializableExtra("MATCH_INFO_RESPONSE");
+        selectedRegion = getIntent().getStringExtra("SELECTED_REGION");
         loadingProgress = (ProgressBar)findViewById(R.id.loadingProgress);
         scrollContent = (ScrollView)findViewById(R.id.scrollContent);
 
@@ -260,7 +262,7 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
             i.putExtra("EXTRA_USERNAME", s.getSummonerName());
             i.putExtra("EXTRA_USERID", s.getSummonerId());
             i.putExtra("EXTRA_CHAMP_IMAGE_URL", "http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/champion/" + s.getKey() + ".png");
-
+            i.putExtra("SELECTED_REGION", selectedRegion);
             startActivity(i);
         }
     }

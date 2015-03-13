@@ -86,4 +86,7 @@
     <string name="detailInfo">Detay</string>
     <string name="leagueInfo">Lig Bilgisi</string>
     <string name="matchHistory">Karşılaşma Geçmişi</string>
+    <string name="lvl">Lvl.</string>
+    <string name="league">Lig</string>
+    <string name="unranked">UNRANKED</string>
 </resources>

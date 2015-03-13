@@ -38,6 +38,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
     private String[] regions = {"TR1", "EUW1", "NA1", "EUN1", "OC1",};// "BR1", "LA1", "LA2", "RU", "KR", "PBE1"};
     private Button searchButton;
     private EditText summonerNameET;
+    private String selectedRegion = "tr";
 
 
     @Override
@@ -54,22 +55,27 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
                     case 0:
                         Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_TR;
+                        selectedRegion = "tr";
                         break;
                     case 1:
                         Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_EUW;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUW;
+                        selectedRegion = "euw";
                         break;
                     case 2:
                         Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_NA;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_NA;
+                        selectedRegion = "na";
                         break;
                     case 3:
                         Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_EUNE;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUNE;
+                        selectedRegion = "eune";
                         break;
                     case 4:
                         Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_OCE;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_OC;
+                        selectedRegion = "oce";
                         break;
                 }
             }
@@ -88,7 +94,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
                 }else{
                     String summonerName = summonerNameET.getText().toString();
                     ArrayList<String> pathParams = new ArrayList<String>();
-                    pathParams.add("euw");
+                    pathParams.add(selectedRegion);
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");
@@ -136,6 +142,7 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
             MatchInfoResponse resp = (MatchInfoResponse) response;
             Intent i = new Intent(getContext(), MatchInfoActivity.class);
             i.putExtra("MATCH_INFO_RESPONSE", resp);
+            i.putExtra("SELECTED_REGION", selectedRegion);
             startActivity(i);
         }
 

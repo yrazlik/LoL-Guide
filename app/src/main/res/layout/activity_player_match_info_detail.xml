@@ -61,6 +61,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/userName"
+                        android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
@@ -76,7 +77,14 @@
                         android:layout_marginTop="5dp"
                         android:singleLine="true"
                         android:layout_marginLeft="15dp"
-                        android:text="30 Lvl."/>
+                        android:visibility="gone"/>
+                    <ProgressBar
+                        android:id="@+id/progressLevel"
+                        android:layout_below="@+id/userName"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -101,8 +109,14 @@
                     android:layout_below="@+id/leagueInfoTV"
                     android:layout_centerVertical="true"
                     android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:background="@drawable/unranked_badge"/>
+                    android:layout_height="90dp"/>
+                <ProgressBar
+                    android:id="@+id/progressLeagueBadge"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
 
                 <RelativeLayout
                     android:id="@+id/leagueInfoTextContainer"
@@ -118,7 +132,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:text="Lig: Gümüş 2"/>
+                        android:visibility="gone"/>
+                    <ProgressBar
+                        android:id="@+id/progressLeague"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
 
                     <TextView
                         android:id="@+id/leagueNameTV"
@@ -128,7 +146,13 @@
                         android:textSize="14sp"
                         android:singleLine="true"
                         android:layout_marginTop="5dp"
-                        android:text="Nunu'nun Akıncınları"/>
+                        android:visibility="gone"/>
+                    <ProgressBar
+                        android:id="@+id/progressLeagueName"
+                        android:layout_below="@+id/progressLeague"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
 
                 </RelativeLayout>
 
@@ -156,9 +180,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="5dp"
-                android:text="Kazandığı Maç Sayısı: 1127"
                 android:layout_below="@+id/matchHistoryTV"
                 />
+            <ProgressBar
+                android:id="@+id/progressWonMatchCount"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/matchHistoryTV"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
             <TextView
                 android:id="@+id/totalRankedWinLoseCountTV"
@@ -166,17 +196,40 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="5dp"
-                android:text="Dereceli Maç Kazanma/Kaybetme:"
+                android:text="Dereceli Kazanma/Kaybetme:"
                 android:layout_below="@+id/totalWonMatchCountTV"
                 />
             <TextView
                 android:id="@+id/totalRankedWinCountTV"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
                 android:layout_toRightOf="@+id/totalRankedWinLoseCountTV"
-                android:text="249/"
+                android:textColor="#36EB26"
+                />
+            <ProgressBar
+                android:id="@+id/progresstotalWinCount"
+                android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
+                android:layout_toRightOf="@+id/totalRankedWinLoseCountTV"
+                android:layout_marginLeft="7dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/slashTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
+                android:layout_toRightOf="@+id/totalRankedWinCountTV"
+                />
+            <TextView
+                android:id="@+id/totalRankedLoseCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
+                android:layout_toRightOf="@+id/slashTV"
+                android:textColor="#EB452F"
                 />
         </RelativeLayout>
 

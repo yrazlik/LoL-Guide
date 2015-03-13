@@ -21,6 +21,7 @@ import com.yrazlik.loltr.responseclasses.ChampionSkinsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionSpellsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionStrategyResponse;
 import com.yrazlik.loltr.responseclasses.ItemDetailResponse;
+import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.LiveChannelsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
@@ -46,6 +47,8 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -232,6 +235,10 @@ public class ServiceRequest {
             case Commons.MATCH_INFO_REQUEST:
                 return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
             case Commons.SUMMONER_INFO_REQUEST:
+                return Commons.SERVICE_BASE_URL_CURRENT;
+            case Commons.LEAGUE_INFO_REQUEST:
+                return Commons.SERVICE_BASE_URL_CURRENT;
+            case Commons.STATS_REQUEST:
                 return Commons.SERVICE_BASE_URL_CURRENT;
 			default:
 				return "";
@@ -443,6 +450,16 @@ public class ServiceRequest {
                 return gson.fromJson(response, SummonerInfoResponse.class);
             case Commons.MATCH_INFO_REQUEST:
                 return gson.fromJson(response, MatchInfoResponse.class);
+            case Commons.LEAGUE_INFO_REQUEST:
+                return gson.fromJson(response, LeagueInfoResponse.class);
+                case Commons.STATS_REQUEST:
+                    JSONObject obj = null;
+                    try {
+                        obj = new JSONObject(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    return obj;
 			default:
 				return null;
 			}
