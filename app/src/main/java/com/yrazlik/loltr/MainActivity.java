@@ -7,11 +7,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -76,7 +76,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);// Getting an array of country
+        setContentView(R.layout.activity_main);// Getting an array of country
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolBar != null) {
             setSupportActionBar(mToolBar);
@@ -167,8 +167,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							WeeklyFreeChampionsFragment cFragment = new WeeklyFreeChampionsFragment();
-							ft.replace(R.id.content_frame, cFragment);//.addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
-							ft.commit();
+							ft.replace(R.id.content_frame, cFragment).commitAllowingStateLoss();//.addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
 							
 						}
 					}, 350);
@@ -275,9 +274,16 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 		// Setting the adapter to the listView
 		mDrawerList.setAdapter(mAdapter);
-        mDrawerList.performItemClick( mDrawerList.getAdapter().getView(0, null, null),
-                0,
-                mDrawerList.getAdapter().getItemId(0));
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerList.performItemClick( mDrawerList.getAdapter().getView(0, null, null),
+                        0,
+                        mDrawerList.getAdapter().getItemId(0));
+            }
+        }, 250);
+
         getSupportActionBar().setTitle(leftMenuItems[0]);
 /*
         ParseQuery<ParseObject> costs = ParseQuery.getQuery("ChampionCosts");

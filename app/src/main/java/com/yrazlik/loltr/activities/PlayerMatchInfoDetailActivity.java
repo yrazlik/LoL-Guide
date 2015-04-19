@@ -182,10 +182,12 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
 
             StatsResponse resp = (StatsResponse) response;
             int wins = 0;
-            for(PlayerStatsSummaryDto dto : resp.getPlayerStatSummaries()){
-                if(dto.getPlayerStatSummaryType().equalsIgnoreCase("Unranked")){
-                    wins = dto.getWins();
-                    break;
+            if(resp != null && resp.getPlayerStatSummaries() != null) {
+                for (PlayerStatsSummaryDto dto : resp.getPlayerStatSummaries()) {
+                    if (dto.getPlayerStatSummaryType().equalsIgnoreCase("Unranked")) {
+                        wins = dto.getWins();
+                        break;
+                    }
                 }
             }
             progressWonMatchCount.setVisibility(View.GONE);

@@ -1,5 +1,6 @@
 package com.yrazlik.loltr.service;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -175,8 +176,10 @@ public class ServiceRequest {
 			Log.d(Commons.TAG, request.getData());
 		}
 
-		progressDialog = showLoading(mContext, "sss");
-		progressDialog.show();
+        try {
+            progressDialog = showLoading((Activity)mContext, "sss");
+            progressDialog.show();
+        }catch (Exception e){}
 		new httpGetRequestTask().execute(request);
 	}
 

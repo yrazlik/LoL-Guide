@@ -1,10 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
-import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.service.ServiceRequest;
-
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
@@ -16,10 +13,14 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.service.ServiceRequest;
 
 public class ChampionAbilitiesVideosFragment extends DialogFragment {
 
@@ -27,12 +28,17 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
 	public static String EXTRA_PRESSED_KEY_POSITION = "com.yrazlik.leagueoflegends.fragments.extrapressedkeyposition";
 	int abilityNumber;
 	Dialog progresDialog;
+    private Button closeDialogButton;
 
 	@Override
 	@NonNull
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		Dialog dialog = super.onCreateDialog(savedInstanceState);
-		dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        Dialog dialog = new Dialog(getActivity(), R.style.DialogFullScreenTheme);
+        dialog.setContentView(R.layout.fragment_abilities_videos);
+
+        dialog.getWindow().getAttributes().windowAnimations = R.style.dialogAnimation;
+
+
 		return dialog;
 	}
 
@@ -46,6 +52,21 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
 		progresDialog.show();
 		videoView.start();
 		videoView.requestFocus();
+        try {
+            videoView.setOnPreparedListener(new OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    if (closeDialogButton != null) {
+                        closeDialogButton.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+        }catch (Exception e){
+            if(closeDialogButton != null){
+                closeDialogButton.setVisibility(View.VISIBLE);
+            }
+        }
+
 
 		return v;
 	}
@@ -53,6 +74,7 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
 	private void initUI(View v){
 		progresDialog = ServiceRequest.showLoading(getActivity(), null);
 		videoView = (VideoView)v.findViewById(R.id.videoView);
+        closeDialogButton = (Button)v.findViewById(R.id.closeDialogButton);
 		Bundle args = getArguments();
 		abilityNumber = args.getInt(EXTRA_PRESSED_KEY_POSITION);
 		String sAbilityNumber = String.valueOf(abilityNumber + 1);
@@ -76,16 +98,30 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
             	if(progresDialog != null){
             		progresDialog.dismiss();
             	}
-                Toast.makeText(getActivity(), "Video yuklenirken bir sorun olustu. Lutfen daha sonra tekrar deneyin", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Video bulunamadi.", Toast.LENGTH_LONG).show();
                 dismiss();
                 return true;
             }
         });
+        closeDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(videoView != null){
+                    try {
+                        videoView.stopPlayback();
+                        videoView = null;
+                    }catch (Exception e){
+                        videoView = null;
+                    }
+                }
+                dismiss();
+            }
+        });
 		videoView
 				.setVideoURI(Uri.parse(Commons.CHAMPION_ABILITIES_VIDEOS_BASE_URL
-						+ makeFourDigit(String
-								.valueOf(ChampionOverviewFragment.lastSelectedChampionId))
-						+ "_" + sAbilityNumber + ".mp4"));
+                        + makeFourDigit(String
+                        .valueOf(ChampionOverviewFragment.lastSelectedChampionId))
+                        + "_" + sAbilityNumber + ".mp4"));
 	}
 
 	private String makeTwoDigit(String s) {
@@ -108,4 +144,11 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
 		return s;
 	}
 
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        if(progresDialog != null){
+            progresDialog.dismiss();
+        }
+        super.onDismiss(dialog);
+    }
 }

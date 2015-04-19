@@ -85,9 +85,15 @@ public class AllChampionsFragment extends Fragment implements ResponseListener, 
 			gridView.setAdapter(adapter);
 			adapter.notifyDataSetChanged();
 		}else{
-			adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
-			gridView.setAdapter(adapter);
-			adapter.notifyDataSetChanged();
+            if(Commons.allChampions != null && Commons.allChampions.size() > 0) {
+                adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
+                if(adapter != null && gridView != null) {
+                    try {
+                        gridView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }catch (Exception e){}
+                }
+            }
 		}
 	}
 	

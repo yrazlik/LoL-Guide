@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8E6DC">
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:background="#D4D8D9"
+        android:minHeight="?attr/actionBarSize" >
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/matchInfo"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/backButton"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"/>
+
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/adView"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/matchTimeTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="@string/matchTime"
+                android:gravity="center_horizontal"
+                android:textSize="18sp"/>
+            <TextView
+                android:layout_below="@+id/matchTimeTV"
+                android:id="@+id/matchTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_below="@+id/matchTime"
+                android:id="@+id/team1TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/team1"
+                style="?android:attr/listSeparatorTextViewStyle"
+                />
+
+            <ListView
+                android:id="@+id/team1LV"
+                android:layout_below="@+id/team1TV"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
+
+            <TextView
+                android:id="@+id/team2TV"
+                android:layout_below="@+id/team1LV"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/team2"
+                style="?android:attr/listSeparatorTextViewStyle"
+                />
+
+            <ListView
+                android:id="@+id/team2LV"
+                android:layout_below="@+id/team2TV"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-3219973945608696/1016113966" />
+
+
+</RelativeLayout><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/activity_match_info.xml -->

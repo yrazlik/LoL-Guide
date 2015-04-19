@@ -1,10 +1,17 @@
 package com.yrazlik.loltr.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.ListAdapter;
@@ -16,18 +23,11 @@ import com.yrazlik.loltr.responseclasses.ChampionRpIpCostsResponse;
 import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class WeeklyFreeChampionsFragment extends Fragment implements
 		ResponseListener, OnItemClickListener {
@@ -77,22 +77,33 @@ public class WeeklyFreeChampionsFragment extends Fragment implements
 	public void onSuccess(Object response) {
 		if (response instanceof WeeklyFreeChampionsResponse) {
 			WeeklyFreeChampionsResponse resp = (WeeklyFreeChampionsResponse) response;
-			weeklyFreeChampIds = new ArrayList<String>();
-			for (Champion c : resp.getChampions()) {
-				weeklyFreeChampIds.add(String.valueOf(c.getId()));
-			}
-			freeToPlayChampsSize = weeklyFreeChampIds.size();
-			ArrayList<String> pathParams = new ArrayList<String>();
-			pathParams.add("static-data");
-			pathParams.add("tr");
-			pathParams.add("v1.2");
-			pathParams.add("champion");
-			HashMap<String, String> queryParams = new HashMap<String, String>();
-			queryParams.put("champData", "altimages");
-			queryParams.put("api_key", Commons.API_KEY);
-			ServiceRequest.getInstance().makeGetRequest(
-					Commons.ALL_CHAMPIONS_REQUEST,
-					pathParams, queryParams, null, this);
+
+            if(resp != null && resp.getChampions() != null && resp.getChampions().size() > 0) {
+                weeklyFreeChampIds = new ArrayList<String>();
+                for (Champion c : resp.getChampions()) {
+                    weeklyFreeChampIds.add(String.valueOf(c.getId()));
+                }
+                freeToPlayChampsSize = weeklyFreeChampIds.size();
+                ArrayList<String> pathParams = new ArrayList<String>();
+                pathParams.add("static-data");
+                pathParams.add("tr");
+                pathParams.add("v1.2");
+                pathParams.add("champion");
+                HashMap<String, String> queryParams = new HashMap<String, String>();
+                queryParams.put("champData", "altimages");
+                queryParams.put("api_key", Commons.API_KEY);
+                ServiceRequest.getInstance().makeGetRequest(
+                        Commons.ALL_CHAMPIONS_REQUEST,
+                        pathParams, queryParams, null, this);
+            }else{
+                try{
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    WeeklyFreeChampionsFragment fragment = new WeeklyFreeChampionsFragment();
+                    fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                }catch (Exception e){
+                    Commons.weeklyFreeChampions = null;
+                }
+            }
 
 		} else if (response instanceof AllChampionsResponse) {
 			AllChampionsResponse resp = (AllChampionsResponse) response;

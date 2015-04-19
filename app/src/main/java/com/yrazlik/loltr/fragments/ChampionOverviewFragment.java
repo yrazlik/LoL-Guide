@@ -189,11 +189,20 @@ import java.util.HashMap;
 
 	
 	private void setBarLength(View v, int length){
-		int pixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 
-                length, getContext().getResources().getDisplayMetrics())*25;
-		ViewGroup.LayoutParams params = v.getLayoutParams();
-		params.width = pixels;
-		v.setLayoutParams(params);
+        int pixels = 0;
+        try {
+            try {
+                pixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                        length, getContext().getResources().getDisplayMetrics()) * 25;
+            } catch (Exception e) {
+                pixels = 300;
+            }
+            ViewGroup.LayoutParams params = v.getLayoutParams();
+            params.width = pixels;
+            v.setLayoutParams(params);
+        }catch (Exception e){
+
+        }
 	}
 	
 	private void setAbilityBars(ChampionOverviewResponse resp) {
@@ -248,41 +257,49 @@ import java.util.HashMap;
 			setAbilityBars(resp);
 			setTags(resp);
 		}else if(response instanceof RecommendedItemsResponse){
-			RecommendedItemsResponse resp = (RecommendedItemsResponse)response;
-			for(Recommended r : resp.getRecommended()){
-				if(r.getMode().equals("CLASSIC")){
-					for(Blocks b : r.getBlocks()){
-						ArrayList<Items> items = b.getItems();
-						if(b.getType().equals("starting")){
-							startingItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-							gridviewStartingItems.setAdapter(startingItemsAdapter);
-							startingItemsAdapter.notifyDataSetChanged();
-                            progressStartingItems.setVisibility(View.GONE);
-						}else if(b.getType().equals("essential")){
-							essentialItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-							gridviewEssentialItems.setAdapter(essentialItemsAdapter);
-							essentialItemsAdapter.notifyDataSetChanged();
-                            progressEssentialItems.setVisibility(View.GONE);
-						}else if(b.getType().equals("offensive")){
-							offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-							gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
-							offensiveItemsAdapter.notifyDataSetChanged();
-                            progressOffensiveItems.setVisibility(View.GONE);
-						}else if(b.getType().equals("defensive")){
-							deffensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-							gridviewDeffensiveItems.setAdapter(deffensiveItemsAdapter);
-							deffensiveItemsAdapter.notifyDataSetChanged();
-                            progressDeffensiveItems.setVisibility(View.GONE);
-						}else if(b.getType().equals("ability_scaling")){
-							offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-							gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
-							offensiveItemsAdapter.notifyDataSetChanged();
-                            progressOffensiveItems.setVisibility(View.GONE);
-						}
-					}
-					break;
-				}
-			}
+            try {
+                RecommendedItemsResponse resp = (RecommendedItemsResponse) response;
+                if (resp.getRecommended() != null) {
+                    for (Recommended r : resp.getRecommended()) {
+                        if (r.getMode().equals("CLASSIC")) {
+                            if (r.getBlocks() != null && r.getBlocks().size() > 0) {
+                                for (Blocks b : r.getBlocks()) {
+                                    ArrayList<Items> items = b.getItems();
+                                    if (items != null && items.size() > 0) {
+                                        if (b.getType().equals("starting")) {
+                                            startingItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                            gridviewStartingItems.setAdapter(startingItemsAdapter);
+                                            startingItemsAdapter.notifyDataSetChanged();
+                                            progressStartingItems.setVisibility(View.GONE);
+                                        } else if (b.getType().equals("essential")) {
+                                            essentialItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                            gridviewEssentialItems.setAdapter(essentialItemsAdapter);
+                                            essentialItemsAdapter.notifyDataSetChanged();
+                                            progressEssentialItems.setVisibility(View.GONE);
+                                        } else if (b.getType().equals("offensive")) {
+                                            offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                            gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
+                                            offensiveItemsAdapter.notifyDataSetChanged();
+                                            progressOffensiveItems.setVisibility(View.GONE);
+                                        } else if (b.getType().equals("defensive")) {
+                                            deffensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                            gridviewDeffensiveItems.setAdapter(deffensiveItemsAdapter);
+                                            deffensiveItemsAdapter.notifyDataSetChanged();
+                                            progressDeffensiveItems.setVisibility(View.GONE);
+                                        } else if (b.getType().equals("ability_scaling")) {
+                                            offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                            gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
+                                            offensiveItemsAdapter.notifyDataSetChanged();
+                                            progressOffensiveItems.setVisibility(View.GONE);
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }catch (Exception e){}
 		}
 		
 	}
