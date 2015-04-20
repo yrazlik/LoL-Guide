@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -113,7 +114,9 @@ public class AllChampionSkinsFragment extends Fragment implements ResponseListen
 		args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
 		fragment.setArguments(args);
 		FragmentManager fm = getFragmentManager();
-		fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        FragmentTransaction ft = fm.beginTransaction();
+        Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_SKINS_FRAGMENT).commit();
 		
 	}
 	

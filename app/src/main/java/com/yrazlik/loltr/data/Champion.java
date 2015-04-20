@@ -21,7 +21,12 @@ public class Champion implements Serializable{
     private long teamId;
     private int pickTurn;
     private long championId;
-	
+
+
+    public Champion(){
+        championIp = "???";
+        championRp = "???";
+    }
 	public String getChampionImageUrl() {
 		return championImageUrl;
 	}

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -59,6 +60,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 	// Array of strings to initial counts
 	String[] mCount = new String[] { "", "", "", "", "", "", "", "", "", "" };
 
+    public static Fragment activeFragment;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -167,8 +169,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							WeeklyFreeChampionsFragment cFragment = new WeeklyFreeChampionsFragment();
-							ft.replace(R.id.content_frame, cFragment).commitAllowingStateLoss();//.addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
-							
+							ft.replace(R.id.content_frame, cFragment).addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
+							ft.commitAllowingStateLoss();
 						}
 					}, 350);
 					
@@ -179,7 +181,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							AllChampionsFragment fragment = new AllChampionsFragment();
-							ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
+							ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
 							ft.commit();
 						}
 					}, 350);
@@ -190,7 +192,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							AllItemsFragment fragment = new AllItemsFragment();
-							ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
+							ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
 							ft.commit();
 						}
 					}, 350);
@@ -201,7 +203,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
 							RunesFragment fragment = new RunesFragment();
-							ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.RUNES_FRAGMENT);
+							ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.RUNES_FRAGMENT);
 							ft.commit();
 						}
 					}, 350);
@@ -212,7 +214,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         @Override
                         public void run() {
                             AllChampionSkinsFragment fragment = new AllChampionSkinsFragment();
-                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ALL_CHAMPIONS_SKINS_FRAGMENT);
+                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_SKINS_FRAGMENT);
                             ft.commit();
                         }
                     }, 350);
@@ -223,7 +225,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         @Override
                         public void run() {
                            MatchInfoFragment fragment = new MatchInfoFragment();
-                           ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.MATCH_INFO_FRAGMENT);
+                           ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.MATCH_INFO_FRAGMENT);
                            ft.commit();
                         }
                     }, 350);
@@ -234,7 +236,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         @Override
                         public void run() {
                             LiveChannelsFragment fragment = new LiveChannelsFragment();
-                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.LIVE_CHANNELS_FRAGMENT);
+                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.LIVE_CHANNELS_FRAGMENT);
                             ft.commit();
                         }
                     }, 350);
@@ -245,7 +247,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						@Override
 						public void run() {
                             ContactFragment fragment = new ContactFragment();
-                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.CONTACT_FRAGMENT);
+                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CONTACT_FRAGMENT);
                             ft.commit();
 						}
 					}, 350);
@@ -257,7 +259,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         public void run() {
                             Log.d("TAGGG", "MainActivityOnClick");
                             AboutFragment fragment = new AboutFragment();
-                            ft.replace(R.id.content_frame, fragment);//.addToBackStack(Commons.ABOUT_FRAGMENT);
+                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ABOUT_FRAGMENT);
                             ft.commit();
                         }
                     }, 350);
@@ -393,7 +395,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             mDrawerLayout.closeDrawer(Gravity.START);
         }else {
             int count = getSupportFragmentManager().getBackStackEntryCount();
-            if (count == 0) {
+            if (count <= 1) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setMessage(getResources().getString(R.string.areyousure)).setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                     @Override

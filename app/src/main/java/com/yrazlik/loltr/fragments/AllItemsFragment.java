@@ -1,15 +1,11 @@
 package com.yrazlik.loltr.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -29,6 +25,11 @@ import com.yrazlik.loltr.data.Items;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllItemsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class AllItemsFragment extends Fragment implements ResponseListener, TextWatcher, OnItemClickListener{
 	
@@ -95,7 +96,9 @@ public class AllItemsFragment extends Fragment implements ResponseListener, Text
 		args.putString(ItemDetailFragment.EXTRA_ITEM_IMAGE_URL, Commons.ITEM_IMAGES_BASE_URL + String.valueOf(i.getId()) + ".png");
 		fragment.setArguments(args);
 		FragmentManager fm = getFragmentManager();
-		fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        FragmentTransaction ft = fm.beginTransaction();
+        Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ITEM_DETAIL_FRAGMENT).commit();
 		
 	}
 	

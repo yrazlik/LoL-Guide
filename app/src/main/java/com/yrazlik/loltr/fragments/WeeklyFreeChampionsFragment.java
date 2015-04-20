@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -172,7 +173,9 @@ public class WeeklyFreeChampionsFragment extends Fragment implements
 			args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, c.getKey());
 			fragment.setArguments(args);
 			FragmentManager fm = getFragmentManager();
-			fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+			FragmentTransaction ft = fm.beginTransaction();
+            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+            ft.addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).replace(R.id.content_frame, fragment).commit();
 			
 			break;
 

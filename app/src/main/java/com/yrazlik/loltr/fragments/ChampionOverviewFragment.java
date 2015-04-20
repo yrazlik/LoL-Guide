@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -171,7 +172,9 @@ import java.util.HashMap;
 			args.putString(ItemDetailFragment.EXTRA_ITEM_IMAGE_URL, Commons.ITEM_IMAGES_BASE_URL + String.valueOf(i.getId()) + ".png");
 			fragment.setArguments(args);
 			FragmentManager fm = getParentFragment().getFragmentManager();
-			fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+            FragmentTransaction ft = fm.beginTransaction();
+            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+			ft.addToBackStack(Commons.ITEM_DETAIL_FRAGMENT).replace(R.id.content_frame, fragment).commit();
 		}	
 	}
 	

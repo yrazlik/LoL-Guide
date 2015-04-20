@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.commons;
 
 import android.content.Context;
+import android.support.v4.app.FragmentTransaction;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
@@ -87,7 +88,7 @@ public class Commons {
 	public static final String ITEM_IMAGES_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/item/";
 	public static final String RUNES_IMAGES_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/rune/";
     public static final String LIVE_CHANNELS_URL = "https://api.twitch.tv/kraken/streams?game=League%20of%20Legends";
-    public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/6563465cbcfc8effd1e082f7b47aa0e719bc99a0/championcosts";
+    public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/c6d179454f0112b091142e95b215a04dd02bd48b/championcosts";
 	public static final String URL_CHAMPION_SKIN_BASE = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
     public static final String WEEKLY_FREE_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.weeklyfreechampionsfragment";
@@ -99,6 +100,24 @@ public class Commons {
     public static final String LIVE_CHANNELS_FRAGMENT = "com.yrazlik.loltr.fragments.livechannelsfragment";
     public static final String CONTACT_FRAGMENT = "com.yrazlik.loltr.fragments.contactfragment";
     public static final String ABOUT_FRAGMENT = "com.yrazlik.loltr.fragments.aboutfragment";
+    public static final String CHAMPION_DETAILS_FRAGMENT = "com.yrazlik.loltr.fragments.championdetailsfragment";
+    public static final String ITEM_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.itemdetailfragment";
+    public static final String CHAMPION_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.championskinsfragment";
+
+
+    public static final int ANIM_UNDEFINED = -1;
+    public static final int ANIM_OPEN_FROM_LEFT = 1;
+    public static final int ANIM_OPEN_FROM_RIGHT = 2;
+    public static final int ANIM_OPEN_FROM_BOTTOM = 3;
+    public static final int ANIM_OPEN_FROM_TOP = 4;
+    public static final int ANIM_FLIP_PAGE = 5;
+    public static final int ANIM_CLOSE_TO_TOP = 6;
+    public static final int ANIM_CLOSE_TO_BOTTOM = 7;
+    public static final int ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK = 8;
+    public static final int ANIM_OPEN_FROM_BOTTOM_WITH_POPSTACK = 9;
+    public static final int ANIM_SLIDE_BOTTOM_IN_TOP_OUT = 10;
+    public static final int ANIM_SLIDE_TOP_OUT_FADE_OUT = 11;
+    public static final int ANIM_FLIP_WITH_POPSTACK = 12;
 
 
 	public static ArrayList<Champion> weeklyFreeChampions;
@@ -150,5 +169,42 @@ public class Commons {
 		}
 		return "";
 	}
+
+    public static void setAnimation(FragmentTransaction ft, int animationDirection) {
+        switch (animationDirection) {
+            case ANIM_OPEN_FROM_LEFT:
+                ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_right_out);
+                break;
+            case ANIM_OPEN_FROM_RIGHT:
+                ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out);
+                break;
+            case ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK:
+                ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out, R.anim.slide_right_in, R.anim.slide_right_out);
+                break;
+            case ANIM_OPEN_FROM_BOTTOM_WITH_POPSTACK:
+                ft.setCustomAnimations(R.anim.slide_bottom_in, android.R.anim.fade_out, android.R.anim.fade_in, R.anim.slide_top_out);
+                break;
+            case ANIM_OPEN_FROM_BOTTOM:
+                ft.setCustomAnimations(R.anim.slide_bottom_in, android.R.anim.fade_out);
+                break;
+            case ANIM_OPEN_FROM_TOP:
+                ft.setCustomAnimations(R.anim.slide_top_in, android.R.anim.fade_out);
+                break;
+            case ANIM_CLOSE_TO_TOP:
+                ft.setCustomAnimations(android.R.anim.fade_in, R.anim.slide_bottom_out);
+                break;
+            case ANIM_CLOSE_TO_BOTTOM:
+                ft.setCustomAnimations(android.R.anim.fade_in, R.anim.slide_top_out);
+                break;
+            case ANIM_SLIDE_BOTTOM_IN_TOP_OUT:
+                ft.setCustomAnimations(R.anim.slide_bottom_in, android.R.anim.fade_out);
+                break;
+            case ANIM_SLIDE_TOP_OUT_FADE_OUT:
+                ft.setCustomAnimations(R.anim.slide_top_out, android.R.anim.fade_out);
+                break;
+            default:
+                break;
+        }
+    }
 	
 }
