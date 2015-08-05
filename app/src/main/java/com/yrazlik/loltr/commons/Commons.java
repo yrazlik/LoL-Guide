@@ -35,8 +35,10 @@ public class Commons {
 	}
 	
 	public static String TEXT = "AAA";
+
+    public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
-	public static final String LATEST_VERSION = "5.7.1";
+	public static final String LATEST_VERSION = "5.14.1";
 	
 	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
     public static final String CURRENT_SEASON = "SEASON2015";
@@ -88,7 +90,7 @@ public class Commons {
 	public static final String ITEM_IMAGES_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/item/";
 	public static final String RUNES_IMAGES_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/rune/";
     public static final String LIVE_CHANNELS_URL = "https://api.twitch.tv/kraken/streams?game=League%20of%20Legends";
-    public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/c6d179454f0112b091142e95b215a04dd02bd48b/championcosts";
+    public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/4affa8a1f849a587ce5277de61922e04b871737a/championcosts";
 	public static final String URL_CHAMPION_SKIN_BASE = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
     public static final String WEEKLY_FREE_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.weeklyfreechampionsfragment";

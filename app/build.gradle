@@ -32,4 +32,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile fileTree(dir: 'libs', include: 'bolts-android-1.1.4.jar')
     compile fileTree(dir: 'libs', include: 'ParseCrashReporting-*.jar')
+    compile files('libs/universal-image-loader-1.9.4.jar')
 }

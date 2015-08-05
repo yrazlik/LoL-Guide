@@ -51,7 +51,7 @@ public class ListAdapter extends ArrayAdapter<Champion> {
 		Champion champion = getItem(position);
 		holder.championName.setText(champion.getChampionName());
         aq = new AQuery(holder.championImage);
-        aq.progress(holder.progress).image(champion.getChampionImageUrl(), true, true);
+        aq.progress(holder.progress).image(champion.getChampionImageUrl(), true, true, 0, 0, null, android.R.anim.fade_in);
 		holder.dateInterval.setText(champion.getDateInterval());
 		Typeface typeFace = Typeface.createFromAsset(mContext.getAssets(), "fonts/dinproregular.ttf");
 		holder.championName.setTypeface(typeFace);

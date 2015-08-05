@@ -1,8 +1,17 @@
 package com.yrazlik.loltr.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.ChampionSpellsListAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -12,17 +21,10 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionSpellsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class ChampionSpellsFragment extends Fragment implements ResponseListener{
+public class ChampionSpellsFragment extends BaseFragment implements ResponseListener{
 	
 	private int champId;
 	private ListView list;
@@ -112,5 +114,16 @@ public class ChampionSpellsFragment extends Fragment implements ResponseListener
 		return getActivity();
 	}
 
-	
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("ChampionSpellsFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
 }

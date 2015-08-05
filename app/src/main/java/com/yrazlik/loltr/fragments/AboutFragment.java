@@ -2,17 +2,19 @@ package com.yrazlik.loltr.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 
 /**
  * Created by yrazlik on 1/6/15.
  */
-public class AboutFragment extends Fragment {
+public class AboutFragment extends BaseFragment {
 
 
 
@@ -21,5 +23,18 @@ public class AboutFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_about, container, false);
 
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("AboutFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 }

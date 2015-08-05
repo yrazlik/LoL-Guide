@@ -1,26 +1,28 @@
 package com.yrazlik.loltr.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.responseclasses.ChampionLegendResponse;
-import com.yrazlik.loltr.service.ServiceRequest;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LegendFragment extends Fragment implements ResponseListener{
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
+import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.responseclasses.ChampionLegendResponse;
+import com.yrazlik.loltr.service.ServiceRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class LegendFragment extends BaseFragment implements ResponseListener{
 
 	TextView legend;
 	private int champId;
@@ -90,4 +92,16 @@ public class LegendFragment extends Fragment implements ResponseListener{
 		return getActivity();
 	}
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("LegendFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
 }

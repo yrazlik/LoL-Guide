@@ -90,4 +90,5 @@
     <string name="league">Lig</string>
     <string name="unranked">UNRANKED</string>
     <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
+    <string name="noChampFound">Aramanızla eşleşen bir şampiyon bulunamadı.</string>
 </resources>

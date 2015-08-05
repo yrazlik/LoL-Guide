@@ -7,6 +7,9 @@
         android:id="@+id/relativeLayoutSearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentTop="true" >
 
         <EditText
@@ -14,15 +17,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/imageviewSearch"
-            android:layout_toLeftOf="@+id/imageviewSearch"
+            android:layout_toLeftOf="@+id/imageviewListGrid"
+            android:layout_marginRight="4dp"
             android:hint="@string/searchHint" />
 
         <ImageView
-            android:id="@+id/imageviewSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imageviewListGrid"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/search" />
+            android:background="@drawable/gridview" />
     </RelativeLayout>
 
     <GridView
@@ -38,5 +42,26 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="5dp" >
     </GridView>
+
+    <ListView
+        android:id="@+id/listview_champions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayoutSearchBar"
+        android:layout_margin="5dp"
+        android:scrollbars="none"
+        android:listSelector="#00000000"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/noChampsFoundTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/noChampFound"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/darker_gray"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>

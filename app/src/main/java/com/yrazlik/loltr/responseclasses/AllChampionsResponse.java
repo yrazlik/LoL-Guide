@@ -5,6 +5,7 @@ import java.util.Map;
 public class AllChampionsResponse {
 	private String type;
 	private String version;
+    private String title;
 	private Map<String, Map<String, String>> data;
 
 	public String getType() {
@@ -23,7 +24,15 @@ public class AllChampionsResponse {
 		this.version = version;
 	}
 
-	public Map<String, Map<String, String>> getData() {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Map<String, Map<String, String>> getData() {
 		return data;
 	}
 

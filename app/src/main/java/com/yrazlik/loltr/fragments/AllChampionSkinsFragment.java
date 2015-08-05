@@ -3,7 +3,6 @@ package com.yrazlik.loltr.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
@@ -18,6 +17,9 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.GridViewAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -33,7 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class AllChampionSkinsFragment extends Fragment implements ResponseListener, OnItemClickListener, TextWatcher{
+public class AllChampionSkinsFragment extends BaseFragment implements ResponseListener, OnItemClickListener, TextWatcher{
 	
 	private GridView gridView;
 	private GridViewAdapter adapter;
@@ -204,8 +206,16 @@ public class AllChampionSkinsFragment extends Fragment implements ResponseListen
 		
 	}
 
-	
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
 
-	
-
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("AllChampionSkinsFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
 }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.activities.FullScreenSkinActivity;
 import com.yrazlik.loltr.adapters.ChampionSkinsAdapter;
@@ -27,7 +29,7 @@ import java.util.HashMap;
 /**
  * Created by yrazlik on 2/1/15.
  */
-public class ChampionSkinsFragment extends Fragment implements ResponseListener, AdapterView.OnItemClickListener{
+public class ChampionSkinsFragment extends BaseFragment implements ResponseListener, AdapterView.OnItemClickListener{
 
     ListView skinsList;
     ChampionSkinsAdapter adapter;
@@ -98,5 +100,18 @@ public class ChampionSkinsFragment extends Fragment implements ResponseListener,
         i.putExtra("EXTRA_SKIN_POSITION", position);
         startActivity(i);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("ChampionSkinsFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 }

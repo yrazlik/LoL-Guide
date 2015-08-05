@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.activities.MatchInfoActivity;
 import com.yrazlik.loltr.commons.Commons;
@@ -31,7 +33,7 @@ import java.util.Map;
 /**
  * Created by yrazlik on 3/4/15.
  */
-public class MatchInfoFragment extends Fragment implements ResponseListener{
+public class MatchInfoFragment extends BaseFragment implements ResponseListener{
 
     private Spinner regionSpinner;
     private ArrayAdapter<String> spinnerAdapter;
@@ -156,5 +158,18 @@ public class MatchInfoFragment extends Fragment implements ResponseListener{
     @Override
     public Context getContext() {
         return getActivity();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("MatchInfoFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 }

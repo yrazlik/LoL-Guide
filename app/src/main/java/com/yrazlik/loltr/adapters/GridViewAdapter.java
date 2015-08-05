@@ -5,9 +5,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
@@ -34,7 +35,8 @@ public class GridViewAdapter extends ArrayAdapter<Champion> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
-		
+
+
 
 		if (row == null) {
 			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -42,21 +44,23 @@ public class GridViewAdapter extends ArrayAdapter<Champion> {
 			holder = new ViewHolder();
 			holder.championImage = (ImageView) row.findViewById(R.id.championImage);
 			holder.championName = (TextView) row.findViewById(R.id.championName);
-            holder.progress = (ProgressBar) row.findViewById(R.id.imageProgress);
 			row.setTag(holder);
+            Animation animZoom = new ScaleAnimation(0, 1, 0, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            animZoom.setDuration(400);
+            row.startAnimation(animZoom);
 		} else {
 			holder = (ViewHolder) row.getTag();
 		}
 		Champion champion = data.get(position);
 		holder.championName.setText(champion.getChampionName());
         aq = new AQuery(holder.championImage);
-        aq.progress(holder.progress).image(champion.getChampionImageUrl(), true, true);
+        aq.image(champion.getChampionImageUrl(), true, true, 0, 0, null, android.R.anim.fade_in);
+
 		return row;
 	}
 
 	static class ViewHolder {
 		ImageView championImage;
 		TextView championName;
-        ProgressBar progress;
 	}
 }

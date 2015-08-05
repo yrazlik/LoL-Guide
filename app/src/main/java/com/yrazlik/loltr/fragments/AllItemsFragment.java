@@ -3,7 +3,6 @@ package com.yrazlik.loltr.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
@@ -18,6 +17,9 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.GridViewItemsAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -31,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class AllItemsFragment extends Fragment implements ResponseListener, TextWatcher, OnItemClickListener{
+public class AllItemsFragment extends BaseFragment implements ResponseListener, TextWatcher, OnItemClickListener{
 	
 	private GridView gridViewAllItems;
 	private GridViewItemsAdapter adapter;
@@ -184,7 +186,16 @@ public class AllItemsFragment extends Fragment implements ResponseListener, Text
 		
 	}
 
-	
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
 
-
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("AllItemsFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
 }

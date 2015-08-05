@@ -18,6 +18,9 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.service.ServiceRequest;
@@ -84,20 +87,20 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
 		mediaController.setAnchorView(videoView);
 		videoView.setMediaController(mediaController);
 		videoView.setOnPreparedListener(new OnPreparedListener() {
-			
-			@Override
-			public void onPrepared(MediaPlayer mp) {
-				progresDialog.dismiss();
-				
-			}
-		});
+
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                progresDialog.dismiss();
+
+            }
+        });
 		videoView.setOnErrorListener(new OnErrorListener() {
 
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
-            	if(progresDialog != null){
-            		progresDialog.dismiss();
-            	}
+                if (progresDialog != null) {
+                    progresDialog.dismiss();
+                }
                 Toast.makeText(getActivity(), "Video bulunamadi.", Toast.LENGTH_LONG).show();
                 dismiss();
                 return true;
@@ -106,11 +109,11 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
         closeDialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(videoView != null){
+                if (videoView != null) {
                     try {
                         videoView.stopPlayback();
                         videoView = null;
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         videoView = null;
                     }
                 }
@@ -150,5 +153,17 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
             progresDialog.dismiss();
         }
         super.onDismiss(dialog);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    protected void reportGoogleAnalytics(){
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("ChampionAbilitiesVideosFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 }

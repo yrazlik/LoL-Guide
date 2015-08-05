@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
@@ -23,7 +25,7 @@ import com.yrazlik.loltr.service.ServiceRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ItemDetailFragment extends Fragment implements ResponseListener{
+public class ItemDetailFragment extends BaseFragment implements ResponseListener{
 
 	public static final String EXTRA_ITEM_ID = "com.yrazlik.leagueoflegends.fragments.ItemDetailFragment.extraitemid";
 	public static final String EXTRA_ITEM_IMAGE_URL = "com.yrazlik.leagueoflegends.fragments.ItemDetailFragment.extraitemimageurl";
@@ -113,5 +115,17 @@ public class ItemDetailFragment extends Fragment implements ResponseListener{
 	public Context getContext() {
 		return getActivity();
 	}
-	
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("ItemDetailFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
 }

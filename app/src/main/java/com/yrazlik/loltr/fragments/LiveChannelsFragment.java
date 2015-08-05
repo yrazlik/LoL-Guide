@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.LiveChannelsAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -27,7 +29,7 @@ import java.util.HashMap;
 /**
  * Created by yrazlik on 1/10/15.
  */
-public class LiveChannelsFragment extends Fragment implements ResponseListener, AdapterView.OnItemClickListener{
+public class LiveChannelsFragment extends BaseFragment implements ResponseListener, AdapterView.OnItemClickListener{
 
     private LiveChannelsAdapter adapter;
     private ListView liveChannelsList;
@@ -90,5 +92,18 @@ public class LiveChannelsFragment extends Fragment implements ResponseListener, 
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("LiveChannelsFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 }

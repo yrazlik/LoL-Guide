@@ -1,11 +1,18 @@
 package com.yrazlik.loltr.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.internal.LinkedTreeMap;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.RuneAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -14,17 +21,12 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.RuneResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class RunesFragment extends Fragment implements ResponseListener{
+public class RunesFragment extends BaseFragment implements ResponseListener{
 
 	ListView list;
 	RuneAdapter adapter;
@@ -95,4 +97,17 @@ public class RunesFragment extends Fragment implements ResponseListener{
 	public Context getContext() {
 		return getActivity();
 	}
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reportGoogleAnalytics();
+    }
+
+    @Override
+    public void reportGoogleAnalytics() {
+        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        t.setScreenName("RunesFragment");
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
 }
