@@ -16,9 +16,6 @@
       </layout>
     </layouts>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="26510a28-c09b-4fd8-bf03-12a7180f6fe6" name="Default" comment="" />
     <ignored path="Lol.iws" />
@@ -67,41 +64,63 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewItemsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="206" column="17" selection-start-line="206" selection-start-column="17" selection-end-line="206" selection-end-column="17" />
+              <caret line="248" column="54" selection-start-line="248" selection-start-column="54" selection-end-line="248" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5801#5802#0" expanded="true" />
-                <element signature="e#5837#5838#0" expanded="true" />
-                <element signature="e#8108#8114#0" expanded="true" />
+                <element signature="e#2855#3097#0" expanded="true" />
+                <element signature="e#3096#3097#0" expanded="true" />
+                <element signature="e#6080#6322#0" expanded="true" />
+                <element signature="e#6321#6322#0" expanded="true" />
+                <element signature="e#6643#6644#0" expanded="true" />
+                <element signature="e#6679#6680#0" expanded="true" />
+                <element signature="e#8950#8956#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemDetailActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/ItemDetailActivity.java">
+      <file leaf-file-name="fragment_champion_overview.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_champion_overview.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34343433">
-              <caret line="155" column="134" selection-start-line="155" selection-start-column="134" selection-end-line="155" selection-end-column="134" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1523#1553#0" expanded="true" />
-                <element signature="e#2061#2084#0" expanded="true" />
-                <element signature="e#3638#3662#0" expanded="true" />
-                <element signature="e#5046#5070#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-4.724138">
+              <caret line="132" column="35" selection-start-line="132" selection-start-column="35" selection-end-line="132" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilterActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/FilterActivity.java">
+      <file leaf-file-name="list_row_abilities.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_abilities.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChampionSpellsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionSpellsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="437" column="5" selection-start-line="427" selection-start-column="4" selection-end-line="437" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="65" column="87" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="87" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChampionAbilitiesVideosFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1481,16 +1500,18 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_items_new.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_filter_items.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim/fadein.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/data/ItemsContainer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewItemsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_item_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/build_hierarchy_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/FilterActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/ItemDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_filter_items.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewItemsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_champion_overview.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_abilities.xml" />
       </list>
     </option>
   </component>
@@ -1640,7 +1661,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="drawable-hdpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1667,44 +1718,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loltr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lol" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lol" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loltr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1735,7 +1748,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-mdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-ldpi" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -1939,6 +1956,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1959,7 +1977,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1984,24 +2001,30 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/ItemDetailActivity.java</url>
-          <line>137</line>
+          <line>152</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/ItemDetailActivity.java</url>
-          <line>96</line>
+          <line>100</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/ItemDetailActivity.java</url>
-          <line>112</line>
+          <line>116</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewItemsFragment.java</url>
+          <line>244</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2012,10 +2035,15 @@
           <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1523#1553#0" expanded="true" />
-            <element signature="e#2061#2084#0" expanded="true" />
-            <element signature="e#3638#3662#0" expanded="true" />
-            <element signature="e#5046#5070#0" expanded="true" />
+            <element signature="e#1657#1687#0" expanded="true" />
+            <element signature="e#2277#2300#0" expanded="true" />
+            <element signature="e#3854#3878#0" expanded="true" />
+            <element signature="e#5262#5286#0" expanded="true" />
+            <element signature="e#6130#6633#0" expanded="true" />
+            <element signature="e#6632#6633#0" expanded="true" />
+            <element signature="e#8382#8406#0" expanded="true" />
+            <element signature="e#9170#9618#0" expanded="true" />
+            <element signature="e#9617#9618#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2074,10 +2102,15 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1523#1553#0" expanded="true" />
-            <element signature="e#2061#2084#0" expanded="true" />
-            <element signature="e#3638#3662#0" expanded="true" />
-            <element signature="e#5046#5070#0" expanded="true" />
+            <element signature="e#1657#1687#0" expanded="true" />
+            <element signature="e#2277#2300#0" expanded="true" />
+            <element signature="e#3854#3878#0" expanded="true" />
+            <element signature="e#5262#5286#0" expanded="true" />
+            <element signature="e#6130#6633#0" expanded="true" />
+            <element signature="e#6632#6633#0" expanded="true" />
+            <element signature="e#8382#8406#0" expanded="true" />
+            <element signature="e#9170#9618#0" expanded="true" />
+            <element signature="e#9617#9618#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2199,17 +2232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_filter_items.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="694" column="63" selection-start-line="694" selection-start-column="63" selection-end-line="694" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/fadein.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18159807">
@@ -2285,15 +2307,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewItemsFragment.java">
+    <entry file="file:///Applications/adt-bundle-mac-x86_64-20140702/sdk/sources/android-21/android/content/Intent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="4676" column="19" selection-start-line="4676" selection-start-column="19" selection-end-line="4676" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/ItemDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="206" column="17" selection-start-line="206" selection-start-column="17" selection-end-line="206" selection-end-column="17" />
+          <caret line="214" column="5" selection-start-line="214" selection-start-column="5" selection-end-line="214" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5801#5802#0" expanded="true" />
-            <element signature="e#5837#5838#0" expanded="true" />
-            <element signature="e#8108#8114#0" expanded="true" />
+            <element signature="e#1657#1687#0" expanded="true" />
+            <element signature="e#2277#2300#0" expanded="true" />
+            <element signature="e#3854#3878#0" expanded="true" />
+            <element signature="e#5262#5286#0" expanded="true" />
+            <element signature="e#6130#6633#0" expanded="true" />
+            <element signature="e#6632#6633#0" expanded="true" />
+            <element signature="e#8382#8406#0" expanded="true" />
+            <element signature="e#9170#9618#0" expanded="true" />
+            <element signature="e#9617#9618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionOverviewFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="282" column="45" selection-start-line="282" selection-start-column="45" selection-end-line="282" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/magic.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/magic2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_filter_items.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.689655">
+          <caret line="576" column="51" selection-start-line="576" selection-start-column="49" selection-end-line="576" selection-end-column="51" />
+          <folding>
+            <element signature="e#1159#1176#0" expanded="true" />
+            <element signature="e#2541#2557#0" expanded="true" />
+            <element signature="e#3810#3836#0" expanded="true" />
+            <element signature="e#5046#5075#0" expanded="true" />
+            <element signature="e#6271#6286#0" expanded="true" />
+            <element signature="e#7621#7637#0" expanded="true" />
+            <element signature="e#9000#9016#0" expanded="true" />
+            <element signature="e#10268#10286#0" expanded="true" />
+            <element signature="e#11494#11516#0" expanded="true" />
+            <element signature="e#12716#12736#0" expanded="true" />
+            <element signature="e#13939#13966#0" expanded="true" />
+            <element signature="e#15319#15334#0" expanded="true" />
+            <element signature="e#16700#16722#0" expanded="true" />
+            <element signature="e#17987#18015#0" expanded="true" />
+            <element signature="e#19222#19236#0" expanded="true" />
+            <element signature="e#20420#20438#0" expanded="true" />
+            <element signature="e#21637#21658#0" expanded="true" />
+            <element signature="e#22868#22888#0" expanded="true" />
+            <element signature="e#24226#24242#0" expanded="true" />
+            <element signature="e#25604#25620#0" expanded="true" />
+            <element signature="e#26866#26884#0" expanded="true" />
+            <element signature="e#28079#28099#0" expanded="true" />
+            <element signature="e#29292#29311#0" expanded="true" />
+            <element signature="e#30692#30708#0" expanded="true" />
+            <element signature="e#31363#31375#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2301,24 +2392,73 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/FilterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="437" column="5" selection-start-line="427" selection-start-column="4" selection-end-line="437" selection-end-column="5" />
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/ItemDetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewItemsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34343433">
-          <caret line="155" column="134" selection-start-line="155" selection-start-column="134" selection-end-line="155" selection-end-column="134" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="248" column="54" selection-start-line="248" selection-start-column="54" selection-end-line="248" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1523#1553#0" expanded="true" />
-            <element signature="e#2061#2084#0" expanded="true" />
-            <element signature="e#3638#3662#0" expanded="true" />
-            <element signature="e#5046#5070#0" expanded="true" />
+            <element signature="e#2855#3097#0" expanded="true" />
+            <element signature="e#3096#3097#0" expanded="true" />
+            <element signature="e#6080#6322#0" expanded="true" />
+            <element signature="e#6321#6322#0" expanded="true" />
+            <element signature="e#6643#6644#0" expanded="true" />
+            <element signature="e#6679#6680#0" expanded="true" />
+            <element signature="e#8950#8956#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_champion_overview.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.724138">
+          <caret line="132" column="35" selection-start-line="132" selection-start-column="35" selection-end-line="132" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionSpellsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="87" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/adapters/ChampionSpellsListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4552058">
+          <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_abilities.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>

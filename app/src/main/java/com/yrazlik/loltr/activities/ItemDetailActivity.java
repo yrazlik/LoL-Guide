@@ -30,13 +30,14 @@ import java.util.ArrayList;
 public class ItemDetailActivity extends ActionBarActivity {
 
     private final String EXTRA_ITEM_DETAIL = "EXTRA_ITEM_DETAIL";
-    private final String EXTRA_ALL_ITEMS = "EXTRA_ALL_ITEMS";
+    private final String EXTRA_FIRST_ITEM_STACK = "EXTRA_FIRST_ITEM_STACK";
 
     private ImageView imageViewItemImage;
     private RelativeLayout relativeLayoutTitleContainer;
     private TextView textViewItemName, textViewItemGold, textViewDetailedDescription, noFromTV, noToTV;
     private LinearLayout buildFromLL, buildToLL;
     private AQuery aq;
+    boolean firstItemOnStack = false;
 
     private DataContainer itemData;
 
@@ -44,6 +45,7 @@ public class ItemDetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
+        overridePendingTransition(R.anim.slide_left_in, android.R.anim.fade_out);
         getSupportActionBar().setTitle(getString(R.string.itemDetail));
         getSupportActionBar().show();
         Intent i = getIntent();
@@ -53,6 +55,8 @@ public class ItemDetailActivity extends ActionBarActivity {
                 Gson gson = new Gson();
                 itemData = gson.fromJson(extraJsonString, DataContainer.class);
             }
+
+            firstItemOnStack = i.getBooleanExtra(EXTRA_FIRST_ITEM_STACK, false);
         }
         if(itemData != null && itemData.getData() != null) {
             initUI();
@@ -121,6 +125,17 @@ public class ItemDetailActivity extends ActionBarActivity {
                                     if(buildFromItemGoldString != null) {
                                         buildFromItemGold.setText(buildFromItemGoldString);
                                     }
+                                    Gson gson = new Gson();
+                                    String json = gson.toJson(i);
+                                    v.setTag(json);
+                                    v.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent i = new Intent(ItemDetailActivity.this, ItemDetailActivity.class);
+                                            i.putExtra(EXTRA_ITEM_DETAIL, (String)v.getTag());
+                                            startActivity(i);
+                                        }
+                                    });
                                     buildFromLL.addView(v);
                                 }
                                 break;
@@ -164,6 +179,19 @@ public class ItemDetailActivity extends ActionBarActivity {
                             }
                             AQuery aq = new AQuery(buildFromItemImage);
                             aq.image(Commons.ITEM_IMAGES_BASE_URL + itemData.getId() + ".png");
+
+                            Gson gson = new Gson();
+                            String json = gson.toJson(i);
+                            v.setTag(json);
+                            v.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent i = new Intent(ItemDetailActivity.this, ItemDetailActivity.class);
+                                    i.putExtra(EXTRA_ITEM_DETAIL, (String) v.getTag());
+                                    startActivity(i);
+                                }
+                            });
+
                             buildToLL.addView(v);
                         }
                     }
@@ -179,11 +207,6 @@ public class ItemDetailActivity extends ActionBarActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        overridePendingTransition(R.anim.slide_left_in, android.R.anim.fade_out);
-    }
 
     @Override
     public void onBackPressed() {

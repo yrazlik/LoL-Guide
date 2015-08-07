@@ -12,6 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+                  android:layout_toLeftOf="@+id/imageButtonPlayVideo"
             android:layout_centerInParent="true"/>
         
         <ImageButton android:id="@+id/imageButtonPlayVideo"
@@ -21,6 +22,9 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/textViewVideo"
             android:focusable="true"
+                     android:paddingTop="5dp"
+                     android:paddingBottom="5dp"
+                     android:paddingLeft="10dp"
             android:background="@drawable/v2"/>
         <TextView android:id="@+id/textViewVideo"
             android:layout_width="wrap_content"
@@ -28,6 +32,9 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
+                  android:paddingTop="5dp"
+                  android:paddingBottom="5dp"
+                  android:paddingLeft="5dp"
             android:text="@string/video"/>
         
     </RelativeLayout>

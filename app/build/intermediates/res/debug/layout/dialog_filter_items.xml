@@ -13,10 +13,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/icon_defence"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/shield"
+                android:layout_above="@id/separator1"
+                android:layout_alignParentLeft="true"/>
+
             <TextView
                 android:id="@+id/defenceText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_defence"
+                android:layout_marginLeft="5dp"
                 android:text="@string/defence"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -156,12 +166,22 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/icon_attack"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/swords"
+                android:layout_above="@id/separator2"
+                android:layout_alignParentLeft="true"/>
+
             <TextView
                 android:id="@+id/attackText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filterDefence"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/icon_attack"
+                android:layout_marginLeft="5dp"
                 android:text="@string/attack"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -329,12 +349,22 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/icon_magic"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/magic2"
+                android:layout_above="@id/separator3"
+                android:layout_alignParentLeft="true"/>
+
             <TextView
                 android:id="@+id/magicText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filterAttack"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/icon_magic"
+                android:layout_marginLeft="5dp"
                 android:text="@string/magic"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -530,12 +560,22 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/icon_other"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/flask"
+                android:layout_above="@+id/separator4"
+                android:layout_alignParentLeft="true"/>
+
             <TextView
                 android:id="@+id/otherText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filterMagic"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/icon_other"
+                android:layout_marginLeft="5dp"
                 android:text="@string/others"
                 android:textSize="18sp"
                 android:textStyle="bold"/>

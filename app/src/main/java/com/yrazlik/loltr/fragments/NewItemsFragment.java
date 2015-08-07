@@ -49,6 +49,7 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
     private final String EXTRA_ALL_ITEMS = "EXTRA_ALL_ITEMS";
     private final int FILTER_REQUEST_CODE = 1;
     private final String EXTRA_FILTER = "EXTRA_FILTER";
+    private final String EXTRA_FIRST_ITEM_STACK = "EXTRA_FIRST_ITEM_STACK";
     private ArrayList<String> filters;
 
     @Override
@@ -56,17 +57,31 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
         View v = inflater.inflate(R.layout.fragment_items_new, container, false);
         initUI(v);
 
-        ArrayList<String> pathParams = new ArrayList<String>();
-        pathParams.add("static-data");
-        pathParams.add("tr");
-        pathParams.add("v1.2");
-        pathParams.add("item");
-        HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("version", Commons.LATEST_VERSION);
-        queryParams.put("itemListData", "all");
-        queryParams.put("api_key", Commons.API_KEY);
+        if(Commons.allItemsNew == null || Commons.allItemsNew.size() <= 0) {
+            ArrayList<String> pathParams = new ArrayList<String>();
+            pathParams.add("static-data");
+            pathParams.add("tr");
+            pathParams.add("v1.2");
+            pathParams.add("item");
+            HashMap<String, String> queryParams = new HashMap<String, String>();
+            queryParams.put("version", Commons.LATEST_VERSION);
+            queryParams.put("itemListData", "all");
+            queryParams.put("api_key", Commons.API_KEY);
 
-        ServiceRequest.getInstance().makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
+            ServiceRequest.getInstance().makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
+        }else {
+            try {
+                Collections.sort(Commons.allItemsNew, new Comparator<Item>() {
+                    @Override
+                    public int compare(Item i1, Item i2) {
+                        return i1.getData().getName().compareTo(i2.getData().getName());
+                    }
+                });
+            }catch (Exception ignored){}
+            allItems = Commons.allItemsNew;
+            itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, Commons.allItemsNew);
+            itemsLV.setAdapter(itemsLVAdapter);
+        }
 
         return v;
     }
@@ -90,6 +105,7 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                         String extraItemDataJSON = gson.toJson(item);
                         Intent i = new Intent(getContext(), ItemDetailActivity.class);
                         i.putExtra(EXTRA_ITEM_DETAIL, extraItemDataJSON);
+                        i.putExtra(EXTRA_FIRST_ITEM_STACK, true);
                         startActivity(i);
                     }
 
@@ -245,6 +261,9 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                         }
 
                         itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, filteredItems);
+                        itemsLV.setAdapter(itemsLVAdapter);
+                    }else {
+                        itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, Commons.allItemsNew);
                         itemsLV.setAdapter(itemsLVAdapter);
                     }
                 }
