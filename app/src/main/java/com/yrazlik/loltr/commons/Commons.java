@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Items;
 
 import java.text.SimpleDateFormat;
@@ -38,7 +39,7 @@ public class Commons {
 
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
-	public static final String LATEST_VERSION = "5.14.1";
+	public static final String LATEST_VERSION = "5.15.1";
 	
 	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
     public static final String CURRENT_SEASON = "SEASON2015";
@@ -125,6 +126,7 @@ public class Commons {
 	public static ArrayList<Champion> weeklyFreeChampions;
 	public static ArrayList<Champion> allChampions;
 	public static ArrayList<Items> allItems;
+    public static ArrayList<Item> allItemsNew;
 	
 	
 	

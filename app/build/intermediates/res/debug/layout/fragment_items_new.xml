@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/searchContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search"/>
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_toLeftOf="@+id/filterIcon"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/search"
+            android:textSize="14sp"
+            android:hint="@string/itemSearchHint"/>
+
+        <ImageView
+            android:id="@+id/filterIcon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/filter_three"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/itemsLV"
+        android:layout_below="@+id/searchContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </ListView>
+
+
+
+</RelativeLayout><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/fragment_items_new.xml -->

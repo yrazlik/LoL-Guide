@@ -78,6 +78,17 @@
             android:screenOrientation="landscape">
 
         </activity>
+        <activity android:name=".activities.ItemDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".activities.FilterActivity"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name=".PlayerActivity">
            
         </activity>

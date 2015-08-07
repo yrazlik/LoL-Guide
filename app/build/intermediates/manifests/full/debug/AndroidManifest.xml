@@ -102,6 +102,16 @@
             android:name="com.yrazlik.loltr.fragments.LiveChannelActivity"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.yrazlik.loltr.activities.ItemDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name="com.yrazlik.loltr.activities.FilterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light" >
+        </activity>
         <activity android:name="com.yrazlik.loltr.PlayerActivity" >
         </activity>
 

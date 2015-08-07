@@ -91,4 +91,37 @@
     <string name="unranked">UNRANKED</string>
     <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
     <string name="noChampFound">Aramanızla eşleşen bir şampiyon bulunamadı.</string>
+    <string name="itemSearchHint">Bir eşya ismi girin...</string>
+    <string name="itemFrom">Bu Eşyayı Oluşturmak İçin Gerekli Eşyalar</string>
+    <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
+    <string name="noFrom">Bu eşyayı oluşturacak başka eşya bulunmamaktadır.</string>
+    <string name="itemDetail">Eşya Detayı</string>
+    <string name="defence">Savunma</string>
+    <string name="attack">Saldırı</string>
+    <string name="magic">Büyü</string>
+    <string name="health">Can</string>
+    <string name="magic_resistance">Büyü Direnci</string>
+    <string name="health_regeneration">Can Yenileme</string>
+    <string name="damage">Fiziksel Hasar</string>
+    <string name="critical">Kritik Vuruş</string>
+    <string name="attack_speed">Saldırı Hızı</string>
+    <string name="life_steal">Can Çalma</string>
+    <string name="armor_penetration">Zırh Delme</string>
+    <string name="spell_damage">Büyü Hasarı</string>
+    <string name="cooldown_reduction">Bekleme Süresinde Azalma</string>
+    <string name="mana">Mana</string>
+    <string name="mana_reg">Mana Yenilenmesi</string>
+    <string name="magic_penet">Büyü Nüfuzu</string>
+    <string name="spell_vamp">Can Emme</string>
+    <string name="vision">Görüş Veren</string>
+    <string name="movement">Hareket Hızı</string>
+    <string name="Consumable">Tüketilebilir</string>
+    <string name="gold_give">Altın Veren</string>
+    <string name="others">Diğerleri</string>
+    <string name="armor">Zırh</string>
+    <string name="cancel">İptal</string>
+    <string name="ok">Tamam</string>
+    <string name="filter">Filtreleme</string>
+    <string name="noTo">Bu eşya başka bir eşyaya geliştirilemez.</string>
+
 </resources>

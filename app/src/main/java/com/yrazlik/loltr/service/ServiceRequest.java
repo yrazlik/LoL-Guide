@@ -22,6 +22,7 @@ import com.yrazlik.loltr.responseclasses.ChampionSkinsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionSpellsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionStrategyResponse;
 import com.yrazlik.loltr.responseclasses.ItemDetailResponse;
+import com.yrazlik.loltr.responseclasses.ItemsResponse;
 import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.LiveChannelsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
@@ -439,7 +440,7 @@ public class ServiceRequest {
 			case Commons.RECOMMENDED_ITEMS_REQUEST:
 				return gson.fromJson(response, RecommendedItemsResponse.class);
 			case Commons.ALL_ITEMS_REQUEST:
-				return gson.fromJson(response, AllItemsResponse.class);
+				return gson.fromJson(response, ItemsResponse.class);
 			case Commons.ITEM_DETAIL_REQUEST:
 				return gson.fromJson(response, ItemDetailResponse.class);
 			case Commons.ALL_RUNES_REQUEST:

@@ -31,11 +31,11 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.fragments.AboutFragment;
 import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
 import com.yrazlik.loltr.fragments.AllChampionsFragment;
-import com.yrazlik.loltr.fragments.AllItemsFragment;
 import com.yrazlik.loltr.fragments.ContactFragment;
 import com.yrazlik.loltr.fragments.CountryFragment;
 import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
+import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
@@ -191,7 +191,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 						
 						@Override
 						public void run() {
-							AllItemsFragment fragment = new AllItemsFragment();
+							NewItemsFragment fragment = new NewItemsFragment();
 							ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
 							ft.commit();
 						}
