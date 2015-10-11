@@ -15,6 +15,7 @@
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/release/classes-33e3e5403b0734fa69f5e5e3b659b66aadafe14e.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/release/classes-db39968334c9fd21d7fc7dde13edfb2168991f31.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/release/classes-0f4c4397c9155a96621a0293d25312b28a0e9b08.jar
+/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/release/universal-image-loader-1.9.4-8d6899d3801714ce8a7ca419bfdee618ee171d70.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/release/classes-d7affe4c5dcfeaaceea233a313a1af39b1c7cfd1.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/release/classes-27e7fa95c5fb1436103e5f26f15c71bdd79b16de.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/release/classes-d6716de8ce2ea80def7f18d85066b3d1cbfc8296.jar

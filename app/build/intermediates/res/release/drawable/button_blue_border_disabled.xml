@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="2dp" />
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/divider_color" />
+    <solid android:color="@color/disabled_bg"/>
+</shape><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/drawable/button_blue_border_disabled.xml -->
