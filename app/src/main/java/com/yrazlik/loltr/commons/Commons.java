@@ -37,6 +37,10 @@ public class Commons {
 	
 	public static String TEXT = "AAA";
 
+    public static final String LOL_TR_SHARED_PREFS = "LOL_TR_SHARED_PREFS";
+    public static final String LOL_TR_SHARED_PREF_LANGUAGE = "LOL_TR_SHARED_PREF_LANGUAGE";
+    public static final String LOL_TR_SHARED_PREF_REGION = "LOL_TR_SHARED_PREF_REGION";
+
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
 	public static final String LATEST_VERSION = "5.19.1";
@@ -80,7 +84,7 @@ public class Commons {
     public static final String SERVICE_BASE_URL_OCE = "https://oce.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_NA = "https://na.api.pvp.net/api/lol";
     public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://tr.api.pvp.net/api/lol";
-    public static String SERVICE_BASE_URL_SELECTED = "https://ru.api.pvp.net/api/lol";
+    public static String SERVICE_BASE_URL_SELECTED = "https://na.api.pvp.net/api/lol";
     public static String SELECTED_REGION = "tr";
     public static String SELECTED_LANGUAGE = "tr";
 

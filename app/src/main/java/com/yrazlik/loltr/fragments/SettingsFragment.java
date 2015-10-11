@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -67,13 +68,13 @@ public class SettingsFragment extends BaseFragment{
                     res.updateConfiguration(conf, dm);
                     Commons.SELECTED_LANGUAGE = "tr";
                 }else if(language.equalsIgnoreCase(getResources().getString(R.string.english))){
-                    Locale myLocale = new Locale("en_US");
+                    Locale myLocale = new Locale("en_us");
                     Resources res = getResources();
                     DisplayMetrics dm = res.getDisplayMetrics();
                     Configuration conf = res.getConfiguration();
                     conf.locale = myLocale;
                     res.updateConfiguration(conf, dm);
-                    Commons.SELECTED_LANGUAGE = "en_US";
+                    Commons.SELECTED_LANGUAGE = "en_us";
                 }
 
                 if(region.equalsIgnoreCase("TR")){
@@ -81,6 +82,12 @@ public class SettingsFragment extends BaseFragment{
                 }else{
                     Commons.SELECTED_REGION = "na";
                 }
+
+                try{
+                    SharedPreferences prefs = getContext().getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
+                    prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, Commons.SELECTED_LANGUAGE).commit();
+                    prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_REGION, Commons.SELECTED_REGION).commit();
+                }catch (Exception ignored){}
 
                 Toast.makeText(getContext().getApplicationContext(), getContext().getResources().getString(R.string.preferences_saved), Toast.LENGTH_SHORT).show();
                 ((MainActivity)getActivity()).updateDrawer();

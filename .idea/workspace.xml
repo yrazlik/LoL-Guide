@@ -67,18 +67,77 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
+              <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1619#1674#0" expanded="true" />
-                <element signature="e#1676#1718#0" expanded="true" />
-                <element signature="e#2118#4147#0" expanded="true" />
-                <element signature="e#2413#2455#0" expanded="true" />
-                <element signature="e#2901#2943#0" expanded="true" />
-                <element signature="e#3629#3694#0" expanded="true" />
-                <element signature="e#4146#4147#0" expanded="true" />
-                <element signature="e#4461#4462#0" expanded="true" />
-                <element signature="e#4497#4498#0" expanded="true" />
+                <element signature="e#1661#1716#0" expanded="true" />
+                <element signature="e#1718#1760#0" expanded="true" />
+                <element signature="e#2160#4642#0" expanded="true" />
+                <element signature="e#2455#2497#0" expanded="true" />
+                <element signature="e#2943#2985#0" expanded="true" />
+                <element signature="e#4124#4189#0" expanded="true" />
+                <element signature="e#4641#4642#0" expanded="true" />
+                <element signature="e#4956#4957#0" expanded="true" />
+                <element signature="e#4992#4993#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LolApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeeklyFreeChampionsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="88" column="18" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1797#1807#0" expanded="true" />
+                <element signature="e#3362#3370#0" expanded="true" />
+                <element signature="e#3431#3447#0" expanded="true" />
+                <element signature="e#4750#4758#0" expanded="true" />
+                <element signature="e#5061#5077#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/service/ServiceRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="217" column="42" selection-start-line="217" selection-start-column="42" selection-end-line="217" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Commons.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="227" column="29" selection-start-line="227" selection-start-column="29" selection-end-line="227" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3018868">
+              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,46 +147,13 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionOverviewFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
+              <caret line="97" column="32" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3121#3129#0" expanded="true" />
                 <element signature="e#3405#3421#0" expanded="true" />
                 <element signature="e#3849#3857#0" expanded="true" />
                 <element signature="e#4139#4155#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WeeklyFreeChampionsFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="68" selection-start-line="71" selection-start-column="68" selection-end-line="71" selection-end-column="68" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1797#1807#0" expanded="true" />
-                <element signature="e#4750#4758#0" expanded="true" />
-                <element signature="e#5061#5077#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37250555">
-              <caret line="438" column="20" selection-start-line="438" selection-start-column="20" selection-end-line="438" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5841#5861#0" expanded="true" />
-                <element signature="e#5863#5884#0" expanded="true" />
-                <element signature="e#6251#6301#0" expanded="true" />
-                <element signature="e#15202#15247#0" expanded="true" />
-                <element signature="e#15267#15305#0" expanded="true" />
-                <element signature="e#15572#15609#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1580,14 +1606,15 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/StrategyFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionOverviewFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" />
       </list>
     </option>
   </component>
@@ -2367,7 +2394,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java</url>
-          <line>48</line>
+          <line>49</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
@@ -2419,15 +2446,34 @@
           <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java</url>
+          <line>88</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java</url>
+          <line>125</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="50" />
+      <option name="time" value="55" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Remote">
-        <watch expression="getResources().getStringArray(R.array.titles);" language="JAVA" custom="" />
-        <watch expression="leftMenuItems" language="JAVA" custom="" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="android-dummy:///Users/yrazlik/AndroidstudioProjects/Lol/app/Translations Editor">
@@ -2455,14 +2501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5479115">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -2788,38 +2826,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0740743">
-          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.185185">
           <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1619#1674#0" expanded="true" />
-            <element signature="e#1676#1718#0" expanded="true" />
-            <element signature="e#2118#4147#0" expanded="true" />
-            <element signature="e#2413#2455#0" expanded="true" />
-            <element signature="e#2901#2943#0" expanded="true" />
-            <element signature="e#3629#3694#0" expanded="true" />
-            <element signature="e#4146#4147#0" expanded="true" />
-            <element signature="e#4461#4462#0" expanded="true" />
-            <element signature="e#4497#4498#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2831,21 +2842,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/data/Champion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.373297">
-          <caret line="42" column="56" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="56" />
-          <folding>
-            <element signature="e#11347#11348#0" expanded="true" />
-            <element signature="e#11387#11388#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.040871933">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="22" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/service/ServiceRequest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08719346">
-          <caret line="248" column="0" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.2222223">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -2853,7 +2861,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionOverviewFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
+          <caret line="97" column="32" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3121#3129#0" expanded="true" />
@@ -2864,10 +2872,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/data/Champion.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/service/ServiceRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040871933">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="22" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="217" column="42" selection-start-line="217" selection-start-column="42" selection-end-line="217" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="227" column="29" selection-start-line="227" selection-start-column="29" selection-end-line="227" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -2875,28 +2891,51 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="68" selection-start-line="71" selection-start-column="68" selection-end-line="71" selection-end-column="68" />
+          <caret line="88" column="18" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1797#1807#0" expanded="true" />
+            <element signature="e#3362#3370#0" expanded="true" />
+            <element signature="e#3431#3447#0" expanded="true" />
             <element signature="e#4750#4758#0" expanded="true" />
             <element signature="e#5061#5077#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37250555">
-          <caret line="438" column="20" selection-start-line="438" selection-start-column="20" selection-end-line="438" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5841#5861#0" expanded="true" />
-            <element signature="e#5863#5884#0" expanded="true" />
-            <element signature="e#6251#6301#0" expanded="true" />
-            <element signature="e#15202#15247#0" expanded="true" />
-            <element signature="e#15267#15305#0" expanded="true" />
-            <element signature="e#15572#15609#0" expanded="true" />
+            <element signature="e#1661#1716#0" expanded="true" />
+            <element signature="e#1718#1760#0" expanded="true" />
+            <element signature="e#2160#4642#0" expanded="true" />
+            <element signature="e#2455#2497#0" expanded="true" />
+            <element signature="e#2943#2985#0" expanded="true" />
+            <element signature="e#4124#4189#0" expanded="true" />
+            <element signature="e#4641#4642#0" expanded="true" />
+            <element signature="e#4956#4957#0" expanded="true" />
+            <element signature="e#4992#4993#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3018868">
+          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
