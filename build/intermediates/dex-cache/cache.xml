@@ -2,53 +2,53 @@
 <items version="2" >
 
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-659f5d2edc90809693776177d5823e7f6d8bbd12.jar" />
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-86df85b0d71251d88d2dcdd8bb1951b66a193041.jar" />
     </item>
     <item
-        jar="/Applications/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-822833853054079c0f54f08889e87bead50e8849.jar" />
+        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-24507c73abb7e6034b0157112ad3e3d95366dbef.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-33e3e5403b0734fa69f5e5e3b659b66aadafe14e.jar" />
+        sha1="17449c47df35c754b257532052f1270c444f7993">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-ebb556dee6b11ef6d09185d33759165919edfde9.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-0f4c4397c9155a96621a0293d25312b28a0e9b08.jar" />
+        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-4cc18edb69a3310b6f9c998dcf1a593e54f653fb.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-5b011fbf0a0bd038f5c5cfcde05dab2c925a81ed.jar" />
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-b8abda4a3f6e7794a568c2b8344aa9cf937271e4.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-8c4482ddd3c13c1b044ec30132c31e318478a6af.jar" />
+        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-2b20ddec671fcf630b7e0f933111004e869f40f0.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/libs/internal_impl-22.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-552a85c0dafdad2990b54c37f222af3eed787f62.jar" />
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-7b752c88a0a643af0e94cbf28c5a5c9839fcca9a.jar" />
     </item>
     <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/android-query-full.0.26.7.jar"
@@ -58,11 +58,11 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/android-query-full.0.26.7-1a7d2180f676a7d28cafeaf8919acbb82611aa2f.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-d6716de8ce2ea80def7f18d85066b3d1cbfc8296.jar" />
+        sha1="82054090e487d78e163a988557db62d809fa9b95">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-2c3e6bd7bde1a115ef897b8632e40aeb37fa3e05.jar" />
     </item>
     <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/ParseCrashReporting-1.8.2.jar"
@@ -72,46 +72,25 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/ParseCrashReporting-1.8.2-90e69ae3e49a10ea9920f38c6f18c5ceb6954459.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-270b8848a9223c3bbcaf6edd1b43cbe9a184dc1e.jar" />
+        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-6240eb8d12234230d624d211fae7aafbdb6edd46.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-9ca9bc11bad99d38ba5c3030892ac401b5c9a469.jar" />
+        sha1="3b05c18f60969ecc2ba49c0409c4b96be2d9cb0c">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-f56ac23786f569d56f178dd1d9246d7e0bfb1474.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-b5c32ceb5a7ab97530741a063b5d2f41bf247ba7.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-1e2e14a0813769beabb169ab57a529197b32213e.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-7846204117b20142d01ccd42c62c703b32c08dcd.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-c5b5512234b1f0084f2461fdff502dd24e8a6c35.jar" />
+        sha1="dcb5b75baf05d92e61d5706737200ee55949f97b">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-a542eec48eb3597b0e8609699fc6de309019ede2.jar" />
     </item>
     <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/nineoldandroids-2.4.0.jar"
@@ -121,46 +100,25 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.4.0-75dea9b5f5241f9698ad4e891129e2dde06c1593.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-8f41dd6ebccf22f3b45fcf1b4419ac708d4d14e4.jar" />
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-48744ceab3b390340fc135d75aedc22462ee3663.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-ce30f4cd5da543092e6d28b5367a9607d3c34837.jar" />
+        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-077dab01dda19d3ac83300f56dff276d99f04ed1.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-d7affe4c5dcfeaaceea233a313a1af39b1c7cfd1.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-1a529997085bee5d7c4355705af71c57f5dee9be.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d405025c600055237c171a0bbabaa49d69696573">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-69c3b5dce8036f5ff2436b01ed936aa70d6d4656.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/universal-image-loader-1.9.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.4-8d6899d3801714ce8a7ca419bfdee618ee171d70.jar" />
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-558e5af82ee00135ff8af2a882e5caa981ec6c24.jar" />
     </item>
     <item
         jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
@@ -170,11 +128,102 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/gson-2.3-03c4567695276ab9b1f1f185de56be86e9aaa477.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-0a9e28c377fd942399961ea28671a6c44646943f.jar" />
+        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-94d6d977daf0db5a54a5c95730dc2e6ab7d86af6.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-fc1df787216ee60f6a13d5be22acd05dda04a936.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-9084a95b1c0202dadf30313bbbac27bce658bb67.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="993834cb17d07d51b92db89d2c330243592ebf77">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-86fae8082bbd1f71a712a403de8bc0f81fee5bac.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="95758a2905669affbffc5ddd262921d375674fad">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-51fec7b865a7c0b9ba99ab925d54c8d3ee911dbc.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-10cafc0be95c379666b623698407564c47d8a280.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3178362320bcf51228835b60ff978efadfd1f783">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-4ccfb9f850e6ffe7c0008f336e8730c513e75ed3.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="482de223655d06253cc6a4955d653f8994169500">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-4912b2d063d6342a132944dfe642ef40ba48b308.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-bd85ebe47e3c0d68ce1ecac962650b6b7b41c134.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-99cc49529101c33836e3c5edba28673553615599.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-e069bd76457ec3018089f931a468bb09dd781fde.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-ba50434a186f095ffe461d8c0266c5078d5d5b31.jar" />
+    </item>
+    <item
+        jar="/Applications/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-f851e1f8b356482a10e47e8c7c0986bb5222f709.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.4-8d6899d3801714ce8a7ca419bfdee618ee171d70.jar" />
     </item>
     <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/Parse-1.8.2.jar"
@@ -184,6 +233,13 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/Parse-1.8.2-8090b0a17450b254080eea4d55ec0cc263812ab4.jar" />
     </item>
     <item
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-b0cb4abb983eccd1d6f76ad523cdf0d753255ce1.jar" />
+    </item>
+    <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/libs/bolts-android-1.1.4.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -191,46 +247,11 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-ad838e7777d3351df02ae643e2bac54870e1d7f1.jar" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/classes.jar"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-5cd22d5703453c1e8d827d3568ee7321a3b63a57.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-27e7fa95c5fb1436103e5f26f15c71bdd79b16de.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-8dc8916f3d03ab67ca2b218394dbdcc2ab83878d.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-a0a0f828ba03e53a360e7b3da9c9260909980822.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-db39968334c9fd21d7fc7dde13edfb2168991f31.jar" />
-    </item>
-    <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.5.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-f09f68c6d693c8d49526a47c5fc90c1b4b70670e.jar" />
+        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-705a8f82f4200fc71067bdbe2892c34b739f9df1.jar" />
     </item>
 
 </items>
