@@ -40,11 +40,12 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 		
 		ArrayList<String> pathParams = new ArrayList<String>();
 		pathParams.add("static-data");
-		pathParams.add("tr");
+		pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
 		pathParams.add("v1.2");
 		pathParams.add("champion");
 		pathParams.add(String.valueOf(champId));
 		HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
 		queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("champData", "passive,spells");
 		queryParams.put("api_key", Commons.API_KEY);
@@ -90,7 +91,7 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 			ChampionSpellsResponse resp = (ChampionSpellsResponse) response;
 			ArrayList<Spell> spells = resp.getSpells();
 			Passive passive = resp.getPassive();
-			Spell passiveSpell = new Spell(passive.getName() + " (Pasif)", passive.getSanitizedDescription(), passive.getImage(), " ");
+			Spell passiveSpell = new Spell(passive.getName() + " (" + getResources().getString(R.string.passive) + ")", passive.getSanitizedDescription(), passive.getImage(), " ");
 			championSpells.add(passiveSpell);
 			for(int i = 0; i< spells.size(); i++){
 				Spell spell = spells.get(i);

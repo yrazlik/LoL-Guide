@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="35dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="35dp">
+
+            <TextView
+                android:id="@+id/selectLanguageText"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/languageSpinner"
+                android:layout_alignTop="@+id/languageSpinner"
+                android:gravity="center_vertical"
+                android:minWidth="50dp"
+                android:text="@string/select_language"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <Spinner
+                android:id="@+id/languageSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/selectLanguageText">
+
+
+            </Spinner>
+
+            <TextView
+                android:id="@+id/selectRegionText"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/regionSpinner"
+                android:layout_alignLeft="@+id/selectLanguageText"
+                android:layout_alignRight="@+id/selectLanguageText"
+                android:layout_alignTop="@+id/regionSpinner"
+                android:gravity="center_vertical"
+                android:minWidth="50dp"
+                android:text="@string/select_region"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <Spinner
+                android:id="@+id/regionSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/languageSpinner"
+                android:layout_alignRight="@+id/languageSpinner"
+                android:layout_below="@+id/languageSpinner"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/selectRegionText">
+            </Spinner>
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_below="@+id/regionSpinner"
+                    android:layout_marginTop="20dp"
+                    android:background="#3B90CE"
+                    android:minHeight="50dp"
+                    android:text="@string/save"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

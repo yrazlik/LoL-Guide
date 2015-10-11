@@ -14,7 +14,6 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.requestclasses.Request;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
-import com.yrazlik.loltr.responseclasses.AllItemsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionLegendResponse;
 import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
 import com.yrazlik.loltr.responseclasses.ChampionRpIpCostsResponse;
@@ -216,7 +215,7 @@ public class ServiceRequest {
 	private String getServiceEndpointUrl(int requestId){
 		switch(requestId){
 			case Commons.WEEKLY_FREE_CHAMPIONS_REQUEST:
-				return Commons.SERVICE_BASE_URL;
+				return Commons.SERVICE_BASE_URL_SELECTED;
 			case Commons.STATIC_DATA_WITH_ALT_IMAGES_REQUEST:
 			case Commons.CHAMPION_OVERVIEW_REQUEST:
 			case Commons.CHAMPION_SPELLS_REQUEST:
@@ -238,11 +237,11 @@ public class ServiceRequest {
             case Commons.MATCH_INFO_REQUEST:
                 return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
             case Commons.SUMMONER_INFO_REQUEST:
-                return Commons.SERVICE_BASE_URL_CURRENT;
+                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
             case Commons.LEAGUE_INFO_REQUEST:
-                return Commons.SERVICE_BASE_URL_CURRENT;
+                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
             case Commons.STATS_REQUEST:
-                return Commons.SERVICE_BASE_URL_CURRENT;
+                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
 			default:
 				return "";
 		}

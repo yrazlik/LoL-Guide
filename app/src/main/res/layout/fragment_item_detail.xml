@@ -61,7 +61,7 @@
                 android:layout_marginTop="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Açıklama" />
+                android:text="@string/explanation" />
 
             <TextView
                 android:id="@+id/textViewDetailedDescription"

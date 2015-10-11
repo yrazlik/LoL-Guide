@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LoL TR</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="hello">Hello</string>
+
+    <dimen name="count">10dp</dimen>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="question_mark">\?\?\?</string>
+
+    <string-array name="titles">
+        <item>Haftalık Ücretsizler</item>
+        <item>Şampiyonlar</item>
+        <item>Eşyalar</item>
+        <item>Rünler</item>
+        <item>Kostümler</item>
+        <item>Canlı Maç Sorgulama</item>
+        <item>Canlı Yayınlar</item>
+        <item>Ayarlar</item>
+        <item>İletişim</item>
+        <item>Hakkında</item>
+    </string-array>
+
+    <string name="errortwitch">Bağlantıda bir hata oluştu. Lütfen tekrar deneyiniz.</string>
+    <string name="areyousure">Uygulamadan çıkmak istiyor musunuz?</string>
+    <string name="endorse">Geliştirmeye destek olabilmek için aşağıdaki reklamlara tıklayabilrseniz seviniriz. Reklamlar sizi sadece google play store\'a yönlendirecektir. \n\n\nThis application isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="send">Gönder</string>
+    <string name="contact_text">Şikayetlerinizi ve önerilerinizi aşağıdaki kutucuğa yazıp bize bildirebilirsiniz.</string>
+    <string name="select_category">Kategori Seçiniz</string>
+    <string name="menu">Menü</string>
+    <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
+    <string name="video">Video</string>
+    <string name="play">Oynat</string>
+    <string name="mage">Mage</string>
+    <string name="fighter">Fighter</string>
+    <string name="assasin">Assassin</string>
+    <string name="tank">Tank</string>
+    <string name="marksman">Marksman</string>
+    <string name="support">Support</string>
+    <string name="buyucu">Büyücü</string>
+    <string name="dovuscu">Dövüscü</string>
+    <string name="suikastci">Suikastci</string>
+    <string name="nisanci">Nisancı</string>
+    <string name="destek">Destek</string>
+    <string name="tags">Özellikler</string>
+    <string name="c">ç</string>
+    <string name="g">ğ</string>
+    <string name="i">ı</string>
+    <string name="o">ö</string>
+    <string name="s">ş</string>
+    <string name="u">ü</string>
+    <string name="C">Ç</string>
+    <string name="G">Ğ</string>
+    <string name="I">İ</string>
+    <string name="O">Ö</string>
+    <string name="S">Ş</string>
+    <string name="U">Ü</string>
+    <string name="searchHint">Şampiyon adı giriniz ...</string>
+    <string name="searchItemHint">Eşya adı giriniz ...</string>
+    <string name="general">Genel Bakış</string>
+    <string name="abilities">Yetenekler</string>
+    <string name="legend">Efsane</string>
+    <string name="strategy">Strateji</string>
+    <string name="startingItems">Başlangıç Eşyaları</string>
+    <string name="essentialItems">En Gerekliler</string>
+    <string name="deffensiveItems">Defansif Eşyalar</string>
+    <string name="offensiveItems">Ofansif Eşyalar</string>
+    <string name="gold">Altın</string>
+    <string name="searchC">ARAMA</string>
+    <string name="search">ARA</string>
+    <string name="loading">Yükleniyor...</string>
+    <string name="summonerName">Oyuncu ismi giriniz...</string>
+    <string name="selectRegion">Bölge Seçiniz: </string>
+    <string name="anErrorOccured">Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyiniz. </string>
+    <string name="team1">TAKIM 1</string>
+    <string name="team2">TAKIM 2</string>
+    <string name="matchTime">Maç Süresi</string>
+    <string name="playerNotCurrentlyPlaying">Belirtilen oyuncu su an herhangi bir oyunda oynamıyor.</string>
+    <string name="matchInfo">Maç Bilgisi</string>
+    <string name="player">Oyuncu:</string>
+    <string name="chosenChampion">Şampiyon:</string>
+    <string name="playerDetail">Oyuncu Detayı</string>
+    <string name="detailInfo">Detay</string>
+    <string name="leagueInfo">Lig Bilgisi</string>
+    <string name="matchHistory">Karşılaşma Geçmişi</string>
+    <string name="lvl">Lvl.</string>
+    <string name="league">Lig</string>
+    <string name="unranked">UNRANKED</string>
+    <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
+    <string name="noChampFound">Aramanızla eşleşen bir şampiyon bulunamadı.</string>
+    <string name="itemSearchHint">Bir eşya ismi girin...</string>
+    <string name="itemFrom">Bu Eşyayı Oluşturmak İçin Gerekli Eşyalar</string>
+    <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
+    <string name="noFrom">Bu eşyayı oluşturacak başka eşya bulunmamaktadır.</string>
+    <string name="itemDetail">Eşya Detayı</string>
+    <string name="defence">Savunma</string>
+    <string name="attack">Saldırı</string>
+    <string name="magic">Büyü</string>
+    <string name="health">Can</string>
+    <string name="magic_resistance">Büyü Direnci</string>
+    <string name="health_regeneration">Can Yenileme</string>
+    <string name="damage">Fiziksel Hasar</string>
+    <string name="critical">Kritik Vuruş</string>
+    <string name="attack_speed">Saldırı Hızı</string>
+    <string name="life_steal">Can Çalma</string>
+    <string name="armor_penetration">Zırh Delme</string>
+    <string name="spell_damage">Büyü Hasarı</string>
+    <string name="cooldown_reduction">Bekleme Süresinde Azalma</string>
+    <string name="mana">Mana</string>
+    <string name="mana_reg">Mana Yenilenmesi</string>
+    <string name="magic_penet">Büyü Nüfuzu</string>
+    <string name="spell_vamp">Can Emme</string>
+    <string name="vision">Görüş Veren</string>
+    <string name="movement">Hareket Hızı</string>
+    <string name="Consumable">Tüketilebilir</string>
+    <string name="gold_give">Altın Veren</string>
+    <string name="others">Diğerleri</string>
+    <string name="armor">Zırh</string>
+    <string name="cancel">İptal</string>
+    <string name="ok">Tamam</string>
+    <string name="filter">Filtreleme</string>
+    <string name="noTo">Bu eşya başka bir eşyaya geliştirilemez.</string>
+    
+    <string name="no_video_found">Video bulunamadı.</string>
+
+    <string name="passive">Pasif</string>
+    <string name="explanation">Açıklama</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+
+    <string name="turkey">Türkiye</string>
+
+    <string name="settings">Ayarlar</string>
+    <string name="select_language">Dil:</string>
+    <string name="select_region">Bölge:</string>
+    <string name="english">İngilizce</string>
+    <string name="turkish">Türkçe</string>
+    <string name="region_br">BR</string>
+    <string name="region_eune">EUNE</string>
+    <string name="region_euwe">EUW</string>
+    <string name="region_kr">KR</string>
+    <string name="region_lan">LAN</string>
+    <string name="region_las">LAS</string>
+    <string name="region_na">NA</string>
+    <string name="region_oce">OCE</string>
+    <string name="region_pbe">PBE</string>
+    <string name="region_ru">RU</string>
+    <string name="region_tr">TR</string>
+    <string name="save">KAYDET</string>
+
+    <string name="preferences_saved">Ayarlar Kaydedildi.</string>
+</resources>

@@ -39,12 +39,13 @@ public class Commons {
 
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
-	public static final String LATEST_VERSION = "5.15.1";
+	public static final String LATEST_VERSION = "5.19.1";
+    public static final String RECOMMENDED_ITEMS_VERSION = "5.15.1";
 	
 	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
     public static final String CURRENT_SEASON = "SEASON2015";
 	
-	public static final String TAG = "com.yrazlik.leagueoflegends";
+	public static final String TAG = "com.yrazlik.loltr";
 	
 	public static final int WEEKLY_FREE_CHAMPIONS_REQUEST = 1;
 	public static final int STATIC_DATA_WITH_ALT_IMAGES_REQUEST = 2;
@@ -78,7 +79,10 @@ public class Commons {
     public static final String SERVICE_BASE_URL_EUW = "https://euw.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_OCE = "https://oce.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_NA = "https://na.api.pvp.net/api/lol";
-    public static String SERVICE_BASE_URL_CURRENT = "https://tr.api.pvp.net/api/lol";
+    public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://tr.api.pvp.net/api/lol";
+    public static String SERVICE_BASE_URL_SELECTED = "https://ru.api.pvp.net/api/lol";
+    public static String SELECTED_REGION = "tr";
+    public static String SELECTED_LANGUAGE = "tr";
 
 
 
@@ -101,12 +105,14 @@ public class Commons {
     public static final String ALL_CHAMPIONS_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsskinsfragment";
     public static final String MATCH_INFO_FRAGMENT = "com.yrazlik.loltr.fragments.matchinfofragment";
     public static final String LIVE_CHANNELS_FRAGMENT = "com.yrazlik.loltr.fragments.livechannelsfragment";
+    public static final String SETTINGS_FRAGMENT = "com.yrazlik.loltr.fragments.settingsfragment";
     public static final String CONTACT_FRAGMENT = "com.yrazlik.loltr.fragments.contactfragment";
     public static final String ABOUT_FRAGMENT = "com.yrazlik.loltr.fragments.aboutfragment";
     public static final String CHAMPION_DETAILS_FRAGMENT = "com.yrazlik.loltr.fragments.championdetailsfragment";
     public static final String ITEM_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.itemdetailfragment";
     public static final String CHAMPION_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.championskinsfragment";
 
+    public static final String TAG_SETTINGS_FRAGMENT = "com.yrazlik.loltr.fragments.settingsfragmenttag";
 
     public static final int ANIM_UNDEFINED = -1;
     public static final int ANIM_OPEN_FROM_LEFT = 1;
@@ -136,21 +142,21 @@ public class Commons {
 		if(c.get(Calendar.DAY_OF_WEEK) < 3){
 			c.add(Calendar.DATE, -7);
 			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale("tr"));
+			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
 			Date d = c.getTime();
 			String start = sdf.format(d);
 			c.add(Calendar.DATE, 7);
-			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale("tr"));
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
 			Date d2 = c.getTime();
 			String end = sdf.format(d2);
 			return start + " - " + end;
 		}else{
 			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale("tr"));
+			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
 			Date d = c.getTime();
 			String start = sdf.format(d);
 			c.add(Calendar.DATE, 7);
-			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale("tr"));
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
 			Date d2 = c.getTime();
 			String end = sdf.format(d2);
 			return start + " - " + end;
@@ -209,6 +215,21 @@ public class Commons {
             default:
                 break;
         }
+    }
+
+    public static String getLanguage(){
+        return SELECTED_LANGUAGE;
+    }
+
+    public static String getRegion(){
+        return SELECTED_REGION;
+    }
+
+    public static String getLocale(){
+        if(SELECTED_LANGUAGE.equalsIgnoreCase("tr")){
+            return "tr_TR";
+        }
+        return "en_US";
     }
 	
 }

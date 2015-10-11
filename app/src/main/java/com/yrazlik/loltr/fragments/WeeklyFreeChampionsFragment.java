@@ -48,6 +48,28 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 		initUI(v);
 
 		if (Commons.weeklyFreeChampions != null) {
+            ArrayList<Champion>copyOfWeekltFreeChampions = new ArrayList<Champion>();
+            for(Champion c : Commons.weeklyFreeChampions){
+                Champion c2 = new Champion();
+                c2.setChampionImageUrl(c.getChampionImageUrl());
+                c2.setChampionName(c.getChampionName());
+                c2.setChampionRp(c.getChampionRp());
+                c2.setChampionIp(c.getChampionIp());
+                c2.setBotMmEnabled(c.isBotMmEnabled());
+                c2.setId(c.getId());
+                c2.setTitle(c.getTitle());
+                c2.setRankedPlayEnabled(c.isRankedPlayEnabled());
+                c2.setBotEnabled(c.isBotEnabled());
+                c2.setActive(c.isActive());
+                c2.setFreeToPlay(c.isFreeToPlay());
+                c2.setKey(c.getKey());
+                c2.setTeamId(c.getTeamId());
+                c2.setPickTurn(c.getPickTurn());
+                c2.setChampionId(c.getChampionId());
+                c2.setDateInterval(Commons.getTuesday());
+                copyOfWeekltFreeChampions.add(c2);
+            }
+            Commons.weeklyFreeChampions = copyOfWeekltFreeChampions;
 			adapter = new ListAdapter(getActivity(), R.layout.list_row,
 					Commons.weeklyFreeChampions);
 			list.setAdapter(adapter);
@@ -56,20 +78,26 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 			adapter = new ListAdapter(getActivity(), R.layout.list_row,
 					Commons.weeklyFreeChampions);
 			list.setAdapter(adapter);
-			ArrayList<String> pathParams = new ArrayList<String>();
-			HashMap<String, String> queryParams = new HashMap<String, String>();
-			pathParams.add("tr");
-			pathParams.add("v1.2");
-			pathParams.add("champion");
-			queryParams.put("api_key", Commons.API_KEY);
-			queryParams.put("freeToPlay", "true");
-			ServiceRequest.getInstance().makeGetRequest(
-					Commons.WEEKLY_FREE_CHAMPIONS_REQUEST, pathParams,
-					queryParams, null, this);
+
+            makeWeeklyFreeChampsRequest();
 		}
 		return v;
 
 	}
+
+    private void makeWeeklyFreeChampsRequest(){
+        ArrayList<String> pathParams = new ArrayList<String>();
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+        pathParams.add("v1.2");
+        pathParams.add("champion");
+        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+        queryParams.put("api_key", Commons.API_KEY);
+        queryParams.put("freeToPlay", "true");
+        ServiceRequest.getInstance().makeGetRequest(
+                Commons.WEEKLY_FREE_CHAMPIONS_REQUEST, pathParams,
+                queryParams, null, this);
+    }
 	
 	private void initUI(View v){
 		list = (ListView) v.findViewById(R.id.listViewWeeklyFreeChampions);
@@ -89,10 +117,11 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
                 freeToPlayChampsSize = weeklyFreeChampIds.size();
                 ArrayList<String> pathParams = new ArrayList<String>();
                 pathParams.add("static-data");
-                pathParams.add("tr");
+                pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
                 pathParams.add("v1.2");
                 pathParams.add("champion");
                 HashMap<String, String> queryParams = new HashMap<String, String>();
+                queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
                 queryParams.put("champData", "altimages");
                 queryParams.put("api_key", Commons.API_KEY);
                 ServiceRequest.getInstance().makeGetRequest(

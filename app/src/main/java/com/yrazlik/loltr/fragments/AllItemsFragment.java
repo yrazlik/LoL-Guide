@@ -47,11 +47,12 @@ public class AllItemsFragment extends BaseFragment implements ResponseListener, 
 		
 		ArrayList<String> pathParams = new ArrayList<String>();
 		pathParams.add("static-data");
-		pathParams.add("tr");
+		pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
 		pathParams.add("v1.2");
 		pathParams.add("item");
 		HashMap<String, String> queryParams = new HashMap<String, String>();
-		queryParams.put("version", Commons.LATEST_VERSION);
+        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+        queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("itemListData", "groups");
 		queryParams.put("api_key", Commons.API_KEY);
 		

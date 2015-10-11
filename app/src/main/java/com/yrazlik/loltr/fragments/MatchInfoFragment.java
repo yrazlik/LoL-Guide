@@ -55,27 +55,27 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL;
+                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_TR;
                         selectedRegion = "tr";
                         break;
                     case 1:
-                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_EUW;
+                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_EUW;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUW;
                         selectedRegion = "euw";
                         break;
                     case 2:
-                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_NA;
+                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_NA;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_NA;
                         selectedRegion = "na";
                         break;
                     case 3:
-                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_EUNE;
+                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_EUNE;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUNE;
                         selectedRegion = "eune";
                         break;
                     case 4:
-                        Commons.SERVICE_BASE_URL_CURRENT = Commons.SERVICE_BASE_URL_OCE;
+                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_OCE;
                         Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_OC;
                         selectedRegion = "oce";
                         break;

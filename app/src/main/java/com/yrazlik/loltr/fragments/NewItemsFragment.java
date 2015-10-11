@@ -60,10 +60,11 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
         if(Commons.allItemsNew == null || Commons.allItemsNew.size() <= 0) {
             ArrayList<String> pathParams = new ArrayList<String>();
             pathParams.add("static-data");
-            pathParams.add("tr");
+            pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
             pathParams.add("v1.2");
             pathParams.add("item");
             HashMap<String, String> queryParams = new HashMap<String, String>();
+            queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
             queryParams.put("version", Commons.LATEST_VERSION);
             queryParams.put("itemListData", "all");
             queryParams.put("api_key", Commons.API_KEY);

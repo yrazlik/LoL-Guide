@@ -55,7 +55,7 @@
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:text="Açıklama"/>
+                android:text="@string/explanation"/>
 
             <View
                 android:id="@+id/separator1"

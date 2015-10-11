@@ -79,11 +79,12 @@ import java.util.HashMap;
 		
 		ArrayList<String> pathParams = new ArrayList<String>();
 		pathParams.add("static-data");
-		pathParams.add("tr");
+		pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
 		pathParams.add("v1.2");
 		pathParams.add("champion");
 		pathParams.add(String.valueOf(champId));
 		HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
 		queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("champData", "info,tags");
 		queryParams.put("api_key", Commons.API_KEY);
@@ -92,12 +93,13 @@ import java.util.HashMap;
 		
 		ArrayList<String> pathParams2 = new ArrayList<String>();
 		pathParams2.add("static-data");
-		pathParams2.add("tr");
+		pathParams2.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
 		pathParams2.add("v1.2");
 		pathParams2.add("champion");
 		pathParams2.add(String.valueOf(champId));
 		HashMap<String, String> queryParams2 = new HashMap<String, String>();
-		queryParams2.put("version", Commons.LATEST_VERSION);
+        queryParams2.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+		queryParams2.put("version", Commons.RECOMMENDED_ITEMS_VERSION);
 		queryParams2.put("champData", "recommended");
 		queryParams2.put("api_key", Commons.API_KEY);
 		

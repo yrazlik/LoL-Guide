@@ -101,7 +101,7 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
                 if (progresDialog != null) {
                     progresDialog.dismiss();
                 }
-                Toast.makeText(getActivity(), "Video bulunamadi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getResources().getString(R.string.no_video_found), Toast.LENGTH_LONG).show();
                 dismiss();
                 return true;
             }

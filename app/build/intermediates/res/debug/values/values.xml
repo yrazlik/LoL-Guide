@@ -3,15 +3,16 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="titles">
-        <item>Haftalık Ücretsizler</item>
-        <item>Şampiyonlar</item>
-        <item>Eşyalar</item>
-        <item>Rünler</item>
-        <item>Kostümler</item>
-        <item>Canlı Maç Sorgulama</item>
-        <item>Canlı Yayınlar</item>
-        <item>İletişim</item>
-        <item>Hakkında</item>
+        <item>Weekly Free Champions</item>
+        <item>Champions</item>
+        <item>Items</item>
+        <item>Runes</item>
+        <item>Skins</item>
+        <item>Live Match Info</item>
+        <item>Live Broadcasts</item>
+        <item>Settings</item>
+        <item>Contact Us</item>
+        <item>About</item>
     </string-array>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
@@ -343,7 +344,7 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="C">Ç</string>
-    <string name="Consumable">Tüketilebilir</string>
+    <string name="Consumable">Consumable</string>
     <string name="G">Ğ</string>
     <string name="I">İ</string>
     <string name="O">Ö</string>
@@ -370,30 +371,30 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="abilities">Yetenekler</string>
+    <string name="abilities">Abilities</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="accept">Accept</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
-    <string name="anErrorOccured">Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyiniz. </string>
-    <string name="app_name">LoL TR</string>
-    <string name="areyousure">Uygulamadan çıkmak istiyor musunuz?</string>
-    <string name="armor">Zırh</string>
-    <string name="armor_penetration">Zırh Delme</string>
+    <string name="anErrorOccured">A connection error occured. Please try again.</string>
+    <string name="app_name">LoL Guide</string>
+    <string name="areyousure">Are you sure you want to quit?</string>
+    <string name="armor">Armor</string>
+    <string name="armor_penetration">Armor Penetration</string>
     <string name="assasin">Assassin</string>
-    <string name="attack">Saldırı</string>
-    <string name="attack_speed">Saldırı Hızı</string>
+    <string name="attack">Attack</string>
+    <string name="attack_speed">Attack Speed</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/auth_strings.xml -->
     <eat-comment/>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="buyucu">Büyücü</string>
+    <string name="buyucu">Mage</string>
     <string name="c">ç</string>
-    <string name="cancel">İptal</string>
+    <string name="cancel">Cancel</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.1.0/res/values/cast_strings.xml -->
     <eat-comment/>
     <string name="cast_notification_connected_message">Connected to <ns1:g id="name">%1$s</ns1:g></string>
@@ -401,7 +402,7 @@
     <string name="cast_notification_disconnect">Disconnect</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="chosenChampion">Şampiyon:</string>
+    <string name="chosenChampion">Champion:</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
@@ -440,64 +441,73 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="contact_text">Şikayetlerinizi ve önerilerinizi aşağıdaki kutucuğa yazıp bize bildirebilirsiniz.</string>
-    <string name="cooldown_reduction">Bekleme Süresinde Azalma</string>
+    <string name="contact_text">You can write your complaints or suggestions to the textbox below
+        and send us.
+    </string>
+    <string name="cooldown_reduction">Cooldown Reduction</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="critical">Kritik Vuruş</string>
-    <string name="damage">Fiziksel Hasar</string>
+    <string name="critical">Critical Damage</string>
+    <string name="damage">Physical Hasar</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="decline">Decline</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="defence">Savunma</string>
-    <string name="deffensiveItems">Defansif Eşyalar</string>
-    <string name="destek">Destek</string>
-    <string name="detailInfo">Detay</string>
-    <string name="dovuscu">Dövüscü</string>
+    <string name="defence">Defence</string>
+    <string name="deffensiveItems">Deffensive Items</string>
+    <string name="destek">Support</string>
+    <string name="detailInfo">Detail</string>
+    <string name="dovuscu">Fighter</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="drawer_open">Open navigation drawer</string>
-    <string name="endorse">Geliştirmeye destek olabilmek için aşağıdaki reklamlara tıklayabilrseniz seviniriz. Reklamlar sizi sadece google play store\'a yönlendirecektir. \n\n\nThis application isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
-    <string name="errortwitch">Bağlantıda bir hata oluştu. Lütfen tekrar deneyiniz.</string>
-    <string name="essentialItems">En Gerekliler</string>
+    <string name="endorse">Please click on the ads to support further developments. Ads will only
+        redirect you to Google Play Store. \n\n\nThis application isn’t endorsed by Riot Games and
+        doesn’t reflect the views or opinions of Riot Games or anyone officially involved in
+        producing or managing League of Legends. League of Legends and Riot Games are trademarks or
+        registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+    </string>
+    <string name="english">English</string>
+    <string name="errortwitch">A connection error occured. Please try again.</string>
+    <string name="essentialItems">Essential Items</string>
+    <string name="explanation">Explanation</string>
     <string name="fighter">Fighter</string>
-    <string name="filter">Filtreleme</string>
+    <string name="filter">Filter</string>
     <string name="g">ğ</string>
-    <string name="general">Genel Bakış</string>
-    <string name="gold">Altın</string>
-    <string name="gold_give">Altın Veren</string>
-    <string name="health">Can</string>
-    <string name="health_regeneration">Can Yenileme</string>
+    <string name="general">Overview</string>
+    <string name="gold">Gold</string>
+    <string name="gold_give">Gold</string>
+    <string name="health">Health</string>
+    <string name="health_regeneration">Health Regeneration</string>
     <string name="hello">Hello</string>
     <string name="hello_world">Hello world!</string>
     <string name="i">ı</string>
-    <string name="itemDetail">Eşya Detayı</string>
-    <string name="itemFrom">Bu Eşyayı Oluşturmak İçin Gerekli Eşyalar</string>
-    <string name="itemSearchHint">Bir eşya ismi girin...</string>
-    <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
-    <string name="league">Lig</string>
-    <string name="leagueInfo">Lig Bilgisi</string>
-    <string name="legend">Efsane</string>
-    <string name="life_steal">Can Çalma</string>
-    <string name="loading">Yükleniyor...</string>
+    <string name="itemDetail">Item Detail</string>
+    <string name="itemFrom">Other Items Necessary To Build That Item</string>
+    <string name="itemSearchHint">Enter an item name...</string>
+    <string name="itemTo">Other Items That This Item Can Be Upgraded To</string>
+    <string name="league">League</string>
+    <string name="leagueInfo">League Info</string>
+    <string name="legend">Legend</string>
+    <string name="life_steal">Life Steal</string>
+    <string name="loading">Loading...</string>
     <string name="lvl">Lvl.</string>
     <string name="mage">Mage</string>
-    <string name="magic">Büyü</string>
-    <string name="magic_penet">Büyü Nüfuzu</string>
-    <string name="magic_resistance">Büyü Direnci</string>
+    <string name="magic">Magic</string>
+    <string name="magic_penet">Magic Penetration</string>
+    <string name="magic_resistance">Magic Resistance</string>
     <string name="mana">Mana</string>
-    <string name="mana_reg">Mana Yenilenmesi</string>
+    <string name="mana_reg">Mana Regeneration</string>
     <string name="marksman">Marksman</string>
-    <string name="matchHistory">Karşılaşma Geçmişi</string>
-    <string name="matchInfo">Maç Bilgisi</string>
-    <string name="matchTime">Maç Süresi</string>
-    <string name="menu">Menü</string>
-    <string name="movement">Hareket Hızı</string>
+    <string name="matchHistory">Match History</string>
+    <string name="matchInfo">Match Info</string>
+    <string name="matchTime">Match Time</string>
+    <string name="menu">Menu</string>
+    <string name="movement">Movement Speed</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="mr_media_route_button_content_description">Cast</string>
@@ -512,31 +522,50 @@
     <string name="mr_user_route_category_name">Devices</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="nisanci">Nisancı</string>
-    <string name="noChampFound">Aramanızla eşleşen bir şampiyon bulunamadı.</string>
-    <string name="noFrom">Bu eşyayı oluşturacak başka eşya bulunmamaktadır.</string>
-    <string name="noTo">Bu eşya başka bir eşyaya geliştirilemez.</string>
+    <string name="nisanci">Marksman</string>
+    <string name="no">No</string>
+    <string name="noChampFound">No champion found matching your search.</string>
+    <string name="noFrom">There are no items to build this item.</string>
+    <string name="noTo">This item cannot be upgraded into another item.</string>
+    <string name="no_video_found">No video found.</string>
     <string name="o">ö</string>
-    <string name="offensiveItems">Ofansif Eşyalar</string>
-    <string name="ok">Tamam</string>
-    <string name="others">Diğerleri</string>
-    <string name="play">Oynat</string>
-    <string name="player">Oyuncu:</string>
-    <string name="playerDetail">Oyuncu Detayı</string>
-    <string name="playerNotCurrentlyPlaying">Belirtilen oyuncu su an herhangi bir oyunda oynamıyor.</string>
-    <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
+    <string name="offensiveItems">Offensive Items</string>
+    <string name="ok">Ok</string>
+    <string name="others">Others</string>
+    <string name="passive">Passive</string>
+    <string name="play">Play</string>
+    <string name="player">Summoner:</string>
+    <string name="playerDetail">Summoner Detail</string>
+    <string name="playerNotCurrentlyPlaying">This summoner is not currently in a game.</string>
+    <string name="pleaseEnterSummonerName">Please enter a summoner name.</string>
+    <string name="preferences_saved">Preferences Saved.</string>
     <string name="question_mark">\?\?\?</string>
+    <string name="region_br">BR</string>
+    <string name="region_eune">EUNE</string>
+    <string name="region_euwe">EUW</string>
+    <string name="region_kr">KR</string>
+    <string name="region_lan">LAN</string>
+    <string name="region_las">LAS</string>
+    <string name="region_na">NA</string>
+    <string name="region_oce">OCE</string>
+    <string name="region_pbe">PBE</string>
+    <string name="region_ru">RU</string>
+    <string name="region_tr">TR</string>
     <string name="s">ş</string>
-    <string name="search">ARA</string>
-    <string name="searchC">ARAMA</string>
-    <string name="searchHint">Şampiyon adı giriniz ...</string>
-    <string name="searchItemHint">Eşya adı giriniz ...</string>
-    <string name="selectRegion">Bölge Seçiniz: </string>
-    <string name="select_category">Kategori Seçiniz</string>
-    <string name="send">Gönder</string>
-    <string name="spell_damage">Büyü Hasarı</string>
-    <string name="spell_vamp">Can Emme</string>
-    <string name="startingItems">Başlangıç Eşyaları</string>
+    <string name="save">SAVE</string>
+    <string name="search">SEARCH</string>
+    <string name="searchC">SEARCH</string>
+    <string name="searchHint">Enter a champion name ...</string>
+    <string name="searchItemHint">Enter an item name ...</string>
+    <string name="selectRegion">Choose Region:</string>
+    <string name="select_category">Choose Category</string>
+    <string name="select_language">Language:</string>
+    <string name="select_region">Region:</string>
+    <string name="send">Send</string>
+    <string name="settings">Settings</string>
+    <string name="spell_damage">Spell Damage</string>
+    <string name="spell_vamp">Spell Vamp</string>
+    <string name="startingItems">Starting Items</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
@@ -546,24 +575,27 @@
     <string name="store_picture_title">Save image</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="strategy">Strateji</string>
-    <string name="suikastci">Suikastci</string>
-    <string name="summonerName">Oyuncu ismi giriniz...</string>
+    <string name="strategy">Strategy</string>
+    <string name="suikastci">Assasin</string>
+    <string name="summonerName">Enter summoner name...</string>
     <string name="support">Support</string>
-    <string name="tags">Özellikler</string>
+    <string name="tags">Properties</string>
     <string name="tank">Tank</string>
-    <string name="team1">TAKIM 1</string>
-    <string name="team2">TAKIM 2</string>
+    <string name="team1">TEAM 1</string>
+    <string name="team2">TEAM 2</string>
+    <string name="turkey">Türkiye</string>
+    <string name="turkish">Turkish</string>
     <string name="u">ü</string>
     <string name="unranked">UNRANKED</string>
     <string name="video">Video</string>
-    <string name="vision">Görüş Veren</string>
+    <string name="vision">Vision</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/res/values/wallet_strings.xml -->
     <eat-comment/>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
+    <string name="wonMatchCount">Number of Matches Won:</string>
+    <string name="yes">Yes</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

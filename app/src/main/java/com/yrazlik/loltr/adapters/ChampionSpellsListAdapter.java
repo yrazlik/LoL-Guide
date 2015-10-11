@@ -72,7 +72,7 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 		holder.spellKey.setText(championSpell.getSpellKey());
         aq = new AQuery(holder.spellImage);
 
-		if (championSpell.getName().contains("Pasif")) {
+		if (championSpell.getName().contains(getContext().getResources().getString(R.string.passive))) {
             aq.progress(holder.progress).image(Commons.CHAMPION_PASSIVE_IMAGE_BASE_URL
                     + championSpell.getImage().getFull(), true, true);
 		} else {

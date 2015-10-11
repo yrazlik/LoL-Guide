@@ -39,11 +39,12 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
 		
 		ArrayList<String> pathParams = new ArrayList<String>();
 		pathParams.add("static-data");
-		pathParams.add("tr");
+		pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
 		pathParams.add("v1.2");
 		pathParams.add("champion");
 		pathParams.add(String.valueOf(champId));
 		HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
 		queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("champData", "allytips,enemytips");
 		queryParams.put("api_key", Commons.API_KEY);
@@ -84,9 +85,15 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
 				enemyTipsString = enemyTipsString + "-  " + s + "\n\n";
 			}
 			String key = resp.getKey();
-			
-			allyTipsTitle.setText(key + " Olarak Oynarken:");
-			enemyTipstitle.setText("Rakip " + key + " Iken:");
+
+            String region = Commons.getLanguage();
+            if(region.equalsIgnoreCase("tr")) {
+                allyTipsTitle.setText(key + " Olarak Oynarken:");
+                enemyTipstitle.setText("Rakip " + key + " Iken:");
+            }else{
+                allyTipsTitle.setText("When you are playing as " + key + ":");
+                enemyTipstitle.setText("When the opponent is " + key + ":");
+            }
 			allyTipsTitle.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 			enemyTipstitle.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 			allyTips.setText(allyTipsString);
