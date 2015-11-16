@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:id="@+id/champImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"/>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:id="@+id/infoRightPartContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/champImage"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/champName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tristana"/>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/champName"
+            android:layout_alignLeft="@+id/champName"
+            android:layout_marginTop="5dp"
+            android:text="oh yeah baby"/>
+
+        <ImageView
+            android:id="@+id/detailInfoArrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/detailInfoArrow"
+            android:layout_centerVertical="true"
+            android:text="@string/detailInfo"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/match_info_detail_listrow.xml -->

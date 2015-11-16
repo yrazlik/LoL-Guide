@@ -43,8 +43,8 @@ public class Commons {
 
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
-	public static final String LATEST_VERSION = "5.19.1";
-    public static final String RECOMMENDED_ITEMS_VERSION = "5.15.1";
+	public static final String LATEST_VERSION = "5.22.3";
+    public static final String RECOMMENDED_ITEMS_VERSION = "5.22.3";
 	
 	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
     public static final String CURRENT_SEASON = "SEASON2015";
