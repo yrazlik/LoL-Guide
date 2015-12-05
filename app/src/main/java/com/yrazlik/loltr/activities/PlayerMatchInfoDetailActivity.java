@@ -111,7 +111,6 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
         pathParams3.add(String.valueOf(userId));
         pathParams3.add("summary");
         HashMap<String, String> queryParams3 = new HashMap<String, String>();
-        queryParams3.put("season", Commons.CURRENT_SEASON);
         queryParams3.put("api_key", Commons.API_KEY);
 
         ServiceRequest.getInstance().makeGetRequest(Commons.STATS_REQUEST, pathParams3, queryParams3, null, PlayerMatchInfoDetailActivity.this);

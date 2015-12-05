@@ -24,9 +24,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.fragments.AboutFragment;
 import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
@@ -42,6 +48,7 @@ import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -80,6 +87,51 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);// Getting an array of country
+
+
+        try {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("LatestVersion");
+            query.selectKeys(Arrays.asList("LATEST_VERSION"));
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> list, ParseException e) {
+                    try {
+                        for (ParseObject post : list) {
+                            String latestVersion = post.getString("LATEST_VERSION");
+                            if (latestVersion != null && latestVersion.length() > 0) {
+                                Commons.LATEST_VERSION = latestVersion;
+                            }
+                        }
+                    }catch (Exception ignored){}
+                }
+            });
+
+        }catch (Exception e){
+            Commons.LATEST_VERSION = "5.23.1";
+        }
+
+
+        try{
+            ParseQuery<ParseObject> query2 = ParseQuery.getQuery("LatestVersion");
+            query2.selectKeys(Arrays.asList("LATEST_ITEM_VERSION"));
+            query2.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> list, ParseException e) {
+                    try {
+                        for (ParseObject post : list) {
+                            String latestItemVersion = post.getString("LATEST_ITEM_VERSION");
+
+                            if (latestItemVersion != null && latestItemVersion.length() > 0) {
+                                Commons.RECOMMENDED_ITEMS_VERSION = latestItemVersion;
+                            }
+                        }
+                    }catch (Exception ignored){}
+                }
+            });
+        }catch (Exception e){
+            Commons.RECOMMENDED_ITEMS_VERSION = "5.23.1";
+        }
+
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolBar != null) {
             setSupportActionBar(mToolBar);
@@ -118,6 +170,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 */
 	}
+
+
+
 
     private void setDrawer(){
         leftMenuItems = getResources().getStringArray(R.array.titles);
