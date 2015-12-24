@@ -166,8 +166,12 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                 });
             }catch (Exception ignored){}
 
-            itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, allItems);
-            itemsLV.setAdapter(itemsLVAdapter);
+            try {
+                if(getContext() != null) {
+                    itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, allItems);
+                    itemsLV.setAdapter(itemsLVAdapter);
+                }
+            }catch (Exception ignored){}
 
 
         }

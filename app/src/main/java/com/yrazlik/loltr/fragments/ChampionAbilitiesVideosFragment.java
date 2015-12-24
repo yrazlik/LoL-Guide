@@ -75,7 +75,7 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
 	}
 	
 	private void initUI(View v){
-		progresDialog = ServiceRequest.showLoading(getActivity(), null);
+		progresDialog = ServiceRequest.showLoading(getActivity());
 		videoView = (VideoView)v.findViewById(R.id.videoView);
         closeDialogButton = (Button)v.findViewById(R.id.closeDialogButton);
 		Bundle args = getArguments();

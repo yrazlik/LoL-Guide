@@ -163,7 +163,12 @@ public class ServiceRequest {
                     //TODO
                 }
             }
-        });
+        }){
+            @Override
+            public void addMarker(String tag) {
+                super.addMarker(tag);
+            }
+        };
 
         getReq.setShouldCache(true);
         addToRequestQueue(getReq, TAG_GET_REQUEST);
@@ -228,26 +233,37 @@ public class ServiceRequest {
         }
     }
 
-    public static Dialog showLoading(Context context, String message) {
+    public static Dialog showLoading(Context context) {
+        try {
+            if(context != null) {
+                if (progressDialog == null) {
+                    progressDialog = new Dialog(context, R.style.customDialogTheme);
+                    progressDialog.setContentView(R.layout.loading_view);
+                }
 
-        if (progressDialog == null) {
-            progressDialog = new Dialog(context, R.style.customDialogTheme);
-            progressDialog.setContentView(R.layout.loading_view);
+                progressDialog.setCancelable(false);
+                progressDialog.setCanceledOnTouchOutside(false);
+
+                return progressDialog;
+            }else {
+                return null;
+            }
+        }catch (Exception e){
+            return null;
         }
-
-        progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
-
-        return progressDialog;
     }
 
-    public static Dialog hideLoading(Context context, String message) {
+    public static Dialog hideLoading() {
+        try {
+            if (progressDialog != null) {
+                progressDialog.hide();
+            }
 
-        if (progressDialog == null) {
-            progressDialog.hide();
+            return progressDialog;
+        } catch (Exception e){
+            return null;
         }
-
-        return progressDialog;
     }
+
 
 }

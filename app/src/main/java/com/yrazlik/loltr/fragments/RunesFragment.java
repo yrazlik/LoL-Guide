@@ -79,9 +79,14 @@ public class RunesFragment extends BaseFragment implements ResponseListener{
 				rune.setImageUrl(imageUrl);
 				runes.add(rune);
 			}
-			adapter = new RuneAdapter(getContext(), R.layout.rune_row, runes);
-			list.setAdapter(adapter);
-			adapter.notifyDataSetChanged();
+            try{
+                if(getContext() != null){
+                    adapter = new RuneAdapter(getContext(), R.layout.rune_row, runes);
+                    list.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
+            }catch (Exception ignored){}
+
 		}
 		
 		
