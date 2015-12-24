@@ -12,6 +12,7 @@
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-83e7fca972a1e56a8559fbe0420c540db54b92ba.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-44372e0e0cf83e2f8a98b3a9f33929487c86ce32.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-ddb2d609af42bac94a85892fc29fcc02edecf65b.jar
+/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/library-1.0.19-0c38e7deaaa65ee3adf483c26081a16b0b26d5f6.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/ParseCrashReporting-1.8.2-90e69ae3e49a10ea9920f38c6f18c5ceb6954459.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.4.0-75dea9b5f5241f9698ad4e891129e2dde06c1593.jar
 /Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/pre-dexed/debug/classes-1e19d8835e52928168c01e0a33b7c21d5e3ab66d.jar

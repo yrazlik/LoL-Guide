@@ -8,6 +8,18 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
@@ -73,25 +85,37 @@ import javax.net.ssl.X509TrustManager;
 
 public class ServiceRequest {
 
-	private boolean success = true;
+    public static final String TAG_GET_REQUEST = "get_request";
+
 	private static ServiceRequest instance;
+    private RequestQueue mRequestQueue;
+    private ImageLoader mImageLoader;
 	private Context mContext;
+
+    private boolean success = true;
 	private int TIMER_OF_INTERNET_PROBLEM;
 	public static Dialog progressDialog;
 	private boolean showedInternetErrorMessage = false;
-	private Dialog infoDialog;
 	private HttpClient httpClient;
-	private ThreadSafeClientConnManager threadSafeClientConnManager;
 	private HttpResponse response;
 
-	public static ServiceRequest getInstance() {
-		if (instance == null) {
-			instance = new ServiceRequest();
-		}
-		return instance;
-	}
+    public static ServiceRequest getInstance(Context context) {
+        if (instance == null) {
+            instance = new ServiceRequest(context);
+        }
+        return instance;
+    }
 
-	public void makeGetRequest(int requestID, ArrayList<String> pathParams,
+    private ServiceRequest(Context context){
+        this.mContext = context;
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        mImageLoader = new ImageLoader(this.mRequestQueue, new LruBitmapCache());
+
+    }
+
+
+
+	/*public void makeGetRequest(int requestID, ArrayList<String> pathParams,
 			HashMap<String, String> queryParams, Object requestData,
 			ResponseListener listener) {
 		Request request = new Request(requestID, pathParams, queryParams);
@@ -99,7 +123,7 @@ public class ServiceRequest {
 		request.setCancelled(false);
 		mContext = request.getListener().getContext();
 		connect(request, requestData);
-	}
+	}*/
 
 	public HttpClient getNewHttpClient() {
 		try {
@@ -483,6 +507,113 @@ public class ServiceRequest {
         }
 
         return progressDialog;
+    }
+
+
+
+
+
+
+    /********************************************************************************************************/
+
+    public <T> void addToRequestQueue(com.android.volley.Request<T> req, String tag) {
+        // set the default tag if tag is empty
+        req.setTag(tag);
+        getRequestQueue().add(req);
+    }
+
+    public void cancelPendingRequests(Object tag) {
+        if (mRequestQueue != null) {
+            mRequestQueue.cancelAll(tag);
+        }
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
+
+    public ImageLoader getImageLoader() {
+        return mImageLoader;
+    }
+
+    public RequestQueue getRequestQueue() {
+        return mRequestQueue;
+    }
+
+    public void makeGetRequest(int requestID, ArrayList<String> pathParams, HashMap<String, String> queryParams, Object requestData,
+                               final ResponseListener listener){
+        final Request request = new Request(requestID, pathParams, queryParams);
+        String urlString = getServiceEndpointUrl(request.getRequestID()) + request.getPathParametersString() + request.getQueryParametersString();
+        StringRequest searchReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Object parsedResponse = parseResponse(request.getRequestID(), response);
+                listener.onSuccess(parsedResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onFailure(response);
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                } else if (error instanceof AuthFailureError) {
+                    //TODO
+                } else if (error instanceof ServerError) {
+                    //TODO
+                } else if (error instanceof NetworkError) {
+                    //TODO
+                } else if (error instanceof ParseError) {
+                    //TODO
+                }
+            }
+        });
+
+        searchReq.setShouldCache(false);
+        addToRequestQueue(searchReq, TAG_GET_REQUEST);
+    }
+
+
+    private Object parseResponse(int requestID, String response) {
+        Gson gson = new Gson();
+        switch (requestID) {
+            case Commons.WEEKLY_FREE_CHAMPIONS_REQUEST:
+                return gson.fromJson(response, WeeklyFreeChampionsResponse.class);
+            case Commons.STATIC_DATA_WITH_ALT_IMAGES_REQUEST:
+                return gson.fromJson(response, StaticDataWithAltImagesResponse.class);
+            case Commons.CHAMPION_RP_IP_COSTS_REQUEST:
+                return gson.fromJson(response, ChampionRpIpCostsResponse.class);
+            case Commons.CHAMPION_OVERVIEW_REQUEST:
+                return gson.fromJson(response, ChampionOverviewResponse.class);
+            case Commons.CHAMPION_SPELLS_REQUEST:
+                return gson.fromJson(response, ChampionSpellsResponse.class);
+            case Commons.ALL_CHAMPIONS_REQUEST:
+                return gson.fromJson(response, AllChampionsResponse.class);
+            case Commons.CHAMPION_LEGEND_REQUEST:
+                return gson.fromJson(response, ChampionLegendResponse.class);
+            case Commons.CHAMPION_STRATEGY_REQUEST:
+                return gson.fromJson(response, ChampionStrategyResponse.class);
+            case Commons.RECOMMENDED_ITEMS_REQUEST:
+                return gson.fromJson(response, RecommendedItemsResponse.class);
+            case Commons.ALL_ITEMS_REQUEST:
+                return gson.fromJson(response, ItemsResponse.class);
+            case Commons.ITEM_DETAIL_REQUEST:
+                return gson.fromJson(response, ItemDetailResponse.class);
+            case Commons.ALL_RUNES_REQUEST:
+                return gson.fromJson(response, RuneResponse.class);
+            case Commons.LIVE_CHANNELS_REQUEST:
+                return gson.fromJson(response, LiveChannelsResponse.class);
+            case Commons.CHAMPION_SKINS_REQUEST:
+                return gson.fromJson(response, ChampionSkinsResponse.class);
+            case Commons.SUMMONER_INFO_REQUEST:
+                return gson.fromJson(response, SummonerInfoResponse.class);
+            case Commons.MATCH_INFO_REQUEST:
+                return gson.fromJson(response, MatchInfoResponse.class);
+            case Commons.LEAGUE_INFO_REQUEST:
+                return gson.fromJson(response, LeagueInfoResponse.class);
+            case Commons.STATS_REQUEST:
+                return gson.fromJson(response, StatsResponse.class);
+            default:
+                return null;
+        }
     }
 
 }

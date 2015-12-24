@@ -58,7 +58,7 @@ public class AllChampionSkinsFragment extends BaseFragment implements ResponseLi
             queryParams.put("version", Commons.LATEST_VERSION);
 			queryParams.put("champData", "altimages");
 			queryParams.put("api_key", Commons.API_KEY);
-			ServiceRequest.getInstance().makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
+			ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
 		}else{
 			adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
 			gridView.setAdapter(adapter);

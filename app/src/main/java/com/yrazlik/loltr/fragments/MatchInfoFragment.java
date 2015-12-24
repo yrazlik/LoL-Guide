@@ -105,7 +105,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                     HashMap<String, String> queryParams = new HashMap<String, String>();
                     queryParams.put("api_key", Commons.API_KEY);
 
-                    ServiceRequest.getInstance().makeGetRequest(Commons.SUMMONER_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
+                    ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.SUMMONER_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
                 }
             }
         });
@@ -134,7 +134,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                 HashMap<String, String> queryParams = new HashMap<String, String>();
                 queryParams.put("api_key", Commons.API_KEY);
 
-                ServiceRequest.getInstance().makeGetRequest(Commons.MATCH_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
+                ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.MATCH_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
             }else {
                 Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_SHORT).show();
             }

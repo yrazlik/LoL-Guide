@@ -56,7 +56,7 @@ public class AllItemsFragment extends BaseFragment implements ResponseListener, 
 		queryParams.put("itemListData", "groups");
 		queryParams.put("api_key", Commons.API_KEY);
 		
-		ServiceRequest.getInstance().makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
 		
 		return v;
 	}

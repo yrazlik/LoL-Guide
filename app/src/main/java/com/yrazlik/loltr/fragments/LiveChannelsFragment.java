@@ -45,7 +45,7 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
         liveChannelsList.setOnItemClickListener(this);
         ArrayList<String> pathParams = new ArrayList<String>();
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        ServiceRequest.getInstance().makeGetRequest(Commons.LIVE_CHANNELS_REQUEST, pathParams, queryParams, null, this);
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.LIVE_CHANNELS_REQUEST, pathParams, queryParams, null, this);
 
         return v;
     }

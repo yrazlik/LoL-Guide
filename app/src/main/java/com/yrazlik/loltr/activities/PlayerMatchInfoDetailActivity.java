@@ -90,7 +90,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
         HashMap<String, String> queryParams = new HashMap<String, String>();
         queryParams.put("api_key", Commons.API_KEY);
 
-        ServiceRequest.getInstance().makeGetRequest(Commons.SUMMONER_INFO_REQUEST, pathParams, queryParams, null, PlayerMatchInfoDetailActivity.this);
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.SUMMONER_INFO_REQUEST, pathParams, queryParams, null, PlayerMatchInfoDetailActivity.this);
 
         ArrayList<String> pathParams2 = new ArrayList<String>();
         pathParams2.add(selectedRegion);
@@ -101,7 +101,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
         HashMap<String, String> queryParams2 = new HashMap<String, String>();
         queryParams2.put("api_key", Commons.API_KEY);
 
-        ServiceRequest.getInstance().makeGetRequest(Commons.LEAGUE_INFO_REQUEST, pathParams2, queryParams2, null, PlayerMatchInfoDetailActivity.this);
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.LEAGUE_INFO_REQUEST, pathParams2, queryParams2, null, PlayerMatchInfoDetailActivity.this);
 
         ArrayList<String> pathParams3 = new ArrayList<String>();
         pathParams3.add(selectedRegion);
@@ -113,7 +113,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
         HashMap<String, String> queryParams3 = new HashMap<String, String>();
         queryParams3.put("api_key", Commons.API_KEY);
 
-        ServiceRequest.getInstance().makeGetRequest(Commons.STATS_REQUEST, pathParams3, queryParams3, null, PlayerMatchInfoDetailActivity.this);
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.STATS_REQUEST, pathParams3, queryParams3, null, PlayerMatchInfoDetailActivity.this);
 
     }
 

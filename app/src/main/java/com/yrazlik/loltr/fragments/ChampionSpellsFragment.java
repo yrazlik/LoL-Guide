@@ -49,7 +49,7 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 		queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("champData", "passive,spells");
 		queryParams.put("api_key", Commons.API_KEY);
-		ServiceRequest.getInstance().makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, this);
 		return v;
 
 	}

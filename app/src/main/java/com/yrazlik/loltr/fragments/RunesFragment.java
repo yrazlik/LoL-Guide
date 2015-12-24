@@ -47,7 +47,7 @@ public class RunesFragment extends BaseFragment implements ResponseListener{
         queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("runeListData", "image,sanitizedDescription");
 		queryParams.put("api_key", Commons.API_KEY);
-		ServiceRequest.getInstance().makeGetRequest(Commons.ALL_RUNES_REQUEST, pathParams, queryParams, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_RUNES_REQUEST, pathParams, queryParams, null, this);
 		
 		return v;
 

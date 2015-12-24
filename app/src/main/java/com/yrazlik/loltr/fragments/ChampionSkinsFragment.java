@@ -53,7 +53,7 @@ public class ChampionSkinsFragment extends BaseFragment implements ResponseListe
         queryParams.put("champData", "skins");
         queryParams.put("api_key", Commons.API_KEY);
 
-        ServiceRequest.getInstance().makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, this);
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, this);
 
 
         return v;

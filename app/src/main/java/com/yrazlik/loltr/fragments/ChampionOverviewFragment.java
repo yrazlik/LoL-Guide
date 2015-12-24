@@ -89,7 +89,7 @@ import java.util.HashMap;
 		queryParams.put("champData", "info,tags");
 		queryParams.put("api_key", Commons.API_KEY);
 		
-		ServiceRequest.getInstance().makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, this);
 		
 		ArrayList<String> pathParams2 = new ArrayList<String>();
 		pathParams2.add("static-data");
@@ -103,7 +103,7 @@ import java.util.HashMap;
 		queryParams2.put("champData", "recommended");
 		queryParams2.put("api_key", Commons.API_KEY);
 		
-		ServiceRequest.getInstance().makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, this);
 	
 		return v;	
 	}

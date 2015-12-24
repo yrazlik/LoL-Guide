@@ -69,7 +69,7 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
             queryParams.put("itemListData", "all");
             queryParams.put("api_key", Commons.API_KEY);
 
-            ServiceRequest.getInstance().makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
+            ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
         }else {
             try {
                 Collections.sort(Commons.allItemsNew, new Comparator<Item>() {

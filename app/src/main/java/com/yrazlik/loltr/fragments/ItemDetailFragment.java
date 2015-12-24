@@ -56,7 +56,7 @@ public class ItemDetailFragment extends BaseFragment implements ResponseListener
 		queryParams.put("itemData", "gold,sanitizedDescription");
 		queryParams.put("api_key", Commons.API_KEY);
 		
-		ServiceRequest.getInstance().makeGetRequest(Commons.ITEM_DETAIL_REQUEST, pathParams, queryParams, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ITEM_DETAIL_REQUEST, pathParams, queryParams, null, this);
 	
 		return v;
 	}

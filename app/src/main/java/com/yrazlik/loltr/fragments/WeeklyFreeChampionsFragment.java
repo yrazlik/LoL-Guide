@@ -94,7 +94,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
         queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
         queryParams.put("api_key", Commons.API_KEY);
         queryParams.put("freeToPlay", "true");
-        ServiceRequest.getInstance().makeGetRequest(
+        ServiceRequest.getInstance(getContext()).makeGetRequest(
                 Commons.WEEKLY_FREE_CHAMPIONS_REQUEST, pathParams,
                 queryParams, null, this);
     }
@@ -124,7 +124,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
                 queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
                 queryParams.put("champData", "altimages");
                 queryParams.put("api_key", Commons.API_KEY);
-                ServiceRequest.getInstance().makeGetRequest(
+                ServiceRequest.getInstance(getContext()).makeGetRequest(
                         Commons.ALL_CHAMPIONS_REQUEST,
                         pathParams, queryParams, null, this);
             }else{
@@ -163,7 +163,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 				
 			}
 			if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
-				ServiceRequest.getInstance().makeGetRequest(
+				ServiceRequest.getInstance(getContext()).makeGetRequest(
 						Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
 						this);
 			}

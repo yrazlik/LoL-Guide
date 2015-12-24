@@ -115,7 +115,7 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
                 queryParams.put("api_key", Commons.API_KEY);
 
                 if(Commons.allChampions == null || Commons.allChampions.size() <= 0) {
-                    ServiceRequest.getInstance().makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
+                    ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
                 }else{
                     setAdapters();
                 }

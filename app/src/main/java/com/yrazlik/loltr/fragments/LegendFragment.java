@@ -46,7 +46,7 @@ public class LegendFragment extends BaseFragment implements ResponseListener{
 		queryParams.put("champData", "lore");
 		queryParams.put("api_key", Commons.API_KEY);
 		
-		ServiceRequest.getInstance().makeGetRequest(Commons.CHAMPION_LEGEND_REQUEST, pathParams, queryParams, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_LEGEND_REQUEST, pathParams, queryParams, null, this);
 		
 		return v;
 	}
