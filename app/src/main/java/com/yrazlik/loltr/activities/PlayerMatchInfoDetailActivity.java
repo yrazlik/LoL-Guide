@@ -216,6 +216,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
 
     @Override
     public void onFailure(Object response) {
+        /*
         if(response instanceof SummonerInfoResponse) {
             progressLevel.setVisibility(View.GONE);
         }else if(response instanceof LeagueInfoResponse){
@@ -231,7 +232,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
             slashTV.setText(" / ");
             totalRankedLoseCountTV.setText("0");
 
-        }
+        }*/
 
     }
 
