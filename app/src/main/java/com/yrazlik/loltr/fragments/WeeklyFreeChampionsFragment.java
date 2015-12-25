@@ -1,6 +1,5 @@
 package com.yrazlik.loltr.fragments;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -87,7 +86,6 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 	}
 
     private void makeWeeklyFreeChampsRequest(){
-        showLoading();
         ArrayList<String> pathParams = new ArrayList<String>();
         HashMap<String, String> queryParams = new HashMap<String, String>();
         pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
@@ -105,20 +103,6 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 		list = (ListView) v.findViewById(R.id.listViewWeeklyFreeChampions);
 		list.setOnItemClickListener(this);
 	}
-
-    private void showLoading(){
-        Dialog progress = ServiceRequest.showLoading(getContext());
-        if(progress != null){
-            progress.show();
-        }
-    }
-
-    private void hideLoading(){
-        Dialog progress = ServiceRequest.hideLoading();
-        if(progress != null){
-            progress.hide();
-        }
-    }
 
 	@Override
 	public void onSuccess(Object response) {
@@ -202,7 +186,6 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 				}
 			}
 			Commons.weeklyFreeChampions = weeklyFreeChampions;
-            hideLoading();
 			adapter.notifyDataSetChanged();
 		}
 

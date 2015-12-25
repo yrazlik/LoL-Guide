@@ -139,12 +139,14 @@ public class ServiceRequest {
         StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                hideLoading();
                 Object parsedResponse = parseResponse(request.getRequestID(), response);
                 listener.onSuccess(parsedResponse);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                hideLoading();
                  NetworkResponse response = error.networkResponse;
                 if(response != null && response.data != null){
                     String json = new String(response.data);
@@ -172,6 +174,10 @@ public class ServiceRequest {
 
         getReq.setShouldCache(true);
         addToRequestQueue(getReq, TAG_GET_REQUEST);
+        Dialog progress = showLoading(getContext());
+        if(progress != null){
+            progress.show();
+        }
     }
 
     public String trimMessage(String json, String key){
