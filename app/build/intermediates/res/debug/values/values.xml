@@ -411,6 +411,7 @@
     <string name="cast_notification_disconnect">Disconnect</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="champion_sale">Champion Sale</string>
     <string name="chosenChampion">Champion:</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml -->
     <eat-comment/>
@@ -572,6 +573,7 @@
     <string name="select_region">Region:</string>
     <string name="send">Send</string>
     <string name="settings">Settings</string>
+    <string name="skin_sale">Skin Sale</string>
     <string name="spell_damage">Spell Damage</string>
     <string name="spell_vamp">Spell Vamp</string>
     <string name="startingItems">Starting Items</string>

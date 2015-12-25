@@ -38,6 +38,7 @@ import com.yrazlik.loltr.fragments.AllChampionsFragment;
 import com.yrazlik.loltr.fragments.ContactFragment;
 import com.yrazlik.loltr.fragments.CountryFragment;
 import com.yrazlik.loltr.fragments.CostumeDiscountsFragment;
+import com.yrazlik.loltr.fragments.DiscountsFragment;
 import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
@@ -260,8 +261,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
                         @Override
                         public void run() {
-                            CostumeDiscountsFragment fragment = new CostumeDiscountsFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.DISCOUNT_COSTUMES_FRAGMENT);
+                            DiscountsFragment fragment = new DiscountsFragment();
+                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.DISCOUNTS_FRAGMENT);
                             ft.commit();
                         }
                     }, 350);

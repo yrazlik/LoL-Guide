@@ -160,5 +160,8 @@
     <string name="region_tr">TR</string>
     <string name="save">SAVE</string>
 
+    <string name="skin_sale">Skin Sale</string>
+    <string name="champion_sale">Champion Sale</string>
+
     <string name="preferences_saved">Preferences Saved.</string>
 </resources>

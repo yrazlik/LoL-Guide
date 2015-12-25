@@ -53,6 +53,7 @@
     <string name="buyucu">Büyücü</string>
     <string name="c">ç</string>
     <string name="cancel">İptal</string>
+    <string name="champion_sale">Şampiyon İndirimleri</string>
     <string name="chosenChampion">Şampiyon:</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values-tr/common_strings.xml -->
     <eat-comment/>
@@ -192,6 +193,7 @@
     <string name="select_region">Bölge:</string>
     <string name="send">Gönder</string>
     <string name="settings">Ayarlar</string>
+    <string name="skin_sale">Kostüm İndirimleri</string>
     <string name="spell_damage">Büyü Hasarı</string>
     <string name="spell_vamp">Can Emme</string>
     <string name="startingItems">Başlangıç Eşyaları</string>

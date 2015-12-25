@@ -153,5 +153,8 @@
     <string name="region_tr">TR</string>
     <string name="save">KAYDET</string>
 
+    <string name="skin_sale">Kostüm İndirimleri</string>
+    <string name="champion_sale">Şampiyon İndirimleri</string>
+
     <string name="preferences_saved">Ayarlar Kaydedildi.</string>
 </resources>
