@@ -4,6 +4,7 @@
     <eat-comment/>
     <string-array name="titles">
         <item>Weekly Free Champions</item>
+        <item>Discounts</item>
         <item>Champions</item>
         <item>Items</item>
         <item>Runes</item>
