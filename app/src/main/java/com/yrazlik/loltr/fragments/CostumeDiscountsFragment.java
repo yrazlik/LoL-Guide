@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -72,6 +73,9 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
                             discountsLV.setAdapter(adapter);
                         }else{
                             hideProgress();
+                            try {
+                                Toast.makeText(getContext(), R.string.networkError, Toast.LENGTH_SHORT).show();
+                            }catch (Exception ignored){}
                         }
                     }catch (Exception ignored){
                         hideProgress();

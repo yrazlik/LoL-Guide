@@ -153,6 +153,8 @@
     <string name="region_tr">TR</string>
     <string name="save">KAYDET</string>
 
+    <string name="networkError">Lütfen internet bağlantınızı kontrol ediniz.</string>
+
     <string name="skin_sale">Kostüm İndirimleri</string>
     <string name="champion_sale">Şampiyon İndirimleri</string>
 

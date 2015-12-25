@@ -152,6 +152,7 @@
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"Cihazlar"</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values-tr/strings.xml -->
     <eat-comment/>
+    <string name="networkError">Lütfen internet bağlantınızı kontrol ediniz.</string>
     <string name="nisanci">Nisancı</string>
     <string name="no">Hayır</string>
     <string name="noChampFound">Aramanızla eşleşen bir şampiyon bulunamadı.</string>

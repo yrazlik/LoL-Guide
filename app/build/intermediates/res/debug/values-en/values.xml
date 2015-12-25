@@ -94,6 +94,7 @@
     <string name="matchTime">Match Time</string>
     <string name="menu">Menu</string>
     <string name="movement">Movement Speed</string>
+    <string name="networkError">Please check your Internet connection.</string>
     <string name="nisanci">Marksman</string>
     <string name="no">No</string>
     <string name="noChampFound">No champion found matching your search.</string>

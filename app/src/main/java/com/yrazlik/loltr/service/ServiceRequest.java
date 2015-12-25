@@ -155,6 +155,8 @@ public class ServiceRequest {
                 }
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    String json = new String(getContext().getResources().getString(R.string.networkError));
+                    listener.onFailure(json);
                 } else if (error instanceof AuthFailureError) {
                     //TODO
                 } else if (error instanceof ServerError) {

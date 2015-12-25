@@ -48,7 +48,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 		initUI(v);
 
 		if (Commons.weeklyFreeChampions != null) {
-            ArrayList<Champion>copyOfWeekltFreeChampions = new ArrayList<Champion>();
+            ArrayList<Champion>copyOfWeeklyFreeChampions = new ArrayList<Champion>();
             for(Champion c : Commons.weeklyFreeChampions){
                 Champion c2 = new Champion();
                 c2.setChampionImageUrl(c.getChampionImageUrl());
@@ -67,9 +67,9 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
                 c2.setPickTurn(c.getPickTurn());
                 c2.setChampionId(c.getChampionId());
                 c2.setDateInterval(Commons.getTuesday());
-                copyOfWeekltFreeChampions.add(c2);
+                copyOfWeeklyFreeChampions.add(c2);
             }
-            Commons.weeklyFreeChampions = copyOfWeekltFreeChampions;
+            Commons.weeklyFreeChampions = copyOfWeeklyFreeChampions;
 			adapter = new ListAdapter(getActivity(), R.layout.list_row,
 					Commons.weeklyFreeChampions);
 			list.setAdapter(adapter);
@@ -220,6 +220,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 	public void onFailure(Object response) {
 		String errorMessage = (String)response;
 		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        Commons.weeklyFreeChampions = null;
 	}
 
 	@Override

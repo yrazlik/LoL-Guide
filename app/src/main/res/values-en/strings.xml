@@ -163,5 +163,8 @@
     <string name="skin_sale">Skin Sale</string>
     <string name="champion_sale">Champion Sale</string>
 
+    <string name="networkError">Please check your Internet connection.</string>
+
+
     <string name="preferences_saved">Preferences Saved.</string>
 </resources>
