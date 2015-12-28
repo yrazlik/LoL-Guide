@@ -101,7 +101,7 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
     @Override
     public void reportGoogleAnalytics() {
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
-        t.setScreenName("DiscountsFragment");
+        t.setScreenName("CostumeDiscountsFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 

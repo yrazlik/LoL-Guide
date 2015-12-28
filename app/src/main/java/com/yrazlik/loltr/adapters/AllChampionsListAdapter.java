@@ -2,7 +2,6 @@ package com.yrazlik.loltr.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +24,6 @@ public class AllChampionsListAdapter extends ArrayAdapter<Champion> {
 
     private Context mContext;
     private AQuery listAq;
-    private Bitmap placeholder;
 
     public AllChampionsListAdapter(Context context, int resource, List<Champion> objects) {
         super(context, resource, objects);

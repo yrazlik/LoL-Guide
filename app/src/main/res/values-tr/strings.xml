@@ -15,6 +15,7 @@
     <string-array name="titles">
         <item>Haftalık Ücretsizler</item>
         <item>İndirimler</item>
+        <item>Haberler</item>
         <item>Şampiyonlar</item>
         <item>Eşyalar</item>
         <item>Rünler</item>
@@ -159,4 +160,7 @@
     <string name="champion_sale">Şampiyon İndirimleri</string>
 
     <string name="preferences_saved">Ayarlar Kaydedildi.</string>
+
+    <string name="createdAt">tarihinde yayınlandı.</string>
+
 </resources>

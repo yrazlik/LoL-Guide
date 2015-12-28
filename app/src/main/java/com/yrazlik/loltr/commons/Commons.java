@@ -105,6 +105,8 @@ public class Commons {
     public static final String ALL_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsfragment";
     public static final String DISCOUNTS_FRAGMENT = "com.yrazlik.loltr.fragments.discountsfragment";
     public static final String DISCOUNT_COSTUMES_FRAGMENT = "com.yrazlik.loltr.fragments.discountcostumesfragment";
+    public static final String NEWS_FRAGMENT = "com.yrazlik.loltr.fragments.newsfragment";
+    public static final String NEWS_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.newsdetailfragment";
     public static final String ALL_ITEMS_FRAGMENT = "com.yrazlik.loltr.fragments.allitemsfragment";
     public static final String RUNES_FRAGMENT = "com.yrazlik.loltr.fragments.runesfragment";
     public static final String ALL_CHAMPIONS_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsskinsfragment";

@@ -42,6 +42,7 @@ import com.yrazlik.loltr.fragments.DiscountsFragment;
 import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
+import com.yrazlik.loltr.fragments.NewsFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
 import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
@@ -61,12 +62,12 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 	String[] leftMenuItems;
 
 	// Array of integers points to images stored in /res/drawable-ldpi/
-	int[] mFlags = new int[] { R.drawable.coin, R.drawable.discount, R.drawable.champion,
+	int[] mFlags = new int[] { R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
 			R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.contact,
 			R.drawable.info};
 
 	// Array of strings to initial counts
-	String[] mCount = new String[] {"",  "", "", "", "", "", "", "", "", "", "", "" };
+	String[] mCount = new String[] {"",  "", "", "", "", "", "", "", "", "", "", "", ""};
 
     public static Fragment activeFragment;
 	private DrawerLayout mDrawerLayout;
@@ -272,12 +273,23 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
                         @Override
                         public void run() {
+                            NewsFragment fragment = new NewsFragment();
+                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_FRAGMENT);
+                            ft.commit();
+                        }
+                    }, 350);
+                }else if(position == 3){
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
                             AllChampionsFragment fragment = new AllChampionsFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 3){
+                }else if(position == 4){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -288,7 +300,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 4){
+                }else if(position == 5){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -299,7 +311,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 5){
+                }else if(position == 6){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -310,7 +322,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 6){
+                }else if(position == 7){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -321,7 +333,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 7){
+                }else if(position == 8){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -332,7 +344,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 8){
+                }else if(position == 9){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -343,7 +355,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                } else if(position == 9){
+                } else if(position == 10){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -354,7 +366,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                } else if(position == 10){
+                } else if(position == 11){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 

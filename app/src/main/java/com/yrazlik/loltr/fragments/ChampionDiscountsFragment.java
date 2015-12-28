@@ -96,7 +96,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
     @Override
     public void reportGoogleAnalytics() {
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
-        t.setScreenName("DiscountsFragment");
+        t.setScreenName("ChampionDiscountsFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
