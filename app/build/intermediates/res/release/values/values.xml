@@ -5,6 +5,7 @@
     <string-array name="titles">
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
+        <item>News</item>
         <item>Champions</item>
         <item>Items</item>
         <item>Runes</item>
@@ -460,6 +461,7 @@
     <string name="create_calendar_title">Create calendar event</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="createdAt">Published on</string>
     <string name="critical">Critical Damage</string>
     <string name="damage">Physical Hasar</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.3.0/res/values/admob_strings.xml -->

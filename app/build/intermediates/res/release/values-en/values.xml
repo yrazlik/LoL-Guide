@@ -5,6 +5,7 @@
     <string-array name="titles">
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
+        <item>News</item>
         <item>Champions</item>
         <item>Items</item>
         <item>Runes</item>
@@ -42,6 +43,7 @@
         and send us.
     </string>
     <string name="cooldown_reduction">Cooldown Reduction</string>
+    <string name="createdAt">Published on</string>
     <string name="critical">Critical Damage</string>
     <string name="damage">Physical Hasar</string>
     <string name="defence">Defence</string>

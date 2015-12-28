@@ -5,6 +5,7 @@
     <string-array name="titles">
         <item>Haftalık Ücretsizler</item>
         <item>İndirimler</item>
+        <item>Haberler</item>
         <item>Şampiyonlar</item>
         <item>Eşyalar</item>
         <item>Rünler</item>
@@ -95,6 +96,7 @@
     <eat-comment/>
     <string name="contact_text">Şikayetlerinizi ve önerilerinizi aşağıdaki kutucuğa yazıp bize bildirebilirsiniz.</string>
     <string name="cooldown_reduction">Bekleme Süresinde Azalma</string>
+    <string name="createdAt">tarihinde yayınlandı.</string>
     <string name="critical">Kritik Vuruş</string>
     <string name="damage">Fiziksel Hasar</string>
     <string name="defence">Savunma</string>
