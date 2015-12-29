@@ -69,6 +69,8 @@ import java.util.HashMap;
 	private GridView gridviewStartingItems, gridviewEssentialItems, gridviewOffensiveItems, gridviewDeffensiveItems;
 	private GridViewItemsAdapter startingItemsAdapter, essentialItemsAdapter, offensiveItemsAdapter, deffensiveItemsAdapter;
     private ProgressBar progress, progressStartingItems, progressEssentialItems, progressOffensiveItems, progressDeffensiveItems;
+    private TextView textViewStartingItems, textViewEssentialItems, textViewOffensiveItems, textViewDeffensiveItems;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -135,6 +137,10 @@ import java.util.HashMap;
         progressEssentialItems = (ProgressBar)v.findViewById(R.id.progressEssentialItems);
         progressOffensiveItems = (ProgressBar)v.findViewById(R.id.progressOffensiveItems);
         progressDeffensiveItems = (ProgressBar)v.findViewById(R.id.progressDeffensiveItems);
+        textViewDeffensiveItems = (TextView)v.findViewById(R.id.textViewDeffensiveItems);
+        textViewEssentialItems = (TextView)v.findViewById(R.id.textViewEssentialItems);
+        textViewOffensiveItems = (TextView)v.findViewById(R.id.textViewOffensiveItems);
+        textViewStartingItems = (TextView)v.findViewById(R.id.textViewStartingItems);
         aq.progress(progress).image(champLogoImageUrl, true, true);
 		champName = (TextView)v.findViewById(R.id.textViewChampName);
 		champTitle = (TextView)v.findViewById(R.id.textViewChampTitle);
@@ -268,6 +274,7 @@ import java.util.HashMap;
             champLogo.startAnimation(animZoom);*/
 		}else if(response instanceof RecommendedItemsResponse){
             try {
+                boolean startingOK = false, essentialOK = false, offensiveOK = false, defensiveOK = false;
                 RecommendedItemsResponse resp = (RecommendedItemsResponse) response;
                 if (resp.getRecommended() != null) {
                     for (Recommended r : resp.getRecommended()) {
@@ -277,26 +284,31 @@ import java.util.HashMap;
                                     ArrayList<Items> items = b.getItems();
                                     if (items != null && items.size() > 0) {
                                         if (b.getType().equals("starting")) {
+                                            startingOK = true;
                                             startingItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                             gridviewStartingItems.setAdapter(startingItemsAdapter);
                                             startingItemsAdapter.notifyDataSetChanged();
                                             progressStartingItems.setVisibility(View.GONE);
                                         } else if (b.getType().equals("essential")) {
+                                            essentialOK = true;
                                             essentialItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                             gridviewEssentialItems.setAdapter(essentialItemsAdapter);
                                             essentialItemsAdapter.notifyDataSetChanged();
                                             progressEssentialItems.setVisibility(View.GONE);
                                         } else if (b.getType().equals("offensive")) {
+                                            offensiveOK = true;
                                             offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                             gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
                                             offensiveItemsAdapter.notifyDataSetChanged();
                                             progressOffensiveItems.setVisibility(View.GONE);
                                         } else if (b.getType().equals("defensive")) {
+                                            defensiveOK = true;
                                             deffensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                             gridviewDeffensiveItems.setAdapter(deffensiveItemsAdapter);
                                             deffensiveItemsAdapter.notifyDataSetChanged();
                                             progressDeffensiveItems.setVisibility(View.GONE);
                                         } else if (b.getType().equals("ability_scaling")) {
+                                            offensiveOK = true;
                                             offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                             gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
                                             offensiveItemsAdapter.notifyDataSetChanged();
@@ -305,9 +317,33 @@ import java.util.HashMap;
                                     }
                                 }
                             }
-                            break;
                         }
                     }
+
+                    if(!startingOK){
+                        textViewStartingItems.setVisibility(View.GONE);
+                        progressStartingItems.setVisibility(View.GONE);
+                        gridviewStartingItems.setVisibility(View.GONE);
+                    }
+
+                    if(!essentialOK){
+                        textViewEssentialItems.setVisibility(View.GONE);
+                        progressEssentialItems.setVisibility(View.GONE);
+                        gridviewEssentialItems.setVisibility(View.GONE);
+                    }
+
+                    if(!defensiveOK){
+                        textViewDeffensiveItems.setVisibility(View.GONE);
+                        progressDeffensiveItems.setVisibility(View.GONE);
+                        gridviewDeffensiveItems.setVisibility(View.GONE);
+                    }
+
+                    if(!offensiveOK){
+                        textViewOffensiveItems.setVisibility(View.GONE);
+                        progressOffensiveItems.setVisibility(View.GONE);
+                        gridviewOffensiveItems.setVisibility(View.GONE);
+                    }
+
                 }
             }catch (Exception e){}
 		}

@@ -24,6 +24,9 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,13 +65,18 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
                                     String priceBeforeDiscount = post.getString("priceBeforeDiscount");
                                     String priceAfterDiscount = post.getString("priceAfterDiscount");
                                     String imageUrl = post.getString("imageUrl");
-                                    Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl);
+                                    Date createdAt = post.getCreatedAt();
+                                    Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, createdAt);
                                     discounts.add(discount);
                                 }
                             }
                             hideProgress();
-                            adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
-                            discountsLV.setAdapter(adapter);
+                            discounts = sortByDateCreated(discounts);
+                            if(discounts != null && discounts.size() > 0) {
+                                Collections.reverse(discounts);
+                                adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
+                                discountsLV.setAdapter(adapter);
+                            }
                         }else{
                             hideProgress();
                         }
@@ -98,6 +106,20 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
         t.setScreenName("ChampionDiscountsFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    private ArrayList<Discount> sortByDateCreated(ArrayList<Discount> discounts){
+        try{
+            Collections.sort(discounts, new Comparator<Discount>() {
+                @Override
+                public int compare(Discount d1, Discount d2) {
+                     return d1.getCreatedAt().compareTo(d2.getCreatedAt());
+                }
+            });
+        }catch (Exception e){
+            return null;
+        }
+        return discounts;
     }
 
     @Override

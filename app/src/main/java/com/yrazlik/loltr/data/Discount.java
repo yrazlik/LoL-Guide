@@ -1,5 +1,7 @@
 package com.yrazlik.loltr.data;
 
+import java.util.Date;
+
 /**
  * Created by yrazlik on 12/25/15.
  */
@@ -13,8 +15,9 @@ public class Discount {
     private String priceBeforeDiscount;
     private String priceAfterDiscount;
     private String imageUrl;
+    private Date createdAt;
 
-    public Discount(String discountType, String startDate, String endDate, String name, String nameEnglish, String priceBeforeDiscount, String priceAfterDiscount, String imageUrl){
+    public Discount(String discountType, String startDate, String endDate, String name, String nameEnglish, String priceBeforeDiscount, String priceAfterDiscount, String imageUrl, Date createdAt){
         this.discountType = discountType;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -23,6 +26,7 @@ public class Discount {
         this.priceBeforeDiscount = priceBeforeDiscount;
         this.priceAfterDiscount = priceAfterDiscount;
         this.imageUrl = imageUrl;
+        this.createdAt = createdAt;
     }
 
     public String getDiscountType() {
@@ -87,5 +91,13 @@ public class Discount {
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

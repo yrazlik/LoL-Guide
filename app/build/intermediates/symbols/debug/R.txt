@@ -899,6 +899,7 @@ int id left_drawer 0x7f0a008e
 int id light 0x7f0a0027
 int id line1 0x7f0a0171
 int id line3 0x7f0a0175
+int id linearLayoutRecommendedItems 0x7f0a00f6
 int id listMode 0x7f0a000a
 int id listViewLiveChannels 0x7f0a0117
 int id listViewRunes 0x7f0a0123
@@ -968,7 +969,6 @@ int id relativeLayoutDefenseContainer 0x7f0a00ea
 int id relativeLayoutDifficultyContainer 0x7f0a00f0
 int id relativeLayoutMagicContainer 0x7f0a00ed
 int id relativeLayoutPriceContainer 0x7f0a0130
-int id relativeLayoutRecommendedItems 0x7f0a00f6
 int id relativeLayoutSearchBar 0x7f0a00db
 int id relativeLayoutSpellBody 0x7f0a013d
 int id relativeLayoutSpellTitle 0x7f0a0139

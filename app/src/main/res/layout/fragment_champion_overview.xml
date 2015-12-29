@@ -189,12 +189,13 @@
                     android:textSize="15sp" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/relativeLayoutRecommendedItems"
+            <LinearLayout
+                android:id="@+id/linearLayoutRecommendedItems"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:paddingBottom="30dp"
+                android:orientation="vertical"
                 android:layout_below="@+id/relativeLayoutagsContainer" >
 
                 <TextView
@@ -207,7 +208,6 @@
                     android:id="@+id/gridviewStartingItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewStartingItems"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="10dp"
                     android:columnWidth="50dp"
@@ -219,7 +219,6 @@
                 </GridView>
                 <ProgressBar
                     android:id="@+id/progressStartingItems"
-                    android:layout_below="@+id/gridviewStartingItems"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
 
@@ -227,14 +226,12 @@
                     android:id="@+id/textViewEssentialItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/progressStartingItems"
                     android:text="@string/essentialItems" />
 
                 <GridView
                     android:id="@+id/gridviewEssentialItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewEssentialItems"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="10dp"
                     android:columnWidth="50dp"
@@ -246,7 +243,6 @@
                 </GridView>
                 <ProgressBar
                     android:id="@+id/progressEssentialItems"
-                    android:layout_below="@+id/gridviewEssentialItems"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
 
@@ -254,14 +250,12 @@
                     android:id="@+id/textViewOffensiveItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/progressEssentialItems"
                     android:text="@string/offensiveItems" />
 
                 <GridView
                     android:id="@+id/gridviewOffensiveItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewOffensiveItems"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="10dp"
                     android:columnWidth="50dp"
@@ -273,7 +267,6 @@
                 </GridView>
                 <ProgressBar
                     android:id="@+id/progressOffensiveItems"
-                    android:layout_below="@+id/gridviewOffensiveItems"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
                 
@@ -281,14 +274,12 @@
                     android:id="@+id/textViewDeffensiveItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/progressOffensiveItems"
                     android:text="@string/deffensiveItems" />
 
                 <GridView
                     android:id="@+id/gridviewDeffensiveItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewDeffensiveItems"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="10dp"
                     android:columnWidth="50dp"
@@ -300,11 +291,10 @@
                 </GridView>
                 <ProgressBar
                     android:id="@+id/progressDeffensiveItems"
-                    android:layout_below="@+id/gridviewDeffensiveItems"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
                
-            </RelativeLayout>
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 

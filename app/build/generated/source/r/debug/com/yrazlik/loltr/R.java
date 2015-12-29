@@ -2396,6 +2396,7 @@ containing a value of this type.
         public static final int light=0x7f0a0027;
         public static final int line1=0x7f0a0171;
         public static final int line3=0x7f0a0175;
+        public static final int linearLayoutRecommendedItems=0x7f0a00f6;
         public static final int listMode=0x7f0a000a;
         public static final int listViewLiveChannels=0x7f0a0117;
         public static final int listViewRunes=0x7f0a0123;
@@ -2465,7 +2466,6 @@ containing a value of this type.
         public static final int relativeLayoutDifficultyContainer=0x7f0a00f0;
         public static final int relativeLayoutMagicContainer=0x7f0a00ed;
         public static final int relativeLayoutPriceContainer=0x7f0a0130;
-        public static final int relativeLayoutRecommendedItems=0x7f0a00f6;
         public static final int relativeLayoutSearchBar=0x7f0a00db;
         public static final int relativeLayoutSpellBody=0x7f0a013d;
         public static final int relativeLayoutSpellTitle=0x7f0a0139;
