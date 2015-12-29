@@ -606,6 +606,7 @@
     <string name="wallet_buy_button_place_holder">Buy with Google</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="watch_full_screen">Click to watch the video fullscreen</string>
     <string name="wonMatchCount">Number of Matches Won:</string>
     <string name="yes">Yes</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->

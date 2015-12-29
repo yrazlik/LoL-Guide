@@ -169,4 +169,7 @@
 
     <string name="preferences_saved">Preferences Saved.</string>
     <string name="createdAt">Published on</string>
+
+    <string name="watch_full_screen">Click to watch the video fullscreen</string>
+
 </resources>

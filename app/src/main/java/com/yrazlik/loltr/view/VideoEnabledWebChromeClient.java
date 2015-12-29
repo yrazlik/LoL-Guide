@@ -137,6 +137,7 @@ public class VideoEnabledWebChromeClient extends WebChromeClient implements OnPr
 
             // Hide the non-video view, add the video view, and show it
             activityNonVideoView.setVisibility(View.INVISIBLE);
+            activityVideoView.removeAllViews();
             activityVideoView.addView(videoViewContainer, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
             activityVideoView.setVisibility(View.VISIBLE);
 

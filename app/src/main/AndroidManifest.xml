@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yrazlik.loltr"
-    android:versionCode="14"
+    android:versionCode="15"
     android:versionName="2.2" >
 
     <uses-sdk
@@ -49,6 +49,9 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".activities.FullScreenVideoActivity"
+                  android:screenOrientation="landscape">
         </activity>
         <activity android:name=".activities.FullScreenSkinActivity"
             android:screenOrientation="portrait">

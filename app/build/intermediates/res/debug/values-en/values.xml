@@ -156,6 +156,7 @@
     <string name="unranked">UNRANKED</string>
     <string name="video">Video</string>
     <string name="vision">Vision</string>
+    <string name="watch_full_screen">Click to watch the video fullscreen</string>
     <string name="wonMatchCount">Number of Matches Won:</string>
     <string name="yes">Yes</string>
 </resources>

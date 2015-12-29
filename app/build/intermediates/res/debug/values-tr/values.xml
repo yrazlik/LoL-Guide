@@ -219,6 +219,7 @@
     <string msgid="4184147110658930238" name="wallet_buy_button_place_holder">"Google ile satın al"</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values-tr/strings.xml -->
     <eat-comment/>
+    <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın</string>
     <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
     <string name="yes">Evet</string>
 </resources>

@@ -407,120 +407,126 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:50:17
 	android:name
 		ADDED from AndroidManifest.xml:50:27
-activity#com.yrazlik.loltr.activities.FullScreenSkinActivity
+activity#com.yrazlik.loltr.activities.FullScreenVideoActivity
 ADDED from AndroidManifest.xml:53:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:54:13
+		ADDED from AndroidManifest.xml:54:19
 	android:name
 		ADDED from AndroidManifest.xml:53:19
+activity#com.yrazlik.loltr.activities.FullScreenSkinActivity
+ADDED from AndroidManifest.xml:56:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:57:13
+	android:name
+		ADDED from AndroidManifest.xml:56:19
 intent-filter#android.intent.action.MAIN+android.intent.category.default
-ADDED from AndroidManifest.xml:55:13
+ADDED from AndroidManifest.xml:58:13
 category#android.intent.category.default
-ADDED from AndroidManifest.xml:57:17
+ADDED from AndroidManifest.xml:60:17
 	android:name
-		ADDED from AndroidManifest.xml:57:27
+		ADDED from AndroidManifest.xml:60:27
 activity#com.yrazlik.loltr.activities.MatchInfoActivity
-ADDED from AndroidManifest.xml:60:9
+ADDED from AndroidManifest.xml:63:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:63:13
+		ADDED from AndroidManifest.xml:66:13
 	android:theme
-		ADDED from AndroidManifest.xml:62:13
+		ADDED from AndroidManifest.xml:65:13
 	android:parentActivityName
-		ADDED from AndroidManifest.xml:61:13
+		ADDED from AndroidManifest.xml:64:13
 	android:name
-		ADDED from AndroidManifest.xml:60:19
+		ADDED from AndroidManifest.xml:63:19
 activity#com.yrazlik.loltr.activities.PlayerMatchInfoDetailActivity
-ADDED from AndroidManifest.xml:69:9
+ADDED from AndroidManifest.xml:72:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:71:13
+		ADDED from AndroidManifest.xml:74:13
 	android:theme
-		ADDED from AndroidManifest.xml:70:13
+		ADDED from AndroidManifest.xml:73:13
 	android:name
-		ADDED from AndroidManifest.xml:69:19
+		ADDED from AndroidManifest.xml:72:19
 activity#com.yrazlik.loltr.fragments.LiveChannelActivity
-ADDED from AndroidManifest.xml:77:9
+ADDED from AndroidManifest.xml:80:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:78:13
+		ADDED from AndroidManifest.xml:81:13
 	android:name
-		ADDED from AndroidManifest.xml:77:19
+		ADDED from AndroidManifest.xml:80:19
 activity#com.yrazlik.loltr.activities.ItemDetailActivity
-ADDED from AndroidManifest.xml:81:9
+ADDED from AndroidManifest.xml:84:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:83:13
+		ADDED from AndroidManifest.xml:86:13
 	android:theme
-		ADDED from AndroidManifest.xml:82:13
+		ADDED from AndroidManifest.xml:85:13
 	android:name
-		ADDED from AndroidManifest.xml:81:19
+		ADDED from AndroidManifest.xml:84:19
 activity#com.yrazlik.loltr.activities.FilterActivity
-ADDED from AndroidManifest.xml:87:9
+ADDED from AndroidManifest.xml:90:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:89:19
-	android:theme
-		ADDED from AndroidManifest.xml:88:19
-	android:name
-		ADDED from AndroidManifest.xml:87:19
-activity#com.yrazlik.loltr.PlayerActivity
-ADDED from AndroidManifest.xml:92:9
-	android:name
 		ADDED from AndroidManifest.xml:92:19
-service#com.parse.PushService
+	android:theme
+		ADDED from AndroidManifest.xml:91:19
+	android:name
+		ADDED from AndroidManifest.xml:90:19
+activity#com.yrazlik.loltr.PlayerActivity
 ADDED from AndroidManifest.xml:95:9
 	android:name
-		ADDED from AndroidManifest.xml:95:18
+		ADDED from AndroidManifest.xml:95:19
+service#com.parse.PushService
+ADDED from AndroidManifest.xml:98:9
+	android:name
+		ADDED from AndroidManifest.xml:98:18
 receiver#com.parse.ParseBroadcastReceiver
-ADDED from AndroidManifest.xml:96:9
+ADDED from AndroidManifest.xml:99:9
 	android:name
-		ADDED from AndroidManifest.xml:96:19
+		ADDED from AndroidManifest.xml:99:19
 intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT
-ADDED from AndroidManifest.xml:97:13
+ADDED from AndroidManifest.xml:100:13
 action#android.intent.action.BOOT_COMPLETED
-ADDED from AndroidManifest.xml:98:17
+ADDED from AndroidManifest.xml:101:17
 	android:name
-		ADDED from AndroidManifest.xml:98:25
+		ADDED from AndroidManifest.xml:101:25
 action#android.intent.action.USER_PRESENT
-ADDED from AndroidManifest.xml:99:17
+ADDED from AndroidManifest.xml:102:17
 	android:name
-		ADDED from AndroidManifest.xml:99:25
+		ADDED from AndroidManifest.xml:102:25
 receiver#com.parse.ParsePushBroadcastReceiver
-ADDED from AndroidManifest.xml:102:9
+ADDED from AndroidManifest.xml:105:9
 	android:exported
-		ADDED from AndroidManifest.xml:103:13
+		ADDED from AndroidManifest.xml:106:13
 	android:name
-		ADDED from AndroidManifest.xml:102:19
+		ADDED from AndroidManifest.xml:105:19
 intent-filter#com.parse.push.intent.DELETE+com.parse.push.intent.OPEN+com.parse.push.intent.RECEIVE
-ADDED from AndroidManifest.xml:104:13
+ADDED from AndroidManifest.xml:107:13
 action#com.parse.push.intent.RECEIVE
-ADDED from AndroidManifest.xml:105:17
+ADDED from AndroidManifest.xml:108:17
 	android:name
-		ADDED from AndroidManifest.xml:105:25
+		ADDED from AndroidManifest.xml:108:25
 action#com.parse.push.intent.DELETE
-ADDED from AndroidManifest.xml:106:17
+ADDED from AndroidManifest.xml:109:17
 	android:name
-		ADDED from AndroidManifest.xml:106:25
+		ADDED from AndroidManifest.xml:109:25
 action#com.parse.push.intent.OPEN
-ADDED from AndroidManifest.xml:107:17
+ADDED from AndroidManifest.xml:110:17
 	android:name
-		ADDED from AndroidManifest.xml:107:25
+		ADDED from AndroidManifest.xml:110:25
 receiver#com.parse.GcmBroadcastReceiver
-ADDED from AndroidManifest.xml:110:9
+ADDED from AndroidManifest.xml:113:9
 	android:permission
-		ADDED from AndroidManifest.xml:111:13
+		ADDED from AndroidManifest.xml:114:13
 	android:name
-		ADDED from AndroidManifest.xml:110:19
+		ADDED from AndroidManifest.xml:113:19
 intent-filter#com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION+com.yrazlik.loltr
-ADDED from AndroidManifest.xml:112:13
+ADDED from AndroidManifest.xml:115:13
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from AndroidManifest.xml:113:17
+ADDED from AndroidManifest.xml:116:17
 	android:name
-		ADDED from AndroidManifest.xml:113:25
+		ADDED from AndroidManifest.xml:116:25
 action#com.google.android.c2dm.intent.REGISTRATION
-ADDED from AndroidManifest.xml:114:17
+ADDED from AndroidManifest.xml:117:17
 	android:name
-		ADDED from AndroidManifest.xml:114:25
+		ADDED from AndroidManifest.xml:117:25
 category#com.yrazlik.loltr
-ADDED from AndroidManifest.xml:115:17
+ADDED from AndroidManifest.xml:118:17
 	android:name
-		ADDED from AndroidManifest.xml:115:27
+		ADDED from AndroidManifest.xml:118:27
 activity#com.google.android.gms.ads.purchase.InAppPurchaseActivity
 ADDED from com.google.android.gms:play-services-ads:8.3.0:30:9
 	android:theme

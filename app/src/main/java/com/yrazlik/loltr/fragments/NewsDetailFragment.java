@@ -1,7 +1,9 @@
 package com.yrazlik.loltr.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -16,6 +19,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.activities.FullScreenVideoActivity;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 /**
@@ -31,19 +35,27 @@ public class NewsDetailFragment extends BaseFragment{
     private TextView titleTV, messageTV;
     private NetworkImageView largeImage;
     private WebView wv;
+    private WebChromeClient webChromeClient;
+    private RelativeLayout wvLayout;
+    private TextView watchFullScreenTV;
+    private String html;
+    private String wvUrl;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_news_detail, container, false);
 
+        watchFullScreenTV = (TextView) v.findViewById(R.id.watchFullScreenTV);
         titleTV = (TextView) v.findViewById(R.id.title);
         messageTV = (TextView) v.findViewById(R.id.message);
         largeImage = (NetworkImageView) v.findViewById(R.id.largeImage);
+        webChromeClient = new WebChromeClient();
+        wvLayout = (RelativeLayout)v.findViewById(R.id.wvLayout);
         wv = (WebView) v.findViewById(R.id.wv);
         wv.getSettings().setJavaScriptEnabled(true);
         wv.getSettings().setPluginState(WebSettings.PluginState.ON);
-        wv.setWebChromeClient(new WebChromeClient());
+        wv.setWebChromeClient(webChromeClient);
         wv.setWebViewClient(new MyWVClient());
 
         Bundle args = getArguments();
@@ -52,7 +64,7 @@ public class NewsDetailFragment extends BaseFragment{
             String title = args.getString(EXTRA_TITLE);
             String message = args.getString(EXTRA_MESSAGE);
             String imageUrl = args.getString(EXTRA_IMAGE_URL);
-            String wvUrl = args.getString(EXTRA_WV_URL);
+            wvUrl = args.getString(EXTRA_WV_URL);
 
             if(title != null){
                 titleTV.setText(title);
@@ -70,26 +82,34 @@ public class NewsDetailFragment extends BaseFragment{
                 largeImage.setImageUrl(imageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
             }
 
+            watchFullScreenTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), FullScreenVideoActivity.class);
+                    i.putExtra(FullScreenVideoActivity.HTML, wvUrl);
+                    startActivity(i);
+                }
+            });
+
+
+            DisplayMetrics displayMetrics = getActivity().getResources().getDisplayMetrics();
+            float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+
+            //wvUrl = "https://www.youtube.com/embed/BZ9rr-6FYxY";
             if(wvUrl != null && wvUrl.length() > 0){
-                wv.setVisibility(View.VISIBLE);
-                wv.loadUrl(wvUrl);
+                wvLayout.setVisibility(View.VISIBLE);
+                html = "<html><body><iframe width=\"" + ((int)(dpWidth - 28)) + "\" height=\"" + ((dpWidth*40)/55) + "\" src=\"" + wvUrl + "\"frameborder=\"0\" allowfullscreen></iframe></body></html>";
+                wv.loadDataWithBaseURL("", html, "text/html", "UTF-8", null);
             }else{
-                wv.setVisibility(View.GONE);
+                wvLayout.setVisibility(View.GONE);
             }
         }
 
         return v;
     }
 
-    private class MyWVClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView webview, String url) {
-            final String url_string = url;
-            if(url_string != null && !url_string.contains("youtube") && !url_string.contains("embed")){//do not show popup on youtube videos
 
-            }
-            return true;
-        }
+    private class MyWVClient extends WebViewClient {
 
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {

@@ -36,15 +36,30 @@
         <View
             android:id="@+id/blank"
             android:layout_width="match_parent" android:layout_height="10dp"
-            android:layout_below="@+id/message"> </View>
-        <WebView
-            android:id="@+id/wv"
+            android:layout_below="@+id/message"></View>
+
+        <RelativeLayout
+            android:id="@+id/wvLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/blank"
             android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/watchFullScreenTV"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="14sp" android:textStyle="bold" android:textColor="@color/button_blue"
+                android:text="@string/watch_full_screen" android:paddingTop="5dp" android:paddingBottom="10dp"/>
+            <WebView
+                android:id="@+id/wv"
+                android:layout_below="@+id/watchFullScreenTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp">
 
-        </WebView>
+            </WebView>
+
+        </RelativeLayout>
 
 
     </RelativeLayout>

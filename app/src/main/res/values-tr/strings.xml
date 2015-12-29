@@ -163,4 +163,7 @@
 
     <string name="createdAt">tarihinde yayınlandı.</string>
 
+    <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın</string>
+
+
 </resources>
