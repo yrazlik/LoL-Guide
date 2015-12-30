@@ -20,6 +20,7 @@ public class FullScreenVideoActivity extends Activity{
     public static final String HTML = "com.yrazlik.loltr.activities.fullscreenvideoactivity.html";
 
     private WebView wv;
+    private String URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,14 @@ public class FullScreenVideoActivity extends Activity{
         Intent i = getIntent();
         if(i != null){
             String url = i.getStringExtra(HTML);
+            URL = url;
             if(url != null && url.length() > 0){
 
                 DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
                 float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
                 float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
 
-                String html = "<html><body><iframe width=\"" + ((int)(dpWidth - 20)) + "\" height=\"" + ((int)(dpHeight - 20)) + "\" src=\"" + url + "\"frameborder=\"0\" allowfullscreen></iframe></body></html>";
+            //    String html = "<html><body><iframe width=\"" + ((int)(dpWidth - 20)) + "\" height=\"" + ((int)(dpHeight - 20)) + "\" src=\"" + url + "\"frameborder=\"0\" allowfullscreen></iframe></body></html>";
 
 
                 wv = (WebView) findViewById(R.id.wv);
@@ -43,7 +45,7 @@ public class FullScreenVideoActivity extends Activity{
                 wv.getSettings().setPluginState(WebSettings.PluginState.ON);
                 wv.setWebChromeClient(new WebChromeClient());
                 wv.setWebViewClient(new MyWVClient());
-                wv.loadDataWithBaseURL("", html, "text/html", "UTF-8", null);
+             //   wv.loadDataWithBaseURL("", html, "text/html", "UTF-8", null);
             }
         }
     }
@@ -60,5 +62,27 @@ public class FullScreenVideoActivity extends Activity{
             super.onReceivedError(view, errorCode, description, failingUrl);
             view.setVisibility(View.GONE);
         }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(URL != null) {
+            String html = "<iframe width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" src=\""+ URL + "/embed" +"\"></iframe>";
+            wv.loadDataWithBaseURL("", html, "text/html", "UTF-8", null);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        wv.loadData("", "text/html", "utf-8");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        wv.loadData("", "text/html", "utf-8");
     }
 }

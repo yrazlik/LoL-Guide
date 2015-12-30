@@ -178,7 +178,9 @@ public class ServiceRequest {
         addToRequestQueue(getReq, TAG_GET_REQUEST);
         Dialog progress = showLoading(getContext());
         if(progress != null){
-            progress.show();
+            try {
+                progress.show();
+            }catch (Exception ignored){}
         }
     }
 
