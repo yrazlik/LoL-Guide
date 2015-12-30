@@ -39,6 +39,7 @@
     <string name="cancel">Cancel</string>
     <string name="champion_sale">Champion Sale</string>
     <string name="chosenChampion">Champion:</string>
+    <string name="click_to_update">If you cannot see the video, please update the app to latest version by clicking here.</string>
     <string name="contact_text">You can write your complaints or suggestions to the textbox below
         and send us.
     </string>
@@ -156,7 +157,7 @@
     <string name="unranked">UNRANKED</string>
     <string name="video">Video</string>
     <string name="vision">Vision</string>
-    <string name="watch_full_screen">Click to watch the video fullscreen</string>
+    <string name="watch_full_screen">Click to watch the video fullscreen.</string>
     <string name="wonMatchCount">Number of Matches Won:</string>
     <string name="yes">Yes</string>
 </resources>

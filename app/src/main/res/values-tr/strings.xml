@@ -163,7 +163,8 @@
 
     <string name="createdAt">tarihinde yayınlandı.</string>
 
-    <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın</string>
+    <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın.</string>
 
+    <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
 
 </resources>

@@ -56,6 +56,7 @@
     <string name="cancel">İptal</string>
     <string name="champion_sale">Şampiyon İndirimleri</string>
     <string name="chosenChampion">Şampiyon:</string>
+    <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values-tr/common_strings.xml -->
     <eat-comment/>
     <string msgid="6428604800157361567" name="common_android_wear_notification_needs_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g>, Android Wear uygulamasında güncelleme yapılmasını gerektiriyor."</string>
@@ -219,7 +220,7 @@
     <string msgid="4184147110658930238" name="wallet_buy_button_place_holder">"Google ile satın al"</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values-tr/strings.xml -->
     <eat-comment/>
-    <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın</string>
+    <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın.</string>
     <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
     <string name="yes">Evet</string>
 </resources>

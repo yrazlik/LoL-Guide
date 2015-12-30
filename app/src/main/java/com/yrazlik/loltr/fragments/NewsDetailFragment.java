@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -37,7 +38,7 @@ public class NewsDetailFragment extends BaseFragment{
     private WebView wv;
     private WebChromeClient webChromeClient;
     private RelativeLayout wvLayout;
-    private TextView watchFullScreenTV;
+    private TextView watchFullScreenTV, clickToUpdateTV;
     private String html;
     private String wvUrl;
 
@@ -47,6 +48,7 @@ public class NewsDetailFragment extends BaseFragment{
         View v = inflater.inflate(R.layout.fragment_news_detail, container, false);
 
         watchFullScreenTV = (TextView) v.findViewById(R.id.watchFullScreenTV);
+        clickToUpdateTV = (TextView) v.findViewById(R.id.clickToUpdate);
         titleTV = (TextView) v.findViewById(R.id.title);
         messageTV = (TextView) v.findViewById(R.id.message);
         largeImage = (NetworkImageView) v.findViewById(R.id.largeImage);
@@ -88,6 +90,18 @@ public class NewsDetailFragment extends BaseFragment{
                     Intent i = new Intent(getActivity(), FullScreenVideoActivity.class);
                     i.putExtra(FullScreenVideoActivity.HTML, wvUrl);
                     startActivity(i);
+                }
+            });
+
+            clickToUpdateTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String appPackageName = getActivity().getPackageName();
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                    } catch (android.content.ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                    }
                 }
             });
 
