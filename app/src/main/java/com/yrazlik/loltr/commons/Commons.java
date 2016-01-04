@@ -7,6 +7,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Items;
+import com.yrazlik.loltr.responseclasses.SummonerByNameResponse;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +42,11 @@ public class Commons {
     public static final String LOL_TR_SHARED_PREF_LANGUAGE = "LOL_TR_SHARED_PREF_LANGUAGE";
     public static final String LOL_TR_SHARED_PREF_REGION = "LOL_TR_SHARED_PREF_REGION";
 
+    public static final String LOL_TR_SUMMONER_NAME = "LOL_TR_SUMMONER_NAME";
+    public static final String LOL_TR_SUMMONER_ID = "LOL_TR_SUMMONER_ID";
+    public static final String LOL_TR_PROFILE_ICON_ID = "LOL_TR_PROFILE_ICON_ID";
+    public static final String LOL_TR_SUMMONER_LEVEL = "LOL_TR_SUMMONER_LEVEL";
+
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
 	public static String LATEST_VERSION = "5.23.1";
@@ -69,6 +75,8 @@ public class Commons {
     public static final int MATCH_INFO_REQUEST = 17;
     public static final int LEAGUE_INFO_REQUEST = 18;
     public static final int STATS_REQUEST = 19;
+    public static final int SUMMONER_BY_NAME_REQUEST = 20;
+
 
 
     public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://tr.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
@@ -101,6 +109,7 @@ public class Commons {
     public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/4affa8a1f849a587ce5277de61922e04b871737a/championcosts";
 	public static final String URL_CHAMPION_SKIN_BASE = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
+    public static final String PROFILE_FRAGMENT = "com.yrazlik.loltr.fragments.profilefragment";
     public static final String WEEKLY_FREE_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.weeklyfreechampionsfragment";
     public static final String ALL_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsfragment";
     public static final String DISCOUNTS_FRAGMENT = "com.yrazlik.loltr.fragments.discountsfragment";
@@ -140,6 +149,7 @@ public class Commons {
 	public static ArrayList<Champion> allChampions;
 	public static ArrayList<Items> allItems;
     public static ArrayList<Item> allItemsNew;
+    public static SummonerByNameResponse summonerInfo;
 	
 	
 	

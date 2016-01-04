@@ -13,6 +13,7 @@
     <string name="question_mark">\?\?\?</string>
 
     <string-array name="titles">
+        <item>My Profile</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
         <item>News</item>
@@ -42,6 +43,8 @@
     <string name="select_category">Choose Category</string>
     <string name="menu">Menu</string>
     <string name="pleaseEnterSummonerName">Please enter a summoner name.</string>
+    <string name="pleaseSelectYourRegion">Please select your region.</string>
+    <string name="pleaseEnterYourSummonerName">Please enter your summoner name.</string>
     <string name="video">Video</string>
     <string name="play">Play</string>
     <string name="mage">Mage</string>
@@ -146,6 +149,7 @@
     <string name="settings">Settings</string>
     <string name="select_language">Language:</string>
     <string name="select_region">Region:</string>
+    <string name="select_your_region">Select your region:</string>
     <string name="english">English</string>
     <string name="turkish">Turkish</string>
     <string name="region_br">BR</string>
@@ -171,8 +175,13 @@
     <string name="champion_sale">Champion Sale</string>
     <string name="skin_sale">Skin Sale</string>
 
-    <string name="click_to_update">If you cannot see the video, please update the app to latest version by clicking here.</string>
+    <string name="click_to_update">If you cannot see the video, please update the app to latest
+        version by clicking here.
+    </string>
 
+    <string name="enter_username">Enter your summoner name:</string>
 
-
+    <string name="cannot_find_username">Could not find the user, please make sure you entered
+        summoner name and region correctly
+    </string>
 </resources>

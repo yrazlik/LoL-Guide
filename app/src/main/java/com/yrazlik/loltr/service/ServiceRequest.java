@@ -37,6 +37,7 @@ import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.responseclasses.RuneResponse;
 import com.yrazlik.loltr.responseclasses.StaticDataWithAltImagesResponse;
 import com.yrazlik.loltr.responseclasses.StatsResponse;
+import com.yrazlik.loltr.responseclasses.SummonerByNameResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
 
@@ -184,6 +185,62 @@ public class ServiceRequest {
         }
     }
 
+    public void makeSummonerByNameRequest(final int requestID, String region, ArrayList<String> pathParams, HashMap<String, String> queryParams, Object requestData,
+                                          final ResponseListener listener){
+        final Request request = new Request(requestID, pathParams, queryParams);
+        String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
+        StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                hideLoading();
+                Object parsedResponse = parseResponse(request.getRequestID(), response);
+                listener.onSuccess(parsedResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideLoading();
+               /* NetworkResponse response = error.networkResponse;
+                if(response != null && response.data != null){
+                    String json = new String(response.data);
+                    json = trimMessage(json, "message");
+                    listener.onFailure(json);
+                }*/
+
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    String json = new String(getContext().getResources().getString(R.string.networkError));
+                    listener.onFailure(json);
+                } else if (error instanceof AuthFailureError) {
+                    listener.onFailure(requestID);
+                } else if (error instanceof ServerError) {
+                    listener.onFailure(requestID);
+                } else if (error instanceof NetworkError) {
+                    listener.onFailure(requestID);
+                } else if (error instanceof ParseError) {
+                    listener.onFailure(requestID);
+                }
+            }
+        }){
+            @Override
+            public void addMarker(String tag) {
+                super.addMarker(tag);
+            }
+        };
+
+        getReq.setShouldCache(true);
+        addToRequestQueue(getReq, TAG_GET_REQUEST);
+        Dialog progress = showLoading(getContext());
+        if(progress != null){
+            try {
+                progress.show();
+            }catch (Exception ignored){}
+        }
+    }
+
+    private String getSummonerApiUrlByRegion(String region){
+        return "https://" + region + ".api.pvp.net";
+    }
+
     public String trimMessage(String json, String key){
         String trimmedString = null;
 
@@ -238,6 +295,14 @@ public class ServiceRequest {
                 return gson.fromJson(response, LeagueInfoResponse.class);
             case Commons.STATS_REQUEST:
                 return gson.fromJson(response, StatsResponse.class);
+            case Commons.SUMMONER_BY_NAME_REQUEST:
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    obj.length();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return gson.fromJson(response, SummonerByNameResponse.class);
             default:
                 return null;
         }

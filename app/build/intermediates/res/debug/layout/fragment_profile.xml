@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/usernameRegionRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp">
+
+        <TextView android:id="@+id/enterUserNameTV"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignTop="@+id/usernameET"
+                  android:layout_alignBottom="@+id/usernameET"
+                  android:gravity="center_vertical"
+                  android:text="@string/enter_username"
+                  android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/usernameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/enterUserNameTV"
+            android:singleLine="true"
+            />
+
+        <TextView
+            android:id="@+id/selectRegionTV"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/regionSpinner"
+            android:layout_alignLeft="@+id/enterUserNameTV"
+            android:layout_alignRight="@+id/enterUserNameTV"
+            android:layout_alignTop="@+id/regionSpinner"
+            android:gravity="center_vertical"
+            android:minWidth="50dp"
+            android:text="@string/select_your_region"
+            android:textSize="16sp"
+            />
+
+        <Spinner
+            android:id="@+id/regionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/languageSpinner"
+            android:layout_alignRight="@+id/languageSpinner"
+            android:layout_below="@+id/usernameET"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/selectRegionTV">
+        </Spinner>
+
+        <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/buttonSave"
+            android:layout_below="@+id/regionSpinner"
+                android:layout_marginTop="20dp"
+                android:background="#3B90CE"
+                android:minHeight="45dp"
+                android:text="@string/save"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/fragment_profile.xml -->

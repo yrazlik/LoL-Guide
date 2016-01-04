@@ -7,12 +7,15 @@
     <string name="hello">Hello</string>
 
     <dimen name="count">10dp</dimen>
+    <string name="select_your_region">Select your region:</string>
+
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="question_mark">\?\?\?</string>
 
     <string-array name="titles">
+        <item>My Profile</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
         <item>News</item>
@@ -172,5 +175,10 @@
 
     <string name="watch_full_screen">Click to watch the video fullscreen.</string>
     <string name="click_to_update">If you cannot see the video, please update the app to latest version by clicking here.</string>
+    <string name="enter_username">Enter your summoner name:</string>
+    <string name="pleaseEnterYourSummonerName">Please enter your summoner name.</string>
+    <string name="pleaseSelectYourRegion">Please select your region.</string>
+    <string name="cannot_find_username">Could not find the user, please make sure you entered summoner name and region correctly</string>
+
 
 </resources>

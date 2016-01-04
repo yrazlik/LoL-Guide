@@ -13,6 +13,7 @@
     <string name="question_mark">\?\?\?</string>
 
     <string-array name="titles">
+        <item>Profilim</item>
         <item>Haftalık Ücretsizler</item>
         <item>İndirimler</item>
         <item>Haberler</item>
@@ -166,5 +167,13 @@
     <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın.</string>
 
     <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
+
+    <string name="enter_username">Kullanıcı adınızı girin:</string>
+    <string name="select_your_region">Bölgenizi seçin:</string>
+    <string name="pleaseEnterYourSummonerName">Lütfen kullanıcı adınızı giriniz.</string>
+    <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
+    <string name="cannot_find_username">Kullanıcı bulunamadı. Lütfen kullanıcı adını ve bölgeyi doğru girdiğinizden emin olun</string>
+
+
 
 </resources>

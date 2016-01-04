@@ -3,6 +3,7 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="titles">
+        <item>My Profile</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
         <item>News</item>
@@ -405,6 +406,9 @@
     <string name="buyucu">Mage</string>
     <string name="c">ç</string>
     <string name="cancel">Cancel</string>
+    <string name="cannot_find_username">Could not find the user, please make sure you entered
+        summoner name and region correctly
+    </string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.3.0/res/values/cast_strings.xml -->
     <eat-comment/>
     <string name="cast_notification_connected_message">Connected to <ns1:g id="name">%1$s</ns1:g></string>
@@ -414,7 +418,9 @@
     <eat-comment/>
     <string name="champion_sale">Champion Sale</string>
     <string name="chosenChampion">Champion:</string>
-    <string name="click_to_update">If you cannot see the video, please update the app to latest version by clicking here.</string>
+    <string name="click_to_update">If you cannot see the video, please update the app to latest
+        version by clicking here.
+    </string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
@@ -485,6 +491,7 @@
         registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
     </string>
     <string name="english">English</string>
+    <string name="enter_username">Enter your summoner name:</string>
     <string name="errortwitch">A connection error occured. Please try again.</string>
     <string name="essentialItems">Essential Items</string>
     <string name="explanation">Explanation</string>
@@ -552,6 +559,8 @@
     <string name="playerDetail">Summoner Detail</string>
     <string name="playerNotCurrentlyPlaying">This summoner is not currently in a game.</string>
     <string name="pleaseEnterSummonerName">Please enter a summoner name.</string>
+    <string name="pleaseEnterYourSummonerName">Please enter your summoner name.</string>
+    <string name="pleaseSelectYourRegion">Please select your region.</string>
     <string name="preferences_saved">Preferences Saved.</string>
     <string name="question_mark">\?\?\?</string>
     <string name="region_br">BR</string>
@@ -575,6 +584,7 @@
     <string name="select_category">Choose Category</string>
     <string name="select_language">Language:</string>
     <string name="select_region">Region:</string>
+    <string name="select_your_region">Select your region:</string>
     <string name="send">Send</string>
     <string name="settings">Settings</string>
     <string name="skin_sale">Skin Sale</string>
