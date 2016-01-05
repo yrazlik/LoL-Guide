@@ -17,6 +17,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
@@ -37,7 +38,7 @@ import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.responseclasses.RuneResponse;
 import com.yrazlik.loltr.responseclasses.StaticDataWithAltImagesResponse;
 import com.yrazlik.loltr.responseclasses.StatsResponse;
-import com.yrazlik.loltr.responseclasses.SummonerByNameResponse;
+import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
 
@@ -45,8 +46,10 @@ import org.apache.http.HttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ServiceRequest {
 
@@ -296,13 +299,17 @@ public class ServiceRequest {
             case Commons.STATS_REQUEST:
                 return gson.fromJson(response, StatsResponse.class);
             case Commons.SUMMONER_BY_NAME_REQUEST:
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    obj.length();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                Type mapType = new TypeToken<Map<String, SummonerInfo>>() {}.getType();
+                Map<String, SummonerInfo> map = gson.fromJson(response, mapType);
+
+                SummonerInfo summonerInfo = null;
+                for (Map.Entry<String, SummonerInfo> entry : map.entrySet())
+                {
+                    summonerInfo = entry.getValue();
+                    break;
                 }
-                return gson.fromJson(response, SummonerByNameResponse.class);
+
+                return summonerInfo;
             default:
                 return null;
         }

@@ -7,7 +7,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Items;
-import com.yrazlik.loltr.responseclasses.SummonerByNameResponse;
+import com.yrazlik.loltr.responseclasses.SummonerInfo;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -149,7 +149,7 @@ public class Commons {
 	public static ArrayList<Champion> allChampions;
 	public static ArrayList<Items> allItems;
     public static ArrayList<Item> allItemsNew;
-    public static SummonerByNameResponse summonerInfo;
+    public static SummonerInfo summonerInfo;
 	
 	
 	

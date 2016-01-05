@@ -17,9 +17,11 @@ import android.widget.Toast;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.responseclasses.SummonerByNameResponse;
+import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.service.ServiceRequest;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -68,7 +70,11 @@ public class ProfileFragment extends BaseFragment implements ResponseListener{
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");
-                    pathParams.add(usernameET.getText().toString());
+                    try {
+                        pathParams.add(URLEncoder.encode(usernameET.getText().toString(), "UTF-8").replace("+", "%20"));
+                    } catch (UnsupportedEncodingException e) {
+                        pathParams.add(usernameET.getText().toString());
+                    }
                     HashMap<String, String> queryParams = new HashMap<String, String>();
                     queryParams.put("api_key", Commons.API_KEY);
                     ServiceRequest.getInstance(getActivity()).makeSummonerByNameRequest(
@@ -105,28 +111,28 @@ public class ProfileFragment extends BaseFragment implements ResponseListener{
 
     }
 
-    private void saveSummonerInfoToSharedPrefs(SummonerByNameResponse response){
-    /*    if(response != null){
+    private void saveSummonerInfoToSharedPrefs(SummonerInfo response){
+        if(response != null){
             SharedPreferences prefs = getContext().getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
             prefs.edit().putString(Commons.LOL_TR_SUMMONER_NAME, response.getName()).commit();
             prefs.edit().putString(Commons.LOL_TR_SUMMONER_ID, response.getId() + "").commit();
             prefs.edit().putString(Commons.LOL_TR_PROFILE_ICON_ID, response.getProfileIconId() + "").commit();
             prefs.edit().putString(Commons.LOL_TR_SUMMONER_LEVEL, response.getSummonerLevel() + "").commit();
-        }*/
+        }
     }
 
     @Override
     public void onSuccess(Object response) {
-     /*   if(response instanceof SummonerByNameResponse){
-            SummonerByNameResponse summonerByNameResponse = (SummonerByNameResponse) response;
-            Commons.summonerInfo = new SummonerByNameResponse();
+        if(response instanceof SummonerInfo){
+            SummonerInfo summonerByNameResponse = (SummonerInfo) response;
+            Commons.summonerInfo = new SummonerInfo();
             Commons.summonerInfo.setName(summonerByNameResponse.getName());
             Commons.summonerInfo.setId(summonerByNameResponse.getId());
             Commons.summonerInfo.setProfileIconId(summonerByNameResponse.getProfileIconId());
             Commons.summonerInfo.setRevisionDate(summonerByNameResponse.getRevisionDate());
             Commons.summonerInfo.setSummonerLevel(summonerByNameResponse.getSummonerLevel());
             saveSummonerInfoToSharedPrefs(summonerByNameResponse);
-        }*/
+        }
     }
 
     @Override

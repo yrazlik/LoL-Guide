@@ -1,19 +1,19 @@
 package com.yrazlik.loltr.responseclasses;
 
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by yrazlik on 1/4/16.
  */
 public class SummonerByNameResponse {
 
-    private HashMap<String, SummonerInfoByName> response;
+    private Map<String, SummonerInfo> summonerInfo;
 
-    public HashMap<String, SummonerInfoByName> getResponse() {
-        return response;
+    public Map<String, SummonerInfo> getSummonerInfo() {
+        return summonerInfo;
     }
 
-    public void setResponse(HashMap<String, SummonerInfoByName> response) {
-        this.response = response;
+    public void setSummonerInfo(Map<String, SummonerInfo> summonerInfo) {
+        this.summonerInfo = summonerInfo;
     }
 }
