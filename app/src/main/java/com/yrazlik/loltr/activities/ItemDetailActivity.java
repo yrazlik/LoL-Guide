@@ -20,7 +20,7 @@ import com.yrazlik.loltr.data.DataContainer;
 import com.yrazlik.loltr.data.Gold;
 import com.yrazlik.loltr.data.Image;
 import com.yrazlik.loltr.data.Item;
-import com.yrazlik.loltr.responseclasses.Data;
+import com.yrazlik.loltr.data.Data;
 
 import java.util.ArrayList;
 

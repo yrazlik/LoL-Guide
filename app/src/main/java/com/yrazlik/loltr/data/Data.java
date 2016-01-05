@@ -1,4 +1,4 @@
-package com.yrazlik.loltr.responseclasses;
+package com.yrazlik.loltr.data;
 
 import com.yrazlik.loltr.data.Gold;
 import com.yrazlik.loltr.data.Image;

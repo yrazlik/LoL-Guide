@@ -1,5 +1,7 @@
 package com.yrazlik.loltr.responseclasses;
 
+import com.yrazlik.loltr.data.Data;
+
 import java.util.Map;
 
 /**

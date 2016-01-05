@@ -17,7 +17,7 @@ import com.yrazlik.loltr.data.LeagueDto;
 import com.yrazlik.loltr.data.PlayerStatsSummaryDto;
 import com.yrazlik.loltr.data.SummonerDto;
 import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.responseclasses.Entries;
+import com.yrazlik.loltr.data.Entries;
 import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.StatsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;

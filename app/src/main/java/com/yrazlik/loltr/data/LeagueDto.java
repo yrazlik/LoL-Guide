@@ -1,7 +1,5 @@
 package com.yrazlik.loltr.data;
 
-import com.yrazlik.loltr.responseclasses.Entries;
-
 import java.util.ArrayList;
 
 /**

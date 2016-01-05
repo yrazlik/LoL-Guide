@@ -40,6 +40,7 @@ import com.yrazlik.loltr.fragments.CountryFragment;
 import com.yrazlik.loltr.fragments.CostumeDiscountsFragment;
 import com.yrazlik.loltr.fragments.DiscountsFragment;
 import com.yrazlik.loltr.fragments.LiveChannelsFragment;
+import com.yrazlik.loltr.fragments.MatchHistoryFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.NewsFragment;
@@ -251,7 +252,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
                         @Override
                         public void run() {
-                            ProfileFragment pFragment = new ProfileFragment();
+                            MatchHistoryFragment pFragment = new MatchHistoryFragment();
                             ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.PROFILE_FRAGMENT);
                             ft.commitAllowingStateLoss();
                         }

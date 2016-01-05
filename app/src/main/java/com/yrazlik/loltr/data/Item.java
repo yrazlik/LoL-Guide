@@ -1,7 +1,5 @@
 package com.yrazlik.loltr.data;
 
-import com.yrazlik.loltr.responseclasses.Data;
-
 /**
  * Created by yrazlik on 8/6/15.
  */

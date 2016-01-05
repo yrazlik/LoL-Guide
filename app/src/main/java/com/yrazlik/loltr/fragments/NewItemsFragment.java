@@ -25,7 +25,7 @@ import com.yrazlik.loltr.adapters.ItemsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.responseclasses.Data;
+import com.yrazlik.loltr.data.Data;
 import com.yrazlik.loltr.responseclasses.ItemsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 

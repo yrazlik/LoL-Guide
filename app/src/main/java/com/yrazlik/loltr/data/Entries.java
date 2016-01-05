@@ -1,4 +1,4 @@
-package com.yrazlik.loltr.responseclasses;
+package com.yrazlik.loltr.data;
 
 /**
  * Created by yrazlik on 3/13/15.

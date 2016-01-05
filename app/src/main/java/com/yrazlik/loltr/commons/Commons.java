@@ -76,6 +76,7 @@ public class Commons {
     public static final int LEAGUE_INFO_REQUEST = 18;
     public static final int STATS_REQUEST = 19;
     public static final int SUMMONER_BY_NAME_REQUEST = 20;
+    public static final int RECENT_MATCHES_REQUEST = 21;
 
 
 
