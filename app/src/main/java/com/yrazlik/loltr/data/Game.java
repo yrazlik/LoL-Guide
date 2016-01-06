@@ -1,12 +1,15 @@
 package com.yrazlik.loltr.data;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by yrazlik on 1/5/16.
  */
-public class Game {
+public class Game implements Serializable{
+
+    private static final long serialVersionUID = 1L;
 
     private int championId;
     private long createDate;

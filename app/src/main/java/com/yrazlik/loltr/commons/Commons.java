@@ -79,6 +79,8 @@ public class Commons {
     public static final int SUMMONER_BY_NAME_REQUEST = 20;
     public static final int RECENT_MATCHES_REQUEST = 21;
     public static final int SUMMONER_SPELLS_REQUEST = 22;
+    public static final int SUMMONER_NAMES_REQUEST = 23;
+
 
 
 
@@ -131,6 +133,7 @@ public class Commons {
     public static final String CHAMPION_DETAILS_FRAGMENT = "com.yrazlik.loltr.fragments.championdetailsfragment";
     public static final String ITEM_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.itemdetailfragment";
     public static final String CHAMPION_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.championskinsfragment";
+    public static final String MATCH_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.matchdetailfragment";
 
     public static final String TAG_SETTINGS_FRAGMENT = "com.yrazlik.loltr.fragments.settingsfragmenttag";
 

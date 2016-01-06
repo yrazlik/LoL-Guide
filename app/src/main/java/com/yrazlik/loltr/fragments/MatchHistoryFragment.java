@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.activities.MatchDetailActivity;
 import com.yrazlik.loltr.adapters.MatchHistoryAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Game;
@@ -21,15 +23,18 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
+import java.util.List;
+
 /**
  * Created by yrazlik on 1/5/16.
  */
 public class MatchHistoryFragment extends BaseFragment implements ResponseListener{
 
-    private String summonerId = "3980715";
+    private long summonerId = 3980715;
     private String region = "tr";
     private ListView matchHistoryLV;
     private MatchHistoryAdapter adapter;
+    private List<Game> games;
 
 
     @Nullable
@@ -41,12 +46,32 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Game game = adapter.getItem(position);
+              /*  MatchDetailFragment matchDetailFragment = new MatchDetailFragment();
+                matchDetailFragment.setGame(game);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_BOTTOM_WITH_POPSTACK);
+                ft.replace(R.id.content_frame, matchDetailFragment).addToBackStack(Commons.MATCH_DETAIL_FRAGMENT).commit();*/
+
+                Intent i = new Intent(getContext(), MatchDetailActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable(MatchDetailActivity.EXTRA_GAME, game);
+                b.putLong(MatchDetailActivity.EXTRA_SUMMONER_ID, summonerId);
+                b.putString(MatchDetailActivity.EXTRA_REGION, region);
+                i.putExtras(b);
+                startActivity(i);
             }
         });
 
-        ServiceRequest.getInstance(getActivity()).makeGetRecentMatchesRequest(
-                Commons.RECENT_MATCHES_REQUEST, region, summonerId, null, MatchHistoryFragment.this);
+        if(games == null || games.size() == 0) {
+            ServiceRequest.getInstance(getActivity()).makeGetRecentMatchesRequest(
+                    Commons.RECENT_MATCHES_REQUEST, region, summonerId + "", null, MatchHistoryFragment.this);
+        }else{
+            adapter = new MatchHistoryAdapter(getContext(), R.layout.list_row_match_history, games, summonerId);
+            matchHistoryLV.setAdapter(adapter);
+        }
 
+        reportGoogleAnalytics();
         return  v;
     }
 
@@ -60,9 +85,12 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
     @Override
     public void onSuccess(Object response) {
         if(response instanceof RecentMatchesResponse){
-            RecentMatchesResponse recentMatchesResponse = (RecentMatchesResponse) response;
-            adapter = new MatchHistoryAdapter(getContext(), R.layout.list_row_match_history, recentMatchesResponse.getGames(), recentMatchesResponse.getSummonerId());
-            matchHistoryLV.setAdapter(adapter);
+            if(response != null) {
+                RecentMatchesResponse recentMatchesResponse = (RecentMatchesResponse) response;
+                games = recentMatchesResponse.getGames();
+                adapter = new MatchHistoryAdapter(getContext(), R.layout.list_row_match_history, recentMatchesResponse.getGames(), recentMatchesResponse.getSummonerId());
+                matchHistoryLV.setAdapter(adapter);
+            }
         }
     }
 

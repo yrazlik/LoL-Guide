@@ -20,8 +20,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.SummonerNames;
 import com.yrazlik.loltr.data.SummonerSpell;
-import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.requestclasses.Request;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
@@ -43,6 +43,8 @@ import com.yrazlik.loltr.responseclasses.StaticDataWithAltImagesResponse;
 import com.yrazlik.loltr.responseclasses.StatsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
+import com.yrazlik.loltr.responseclasses.SummonerNamesResponse;
+import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
 
 import org.apache.http.HttpResponse;
@@ -141,7 +143,7 @@ public class ServiceRequest {
 		}
 	}
 
-    public void makeGetRequest(int requestID, ArrayList<String> pathParams, HashMap<String, String> queryParams, Object requestData,
+    public void makeGetRequest(final int requestID, ArrayList<String> pathParams, HashMap<String, String> queryParams, Object requestData,
                                final ResponseListener listener){
         final Request request = new Request(requestID, pathParams, queryParams);
         String urlString = getServiceEndpointUrl(request.getRequestID()) + request.getPathParametersString() + request.getQueryParametersString();
@@ -156,24 +158,28 @@ public class ServiceRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideLoading();
-                 NetworkResponse response = error.networkResponse;
-                if(response != null && response.data != null){
-                    String json = new String(response.data);
-                    json = trimMessage(json, "message");
-                    listener.onFailure(json);
-                }
-
-                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                    String json = new String(getContext().getResources().getString(R.string.networkError));
-                    listener.onFailure(json);
-                } else if (error instanceof AuthFailureError) {
-                    //TODO
-                } else if (error instanceof ServerError) {
-                    //TODO
-                } else if (error instanceof NetworkError) {
-                    //TODO
-                } else if (error instanceof ParseError) {
-                    //TODO
+                NetworkResponse response = error.networkResponse;
+                if ((requestID == Commons.ALL_CHAMPIONS_REQUEST) || (requestID == Commons.SUMMONER_SPELLS_REQUEST) || (requestID == Commons.SUMMONER_NAMES_REQUEST)) {
+                    listener.onFailure(requestID);
+                } else {
+                    if (response != null && response.data != null) {
+                        String json = new String(response.data);
+                        json = trimMessage(json, "message");
+                        listener.onFailure(json);
+                    } else {
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            String json = new String(getContext().getResources().getString(R.string.networkError));
+                            listener.onFailure(json);
+                        } else if (error instanceof AuthFailureError) {
+                            //TODO
+                        } else if (error instanceof ServerError) {
+                            //TODO
+                        } else if (error instanceof NetworkError) {
+                            //TODO
+                        } else if (error instanceof ParseError) {
+                            //TODO
+                        }
+                    }
                 }
             }
         }){
@@ -257,6 +263,69 @@ public class ServiceRequest {
         pathParams.add("by-summoner");
         pathParams.add(summonerId);
         pathParams.add("recent");
+
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("api_key", Commons.API_KEY);
+
+        final Request request = new Request(requestID, pathParams, queryParams);
+        String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
+        StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                hideLoading();
+                Object parsedResponse = parseResponse(request.getRequestID(), response);
+                listener.onSuccess(parsedResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideLoading();
+               /* NetworkResponse response = error.networkResponse;
+                if(response != null && response.data != null){
+                    String json = new String(response.data);
+                    json = trimMessage(json, "message");
+                    listener.onFailure(json);
+                }*/
+
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    String json = new String(getContext().getResources().getString(R.string.networkError));
+                    listener.onFailure(json);
+                } else if (error instanceof AuthFailureError) {
+                    listener.onFailure(requestID);
+                } else if (error instanceof ServerError) {
+                    listener.onFailure(requestID);
+                } else if (error instanceof NetworkError) {
+                    listener.onFailure(requestID);
+                } else if (error instanceof ParseError) {
+                    listener.onFailure(requestID);
+                }
+            }
+        }){
+            @Override
+            public void addMarker(String tag) {
+                super.addMarker(tag);
+            }
+        };
+
+        getReq.setShouldCache(true);
+        addToRequestQueue(getReq, TAG_GET_REQUEST);
+        Dialog progress = showLoading(getContext());
+        if(progress != null){
+            try {
+                progress.show();
+            }catch (Exception ignored){}
+        }
+    }
+
+    public void makeGetSummonerIdsRequest(final int requestID, String region, String summonerIds, Object requestData,
+                                            final ResponseListener listener){
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("api");
+        pathParams.add("lol");
+        pathParams.add(region);
+        pathParams.add("v1.4");
+        pathParams.add("summoner");
+        pathParams.add(summonerIds);
 
         HashMap<String, String> queryParams = new HashMap<String, String>();
         queryParams.put("api_key", Commons.API_KEY);
@@ -417,6 +486,62 @@ public class ServiceRequest {
                     return  null;
                 }
                 return summonerSpellsResponse;
+            case Commons.SUMMONER_NAMES_REQUEST:
+                SummonerNamesResponse summonerNamesResponse = new SummonerNamesResponse();
+                summonerNamesResponse.setSummonerNames(new ArrayList<SummonerNames>());
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    Iterator<?> keys = obj.keys();
+                    if(keys != null) {
+                        while (keys.hasNext()) {
+                            String key = (String) keys.next();
+                            if(key != null){
+                                JSONObject dataJson = null;
+                                try {
+                                    dataJson = (JSONObject) obj.get(key);
+                                    if(dataJson != null) {
+                                        Iterator<?> dataKeys = dataJson.keys();
+                                        if (dataKeys != null) {
+                                            SummonerNames summoner = new SummonerNames();
+                                            while (dataKeys.hasNext()) {
+                                                String dataKey = (String) dataKeys.next();
+                                                if (dataKey != null) {
+                                                    if(dataKey.equalsIgnoreCase("id")){
+                                                        if(dataJson.get(dataKey) != null && dataJson.get(dataKey) instanceof Long) {
+                                                            Long id = (Long) dataJson.get(dataKey);
+                                                            summoner.setId(id);
+                                                        }else if(dataJson.get(dataKey) != null && dataJson.get(dataKey) instanceof Integer) {
+                                                            Integer id = (Integer) dataJson.get(dataKey);
+                                                            summoner.setId(id);
+                                                        }
+                                                    }else if(dataKey.equalsIgnoreCase("name")){
+                                                        String name = (String) dataJson.get(dataKey);
+                                                        summoner.setName(name);
+                                                    }else if(dataKey.equalsIgnoreCase("profileIconId")){
+                                                        int profileIconId = (int) dataJson.get(dataKey);
+                                                        summoner.setProfileIconId(profileIconId);
+                                                    }else if(dataKey.equalsIgnoreCase("summonerLevel")){
+                                                        if(dataJson.get(dataKey) != null && dataJson.get(dataKey) instanceof Long) {
+                                                            Long summonerLevel = (Long) dataJson.get(dataKey);
+                                                            summoner.setSummonerLevel(summonerLevel);
+                                                        }else if(dataJson.get(dataKey) != null && dataJson.get(dataKey) instanceof Integer) {
+                                                            Integer summonerLevel = (Integer) dataJson.get(dataKey);
+                                                            summoner.setSummonerLevel(summonerLevel);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            summonerNamesResponse.getSummonerNames().add(summoner);
+                                        }
+                                    }
+                                } catch (JSONException ignored) {}
+                            }
+                        }
+                    }
+                    return summonerNamesResponse;
+                } catch (JSONException e) {
+                    return null;
+                }
             default:
                 return null;
         }

@@ -1,9 +1,14 @@
 package com.yrazlik.loltr.data;
 
+import java.io.Serializable;
+
 /**
  * Created by yrazlik on 1/5/16.
  */
-public class Stats {
+public class Stats implements Serializable{
+
+    private static final long serialVersionUID = 3L;
+
     private int assists;
     private int barracksKilled;
     private int championsKilled;

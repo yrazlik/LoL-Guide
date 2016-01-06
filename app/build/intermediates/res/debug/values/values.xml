@@ -610,6 +610,7 @@
     <string name="spell_vamp">Spell Vamp</string>
     <string name="sr6">6 vs. 6</string>
     <string name="startingItems">Starting Items</string>
+    <string name="statistics">STATISTICS</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>

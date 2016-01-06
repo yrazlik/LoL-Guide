@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
@@ -19,6 +18,7 @@ import com.yrazlik.loltr.data.Game;
 import com.yrazlik.loltr.data.Stats;
 import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.FadeInNetworkImageView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -59,7 +59,7 @@ public class MatchHistoryAdapter extends ArrayAdapter<Game>{
             holder = new ViewHolder();
 
             holder.winLoseLabel = (RelativeLayout) convertView.findViewById(R.id.winLoseLabel);
-            holder.champIV = (NetworkImageView) convertView.findViewById(R.id.champIV);
+            holder.champIV = (FadeInNetworkImageView) convertView.findViewById(R.id.champIV);
             holder.levelTV = (TextView) convertView.findViewById(R.id.levelTV);
             holder.textContainer = (RelativeLayout) convertView.findViewById(R.id.textContainer);
             holder.matchInfoContainer = (RelativeLayout) convertView.findViewById(R.id.matchInfoContainer);
@@ -74,18 +74,18 @@ public class MatchHistoryAdapter extends ArrayAdapter<Game>{
             holder.matchDateTV = (TextView) convertView.findViewById(R.id.matchDateTV);
             holder.separator = (View) convertView.findViewById(R.id.separator);
             holder.spellsContainer = (RelativeLayout) convertView.findViewById(R.id.spellsContainer);
-            holder.spell1 = (NetworkImageView) convertView.findViewById(R.id.spell1);
-            holder.spell2 = (NetworkImageView) convertView.findViewById(R.id.spell2);
+            holder.spell1 = (FadeInNetworkImageView) convertView.findViewById(R.id.spell1);
+            holder.spell2 = (FadeInNetworkImageView) convertView.findViewById(R.id.spell2);
             holder.itemsContainer = (RelativeLayout) convertView.findViewById(R.id.itemsContainer);
             holder.itemsSV = (HorizontalScrollView) convertView.findViewById(R.id.itemsSV);
             holder.itemsRL = (RelativeLayout) convertView.findViewById(R.id.itemsRL);
-            holder.item0 = (NetworkImageView) convertView.findViewById(R.id.item0);
-            holder.item1 = (NetworkImageView) convertView.findViewById(R.id.item1);
-            holder.item2 = (NetworkImageView) convertView.findViewById(R.id.item2);
-            holder.item3 = (NetworkImageView) convertView.findViewById(R.id.item3);
-            holder.item4 = (NetworkImageView) convertView.findViewById(R.id.item4);
-            holder.item5 = (NetworkImageView) convertView.findViewById(R.id.item5);
-            holder.item6 = (NetworkImageView) convertView.findViewById(R.id.item6);
+            holder.item0 = (FadeInNetworkImageView) convertView.findViewById(R.id.item0);
+            holder.item1 = (FadeInNetworkImageView) convertView.findViewById(R.id.item1);
+            holder.item2 = (FadeInNetworkImageView) convertView.findViewById(R.id.item2);
+            holder.item3 = (FadeInNetworkImageView) convertView.findViewById(R.id.item3);
+            holder.item4 = (FadeInNetworkImageView) convertView.findViewById(R.id.item4);
+            holder.item5 = (FadeInNetworkImageView) convertView.findViewById(R.id.item5);
+            holder.item6 = (FadeInNetworkImageView) convertView.findViewById(R.id.item6);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -172,7 +172,7 @@ public class MatchHistoryAdapter extends ArrayAdapter<Game>{
                 }
 
                 holder.levelTV.setText(stats.getLevel() + "");
-                holder.kdaTV.setText(stats.getChampionsKilled() + " / " + stats.getAssists() + " / " + stats.getNumDeaths());
+                holder.kdaTV.setText(stats.getChampionsKilled() + " / " + stats.getNumDeaths() + " / " + stats.getAssists());
                 holder.goldTV.setText(format(stats.getGoldEarned()));
                 String timeString = convertSecondsToHoursMinutes(stats.getTimePlayed());
                 if(timeString != null){
@@ -241,7 +241,7 @@ public class MatchHistoryAdapter extends ArrayAdapter<Game>{
 
     static class ViewHolder {
         private RelativeLayout winLoseLabel;
-        private NetworkImageView champIV;
+        private FadeInNetworkImageView champIV;
         private TextView levelTV;
         private RelativeLayout textContainer;
         private RelativeLayout matchInfoContainer;
@@ -256,18 +256,18 @@ public class MatchHistoryAdapter extends ArrayAdapter<Game>{
         private TextView matchDateTV;
         private View separator;
         private RelativeLayout spellsContainer;
-        private NetworkImageView spell1;
-        private NetworkImageView spell2;
+        private FadeInNetworkImageView spell1;
+        private FadeInNetworkImageView spell2;
         private RelativeLayout itemsContainer;
         private HorizontalScrollView itemsSV;
         private RelativeLayout itemsRL;
-        private NetworkImageView item0;
-        private NetworkImageView item1;
-        private NetworkImageView item2;
-        private NetworkImageView item3;
-        private NetworkImageView item4;
-        private NetworkImageView item5;
-        private NetworkImageView item6;
+        private FadeInNetworkImageView item0;
+        private FadeInNetworkImageView item1;
+        private FadeInNetworkImageView item2;
+        private FadeInNetworkImageView item3;
+        private FadeInNetworkImageView item4;
+        private FadeInNetworkImageView item5;
+        private FadeInNetworkImageView item6;
 
     }
 

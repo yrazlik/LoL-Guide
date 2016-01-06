@@ -1,13 +1,24 @@
 package com.yrazlik.loltr.data;
 
+import java.io.Serializable;
+
 /**
  * Created by yrazlik on 1/5/16.
  */
-public class Player {
+public class Player implements Serializable{
+
+    private static final long serialVersionUID = 2L;
+
 
     private int championId;
     private long summonerId;
     private int teamId;
+
+    public Player(int championId, long summonerId, int teamId){
+        this.championId = championId;
+        this.summonerId = summonerId;
+        this.teamId = teamId;
+    }
 
     public int getChampionId() {
         return championId;

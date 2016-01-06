@@ -208,5 +208,7 @@
     <string name="bot">Game Against AI</string>
     <string name="unknown">Unknown</string>
 
+    <string name="statistics">STATISTICS</string>
+
 
 </resources>

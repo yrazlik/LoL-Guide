@@ -566,13 +566,18 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         @Override
         public void onFailure (Object response){
-            if(response instanceof AllChampionsResponse){
-                if(allchampionsRequestCount < 3){
-                    makeGetAllChampionsRequest();
-                }
-            }else if(response instanceof  SummonerSpellsResponse){
-                if(allSpellsRequestCount < 3){
-                    makeGetAllSpellsRequest();
+            if(response instanceof Integer){
+                Integer requestID = (Integer) response;
+                if(requestID == Commons.ALL_CHAMPIONS_REQUEST) {
+                    if (allchampionsRequestCount < 3) {
+                        allchampionsRequestCount++;
+                        makeGetAllChampionsRequest();
+                    }
+                }else if(requestID == Commons.SUMMONER_SPELLS_REQUEST){
+                    if(allSpellsRequestCount < 3){
+                        allSpellsRequestCount++;
+                        makeGetAllSpellsRequest();
+                    }
                 }
             }
         }
