@@ -123,7 +123,6 @@ public class MatchDetailFragment extends BaseFragment{
         team2LL = (LinearLayout) convertView.findViewById(R.id.team2LL);
         statisticsContainer = (RelativeLayout) convertView.findViewById(R.id.statisticsContainer);
         statisticsTV = (TextView) convertView.findViewById(R.id.statisticsTV);
-        statisticsLL = (LinearLayout) convertView.findViewById(R.id.statisticsLL);
 
         if(game != null){
             if(game != null){

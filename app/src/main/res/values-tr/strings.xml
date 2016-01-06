@@ -204,5 +204,21 @@
 
     <string name="statistics">İSTATİSTİKLER</string>
 
-
+    <string name="totalDamageDealt">Vurulan Hasar</string>
+    <string name="totalDamageTaken">Alınan Hasar</string>
+    <string name="goldEarned">Kazanılan Altın</string>
+    <string name="totalHeal">İyileştirmeler</string>
+    <string name="lagestKillingSpree">En Büyük Katliam</string>
+    <string name="largestMultiKill">En Büyük Çoklu Öldürme</string>
+    <string name="magicDamageDealtPlayer">Verilen Büyü Hasarı</string>
+    <string name="physicalDamageDealtPlayer">Verilen Fiziksel Hasar</string>
+    <string name="minionsKilled">Öldürülen Minyonlar</string>
+    <string name="neutralMinionsKilled">Öldürülen Tarafsız Canavarlar</string>
+    <string name="magicDamageTaken">Alınan Büyü Hasarı</string>
+    <string name="physicalDamageTaken">Alınan Fiziksel Hasar</string>
+    <string name="totalTimeCrowdControlDealt">Kitle Kontrol Vuruşu</string>
+    <string name="turretsKilled">Yıkılan Kuleler</string>
+    <string name="wardPlaced">Yerleştirilen Totemler</string>
+    <string name="wardKilled">Kesilen Totemler</string>
+    <string name="ipEarned">Kazanılan Ip</string>
 </resources>

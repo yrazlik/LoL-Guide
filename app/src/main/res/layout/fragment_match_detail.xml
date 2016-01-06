@@ -1,318 +1,335 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/parent"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp">
-
-        <RelativeLayout
-            android:id="@+id/winLoseLabel"
-            android:layout_width="8dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:background="@color/discount_green">
-        </RelativeLayout>
-
-        <com.yrazlik.loltr.view.FadeInNetworkImageView
-            android:id="@+id/champIV"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignBottom="@+id/winLoseLabel"
-            android:layout_alignTop="@+id/winLoseLabel"
-            android:layout_toRightOf="@+id/winLoseLabel"
-            android:background="@drawable/question_mark"/>
-
-        <TextView
-            android:id="@+id/levelTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/champIV"
-            android:layout_alignRight="@+id/champIV"
-            android:layout_marginBottom="2dp"
-            android:layout_marginRight="2dp"
-            android:textColor="@color/gray"
-            android:textSize="12dp"/>
-
-        <RelativeLayout
-            android:id="@+id/textContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/champIV"
-            android:minHeight="60dp">
-
-            <RelativeLayout
-                android:id="@+id/matchInfoContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@+id/goldContainer">
-                <TextView
-                    android:id="@+id/matchTypeTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:textSize="14dp"/>
-
-                <TextView
-                    android:id="@+id/matchModeTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/matchTypeTV"
-                    android:layout_marginTop="2dp"
-                    android:singleLine="true"
-                    android:textSize="11dp"
-                    android:textStyle="italic"/>
-
-                <TextView
-                    android:id="@+id/kdaTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/matchModeTV"
-                    android:layout_marginTop="4dp"
-                    android:singleLine="true"
-                    android:textSize="14dp"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/goldContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginRight="7dp"
-                android:layout_toLeftOf="@+id/timeContainer">
-
-                <ImageView
-                    android:id="@+id/goldIV"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/coins"/>
-
-                <TextView
-                    android:id="@+id/goldTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/goldIV"
-                    android:textSize="11dp"/>
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/timeContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:id="@+id/matchTimeTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="14dp"/>
-                <TextView
-                    android:id="@+id/matchDateTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/matchTimeTV"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="11dp"/>
-
-            </RelativeLayout>
-
-
-        </RelativeLayout>
-
-        <View
-            android:id="@+id/separator"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/textContainer"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray">
-
-        </View>
-
-        <RelativeLayout
-            android:id="@+id/spellsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/winLoseLabel"
-            android:layout_alignRight="@+id/champIV"
-            android:layout_below="@+id/separator"
-            android:layout_marginTop="10dp">
-
-            <com.yrazlik.loltr.view.FadeInNetworkImageView
-                android:id="@+id/spell1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="2dp"/>
-
-            <com.yrazlik.loltr.view.FadeInNetworkImageView
-                android:id="@+id/spell2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"/>
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/itemsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/separator"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/spellsContainer">
-
-            <HorizontalScrollView
-                android:id="@+id/itemsSV"
+<RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:id="@+id/itemsRL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <com.yrazlik.loltr.view.FadeInNetworkImageView
-                        android:id="@+id/item0"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginLeft="2dp"/>
+                android:layout_height="match_parent"
+                android:visibility="visible">
 
-                    <com.yrazlik.loltr.view.FadeInNetworkImageView
-                        android:id="@+id/item1"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toRightOf="@+id/item0"/>
+    <ProgressBar android:id="@+id/progress"
+                 android:layout_width="60dp"
+                 android:layout_height="60dp"
+                 android:layout_centerInParent="true"
+                 android:visibility="visible">
+    </ProgressBar>
 
-                    <com.yrazlik.loltr.view.FadeInNetworkImageView
-                        android:id="@+id/item2"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toRightOf="@+id/item1"/>
-                    <com.yrazlik.loltr.view.FadeInNetworkImageView
-                        android:id="@+id/item3"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toRightOf="@+id/item2"/>
-                    <com.yrazlik.loltr.view.FadeInNetworkImageView
-                        android:id="@+id/item4"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toRightOf="@+id/item3"/>
-                    <com.yrazlik.loltr.view.FadeInNetworkImageView
-                        android:id="@+id/item5"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toRightOf="@+id/item4"/>
-                    <com.yrazlik.loltr.view.FadeInNetworkImageView
-                        android:id="@+id/item6"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toRightOf="@+id/item5"/>
-                </RelativeLayout>
-            </HorizontalScrollView>
+    <ScrollView
+        android:id="@+id/parent"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp">
 
-        <LinearLayout
-            android:id="@+id/teamsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/itemsContainer"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            <RelativeLayout
+                android:id="@+id/winLoseLabel"
+                android:layout_width="8dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:background="@color/discount_green">
+            </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/team1LL"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="12">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:textSize="15dp"
-                    android:text="@string/team1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/teamsSeparator"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/team2LL"
-                android:layout_width="2dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:textSize="15dp"
-                    android:text="@string/team2"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/statisticsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/teamsContainer"
-            android:layout_marginTop="15dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            <com.yrazlik.loltr.view.FadeInNetworkImageView
+                android:id="@+id/champIV"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignBottom="@+id/winLoseLabel"
+                android:layout_alignTop="@+id/winLoseLabel"
+                android:layout_toRightOf="@+id/winLoseLabel"
+                android:background="@drawable/question_mark"/>
 
             <TextView
-                android:id="@+id/statisticsTV"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/statistics" android:textSize="14dp"/>
+                android:id="@+id/levelTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/champIV"
+                android:layout_alignRight="@+id/champIV"
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/gray"
+                android:textSize="12dp"/>
 
-            <LinearLayout
-                android:id="@+id/statisticsLL"
+            <RelativeLayout
+                android:id="@+id/textContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/champIV"
+                android:minHeight="60dp">
+
+                <RelativeLayout
+                    android:id="@+id/matchInfoContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@+id/goldContainer">
+                    <TextView
+                        android:id="@+id/matchTypeTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/matchModeTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/matchTypeTV"
+                        android:layout_marginTop="2dp"
+                        android:singleLine="true"
+                        android:textSize="11dp"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:id="@+id/kdaTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/matchModeTV"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:textSize="14dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/goldContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_toLeftOf="@+id/timeContainer">
+
+                    <ImageView
+                        android:id="@+id/goldIV"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/coins"/>
+
+                    <TextView
+                        android:id="@+id/goldTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/goldIV"
+                        android:textSize="11dp"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/timeContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/matchTimeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="14dp"/>
+                    <TextView
+                        android:id="@+id/matchDateTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/matchTimeTV"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="11dp"/>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/textContainer"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray">
+
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/spellsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/winLoseLabel"
+                android:layout_alignRight="@+id/champIV"
+                android:layout_below="@+id/separator"
+                android:layout_marginTop="10dp">
+
+                <com.yrazlik.loltr.view.FadeInNetworkImageView
+                    android:id="@+id/spell1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="2dp"/>
+
+                <com.yrazlik.loltr.view.FadeInNetworkImageView
+                    android:id="@+id/spell2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/itemsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/separator"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/spellsContainer">
+
+                <HorizontalScrollView
+                    android:id="@+id/itemsSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:id="@+id/itemsRL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.yrazlik.loltr.view.FadeInNetworkImageView
+                            android:id="@+id/item0"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="2dp"/>
+
+                        <com.yrazlik.loltr.view.FadeInNetworkImageView
+                            android:id="@+id/item1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_toRightOf="@+id/item0"/>
+
+                        <com.yrazlik.loltr.view.FadeInNetworkImageView
+                            android:id="@+id/item2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_toRightOf="@+id/item1"/>
+                        <com.yrazlik.loltr.view.FadeInNetworkImageView
+                            android:id="@+id/item3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_toRightOf="@+id/item2"/>
+                        <com.yrazlik.loltr.view.FadeInNetworkImageView
+                            android:id="@+id/item4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_toRightOf="@+id/item3"/>
+                        <com.yrazlik.loltr.view.FadeInNetworkImageView
+                            android:id="@+id/item5"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_toRightOf="@+id/item4"/>
+                        <com.yrazlik.loltr.view.FadeInNetworkImageView
+                            android:id="@+id/item6"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_toRightOf="@+id/item5"/>
+                    </RelativeLayout>
+                </HorizontalScrollView>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/teamsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemsContainer"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <LinearLayout
+                    android:id="@+id/team1LL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="12">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="15dp"
+                        android:text="@string/team1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/teamsSeparator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/team2LL"
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="15dp"
+                        android:text="@string/team2"/>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:id="@+id/statisticsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/teamsContainer"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/statisticsTV"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/statistics" android:textSize="14dp"/>
+
+                <ListView
+                    android:id="@+id/statisticsLV"
+                    android:layout_below="@+id/statisticsTV"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:scrollbars="none"
+                    android:layout_height="450dp">
+
+                </ListView>
+
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </ScrollView>
 
-</ScrollView>
+</RelativeLayout>

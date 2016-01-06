@@ -130,17 +130,21 @@
     <string name="g">ğ</string>
     <string name="general">Genel Bakış</string>
     <string name="gold">Altın</string>
+    <string name="goldEarned">Kazanılan Altın</string>
     <string name="gold_give">Altın Veren</string>
     <string name="health">Can</string>
     <string name="health_regeneration">Can Yenileme</string>
     <string name="hello">Hello</string>
     <string name="hello_world">Hello world!</string>
     <string name="i">ı</string>
+    <string name="ipEarned">Kazanılan Ip</string>
     <string name="itemDetail">Eşya Detayı</string>
     <string name="itemFrom">Bu Eşyayı Oluşturmak İçin Gerekli Eşyalar</string>
     <string name="itemSearchHint">Bir eşya ismi girin...</string>
     <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
     <string name="kingporo">Poro Kralı</string>
+    <string name="lagestKillingSpree">En Büyük Katliam</string>
+    <string name="largestMultiKill">En Büyük Çoklu Öldürme</string>
     <string name="league">Lig</string>
     <string name="leagueInfo">Lig Bilgisi</string>
     <string name="legend">Efsane</string>
@@ -149,6 +153,8 @@
     <string name="lvl">Lvl.</string>
     <string name="mage">Mage</string>
     <string name="magic">Büyü</string>
+    <string name="magicDamageDealtPlayer">Verilen Büyü Hasarı</string>
+    <string name="magicDamageTaken">Alınan Büyü Hasarı</string>
     <string name="magic_penet">Büyü Nüfuzu</string>
     <string name="magic_resistance">Büyü Direnci</string>
     <string name="mana">Mana</string>
@@ -158,6 +164,7 @@
     <string name="matchInfo">Maç Bilgisi</string>
     <string name="matchTime">Maç Süresi</string>
     <string name="menu">Menü</string>
+    <string name="minionsKilled">Öldürülen Minyonlar</string>
     <string name="movement">Hareket Hızı</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-tr/values-tr.xml -->
     <eat-comment/>
@@ -170,6 +177,7 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values-tr/strings.xml -->
     <eat-comment/>
     <string name="networkError">Lütfen internet bağlantınızı kontrol ediniz.</string>
+    <string name="neutralMinionsKilled">Öldürülen Tarafsız Canavarlar</string>
     <string name="nightmare">Ölümcül Felaket Botları</string>
     <string name="nisanci">Nisancı</string>
     <string name="no">Hayır</string>
@@ -186,6 +194,8 @@
     <string name="oneforall">Birimiz Hepimiz İçin</string>
     <string name="others">Diğerleri</string>
     <string name="passive">Pasif</string>
+    <string name="physicalDamageDealtPlayer">Verilen Fiziksel Hasar</string>
+    <string name="physicalDamageTaken">Alınan Fiziksel Hasar</string>
     <string name="play">Oynat</string>
     <string name="player">Oyuncu:</string>
     <string name="playerDetail">Oyuncu Detayı</string>
@@ -236,8 +246,13 @@
     <string name="tank">Tank</string>
     <string name="team1">TAKIM 1</string>
     <string name="team2">TAKIM 2</string>
+    <string name="totalDamageDealt">Vurulan Hasar</string>
+    <string name="totalDamageTaken">Alınan Hasar</string>
+    <string name="totalHeal">İyileştirmeler</string>
+    <string name="totalTimeCrowdControlDealt">Kitle Kontrol Vuruşu</string>
     <string name="turkey">Türkiye</string>
     <string name="turkish">Türkçe</string>
+    <string name="turretsKilled">Yıkılan Kuleler</string>
     <string name="tutorial">Eğitim</string>
     <string name="tutorial_game">Eğitim Oyunu</string>
     <string name="u">ü</string>
@@ -251,6 +266,8 @@
     <string msgid="4184147110658930238" name="wallet_buy_button_place_holder">"Google ile satın al"</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values-tr/strings.xml -->
     <eat-comment/>
+    <string name="wardKilled">Kesilen Totemler</string>
+    <string name="wardPlaced">Yerleştirilen Totemler</string>
     <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın.</string>
     <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
     <string name="yes">Evet</string>

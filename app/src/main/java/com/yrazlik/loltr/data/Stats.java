@@ -30,6 +30,7 @@ public class Stats implements Serializable{
     private int itemsPurchased;
     private int killingSprees;
     private int largestCriticalStrike;
+    private int largestKillingSpree;
     private int largestMultiKill;
     private int legendaryItemsCreated;
     private int level;
@@ -86,6 +87,7 @@ public class Stats implements Serializable{
     private int wardKilled;
     private int wardPlaced;
     private boolean win;
+    private int ipEarned;
 
     public int getAssists() {
         return assists;
@@ -701,5 +703,21 @@ public class Stats implements Serializable{
 
     public void setWin(boolean win) {
         this.win = win;
+    }
+
+    public int getLargestKillingSpree() {
+        return largestKillingSpree;
+    }
+
+    public void setLargestKillingSpree(int largestKillingSpree) {
+        this.largestKillingSpree = largestKillingSpree;
+    }
+
+    public int getIpEarned() {
+        return ipEarned;
+    }
+
+    public void setIpEarned(int ipEarned) {
+        this.ipEarned = ipEarned;
     }
 }

@@ -215,5 +215,22 @@
 
     <string name="statistics">STATISTICS</string>
 
+    <string name="totalDamageDealt">Total Damage Dealt</string>
+    <string name="totalDamageTaken">Total Damage Taken</string>
+    <string name="goldEarned">Gold Earned</string>
+    <string name="totalHeal">Total Heal</string>
+    <string name="lagestKillingSpree">Largest Killing Spree</string>
+    <string name="largestMultiKill">Largest MultiKill</string>
+    <string name="magicDamageDealtPlayer">Magic Damage Dealt</string>
+    <string name="physicalDamageDealtPlayer">Physical Damage Dealt</string>
+    <string name="minionsKilled">Minions Killed</string>
+    <string name="neutralMinionsKilled">Neutral Minions Killed</string>
+    <string name="magicDamageTaken">Magic Damage Taken</string>
+    <string name="physicalDamageTaken">Physical Damage Taken</string>
+    <string name="totalTimeCrowdControlDealt">Total Time Crowd Control Dealt</string>
+    <string name="turretsKilled">Turrets Killed</string>
+    <string name="wardPlaced">Ward Placed</string>
+    <string name="wardKilled">Ward Killed</string>
+    <string name="ipEarned">Ip Earned</string>
 
 </resources>

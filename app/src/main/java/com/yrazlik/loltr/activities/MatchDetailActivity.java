@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -16,10 +18,12 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.adapters.StatisticsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Game;
 import com.yrazlik.loltr.data.Player;
+import com.yrazlik.loltr.data.Statistics;
 import com.yrazlik.loltr.data.Stats;
 import com.yrazlik.loltr.data.SummonerNames;
 import com.yrazlik.loltr.data.SummonerSpell;
@@ -47,6 +51,7 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     public static final String EXTRA_SUMMONER_ID = "com.yrazlik.loltr.activities.EXTRA_SUMMONER_ID";
     public static final String EXTRA_REGION = "com.yrazlik.loltr.activities.EXTRA_REGION";
 
+    private ProgressBar progress;
     private ScrollView parent;
     private RelativeLayout winLoseLabel;
     private FadeInNetworkImageView champIV;
@@ -76,13 +81,14 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     private FadeInNetworkImageView item4;
     private FadeInNetworkImageView item5;
     private FadeInNetworkImageView item6;
+    private ListView statisticsLV;
+    private StatisticsAdapter statisticsAdapter;
 
     private int summonerNamesRequestCount = 0;
     private LinearLayout teamsContainer;
     private LinearLayout team1LL, team2LL;
     private RelativeLayout statisticsContainer;
     private TextView statisticsTV;
-    private LinearLayout statisticsLL;
     private List<SummonerNames> summonerNames;
     private String region;
 
@@ -127,6 +133,7 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     }
 
     private void initUI() {
+        progress = (ProgressBar) findViewById(R.id.progress);
         parent = (ScrollView) findViewById(R.id.parent);
         winLoseLabel = (RelativeLayout) findViewById(R.id.winLoseLabel);
         champIV = (FadeInNetworkImageView) findViewById(R.id.champIV);
@@ -156,13 +163,13 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
         item4 = (FadeInNetworkImageView) findViewById(R.id.item4);
         item5 = (FadeInNetworkImageView) findViewById(R.id.item5);
         item6 = (FadeInNetworkImageView) findViewById(R.id.item6);
+        statisticsLV = (ListView) findViewById(R.id.statisticsLV);
 
         teamsContainer = (LinearLayout) findViewById(R.id.teamsContainer);
         team1LL = (LinearLayout) findViewById(R.id.team1LL);
         team2LL = (LinearLayout) findViewById(R.id.team2LL);
         statisticsContainer = (RelativeLayout) findViewById(R.id.statisticsContainer);
         statisticsTV = (TextView) findViewById(R.id.statisticsTV);
-        statisticsLL = (LinearLayout) findViewById(R.id.statisticsLL);
 
         if (game != null) {
             if (game != null) {
@@ -302,6 +309,47 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
                         item6.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
                         item6.setBackgroundResource(R.drawable.nothing);
                     }
+
+                    ArrayList<Statistics> statistics = new ArrayList<>();
+
+                    int totalDamageDealt = stats.getTotalDamageDealt();
+                    statistics.add(new Statistics(getResources().getString(R.string.totalDamageDealt), totalDamageDealt + ""));
+                    int totalDamageTaken = stats.getTotalDamageTaken();
+                    statistics.add(new Statistics(getResources().getString(R.string.totalDamageTaken), totalDamageTaken + ""));
+                    int goldEarned = stats.getGoldEarned();
+                    statistics.add(new Statistics(getResources().getString(R.string.goldEarned), goldEarned + ""));
+                    int totalHeal = stats.getTotalHeal();
+                    statistics.add(new Statistics(getResources().getString(R.string.totalHeal), totalHeal + ""));
+                    int lagestKillingSpree = stats.getLargestKillingSpree();
+                    statistics.add(new Statistics(getResources().getString(R.string.lagestKillingSpree), lagestKillingSpree + ""));
+                    int largestMultiKill = stats.getLargestMultiKill();
+                    statistics.add(new Statistics(getResources().getString(R.string.largestMultiKill), largestMultiKill + ""));
+                    int magicDamageDealtPlayer = stats.getMagicDamageDealtPlayer();
+                    statistics.add(new Statistics(getResources().getString(R.string.magicDamageDealtPlayer), magicDamageDealtPlayer + ""));
+                    int physicalDamageDealtPlayer = stats.getPhysicalDamageDealtPlayer();
+                    statistics.add(new Statistics(getResources().getString(R.string.physicalDamageDealtPlayer), physicalDamageDealtPlayer + ""));
+                    int minionsKilled = stats.getMinionsKilled();
+                    statistics.add(new Statistics(getResources().getString(R.string.minionsKilled), minionsKilled + ""));
+                    int neutralMinionsKilled = stats.getNeutralMinionsKilled();
+                    statistics.add(new Statistics(getResources().getString(R.string.neutralMinionsKilled), neutralMinionsKilled + ""));
+                    int magicDamageTaken = stats.getMagicDamageTaken();
+                    statistics.add(new Statistics(getResources().getString(R.string.magicDamageTaken), magicDamageTaken + ""));
+                    int physicalDamageTaken = stats.getPhysicalDamageTaken();
+                    statistics.add(new Statistics(getResources().getString(R.string.physicalDamageTaken), physicalDamageTaken + ""));
+                    int totalTimeCrowdControlDealt = stats.getTotalTimeCrowdControlDealt();
+                    statistics.add(new Statistics(getResources().getString(R.string.totalTimeCrowdControlDealt), totalTimeCrowdControlDealt + ""));
+                    int turretsKilled = stats.getTurretsKilled();
+                    statistics.add(new Statistics(getResources().getString(R.string.turretsKilled), turretsKilled + ""));
+                    int wardPlaced = stats.getWardPlaced();
+                    statistics.add(new Statistics(getResources().getString(R.string.wardPlaced), wardPlaced + ""));
+                    int wardKilled = stats.getWardKilled();
+                    statistics.add(new Statistics(getResources().getString(R.string.wardKilled), wardKilled + ""));
+                    int ipEarned = stats.getIpEarned();
+                    statistics.add(new Statistics(getResources().getString(R.string.ipEarned), ipEarned + ""));
+
+                    statisticsAdapter = new StatisticsAdapter(this, R.layout.list_row_statistics, statistics);
+                    statisticsLV.setAdapter(statisticsAdapter);
+
                 }
             }
             List<Player> players = game.getFellowPlayers();
@@ -327,6 +375,11 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
                 teamsContainer.setVisibility(View.GONE);
             }
         }
+
+
+
+
+        progress.setVisibility(View.GONE);
         parent.setVisibility(View.VISIBLE);
     }
 
