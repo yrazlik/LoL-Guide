@@ -184,4 +184,33 @@
     <string name="cannot_find_username">Could not find the user, please make sure you entered
         summoner name and region correctly
     </string>
+
+    <string name="custom_game">Custom Game</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="tutorial_game">Tutorial Game</string>
+    <string name="ranked_game">Ranked Game</string>
+
+    <string name="summoners_rift">Summoner\'s Rift</string>
+    <string name="aram">Howling Abyss</string>
+    <string name="dominion">Crystal Scar</string>
+    <string name="oneforall">One For All</string>
+    <string name="kingporo">King Poro</string>
+    <string name="ascension">Ascension</string>
+    <string name="firstblood">First Blood</string>
+
+
+    <string name="none">Custom Game</string>
+    <string name="normal">Normal</string>
+    <string name="odin">Dominion</string>
+    <string name="aram_aram">ARAM</string>
+    <string name="ranked">Ranked Game</string>
+    <string name="sr6">6 vs. 6</string>
+    <string name="cap5">Team Builder</string>
+    <string name="urf">Ultra Rapid Fire</string>
+    <string name="nightmare">Nightmare Bot</string>
+    <string name="counter_pick">Counter Pick</string>
+    <string name="bilgewater">Bilgewater</string>
+    <string name="bot">Game Against AI</string>
+    <string name="unknown">Unknown</string>
+
 </resources>

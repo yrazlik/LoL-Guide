@@ -31,7 +31,10 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.yrazlik.loltr.adapters.GridViewAdapter;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.data.Summoner;
 import com.yrazlik.loltr.fragments.AboutFragment;
 import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
 import com.yrazlik.loltr.fragments.AllChampionsFragment;
@@ -49,47 +52,57 @@ import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
 import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
+import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
+import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends ActionBarActivity implements ResponseListener {
 
-	int mPosition = -1;
-	String mTitle = "";
+    int allchampionsRequestCount = 0, allSpellsRequestCount = 0;
+    int mPosition = -1;
+    String mTitle = "";
 
-	// Array of strings storing country names
-	String[] leftMenuItems;
+    // Array of strings storing country names
+    String[] leftMenuItems;
 
-	// Array of integers points to images stored in /res/drawable-ldpi/
-	int[] mFlags = new int[] { R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
-			R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.contact,
-			R.drawable.info};
+    // Array of integers points to images stored in /res/drawable-ldpi/
+    int[] mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+            R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.contact,
+            R.drawable.info};
 
-	// Array of strings to initial counts
-	String[] mCount = new String[] {"", "",  "", "", "", "", "", "", "", "", "", "", "", ""};
+    // Array of strings to initial counts
+    String[] mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 
     public static Fragment activeFragment;
-	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
-	private ActionBarDrawerToggle mDrawerToggle;
-	private LinearLayout mDrawer;
-	private List<HashMap<String, String>> mList;
-	private SimpleAdapter mAdapter;
-	final private String COUNTRY = "country";
-	final private String FLAG = "flag";
-	final private String COUNT = "count";
-	private Commons commons;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private LinearLayout mDrawer;
+    private List<HashMap<String, String>> mList;
+    private SimpleAdapter mAdapter;
+    final private String COUNTRY = "country";
+    final private String FLAG = "flag";
+    final private String COUNT = "count";
+    private Commons commons;
     private AdView adView;
     private Toolbar mToolBar;
 
     @SuppressLint("NewApi")
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);// Getting an array of country
+
+        makeGetAllChampionsRequest();
+        makeGetAllSpellsRequest();
 
 
         try {
@@ -105,16 +118,17 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                                 Commons.LATEST_VERSION = latestVersion;
                             }
                         }
-                    }catch (Exception ignored){}
+                    } catch (Exception ignored) {
+                    }
                 }
             });
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Commons.LATEST_VERSION = "5.23.1";
         }
 
 
-        try{
+        try {
             ParseQuery<ParseObject> query2 = ParseQuery.getQuery("LatestVersion");
             query2.selectKeys(Arrays.asList("LATEST_ITEM_VERSION"));
             query2.findInBackground(new FindCallback<ParseObject>() {
@@ -128,10 +142,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                                 Commons.RECOMMENDED_ITEMS_VERSION = latestItemVersion;
                             }
                         }
-                    }catch (Exception ignored){}
+                    } catch (Exception ignored) {
+                    }
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             Commons.RECOMMENDED_ITEMS_VERSION = "5.23.1";
         }
 
@@ -139,18 +154,18 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         if (mToolBar != null) {
             setSupportActionBar(mToolBar);
         }
-        try{
+        try {
             ParseAnalytics.trackAppOpened(getIntent());
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
-		adView = (AdView)findViewById(R.id.adView);
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.loadAd(adRequest);
-		commons = Commons.getInstance(getApplicationContext());
+        adView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        commons = Commons.getInstance(getApplicationContext());
 
-		setDrawer();
+        setDrawer();
         Handler h = new Handler();
         h.postDelayed(new Runnable() {
             @Override
@@ -172,12 +187,38 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         });
 
 */
-	}
+    }
+
+    private void makeGetAllChampionsRequest(){
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("static-data");
+        pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+        pathParams.add("v1.2");
+        pathParams.add("champion");
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+        queryParams.put("version", Commons.LATEST_VERSION);
+        queryParams.put("champData", "altimages");
+        queryParams.put("api_key", Commons.API_KEY);
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
+
+    }
+
+    private void makeGetAllSpellsRequest(){
+        ArrayList<String> pathParams2 = new ArrayList<>();
+        pathParams2.add("static-data");
+        pathParams2.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+        pathParams2.add("v1.2");
+        pathParams2.add("summoner-spell");
+        HashMap<String, String> queryParams2 = new HashMap<String, String>();
+        queryParams2.put("spellData", "image");
+        queryParams2.put("api_key", Commons.API_KEY);
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.SUMMONER_SPELLS_REQUEST, pathParams2, queryParams2, null, this);
+
+    }
 
 
-
-
-    private void setDrawer(){
+    private void setDrawer() {
         leftMenuItems = getResources().getStringArray(R.array.titles);
 
         // Title of the activity
@@ -201,10 +242,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
         // Keys used in Hashmap
-        String[] from = { FLAG, COUNTRY, COUNT };
+        String[] from = {FLAG, COUNTRY, COUNT};
 
         // Ids of views in listview_layout
-        int[] to = { R.id.flag, R.id.country, R.id.count };
+        int[] to = {R.id.flag, R.id.country, R.id.count};
 
         // Instantiating an adapter to store each items
         // R.layout.drawer_layout defines the layout of each item
@@ -246,7 +287,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 mDrawerLayout.closeDrawer(mDrawer);
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                if(position == 0){
+                if (position == 0) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -257,7 +298,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commitAllowingStateLoss();
                         }
                     }, 350);
-                }else if(position == 1){
+                } else if (position == 1) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -269,7 +310,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         }
                     }, 350);
 
-                }else if(position == 2){
+                } else if (position == 2) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -280,7 +321,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 3){
+                } else if (position == 3) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -291,7 +332,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 4){
+                } else if (position == 4) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -302,7 +343,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 5){
+                } else if (position == 5) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -313,7 +354,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 6){
+                } else if (position == 6) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -324,7 +365,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 7){
+                } else if (position == 7) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -335,7 +376,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 8){
+                } else if (position == 8) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -346,7 +387,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 9){
+                } else if (position == 9) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -357,7 +398,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                }else if(position == 10){
+                } else if (position == 10) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -368,7 +409,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                } else if(position == 11){
+                } else if (position == 11) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -379,7 +420,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ft.commit();
                         }
                     }, 350);
-                } else if(position == 12){
+                } else if (position == 12) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
 
@@ -406,125 +447,170 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         mDrawerList.setAdapter(mAdapter);
     }
 
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		mDrawerToggle.syncState();
-
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-
-
-	public void incrementHitCount(int position) {
-		HashMap<String, String> item = mList.get(position);
-		String count = item.get(COUNT);
-		item.remove(COUNT);
-		if (count.equals("")) {
-			count = "  1  ";
-		} else {
-			int cnt = Integer.parseInt(count.trim());
-			cnt++;
-			count = "  " + cnt + "  ";
-		}
-		item.put(COUNT, count);
-		mAdapter.notifyDataSetChanged();
-	}
-
-	public void showFragment(int position) {
-
-		// Currently selected country
-		mTitle = leftMenuItems[position];
-
-		// Creating a fragment object
-		CountryFragment cFragment = new CountryFragment();
-
-		// Creating a Bundle object
-		Bundle data = new Bundle();
-
-		// Setting the index of the currently selected item of mDrawerList
-		data.putInt("position", position);
-
-		// Setting the position to the fragment
-		cFragment.setArguments(data);
-
-		// Getting reference to the FragmentManager
-		FragmentManager fragmentManager = getSupportFragmentManager();
-
-		// Creating a fragment transaction
-		FragmentTransaction ft = fragmentManager.beginTransaction();
-
-		// Adding a fragment to the fragment transaction
-		ft.replace(R.id.content_frame, cFragment);
-
-		// Committing the transaction
-		ft.commit();
-	}
-
-	// Highlight the selected country : 0 to 4
-	public void highlightSelectedCountry() {
-		int selectedItem = mDrawerList.getCheckedItemPosition();
-
-            mPosition = selectedItem;
-
-
-		if (mPosition != -1)
-			getSupportActionBar().setTitle(leftMenuItems[mPosition]);
-	}
-
-	@Override
-	public void onSuccess(Object response) {
-		System.out.println("");
-
-	}
-
-	@Override
-	public void onFailure(Object response) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Context getContext() {
-		return this;
-	}
-
     @Override
-    public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
-            mDrawerLayout.closeDrawer(Gravity.START);
-        }else {
-            int count = getSupportFragmentManager().getBackStackEntryCount();
-            if (count <= 1) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage(getResources().getString(R.string.areyousure)).setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
-                        .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        }).show();
-            } else {
-                getSupportFragmentManager().popBackStack();
-            }
-        }
-
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
 
     }
 
-    public void updateDrawer(){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void incrementHitCount(int position) {
+        HashMap<String, String> item = mList.get(position);
+        String count = item.get(COUNT);
+        item.remove(COUNT);
+        if (count.equals("")) {
+            count = "  1  ";
+        } else {
+            int cnt = Integer.parseInt(count.trim());
+            cnt++;
+            count = "  " + cnt + "  ";
+        }
+        item.put(COUNT, count);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    public void showFragment(int position) {
+
+        // Currently selected country
+        mTitle = leftMenuItems[position];
+
+        // Creating a fragment object
+        CountryFragment cFragment = new CountryFragment();
+
+        // Creating a Bundle object
+        Bundle data = new Bundle();
+
+        // Setting the index of the currently selected item of mDrawerList
+        data.putInt("position", position);
+
+        // Setting the position to the fragment
+        cFragment.setArguments(data);
+
+        // Getting reference to the FragmentManager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // Creating a fragment transaction
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+
+        // Adding a fragment to the fragment transaction
+        ft.replace(R.id.content_frame, cFragment);
+
+        // Committing the transaction
+        ft.commit();
+    }
+
+    // Highlight the selected country : 0 to 4
+    public void highlightSelectedCountry() {
+        int selectedItem = mDrawerList.getCheckedItemPosition();
+
+        mPosition = selectedItem;
+
+
+        if (mPosition != -1)
+            getSupportActionBar().setTitle(leftMenuItems[mPosition]);
+    }
+
+    @Override
+    public void onSuccess(Object response) {
+        if (response instanceof AllChampionsResponse) {
+            try {
+                AllChampionsResponse resp = (AllChampionsResponse) response;
+                Map<String, Map<String, String>> data = resp.getData();
+                if (Commons.allChampions != null) {
+                    Commons.allChampions.clear();
+                } else {
+                    Commons.allChampions = new ArrayList<Champion>();
+                }
+                for (Map.Entry<String, Map<String, String>> entry : data.entrySet()) {
+                    String key = entry.getKey();
+                    String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
+                    Champion c = new Champion();
+                    c.setChampionImageUrl(imageUrl);
+                    c.setChampionName(entry.getValue().get("name"));
+                    c.setId(Integer.parseInt(entry.getValue().get("id")));
+                    c.setKey(entry.getValue().get("key"));
+                    c.setTitle("\"" + entry.getValue().get("title") + "\"");
+                    Commons.allChampions.add(c);
+                }
+                if (Commons.allChampions != null) {
+                    Collections.sort(Commons.allChampions, new Comparator<Champion>() {
+                        @Override
+                        public int compare(Champion c1, Champion c2) {
+                            return c1.getChampionName().compareTo(c2.getChampionName());
+                        }
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+        } else if (response instanceof SummonerSpellsResponse){
+            if(response != null) {
+                SummonerSpellsResponse summonerSpellsResponse = (SummonerSpellsResponse) response;
+                if (summonerSpellsResponse != null) {
+                    Commons.allSpells = summonerSpellsResponse.getSpells();
+                }
+            }
+        }
+    }
+
+        @Override
+        public void onFailure (Object response){
+            if(response instanceof AllChampionsResponse){
+                if(allchampionsRequestCount < 3){
+                    makeGetAllChampionsRequest();
+                }
+            }else if(response instanceof  SummonerSpellsResponse){
+                if(allSpellsRequestCount < 3){
+                    makeGetAllSpellsRequest();
+                }
+            }
+        }
+
+        @Override
+        public Context getContext () {
+            return this;
+        }
+
+        @Override
+        public void onBackPressed () {
+            if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
+                mDrawerLayout.closeDrawer(Gravity.START);
+            } else {
+                int count = getSupportFragmentManager().getBackStackEntryCount();
+                if (count <= 1) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage(getResources().getString(R.string.areyousure)).setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                            .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            }).show();
+                } else {
+                    getSupportFragmentManager().popBackStack();
+                }
+            }
+
+
+        }
+
+    public void updateDrawer() {
         leftMenuItems = getResources().getStringArray(R.array.titles);
 
         setDrawer();

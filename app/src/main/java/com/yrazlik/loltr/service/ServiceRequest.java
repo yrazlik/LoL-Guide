@@ -20,6 +20,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.SummonerSpell;
+import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.requestclasses.Request;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
@@ -50,6 +52,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class ServiceRequest {
@@ -117,6 +120,7 @@ public class ServiceRequest {
 			case Commons.ITEM_DETAIL_REQUEST:
 			case Commons.ALL_RUNES_REQUEST:
             case Commons.CHAMPION_SKINS_REQUEST:
+            case Commons.SUMMONER_SPELLS_REQUEST:
 				return Commons.STATIC_DATA_BASE_URL;
 			case Commons.CHAMPION_RP_IP_COSTS_REQUEST:
 				return Commons.URL_CHAMPION_PRICES;
@@ -379,6 +383,40 @@ public class ServiceRequest {
                 return summonerInfo;
             case Commons.RECENT_MATCHES_REQUEST:
                 return gson.fromJson(response, RecentMatchesResponse.class);
+            case Commons.SUMMONER_SPELLS_REQUEST:
+                SummonerSpellsResponse summonerSpellsResponse = new SummonerSpellsResponse();
+                summonerSpellsResponse.setSpells(new ArrayList<SummonerSpell>());
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    Iterator<?> keys = obj.keys();
+                    if(keys != null){
+                        while (keys.hasNext()){
+                            String key = (String) keys.next();
+                            if(key.equalsIgnoreCase("data")){
+                                JSONObject dataJson = (JSONObject) obj.get(key);
+                                Iterator<?> dataKeys = dataJson.keys();
+                                if(dataKeys != null){
+                                    while (dataKeys.hasNext()){
+                                        String dataKey = (String) dataKeys.next();
+                                        JSONObject dataObject = (JSONObject) dataJson.get(dataKey);
+                                        if(dataObject != null){
+                                            SummonerSpell spell = gson.fromJson(String.valueOf(dataObject), SummonerSpell.class);
+                                            summonerSpellsResponse.getSpells().add(spell);
+                                        }
+                                    }
+                                }
+
+                            }else if(key.equalsIgnoreCase("type")){
+                                summonerSpellsResponse.setType((String) obj.get(key));
+                            }else if(key.equalsIgnoreCase("version")){
+                                summonerSpellsResponse.setVersion((String) obj.get(key));
+                            }
+                        }
+                    }
+                } catch (JSONException e) {
+                    return  null;
+                }
+                return summonerSpellsResponse;
             default:
                 return null;
         }

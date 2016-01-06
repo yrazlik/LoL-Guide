@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
 
     <RelativeLayout
         android:id="@+id/winLoseLabel"
@@ -19,7 +22,18 @@
         android:layout_alignBottom="@+id/winLoseLabel"
         android:layout_alignTop="@+id/winLoseLabel"
         android:layout_toRightOf="@+id/winLoseLabel"
-        android:background="@drawable/champion"/>
+        android:background="@drawable/question_mark"/>
+
+    <TextView
+        android:id="@+id/levelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/champIV"
+        android:layout_alignRight="@+id/champIV"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="2dp"
+        android:textColor="@color/gray"
+        android:textSize="12dp"/>
 
     <RelativeLayout
         android:id="@+id/textContainer"
@@ -41,17 +55,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text="Takımla birlikte dereceli"
                 android:textSize="14dp"/>
+
+            <TextView
+                android:id="@+id/matchModeTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/matchTypeTV"
+                android:layout_marginTop="2dp"
+                android:singleLine="true"
+                android:textSize="11dp"
+                android:textStyle="italic"/>
 
             <TextView
                 android:id="@+id/kdaTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/matchTypeTV"
-                android:layout_marginTop="8dp"
+                android:layout_below="@+id/matchModeTV"
+                android:layout_marginTop="4dp"
                 android:singleLine="true"
-                android:text="18/6/23"
                 android:textSize="14dp"/>
         </RelativeLayout>
 
@@ -76,7 +98,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/goldIV"
-                android:text="17.4k"
                 android:textSize="11dp"/>
 
 
@@ -95,7 +116,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="37:49"
                 android:textSize="14dp"/>
             <TextView
                 android:id="@+id/matchDateTV"
@@ -103,7 +123,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/matchTimeTV"
                 android:layout_centerHorizontal="true"
-                android:text="3 gün önce"
                 android:textSize="11dp"/>
 
         </RelativeLayout>
@@ -127,15 +146,16 @@
         android:id="@+id/spellsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/separator"
-        android:layout_marginTop="10dp"
         android:layout_alignLeft="@+id/winLoseLabel"
-        android:layout_alignRight="@+id/champIV">
+        android:layout_alignRight="@+id/champIV"
+        android:layout_below="@+id/separator"
+        android:layout_marginTop="10dp">
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/spell1"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="2dp"
             android:layout_alignParentLeft="true"/>
 
         <com.android.volley.toolbox.NetworkImageView
@@ -152,54 +172,64 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/separator"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/spellsContainer"
-        android:layout_marginLeft="3dp">
+        android:layout_toRightOf="@+id/spellsContainer">
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/item0"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="2dp"
-            android:layout_alignParentLeft="true"/>
+        <HorizontalScrollView
+            android:id="@+id/itemsSV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/itemsRL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/item0"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="2dp"/>
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/item1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/item0"/>
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/item1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toRightOf="@+id/item0"/>
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/item2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/item1"/>
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/item3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/item2"/>
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/item4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/item3"/>
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/item5"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/item4"/>
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/item6"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/item5"/>
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/item2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toRightOf="@+id/item1"/>
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/item3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toRightOf="@+id/item2"/>
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/item4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toRightOf="@+id/item3"/>
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/item5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toRightOf="@+id/item4"/>
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/item6"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toRightOf="@+id/item5"/>
+            </RelativeLayout>
+        </HorizontalScrollView>
 
     </RelativeLayout>
 

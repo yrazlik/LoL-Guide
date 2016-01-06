@@ -46,16 +46,22 @@
     <string name="action_settings">Settings</string>
     <string name="anErrorOccured">Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyiniz. </string>
     <string name="app_name">LoL TR</string>
+    <string name="aram">Sonsuz Uçurum</string>
+    <string name="aram_aram">ARAM</string>
     <string name="areyousure">Uygulamadan çıkmak istiyor musunuz?</string>
     <string name="armor">Zırh</string>
     <string name="armor_penetration">Zırh Delme</string>
+    <string name="ascension">Yükseliş</string>
     <string name="assasin">Assassin</string>
     <string name="attack">Saldırı</string>
     <string name="attack_speed">Saldırı Hızı</string>
+    <string name="bilgewater">Bilgewater</string>
+    <string name="bot">Yapay Zekaya Karşı</string>
     <string name="buyucu">Büyücü</string>
     <string name="c">ç</string>
     <string name="cancel">İptal</string>
     <string name="cannot_find_username">Kullanıcı bulunamadı. Lütfen kullanıcı adını ve bölgeyi doğru girdiğinizden emin olun</string>
+    <string name="cap5">Takım Kurucu</string>
     <string name="champion_sale">Şampiyon İndirimleri</string>
     <string name="chosenChampion">Şampiyon:</string>
     <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
@@ -99,13 +105,16 @@
     <eat-comment/>
     <string name="contact_text">Şikayetlerinizi ve önerilerinizi aşağıdaki kutucuğa yazıp bize bildirebilirsiniz.</string>
     <string name="cooldown_reduction">Bekleme Süresinde Azalma</string>
+    <string name="counter_pick">Karşı Seçim</string>
     <string name="createdAt">tarihinde yayınlandı.</string>
     <string name="critical">Kritik Vuruş</string>
+    <string name="custom_game">Özel Oyun</string>
     <string name="damage">Fiziksel Hasar</string>
     <string name="defence">Savunma</string>
     <string name="deffensiveItems">Defansif Eşyalar</string>
     <string name="destek">Destek</string>
     <string name="detailInfo">Detay</string>
+    <string name="dominion">Kristal Kayalık</string>
     <string name="dovuscu">Dövüscü</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="drawer_open">Open navigation drawer</string>
@@ -117,6 +126,7 @@
     <string name="explanation">Açıklama</string>
     <string name="fighter">Fighter</string>
     <string name="filter">Filtreleme</string>
+    <string name="firstblood">İlk Kan</string>
     <string name="g">ğ</string>
     <string name="general">Genel Bakış</string>
     <string name="gold">Altın</string>
@@ -130,6 +140,7 @@
     <string name="itemFrom">Bu Eşyayı Oluşturmak İçin Gerekli Eşyalar</string>
     <string name="itemSearchHint">Bir eşya ismi girin...</string>
     <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
+    <string name="kingporo">Poro Kralı</string>
     <string name="league">Lig</string>
     <string name="leagueInfo">Lig Bilgisi</string>
     <string name="legend">Efsane</string>
@@ -159,15 +170,20 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values-tr/strings.xml -->
     <eat-comment/>
     <string name="networkError">Lütfen internet bağlantınızı kontrol ediniz.</string>
+    <string name="nightmare">Ölümcül Felaket Botları</string>
     <string name="nisanci">Nisancı</string>
     <string name="no">Hayır</string>
     <string name="noChampFound">Aramanızla eşleşen bir şampiyon bulunamadı.</string>
     <string name="noFrom">Bu eşyayı oluşturacak başka eşya bulunmamaktadır.</string>
     <string name="noTo">Bu eşya başka bir eşyaya geliştirilemez.</string>
     <string name="no_video_found">Video bulunamadı.</string>
+    <string name="none">Özel Oyun</string>
+    <string name="normal">Normal</string>
     <string name="o">ö</string>
+    <string name="odin">Dominion</string>
     <string name="offensiveItems">Ofansif Eşyalar</string>
     <string name="ok">Tamam</string>
+    <string name="oneforall">Birimiz Hepimiz İçin</string>
     <string name="others">Diğerleri</string>
     <string name="passive">Pasif</string>
     <string name="play">Oynat</string>
@@ -179,6 +195,8 @@
     <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
     <string name="preferences_saved">Ayarlar Kaydedildi.</string>
     <string name="question_mark">\?\?\?</string>
+    <string name="ranked">Dereceli Oyun</string>
+    <string name="ranked_game">Dereceli Oyun</string>
     <string name="region_br">BR</string>
     <string name="region_eune">EUNE</string>
     <string name="region_euwe">EUW</string>
@@ -206,10 +224,12 @@
     <string name="skin_sale">Kostüm İndirimleri</string>
     <string name="spell_damage">Büyü Hasarı</string>
     <string name="spell_vamp">Can Emme</string>
+    <string name="sr6">6 vs. 6</string>
     <string name="startingItems">Başlangıç Eşyaları</string>
     <string name="strategy">Strateji</string>
     <string name="suikastci">Suikastci</string>
     <string name="summonerName">Oyuncu ismi giriniz...</string>
+    <string name="summoners_rift">Sihirdar Vadisi</string>
     <string name="support">Support</string>
     <string name="tags">Özellikler</string>
     <string name="tank">Tank</string>
@@ -217,8 +237,12 @@
     <string name="team2">TAKIM 2</string>
     <string name="turkey">Türkiye</string>
     <string name="turkish">Türkçe</string>
+    <string name="tutorial">Eğitim</string>
+    <string name="tutorial_game">Eğitim Oyunu</string>
     <string name="u">ü</string>
+    <string name="unknown">Bilinmeyen</string>
     <string name="unranked">UNRANKED</string>
+    <string name="urf">Ultra Rekabet Faktörü</string>
     <string name="video">Video</string>
     <string name="vision">Görüş Veren</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.3.0/res/values-tr/wallet_strings.xml -->

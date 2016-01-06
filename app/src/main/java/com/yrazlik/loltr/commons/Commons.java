@@ -7,6 +7,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Items;
+import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 
 import java.text.SimpleDateFormat;
@@ -77,6 +78,7 @@ public class Commons {
     public static final int STATS_REQUEST = 19;
     public static final int SUMMONER_BY_NAME_REQUEST = 20;
     public static final int RECENT_MATCHES_REQUEST = 21;
+    public static final int SUMMONER_SPELLS_REQUEST = 22;
 
 
 
@@ -99,6 +101,7 @@ public class Commons {
 
 
 	public static final String STATIC_DATA_BASE_URL = "https://global.api.pvp.net/api/lol";
+    public static final String SUMMONER_SPELL_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/spell/";
 	public static final String CHAMPION_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/champion/";
 	public static final String CHAMPION_SPLASH_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading";
 	public static final String CHAMPION_SPELL_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/spell/";
@@ -148,6 +151,7 @@ public class Commons {
 
 	public static ArrayList<Champion> weeklyFreeChampions;
 	public static ArrayList<Champion> allChampions;
+    public static ArrayList<SummonerSpell> allSpells;
 	public static ArrayList<Items> allItems;
     public static ArrayList<Item> allItemsNew;
     public static SummonerInfo summonerInfo;

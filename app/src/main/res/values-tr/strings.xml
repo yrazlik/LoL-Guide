@@ -175,5 +175,31 @@
     <string name="cannot_find_username">Kullanıcı bulunamadı. Lütfen kullanıcı adını ve bölgeyi doğru girdiğinizden emin olun</string>
 
 
+    <string name="custom_game">Özel Oyun</string>
+    <string name="tutorial">Eğitim</string>
+    <string name="tutorial_game">Eğitim Oyunu</string>
+    <string name="ranked_game">Dereceli Oyun</string>
+
+    <string name="summoners_rift">Sihirdar Vadisi</string>
+    <string name="aram">Sonsuz Uçurum</string>
+    <string name="dominion">Kristal Kayalık</string>
+    <string name="oneforall">Birimiz Hepimiz İçin</string>
+    <string name="kingporo">Poro Kralı</string>
+    <string name="ascension">Yükseliş</string>
+    <string name="firstblood">İlk Kan</string>
+
+    <string name="none">Özel Oyun</string>
+    <string name="normal">Normal</string>
+    <string name="odin">Dominion</string>
+    <string name="aram_aram">ARAM</string>
+    <string name="ranked">Dereceli Oyun</string>
+    <string name="sr6">6 vs. 6</string>
+    <string name="cap5">Takım Kurucu</string>
+    <string name="urf">Ultra Rekabet Faktörü</string>
+    <string name="bot">Yapay Zekaya Karşı</string>
+    <string name="nightmare">Ölümcül Felaket Botları</string>
+    <string name="counter_pick">Karşı Seçim</string>
+    <string name="bilgewater">Bilgewater</string>
+    <string name="unknown">Bilinmeyen</string>
 
 </resources>
