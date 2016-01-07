@@ -7,9 +7,14 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Items;
+import com.yrazlik.loltr.data.RecentSearchItem;
 import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,8 +55,8 @@ public class Commons {
 
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
-	public static String LATEST_VERSION = "5.23.1";
-    public static String RECOMMENDED_ITEMS_VERSION = "5.23.1";
+	public static String LATEST_VERSION = "5.24.2";
+    public static String RECOMMENDED_ITEMS_VERSION = "5.24.2";
 	
 	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
 	
@@ -100,6 +105,7 @@ public class Commons {
     public static final String SERVICE_BASE_URL_NA = "https://na.api.pvp.net/api/lol";
     public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://tr.api.pvp.net/api/lol";
     public static String SERVICE_BASE_URL_SELECTED = "https://" + SELECTED_REGION +".api.pvp.net/api/lol";
+    public static String PROFILE_ICON_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/profileicon/";
 
 
 
@@ -136,6 +142,7 @@ public class Commons {
     public static final String ITEM_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.itemdetailfragment";
     public static final String CHAMPION_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.championskinsfragment";
     public static final String MATCH_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.matchdetailfragment";
+    public static final String MATCH_HISTORY_FRAGMENT = "com.yrazlik.loltr.fragments.matchhistoryfragment";
 
     public static final String TAG_SETTINGS_FRAGMENT = "com.yrazlik.loltr.fragments.settingsfragmenttag";
 
@@ -258,5 +265,41 @@ public class Commons {
         }
         return "en_US";
     }
-	
+
+    public static void saveRecentSearchesArray(ArrayList<RecentSearchItem> obj, Context context) {
+
+        String fileName = "com.yrazlik.loltr.recentsearches";
+        FileOutputStream fos;
+        try {
+            fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+
+            ObjectOutputStream out = new ObjectOutputStream(fos);
+
+            out.writeObject(obj);
+
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<RecentSearchItem> loadRecentSearchesArrayList(Context context) {
+        try {
+            String fileName = "com.yrazlik.loltr.recentsearches";
+            FileInputStream fis = context.openFileInput(fileName);
+            ObjectInputStream in = new ObjectInputStream(fis);
+
+            ArrayList<RecentSearchItem> obj = (ArrayList<RecentSearchItem>) in.readObject();
+
+            in.close();
+            return obj;
+
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 }

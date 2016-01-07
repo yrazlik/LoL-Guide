@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/usernameRegionRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp">
+
+        <EditText
+            android:id="@+id/usernameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/buttonSave"
+            android:layout_alignTop="@+id/buttonSave"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/buttonSave"
+            android:hint="@string/enter_username"
+            android:singleLine="true"
+            />
+
+        <ImageButton android:id="@+id/buttonSave"
+                     android:layout_width="80dp"
+                     android:layout_height="40dp"
+                     android:layout_alignParentRight="true"
+                     android:layout_alignParentTop="true"
+                     android:background="@color/gg_red"
+                     android:gravity="center"
+                     android:src="@drawable/search_icon"/>
+
+
+    </RelativeLayout>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:textSize="12dp" android:id="@+id/infoTV"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:layout_marginTop="5dp"
+              android:layout_below="@+id/usernameRegionRL"
+        android:text="@string/if_you_wanna_change_region"/>
+
+    <RelativeLayout
+        android:id="@+id/recentSearchesRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/infoTV"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/recentSearchesTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recentSearches"
+            android:textSize="16dp"/>
+
+        <ListView
+            android:id="@+id/recentSearchesLV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recentSearchesTV"
+            android:layout_marginTop="10dp">
+
+        </ListView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

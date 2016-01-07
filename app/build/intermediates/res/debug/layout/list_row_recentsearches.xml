@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+    <com.yrazlik.loltr.view.FadeInNetworkImageView
+        android:id="@+id/summonerProfileIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/question_mark"></com.yrazlik.loltr.view.FadeInNetworkImageView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/summonerProfileIcon">
+        <TextView
+            android:id="@+id/summonerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textSize="13dp"/>
+
+        <TextView
+            android:id="@+id/summonerRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/summonerName"
+            android:textSize="11dp"
+            android:textStyle="italic"/>
+    </RelativeLayout>
+
+
+</RelativeLayout><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/list_row_recentsearches.xml -->

@@ -3,7 +3,7 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values-tr/strings.xml -->
     <eat-comment/>
     <string-array name="titles">
-        <item>Profilim</item>
+        <item>Oyuncular</item>
         <item>Haftalık Ücretsizler</item>
         <item>İndirimler</item>
         <item>Haberler</item>
@@ -122,7 +122,7 @@
     <string name="english">İngilizce</string>
     <string name="englishEnglish">English</string>
     <string name="englishTurkish">İngilizce</string>
-    <string name="enter_username">Kullanıcı adınızı girin:</string>
+    <string name="enter_username">Sihirdar ismi girin</string>
     <string name="errortwitch">Bağlantıda bir hata oluştu. Lütfen tekrar deneyiniz.</string>
     <string name="essentialItems">En Gerekliler</string>
     <string name="explanation">Açıklama</string>
@@ -139,6 +139,7 @@
     <string name="hello">Hello</string>
     <string name="hello_world">Hello world!</string>
     <string name="i">ı</string>
+    <string name="if_you_wanna_change_region">*Oyuncu, seçilen bölgede aranacaktır. Bölge seçimini ayarlar sayfasından değiştirebilirsiniz.</string>
     <string name="ipEarned">Kazanılan Ip</string>
     <string name="itemDetail">Eşya Detayı</string>
     <string name="itemFrom">Bu Eşyayı Oluşturmak İçin Gerekli Eşyalar</string>
@@ -205,12 +206,14 @@
     <string name="playerDetail">Oyuncu Detayı</string>
     <string name="playerNotCurrentlyPlaying">Belirtilen oyuncu su an herhangi bir oyunda oynamıyor.</string>
     <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
-    <string name="pleaseEnterYourSummonerName">Lütfen kullanıcı adınızı giriniz.</string>
+    <string name="pleaseEnterYourSummonerName">Lütfen bir sihirdar ismi giriniz.</string>
     <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
     <string name="preferences_saved">Ayarlar Kaydedildi.</string>
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Dereceli Oyun</string>
     <string name="ranked_game">Dereceli Oyun</string>
+    <string name="recentSearches">Son Aramalar</string>
+    <string name="region">Bölge:</string>
     <string name="regionEnglish">Region</string>
     <string name="regionTurkish">Bölge</string>
     <string name="region_br">BR</string>

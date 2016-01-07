@@ -13,7 +13,7 @@
     <string name="question_mark">\?\?\?</string>
 
     <string-array name="titles">
-        <item>Profilim</item>
+        <item>Oyuncular</item>
         <item>Haftalık Ücretsizler</item>
         <item>İndirimler</item>
         <item>Haberler</item>
@@ -168,9 +168,9 @@
 
     <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
 
-    <string name="enter_username">Kullanıcı adınızı girin:</string>
+    <string name="enter_username">Sihirdar ismi girin</string>
     <string name="select_your_region">Bölgenizi seçin:</string>
-    <string name="pleaseEnterYourSummonerName">Lütfen kullanıcı adınızı giriniz.</string>
+    <string name="pleaseEnterYourSummonerName">Lütfen bir sihirdar ismi giriniz.</string>
     <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
     <string name="cannot_find_username">Kullanıcı bulunamadı. Lütfen kullanıcı adını ve bölgeyi doğru girdiğinizden emin olun</string>
 
@@ -231,4 +231,10 @@
     <string name="turkishEnglish">Turkish</string>
     <string name="englishTurkish">İngilizce</string>
     <string name="englishEnglish">English</string>
+
+    <string name="recentSearches">Son Aramalar</string>
+    <string name="region">Bölge:</string>
+
+    <string name="if_you_wanna_change_region">*Oyuncu, seçilen bölgede aranacaktır. Bölge seçimini ayarlar sayfasından değiştirebilirsiniz.</string>
+
 </resources>

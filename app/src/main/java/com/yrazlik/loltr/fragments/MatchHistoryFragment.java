@@ -30,12 +30,15 @@ import java.util.List;
  */
 public class MatchHistoryFragment extends BaseFragment implements ResponseListener{
 
-    private long summonerId = 3980715;
-    private String region = "tr";
+    private long summonerId;
+    private String region = Commons.SELECTED_REGION;
     private ListView matchHistoryLV;
     private MatchHistoryAdapter adapter;
     private List<Game> games;
 
+    public void setSummonerId(long summonerId){
+        this.summonerId = summonerId;
+    }
 
     @Nullable
     @Override

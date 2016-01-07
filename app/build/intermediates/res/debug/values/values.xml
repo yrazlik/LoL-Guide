@@ -3,7 +3,7 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="titles">
-        <item>My Profile</item>
+        <item>Summoners</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
         <item>News</item>
@@ -502,7 +502,7 @@
     <string name="english">English</string>
     <string name="englishEnglish">English</string>
     <string name="englishTurkish">İngilizce</string>
-    <string name="enter_username">Enter your summoner name:</string>
+    <string name="enter_username">Enter summoner name</string>
     <string name="errortwitch">A connection error occured. Please try again.</string>
     <string name="essentialItems">Essential Items</string>
     <string name="explanation">Explanation</string>
@@ -519,6 +519,7 @@
     <string name="hello">Hello</string>
     <string name="hello_world">Hello world!</string>
     <string name="i">ı</string>
+    <string name="if_you_wanna_change_region">*Summoner will be searched within selected region. You can change region from settings page.</string>
     <string name="ipEarned">Ip Earned</string>
     <string name="itemDetail">Item Detail</string>
     <string name="itemFrom">Other Items Necessary To Build That Item</string>
@@ -589,12 +590,14 @@
     <string name="playerDetail">Summoner Detail</string>
     <string name="playerNotCurrentlyPlaying">This summoner is not currently in a game.</string>
     <string name="pleaseEnterSummonerName">Please enter a summoner name.</string>
-    <string name="pleaseEnterYourSummonerName">Please enter your summoner name.</string>
+    <string name="pleaseEnterYourSummonerName">Please enter a summoner name.</string>
     <string name="pleaseSelectYourRegion">Please select your region.</string>
     <string name="preferences_saved">Preferences Saved.</string>
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Ranked Game</string>
     <string name="ranked_game">Ranked Game</string>
+    <string name="recentSearches">Recent Searches</string>
+    <string name="region">Region:</string>
     <string name="regionEnglish">Region</string>
     <string name="regionTurkish">Bölge</string>
     <string name="region_br">BR</string>

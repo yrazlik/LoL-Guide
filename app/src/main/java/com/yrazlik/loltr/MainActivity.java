@@ -31,23 +31,19 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.yrazlik.loltr.adapters.GridViewAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
-import com.yrazlik.loltr.data.Summoner;
 import com.yrazlik.loltr.fragments.AboutFragment;
 import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
 import com.yrazlik.loltr.fragments.AllChampionsFragment;
 import com.yrazlik.loltr.fragments.ContactFragment;
 import com.yrazlik.loltr.fragments.CountryFragment;
-import com.yrazlik.loltr.fragments.CostumeDiscountsFragment;
 import com.yrazlik.loltr.fragments.DiscountsFragment;
 import com.yrazlik.loltr.fragments.LiveChannelsFragment;
-import com.yrazlik.loltr.fragments.MatchHistoryFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.NewsFragment;
-import com.yrazlik.loltr.fragments.ProfileFragment;
+import com.yrazlik.loltr.fragments.SummonerSearchFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
 import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
@@ -124,7 +120,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             });
 
         } catch (Exception e) {
-            Commons.LATEST_VERSION = "5.23.1";
+            Commons.LATEST_VERSION = "5.24.2";
         }
 
 
@@ -147,7 +143,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 }
             });
         } catch (Exception e) {
-            Commons.RECOMMENDED_ITEMS_VERSION = "5.23.1";
+            Commons.RECOMMENDED_ITEMS_VERSION = "5.24.1";
         }
 
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
@@ -293,7 +289,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
                         @Override
                         public void run() {
-                            MatchHistoryFragment pFragment = new MatchHistoryFragment();
+                            SummonerSearchFragment pFragment = new SummonerSearchFragment();
                             ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.PROFILE_FRAGMENT);
                             ft.commitAllowingStateLoss();
                         }

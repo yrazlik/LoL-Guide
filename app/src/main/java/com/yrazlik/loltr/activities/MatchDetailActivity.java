@@ -116,14 +116,18 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
         }
         if(game != null){
             List<Player> players = game.getFellowPlayers();
-            players.add(new Player(game.getChampionId(), summonerId, game.getTeamId()));
-            for(Player p : players){
-                summonerIds += p.getSummonerId() + ",";
+            if(players != null && players.size() > 0) {
+                players.add(new Player(game.getChampionId(), summonerId, game.getTeamId()));
+                for (Player p : players) {
+                    summonerIds += p.getSummonerId() + ",";
+                }
+                if (summonerIds.length() > 0) {
+                    summonerIds = summonerIds.substring(0, summonerIds.length() - 1);
+                }
+                makeGetPlayerNamesRequest(summonerIds);
+            }else{
+                initUI();
             }
-            if (summonerIds.length() > 0) {
-                summonerIds = summonerIds.substring(0, summonerIds.length() - 1);
-            }
-            makeGetPlayerNamesRequest(summonerIds);
         }
         reportGoogleAnalytics();
     }

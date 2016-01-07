@@ -39,6 +39,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 	ListAdapter adapter;
 	int freeToPlayChampsSize;
 	ArrayList<String> weeklyFreeChampIds;
+    int weeklyFreeChampsTrialCount = 0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -218,9 +219,17 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 
 	@Override
 	public void onFailure(Object response) {
-		String errorMessage = (String)response;
-		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        try {
+            String errorMessage = (String) response;
+            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        }catch (Exception ignored){}
         Commons.weeklyFreeChampions = null;
+        if(weeklyFreeChampsTrialCount < 3){
+            weeklyFreeChampsTrialCount++;
+            makeWeeklyFreeChampsRequest();
+        }else{
+            Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_LONG).show();
+        }
 	}
 
 	@Override
