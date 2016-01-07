@@ -344,7 +344,7 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
                     statistics.add(new Statistics(getResources().getString(R.string.wardPlaced), wardPlaced + ""));
                     int wardKilled = stats.getWardKilled();
                     statistics.add(new Statistics(getResources().getString(R.string.wardKilled), wardKilled + ""));
-                    int ipEarned = stats.getIpEarned();
+                    int ipEarned = game.getIpEarned();
                     statistics.add(new Statistics(getResources().getString(R.string.ipEarned), ipEarned + ""));
 
                     statisticsAdapter = new StatisticsAdapter(this, R.layout.list_row_statistics, statistics);

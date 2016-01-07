@@ -87,7 +87,6 @@ public class Stats implements Serializable{
     private int wardKilled;
     private int wardPlaced;
     private boolean win;
-    private int ipEarned;
 
     public int getAssists() {
         return assists;
@@ -713,11 +712,4 @@ public class Stats implements Serializable{
         this.largestKillingSpree = largestKillingSpree;
     }
 
-    public int getIpEarned() {
-        return ipEarned;
-    }
-
-    public void setIpEarned(int ipEarned) {
-        this.ipEarned = ipEarned;
-    }
 }
