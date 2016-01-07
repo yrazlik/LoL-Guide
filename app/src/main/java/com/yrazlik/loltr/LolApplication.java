@@ -60,7 +60,7 @@ public class LolApplication extends Application{
                 if(locale.getISO3Country().equalsIgnoreCase("tur") || locale.getISO3Language().equalsIgnoreCase("tur")){
                     Commons.SELECTED_LANGUAGE = "tr";
                     Commons.SELECTED_REGION = "tr";
-                    Commons.SERVICE_BASE_URL_SELECTED = Commons.SERVICE_BASE_URL;
+                    Commons.SERVICE_BASE_URL_SELECTED = Commons.SERVICE_BASE_URL_TR;
                     Locale myLocale = new Locale("tr");
                     Resources res = getResources();
                     DisplayMetrics dm = res.getDisplayMetrics();
@@ -97,11 +97,7 @@ public class LolApplication extends Application{
                     res.updateConfiguration(conf, dm);
                 }
 
-                if(region.equalsIgnoreCase("tr")){
-                    Commons.SERVICE_BASE_URL_SELECTED = Commons.SERVICE_BASE_URL;
-                }else{
-                    Commons.SERVICE_BASE_URL_SELECTED = Commons.SERVICE_BASE_URL_NA;
-                }
+                Commons.SERVICE_BASE_URL_SELECTED = "https://" + Commons.SELECTED_REGION +".api.pvp.net/api/lol";
             }
 
 

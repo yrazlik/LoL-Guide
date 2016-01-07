@@ -228,4 +228,14 @@
     <string name="wardKilled">Ward Killed</string>
     <string name="ipEarned">Ip Earned</string>
 
+    <string name="languageTurkish">Dil</string>
+    <string name="languageEnglish">Language</string>
+    <string name="regionTurkish">Bölge</string>
+    <string name="regionEnglish">Region</string>
+
+    <string name="turkishTurkish">Türkçe</string>
+    <string name="turkishEnglish">Turkish</string>
+    <string name="englishTurkish">İngilizce</string>
+    <string name="englishEnglish">English</string>
+
 </resources>

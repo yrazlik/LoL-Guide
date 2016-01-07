@@ -500,6 +500,8 @@
         registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
     </string>
     <string name="english">English</string>
+    <string name="englishEnglish">English</string>
+    <string name="englishTurkish">İngilizce</string>
     <string name="enter_username">Enter your summoner name:</string>
     <string name="errortwitch">A connection error occured. Please try again.</string>
     <string name="essentialItems">Essential Items</string>
@@ -524,6 +526,8 @@
     <string name="itemTo">Other Items That This Item Can Be Upgraded To</string>
     <string name="kingporo">King Poro</string>
     <string name="lagestKillingSpree">Largest Killing Spree</string>
+    <string name="languageEnglish">Language</string>
+    <string name="languageTurkish">Dil</string>
     <string name="largestMultiKill">Largest MultiKill</string>
     <string name="league">League</string>
     <string name="leagueInfo">League Info</string>
@@ -591,6 +595,8 @@
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Ranked Game</string>
     <string name="ranked_game">Ranked Game</string>
+    <string name="regionEnglish">Region</string>
+    <string name="regionTurkish">Bölge</string>
     <string name="region_br">BR</string>
     <string name="region_eune">EUNE</string>
     <string name="region_euwe">EUW</string>
@@ -645,6 +651,8 @@
     <string name="totalTimeCrowdControlDealt">Total Time Crowd Control Dealt</string>
     <string name="turkey">Türkiye</string>
     <string name="turkish">Turkish</string>
+    <string name="turkishEnglish">Turkish</string>
+    <string name="turkishTurkish">Türkçe</string>
     <string name="turretsKilled">Turrets Killed</string>
     <string name="tutorial">Tutorial</string>
     <string name="tutorial_game">Tutorial Game</string>

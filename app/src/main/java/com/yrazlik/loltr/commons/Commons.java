@@ -84,21 +84,23 @@ public class Commons {
 
 
 
-    public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://tr.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
+    public static String SELECTED_REGION = "tr";
+    public static String SELECTED_LANGUAGE = "tr";
+    public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://" + SELECTED_REGION + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
     public static final String SPECTATOR_SERVICE_BASE_URL_OC = "https://oce.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/OC1";
     public static final String SPECTATOR_SERVICE_BASE_URL_EUNE = "https://eune.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/EUN1";
     public static final String SPECTATOR_SERVICE_BASE_URL_EUW = "https://euw.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1";
     public static final String SPECTATOR_SERVICE_BASE_URL_NA = "https://na.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1";
     public static final String SPECTATOR_SERVICE_BASE_URL_TR = "https://tr.api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
-	public static final String SERVICE_BASE_URL = "https://tr.api.pvp.net/api/lol";
+	public static final String SERVICE_BASE_URL = "https://" + SELECTED_REGION +".api.pvp.net/api/lol";
+    public static final String SERVICE_BASE_URL_TR = "https://tr.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_EUNE = "https://eune.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_EUW = "https://euw.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_OCE = "https://oce.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_NA = "https://na.api.pvp.net/api/lol";
     public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://tr.api.pvp.net/api/lol";
-    public static String SERVICE_BASE_URL_SELECTED = "https://na.api.pvp.net/api/lol";
-    public static String SELECTED_REGION = "tr";
-    public static String SELECTED_LANGUAGE = "tr";
+    public static String SERVICE_BASE_URL_SELECTED = "https://" + SELECTED_REGION +".api.pvp.net/api/lol";
+
 
 
 

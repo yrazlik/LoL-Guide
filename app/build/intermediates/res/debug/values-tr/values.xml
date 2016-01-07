@@ -120,6 +120,8 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="endorse">Geliştirmeye destek olabilmek için aşağıdaki reklamlara tıklayabilrseniz seviniriz. Reklamlar sizi sadece google play store\'a yönlendirecektir. \n\n\nThis application isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
     <string name="english">İngilizce</string>
+    <string name="englishEnglish">English</string>
+    <string name="englishTurkish">İngilizce</string>
     <string name="enter_username">Kullanıcı adınızı girin:</string>
     <string name="errortwitch">Bağlantıda bir hata oluştu. Lütfen tekrar deneyiniz.</string>
     <string name="essentialItems">En Gerekliler</string>
@@ -144,6 +146,8 @@
     <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
     <string name="kingporo">Poro Kralı</string>
     <string name="lagestKillingSpree">En Büyük Katliam</string>
+    <string name="languageEnglish">Language</string>
+    <string name="languageTurkish">Dil</string>
     <string name="largestMultiKill">En Büyük Çoklu Öldürme</string>
     <string name="league">Lig</string>
     <string name="leagueInfo">Lig Bilgisi</string>
@@ -207,6 +211,8 @@
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Dereceli Oyun</string>
     <string name="ranked_game">Dereceli Oyun</string>
+    <string name="regionEnglish">Region</string>
+    <string name="regionTurkish">Bölge</string>
     <string name="region_br">BR</string>
     <string name="region_eune">EUNE</string>
     <string name="region_euwe">EUW</string>
@@ -252,6 +258,8 @@
     <string name="totalTimeCrowdControlDealt">Kitle Kontrol Vuruşu</string>
     <string name="turkey">Türkiye</string>
     <string name="turkish">Türkçe</string>
+    <string name="turkishEnglish">Turkish</string>
+    <string name="turkishTurkish">Türkçe</string>
     <string name="turretsKilled">Yıkılan Kuleler</string>
     <string name="tutorial">Eğitim</string>
     <string name="tutorial_game">Eğitim Oyunu</string>
