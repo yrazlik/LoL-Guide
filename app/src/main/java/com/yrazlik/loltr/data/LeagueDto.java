@@ -1,11 +1,14 @@
 package com.yrazlik.loltr.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by yrazlik on 3/13/15.
  */
-public class LeagueDto {
+public class LeagueDto implements Serializable{
+
+    private static final long serialVersionUID = 11L;
 
     private String tier;
     private String name;

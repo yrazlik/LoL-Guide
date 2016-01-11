@@ -40,7 +40,7 @@ import java.util.Map;
 /**
  * Created by yrazlik on 1/11/16.
  */
-public class SummonerOverviewFragment extends BaseFragment{
+public class SummonerOverviewFragment extends BaseFragment {
 
     ScrollView parent;
     //header part
@@ -82,10 +82,15 @@ public class SummonerOverviewFragment extends BaseFragment{
     private FadeInNetworkImageView rankedLeagueIV;
     private TextView soloDuoTV;
     private TextView leagueNameTV;
+    private TextView winLoseLPTV;
     private FadeInNetworkImageView ranked5v5IV;
     private TextView team5v5rankTV;
+    private TextView team5v5lpTV;
+    private TextView team5v5nameTV;
     private FadeInNetworkImageView ranked3v3IV;
     private TextView team3v3rankTV;
+    private TextView team3v3lpTV;
+    private TextView team3v3nameTV;
 
     public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RECENTMATCHES";
     public static final String EXTRA_SUMMONER_INFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_SUMMONER_INFO";
@@ -105,7 +110,7 @@ public class SummonerOverviewFragment extends BaseFragment{
         View v = inflater.inflate(R.layout.fragment_summoner_overview, container, false);
 
         Bundle extras = getArguments();
-        if(extras != null){
+        if (extras != null) {
             recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
             summonerInfo = (SummonerInfo) extras.getSerializable(EXTRA_SUMMONER_INFO);
             rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_RANKEDSTATS);
@@ -117,7 +122,7 @@ public class SummonerOverviewFragment extends BaseFragment{
         return v;
     }
 
-    private void initUI(View v){
+    private void initUI(View v) {
 
         parent = (ScrollView) v.findViewById(R.id.parent);
 
@@ -162,10 +167,15 @@ public class SummonerOverviewFragment extends BaseFragment{
         rankedLeagueIV = (FadeInNetworkImageView) v.findViewById(R.id.rankedLeagueIV);
         soloDuoTV = (TextView) v.findViewById(R.id.soloDuoTV);
         leagueNameTV = (TextView) v.findViewById(R.id.leagueNameTV);
+        winLoseLPTV = (TextView) v.findViewById(R.id.winLoseLPTV);
         ranked5v5IV = (FadeInNetworkImageView) v.findViewById(R.id.ranked5v5IV);
         team5v5rankTV = (TextView) v.findViewById(R.id.team5v5rankTV);
+        team5v5lpTV = (TextView) v.findViewById(R.id.team5v5lpTV);
+        team5v5nameTV = (TextView) v.findViewById(R.id.team5v5nameTV);
         ranked3v3IV = (FadeInNetworkImageView) v.findViewById(R.id.ranked3v3IV);
         team3v3rankTV = (TextView) v.findViewById(R.id.team3v3rankTV);
+        team3v3lpTV = (TextView) v.findViewById(R.id.team3v3lpTV);
+        team3v3nameTV = (TextView) v.findViewById(R.id.team3v3nameTV);
 
         //populate header part
         if (summonerInfo != null) {
@@ -174,7 +184,7 @@ public class SummonerOverviewFragment extends BaseFragment{
             regionLevelTV.setText(getResources().getString(R.string.region) + " " + Commons.getRegion().toUpperCase() + ", Level:" + summonerInfo.getSummonerLevel());
         }
 
-        if(rankedStatsResponse == null) {
+        if (rankedStatsResponse == null) {
             //populate averages part
             calculateKDAMinionsAndWinRateStringsForUnranked();
             kdaStatsTV.setText(kdaString);
@@ -183,7 +193,7 @@ public class SummonerOverviewFragment extends BaseFragment{
 
             //populate most played part
             populateMostPlayedPartForUnranked();
-        }else{
+        } else {
             sortChampionsByMostPlayed();
             //populate averages part
             calculateKDAMinionsAndWinRateStringsForRanked();
@@ -199,79 +209,132 @@ public class SummonerOverviewFragment extends BaseFragment{
         }
 
 
-
         parent.setVisibility(View.VISIBLE);
     }
 
-    private int getLeagueBadgeImage(String league){
-        if(league.equalsIgnoreCase("BRONZE")){
+    private int getLeagueBadgeImage(String league) {
+        if (league.equalsIgnoreCase("BRONZE")) {
             return R.drawable.bronze_badge;
-        }else if(league.equalsIgnoreCase("SILVER")){
+        } else if (league.equalsIgnoreCase("SILVER")) {
             return R.drawable.silver_badge;
-        }else if(league.equalsIgnoreCase("GOLD")){
+        } else if (league.equalsIgnoreCase("GOLD")) {
             return R.drawable.gold_badge;
-        }else if(league.equalsIgnoreCase("PLATINUM")){
+        } else if (league.equalsIgnoreCase("PLATINUM")) {
             return R.drawable.plat_badge;
-        }else if(league.equalsIgnoreCase("DIAMOND")){
+        } else if (league.equalsIgnoreCase("DIAMOND")) {
             return R.drawable.diamond_badge;
-        }else if(league.equalsIgnoreCase("CHALLENGER")){
+        } else if (league.equalsIgnoreCase("CHALLENGER")) {
             return R.drawable.challenger_badge;
-        }else{
+        } else {
             return R.drawable.unranked_badge;
         }
     }
 
-    private void populateRankedPart(){
-        if(leagueInfoResponse != null){
-            for (Map.Entry<String, ArrayList<LeagueDto>> entry : leagueInfoResponse.entrySet())
-            {
-                if(entry.getValue() != null) {
+    private void populateRankedPart() {
+        if (leagueInfoResponse != null) {
+            for (Map.Entry<String, ArrayList<LeagueDto>> entry : leagueInfoResponse.entrySet()) {
+                if (entry.getValue() != null) {
                     try {
                         boolean receivedSoloInfo = false, received3v3Info = false, received5v5Info = false;
-                        String leagueName = entry.getValue().get(0).getName();
-                        String league = entry.getValue().get(0).getTier();
 
-                        rankedLeagueIV.setBackgroundResource(getLeagueBadgeImage(league));
-                        for(LeagueDto dto : entry.getValue()) {
+                        for (LeagueDto dto : entry.getValue()) {
                             String queue = dto.getQueue();
                             if (queue != null && queue.equalsIgnoreCase("RANKED_SOLO_5x5")) {
-                                if(!receivedSoloInfo) {
+
+                                String league = dto.getName();
+                                String tier = dto.getTier();
+                                rankedLeagueIV.setBackgroundResource(getLeagueBadgeImage(tier));
+
+                                if (!receivedSoloInfo) {
                                     receivedSoloInfo = true;
                                     ArrayList<Entries> entries = dto.getEntries();
                                     if (entries != null && entries.size() > 0) {
-                                        for (Entries en : entries) {
-                                            if (en != null) {
-                                                try {
-                                                    en.getWins();
-                                                } catch (Exception ignored) {
+                                        Entries en = entries.get(0);
+                                        if (en != null) {
+                                            try {
+                                                String division = en.getDivision();
+                                                if (tier != null && division != null && league != null) {
+                                                    leagueNameTV.setText(tier + " " + division + ", " + league);
+                                                } else if (tier != null && division != null) {
+                                                    leagueNameTV.setText(tier + " " + division);
                                                 }
-                                                try {
-                                                    en.getDivision();
-                                                } catch (Exception ignored) {
-                                                }
-                                                try {
-                                                    en.getLosses();
-                                                } catch (Exception ignored) {
-                                                }
-                                                try {
-                                                    en.getPlayerOrTeamId();
-                                                } catch (Exception ignored) {
-                                                }
+                                            } catch (Exception ignored) {
+                                            }
+                                            try {
+                                                winLoseLPTV.setText("W: " + en.getWins() + ", L: " + en.getLosses() + ", LP: " + en.getLeaguePoints());
+                                            } catch (Exception ignored) {
                                             }
                                         }
                                     }
                                 }
-                            }else if (queue != null && queue.equalsIgnoreCase("RANKED_TEAM_3x3")) {
-                                if(!received3v3Info) {
+                            } else if (queue != null && queue.equalsIgnoreCase("RANKED_TEAM_3x3")) {
+                                if (!received3v3Info) {
                                     received3v3Info = true;
+                                    String league = dto.getName();
+                                    String tier = dto.getTier();
+                                    ranked3v3IV.setBackgroundResource(getLeagueBadgeImage(tier));
+
+                                    ArrayList<Entries> entries = dto.getEntries();
+                                    if (entries != null && entries.size() > 0) {
+                                        Entries en = entries.get(0);
+                                        if (en != null) {
+                                            try {
+                                                String division = en.getDivision();
+                                                if (tier != null && division != null && league != null) {
+                                                    team3v3rankTV.setText(tier + " " + division + ", " + league);
+                                                } else if (tier != null && division != null) {
+                                                    team3v3rankTV.setText(tier + " " + division);
+                                                }
+                                            } catch (Exception ignored) {
+                                            }
+                                            try {
+                                                team3v3lpTV.setText(en.getLeaguePoints() + " LP");
+                                            } catch (Exception ignored) {
+                                            }
+
+                                            try {
+                                                team3v3nameTV.setText(en.getPlayerOrTeamName());
+                                            } catch (Exception ignored) {
+                                            }
+                                        }
+                                    }
                                 }
-                            }else if (queue != null && queue.equalsIgnoreCase("RANKED_TEAM_5x5")) {
-                                if(!received5v5Info){
+                            } else if (queue != null && queue.equalsIgnoreCase("RANKED_TEAM_5x5")) {
+                                if (!received5v5Info) {
                                     received5v5Info = true;
+                                    String league = dto.getName();
+                                    String tier = dto.getTier();
+                                    ranked5v5IV.setBackgroundResource(getLeagueBadgeImage(tier));
+
+                                    ArrayList<Entries> entries = dto.getEntries();
+                                    if (entries != null && entries.size() > 0) {
+                                        Entries en = entries.get(0);
+                                        if (en != null) {
+                                            try {
+                                                String division = en.getDivision();
+                                                if (tier != null && division != null && league != null) {
+                                                    team5v5rankTV.setText(tier + " " + division + ", " + league);
+                                                } else if (tier != null && division != null) {
+                                                    team5v5rankTV.setText(tier + " " + division);
+                                                }
+                                            } catch (Exception ignored) {
+                                            }
+                                            try {
+                                                team5v5lpTV.setText(en.getLeaguePoints() + " LP");
+                                            } catch (Exception ignored) {
+                                            }
+
+                                            try {
+                                                team5v5nameTV.setText(en.getPlayerOrTeamName());
+                                            } catch (Exception ignored) {
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }catch (Exception ignored){}
+                    } catch (Exception ignored) {
+                    }
 
                 }
                 break;
@@ -279,13 +342,13 @@ public class SummonerOverviewFragment extends BaseFragment{
         }
     }
 
-    private void calculateKDAMinionsAndWinRateStringsForRanked(){
-        if(averageStats != null && averageStats.getStats() != null){
+    private void calculateKDAMinionsAndWinRateStringsForRanked() {
+        if (averageStats != null && averageStats.getStats() != null) {
             AggregatedStatsDto stats = averageStats.getStats();
-            kdaString = ((int)(Math.round((double)stats.getTotalChampionKills()/(double)(stats.getTotalSessionsPlayed())))) + "/" + ((int)(Math.round((double)stats.getTotalDeathsPerSession()/(double)(stats.getTotalSessionsPlayed())))) + "/" + ((int)(Math.round((double)stats.getTotalAssists()/(double)(stats.getTotalSessionsPlayed())))) + "";
+            kdaString = ((int) (Math.round((double) stats.getTotalChampionKills() / (double) (stats.getTotalSessionsPlayed())))) + "/" + ((int) (Math.round((double) stats.getTotalDeathsPerSession() / (double) (stats.getTotalSessionsPlayed())))) + "/" + ((int) (Math.round((double) stats.getTotalAssists() / (double) (stats.getTotalSessionsPlayed())))) + "";
             minionsString = (int) (Math.round((double) stats.getTotalMinionKills() / (double) stats.getTotalSessionsPlayed())) + "";
             winRateString = ((int) ((double) stats.getTotalSessionsWon() / (double) (stats.getTotalSessionsPlayed()) * 100)) + "%";
-        }else {
+        } else {
             if (rankedStatsResponse != null) {
                 int totalPlayed = 0, totalWon = 0, totalKill = 0, totalDeath = 0, totalAssist = 0, minionCount = 0;
                 if (rankedStatsResponse.getChampions() != null) {
@@ -309,8 +372,8 @@ public class SummonerOverviewFragment extends BaseFragment{
         }
     }
 
-    private void sortChampionsByMostPlayed(){
-        if(rankedStatsResponse != null) {
+    private void sortChampionsByMostPlayed() {
+        if (rankedStatsResponse != null) {
             List<ChampionStatsDto> champions = rankedStatsResponse.getChampions();
             if (champions != null && champions.size() > 0) {
                 for (Iterator<ChampionStatsDto> iterator = champions.iterator(); iterator.hasNext(); ) {
@@ -318,7 +381,7 @@ public class SummonerOverviewFragment extends BaseFragment{
                         ChampionStatsDto b = iterator.next();
                         if (b.getStats() == null) {
                             iterator.remove();
-                        }else if(b.getId() == 0){
+                        } else if (b.getId() == 0) {
                             averageStats = b;
                             iterator.remove();
                         }
@@ -340,22 +403,22 @@ public class SummonerOverviewFragment extends BaseFragment{
         }
     }
 
-    private void populateMostPlayedPartForRanked(){
-        if(rankedStatsResponse != null){
+    private void populateMostPlayedPartForRanked() {
+        if (rankedStatsResponse != null) {
             List<ChampionStatsDto> champions = rankedStatsResponse.getChampions();
-            if(champions != null && champions.size() > 0){
+            if (champions != null && champions.size() > 0) {
                 String champ1ImageUrl = "", champ2ImageUrl = "", champ3ImageUrl = "";
                 Integer champ1Id = null, champ2Id = null, champ3Id = null;
 
-                if(champions != null){
-                    if(champions.size() >= 3){
+                if (champions != null) {
+                    if (champions.size() >= 3) {
                         champ1Id = champions.get(0).getId();
                         champ2Id = champions.get(1).getId();
                         champ3Id = champions.get(2).getId();
-                    }else if(champions.size() == 2){
+                    } else if (champions.size() == 2) {
                         champ1Id = champions.get(0).getId();
                         champ2Id = champions.get(1).getId();
-                    }else if(champions.size() == 1){
+                    } else if (champions.size() == 1) {
                         champ1Id = champions.get(0).getId();
                     }
                 }
@@ -366,59 +429,62 @@ public class SummonerOverviewFragment extends BaseFragment{
                         if (champ1Id != null && champ.getId() == champ1Id) {
                             champ1ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             champ1Name = champ.getChampionName();
-                        }else if ((champ2Id != null) && (champ.getId() == champ2Id)) {
+                        } else if ((champ2Id != null) && (champ.getId() == champ2Id)) {
                             champ2ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             champ2Name = champ.getChampionName();
-                        }else if ((champ3Id != null) && (champ.getId() == champ3Id)) {
+                        } else if ((champ3Id != null) && (champ.getId() == champ3Id)) {
                             champ3ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             champ3Name = champ.getChampionName();
                         }
                     }
                 }
 
-                try{
+                try {
                     mostPlayedIV1.setImageUrl(champ1ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     mostPlayedTV1.setText(champ1Name);
-                    kdaTV1.setText((champions.get(0).getStats().getAverageChampionsKilled())
-                            + "/" + (champions.get(0).getStats().getAverageNumDeaths()) +
-                            "/" +(champions.get(0).getStats().getAverageAssits()));
-                    winRateTV1.setText("W: " + champions.get(0).getStats().getTotalSessionsWon() + " (" + (int) Math.round(((double) champions.get(0).getStats().getTotalSessionsWon() / (double) champions.get(0).getStats().getTotalSessionsPlayed())*100) + "%)");
-                }catch (Exception ignored){}
+                    kdaTV1.setText((int)Math.round((double)(champions.get(0).getStats().getTotalChampionKills()/(double)(champions.get(0).getStats().getTotalSessionsPlayed())))
+                            + "/" + ((int)Math.round((double)(champions.get(0).getStats().getTotalDeathsPerSession()/(double)(champions.get(0).getStats().getTotalSessionsPlayed())))) +
+                            "/" + ((int)Math.round((double)(champions.get(0).getStats().getTotalAssists()/(double)(champions.get(0).getStats().getTotalSessionsPlayed())))));
+                    winRateTV1.setText("W: " + champions.get(0).getStats().getTotalSessionsWon() + " (" + (int) Math.round(((double) champions.get(0).getStats().getTotalSessionsWon() / (double) champions.get(0).getStats().getTotalSessionsPlayed()) * 100) + "%)");
+                } catch (Exception ignored) {
+                }
 
-                try{
+                try {
                     mostPlayedIV2.setImageUrl(champ2ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     mostPlayedTV2.setText(champ2Name);
-                    kdaTV2.setText((champions.get(1).getStats().getAverageChampionsKilled())
-                            + "/" + (champions.get(1).getStats().getAverageNumDeaths()) +
-                            "/" +(champions.get(1).getStats().getAverageAssits()));
-                    winRateTV2.setText("W: " + champions.get(1).getStats().getTotalSessionsWon() + " (" + (int) Math.round(((double) champions.get(1).getStats().getTotalSessionsWon() / (double) champions.get(1).getStats().getTotalSessionsPlayed())*100) + "%)");
-                }catch (Exception ignored){}
+                    kdaTV2.setText(((int)Math.round((double)(champions.get(1).getStats().getTotalChampionKills()/(double)(champions.get(1).getStats().getTotalSessionsPlayed())))
+                            + "/" + ((int)Math.round((double)(champions.get(1).getStats().getTotalDeathsPerSession()/(double)(champions.get(1).getStats().getTotalSessionsPlayed())))) +
+                            "/" + ((int)Math.round((double)(champions.get(1).getStats().getTotalAssists()/(double)(champions.get(1).getStats().getTotalSessionsPlayed()))))));
+                    winRateTV2.setText("W: " + champions.get(1).getStats().getTotalSessionsWon() + " (" + (int) Math.round(((double) champions.get(1).getStats().getTotalSessionsWon() / (double) champions.get(1).getStats().getTotalSessionsPlayed()) * 100) + "%)");
+                } catch (Exception ignored) {
+                }
 
-                try{
+                try {
                     mostPlayedIV3.setImageUrl(champ3ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     mostPlayedTV3.setText(champ3Name);
-                    kdaTV3.setText((champions.get(2).getStats().getAverageChampionsKilled())
-                            + "/" + (champions.get(2).getStats().getAverageNumDeaths()) +
-                            "/" +(champions.get(2).getStats().getAverageAssits()));
-                    winRateTV3.setText("W: " + champions.get(2).getStats().getTotalSessionsWon() + " (" + (int) Math.round(((double) champions.get(2).getStats().getTotalSessionsWon() / (double) champions.get(2).getStats().getTotalSessionsPlayed())*100) + "%)");
-                }catch (Exception ignored){}
+                    kdaTV3.setText(((int)Math.round((double)(champions.get(2).getStats().getTotalChampionKills()/(double)(champions.get(2).getStats().getTotalSessionsPlayed())))
+                            + "/" + ((int)Math.round((double)(champions.get(2).getStats().getTotalDeathsPerSession()/(double)(champions.get(2).getStats().getTotalSessionsPlayed())))) +
+                            "/" + ((int)Math.round((double)(champions.get(2).getStats().getTotalAssists()/(double)(champions.get(2).getStats().getTotalSessionsPlayed()))))));
+                    winRateTV3.setText("W: " + champions.get(2).getStats().getTotalSessionsWon() + " (" + (int) Math.round(((double) champions.get(2).getStats().getTotalSessionsWon() / (double) champions.get(2).getStats().getTotalSessionsPlayed()) * 100) + "%)");
+                } catch (Exception ignored) {
+                }
             }
         }
 
     }
 
-    private void calculateKDAMinionsAndWinRateStringsForUnranked(){
+    private void calculateKDAMinionsAndWinRateStringsForUnranked() {
         int minionsKilled = 0, winCount = 0, loseCount = 0, killCount = 0, deathCount = 0, assistCount = 0;
-        if(recentMatchesResponse != null){
+        if (recentMatchesResponse != null) {
             List<Game> games = recentMatchesResponse.getGames();
-            if(games != null && games.size() > 0) {
-                for(Game game : games){
+            if (games != null && games.size() > 0) {
+                for (Game game : games) {
                     Stats stats = game.getStats();
-                    if(stats != null){
+                    if (stats != null) {
                         minionsKilled += stats.getMinionsKilled();
-                        if(stats.isWin()){
+                        if (stats.isWin()) {
                             winCount++;
-                        }else{
+                        } else {
                             loseCount++;
                         }
                         killCount += stats.getChampionsKilled();
@@ -427,34 +493,34 @@ public class SummonerOverviewFragment extends BaseFragment{
                     }
                 }
 
-                if(winCount + loseCount != 0){
-                    minionsKilled = minionsKilled/(winCount + loseCount);
-                    minionsString = String.valueOf( minionsKilled);
-                    killCount = killCount/(winCount + loseCount);
-                    deathCount = deathCount/(winCount + loseCount);
-                    assistCount = assistCount/(winCount + loseCount);
+                if (winCount + loseCount != 0) {
+                    minionsKilled = minionsKilled / (winCount + loseCount);
+                    minionsString = String.valueOf(minionsKilled);
+                    killCount = killCount / (winCount + loseCount);
+                    deathCount = deathCount / (winCount + loseCount);
+                    assistCount = assistCount / (winCount + loseCount);
                     kdaString = killCount + "/" + deathCount + "/" + assistCount;
-                    winRateString = ((int)((double)winCount/(double)(winCount + loseCount)*100)) + "%";
+                    winRateString = ((int) ((double) winCount / (double) (winCount + loseCount) * 100)) + "%";
                 }
 
-            }else{
+            } else {
                 kdaRL.setVisibility(View.GONE);
             }
-        }else{
+        } else {
             kdaRL.setVisibility(View.GONE);
         }
     }
 
-    private void populateMostPlayedPartForUnranked(){
-        if(recentMatchesResponse != null) {
+    private void populateMostPlayedPartForUnranked() {
+        if (recentMatchesResponse != null) {
             ArrayList<ChampGameAnalysis> champGameAnalysises = new ArrayList<>();
             List<Game> games = recentMatchesResponse.getGames();
             if (games != null && games.size() > 0) {
-                for(Game game : games) {
+                for (Game game : games) {
                     ChampGameAnalysis gameAnalysis = new ChampGameAnalysis();
                     ChampGameAnalysis existingAnalysis = null;
-                    for(ChampGameAnalysis analysis : champGameAnalysises){
-                        if(analysis.getChampId() == game.getChampionId()){
+                    for (ChampGameAnalysis analysis : champGameAnalysises) {
+                        if (analysis.getChampId() == game.getChampionId()) {
                             existingAnalysis = analysis;
                             break;
                         }
@@ -462,22 +528,22 @@ public class SummonerOverviewFragment extends BaseFragment{
 
                     Stats stats = game.getStats();
                     if (stats != null) {
-                        if(existingAnalysis != null){
+                        if (existingAnalysis != null) {
                             existingAnalysis.setKillCount(existingAnalysis.getKillCount() + stats.getChampionsKilled());
                             existingAnalysis.setDeathCount(existingAnalysis.getDeathCount() + stats.getNumDeaths());
                             existingAnalysis.setAssistCount(existingAnalysis.getAssistCount() + stats.getAssists());
-                            if(stats.isWin()){
+                            if (stats.isWin()) {
                                 existingAnalysis.setWinCount(existingAnalysis.getWinCount() + 1);
-                            }else{
+                            } else {
                                 existingAnalysis.setLoseCount(existingAnalysis.getLoseCount() + 1);
                             }
                             existingAnalysis.setTotalPlayCount(existingAnalysis.getWinCount() + existingAnalysis.getLoseCount());
-                        }else {
+                        } else {
                             ChampGameAnalysis analysis = new ChampGameAnalysis();
                             analysis.setDeathCount(stats.getNumDeaths());
-                            if(stats.isWin()){
+                            if (stats.isWin()) {
                                 analysis.setWinCount(analysis.getWinCount() + 1);
-                            }else{
+                            } else {
                                 analysis.setLoseCount(analysis.getLoseCount() + 1);
                             }
                             analysis.setChampId(game.getChampionId());
@@ -492,35 +558,35 @@ public class SummonerOverviewFragment extends BaseFragment{
             }
 
             boolean sortByNumOfPicks = true;
-            try{
+            try {
                 Collections.sort(champGameAnalysises, new Comparator<ChampGameAnalysis>() {
                     @Override
                     public int compare(ChampGameAnalysis c1, ChampGameAnalysis c2) {
                         return c1.getTotalPlayCount() - (c2.getTotalPlayCount());
                     }
                 });
-            }catch (Exception e){
+            } catch (Exception e) {
                 sortByNumOfPicks = false;
             }
 
             try {
                 Collections.reverse(champGameAnalysises);
-            }catch (Exception e){
+            } catch (Exception e) {
                 sortByNumOfPicks = false;
             }
 
-            if(sortByNumOfPicks){
+            if (sortByNumOfPicks) {
                 String champ1ImageUrl = "", champ2ImageUrl = "", champ3ImageUrl = "";
                 Integer champ1Id = null, champ2Id = null, champ3Id = null;
-                if(champGameAnalysises != null){
-                    if(champGameAnalysises.size() >= 3){
+                if (champGameAnalysises != null) {
+                    if (champGameAnalysises.size() >= 3) {
                         champ1Id = champGameAnalysises.get(0).getChampId();
                         champ2Id = champGameAnalysises.get(1).getChampId();
                         champ3Id = champGameAnalysises.get(2).getChampId();
-                    }else if(champGameAnalysises.size() == 2){
+                    } else if (champGameAnalysises.size() == 2) {
                         champ1Id = champGameAnalysises.get(0).getChampId();
                         champ2Id = champGameAnalysises.get(1).getChampId();
-                    }else if(champGameAnalysises.size() == 1){
+                    } else if (champGameAnalysises.size() == 1) {
                         champ1Id = champGameAnalysises.get(0).getChampId();
                     }
                 }
@@ -531,10 +597,10 @@ public class SummonerOverviewFragment extends BaseFragment{
                         if (champ1Id != null && champ.getId() == champ1Id) {
                             champ1ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             champ1Name = champ.getChampionName();
-                        }else if ((champ2Id != null) && (champ.getId() == champ2Id)) {
+                        } else if ((champ2Id != null) && (champ.getId() == champ2Id)) {
                             champ2ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             champ2Name = champ.getChampionName();
-                        }else if ((champ3Id != null) && (champ.getId() == champ3Id)) {
+                        } else if ((champ3Id != null) && (champ.getId() == champ3Id)) {
                             champ3ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             champ3Name = champ.getChampionName();
                         }
@@ -544,32 +610,35 @@ public class SummonerOverviewFragment extends BaseFragment{
                 try {
                     mostPlayedIV1.setImageUrl(champ1ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     mostPlayedTV1.setText(champ1Name);
-                    kdaTV1.setText((int)Math.round((((double)(champGameAnalysises.get(0).getKillCount()))/(double)(champGameAnalysises.get(0).getTotalPlayCount())))
-                            + "/" + (int)Math.round((((double)(champGameAnalysises.get(0).getDeathCount()))/(double)(champGameAnalysises.get(0).getTotalPlayCount()))) +
-                            "/" +(int)Math.round((((double)(champGameAnalysises.get(0).getAssistCount()))/(double)(champGameAnalysises.get(0).getTotalPlayCount()))));
-                    winRateTV1.setText("W: " + champGameAnalysises.get(0).getWinCount() + " (" + (int) Math.round(((double) champGameAnalysises.get(0).getWinCount() / (double) champGameAnalysises.get(0).getTotalPlayCount())*100) + "%)");
-                }catch (Exception ignored){}
+                    kdaTV1.setText((int) Math.round((((double) (champGameAnalysises.get(0).getKillCount())) / (double) (champGameAnalysises.get(0).getTotalPlayCount())))
+                            + "/" + (int) Math.round((((double) (champGameAnalysises.get(0).getDeathCount())) / (double) (champGameAnalysises.get(0).getTotalPlayCount()))) +
+                            "/" + (int) Math.round((((double) (champGameAnalysises.get(0).getAssistCount())) / (double) (champGameAnalysises.get(0).getTotalPlayCount()))));
+                    winRateTV1.setText("W: " + champGameAnalysises.get(0).getWinCount() + " (" + (int) Math.round(((double) champGameAnalysises.get(0).getWinCount() / (double) champGameAnalysises.get(0).getTotalPlayCount()) * 100) + "%)");
+                } catch (Exception ignored) {
+                }
 
                 try {
                     mostPlayedIV2.setImageUrl(champ2ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     mostPlayedTV2.setText(champ2Name);
-                    kdaTV2.setText((int)Math.round((((double)(champGameAnalysises.get(1).getKillCount()))/(double)(champGameAnalysises.get(1).getTotalPlayCount())))
-                            + "/" + (int)Math.round((((double)(champGameAnalysises.get(1).getDeathCount()))/(double)(champGameAnalysises.get(1).getTotalPlayCount()))) +
-                            "/" +(int)Math.round((((double)(champGameAnalysises.get(1).getAssistCount()))/(double)(champGameAnalysises.get(1).getTotalPlayCount()))));
-                    winRateTV2.setText("W: " + champGameAnalysises.get(1).getWinCount() + " (" + (int)Math.round(((double)champGameAnalysises.get(1).getWinCount()/(double)champGameAnalysises.get(1).getTotalPlayCount())*100) + "%)");
-                }catch (Exception ignored){}
+                    kdaTV2.setText((int) Math.round((((double) (champGameAnalysises.get(1).getKillCount())) / (double) (champGameAnalysises.get(1).getTotalPlayCount())))
+                            + "/" + (int) Math.round((((double) (champGameAnalysises.get(1).getDeathCount())) / (double) (champGameAnalysises.get(1).getTotalPlayCount()))) +
+                            "/" + (int) Math.round((((double) (champGameAnalysises.get(1).getAssistCount())) / (double) (champGameAnalysises.get(1).getTotalPlayCount()))));
+                    winRateTV2.setText("W: " + champGameAnalysises.get(1).getWinCount() + " (" + (int) Math.round(((double) champGameAnalysises.get(1).getWinCount() / (double) champGameAnalysises.get(1).getTotalPlayCount()) * 100) + "%)");
+                } catch (Exception ignored) {
+                }
 
                 try {
                     mostPlayedIV3.setImageUrl(champ3ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     mostPlayedTV3.setText(champ3Name);
-                    kdaTV3.setText((int)Math.round((((double)(champGameAnalysises.get(2).getKillCount()))/(double)(champGameAnalysises.get(2).getTotalPlayCount())))
-                            + "/" + (int)Math.round((((double)(champGameAnalysises.get(2).getDeathCount()))/(double)(champGameAnalysises.get(2).getTotalPlayCount()))) +
-                            "/" +(int)Math.round((((double)(champGameAnalysises.get(2).getAssistCount()))/(double)(champGameAnalysises.get(2).getTotalPlayCount()))));
-                    winRateTV3.setText("W: " + champGameAnalysises.get(2).getWinCount() + " (" + (int)Math.round(((double)champGameAnalysises.get(2).getWinCount()/(double)champGameAnalysises.get(2).getTotalPlayCount())*100) + "%)");
-                }catch (Exception ignored){}
+                    kdaTV3.setText((int) Math.round((((double) (champGameAnalysises.get(2).getKillCount())) / (double) (champGameAnalysises.get(2).getTotalPlayCount())))
+                            + "/" + (int) Math.round((((double) (champGameAnalysises.get(2).getDeathCount())) / (double) (champGameAnalysises.get(2).getTotalPlayCount()))) +
+                            "/" + (int) Math.round((((double) (champGameAnalysises.get(2).getAssistCount())) / (double) (champGameAnalysises.get(2).getTotalPlayCount()))));
+                    winRateTV3.setText("W: " + champGameAnalysises.get(2).getWinCount() + " (" + (int) Math.round(((double) champGameAnalysises.get(2).getWinCount() / (double) champGameAnalysises.get(2).getTotalPlayCount()) * 100) + "%)");
+                } catch (Exception ignored) {
+                }
 
 
-            }else{
+            } else {
 
             }
         }

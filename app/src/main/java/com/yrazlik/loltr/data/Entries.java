@@ -1,12 +1,19 @@
 package com.yrazlik.loltr.data;
 
+import java.io.Serializable;
+
 /**
  * Created by yrazlik on 3/13/15.
  */
-public class Entries {
+public class Entries implements Serializable{
+
+    private static final long serialVersionUID = 12L;
+
     private int wins;
     private int losses;
     private String playerOrTeamId;
+    private String playerOrTeamName;
+    private int leaguePoints;
     private String division;
 
     public int getWins() {
@@ -39,5 +46,21 @@ public class Entries {
 
     public void setDivision(String division) {
         this.division = division;
+    }
+
+    public int getLeaguePoints() {
+        return leaguePoints;
+    }
+
+    public void setLeaguePoints(int leaguePoints) {
+        this.leaguePoints = leaguePoints;
+    }
+
+    public String getPlayerOrTeamName() {
+        return playerOrTeamName;
+    }
+
+    public void setPlayerOrTeamName(String playerOrTeamName) {
+        this.playerOrTeamName = playerOrTeamName;
     }
 }

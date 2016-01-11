@@ -434,8 +434,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/rankedLeagueIV"
+                    android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/rankedLeagueIV"
-                    android:gravity="center_horizontal"
+                    android:gravity="left"
                     android:paddingTop="10dp"
                     android:singleLine="true"
                     android:text="@string/solo_duo"
@@ -446,11 +447,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/soloDuoTV"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/rankedLeagueIV"
-                    android:gravity="center_horizontal"
+                    android:gravity="left"
                     android:singleLine="true"
                     android:text="@string/unranked"
+                    android:textSize="13dp"
+                    />
+
+                <TextView
+                    android:id="@+id/winLoseLPTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/leagueNameTV"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/rankedLeagueIV"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text=""
                     android:textSize="13dp"
                     />
 
@@ -472,10 +488,10 @@
                         android:id="@+id/team5v5rankTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/ranked5v5IV"
                         android:layout_alignTop="@+id/ranked5v5IV"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="5dp"
+                        android:layout_marginTop="3dp"
                         android:layout_toLeftOf="@+id/team5v5TV"
                         android:layout_toRightOf="@+id/ranked5v5IV"
                         android:gravity="center_vertical|left"
@@ -485,15 +501,40 @@
                         />
 
                     <TextView
+                        android:id="@+id/team5v5lpTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/team5v5rankTV"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toLeftOf="@+id/team5v5nameTV"
+                        android:layout_toRightOf="@+id/ranked5v5IV"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:textSize="11dp"
+                        />
+
+                    <TextView
                         android:id="@+id/team5v5TV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/ranked5v5IV"
                         android:layout_alignParentRight="true"
                         android:layout_alignTop="@+id/ranked5v5IV"
-                        android:gravity="center_vertical"
                         android:singleLine="true"
+                        android:layout_marginTop="3dp"
                         android:text="@string/team55"
+                        android:textSize="11dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/team5v5nameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/team5v5TV"
+                        android:layout_marginTop="2dp"
+                        android:singleLine="true"
                         android:textSize="11dp"
                         />
 
@@ -504,7 +545,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/team5v5RL"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <com.yrazlik.loltr.view.FadeInNetworkImageView
                         android:id="@+id/ranked3v3IV"
@@ -517,15 +558,30 @@
                         android:id="@+id/team3v3rankTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/ranked3v3IV"
                         android:layout_alignTop="@+id/ranked3v3IV"
                         android:layout_marginLeft="7dp"
                         android:layout_marginRight="5dp"
-                        android:layout_toLeftOf="@+id/team5v5TV"
+                        android:layout_marginTop="3dp"
+                        android:layout_toLeftOf="@+id/team3v3TV"
+                        android:layout_toRightOf="@+id/ranked3v3IV"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:text="@string/unranked"
+                        android:textSize="11dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/team3v3lpTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/team3v3rankTV"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toLeftOf="@+id/team3v3nameTV"
                         android:layout_toRightOf="@+id/ranked3v3IV"
                         android:gravity="center_vertical|left"
                         android:singleLine="true"
-                        android:text="@string/unranked"
                         android:textSize="11dp"
                         />
 
@@ -533,12 +589,22 @@
                         android:id="@+id/team3v3TV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/ranked3v3IV"
                         android:layout_alignParentRight="true"
                         android:layout_alignTop="@+id/ranked3v3IV"
-                        android:gravity="center_vertical"
+                        android:layout_marginTop="3dp"
                         android:singleLine="true"
-                        android:text="@string/team55"
+                        android:text="@string/team33"
+                        android:textSize="11dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/team3v3nameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/team3v3TV"
+                        android:layout_marginTop="2dp"
+                        android:singleLine="true"
                         android:textSize="11dp"
                         />
 
