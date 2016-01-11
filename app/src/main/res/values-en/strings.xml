@@ -251,5 +251,6 @@
     <string name="team55">Team 5v5</string>
     <string name="team33">Team 3v3</string>
     <string name="kda">KDA</string>
+    <string name="solo_duo">Solo/Duo</string>
 
 </resources>

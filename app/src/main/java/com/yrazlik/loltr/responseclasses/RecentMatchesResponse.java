@@ -2,12 +2,15 @@ package com.yrazlik.loltr.responseclasses;
 
 import com.yrazlik.loltr.data.Game;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by yrazlik on 1/5/16.
  */
-public class RecentMatchesResponse {
+public class RecentMatchesResponse implements Serializable{
+
+    private static final long serialVersionUID = 7L;
 
     private List<Game> games;
     private long summonerId;

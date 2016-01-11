@@ -85,6 +85,7 @@ public class Commons {
     public static final int RECENT_MATCHES_REQUEST = 21;
     public static final int SUMMONER_SPELLS_REQUEST = 22;
     public static final int SUMMONER_NAMES_REQUEST = 23;
+    public static final int RANKED_STATS_REQUEST = 24;
 
 
 

@@ -24,6 +24,8 @@ import com.yrazlik.loltr.adapters.RecentSearchesAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.RecentSearchItem;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
+import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.service.ServiceRequest;
 
@@ -46,6 +48,8 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private ListView recentSearchesLV;
     private RecentSearchesAdapter recentSearchesAdapter;
     private ArrayList<RecentSearchItem> recentSearchesArrayList;
+    private SummonerInfo summonerByNameResponse;
+    private RecentMatchesResponse recentMatchesResponse;
 
     @Nullable
     @Override
@@ -162,7 +166,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     @Override
     public void onSuccess(Object response) {
         if(response instanceof SummonerInfo){
-            SummonerInfo summonerByNameResponse = (SummonerInfo) response;
+            summonerByNameResponse = (SummonerInfo) response;
             Commons.summonerInfo = new SummonerInfo();
             Commons.summonerInfo.setName(summonerByNameResponse.getName());
             Commons.summonerInfo.setId(summonerByNameResponse.getId());
@@ -201,12 +205,35 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                 Commons.saveRecentSearchesArray(recentSearchesArrayList, getContext());
             }
 
-            FragmentManager fm = getFragmentManager();
+           /* FragmentManager fm = getFragmentManager();
             MatchHistoryFragment matchHistoryFragment = new MatchHistoryFragment();
             matchHistoryFragment.setSummonerId(summonerByNameResponse.getId());
             FragmentTransaction ft = fm.beginTransaction();
             Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-            ft.replace(R.id.content_frame, matchHistoryFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();
+            ft.replace(R.id.content_frame, matchHistoryFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();*/
+
+
+            ServiceRequest.getInstance(getActivity()).makeGetRecentMatchesRequest(
+                    Commons.RECENT_MATCHES_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+        }else if(response instanceof RecentMatchesResponse){
+            recentMatchesResponse = (RecentMatchesResponse) response;
+
+            ServiceRequest.getInstance(getActivity()).makeGetRankedStatsRequest(
+                    Commons.RANKED_STATS_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+        }else if(response instanceof RankedStatsResponse){
+            RankedStatsResponse rankedStatsResponse = (RankedStatsResponse) response;
+
+            FragmentManager fm = getFragmentManager();
+            SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
+
+            Bundle args = new Bundle();
+            args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
+            args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+            args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
+            FragmentTransaction ft = fm.beginTransaction();
+            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+            summonerOverviewFragment.setArguments(args);
+            ft.replace(R.id.content_frame, summonerOverviewFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();
         }
     }
 
@@ -216,6 +243,18 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             Integer requestId = (Integer) response;
             if(requestId == Commons.SUMMONER_BY_NAME_REQUEST) {
                 Toast.makeText(getContext(), R.string.cannot_find_username, Toast.LENGTH_SHORT).show();
+            }else if(requestId == Commons.RANKED_STATS_REQUEST) {
+                FragmentManager fm = getFragmentManager();
+                SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
+
+                Bundle args = new Bundle();
+                args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
+                args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+                args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, null);
+                FragmentTransaction ft = fm.beginTransaction();
+                Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+                summonerOverviewFragment.setArguments(args);
+                ft.replace(R.id.content_frame, summonerOverviewFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();
             }
         }
     }

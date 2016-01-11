@@ -36,6 +36,7 @@ import com.yrazlik.loltr.responseclasses.ItemsResponse;
 import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.LiveChannelsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
+import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.responseclasses.RuneResponse;
@@ -542,6 +543,8 @@ public class ServiceRequest {
                 } catch (JSONException e) {
                     return null;
                 }
+            case Commons.RANKED_STATS_REQUEST:
+                return gson.fromJson(response, RankedStatsResponse.class);
             default:
                 return null;
         }
@@ -564,6 +567,54 @@ public class ServiceRequest {
             }
         }catch (Exception e){
             return null;
+        }
+    }
+
+    public void makeGetRankedStatsRequest(final int requestID, String region, String summonerId, Object requestData,
+                                            final ResponseListener listener){
+
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("api");
+        pathParams.add("lol");
+        pathParams.add(region);
+        pathParams.add("v1.3");
+        pathParams.add("stats");
+        pathParams.add("by-summoner");
+        pathParams.add(summonerId);
+        pathParams.add("ranked");
+
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("api_key", Commons.API_KEY);
+
+        final Request request = new Request(requestID, pathParams, queryParams);
+        String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
+        StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                hideLoading();
+                Object parsedResponse = parseResponse(request.getRequestID(), response);
+                listener.onSuccess(parsedResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideLoading();
+                listener.onFailure(requestID);
+            }
+        }){
+            @Override
+            public void addMarker(String tag) {
+                super.addMarker(tag);
+            }
+        };
+
+        getReq.setShouldCache(true);
+        addToRequestQueue(getReq, TAG_GET_REQUEST);
+        Dialog progress = showLoading(getContext());
+        if(progress != null){
+            try {
+                progress.show();
+            }catch (Exception ignored){}
         }
     }
 

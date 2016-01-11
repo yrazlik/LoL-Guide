@@ -1,9 +1,13 @@
 package com.yrazlik.loltr.responseclasses;
 
+import java.io.Serializable;
+
 /**
  * Created by yrazlik on 1/5/16.
  */
-public class SummonerInfo {
+public class SummonerInfo implements Serializable {
+
+    private static final long serialVersionUID = 6L;
 
     private long id;
     private String name;

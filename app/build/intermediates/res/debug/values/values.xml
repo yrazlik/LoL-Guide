@@ -188,6 +188,7 @@
     <eat-comment/>
     <color name="text_black">#222222</color>
     <color name="touch_bg">#268e8e8e</color>
+    <color name="transparent_black">#99000000</color>
     <color name="transparent_gray">#808e8e8e</color>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.3.0/res/values/wallet_colors.xml -->
     <eat-comment/>
@@ -630,6 +631,7 @@
     <string name="send">Send</string>
     <string name="settings">Settings</string>
     <string name="skin_sale">Skin Sale</string>
+    <string name="solo_duo">Solo/Duo</string>
     <string name="spell_damage">Spell Damage</string>
     <string name="spell_vamp">Spell Vamp</string>
     <string name="sr6">6 vs. 6</string>
