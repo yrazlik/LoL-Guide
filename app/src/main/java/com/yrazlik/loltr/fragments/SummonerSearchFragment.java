@@ -24,6 +24,7 @@ import com.yrazlik.loltr.adapters.RecentSearchesAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.RecentSearchItem;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
@@ -49,7 +50,9 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private RecentSearchesAdapter recentSearchesAdapter;
     private ArrayList<RecentSearchItem> recentSearchesArrayList;
     private SummonerInfo summonerByNameResponse;
+    private RankedStatsResponse rankedStatsResponse;
     private RecentMatchesResponse recentMatchesResponse;
+    private LeagueInfoResponse leagueInfoResponse;
 
     @Nullable
     @Override
@@ -221,19 +224,13 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             ServiceRequest.getInstance(getActivity()).makeGetRankedStatsRequest(
                     Commons.RANKED_STATS_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
         }else if(response instanceof RankedStatsResponse){
-            RankedStatsResponse rankedStatsResponse = (RankedStatsResponse) response;
+            rankedStatsResponse = (RankedStatsResponse) response;
 
-            FragmentManager fm = getFragmentManager();
-            SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
-
-            Bundle args = new Bundle();
-            args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
-            args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
-            args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
-            FragmentTransaction ft = fm.beginTransaction();
-            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-            summonerOverviewFragment.setArguments(args);
-            ft.replace(R.id.content_frame, summonerOverviewFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();
+            ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
+                    Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+        }else if ((response instanceof LeagueInfoResponse)){
+            leagueInfoResponse = (LeagueInfoResponse) response;
+            openChampionOverviewFragment();
         }
     }
 
@@ -244,19 +241,29 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             if(requestId == Commons.SUMMONER_BY_NAME_REQUEST) {
                 Toast.makeText(getContext(), R.string.cannot_find_username, Toast.LENGTH_SHORT).show();
             }else if(requestId == Commons.RANKED_STATS_REQUEST) {
-                FragmentManager fm = getFragmentManager();
-                SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
-
-                Bundle args = new Bundle();
-                args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
-                args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
-                args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, null);
-                FragmentTransaction ft = fm.beginTransaction();
-                Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-                summonerOverviewFragment.setArguments(args);
-                ft.replace(R.id.content_frame, summonerOverviewFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();
+                rankedStatsResponse = null;
+                ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
+                        Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+            }else if(requestId == Commons.LEAGUE_INFO_REQUEST) {
+                leagueInfoResponse = null;
+                openChampionOverviewFragment();
             }
         }
+    }
+
+    private void openChampionOverviewFragment(){
+        FragmentManager fm = getFragmentManager();
+        SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
+
+        Bundle args = new Bundle();
+        args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
+        args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+        args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
+        args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
+        FragmentTransaction ft = fm.beginTransaction();
+        Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+        summonerOverviewFragment.setArguments(args);
+        ft.replace(R.id.content_frame, summonerOverviewFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();
     }
 
     @Override

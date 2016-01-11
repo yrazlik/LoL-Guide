@@ -9,6 +9,7 @@ public class LeagueDto {
 
     private String tier;
     private String name;
+    private String queue;
     private String participantId;
     private ArrayList<Entries> entries;
 
@@ -42,5 +43,13 @@ public class LeagueDto {
 
     public void setEntries(ArrayList<Entries> entries) {
         this.entries = entries;
+    }
+
+    public String getQueue() {
+        return queue;
+    }
+
+    public void setQueue(String queue) {
+        this.queue = queue;
     }
 }

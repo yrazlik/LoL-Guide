@@ -19,8 +19,11 @@ import com.yrazlik.loltr.data.AggregatedStatsDto;
 import com.yrazlik.loltr.data.ChampGameAnalysis;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.ChampionStatsDto;
+import com.yrazlik.loltr.data.Entries;
 import com.yrazlik.loltr.data.Game;
+import com.yrazlik.loltr.data.LeagueDto;
 import com.yrazlik.loltr.data.Stats;
+import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
@@ -32,6 +35,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yrazlik on 1/11/16.
@@ -86,10 +90,12 @@ public class SummonerOverviewFragment extends BaseFragment{
     public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RECENTMATCHES";
     public static final String EXTRA_SUMMONER_INFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_SUMMONER_INFO";
     public static final String EXTRA_RANKEDSTATS = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RANKEDSTATS";
+    public static final String EXTRA_LEAGUEINFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_LEAGUEINFO";
 
     private RecentMatchesResponse recentMatchesResponse;
     private SummonerInfo summonerInfo;
     private RankedStatsResponse rankedStatsResponse;
+    private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
     private String kdaString = "?/?/?", minionsString = "???", winRateString = "?%";
 
@@ -103,6 +109,7 @@ public class SummonerOverviewFragment extends BaseFragment{
             recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
             summonerInfo = (SummonerInfo) extras.getSerializable(EXTRA_SUMMONER_INFO);
             rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_RANKEDSTATS);
+            leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(EXTRA_LEAGUEINFO);
         }
 
         initUI(v);
@@ -196,8 +203,80 @@ public class SummonerOverviewFragment extends BaseFragment{
         parent.setVisibility(View.VISIBLE);
     }
 
+    private int getLeagueBadgeImage(String league){
+        if(league.equalsIgnoreCase("BRONZE")){
+            return R.drawable.bronze_badge;
+        }else if(league.equalsIgnoreCase("SILVER")){
+            return R.drawable.silver_badge;
+        }else if(league.equalsIgnoreCase("GOLD")){
+            return R.drawable.gold_badge;
+        }else if(league.equalsIgnoreCase("PLATINUM")){
+            return R.drawable.plat_badge;
+        }else if(league.equalsIgnoreCase("DIAMOND")){
+            return R.drawable.diamond_badge;
+        }else if(league.equalsIgnoreCase("CHALLENGER")){
+            return R.drawable.challenger_badge;
+        }else{
+            return R.drawable.unranked_badge;
+        }
+    }
+
     private void populateRankedPart(){
-        
+        if(leagueInfoResponse != null){
+            for (Map.Entry<String, ArrayList<LeagueDto>> entry : leagueInfoResponse.entrySet())
+            {
+                if(entry.getValue() != null) {
+                    try {
+                        boolean receivedSoloInfo = false, received3v3Info = false, received5v5Info = false;
+                        String leagueName = entry.getValue().get(0).getName();
+                        String league = entry.getValue().get(0).getTier();
+
+                        rankedLeagueIV.setBackgroundResource(getLeagueBadgeImage(league));
+                        for(LeagueDto dto : entry.getValue()) {
+                            String queue = dto.getQueue();
+                            if (queue != null && queue.equalsIgnoreCase("RANKED_SOLO_5x5")) {
+                                if(!receivedSoloInfo) {
+                                    receivedSoloInfo = true;
+                                    ArrayList<Entries> entries = dto.getEntries();
+                                    if (entries != null && entries.size() > 0) {
+                                        for (Entries en : entries) {
+                                            if (en != null) {
+                                                try {
+                                                    en.getWins();
+                                                } catch (Exception ignored) {
+                                                }
+                                                try {
+                                                    en.getDivision();
+                                                } catch (Exception ignored) {
+                                                }
+                                                try {
+                                                    en.getLosses();
+                                                } catch (Exception ignored) {
+                                                }
+                                                try {
+                                                    en.getPlayerOrTeamId();
+                                                } catch (Exception ignored) {
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }else if (queue != null && queue.equalsIgnoreCase("RANKED_TEAM_3x3")) {
+                                if(!received3v3Info) {
+                                    received3v3Info = true;
+                                }
+                            }else if (queue != null && queue.equalsIgnoreCase("RANKED_TEAM_5x5")) {
+                                if(!received5v5Info){
+                                    received5v5Info = true;
+                                }
+                            }
+                        }
+                    }catch (Exception ignored){}
+
+                }
+                break;
+            }
+        }
     }
 
     private void calculateKDAMinionsAndWinRateStringsForRanked(){

@@ -618,6 +618,54 @@ public class ServiceRequest {
         }
     }
 
+    public void makeGetLeagueInfoRequest(final int requestID, String region, String summonerId, Object requestData,
+                                          final ResponseListener listener){
+
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("api");
+        pathParams.add("lol");
+        pathParams.add(region);
+        pathParams.add("v2.5");
+        pathParams.add("league");
+        pathParams.add("by-summoner");
+        pathParams.add(summonerId);
+        pathParams.add("entry");
+
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("api_key", Commons.API_KEY);
+
+        final Request request = new Request(requestID, pathParams, queryParams);
+        String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
+        StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                hideLoading();
+                Object parsedResponse = parseResponse(request.getRequestID(), response);
+                listener.onSuccess(parsedResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideLoading();
+                listener.onFailure(requestID);
+            }
+        }){
+            @Override
+            public void addMarker(String tag) {
+                super.addMarker(tag);
+            }
+        };
+
+        getReq.setShouldCache(true);
+        addToRequestQueue(getReq, TAG_GET_REQUEST);
+        Dialog progress = showLoading(getContext());
+        if(progress != null){
+            try {
+                progress.show();
+            }catch (Exception ignored){}
+        }
+    }
+
     public static Dialog hideLoading() {
         try {
             if (progressDialog != null) {
