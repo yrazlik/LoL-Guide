@@ -406,6 +406,7 @@
     <string name="auth_google_play_services_client_google_display_name">Google</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="average">Averages</string>
     <string name="bilgewater">Bilgewater</string>
     <string name="bot">Game Against AI</string>
     <string name="buyucu">Mage</string>
@@ -525,6 +526,7 @@
     <string name="itemFrom">Other Items Necessary To Build That Item</string>
     <string name="itemSearchHint">Enter an item name...</string>
     <string name="itemTo">Other Items That This Item Can Be Upgraded To</string>
+    <string name="kda">KDA</string>
     <string name="kingporo">King Poro</string>
     <string name="lagestKillingSpree">Largest Killing Spree</string>
     <string name="languageEnglish">Language</string>
@@ -549,7 +551,9 @@
     <string name="matchInfo">Match Info</string>
     <string name="matchTime">Match Time</string>
     <string name="menu">Menu</string>
+    <string name="minions">Minions</string>
     <string name="minionsKilled">Minions Killed</string>
+    <string name="mostPlayed">Most Played</string>
     <string name="movement">Movement Speed</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
@@ -595,6 +599,7 @@
     <string name="preferences_saved">Preferences Saved.</string>
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Ranked Game</string>
+    <string name="rankedCapitalStart">Ranked</string>
     <string name="ranked_game">Ranked Game</string>
     <string name="recentSearches">Recent Searches</string>
     <string name="region">Region:</string>
@@ -648,6 +653,8 @@
     <string name="tank">Tank</string>
     <string name="team1">TEAM 1</string>
     <string name="team2">TEAM 2</string>
+    <string name="team33">Team 3v3</string>
+    <string name="team55">Team 5v5</string>
     <string name="totalDamageDealt">Total Damage Dealt</string>
     <string name="totalDamageTaken">Total Damage Taken</string>
     <string name="totalHeal">Total Heal</string>
@@ -673,6 +680,7 @@
     <string name="wardKilled">Ward Killed</string>
     <string name="wardPlaced">Ward Placed</string>
     <string name="watch_full_screen">Click to watch the video fullscreen.</string>
+    <string name="winrate">Win Rate</string>
     <string name="wonMatchCount">Number of Matches Won:</string>
     <string name="yes">Yes</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->

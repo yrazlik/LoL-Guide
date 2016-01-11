@@ -249,5 +249,13 @@
     <string name="if_you_wanna_change_region">*Summoner will be searched within selected region. You can change region from settings page.</string>
 
 
+    <string name="average">Averages</string>
+    <string name="minions">Minions</string>
+    <string name="winrate">Win Rate</string>
+    <string name="mostPlayed">Most Played</string>
+    <string name="rankedCapitalStart">Ranked</string>
+    <string name="team55">Team 5v5</string>
+    <string name="team33">Team 3v3</string>
+    <string name="kda">KDA</string>
 
 </resources>

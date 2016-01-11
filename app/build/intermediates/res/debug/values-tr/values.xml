@@ -55,6 +55,7 @@
     <string name="assasin">Assassin</string>
     <string name="attack">Saldırı</string>
     <string name="attack_speed">Saldırı Hızı</string>
+    <string name="average">Ortalamalar</string>
     <string name="bilgewater">Bilgewater</string>
     <string name="bot">Yapay Zekaya Karşı</string>
     <string name="buyucu">Büyücü</string>
@@ -145,6 +146,7 @@
     <string name="itemFrom">Bu Eşyayı Oluşturmak İçin Gerekli Eşyalar</string>
     <string name="itemSearchHint">Bir eşya ismi girin...</string>
     <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
+    <string name="kda">KDA</string>
     <string name="kingporo">Poro Kralı</string>
     <string name="lagestKillingSpree">En Büyük Katliam</string>
     <string name="languageEnglish">Language</string>
@@ -169,7 +171,9 @@
     <string name="matchInfo">Maç Bilgisi</string>
     <string name="matchTime">Maç Süresi</string>
     <string name="menu">Menü</string>
+    <string name="minions">Minyonlar</string>
     <string name="minionsKilled">Öldürülen Minyonlar</string>
+    <string name="mostPlayed">En Çok Oynananlar</string>
     <string name="movement">Hareket Hızı</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-tr/values-tr.xml -->
     <eat-comment/>
@@ -211,6 +215,7 @@
     <string name="preferences_saved">Ayarlar Kaydedildi.</string>
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Dereceli Oyun</string>
+    <string name="rankedCapitalStart">Dereceli</string>
     <string name="ranked_game">Dereceli Oyun</string>
     <string name="recentSearches">Son Aramalar</string>
     <string name="region">Bölge:</string>
@@ -255,6 +260,8 @@
     <string name="tank">Tank</string>
     <string name="team1">TAKIM 1</string>
     <string name="team2">TAKIM 2</string>
+    <string name="team33">Takım 3v3</string>
+    <string name="team55">Takım 5v5</string>
     <string name="totalDamageDealt">Vurulan Hasar</string>
     <string name="totalDamageTaken">Alınan Hasar</string>
     <string name="totalHeal">İyileştirmeler</string>
@@ -280,6 +287,7 @@
     <string name="wardKilled">Kesilen Totemler</string>
     <string name="wardPlaced">Yerleştirilen Totemler</string>
     <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın.</string>
+    <string name="winrate">Kazanma Oranı</string>
     <string name="wonMatchCount">Kazanılan Maç Sayısı:</string>
     <string name="yes">Evet</string>
 </resources>

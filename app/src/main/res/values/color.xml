@@ -33,4 +33,6 @@
     <color name="dialog_bg">#D9F4F4F4</color>
     <color name="disabled_textcolor">#838383</color>
     <color name="gg_red">#E61A37</color>
+    <color name="transparent_black">#99000000</color>
+
 </resources>

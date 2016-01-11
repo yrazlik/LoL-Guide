@@ -237,4 +237,14 @@
 
     <string name="if_you_wanna_change_region">*Oyuncu, seçilen bölgede aranacaktır. Bölge seçimini ayarlar sayfasından değiştirebilirsiniz.</string>
 
+    <string name="average">Ortalamalar</string>
+    <string name="minions">Minyonlar</string>
+    <string name="winrate">Kazanma Oranı</string>
+    <string name="mostPlayed">En Çok Oynananlar</string>
+    <string name="rankedCapitalStart">Dereceli</string>
+    <string name="team55">Takım 5v5</string>
+    <string name="team33">Takım 3v3</string>
+    <string name="kda">KDA</string>
+
+
 </resources>
