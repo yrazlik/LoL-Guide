@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
+                android:id="@+id/row"
                 android:layout_height="55dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
@@ -24,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:textSize="13dp"/>
+            style="@style/whiteText13dp"
+            />
 
         <TextView
             android:id="@+id/summonerRegion"
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_below="@+id/summonerName"
-            android:textSize="11dp"
+            style="@style/whiteText11dp"
             android:textStyle="italic"/>
     </RelativeLayout>
 

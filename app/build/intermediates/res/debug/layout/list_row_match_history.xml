@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/material_dark_green"
                 android:paddingBottom="5dp"
                 android:descendantFocusability="blocksDescendants"
                 android:paddingTop="5dp">
@@ -33,8 +33,7 @@
         android:layout_alignRight="@+id/champIV"
         android:layout_marginBottom="2dp"
         android:layout_marginRight="2dp"
-        android:textColor="@color/gray"
-        android:textSize="12dp"/>
+        style="@style/whiteText12dp"/>
 
     <RelativeLayout
         android:id="@+id/textContainer"
@@ -56,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textSize="14dp"/>
+                style="@style/whiteText14dp"/>
 
             <TextView
                 android:id="@+id/matchModeTV"
@@ -65,7 +64,7 @@
                 android:layout_below="@+id/matchTypeTV"
                 android:layout_marginTop="2dp"
                 android:singleLine="true"
-                android:textSize="11dp"
+                style="@style/whiteText11dp"
                 android:textStyle="italic"/>
 
             <TextView
@@ -75,7 +74,7 @@
                 android:layout_below="@+id/matchModeTV"
                 android:layout_marginTop="4dp"
                 android:singleLine="true"
-                android:textSize="14dp"/>
+                style="@style/whiteText14dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -99,7 +98,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/goldIV"
-                android:textSize="11dp"/>
+                style="@style/whiteText11dp"/>
 
 
         </RelativeLayout>
@@ -117,14 +116,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textSize="14dp"/>
+                style="@style/whiteText14dp"/>
             <TextView
                 android:id="@+id/matchDateTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/matchTimeTV"
                 android:layout_centerHorizontal="true"
-                android:textSize="11dp"/>
+                style="@style/whiteText11dp"/>
 
         </RelativeLayout>
 

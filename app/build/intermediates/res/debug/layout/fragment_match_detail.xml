@@ -15,11 +15,13 @@
     <ScrollView
         android:id="@+id/parent"
         android:visibility="gone"
+        android:background="@color/background_black_transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/app_color"
                         android:paddingTop="10dp">
 
             <RelativeLayout
@@ -49,7 +51,7 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginRight="2dp"
                 android:textColor="@color/gray"
-                android:textSize="12dp"/>
+                style="@style/whiteText12dp"/>
 
             <RelativeLayout
                 android:id="@+id/textContainer"
@@ -71,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:textSize="14dp"/>
+                        style="@style/whiteText14dp"/>
 
                     <TextView
                         android:id="@+id/matchModeTV"
@@ -80,7 +82,7 @@
                         android:layout_below="@+id/matchTypeTV"
                         android:layout_marginTop="2dp"
                         android:singleLine="true"
-                        android:textSize="11dp"
+                        style="@style/whiteText11dp"
                         android:textStyle="italic"/>
 
                     <TextView
@@ -90,7 +92,7 @@
                         android:layout_below="@+id/matchModeTV"
                         android:layout_marginTop="4dp"
                         android:singleLine="true"
-                        android:textSize="14dp"/>
+                        style="@style/whiteText14dp"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -114,7 +116,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/goldIV"
-                        android:textSize="11dp"/>
+                        style="@style/whiteText11dp"/>
 
 
                 </RelativeLayout>
@@ -132,14 +134,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:textSize="14dp"/>
+                        style="@style/whiteText14dp"/>
                     <TextView
                         android:id="@+id/matchDateTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/matchTimeTV"
                         android:layout_centerHorizontal="true"
-                        android:textSize="11dp"/>
+                        style="@style/whiteText11dp"/>
 
                 </RelativeLayout>
 
@@ -269,7 +271,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:textSize="15dp"
+                        style="@style/whiteText15dp"
                         android:text="@string/team1"/>
 
                 </LinearLayout>
@@ -293,7 +295,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:textSize="15dp"
+                        style="@style/whiteText15dp"
                         android:text="@string/team2"/>
 
                 </LinearLayout>
@@ -313,7 +315,7 @@
                 <TextView
                     android:id="@+id/statisticsTV"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@string/statistics" android:textSize="14dp"/>
+                    android:text="@string/statistics" style="@style/whiteText14dp"/>
 
                 <ListView
                     android:id="@+id/statisticsLV"

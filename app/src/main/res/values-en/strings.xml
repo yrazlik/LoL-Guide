@@ -175,7 +175,7 @@
 
     <string name="watch_full_screen">Click to watch the video fullscreen.</string>
     <string name="click_to_update">If you cannot see the video, please update the app to latest version by clicking here.</string>
-    <string name="enter_username">Enter summoner name</string>
+    <string name="enter_username">Enter summoner name ...</string>
     <string name="pleaseEnterYourSummonerName">Please enter a summoner name.</string>
     <string name="pleaseSelectYourRegion">Please select your region.</string>
     <string name="cannot_find_username">Could not find the user, please make sure you entered summoner name and region correctly</string>

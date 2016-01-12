@@ -83,7 +83,7 @@
     <string name="english">English</string>
     <string name="englishEnglish">English</string>
     <string name="englishTurkish">İngilizce</string>
-    <string name="enter_username">Enter summoner name</string>
+    <string name="enter_username">Enter summoner name ...</string>
     <string name="errortwitch">A connection error occured. Please try again.</string>
     <string name="essentialItems">Essential Items</string>
     <string name="explanation">Explanation</string>

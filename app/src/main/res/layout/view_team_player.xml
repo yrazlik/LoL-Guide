@@ -19,7 +19,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/champIV"
         android:layout_marginLeft="5dp"
-        android:textSize="13dp"
+        style="@style/whiteText13dp"
         android:singleLine="true"/>
 
 </RelativeLayout>

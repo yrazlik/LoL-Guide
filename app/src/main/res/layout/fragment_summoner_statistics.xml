@@ -2,42 +2,52 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/bg_yellow"
-                android:padding="10dp">
+                >
 
-    <RelativeLayout
-        android:id="@+id/noRankedRL"
+    <ImageView
+        android:id="@+id/parentBG"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:visibility="gone">
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:gravity="center_horizontal"
-                  android:text="@string/no_ranked_info"
-                  android:textSize="14dp"/>
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rankedStatisticsRL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/rankedStats"
-            android:textSize="16dp"/>
-
-        <ListView
-            android:id="@+id/statisticsLV"
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:background="@color/app_color">
+        <RelativeLayout
+            android:id="@+id/noRankedRL"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:layout_below="@+id/title"
-            android:layout_marginTop="10dp"
-            android:scrollbars="none">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:visibility="gone">
+
+            <TextView style="@style/whiteText14dp" android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_horizontal"
+                      android:text="@string/no_ranked_info"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rankedStatisticsRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/title"
+                style="@style/whiteText16dp" android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/rankedStats"/>
+
+            <ListView
+                android:id="@+id/statisticsLV"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_below="@+id/title"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
 
 
-        </ListView>
+            </ListView>
+        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

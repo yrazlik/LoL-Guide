@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class SummonerStatisticsFragment extends BaseFragment{
     private RankedStatsResponse rankedStatsResponse;
     private ChampionStatsDto averageStats;
 
+    private ImageView parentBG;
 
     public static final String EXTRA_STATISTICS = "com.yrazlik.loltr.fragments.summonerstatisticsfragment.extrastatistics";
     public static final String EXTRA_AVERAGE_STATS = "com.yrazlik.loltr.fragments.summonerstatisticsfragment.extraaveragestats";
@@ -40,6 +42,10 @@ public class SummonerStatisticsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_summoner_statistics, container, false);
+
+        parentBG = (ImageView) v.findViewById(R.id.parentBG);
+        parentBG.setAlpha(0.3f);
+        parentBG.setBackgroundResource(R.drawable.jinxx);
 
         Bundle extras = getArguments();
         if (extras != null) {

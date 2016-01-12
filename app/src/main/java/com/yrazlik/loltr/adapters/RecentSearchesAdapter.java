@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
@@ -41,6 +42,7 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearchItem>{
             convertView = inflater.inflate(resourceId, parent, false);
 
             holder = new ViewHolder();
+            holder.row = (RelativeLayout) convertView.findViewById(R.id.row);
             holder.summonerProfileIcon = (FadeInNetworkImageView)convertView.findViewById(R.id.summonerProfileIcon);
             holder.summonerName = (TextView)convertView.findViewById(R.id.summonerName);
             holder.summonerRegion = (TextView) convertView.findViewById(R.id.summonerRegion);
@@ -48,6 +50,12 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearchItem>{
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
+
+     /*   if(position%2 == 0){
+            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_green));
+        }else{
+            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_green));
+        }*/
 
         RecentSearchItem item = getItem(position);
 
@@ -71,5 +79,6 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearchItem>{
         public FadeInNetworkImageView summonerProfileIcon;
         public TextView summonerName;
         public TextView summonerRegion;
+        public RelativeLayout row;
     }
 }

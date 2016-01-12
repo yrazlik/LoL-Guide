@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/bg_yellow"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:background="@color/background_black_transparent"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
     <ScrollView
         android:id="@+id/parent"
@@ -18,9 +18,14 @@
             <RelativeLayout
                 android:id="@+id/header"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_component"
+                android:paddingBottom="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="10dp">
 
                 <com.yrazlik.loltr.view.FadeInNetworkImageView
                     android:id="@+id/profileIconIV"
@@ -32,6 +37,7 @@
 
                 <TextView
                     android:id="@+id/summonerNameTV"
+                    style="@style/whiteText20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/profileIconIV"
@@ -40,11 +46,11 @@
                     android:layout_toRightOf="@+id/profileIconIV"
                     android:singleLine="true"
                     android:text=" ??? "
-                    android:textSize="20dp"
                     />
 
                 <TextView
                     android:id="@+id/regionLevelTV"
+                    style="@style/whiteText14dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/summonerNameTV"
@@ -53,23 +59,28 @@
                     android:layout_toRightOf="@+id/profileIconIV"
                     android:singleLine="true"
                     android:text="Level: ???"
-                    android:textSize="14dp"/>
+                    />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/kdaRL"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_below="@+id/header"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_component"
+                android:paddingBottom="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="10dp">
 
                 <TextView
                     android:id="@+id/averageTV"
+                    style="@style/whiteText14dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/average"
-                    android:textSize="14dp"
                     />
                 <LinearLayout
                     android:id="@+id/averagesLL"
@@ -87,22 +98,23 @@
 
                         <TextView
                             android:id="@+id/kdaStatsTV"
+                            style="@style/whiteText14dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:singleLine="true"
                             android:text=" ?/?/? "
-                            android:textSize="14dp"/>
+                            />
                         <TextView
                             android:id="@+id/kdaStatsStringTV"
+                            style="@style/whiteText12dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/kdaStatsTV"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="1dp"
                             android:singleLine="true"
-                            android:text="@string/kda"
-                            android:textSize="12dp"/>
+                            android:text="@string/kda"/>
 
                     </RelativeLayout>
 
@@ -114,22 +126,22 @@
 
                         <TextView
                             android:id="@+id/minionsStatsTV"
+                            style="@style/whiteText14dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:singleLine="true"
-                            android:text=" ?? "
-                            android:textSize="14dp"/>
+                            android:text=" ?? "/>
                         <TextView
                             android:id="@+id/minionsStatsStringTV"
+                            style="@style/whiteText12dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/minionsStatsTV"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="1dp"
                             android:singleLine="true"
-                            android:text="@string/minions"
-                            android:textSize="12dp"/>
+                            android:text="@string/minions"/>
 
                     </RelativeLayout>
 
@@ -141,22 +153,22 @@
 
                         <TextView
                             android:id="@+id/winRateStatsTV"
+                            style="@style/whiteText14dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:singleLine="true"
-                            android:text=" ?% "
-                            android:textSize="14dp"/>
+                            android:text=" ?% "/>
                         <TextView
                             android:id="@+id/winRateStatsStringTV"
+                            style="@style/whiteText12dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/winRateStatsTV"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="1dp"
                             android:singleLine="true"
-                            android:text="@string/winrate"
-                            android:textSize="12dp"/>
+                            android:text="@string/winrate"/>
                     </RelativeLayout>
                 </LinearLayout>
             </RelativeLayout>
@@ -167,14 +179,19 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/kdaRL"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/border_component"
                 android:fillViewport="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="10dp"
                 android:scrollbars="none">
                 <RelativeLayout android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                    <TextView android:id="@+id/mostPlayedTV" android:layout_width="match_parent"
-                              android:layout_height="wrap_content" android:text="@string/mostPlayed"
-                              android:textSize="14dp"/>
+                    <TextView android:id="@+id/mostPlayedTV" style="@style/whiteText14dp"
+                              android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:text="@string/mostPlayed"/>
 
                     <LinearLayout
                         android:id="@+id/mostPlayedLL"
@@ -206,6 +223,7 @@
 
                                 <TextView
                                     android:id="@+id/mostPlayedTV1"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:layout_alignBottom="@+id/mostPlayedIV1"
@@ -214,9 +232,7 @@
                                     android:gravity="center"
                                     android:padding="0.5dp"
                                     android:singleLine="true"
-                                    android:text=" ??? "
-                                    android:textColor="@color/white"
-                                    android:textSize="10dp"/>
+                                    android:text=" ??? "/>
 
                             </RelativeLayout>
 
@@ -237,21 +253,21 @@
 
                                 <TextView
                                     android:id="@+id/kdaTV1"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:layout_toRightOf="@+id/ipIV1"
-                                    android:text=" ?/?/? "
-                                    android:textSize="10dp"/>
+                                    android:text=" ?/?/? "/>
 
                                 <TextView
                                     android:id="@+id/winRateTV1"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/ipIV1"
                                     android:layout_marginTop="3dp"
-                                    android:text="W: ? (?%)"
-                                    android:textSize="10dp"/>
+                                    android:text="W: ? (?%)"/>
 
 
                             </RelativeLayout>
@@ -280,6 +296,7 @@
 
                                 <TextView
                                     android:id="@+id/mostPlayedTV2"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:layout_alignBottom="@+id/mostPlayedIV2"
@@ -289,8 +306,7 @@
                                     android:padding="0.5dp"
                                     android:singleLine="true"
                                     android:text=" ??? "
-                                    android:textColor="@color/white"
-                                    android:textSize="10dp"/>
+                                    android:textColor="@color/white"/>
 
                             </RelativeLayout>
 
@@ -311,21 +327,21 @@
 
                                 <TextView
                                     android:id="@+id/kdaTV2"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:layout_toRightOf="@+id/ipIV2"
-                                    android:text=" ?/?/? "
-                                    android:textSize="10dp"/>
+                                    android:text=" ?/?/? "/>
 
                                 <TextView
                                     android:id="@+id/winRateTV2"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/ipIV2"
                                     android:layout_marginTop="3dp"
-                                    android:text="W: ? (?%)"
-                                    android:textSize="10dp"/>
+                                    android:text="W: ? (?%)"/>
 
 
                             </RelativeLayout>
@@ -354,6 +370,7 @@
 
                                 <TextView
                                     android:id="@+id/mostPlayedTV3"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:layout_alignBottom="@+id/mostPlayedIV3"
@@ -363,8 +380,7 @@
                                     android:padding="0.5dp"
                                     android:singleLine="true"
                                     android:text=" ??? "
-                                    android:textColor="@color/white"
-                                    android:textSize="10dp"/>
+                                    android:textColor="@color/white"/>
 
                             </RelativeLayout>
 
@@ -385,21 +401,21 @@
 
                                 <TextView
                                     android:id="@+id/kdaTV3"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:layout_toRightOf="@+id/ipIV3"
-                                    android:text=" ?/?/? "
-                                    android:textSize="10dp"/>
+                                    android:text=" ?/?/? "/>
 
                                 <TextView
                                     android:id="@+id/winRateTV3"
+                                    style="@style/whiteText10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/ipIV3"
                                     android:layout_marginTop="3dp"
-                                    android:text="W: ? (?%)"
-                                    android:textSize="10dp"/>
+                                    android:text="W: ? (?%)"/>
                             </RelativeLayout>
                         </RelativeLayout>
                     </LinearLayout>
@@ -411,15 +427,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mostPlayedSV"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_component"
+                android:paddingBottom="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="10dp">
 
                 <TextView
                     android:id="@+id/rankedTV"
+                    style="@style/whiteText14dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/ranked"
-                    android:textSize="14dp"
                     />
 
                 <com.yrazlik.loltr.view.FadeInNetworkImageView
@@ -433,6 +454,7 @@
 
                 <TextView
                     android:id="@+id/soloDuoTV"
+                    style="@style/whiteText14dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/rankedLeagueIV"
@@ -442,10 +464,10 @@
                     android:paddingTop="10dp"
                     android:singleLine="true"
                     android:text="@string/solo_duo"
-                    android:textSize="14dp"
                     />
                 <TextView
                     android:id="@+id/leagueNameTV"
+                    style="@style/whiteText13dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/soloDuoTV"
@@ -455,11 +477,11 @@
                     android:gravity="left"
                     android:singleLine="true"
                     android:text="@string/unranked"
-                    android:textSize="13dp"
                     />
 
                 <TextView
                     android:id="@+id/winLoseLPTV"
+                    style="@style/whiteText13dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/leagueNameTV"
@@ -469,7 +491,6 @@
                     android:gravity="left"
                     android:singleLine="true"
                     android:text=""
-                    android:textSize="13dp"
                     />
 
                 <RelativeLayout
@@ -488,6 +509,7 @@
 
                     <TextView
                         android:id="@+id/team5v5rankTV"
+                        style="@style/whiteText11dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@+id/ranked5v5IV"
@@ -499,11 +521,11 @@
                         android:gravity="center_vertical|left"
                         android:singleLine="true"
                         android:text="@string/unranked"
-                        android:textSize="11dp"
                         />
 
                     <TextView
                         android:id="@+id/team5v5lpTV"
+                        style="@style/whiteText11dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/team5v5rankTV"
@@ -514,39 +536,44 @@
                         android:layout_toRightOf="@+id/ranked5v5IV"
                         android:gravity="left"
                         android:singleLine="true"
-                        android:textSize="11dp"
                         />
 
                     <TextView
                         android:id="@+id/team5v5TV"
+                        style="@style/whiteText11dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignTop="@+id/ranked5v5IV"
-                        android:singleLine="true"
                         android:layout_marginTop="3dp"
+                        android:singleLine="true"
                         android:text="@string/team55"
-                        android:textSize="11dp"
                         />
 
                     <TextView
                         android:id="@+id/team5v5nameTV"
+                        style="@style/whiteText11dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_below="@+id/team5v5TV"
                         android:layout_marginTop="2dp"
                         android:singleLine="true"
-                        android:textSize="11dp"
                         />
 
                 </RelativeLayout>
 
+                <View android:id="@+id/separator" android:layout_width="match_parent"
+                      android:layout_height="0.5dp"
+                      android:layout_below="@+id/team5v5RL"
+                      android:background="@color/white"
+                      android:layout_marginLeft="15dp"
+                      android:layout_marginRight="15dp"></View>
                 <RelativeLayout
                     android:id="@+id/team3v3RL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/team5v5RL"
+                    android:layout_below="@+id/separator"
                     android:layout_marginTop="10dp">
 
                     <com.yrazlik.loltr.view.FadeInNetworkImageView
@@ -558,6 +585,7 @@
 
                     <TextView
                         android:id="@+id/team3v3rankTV"
+                        style="@style/whiteText11dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@+id/ranked3v3IV"
@@ -569,11 +597,11 @@
                         android:gravity="left"
                         android:singleLine="true"
                         android:text="@string/unranked"
-                        android:textSize="11dp"
                         />
 
                     <TextView
                         android:id="@+id/team3v3lpTV"
+                        style="@style/whiteText11dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/team3v3rankTV"
@@ -584,11 +612,11 @@
                         android:layout_toRightOf="@+id/ranked3v3IV"
                         android:gravity="center_vertical|left"
                         android:singleLine="true"
-                        android:textSize="11dp"
                         />
 
                     <TextView
                         android:id="@+id/team3v3TV"
+                        style="@style/whiteText11dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -596,18 +624,17 @@
                         android:layout_marginTop="3dp"
                         android:singleLine="true"
                         android:text="@string/team33"
-                        android:textSize="11dp"
                         />
 
                     <TextView
                         android:id="@+id/team3v3nameTV"
+                        style="@style/whiteText11dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_below="@+id/team3v3TV"
                         android:layout_marginTop="2dp"
                         android:singleLine="true"
-                        android:textSize="11dp"
                         />
 
                 </RelativeLayout>

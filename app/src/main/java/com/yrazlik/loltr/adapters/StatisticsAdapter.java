@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
@@ -37,11 +38,18 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
             convertView = inflater.inflate(resourceId, parent, false);
 
             holder = new ViewHolder();
+            holder.row = (LinearLayout) convertView.findViewById(R.id.row);
             holder.name = (TextView) convertView.findViewById(R.id.name);
             holder.value = (TextView) convertView.findViewById(R.id.value);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
+        }
+
+        if(position%2 != 0){
+            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_green));
+        }else{
+            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_green));
         }
 
         Statistics statistics = getItem(position);
@@ -75,5 +83,6 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
     static class ViewHolder {
         public TextView name;
         public TextView value;
+        public LinearLayout row;
     }
 }

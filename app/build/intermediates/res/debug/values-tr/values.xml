@@ -131,7 +131,7 @@
     <string name="english">İngilizce</string>
     <string name="englishEnglish">English</string>
     <string name="englishTurkish">İngilizce</string>
-    <string name="enter_username">Sihirdar ismi girin</string>
+    <string name="enter_username">Sihirdar ismi girin ...</string>
     <string name="errortwitch">Bağlantıda bir hata oluştu. Lütfen tekrar deneyiniz.</string>
     <string name="essentialItems">En Gerekliler</string>
     <string name="explanation">Açıklama</string>

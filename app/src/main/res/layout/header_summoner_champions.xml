@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/button_blue"
+                android:background="@color/material_dark_green"
                 android:minHeight="90dp"
                 android:orientation="vertical"
                 android:paddingLeft="5dp"
@@ -38,8 +38,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/swordsIV"
-        android:text="5/7/11"
-        android:textSize="12dp"/>
+        android:text=" ?/?/? "
+        style="@style/whiteText12dp"/>
 
     <RelativeLayout
         android:id="@+id/goldContainerRL"
@@ -64,8 +64,8 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/goldIV"
             android:layout_marginLeft="5dp"
-            android:text="11.9k"
-            android:textSize="12dp"/>
+            android:text=" ??? "
+            style="@style/whiteText12dp"/>
 
     </RelativeLayout>
 
@@ -81,8 +81,8 @@
             android:id="@+id/gamesPlayedTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Oyunlar: 185"
-            android:textSize="12dp"/>
+            android:text=" ??? "
+            style="@style/whiteText12dp"/>
 
         <TextView
             android:id="@+id/winCountTV"
@@ -90,8 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/gamesPlayedTV"
             android:layout_marginTop="5dp"
-            android:text="Galibiyet: 102"
-            android:textSize="12dp"/>
+            android:text=" ??? "
+            style="@style/whiteText12dp"/>
 
     </RelativeLayout>
 

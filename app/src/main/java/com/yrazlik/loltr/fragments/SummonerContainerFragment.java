@@ -54,7 +54,10 @@ public class SummonerContainerFragment extends BaseFragment{
         pager.setAdapter(new SummonerPagerAdapter(getChildFragmentManager()));
 
         tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
-        tabs.setIndicatorColor(getResources().getColor(R.color.button_blue));
+        tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
+        tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
+        tabs.setDividerColor(getResources().getColor(R.color.white));
+        tabs.setTextColor(getResources().getColor(R.color.white));
         DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
         int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
         tabs.setTextSize(textSize);

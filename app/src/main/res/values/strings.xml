@@ -179,7 +179,7 @@
         version by clicking here.
     </string>
 
-    <string name="enter_username">Enter summoner name</string>
+    <string name="enter_username">Enter summoner name ...</string>
 
     <string name="cannot_find_username">Could not find the user, please make sure you entered
         summoner name and region correctly

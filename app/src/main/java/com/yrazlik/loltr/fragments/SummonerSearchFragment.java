@@ -7,14 +7,18 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -60,6 +64,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private RecentMatchesResponse recentMatchesResponse;
     private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
+    private ImageView parentBG;
 
     private boolean recentMatchesResponseReceived, rankedStatsResponseReceived, leagueInfoResponseReceived;
 
@@ -72,10 +77,24 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         rankedStatsResponseReceived = false;
         leagueInfoResponseReceived = false;
         region = Commons.SELECTED_REGION;
+        parentBG = (ImageView) v.findViewById(R.id.parentBG);
+        parentBG.setAlpha(0.3f);
+        parentBG.setBackgroundResource(R.drawable.teemo);
+
         usernameRegionRL = (RelativeLayout)v.findViewById(R.id.usernameRegionRL);
         recentSearchesRL = (RelativeLayout)v.findViewById(R.id.recentSearchesRL);
         usernameET = (EditText)v.findViewById(R.id.usernameET);
         searchButton = (ImageButton)v.findViewById(R.id.buttonSave);
+        usernameET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    searchButton.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
         recentSearchesLV = (ListView) v.findViewById(R.id.recentSearchesLV);
         recentSearchesLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

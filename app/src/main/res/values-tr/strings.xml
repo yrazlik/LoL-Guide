@@ -168,7 +168,7 @@
 
     <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
 
-    <string name="enter_username">Sihirdar ismi girin</string>
+    <string name="enter_username">Sihirdar ismi girin ...</string>
     <string name="select_your_region">Bölgenizi seçin:</string>
     <string name="pleaseEnterYourSummonerName">Lütfen bir sihirdar ismi giriniz.</string>
     <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
