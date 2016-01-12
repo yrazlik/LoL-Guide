@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@color/background_black_transparent">
 
     <ImageView
         android:id="@+id/imageViewSplashImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/papirus7" />
+        android:background="@color/background_black_transparent" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/material_dark_green">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -25,6 +27,7 @@
                 android:paddingRight="35dp"
                 android:paddingTop="35dp"
                 android:paddingBottom="70dp"
+                style="@style/whiteText15dp"
                 android:gravity="center_vertical" />
         </RelativeLayout>
     </ScrollView>

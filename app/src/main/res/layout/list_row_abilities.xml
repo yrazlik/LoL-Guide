@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <RelativeLayout android:id="@+id/relativeLayoutSpellTitle"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#E8C068">
-        
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@color/tab_color">
+
         <TextView android:id="@+id/textViewSpellTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+                  style="@style/whiteText14dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_centerInParent="true"
                   android:layout_toLeftOf="@+id/imageButtonPlayVideo"
-            android:layout_centerInParent="true"/>
-        
+                  android:gravity="center_horizontal"/>
+
         <ImageButton android:id="@+id/imageButtonPlayVideo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@+id/textViewVideo"
-            android:focusable="true"
-                     android:paddingTop="5dp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerVertical="true"
+                     android:layout_marginRight="5dp"
+                     android:layout_toLeftOf="@+id/textViewVideo"
+                     android:background="@drawable/v2"
+                     android:focusable="true"
                      android:paddingBottom="5dp"
                      android:paddingLeft="10dp"
-            android:background="@drawable/v2"/>
+                     android:paddingTop="5dp"/>
         <TextView android:id="@+id/textViewVideo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-                  android:paddingTop="5dp"
+                  style="@style/whiteText14dp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentRight="true"
+                  android:layout_centerVertical="true"
+                  android:layout_marginRight="5dp"
                   android:paddingBottom="5dp"
                   android:paddingLeft="5dp"
-            android:text="@string/video"/>
-        
+                  android:paddingTop="5dp"
+                  android:text="@string/video"/>
+
     </RelativeLayout>
-    
+
     <RelativeLayout android:id="@+id/relativeLayoutSpellBody"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeLayoutSpellTitle"
-        android:background="#F5E171">
-        
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relativeLayoutSpellTitle"
+                    android:background="@color/material_dark_green">
+
         <ImageView
             android:id="@+id/imageViewSpellImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="5dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"/>
+            android:layout_marginTop="5dp"/>
         <ProgressBar
             android:id="@+id/imageProgress"
             android:layout_width="30dp"
@@ -60,26 +62,27 @@
             android:layout_marginLeft="20dp"
 
             />
-        
+
         <TextView android:id="@+id/textViewSpellBody"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imageViewSpellImage"
-            android:layout_toLeftOf="@+id/textViewSpellKey"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_centerVertical="true"/>
-        
+                  style="@style/whiteText14dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_centerVertical="true"
+                  android:layout_marginBottom="15dp"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_marginTop="15dp"
+                  android:layout_toLeftOf="@+id/textViewSpellKey"
+                  android:layout_toRightOf="@+id/imageViewSpellImage"/>
+
         <TextView android:id="@+id/textViewSpellKey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"
-            android:textSize="30sp"/>
-        
+                  style="@style/whiteText30dp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentRight="true"
+                  android:layout_centerVertical="true"
+                  android:layout_marginRight="10dp"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

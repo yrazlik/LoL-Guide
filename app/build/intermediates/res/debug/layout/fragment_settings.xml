@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+    android:background="@color/background_black_transparent">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/app_color"
+        android:fillViewport="true"
+        android:layout_centerHorizontal="true">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -22,7 +26,7 @@
                 android:gravity="center_vertical"
                 android:minWidth="50dp"
                 android:text="@string/select_language"
-                android:textSize="18sp"
+                style="@style/whiteText18dp"
                 android:textStyle="bold"
                 />
 
@@ -46,7 +50,7 @@
                 android:gravity="center_vertical"
                 android:minWidth="50dp"
                 android:text="@string/select_region"
-                android:textSize="18sp"
+                style="@style/whiteText18dp"
                 android:textStyle="bold"
                 />
 
@@ -66,11 +70,11 @@
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_below="@+id/regionSpinner"
                     android:layout_marginTop="20dp"
-                    android:background="#3B90CE"
+                    android:background="@color/red_text_color"
                     android:minHeight="50dp"
                     android:text="@string/save"
                     android:textSize="16sp"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@color/white"/>
 
 
         </RelativeLayout>

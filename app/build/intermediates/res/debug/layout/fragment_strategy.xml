@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@color/background_black_transparent">
 
     <ImageView
         android:id="@+id/imageViewSplashImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/papirus7" />
+        android:background="@color/material_dark_green" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,13 +26,15 @@
                 android:id="@+id/textviewAllyTipsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                style="@style/whiteText15dp"/>
             <TextView
                 android:id="@+id/textviewAllyTips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:gravity="center_vertical"
+                style="@style/whiteText14dp"
                 android:layout_below="@+id/textviewAllyTipsTitle" />
             
             
@@ -40,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                style="@style/whiteText15dp"
                 android:layout_below="@+id/textviewAllyTips" />
             
             <TextView
@@ -48,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:gravity="center_vertical"
+                style="@style/whiteText14dp"
                 android:layout_below="@+id/textviewEnemyTipsTitle" />
         </RelativeLayout>
     </ScrollView>

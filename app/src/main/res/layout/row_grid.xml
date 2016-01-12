@@ -21,8 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/championImage"
             android:layout_centerHorizontal="true"
-            android:text="sdsad"
-            android:textSize="11sp" />
+            style="@style/whiteText11dp" />
     </RelativeLayout>
 
 </RelativeLayout>

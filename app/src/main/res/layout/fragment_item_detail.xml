@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFF0E4" >
+    android:background="@color/app_color" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +41,8 @@
                 <TextView
                     android:id="@+id/textViewItemName"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    style="@style/whiteText16dp"/>
 
                 <TextView
                     android:id="@+id/textViewItemGold"
@@ -49,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textViewItemName"
                     android:layout_marginRight="10dp"
+                    style="@style/whiteText14dp"
                     android:layout_marginTop="5dp" />
             </RelativeLayout>
 
@@ -59,7 +61,7 @@
                 android:layout_below="@+id/imageViewItemImage"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:textSize="20sp"
+                style="@style/whiteText20dp"
                 android:textStyle="bold"
                 android:text="@string/explanation" />
 
@@ -70,6 +72,7 @@
                 android:layout_below="@+id/textViewDescription"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
+                style="@style/whiteText14dp"
                 android:layout_marginTop="5dp" />
 
             

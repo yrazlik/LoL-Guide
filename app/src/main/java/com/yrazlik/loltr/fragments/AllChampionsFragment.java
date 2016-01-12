@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +46,6 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
     private AllChampionsListAdapter listAdapter;
 	private EditText searchBar;
     private TextView noChampsFoundTV;
-    private ImageView imageviewListGrid;
     private ArrayList<Champion> searchResultChampions;
 	
 	@Override
@@ -79,7 +77,6 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 	
 	private void initUI(View v){
         noChampsFoundTV = (TextView)v.findViewById(R.id.noChampsFoundTV);
-        imageviewListGrid = (ImageView)v.findViewById(R.id.imageviewListGrid);
 		gridView = (GridView)v.findViewById(R.id.gridview_champions);
         listViewChampions = (ListView)v.findViewById(R.id.listview_champions);
 		searchBar = (EditText)v.findViewById(R.id.edittextSearchBar);

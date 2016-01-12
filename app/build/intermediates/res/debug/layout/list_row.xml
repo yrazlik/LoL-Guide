@@ -30,14 +30,14 @@
             android:id="@+id/textViewChampionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            style="@style/whiteText20dp" />
 
         <TextView
             android:id="@+id/textViewDateInterval"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewChampionName"
-            android:textSize="14sp" />
+            style="@style/whiteText14dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:background="@drawable/rp"
-                android:layout_alignParentLeft="true" />
+                android:layout_alignParentLeft="true"/>
 
             <TextView
                 android:id="@+id/textViewRp"
@@ -68,6 +68,7 @@
                 android:layout_toRightOf="@+id/imageViewRp"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
+                style="@style/whiteText13dp"
                 android:text="@string/question_mark" />
         </RelativeLayout>
 
@@ -92,6 +93,7 @@
                 android:layout_toRightOf="@+id/imageViewIp"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="5dp"
+                style="@style/whiteText13dp"
                 android:text="@string/question_mark" />
         </RelativeLayout>
     </RelativeLayout>
