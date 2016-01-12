@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
@@ -13,9 +14,11 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.AggregatedStatsDto;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.ChampionStatsDto;
+import com.yrazlik.loltr.data.Statistics;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
@@ -48,7 +51,7 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
         if (convertView == null) {
             convertView = ((AppCompatActivity) mContext).getLayoutInflater().inflate(layoutResourceId, parent, false);
             holder = new ViewHolder();
-            holder.champIV = (FadeInNetworkImageView) convertView.findViewById(R.id.champIV);
+            holder.statisticsLV = (ListView) convertView.findViewById(R.id.statisticsLV);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -57,7 +60,28 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
         final ChampionStatsDto champion = getItem(position);
 
         if (champion != null) {
-
+            AggregatedStatsDto stats = champion.getStats();
+            if (stats != null) {
+                ArrayList<Statistics> statistics = new ArrayList<>();
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.games_played), stats.getTotalSessionsPlayed() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.games_won), stats.getTotalSessionsWon() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.kills), stats.getTotalChampionKills() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.deaths), stats.getTotalDeathsPerSession() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.assists), stats.getTotalAssists() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.penta_kills), stats.getTotalPentaKills() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.quadra_kills), stats.getTotalQuadraKills() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.triple_kills), stats.getTotalTripleKills() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.double_kills), stats.getTotalDoubleKills() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.gold_earned), stats.getTotalGoldEarned() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.minions_killed), stats.getTotalMinionKills() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.neutral_minions_killed), stats.getTotalNeutralMinionsKilled() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.damage_taken), stats.getTotalDamageTaken() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.damage_dealt), stats.getTotalDamageDealt() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.physical_damage_dealt), stats.getTotalPhysicalDamageDealt() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.magic_damage_dealt), stats.getTotalMagicDamageDealt() + "", false));
+                statistics.add(new Statistics(mContext.getResources().getString(R.string.healing_done), stats.getTotalHeal() + "", false));
+                holder.statisticsLV.setAdapter(new StatisticsAdapter(mContext, R.layout.list_row_statistics, statistics));
+            }
         }
         return convertView;
     }
@@ -185,6 +209,6 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
 
 
     static class ViewHolder {
-        FadeInNetworkImageView champIV;
+        ListView statisticsLV;
     }
 }

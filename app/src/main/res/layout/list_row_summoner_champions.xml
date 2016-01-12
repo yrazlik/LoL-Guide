@@ -5,11 +5,12 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
-    <com.yrazlik.loltr.view.FadeInNetworkImageView
-        android:id="@+id/champIV"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"/>
+    <ListView
+        android:id="@+id/statisticsLV"
+        android:layout_width="match_parent"
+        android:layout_height="450dp">
+
+    </ListView>
 
 
 
