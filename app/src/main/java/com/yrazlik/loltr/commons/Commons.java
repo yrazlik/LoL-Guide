@@ -144,6 +144,7 @@ public class Commons {
     public static final String CHAMPION_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.championskinsfragment";
     public static final String MATCH_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.matchdetailfragment";
     public static final String MATCH_HISTORY_FRAGMENT = "com.yrazlik.loltr.fragments.matchhistoryfragment";
+    public static final String SUMMONER_CONTAINER_FRAGMENT = "com.yrazlik.loltr.fragments.summonercontainerfragment";
 
     public static final String TAG_SETTINGS_FRAGMENT = "com.yrazlik.loltr.fragments.settingsfragmenttag";
 

@@ -170,6 +170,7 @@
     <string name="matchHistory">Karşılaşma Geçmişi</string>
     <string name="matchInfo">Maç Bilgisi</string>
     <string name="matchTime">Maç Süresi</string>
+    <string name="match_history">KARŞILAŞMA GEÇMİŞİ</string>
     <string name="menu">Menü</string>
     <string name="minions">Minyonlar</string>
     <string name="minionsKilled">Öldürülen Minyonlar</string>
@@ -202,6 +203,7 @@
     <string name="ok">Tamam</string>
     <string name="oneforall">Birimiz Hepimiz İçin</string>
     <string name="others">Diğerleri</string>
+    <string name="overview">GENEL BAKIŞ</string>
     <string name="passive">Pasif</string>
     <string name="physicalDamageDealtPlayer">Verilen Fiziksel Hasar</string>
     <string name="physicalDamageTaken">Alınan Fiziksel Hasar</string>

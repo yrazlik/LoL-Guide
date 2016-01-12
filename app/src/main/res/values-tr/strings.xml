@@ -246,6 +246,9 @@
     <string name="team33">Takım 3v3</string>
     <string name="kda">KDA</string>
     <string name="solo_duo">Tekli/Çiftli</string>
+    <string name="overview">GENEL BAKIŞ</string>
+    <string name="match_history">KARŞILAŞMA GEÇMİŞİ</string>
+
 
 
 </resources>

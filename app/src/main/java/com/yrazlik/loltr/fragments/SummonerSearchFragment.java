@@ -147,6 +147,10 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         return true;
     }
 
+    private void makeSearchRequest(){
+
+    }
+
     @Override
     public void reportGoogleAnalytics() {
         try {
@@ -230,7 +234,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                     Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
         }else if ((response instanceof LeagueInfoResponse)){
             leagueInfoResponse = (LeagueInfoResponse) response;
-            openChampionOverviewFragment();
+            openSummonerContainerFragment();
         }
     }
 
@@ -246,14 +250,14 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                         Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
             }else if(requestId == Commons.LEAGUE_INFO_REQUEST) {
                 leagueInfoResponse = null;
-                openChampionOverviewFragment();
+                openSummonerContainerFragment();
             }
         }
     }
 
-    private void openChampionOverviewFragment(){
+    private void openSummonerContainerFragment(){
         FragmentManager fm = getFragmentManager();
-        SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
+        SummonerContainerFragment summonerContainerFragment = new SummonerContainerFragment();
 
         Bundle args = new Bundle();
         args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
@@ -262,8 +266,8 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
         FragmentTransaction ft = fm.beginTransaction();
         Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-        summonerOverviewFragment.setArguments(args);
-        ft.replace(R.id.content_frame, summonerOverviewFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();
+        summonerContainerFragment.setArguments(args);
+        ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
     }
 
     @Override
