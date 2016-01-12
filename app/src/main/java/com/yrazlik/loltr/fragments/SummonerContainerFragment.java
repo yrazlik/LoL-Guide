@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,7 @@ public class SummonerContainerFragment extends BaseFragment{
 
         Bundle extras = getArguments();
         if (extras != null) {
-            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES);
+            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(MatchHistoryFragment.EXTRA_RECENTMATCHES);
             summonerInfo = (SummonerInfo) extras.getSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO);
             rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS);
             leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO);
@@ -47,6 +49,12 @@ public class SummonerContainerFragment extends BaseFragment{
         pager.setAdapter(new SummonerPagerAdapter(getChildFragmentManager()));
 
         tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
+        tabs.setIndicatorColor(getResources().getColor(R.color.button_blue));
+        DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
+        int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
+        tabs.setTextSize(textSize);
+
+        tabs.setIndicatorHeight(8);
         tabs.setViewPager(pager);
 
 
@@ -78,14 +86,19 @@ public class SummonerContainerFragment extends BaseFragment{
             if(position == 0){
                 Bundle args = new Bundle();
                 args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerInfo);
-                args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+                args.putSerializable(MatchHistoryFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
                 args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
                 args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
                 SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
                 summonerOverviewFragment.setArguments(args);
                 return summonerOverviewFragment;
             }else {
-                return new MatchHistoryFragment();
+                MatchHistoryFragment matchHistoryFragment = new MatchHistoryFragment();
+                Bundle args = new Bundle();
+                args.putSerializable(MatchHistoryFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+                args.putLong(MatchHistoryFragment.EXTRA_SUMMONERID, summonerInfo.getId());
+                matchHistoryFragment.setArguments(args);
+                return matchHistoryFragment;
             }
         }
     }

@@ -2,6 +2,7 @@ package com.yrazlik.loltr.service;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -204,17 +205,18 @@ public class ServiceRequest {
                                           final ResponseListener listener){
         final Request request = new Request(requestID, pathParams, queryParams);
         String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
+        Log.d("URLSTRING: ", urlString);
         StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                hideLoading();
+               // hideLoading();
                 Object parsedResponse = parseResponse(request.getRequestID(), response);
                 listener.onSuccess(parsedResponse);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideLoading();
+               // hideLoading();
                /* NetworkResponse response = error.networkResponse;
                 if(response != null && response.data != null){
                     String json = new String(response.data);
@@ -244,12 +246,12 @@ public class ServiceRequest {
 
         getReq.setShouldCache(true);
         addToRequestQueue(getReq, TAG_GET_REQUEST);
-        Dialog progress = showLoading(getContext());
+       /* Dialog progress = showLoading(getContext());
         if(progress != null){
             try {
                 progress.show();
             }catch (Exception ignored){}
-        }
+        }*/
     }
 
     public void makeGetRecentMatchesRequest(final int requestID, String region, String summonerId, Object requestData,
@@ -273,14 +275,14 @@ public class ServiceRequest {
         StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                hideLoading();
+                //hideLoading();
                 Object parsedResponse = parseResponse(request.getRequestID(), response);
                 listener.onSuccess(parsedResponse);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideLoading();
+               // hideLoading();
                /* NetworkResponse response = error.networkResponse;
                 if(response != null && response.data != null){
                     String json = new String(response.data);
@@ -310,12 +312,12 @@ public class ServiceRequest {
 
         getReq.setShouldCache(true);
         addToRequestQueue(getReq, TAG_GET_REQUEST);
-        Dialog progress = showLoading(getContext());
+       /* Dialog progress = showLoading(getContext());
         if(progress != null){
             try {
                 progress.show();
             }catch (Exception ignored){}
-        }
+        }*/
     }
 
     public void makeGetSummonerIdsRequest(final int requestID, String region, String summonerIds, Object requestData,
@@ -570,6 +572,26 @@ public class ServiceRequest {
         }
     }
 
+    public static Dialog showLoadingCancelable(Context context) {
+        try {
+            if(context != null) {
+
+                Dialog d = new Dialog(context, R.style.customDialogTheme);
+                d.setContentView(R.layout.loading_view);
+
+
+                d.setCancelable(true);
+                d.setCanceledOnTouchOutside(true);
+
+                return d;
+            }else {
+                return null;
+            }
+        }catch (Exception e){
+            return null;
+        }
+    }
+
     public void makeGetRankedStatsRequest(final int requestID, String region, String summonerId, Object requestData,
                                             final ResponseListener listener){
 
@@ -591,14 +613,14 @@ public class ServiceRequest {
         StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                hideLoading();
+               // hideLoading();
                 Object parsedResponse = parseResponse(request.getRequestID(), response);
                 listener.onSuccess(parsedResponse);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideLoading();
+             //   hideLoading();
                 listener.onFailure(requestID);
             }
         }){
@@ -610,12 +632,12 @@ public class ServiceRequest {
 
         getReq.setShouldCache(true);
         addToRequestQueue(getReq, TAG_GET_REQUEST);
-        Dialog progress = showLoading(getContext());
+      /*  Dialog progress = showLoading(getContext());
         if(progress != null){
             try {
                 progress.show();
             }catch (Exception ignored){}
-        }
+        }*/
     }
 
     public void makeGetLeagueInfoRequest(final int requestID, String region, String summonerId, Object requestData,
@@ -639,14 +661,14 @@ public class ServiceRequest {
         StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                hideLoading();
+                //hideLoading();
                 Object parsedResponse = parseResponse(request.getRequestID(), response);
                 listener.onSuccess(parsedResponse);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideLoading();
+                //hideLoading();
                 listener.onFailure(requestID);
             }
         }){
@@ -658,12 +680,12 @@ public class ServiceRequest {
 
         getReq.setShouldCache(true);
         addToRequestQueue(getReq, TAG_GET_REQUEST);
-        Dialog progress = showLoading(getContext());
+       /* Dialog progress = showLoading(getContext());
         if(progress != null){
             try {
                 progress.show();
             }catch (Exception ignored){}
-        }
+        }*/
     }
 
     public static Dialog hideLoading() {

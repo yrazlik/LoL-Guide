@@ -372,7 +372,11 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
                     teamsContainer.setVisibility(View.GONE);
                 }else {
                     for (Player p : players) {
-                        createPlayerLayoutAndAdd(p.getSummonerId(), p.getChampionId(), inflater, p.getTeamId(), teamIds);
+                        if(p.getSummonerId() == 0){
+                            createPlayerLayoutAndAdd(summonerId, p.getChampionId(), inflater, p.getTeamId(), teamIds);
+                        }else {
+                            createPlayerLayoutAndAdd(p.getSummonerId(), p.getChampionId(), inflater, p.getTeamId(), teamIds);
+                        }
                     }
                 }
             }else{

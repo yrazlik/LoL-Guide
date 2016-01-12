@@ -35,15 +35,23 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
     private ListView matchHistoryLV;
     private MatchHistoryAdapter adapter;
     private List<Game> games;
+    private RecentMatchesResponse recentMatchesResponse;
 
-    public void setSummonerId(long summonerId){
-        this.summonerId = summonerId;
-    }
+    public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.matchhistoryfragment.extramatchhistory";
+    public static final String EXTRA_SUMMONERID = "com.yrazlik.loltr.fragments.matchhistoryfragment.extrasummonerid";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_match_history, container, false);
+        Bundle extras = getArguments();
+        if (extras != null) {
+            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
+            summonerId = (long) extras.getLong(EXTRA_SUMMONERID);
+        }
+        if(recentMatchesResponse != null){
+            games = recentMatchesResponse.getGames();
+        }
         matchHistoryLV = (ListView) v.findViewById(R.id.matchHistoryLV);
         matchHistoryLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -92,7 +92,6 @@ public class SummonerOverviewFragment extends BaseFragment {
     private TextView team3v3lpTV;
     private TextView team3v3nameTV;
 
-    public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RECENTMATCHES";
     public static final String EXTRA_SUMMONER_INFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_SUMMONER_INFO";
     public static final String EXTRA_RANKEDSTATS = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RANKEDSTATS";
     public static final String EXTRA_LEAGUEINFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_LEAGUEINFO";
@@ -111,7 +110,7 @@ public class SummonerOverviewFragment extends BaseFragment {
 
         Bundle extras = getArguments();
         if (extras != null) {
-            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
+            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(MatchHistoryFragment.EXTRA_RECENTMATCHES);
             summonerInfo = (SummonerInfo) extras.getSerializable(EXTRA_SUMMONER_INFO);
             rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_RANKEDSTATS);
             leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(EXTRA_LEAGUEINFO);

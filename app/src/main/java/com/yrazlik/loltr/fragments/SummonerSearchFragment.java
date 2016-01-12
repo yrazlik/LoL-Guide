@@ -1,5 +1,6 @@
 package com.yrazlik.loltr.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -54,11 +55,16 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private RecentMatchesResponse recentMatchesResponse;
     private LeagueInfoResponse leagueInfoResponse;
 
+    private boolean recentMatchesResponseReceived, rankedStatsResponseReceived, leagueInfoResponseReceived;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_summoner_search, container, false);
 
+        recentMatchesResponseReceived = false;
+        rankedStatsResponseReceived = false;
+        leagueInfoResponseReceived = false;
         region = Commons.SELECTED_REGION;
         usernameRegionRL = (RelativeLayout)v.findViewById(R.id.usernameRegionRL);
         recentSearchesRL = (RelativeLayout)v.findViewById(R.id.recentSearchesRL);
@@ -71,23 +77,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                 try {
                     RecentSearchItem item = recentSearchesArrayList.get(position);
                     if(item != null){
-                        ArrayList<String> pathParams = new ArrayList<String>();
-                        pathParams.add("api");
-                        pathParams.add("lol");
-                        pathParams.add(region);
-                        pathParams.add("v1.4");
-                        pathParams.add("summoner");
-                        pathParams.add("by-name");
-                        try {
-                            pathParams.add(URLEncoder.encode(item.getName(), "UTF-8").replace("+", "%20"));
-                        } catch (UnsupportedEncodingException e) {
-                            pathParams.add(usernameET.getText().toString());
-                        }
-                        HashMap<String, String> queryParams = new HashMap<String, String>();
-                        queryParams.put("api_key", Commons.API_KEY);
-                        ServiceRequest.getInstance(getActivity()).makeSummonerByNameRequest(
-                                Commons.SUMMONER_BY_NAME_REQUEST, region,
-                                pathParams, queryParams, null, SummonerSearchFragment.this);
+                        makeSearchRequest(item.getName());
                     }
                 }catch (Exception ignored){}
 
@@ -103,23 +93,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                 } else if (region == null || region.length() <= 0) {
                     Toast.makeText(getActivity(), R.string.pleaseSelectYourRegion, Toast.LENGTH_SHORT).show();
                 } else {
-                    ArrayList<String> pathParams = new ArrayList<String>();
-                    pathParams.add("api");
-                    pathParams.add("lol");
-                    pathParams.add(region);
-                    pathParams.add("v1.4");
-                    pathParams.add("summoner");
-                    pathParams.add("by-name");
-                    try {
-                        pathParams.add(URLEncoder.encode(usernameET.getText().toString(), "UTF-8").replace("+", "%20"));
-                    } catch (UnsupportedEncodingException e) {
-                        pathParams.add(usernameET.getText().toString());
-                    }
-                    HashMap<String, String> queryParams = new HashMap<String, String>();
-                    queryParams.put("api_key", Commons.API_KEY);
-                    ServiceRequest.getInstance(getActivity()).makeSummonerByNameRequest(
-                            Commons.SUMMONER_BY_NAME_REQUEST, region,
-                            pathParams, queryParams, null, SummonerSearchFragment.this);
+                   makeSearchRequest(usernameET.getText().toString());
                 }
             }
         });
@@ -147,7 +121,34 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         return true;
     }
 
-    private void makeSearchRequest(){
+    private void showLoading(){
+        Dialog d = ServiceRequest.showLoading(getContext());
+        if(d != null){
+            d.show();
+        }
+    }
+
+    private void makeSearchRequest(String itemName){
+        showLoading();
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("api");
+        pathParams.add("lol");
+        pathParams.add(region);
+        pathParams.add("v1.4");
+        pathParams.add("summoner");
+        pathParams.add("by-name");
+        try {
+            pathParams.add(URLEncoder.encode(itemName, "UTF-8").replace("+", "%20"));
+        } catch (UnsupportedEncodingException e) {
+            pathParams.add(usernameET.getText().toString());
+        }
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("api_key", Commons.API_KEY);
+        ServiceRequest.getInstance(getActivity()).makeSummonerByNameRequest(
+                Commons.SUMMONER_BY_NAME_REQUEST, region,
+                pathParams, queryParams, null, SummonerSearchFragment.this);
+
+
 
     }
 
@@ -212,28 +213,28 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                 Commons.saveRecentSearchesArray(recentSearchesArrayList, getContext());
             }
 
-           /* FragmentManager fm = getFragmentManager();
-            MatchHistoryFragment matchHistoryFragment = new MatchHistoryFragment();
-            matchHistoryFragment.setSummonerId(summonerByNameResponse.getId());
-            FragmentTransaction ft = fm.beginTransaction();
-            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-            ft.replace(R.id.content_frame, matchHistoryFragment).addToBackStack(Commons.MATCH_HISTORY_FRAGMENT).commit();*/
-
 
             ServiceRequest.getInstance(getActivity()).makeGetRecentMatchesRequest(
                     Commons.RECENT_MATCHES_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
-        }else if(response instanceof RecentMatchesResponse){
-            recentMatchesResponse = (RecentMatchesResponse) response;
 
             ServiceRequest.getInstance(getActivity()).makeGetRankedStatsRequest(
                     Commons.RANKED_STATS_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
-        }else if(response instanceof RankedStatsResponse){
-            rankedStatsResponse = (RankedStatsResponse) response;
 
             ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
                     Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+
+        }else if(response instanceof RecentMatchesResponse){
+            recentMatchesResponse = (RecentMatchesResponse) response;
+            recentMatchesResponseReceived = true;
+            openSummonerContainerFragment();
+        }else if(response instanceof RankedStatsResponse){
+            rankedStatsResponse = (RankedStatsResponse) response;
+            rankedStatsResponseReceived = true;
+            openSummonerContainerFragment();
         }else if ((response instanceof LeagueInfoResponse)){
             leagueInfoResponse = (LeagueInfoResponse) response;
+            openSummonerContainerFragment();
+            leagueInfoResponseReceived = true;
             openSummonerContainerFragment();
         }
     }
@@ -246,28 +247,36 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                 Toast.makeText(getContext(), R.string.cannot_find_username, Toast.LENGTH_SHORT).show();
             }else if(requestId == Commons.RANKED_STATS_REQUEST) {
                 rankedStatsResponse = null;
-                ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
-                        Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+                rankedStatsResponseReceived = true;
+                openSummonerContainerFragment();
             }else if(requestId == Commons.LEAGUE_INFO_REQUEST) {
                 leagueInfoResponse = null;
+                leagueInfoResponseReceived = true;
+                openSummonerContainerFragment();
+            }else if(requestId == Commons.RECENT_MATCHES_REQUEST){
+                recentMatchesResponse = null;
+                recentMatchesResponseReceived = true;
                 openSummonerContainerFragment();
             }
         }
     }
 
     private void openSummonerContainerFragment(){
-        FragmentManager fm = getFragmentManager();
-        SummonerContainerFragment summonerContainerFragment = new SummonerContainerFragment();
+        if(leagueInfoResponseReceived && recentMatchesResponseReceived && rankedStatsResponseReceived) {
+            ServiceRequest.hideLoading();
+            FragmentManager fm = getFragmentManager();
+            SummonerContainerFragment summonerContainerFragment = new SummonerContainerFragment();
 
-        Bundle args = new Bundle();
-        args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
-        args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
-        args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
-        args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
-        FragmentTransaction ft = fm.beginTransaction();
-        Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-        summonerContainerFragment.setArguments(args);
-        ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
+            Bundle args = new Bundle();
+            args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
+            args.putSerializable(MatchHistoryFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+            args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
+            args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
+            FragmentTransaction ft = fm.beginTransaction();
+            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+            summonerContainerFragment.setArguments(args);
+            ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
+        }
     }
 
     @Override
