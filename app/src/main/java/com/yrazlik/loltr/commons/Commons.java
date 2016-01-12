@@ -41,8 +41,8 @@ public class Commons {
 		medium,
 		regular
 	}
-	
-	public static String TEXT = "AAA";
+
+    public static String TEXT = "AAA";
 
     public static final String LOL_TR_SHARED_PREFS = "LOL_TR_SHARED_PREFS";
     public static final String LOL_TR_SHARED_PREF_LANGUAGE = "LOL_TR_SHARED_PREF_LANGUAGE";

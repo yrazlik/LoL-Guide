@@ -33,7 +33,6 @@ import com.yrazlik.loltr.view.FadeInNetworkImageView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -92,9 +91,11 @@ public class SummonerOverviewFragment extends BaseFragment {
     private TextView team3v3lpTV;
     private TextView team3v3nameTV;
 
+    public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RECENTMATCHES";
     public static final String EXTRA_SUMMONER_INFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_SUMMONER_INFO";
     public static final String EXTRA_RANKEDSTATS = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RANKEDSTATS";
     public static final String EXTRA_LEAGUEINFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_LEAGUEINFO";
+    public static final String EXTRA_AVERAGESTATS = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_AVERAGESTATS";
 
     private RecentMatchesResponse recentMatchesResponse;
     private SummonerInfo summonerInfo;
@@ -110,10 +111,11 @@ public class SummonerOverviewFragment extends BaseFragment {
 
         Bundle extras = getArguments();
         if (extras != null) {
-            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(MatchHistoryFragment.EXTRA_RECENTMATCHES);
+            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
             summonerInfo = (SummonerInfo) extras.getSerializable(EXTRA_SUMMONER_INFO);
             rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_RANKEDSTATS);
             leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(EXTRA_LEAGUEINFO);
+            averageStats = (ChampionStatsDto) extras.getSerializable(EXTRA_AVERAGESTATS);
         }
 
         initUI(v);
@@ -193,7 +195,6 @@ public class SummonerOverviewFragment extends BaseFragment {
             //populate most played part
             populateMostPlayedPartForUnranked();
         } else {
-            sortChampionsByMostPlayed();
             //populate averages part
             calculateKDAMinionsAndWinRateStringsForRanked();
             kdaStatsTV.setText(kdaString);
@@ -371,36 +372,7 @@ public class SummonerOverviewFragment extends BaseFragment {
         }
     }
 
-    private void sortChampionsByMostPlayed() {
-        if (rankedStatsResponse != null) {
-            List<ChampionStatsDto> champions = rankedStatsResponse.getChampions();
-            if (champions != null && champions.size() > 0) {
-                for (Iterator<ChampionStatsDto> iterator = champions.iterator(); iterator.hasNext(); ) {
-                    if (iterator != null) {
-                        ChampionStatsDto b = iterator.next();
-                        if (b.getStats() == null) {
-                            iterator.remove();
-                        } else if (b.getId() == 0) {
-                            averageStats = b;
-                            iterator.remove();
-                        }
-                    }
-                }
-                try {
-                    Collections.sort(champions, new Comparator<ChampionStatsDto>() {
-                        @Override
-                        public int compare(ChampionStatsDto c1, ChampionStatsDto c2) {
-                            return c1.getStats().getTotalSessionsPlayed() - (c2.getStats().getTotalSessionsPlayed());
-                        }
-                    });
 
-                    Collections.reverse(champions);
-
-                } catch (Exception e) {
-                }
-            }
-        }
-    }
 
     private void populateMostPlayedPartForRanked() {
         if (rankedStatsResponse != null) {

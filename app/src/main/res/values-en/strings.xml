@@ -254,6 +254,39 @@
     <string name="solo_duo">Solo/Duo</string>
     <string name="overview">OVERVIEW</string>
     <string name="match_history">MATCH HISTORY</string>
+    <string name="season">Season</string>
+    <string name="rankedStats">Ranked Stats</string>
+
+    <string name="games_played">Games Played</string>
+    <string name="games_won">Games Won</string>
+
+    <string name="kill_death">Kills/Deaths</string>
+    <string name="kills">Kills</string>
+    <string name="deaths">Deaths</string>
+    <string name="assists">Assits</string>
+    <string name="penta_kills">Penta Kills</string>
+    <string name="quadra_kills">Quadra Kills</string>
+    <string name="triple_kills">Triple Kills</string>
+    <string name="double_kills">Double Kills</string>
+    <string name="killing_sprees">Killing Sprees</string>
+    <string name="most_kills_per_session">Most Kills</string>
+    <string name="most_deaths">Most Deaths</string>
+
+    <string name="earnings">Earnings</string>
+    <string name="gold_earned">Gold Earned</string>
+    <string name="minions_killed">Minions Killed</string>
+    <string name="neutral_minions_killed">Neutral Minions Killed</string>
+
+    <string name="damagePart">Damage</string>
+    <string name="damage_taken">Total Damage Taken</string>
+    <string name="damage_dealt">Damage Dealt</string>
+    <string name="physical_damage_dealt">Physical Damage Dealt</string>
+    <string name="magic_damage_dealt">Magic Damage Dealt</string>
+    <string name="healing_done">Healing Done</string>
+    <string name="largest_critical_strike">Largest Critical Strike</string>
+    <string name="no_ranked_info">No ranked game info found for the summoner.</string>
+    <string name="champions">CHAMPIONS</string>
+
 
 
 </resources>

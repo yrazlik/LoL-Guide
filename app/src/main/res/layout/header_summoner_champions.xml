@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/button_blue"
+                android:minHeight="90dp"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"></View>
+
+    <com.yrazlik.loltr.view.FadeInNetworkImageView
+        android:id="@+id/champIV"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/swordsIV"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/champIV"
+        android:background="@drawable/ip"/>
+
+    <TextView
+        android:id="@+id/kdaTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/swordsIV"
+        android:text="5/7/11"
+        android:textSize="12dp"/>
+
+    <RelativeLayout
+        android:id="@+id/goldContainerRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/winLoseContainerRL">
+
+        <ImageView
+            android:id="@+id/goldIV"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/coins"/>
+
+        <TextView
+            android:id="@+id/goldTV"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/goldIV"
+            android:layout_marginLeft="5dp"
+            android:text="11.9k"
+            android:textSize="12dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/winLoseContainerRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/downArrow">
+
+        <TextView
+            android:id="@+id/gamesPlayedTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oyunlar: 185"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/winCountTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gamesPlayedTV"
+            android:layout_marginTop="5dp"
+            android:text="Galibiyet: 102"
+            android:textSize="12dp"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/downArrow"
+        android:layout_width="30dp" android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/arrow_down"/>
+
+</RelativeLayout>

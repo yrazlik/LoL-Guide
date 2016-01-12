@@ -249,6 +249,38 @@
     <string name="overview">GENEL BAKIŞ</string>
     <string name="match_history">KARŞILAŞMA GEÇMİŞİ</string>
 
+    <string name="season">Sezon</string>
+    <string name="rankedStats">Dereceli İstatistikleri</string>
 
+
+    <string name="games_played">Oyunlar</string>
+    <string name="games_won">Kazanılan</string>
+
+    <string name="kill_death">Öldürme/Ölüm</string>
+    <string name="kills">Öldürme</string>
+    <string name="deaths">Ölüm</string>
+    <string name="assists">Asist</string>
+    <string name="penta_kills">5\'te 5</string>
+    <string name="quadra_kills">4\'te 4</string>
+    <string name="triple_kills">3\'te 3</string>
+    <string name="double_kills">2\'te 2</string>
+    <string name="killing_sprees">Katliamlar</string>
+    <string name="most_kills_per_session">En Fazla Öldürme</string>
+    <string name="most_deaths">En Fazla Ölüm</string>
+
+    <string name="earnings">Kazançlar</string>
+    <string name="gold_earned">Kazanılan Altın</string>
+    <string name="minions_killed">Öldürülen Minyonlar</string>
+    <string name="neutral_minions_killed">Öldürülen Tarafsız Canavarlar</string>
+
+    <string name="damagePart">Hasar</string>
+    <string name="damage_taken">Alınan Toplam Hasar</string>
+    <string name="damage_dealt">Verilen Hasar</string>
+    <string name="physical_damage_dealt">Verilen Fiziksel Hasar</string>
+    <string name="magic_damage_dealt">Verilen Büyü Hasarı</string>
+    <string name="healing_done">İyileştirmeler</string>
+    <string name="largest_critical_strike">En Büyük Kritik Vuruş</string>
+    <string name="no_ranked_info">Kullanıcı için dereceli oyun bilgisi bulunamadı.</string>
+    <string name="champions">ŞAMPİYONLAR</string>
 
 </resources>

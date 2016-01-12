@@ -2,6 +2,7 @@ package com.yrazlik.loltr.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,15 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
         Statistics statistics = getItem(position);
         String name = statistics.getName();
         String value = statistics.getValue();
+        boolean isHeader = statistics.isHeader();
+
+        if(isHeader){
+            holder.name.setTypeface(null, Typeface.BOLD);
+            holder.name.setPadding(0, 5, 0, 5);
+        }else{
+            holder.name.setTypeface(null, Typeface.NORMAL);
+            holder.name.setPadding(0, 0, 0, 0);
+        }
 
         if(name != null){
             holder.name.setText(name);

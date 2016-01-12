@@ -53,6 +53,7 @@
     <string name="armor_penetration">Zırh Delme</string>
     <string name="ascension">Yükseliş</string>
     <string name="assasin">Assassin</string>
+    <string name="assists">Asist</string>
     <string name="attack">Saldırı</string>
     <string name="attack_speed">Saldırı Hızı</string>
     <string name="average">Ortalamalar</string>
@@ -64,6 +65,7 @@
     <string name="cannot_find_username">Kullanıcı bulunamadı. Lütfen kullanıcı adını ve bölgeyi doğru girdiğinizden emin olun</string>
     <string name="cap5">Takım Kurucu</string>
     <string name="champion_sale">Şampiyon İndirimleri</string>
+    <string name="champions">ŞAMPİYONLAR</string>
     <string name="chosenChampion">Şampiyon:</string>
     <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values-tr/common_strings.xml -->
@@ -111,14 +113,20 @@
     <string name="critical">Kritik Vuruş</string>
     <string name="custom_game">Özel Oyun</string>
     <string name="damage">Fiziksel Hasar</string>
+    <string name="damagePart">Hasar</string>
+    <string name="damage_dealt">Verilen Hasar</string>
+    <string name="damage_taken">Alınan Toplam Hasar</string>
+    <string name="deaths">Ölüm</string>
     <string name="defence">Savunma</string>
     <string name="deffensiveItems">Defansif Eşyalar</string>
     <string name="destek">Destek</string>
     <string name="detailInfo">Detay</string>
     <string name="dominion">Kristal Kayalık</string>
+    <string name="double_kills">2\'te 2</string>
     <string name="dovuscu">Dövüscü</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="drawer_open">Open navigation drawer</string>
+    <string name="earnings">Kazançlar</string>
     <string name="endorse">Geliştirmeye destek olabilmek için aşağıdaki reklamlara tıklayabilrseniz seviniriz. Reklamlar sizi sadece google play store\'a yönlendirecektir. \n\n\nThis application isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
     <string name="english">İngilizce</string>
     <string name="englishEnglish">English</string>
@@ -131,10 +139,14 @@
     <string name="filter">Filtreleme</string>
     <string name="firstblood">İlk Kan</string>
     <string name="g">ğ</string>
+    <string name="games_played">Oyunlar</string>
+    <string name="games_won">Kazanılan</string>
     <string name="general">Genel Bakış</string>
     <string name="gold">Altın</string>
     <string name="goldEarned">Kazanılan Altın</string>
+    <string name="gold_earned">Kazanılan Altın</string>
     <string name="gold_give">Altın Veren</string>
+    <string name="healing_done">İyileştirmeler</string>
     <string name="health">Can</string>
     <string name="health_regeneration">Can Yenileme</string>
     <string name="hello">Hello</string>
@@ -147,11 +159,15 @@
     <string name="itemSearchHint">Bir eşya ismi girin...</string>
     <string name="itemTo">Bu Eşyanın Geliştirilebileceği Eşyalar</string>
     <string name="kda">KDA</string>
+    <string name="kill_death">Öldürme/Ölüm</string>
+    <string name="killing_sprees">Katliamlar</string>
+    <string name="kills">Öldürme</string>
     <string name="kingporo">Poro Kralı</string>
     <string name="lagestKillingSpree">En Büyük Katliam</string>
     <string name="languageEnglish">Language</string>
     <string name="languageTurkish">Dil</string>
     <string name="largestMultiKill">En Büyük Çoklu Öldürme</string>
+    <string name="largest_critical_strike">En Büyük Kritik Vuruş</string>
     <string name="league">Lig</string>
     <string name="leagueInfo">Lig Bilgisi</string>
     <string name="legend">Efsane</string>
@@ -162,6 +178,7 @@
     <string name="magic">Büyü</string>
     <string name="magicDamageDealtPlayer">Verilen Büyü Hasarı</string>
     <string name="magicDamageTaken">Alınan Büyü Hasarı</string>
+    <string name="magic_damage_dealt">Verilen Büyü Hasarı</string>
     <string name="magic_penet">Büyü Nüfuzu</string>
     <string name="magic_resistance">Büyü Direnci</string>
     <string name="mana">Mana</string>
@@ -174,7 +191,10 @@
     <string name="menu">Menü</string>
     <string name="minions">Minyonlar</string>
     <string name="minionsKilled">Öldürülen Minyonlar</string>
+    <string name="minions_killed">Öldürülen Minyonlar</string>
     <string name="mostPlayed">En Çok Oynananlar</string>
+    <string name="most_deaths">En Fazla Ölüm</string>
+    <string name="most_kills_per_session">En Fazla Öldürme</string>
     <string name="movement">Hareket Hızı</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values-tr/values-tr.xml -->
     <eat-comment/>
@@ -188,12 +208,14 @@
     <eat-comment/>
     <string name="networkError">Lütfen internet bağlantınızı kontrol ediniz.</string>
     <string name="neutralMinionsKilled">Öldürülen Tarafsız Canavarlar</string>
+    <string name="neutral_minions_killed">Öldürülen Tarafsız Canavarlar</string>
     <string name="nightmare">Ölümcül Felaket Botları</string>
     <string name="nisanci">Nisancı</string>
     <string name="no">Hayır</string>
     <string name="noChampFound">Aramanızla eşleşen bir şampiyon bulunamadı.</string>
     <string name="noFrom">Bu eşyayı oluşturacak başka eşya bulunmamaktadır.</string>
     <string name="noTo">Bu eşya başka bir eşyaya geliştirilemez.</string>
+    <string name="no_ranked_info">Kullanıcı için dereceli oyun bilgisi bulunamadı.</string>
     <string name="no_video_found">Video bulunamadı.</string>
     <string name="none">Özel Oyun</string>
     <string name="normal">Normal</string>
@@ -205,8 +227,10 @@
     <string name="others">Diğerleri</string>
     <string name="overview">GENEL BAKIŞ</string>
     <string name="passive">Pasif</string>
+    <string name="penta_kills">5\'te 5</string>
     <string name="physicalDamageDealtPlayer">Verilen Fiziksel Hasar</string>
     <string name="physicalDamageTaken">Alınan Fiziksel Hasar</string>
+    <string name="physical_damage_dealt">Verilen Fiziksel Hasar</string>
     <string name="play">Oynat</string>
     <string name="player">Oyuncu:</string>
     <string name="playerDetail">Oyuncu Detayı</string>
@@ -215,9 +239,11 @@
     <string name="pleaseEnterYourSummonerName">Lütfen bir sihirdar ismi giriniz.</string>
     <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
     <string name="preferences_saved">Ayarlar Kaydedildi.</string>
+    <string name="quadra_kills">4\'te 4</string>
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Dereceli Oyun</string>
     <string name="rankedCapitalStart">Dereceli</string>
+    <string name="rankedStats">Dereceli İstatistikleri</string>
     <string name="ranked_game">Dereceli Oyun</string>
     <string name="recentSearches">Son Aramalar</string>
     <string name="region">Bölge:</string>
@@ -240,6 +266,7 @@
     <string name="searchC">ARAMA</string>
     <string name="searchHint">Şampiyon adı giriniz ...</string>
     <string name="searchItemHint">Eşya adı giriniz ...</string>
+    <string name="season">Sezon</string>
     <string name="selectRegion">Bölge Seçiniz: </string>
     <string name="select_category">Kategori Seçiniz</string>
     <string name="select_language">Dil:</string>
@@ -269,6 +296,7 @@
     <string name="totalDamageTaken">Alınan Hasar</string>
     <string name="totalHeal">İyileştirmeler</string>
     <string name="totalTimeCrowdControlDealt">Kitle Kontrol Vuruşu</string>
+    <string name="triple_kills">3\'te 3</string>
     <string name="turkey">Türkiye</string>
     <string name="turkish">Türkçe</string>
     <string name="turkishEnglish">Turkish</string>

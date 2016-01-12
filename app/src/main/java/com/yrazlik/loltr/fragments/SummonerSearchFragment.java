@@ -23,6 +23,7 @@ import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.RecentSearchesAdapter;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.ChampionStatsDto;
 import com.yrazlik.loltr.data.RecentSearchItem;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
@@ -34,7 +35,11 @@ import com.yrazlik.loltr.service.ServiceRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by yrazlik on 1/4/16.
@@ -54,6 +59,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private RankedStatsResponse rankedStatsResponse;
     private RecentMatchesResponse recentMatchesResponse;
     private LeagueInfoResponse leagueInfoResponse;
+    private ChampionStatsDto averageStats;
 
     private boolean recentMatchesResponseReceived, rankedStatsResponseReceived, leagueInfoResponseReceived;
 
@@ -263,19 +269,52 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
 
     private void openSummonerContainerFragment(){
         if(leagueInfoResponseReceived && recentMatchesResponseReceived && rankedStatsResponseReceived) {
+            sortChampionsByMostPlayed();
             ServiceRequest.hideLoading();
             FragmentManager fm = getFragmentManager();
             SummonerContainerFragment summonerContainerFragment = new SummonerContainerFragment();
 
             Bundle args = new Bundle();
             args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
-            args.putSerializable(MatchHistoryFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+            args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
             args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
             args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
+            args.putSerializable(SummonerOverviewFragment.EXTRA_AVERAGESTATS, averageStats);
             FragmentTransaction ft = fm.beginTransaction();
             Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
             summonerContainerFragment.setArguments(args);
             ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
+        }
+    }
+
+    private void sortChampionsByMostPlayed() {
+        if (rankedStatsResponse != null) {
+            List<ChampionStatsDto> champions = rankedStatsResponse.getChampions();
+            if (champions != null && champions.size() > 0) {
+                for (Iterator<ChampionStatsDto> iterator = champions.iterator(); iterator.hasNext(); ) {
+                    if (iterator != null) {
+                        ChampionStatsDto b = iterator.next();
+                        if (b.getStats() == null) {
+                            iterator.remove();
+                        } else if (b.getId() == 0) {
+                            averageStats = b;
+                            iterator.remove();
+                        }
+                    }
+                }
+                try {
+                    Collections.sort(champions, new Comparator<ChampionStatsDto>() {
+                        @Override
+                        public int compare(ChampionStatsDto c1, ChampionStatsDto c2) {
+                            return c1.getStats().getTotalSessionsPlayed() - (c2.getStats().getTotalSessionsPlayed());
+                        }
+                    });
+
+                    Collections.reverse(champions);
+
+                } catch (Exception e) {
+                }
+            }
         }
     }
 

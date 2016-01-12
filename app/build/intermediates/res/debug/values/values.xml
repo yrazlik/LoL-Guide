@@ -61,6 +61,7 @@
     <color name="background_tab_pressed">#6633B5E5</color>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/color.xml -->
     <eat-comment/>
+    <color name="bg_yellow">#E8C068</color>
     <color name="black">#000000</color>
     <color name="blue_border">#6B97D6</color>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
@@ -239,6 +240,7 @@
     <declare-styleable name="SearchView"><attr format="reference" name="layout"/><attr format="boolean" name="iconifiedByDefault"/><attr name="android:maxWidth"/><attr format="string" name="queryHint"/><attr format="string" name="defaultQueryHint"/><attr name="android:imeOptions"/><attr name="android:inputType"/><attr format="reference" name="closeIcon"/><attr format="reference" name="goIcon"/><attr format="reference" name="searchIcon"/><attr format="reference" name="searchHintIcon"/><attr format="reference" name="voiceIcon"/><attr format="reference" name="commitIcon"/><attr format="reference" name="suggestionRowLayout"/><attr format="reference" name="queryBackground"/><attr format="reference" name="submitBackground"/><attr name="android:focusable"/></declare-styleable>
     <declare-styleable name="SignInButton"><attr format="reference|enum" name="buttonSize"><enum name="standard" value="0"/><enum name="wide" value="1"/><enum name="icon_only" value="2"/></attr><attr format="reference|enum" name="colorScheme"><enum name="dark" value="0"/><enum name="light" value="1"/><enum name="auto" value="2"/></attr><attr format="reference|string" name="scopeUris"/></declare-styleable>
     <declare-styleable name="Spinner"><attr format="reference" name="prompt"/><attr format="enum" name="spinnerMode"><enum name="dialog" value="0"/><enum name="dropdown" value="1"/></attr><attr name="android:dropDownSelector"/><attr name="android:popupBackground"/><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/><attr name="android:dropDownWidth"/><attr format="reference" name="popupPromptView"/><attr name="android:gravity"/><attr format="boolean" name="disableChildrenWhenDisabled"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="StickyListHeadersListView"><attr format="reference" name="stickyListHeadersListViewStyle"/><attr name="android:clipToPadding"/><attr name="android:scrollbars"/><attr name="android:overScrollMode"/><attr name="android:padding"/><attr name="android:paddingLeft"/><attr name="android:paddingTop"/><attr name="android:paddingRight"/><attr name="android:paddingBottom"/><attr name="android:fadingEdgeLength"/><attr name="android:requiresFadingEdge"/><attr name="android:cacheColorHint"/><attr name="android:choiceMode"/><attr name="android:drawSelectorOnTop"/><attr name="android:fastScrollEnabled"/><attr name="android:fastScrollAlwaysVisible"/><attr name="android:listSelector"/><attr name="android:scrollingCache"/><attr name="android:scrollbarStyle"/><attr name="android:divider"/><attr name="android:dividerHeight"/><attr name="android:transcriptMode"/><attr name="android:stackFromBottom"/><attr format="boolean" name="hasStickyHeaders"/><attr format="boolean" name="isDrawingListUnderStickyHeader"/></declare-styleable>
     <declare-styleable name="SwitchCompat"><attr name="android:thumb"/><attr format="reference" name="track"/><attr name="android:textOn"/><attr name="android:textOff"/><attr format="dimension" name="thumbTextPadding"/><attr format="reference" name="switchTextAppearance"/><attr format="dimension" name="switchMinWidth"/><attr format="dimension" name="switchPadding"/><attr format="boolean" name="splitTrack"/><attr format="boolean" name="showText"/></declare-styleable>
     <declare-styleable name="TextAppearance"><attr name="android:textSize"/><attr name="android:textColor"/><attr name="android:textStyle"/><attr name="android:typeface"/><attr name="textAllCaps"/></declare-styleable>
     <declare-styleable name="Theme"><attr format="boolean" name="windowActionBar"/><attr format="boolean" name="windowNoTitle"/><attr format="boolean" name="windowActionBarOverlay"/><attr format="boolean" name="windowActionModeOverlay"/><attr format="dimension|fraction" name="windowFixedWidthMajor"/><attr format="dimension|fraction" name="windowFixedHeightMinor"/><attr format="dimension|fraction" name="windowFixedWidthMinor"/><attr format="dimension|fraction" name="windowFixedHeightMajor"/><attr format="dimension|fraction" name="windowMinWidthMajor"/><attr format="dimension|fraction" name="windowMinWidthMinor"/><attr name="android:windowIsFloating"/><attr name="android:windowAnimationStyle"/><attr format="reference" name="actionBarTabStyle"/><attr format="reference" name="actionBarTabBarStyle"/><attr format="reference" name="actionBarTabTextStyle"/><attr format="reference" name="actionOverflowButtonStyle"/><attr format="reference" name="actionOverflowMenuStyle"/><attr format="reference" name="actionBarPopupTheme"/><attr format="reference" name="actionBarStyle"/><attr format="reference" name="actionBarSplitStyle"/><attr format="reference" name="actionBarTheme"/><attr format="reference" name="actionBarWidgetTheme"/><attr format="dimension" name="actionBarSize"><enum name="wrap_content" value="0"/></attr><attr format="reference" name="actionBarDivider"/><attr format="reference" name="actionBarItemBackground"/><attr format="reference" name="actionMenuTextAppearance"/><attr format="color|reference" name="actionMenuTextColor"/><attr format="reference" name="actionModeStyle"/><attr format="reference" name="actionModeCloseButtonStyle"/><attr format="reference" name="actionModeBackground"/><attr format="reference" name="actionModeSplitBackground"/><attr format="reference" name="actionModeCloseDrawable"/><attr format="reference" name="actionModeCutDrawable"/><attr format="reference" name="actionModeCopyDrawable"/><attr format="reference" name="actionModePasteDrawable"/><attr format="reference" name="actionModeSelectAllDrawable"/><attr format="reference" name="actionModeShareDrawable"/><attr format="reference" name="actionModeFindDrawable"/><attr format="reference" name="actionModeWebSearchDrawable"/><attr format="reference" name="actionModePopupWindowStyle"/><attr format="reference" name="textAppearanceLargePopupMenu"/><attr format="reference" name="textAppearanceSmallPopupMenu"/><attr format="reference" name="dialogTheme"/><attr format="dimension" name="dialogPreferredPadding"/><attr format="reference" name="listDividerAlertDialog"/><attr format="reference" name="actionDropDownStyle"/><attr format="dimension" name="dropdownListPreferredItemHeight"/><attr format="reference" name="spinnerDropDownItemStyle"/><attr format="reference" name="homeAsUpIndicator"/><attr format="reference" name="actionButtonStyle"/><attr format="reference" name="buttonBarStyle"/><attr format="reference" name="buttonBarButtonStyle"/><attr format="reference" name="selectableItemBackground"/><attr format="reference" name="selectableItemBackgroundBorderless"/><attr format="reference" name="borderlessButtonStyle"/><attr format="reference" name="dividerVertical"/><attr format="reference" name="dividerHorizontal"/><attr format="reference" name="activityChooserViewStyle"/><attr format="reference" name="toolbarStyle"/><attr format="reference" name="toolbarNavigationButtonStyle"/><attr format="reference" name="popupMenuStyle"/><attr format="reference" name="popupWindowStyle"/><attr format="reference|color" name="editTextColor"/><attr format="reference" name="editTextBackground"/><attr format="reference" name="textAppearanceSearchResultTitle"/><attr format="reference" name="textAppearanceSearchResultSubtitle"/><attr format="reference|color" name="textColorSearchUrl"/><attr format="reference" name="searchViewStyle"/><attr format="dimension" name="listPreferredItemHeight"/><attr format="dimension" name="listPreferredItemHeightSmall"/><attr format="dimension" name="listPreferredItemHeightLarge"/><attr format="dimension" name="listPreferredItemPaddingLeft"/><attr format="dimension" name="listPreferredItemPaddingRight"/><attr format="reference" name="dropDownListViewStyle"/><attr format="reference" name="listPopupWindowStyle"/><attr format="reference" name="textAppearanceListItem"/><attr format="reference" name="textAppearanceListItemSmall"/><attr format="reference" name="panelBackground"/><attr format="dimension" name="panelMenuListWidth"/><attr format="reference" name="panelMenuListTheme"/><attr format="reference" name="listChoiceBackgroundIndicator"/><attr format="color" name="colorPrimary"/><attr format="color" name="colorPrimaryDark"/><attr format="color" name="colorAccent"/><attr format="color" name="colorControlNormal"/><attr format="color" name="colorControlActivated"/><attr format="color" name="colorControlHighlight"/><attr format="color" name="colorButtonNormal"/><attr format="color" name="colorSwitchThumbNormal"/><attr format="reference" name="alertDialogStyle"/><attr format="reference" name="alertDialogButtonGroupStyle"/><attr format="boolean" name="alertDialogCenterButtons"/><attr format="reference" name="alertDialogTheme"/><attr format="reference|color" name="textColorAlertDialogListItem"/><attr format="reference" name="buttonBarPositiveButtonStyle"/><attr format="reference" name="buttonBarNegativeButtonStyle"/><attr format="reference" name="buttonBarNeutralButtonStyle"/><attr format="reference" name="autoCompleteTextViewStyle"/><attr format="reference" name="buttonStyle"/><attr format="reference" name="buttonStyleSmall"/><attr format="reference" name="checkboxStyle"/><attr format="reference" name="checkedTextViewStyle"/><attr format="reference" name="editTextStyle"/><attr format="reference" name="radioButtonStyle"/><attr format="reference" name="ratingBarStyle"/><attr format="reference" name="spinnerStyle"/><attr format="reference" name="switchStyle"/></declare-styleable>
@@ -403,6 +405,7 @@
     <string name="armor_penetration">Armor Penetration</string>
     <string name="ascension">Ascension</string>
     <string name="assasin">Assassin</string>
+    <string name="assists">Assits</string>
     <string name="attack">Attack</string>
     <string name="attack_speed">Attack Speed</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/auth_strings.xml -->
@@ -429,6 +432,7 @@
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="champion_sale">Champion Sale</string>
+    <string name="champions">CHAMPIONS</string>
     <string name="chosenChampion">Champion:</string>
     <string name="click_to_update">If you cannot see the video, please update the app to latest
         version by clicking here.
@@ -485,7 +489,11 @@
     <string name="createdAt">Published on</string>
     <string name="critical">Critical Damage</string>
     <string name="custom_game">Custom Game</string>
-    <string name="damage">Physical Hasar</string>
+    <string name="damage">Physical Damage</string>
+    <string name="damagePart">Damage</string>
+    <string name="damage_dealt">Damage Dealt</string>
+    <string name="damage_taken">Total Damage Taken</string>
+    <string name="deaths">Deaths</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.3.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="decline">Decline</string>
@@ -496,9 +504,11 @@
     <string name="destek">Support</string>
     <string name="detailInfo">Detail</string>
     <string name="dominion">Crystal Scar</string>
+    <string name="double_kills">Double Kills</string>
     <string name="dovuscu">Fighter</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="drawer_open">Open navigation drawer</string>
+    <string name="earnings">Earnings</string>
     <string name="endorse">Please click on the ads to support further developments. Ads will only
         redirect you to Google Play Store. \n\n\nThis application isn’t endorsed by Riot Games and
         doesn’t reflect the views or opinions of Riot Games or anyone officially involved in
@@ -516,10 +526,14 @@
     <string name="filter">Filter</string>
     <string name="firstblood">First Blood</string>
     <string name="g">ğ</string>
+    <string name="games_played">Games Played</string>
+    <string name="games_won">Games Won</string>
     <string name="general">Overview</string>
     <string name="gold">Gold</string>
     <string name="goldEarned">Gold Earned</string>
+    <string name="gold_earned">Gold Earned</string>
     <string name="gold_give">Gold</string>
+    <string name="healing_done">Healing Done</string>
     <string name="health">Health</string>
     <string name="health_regeneration">Health Regeneration</string>
     <string name="hello">Hello</string>
@@ -532,11 +546,15 @@
     <string name="itemSearchHint">Enter an item name...</string>
     <string name="itemTo">Other Items That This Item Can Be Upgraded To</string>
     <string name="kda">KDA</string>
+    <string name="kill_death">Kills/Deaths</string>
+    <string name="killing_sprees">Killing Sprees</string>
+    <string name="kills">Kills</string>
     <string name="kingporo">King Poro</string>
     <string name="lagestKillingSpree">Largest Killing Spree</string>
     <string name="languageEnglish">Language</string>
     <string name="languageTurkish">Dil</string>
     <string name="largestMultiKill">Largest MultiKill</string>
+    <string name="largest_critical_strike">Largest Critical Strike</string>
     <string name="league">League</string>
     <string name="leagueInfo">League Info</string>
     <string name="legend">Legend</string>
@@ -547,6 +565,7 @@
     <string name="magic">Magic</string>
     <string name="magicDamageDealtPlayer">Magic Damage Dealt</string>
     <string name="magicDamageTaken">Magic Damage Taken</string>
+    <string name="magic_damage_dealt">Magic Damage Dealt</string>
     <string name="magic_penet">Magic Penetration</string>
     <string name="magic_resistance">Magic Resistance</string>
     <string name="mana">Mana</string>
@@ -559,7 +578,10 @@
     <string name="menu">Menu</string>
     <string name="minions">Minions</string>
     <string name="minionsKilled">Minions Killed</string>
+    <string name="minions_killed">Minions Killed</string>
     <string name="mostPlayed">Most Played</string>
+    <string name="most_deaths">Most Deaths</string>
+    <string name="most_kills_per_session">Most Kills</string>
     <string name="movement">Movement Speed</string>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
@@ -577,12 +599,14 @@
     <eat-comment/>
     <string name="networkError">Please check your Internet connection.</string>
     <string name="neutralMinionsKilled">Neutral Minions Killed</string>
+    <string name="neutral_minions_killed">Neutral Minions Killed</string>
     <string name="nightmare">Nightmare Bot</string>
     <string name="nisanci">Marksman</string>
     <string name="no">No</string>
     <string name="noChampFound">No champion found matching your search.</string>
     <string name="noFrom">There are no items to build this item.</string>
     <string name="noTo">This item cannot be upgraded into another item.</string>
+    <string name="no_ranked_info">No ranked game info found for the summoner.</string>
     <string name="no_video_found">No video found.</string>
     <string name="none">Custom Game</string>
     <string name="normal">Normal</string>
@@ -594,8 +618,10 @@
     <string name="others">Others</string>
     <string name="overview">OVERVIEW</string>
     <string name="passive">Passive</string>
+    <string name="penta_kills">Penta Kills</string>
     <string name="physicalDamageDealtPlayer">Physical Damage Dealt</string>
     <string name="physicalDamageTaken">Physical Damage Taken</string>
+    <string name="physical_damage_dealt">Physical Damage Dealt</string>
     <string name="play">Play</string>
     <string name="player">Summoner:</string>
     <string name="playerDetail">Summoner Detail</string>
@@ -604,9 +630,11 @@
     <string name="pleaseEnterYourSummonerName">Please enter a summoner name.</string>
     <string name="pleaseSelectYourRegion">Please select your region.</string>
     <string name="preferences_saved">Preferences Saved.</string>
+    <string name="quadra_kills">Quadra Kills</string>
     <string name="question_mark">\?\?\?</string>
     <string name="ranked">Ranked Game</string>
     <string name="rankedCapitalStart">Ranked</string>
+    <string name="rankedStats">Ranked Stats</string>
     <string name="ranked_game">Ranked Game</string>
     <string name="recentSearches">Recent Searches</string>
     <string name="region">Region:</string>
@@ -629,6 +657,7 @@
     <string name="searchC">SEARCH</string>
     <string name="searchHint">Enter a champion name ...</string>
     <string name="searchItemHint">Enter an item name ...</string>
+    <string name="season">Season</string>
     <string name="selectRegion">Choose Region:</string>
     <string name="select_category">Choose Category</string>
     <string name="select_language">Language:</string>
@@ -667,6 +696,7 @@
     <string name="totalDamageTaken">Total Damage Taken</string>
     <string name="totalHeal">Total Heal</string>
     <string name="totalTimeCrowdControlDealt">Total Time Crowd Control Dealt</string>
+    <string name="triple_kills">Triple Kills</string>
     <string name="turkey">Türkiye</string>
     <string name="turkish">Turkish</string>
     <string name="turkishEnglish">Turkish</string>

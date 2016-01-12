@@ -37,7 +37,6 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
     private List<Game> games;
     private RecentMatchesResponse recentMatchesResponse;
 
-    public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.matchhistoryfragment.extramatchhistory";
     public static final String EXTRA_SUMMONERID = "com.yrazlik.loltr.fragments.matchhistoryfragment.extrasummonerid";
 
     @Nullable
@@ -46,7 +45,7 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
         View v = inflater.inflate(R.layout.fragment_match_history, container, false);
         Bundle extras = getArguments();
         if (extras != null) {
-            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
+            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES);
             summonerId = (long) extras.getLong(EXTRA_SUMMONERID);
         }
         if(recentMatchesResponse != null){
