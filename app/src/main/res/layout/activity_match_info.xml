@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8E6DC">
+    android:background="@color/app_color">
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_height="55dp"
         android:layout_width="match_parent"
-        android:background="#D4D8D9"
+        style="@style/ToolBarStyle"
         android:minHeight="?attr/actionBarSize" >
 
         <ImageView
@@ -23,9 +23,8 @@
             android:text="@string/matchInfo"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/backButton"
-            android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"
-            android:textSize="18sp"/>
+            style="@style/whiteText18dp"/>
 
     </RelativeLayout>
     <ProgressBar
@@ -54,7 +53,8 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/matchTime"
                 android:gravity="center_horizontal"
-                android:textSize="18sp"/>
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"/>
             <TextView
                 android:layout_below="@+id/matchTimeTV"
                 android:id="@+id/matchTime"
@@ -63,7 +63,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
-                android:textSize="18sp"/>
+                style="@style/whiteText18dp"
+                />
 
             <TextView
                 android:layout_below="@+id/matchTime"
@@ -72,7 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/team1"
-                style="?android:attr/listSeparatorTextViewStyle"
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"
                 />
 
             <ListView
@@ -89,7 +91,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/team2"
-                style="?android:attr/listSeparatorTextViewStyle"
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"
                 />
 
             <ListView

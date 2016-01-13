@@ -88,17 +88,19 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 	@Override
 	public void onSuccess(Object response) {
 		if(response instanceof ChampionSpellsResponse){
-			ChampionSpellsResponse resp = (ChampionSpellsResponse) response;
-			ArrayList<Spell> spells = resp.getSpells();
-			Passive passive = resp.getPassive();
-			Spell passiveSpell = new Spell(passive.getName() + " (" + getResources().getString(R.string.passive) + ")", passive.getSanitizedDescription(), passive.getImage(), " ");
-			championSpells.add(passiveSpell);
-			for(int i = 0; i< spells.size(); i++){
-				Spell spell = spells.get(i);
-				spell.setSpellKey(getSpellKey(i));
-				championSpells.add(spell);
-			}
-			adapter.notifyDataSetChanged();
+            try {
+                ChampionSpellsResponse resp = (ChampionSpellsResponse) response;
+                ArrayList<Spell> spells = resp.getSpells();
+                Passive passive = resp.getPassive();
+                Spell passiveSpell = new Spell(passive.getName() + " (" + getResources().getString(R.string.passive) + ")", passive.getSanitizedDescription(), passive.getImage(), " ");
+                championSpells.add(passiveSpell);
+                for (int i = 0; i < spells.size(); i++) {
+                    Spell spell = spells.get(i);
+                    spell.setSpellKey(getSpellKey(i));
+                    championSpells.add(spell);
+                }
+                adapter.notifyDataSetChanged();
+            }catch (Exception ignored){}
 			
 		}
 		

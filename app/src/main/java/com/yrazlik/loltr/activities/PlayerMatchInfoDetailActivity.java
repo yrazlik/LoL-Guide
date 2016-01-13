@@ -209,6 +209,8 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
             return R.drawable.diamond_badge;
         }else if(league.equalsIgnoreCase("CHALLENGER")){
             return R.drawable.challenger_badge;
+        }else if(league.equalsIgnoreCase("MASTER")){
+            return R.drawable.challenger_badge;
         }else{
             return R.drawable.unranked_badge;
         }

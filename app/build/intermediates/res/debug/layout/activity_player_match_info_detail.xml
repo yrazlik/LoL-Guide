@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#E8E6DC">
+    android:layout_height="match_parent" android:background="@color/app_color">
 
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_height="55dp"
         android:layout_width="match_parent"
-        android:background="#D4D8D9"
+        style="@style/ToolBarStyle"
         android:minHeight="?attr/actionBarSize" >
 
         <ImageView
@@ -23,9 +23,8 @@
             android:text="@string/playerDetail"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/backButton"
-            android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"
-            android:textSize="18sp"/>
+            style="@style/whiteText18dp"/>
 
     </RelativeLayout>
 
@@ -65,7 +64,8 @@
                         android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        style="@style/whiteText18dp"
+                        android:textColor="@color/material_yellow"
                         android:singleLine="true"
                         android:layout_marginLeft="15dp"
                         android:text="Best Riven NA"/>
@@ -74,7 +74,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/userName"
-                        android:textSize="18sp"
+                        style="@style/whiteText18dp"
                         android:layout_marginTop="5dp"
                         android:singleLine="true"
                         android:layout_marginLeft="15dp"
@@ -102,7 +102,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/leagueInfo"
-                    style="?android:attr/listSeparatorTextViewStyle"
+                    style="@style/whiteText18dp"
+                    android:textColor="@color/material_yellow"
                     />
 
                 <ImageView
@@ -132,7 +133,7 @@
                         android:id="@+id/leagueTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:visibility="gone"/>
                     <ProgressBar
                         android:id="@+id/progressLeague"
@@ -144,7 +145,7 @@
                         android:layout_below="@+id/leagueTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:singleLine="true"
                         android:layout_marginTop="5dp"
                         android:visibility="gone"/>
@@ -172,7 +173,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/matchHistory"
-                style="?android:attr/listSeparatorTextViewStyle"
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"
                 />
 
             <TextView
@@ -181,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="5dp"
+                style="@style/whiteText14dp"
                 android:layout_below="@+id/matchHistoryTV"
                 />
             <ProgressBar
@@ -198,6 +201,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="5dp"
                 android:text="Dereceli Kazanma/Kaybetme:"
+                style="@style/whiteText14dp"
                 android:layout_below="@+id/totalWonMatchCountTV"
                 />
             <TextView
@@ -207,6 +211,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
                 android:layout_toRightOf="@+id/totalRankedWinLoseCountTV"
+                style="@style/whiteText14dp"
                 android:textColor="#36EB26"
                 />
             <ProgressBar
@@ -223,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
                 android:layout_toRightOf="@+id/totalRankedWinCountTV"
+                style="@style/whiteText14dp"
                 />
             <TextView
                 android:id="@+id/totalRankedLoseCountTV"
@@ -230,6 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
                 android:layout_toRightOf="@+id/slashTV"
+                android:textSize="14dp"
                 android:textColor="#EB452F"
                 />
         </RelativeLayout>

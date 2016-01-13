@@ -98,6 +98,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);// Getting an array of country
 
+
         makeGetAllChampionsRequest();
         makeGetAllSpellsRequest();
 

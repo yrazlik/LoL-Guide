@@ -28,6 +28,7 @@
             android:id="@+id/champName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/whiteText14dp"
             android:text="Tristana"/>
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_below="@+id/champName"
             android:layout_alignLeft="@+id/champName"
             android:layout_marginTop="5dp"
+            style="@style/whiteText14dp"
             android:text="oh yeah baby"/>
 
         <ImageView
@@ -51,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/detailInfoArrow"
             android:layout_centerVertical="true"
+            style="@style/whiteText14dp"
             android:text="@string/detailInfo"/>
 
 

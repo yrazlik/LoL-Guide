@@ -22,6 +22,7 @@
 		        android:layout_height="wrap_content"		        		        
 		        android:layout_toRightOf="@id/flag"
 		        android:layout_centerVertical="true"
+                android:textColor="@color/white"
 		        android:textSize="15sp" />	        
 	        
 			<TextView 

@@ -90,6 +90,7 @@ public class Commons {
 
 
 
+    public static boolean REGION_SELECTED = false;
     public static String SELECTED_REGION = "tr";
     public static String SELECTED_LANGUAGE = "tr";
     public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://" + SELECTED_REGION + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
