@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
+                android:background="@color/app_color"
               android:layout_height="wrap_content">
 
     <RelativeLayout
@@ -23,7 +24,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/search"
-            android:textSize="14sp"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:hint="@string/itemSearchHint"/>
 
         <ImageView
@@ -38,7 +41,9 @@
         android:id="@+id/itemsLV"
         android:layout_below="@+id/searchContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="0.5dp">
 
 
     </ListView>

@@ -3,6 +3,6 @@
     <corners android:radius="2dp" />
     <stroke
         android:width="0.5dp"
-        android:color="@color/sticky_text_color_transparent" />
+        android:color="@color/white" />
     <solid android:color="@android:color/transparent"/>
 </shape><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/drawable/dialog_secondary_button.xml -->

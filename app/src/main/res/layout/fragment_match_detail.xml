@@ -73,6 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
+                        android:textColor="@color/material_yellow"
                         style="@style/whiteText14dp"/>
 
                     <TextView
@@ -272,6 +273,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         style="@style/whiteText15dp"
+                        android:textColor="@color/material_yellow"
                         android:text="@string/team1"/>
 
                 </LinearLayout>
@@ -296,6 +298,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         style="@style/whiteText15dp"
+                        android:textColor="@color/material_yellow"
                         android:text="@string/team2"/>
 
                 </LinearLayout>
@@ -315,6 +318,7 @@
                 <TextView
                     android:id="@+id/statisticsTV"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="@color/material_yellow"
                     android:text="@string/statistics" style="@style/whiteText14dp"/>
 
                 <ListView

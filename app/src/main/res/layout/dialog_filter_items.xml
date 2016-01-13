@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/app_color"
                 android:padding="15dp">
 
     <ScrollView
@@ -28,7 +29,8 @@
                 android:layout_toRightOf="@+id/icon_defence"
                 android:layout_marginLeft="5dp"
                 android:text="@string/defence"
-                android:textSize="18sp"
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"
                 android:textStyle="bold"/>
 
             <View
@@ -58,7 +60,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/health"/>
 
                     <CheckBox
@@ -66,6 +68,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -89,13 +92,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/magic_resistance"/>
 
                     <CheckBox
                         android:id="@+id/cbMagicResistance"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -117,13 +121,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/health_regeneration"/>
 
                     <CheckBox
                         android:id="@+id/cbHealthRegen"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -145,13 +150,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/armor"/>
 
                     <CheckBox
                         android:id="@+id/cbArmor"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -183,7 +189,8 @@
                 android:layout_toRightOf="@+id/icon_attack"
                 android:layout_marginLeft="5dp"
                 android:text="@string/attack"
-                android:textSize="18sp"
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"
                 android:textStyle="bold"/>
 
             <View
@@ -213,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/damage"/>
 
                     <CheckBox
@@ -221,6 +228,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -244,13 +252,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/critical"/>
 
                     <CheckBox
                         android:id="@+id/cbCriticalStrike"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -272,13 +281,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/attack_speed"/>
 
                     <CheckBox
                         android:id="@+id/cbAttackSpeed"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -300,13 +310,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/life_steal"/>
 
                     <CheckBox
                         android:id="@+id/cbLifeSteal"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -328,13 +339,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/armor_penetration"/>
 
                     <CheckBox
                         android:id="@+id/cbArmorPenetration"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -366,7 +378,8 @@
                 android:layout_toRightOf="@+id/icon_magic"
                 android:layout_marginLeft="5dp"
                 android:text="@string/magic"
-                android:textSize="18sp"
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"
                 android:textStyle="bold"/>
 
             <View
@@ -396,7 +409,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/spell_damage"/>
 
                     <CheckBox
@@ -404,6 +417,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -427,13 +441,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/cooldown_reduction"/>
 
                     <CheckBox
                         android:id="@+id/cbCooldownReduction"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -455,13 +470,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/mana"/>
 
                     <CheckBox
                         android:id="@+id/cbMana"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -483,13 +499,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/mana_reg"/>
 
                     <CheckBox
                         android:id="@+id/cbManaReg"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -511,13 +528,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/magic_penet"/>
 
                     <CheckBox
                         android:id="@+id/cbMagicPenetration"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -539,13 +557,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/spell_vamp"/>
 
                     <CheckBox
                         android:id="@+id/cbSpellVamp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -577,7 +596,8 @@
                 android:layout_toRightOf="@+id/icon_other"
                 android:layout_marginLeft="5dp"
                 android:text="@string/others"
-                android:textSize="18sp"
+                style="@style/whiteText18dp"
+                android:textColor="@color/material_yellow"
                 android:textStyle="bold"/>
 
             <View
@@ -607,7 +627,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/vision"/>
 
                     <CheckBox
@@ -615,6 +635,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -638,13 +659,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/movement"/>
 
                     <CheckBox
                         android:id="@+id/cbMovement"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -666,13 +688,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/Consumable"/>
 
                     <CheckBox
                         android:id="@+id/cbConsumable"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -694,13 +717,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        android:textSize="14sp"
+                        style="@style/whiteText14dp"
                         android:text="@string/gold_give"/>
 
                     <CheckBox
                         android:id="@+id/cbGold"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:buttonTint="@color/white"
                         android:layout_alignParentRight="true"/>
 
                     <View
@@ -732,7 +756,7 @@
                     android:minHeight="45dp"
                     android:layout_weight="10"
                     android:background="@drawable/selector_secondary_button"
-                    android:textColor="@color/sticky_text_color"
+                    android:textColor="@color/white"
                     android:text="@string/cancel"/>
 
                 <RelativeLayout
@@ -747,7 +771,7 @@
                     android:minHeight="45dp"
                     android:layout_weight="10"
                     android:background="@drawable/selector_primary_button"
-                    android:textColor="@color/white_button_blue_textcolor"
+                    android:textColor="@color/white"
                     android:text="@string/ok"/>
 
 

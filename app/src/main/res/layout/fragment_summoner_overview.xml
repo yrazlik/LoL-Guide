@@ -38,6 +38,7 @@
                 <TextView
                     android:id="@+id/summonerNameTV"
                     style="@style/whiteText20dp"
+                    android:textColor="@color/material_yellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/profileIconIV"
@@ -66,9 +67,9 @@
             <RelativeLayout
                 android:id="@+id/kdaRL"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/header"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:background="@drawable/border_component"
                 android:paddingBottom="10dp"
                 android:paddingLeft="8dp"
@@ -78,6 +79,7 @@
                 <TextView
                     android:id="@+id/averageTV"
                     style="@style/whiteText14dp"
+                    android:textColor="@color/material_yellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/average"
@@ -178,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/kdaRL"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:background="@drawable/border_component"
                 android:fillViewport="true"
                 android:paddingBottom="10dp"
@@ -190,6 +192,7 @@
                                 android:layout_height="wrap_content">
 
                     <TextView android:id="@+id/mostPlayedTV" style="@style/whiteText14dp"
+                              android:textColor="@color/material_yellow"
                               android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:text="@string/mostPlayed"/>
 
@@ -214,8 +217,8 @@
 
                                 <com.yrazlik.loltr.view.FadeInNetworkImageView
                                     android:id="@+id/mostPlayedIV1"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
+                                    android:layout_width="65dp"
+                                    android:layout_height="65dp"
                                     android:layout_centerHorizontal="true"
                                     android:background="@drawable/question_mark">
 
@@ -224,7 +227,7 @@
                                 <TextView
                                     android:id="@+id/mostPlayedTV1"
                                     style="@style/whiteText10dp"
-                                    android:layout_width="75dp"
+                                    android:layout_width="65dp"
                                     android:layout_height="wrap_content"
                                     android:layout_alignBottom="@+id/mostPlayedIV1"
                                     android:layout_centerHorizontal="true"
@@ -287,8 +290,8 @@
 
                                 <com.yrazlik.loltr.view.FadeInNetworkImageView
                                     android:id="@+id/mostPlayedIV2"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
+                                    android:layout_width="65dp"
+                                    android:layout_height="65dp"
                                     android:layout_centerHorizontal="true"
                                     android:background="@drawable/question_mark">
 
@@ -297,7 +300,7 @@
                                 <TextView
                                     android:id="@+id/mostPlayedTV2"
                                     style="@style/whiteText10dp"
-                                    android:layout_width="75dp"
+                                    android:layout_width="65dp"
                                     android:layout_height="wrap_content"
                                     android:layout_alignBottom="@+id/mostPlayedIV2"
                                     android:layout_centerHorizontal="true"
@@ -361,8 +364,8 @@
 
                                 <com.yrazlik.loltr.view.FadeInNetworkImageView
                                     android:id="@+id/mostPlayedIV3"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
+                                    android:layout_width="65dp"
+                                    android:layout_height="65dp"
                                     android:layout_centerHorizontal="true"
                                     android:background="@drawable/question_mark">
 
@@ -371,7 +374,7 @@
                                 <TextView
                                     android:id="@+id/mostPlayedTV3"
                                     style="@style/whiteText10dp"
-                                    android:layout_width="75dp"
+                                    android:layout_width="65dp"
                                     android:layout_height="wrap_content"
                                     android:layout_alignBottom="@+id/mostPlayedIV3"
                                     android:layout_centerHorizontal="true"
@@ -427,11 +430,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mostPlayedSV"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:background="@drawable/border_component"
                 android:paddingBottom="10dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
+                android:layout_marginBottom="10dp"
                 android:paddingTop="10dp">
 
                 <TextView
@@ -440,6 +444,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textColor="@color/material_yellow"
                     android:text="@string/ranked"
                     />
 

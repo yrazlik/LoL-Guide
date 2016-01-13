@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"
         android:divider="@android:color/transparent"
-        android:dividerHeight="10.0dp">
+        android:dividerHeight="8.0dp">
 
     </ListView>
 

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/app_color"
     android:minHeight="60dp">
 
 
@@ -26,13 +27,14 @@
             android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"/>
+            style="@style/whiteText17dp"
+            android:textColor="@color/material_yellow"/>
 
         <TextView
             android:id="@+id/shortDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            style="@style/whiteText14dp"
             android:layout_below="@+id/itemName"
             android:layout_marginTop="5dp"/>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
+                android:background="@color/app_color"
                 android:layout_height="100dp">
 
     <com.android.volley.toolbox.NetworkImageView
@@ -26,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Taşralı Renekton"
-            android:textSize="16sp"
+            android:textColor="@color/material_yellow"
+            style="@style/whiteText16dp"
             android:textStyle="bold"
             android:singleLine="true"/>
 
@@ -37,7 +39,7 @@
             android:layout_below="@+id/name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="3dp"
-            android:textSize="13sp"
+            style="@style/whiteText13dp"
             android:text="25-12-2015 - 28-12-2015"
             android:singleLine="true"/>
 
@@ -59,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/rpImage"
                 android:layout_marginLeft="10dp"
-                android:textSize="13sp"
+                style="@style/whiteText13dp"
                 android:text="880"
                 android:singleLine="true"
                 />
@@ -69,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/priceBeforeDiscount"
                 android:layout_marginLeft="10dp"
-                android:textSize="13sp"
+                style="@style/whiteText13dp"
                 android:text="475"
                 android:singleLine="true"
                 />

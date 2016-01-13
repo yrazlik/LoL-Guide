@@ -59,8 +59,8 @@
     <color name="deneme">#AB491F</color>
     <color name="white_border">@color/divider_gray</color>
 
-
-    <color name="background_black_transparent">#F2000000</color>
+    <color name="app_color_lighter">#E6148DB5</color>
+    <color name="background_black_transparent">#F2262829</color>
     <color name="new_app_color">#CC040F34</color>
     <color name="new_episode_overview_bg">#CCE8E9E5</color>
     <color name="red_text_color">#a6B40617</color>

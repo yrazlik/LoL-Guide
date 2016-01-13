@@ -91,6 +91,7 @@
             <TextView
                 android:id="@+id/recentSearchesTV"
                 style="@style/whiteText16dp"
+                android:textColor="@color/material_yellow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/recentSearches"

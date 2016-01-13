@@ -17,9 +17,9 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="35dp"
-            android:paddingRight="35dp"
-            android:paddingTop="35dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
             android:paddingBottom="35dp" >
 
             <TextView
@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:textColor="@color/material_yellow"
                 style="@style/whiteText15dp"/>
             <TextView
                 android:id="@+id/textviewAllyTips"
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 style="@style/whiteText15dp"
+                android:textColor="@color/material_yellow"
                 android:layout_below="@+id/textviewAllyTips" />
             
             <TextView

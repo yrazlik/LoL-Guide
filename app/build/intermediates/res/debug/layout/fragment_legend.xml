@@ -12,7 +12,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         android:background="@color/material_dark_green">
 
         <RelativeLayout
@@ -23,9 +24,9 @@
                 android:id="@+id/textviewLegend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="35dp"
-                android:paddingRight="35dp"
-                android:paddingTop="35dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp"
                 android:paddingBottom="70dp"
                 style="@style/whiteText15dp"
                 android:gravity="center_vertical" />

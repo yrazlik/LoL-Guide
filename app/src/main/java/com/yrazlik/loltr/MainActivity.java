@@ -281,7 +281,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 final FragmentTransaction ft = fragmentManager.beginTransaction();
                 mDrawerLayout.closeDrawer(mDrawer);
-                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                if(fragmentManager.getBackStackEntryCount() > 0) {
+                    fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
 
                 if (position == 0) {
                     Handler handler = new Handler();

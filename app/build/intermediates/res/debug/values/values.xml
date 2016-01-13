@@ -51,7 +51,8 @@
     <eat-comment/>
     <color name="app_bg">#F4F4F4</color>
     <color name="app_color">@color/new_app_color</color>
-    <color name="background_black_transparent">#F2000000</color>
+    <color name="app_color_lighter">#E6148DB5</color>
+    <color name="background_black_transparent">#F2262829</color>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>

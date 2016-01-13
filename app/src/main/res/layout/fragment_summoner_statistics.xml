@@ -36,12 +36,13 @@
                 style="@style/whiteText16dp" android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:textColor="@color/material_yellow"
                 android:text="@string/rankedStats"/>
 
             <ListView
                 android:id="@+id/statisticsLV"
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/title"
                 android:layout_marginTop="10dp"
                 android:scrollbars="none">
