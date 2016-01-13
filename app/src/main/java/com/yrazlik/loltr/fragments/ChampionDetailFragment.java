@@ -2,14 +2,17 @@ package com.yrazlik.loltr.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TabWidget;
-import android.widget.TextView;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -22,10 +25,12 @@ public class ChampionDetailFragment extends BaseFragment {
 	public static String EXTRA_CHAMPION_IMAGE_URL ="com.yrazlik.leagueoflegends.fragments.championdetailfragment.extrachampionimageurl";
 	public static String EXTRA_CHAMPION_NAME = "com.yrazlik.leagueoflegends.fragments.championdetailfragment.extrachampionname";
 
-	private FragmentTabHost tabhost;
 	private int champId;
 	private String champLogoImageUrl;
 	private String splashImageUrl;
+
+    private ViewPager pager;
+    private PagerSlidingTabStrip tabs;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -48,48 +53,69 @@ public class ChampionDetailFragment extends BaseFragment {
 	}
 	
 	private void setTabhost(View v){
-		tabhost = (FragmentTabHost) v.findViewById(android.R.id.tabhost);
-		tabhost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
-		Bundle args = new Bundle();
-		args.putInt(EXTRA_CHAMPION_ID, champId);
-		args.putString(EXTRA_CHAMPION_IMAGE_URL, champLogoImageUrl);
-		args.putString(EXTRA_CHAMPION_NAME, splashImageUrl);
-		tabhost.addTab(
-                tabhost.newTabSpec("tabGeneral").setIndicator(getResources().getString(R.string.general), null),
-                ChampionOverviewFragment.class, args);
-		
-		tabhost.addTab(
-                tabhost.newTabSpec("tabAbilities").setIndicator(getResources().getString(R.string.abilities), null),
-                ChampionSpellsFragment.class, args);
-		tabhost.addTab(
-                tabhost.newTabSpec("tabLegend").setIndicator(getResources().getString(R.string.legend), null),
-                LegendFragment.class, args);
-		tabhost.addTab(
-                tabhost.newTabSpec("tabStrategy").setIndicator(getResources().getString(R.string.strategy), null),
-                StrategyFragment.class, args);
-		
-		TabWidget tw = (TabWidget)tabhost.findViewById(android.R.id.tabs);
-	    for (int i = 0; i < tw.getChildCount(); ++i)
-	    {
-	        View tabView = tw.getChildTabViewAt(i);
-	        TextView tv = (TextView)tabView.findViewById(android.R.id.title);
-	        tv.setTextSize(8);
-	       // tabhost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selected2);
-	    }
-	  //  tabhost.getTabWidget().getChildAt(tabhost.getCurrentTab()).setBackgroundResource(R.drawable.unselected2);
-	    tabhost.setOnTabChangedListener(new OnTabChangeListener() {
-			
-			@Override
-			public void onTabChanged(String tabId) {
-				TabWidget tw = (TabWidget)tabhost.findViewById(android.R.id.tabs);
-				for (int i = 0; i < tw.getChildCount(); ++i)
-			    {
-			      //  tabhost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selected2);
-			    }
-			//	tabhost.getTabWidget().getChildAt(tabhost.getCurrentTab()).setBackgroundResource(R.drawable.unselected2);
-			}
-		});
+        pager = (ViewPager) v.findViewById(R.id.pager);
+        pager.setOffscreenPageLimit(3);
+        pager.setAdapter(new ChampionDetailAdapter(getChildFragmentManager()));
+
+        tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
+        tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
+        tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
+        tabs.setDividerColor(getResources().getColor(R.color.white));
+        tabs.setTextColor(getResources().getColor(R.color.white));
+        DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
+        int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
+        tabs.setTextSize(textSize);
+
+        tabs.setIndicatorHeight(8);
+        tabs.setViewPager(pager);
 	}
+
+    public class ChampionDetailAdapter extends FragmentPagerAdapter {
+
+        public ChampionDetailAdapter(FragmentManager fm) {
+            super(fm);
+        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if(position == 0){
+                return getResources().getString(R.string.general);
+            }else if(position == 1){
+                return getResources().getString(R.string.abilities);
+            }else if(position == 2){
+                return getResources().getString(R.string.legend);
+            }else{
+                return getResources().getString(R.string.strategy);
+            }
+        }
+        @Override
+        public int getCount() {
+            return 4;
+        }
+        @Override
+        public Fragment getItem(int position) {
+            Bundle args = new Bundle();
+            args.putInt(EXTRA_CHAMPION_ID, champId);
+            args.putString(EXTRA_CHAMPION_IMAGE_URL, champLogoImageUrl);
+            args.putString(EXTRA_CHAMPION_NAME, splashImageUrl);
+            if(position == 0){
+                ChampionOverviewFragment championOverviewFragment = new ChampionOverviewFragment();
+                championOverviewFragment.setArguments(args);
+                return championOverviewFragment;
+            }else if(position == 1){
+                ChampionSpellsFragment championSpellsFragment = new ChampionSpellsFragment();
+                championSpellsFragment.setArguments(args);
+                return championSpellsFragment;
+            }else if(position == 2){
+                LegendFragment legendFragment = new LegendFragment();
+                legendFragment.setArguments(args);
+                return legendFragment;
+            }else{
+                StrategyFragment strategyFragment = new StrategyFragment();
+                strategyFragment.setArguments(args);
+                return strategyFragment;
+            }
+        }
+    }
 
     @Override
     public void onResume() {

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,9 @@ public class SettingsFragment extends BaseFragment{
     private Button buttonSave;
     private TextView selectLanguageText, selectRegionText;
 
+    private ImageView parentBG;
+
+
 
     @Nullable
     @Override
@@ -45,6 +49,9 @@ public class SettingsFragment extends BaseFragment{
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
         selectLanguageText = (TextView) v.findViewById(R.id.selectLanguageText);
         selectRegionText = (TextView) v.findViewById(R.id.selectRegionText);
+        parentBG = (ImageView) v.findViewById(R.id.parentBG);
+        parentBG.setAlpha(0.3f);
+        parentBG.setBackgroundResource(R.drawable.riven);
 
         SharedPreferences prefs = getContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
         String region = prefs.getString(Commons.LOL_TR_SHARED_PREF_REGION, null);
@@ -179,6 +186,8 @@ public class SettingsFragment extends BaseFragment{
 
         return v;
     }
+
+
 
     @Override
     public void reportGoogleAnalytics() {

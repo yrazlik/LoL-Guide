@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="@color/app_color">
 
     <ImageView
         android:id="@+id/imageViewChampionImage"
@@ -28,7 +29,7 @@
             android:id="@+id/textViewChampionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp" />
+            style="@style/whiteText15dp" />
 
         <TextView
             android:id="@+id/textViewDateInterval"
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewChampionName"
             android:layout_marginTop="3dp"
-            android:textSize="12sp" />
+            style="@style/whiteText12dp" />
     </RelativeLayout>
 
 </RelativeLayout><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/rune_row.xml -->

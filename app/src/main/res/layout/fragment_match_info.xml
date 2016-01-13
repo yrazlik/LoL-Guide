@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E8E6DC">
+    android:layout_height="match_parent">
+
+    <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+               android:id="@+id/parentBG"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/app_color">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -18,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/searchC"
-                android:textColor="#4CBA8E"
+                android:textColor="@color/material_yellow"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
                 style="?android:attr/listSeparatorTextViewStyle"/>
@@ -32,6 +36,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:hint="@string/summonerName"/>
 
             <TextView
@@ -40,10 +46,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:text="@string/selectRegion"
-                android:textColor="#4CBA8E"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_alignBottom="@+id/regionSpinner"
+                android:layout_alignTop="@+id/regionSpinner"
+                android:gravity="center_vertical"
                 android:layout_below="@+id/summonerNameET"/>
 
            <Spinner
@@ -65,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/selectRegionTV"
-                android:background="#3B90CE"
+                android:background="@color/red_text_color"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"

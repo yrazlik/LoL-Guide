@@ -32,7 +32,7 @@ public class CountryFragment extends Fragment{
 		
 		// Setting currently selected river name in the TextView
 		tv.setText(countries[position]);
-		
+
 		return v;
 	}
 }

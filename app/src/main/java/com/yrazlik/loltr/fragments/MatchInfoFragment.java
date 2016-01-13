@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -41,11 +42,15 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
     private Button searchButton;
     private EditText summonerNameET;
     private String selectedRegion = "tr";
+    private ImageView parentBG;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_match_info, container, false);
+        parentBG = (ImageView) v.findViewById(R.id.parentBG);
+        parentBG.setAlpha(0.3f);
+        parentBG.setBackgroundResource(R.drawable.jinxx);
         regionSpinner = (Spinner)v.findViewById(R.id.regionSpinner);
         searchButton = (Button)v.findViewById(R.id.searchButton);
         summonerNameET = (EditText)v.findViewById(R.id.summonerNameET);

@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -43,9 +44,9 @@ import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.NewsFragment;
-import com.yrazlik.loltr.fragments.SummonerSearchFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
+import com.yrazlik.loltr.fragments.SummonerSearchFragment;
 import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
@@ -172,7 +173,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             }
         }, 250);
 
-        getSupportActionBar().setTitle(leftMenuItems[1]);
+        String cat = leftMenuItems[1];
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
 /*
         ParseQuery<ParseObject> costs = ParseQuery.getQuery("ChampionCosts");
         costs.findInBackground(new FindCallback<ParseObject>() {
@@ -263,7 +265,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
             /** Called when a drawer is opened */
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle(getResources().getString(R.string.select_category));
+                String selectCategory = getResources().getString(R.string.select_category);
+                getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + selectCategory + "</font>"));
                 supportInvalidateOptionsMenu();
             }
         };
@@ -513,8 +516,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         mPosition = selectedItem;
 
 
-        if (mPosition != -1)
-            getSupportActionBar().setTitle(leftMenuItems[mPosition]);
+        if (mPosition != -1) {
+            String cat = leftMenuItems[mPosition];
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+        }
     }
 
     @Override
@@ -619,7 +624,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         setDrawer();
 
 
-        getSupportActionBar().setTitle(leftMenuItems[7]);
+        String cat = leftMenuItems[7];
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
         mAdapter.notifyDataSetChanged();
     }
 

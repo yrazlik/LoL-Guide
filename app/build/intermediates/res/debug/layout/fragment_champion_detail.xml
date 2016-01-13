@@ -1,25 +1,21 @@
-<android.support.v4.app.FragmentTabHost
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/tabhost"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="48dip"
+        app:pstsShouldExpand="true"
+        />
 
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabs" />
 
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-</android.support.v4.app.FragmentTabHost><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/fragment_champion_detail.xml -->
+</RelativeLayout><!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/layout/fragment_champion_detail.xml -->

@@ -2,14 +2,17 @@ package com.yrazlik.loltr.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.yrazlik.loltr.R;
 
 /**
@@ -17,50 +20,64 @@ import com.yrazlik.loltr.R;
  */
 public class DiscountsFragment extends BaseFragment{
 
-    private FragmentTabHost tabhost;
+    private ViewPager pager;
+    private PagerSlidingTabStrip tabs;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_discounts, container,
                 false);
-        setTabhost(v);
+        setTabs(v);
 
         return v;
     }
 
-    private void setTabhost(View v){
-        tabhost = (FragmentTabHost) v.findViewById(android.R.id.tabhost);
-        tabhost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
-        tabhost.addTab(
-                tabhost.newTabSpec("tabChampions").setIndicator(getResources().getString(R.string.champion_sale), null),
-                ChampionDiscountsFragment.class, null);
+    private void setTabs(View v){
+        pager = (ViewPager) v.findViewById(R.id.pager);
+        pager.setOffscreenPageLimit(1);
+        pager.setAdapter(new DiscountsPagerAdapter(getChildFragmentManager()));
 
-        tabhost.addTab(
-                tabhost.newTabSpec("tabCostumes").setIndicator(getResources().getString(R.string.skin_sale), null),
-                CostumeDiscountsFragment.class, null);
+        tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
+        tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
+        tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
+        tabs.setDividerColor(getResources().getColor(R.color.white));
+        tabs.setTextColor(getResources().getColor(R.color.white));
+        DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
+        int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
+        tabs.setTextSize(textSize);
 
-        TabWidget tw = (TabWidget)tabhost.findViewById(android.R.id.tabs);
-        for (int i = 0; i < tw.getChildCount(); ++i)
-        {
-            View tabView = tw.getChildTabViewAt(i);
-            TextView tv = (TextView)tabView.findViewById(android.R.id.title);
-            tv.setTextSize(10);
-            // tabhost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selected2);
+        tabs.setIndicatorHeight(8);
+        tabs.setViewPager(pager);
+    }
+
+    public class DiscountsPagerAdapter extends FragmentPagerAdapter {
+
+        public DiscountsPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
-        //  tabhost.getTabWidget().getChildAt(tabhost.getCurrentTab()).setBackgroundResource(R.drawable.unselected2);
-        tabhost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-
-            @Override
-            public void onTabChanged(String tabId) {
-                TabWidget tw = (TabWidget)tabhost.findViewById(android.R.id.tabs);
-                for (int i = 0; i < tw.getChildCount(); ++i)
-                {
-                    //  tabhost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selected2);
-                }
-                //	tabhost.getTabWidget().getChildAt(tabhost.getCurrentTab()).setBackgroundResource(R.drawable.unselected2);
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if(position == 0){
+                return getResources().getString(R.string.champion_sale);
+            }else {
+                return getResources().getString(R.string.skin_sale);
             }
-        });
+        }
+        @Override
+        public int getCount() {
+            return 2;
+        }
+        @Override
+        public Fragment getItem(int position) {
+            if(position == 0){
+                ChampionDiscountsFragment championDiscountsFragment = new ChampionDiscountsFragment();
+                return championDiscountsFragment;
+            }else{
+                CostumeDiscountsFragment costumeDiscountsFragment = new CostumeDiscountsFragment();
+                return costumeDiscountsFragment;
+            }
+        }
     }
 
 

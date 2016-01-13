@@ -170,6 +170,7 @@
     <color name="material_purple">#D9673AB7</color>
     <color name="material_red">#D9F44336</color>
     <color name="material_yellow">#D9A368</color>
+    <color name="menu_color">#3F51B5</color>
     <color name="navbar_bg">#F0F0F0</color>
     <color name="navbar_button_textcolor">#1B5FB8</color>
     <color name="navbar_button_textcolor_disabled">#ACACAD</color>
@@ -760,7 +761,7 @@
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/styles.xml -->
     <eat-comment/>
-    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -772,6 +773,9 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>>
+        <item name="android:actionBarStyle">@style/ToolBarStyle</item>
+        <item name="actionBarStyle">@style/ToolBarStyle</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerStyle</item>
     </style>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
@@ -1702,7 +1706,10 @@
     </style>
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
-        <item name="color">@android:color/black</item>
+        <item name="color">@android:color/white</item>
+    </style>
+    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
     </style>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
     <eat-comment/>
@@ -1861,6 +1868,17 @@
     <style name="RtlOverlay.Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="android:paddingLeft">@dimen/abc_action_bar_navigation_padding_start_material</item>
     </style>
+    <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="SpinnerStyle">
+        <item name="android:textColor">@color/discount_green</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <eat-comment/>
     <style name="TextAppearance.AppCompat" parent="Base.TextAppearance.AppCompat"/>
     <style name="TextAppearance.AppCompat.Body1" parent="Base.TextAppearance.AppCompat.Body1"/>
     <style name="TextAppearance.AppCompat.Body2" parent="Base.TextAppearance.AppCompat.Body2"/>
@@ -1989,6 +2007,18 @@
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="ToolBarStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
+        <item name="titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:background">@color/tab_color</item>
+    </style>
     <!-- From: file:/Users/yrazlik/AndroidstudioProjects/Lol/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.3.0/res/values/wallet_styles.xml -->
     <eat-comment/>
     <style name="WalletFragmentDefaultButtonTextAppearance">
