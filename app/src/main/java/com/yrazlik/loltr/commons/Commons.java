@@ -105,7 +105,6 @@ public class Commons {
     public static final String SERVICE_BASE_URL_OCE = "https://oce.api.pvp.net/api/lol";
     public static final String SERVICE_BASE_URL_NA = "https://na.api.pvp.net/api/lol";
     public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://tr.api.pvp.net/api/lol";
-    public static String SERVICE_BASE_URL_SELECTED = "https://" + SELECTED_REGION +".api.pvp.net/api/lol";
     public static String PROFILE_ICON_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/profileicon/";
 
 

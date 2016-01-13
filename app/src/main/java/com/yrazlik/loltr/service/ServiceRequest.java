@@ -112,7 +112,7 @@ public class ServiceRequest {
 	private String getServiceEndpointUrl(int requestId){
 		switch(requestId){
 			case Commons.WEEKLY_FREE_CHAMPIONS_REQUEST:
-				return Commons.SERVICE_BASE_URL_SELECTED;
+				return getSummonerApiUrlByRegion(Commons.SELECTED_REGION);
 			case Commons.STATIC_DATA_WITH_ALT_IMAGES_REQUEST:
 			case Commons.CHAMPION_OVERVIEW_REQUEST:
 			case Commons.CHAMPION_SPELLS_REQUEST:

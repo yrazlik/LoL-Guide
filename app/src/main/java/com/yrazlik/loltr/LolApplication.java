@@ -60,7 +60,6 @@ public class LolApplication extends Application{
                 if(locale.getISO3Country().equalsIgnoreCase("tur") || locale.getISO3Language().equalsIgnoreCase("tur")){
                     Commons.SELECTED_LANGUAGE = "tr";
                     Commons.SELECTED_REGION = "tr";
-                    Commons.SERVICE_BASE_URL_SELECTED = Commons.SERVICE_BASE_URL_TR;
                     Locale myLocale = new Locale("tr");
                     Resources res = getResources();
                     DisplayMetrics dm = res.getDisplayMetrics();
@@ -70,7 +69,6 @@ public class LolApplication extends Application{
                 }else{
                     Commons.SELECTED_LANGUAGE = "en_us";
                     Commons.SELECTED_REGION = "na";
-                    Commons.SERVICE_BASE_URL_SELECTED = Commons.SERVICE_BASE_URL_NA;
                     Locale myLocale = new Locale("en_us");
                     Resources res = getResources();
                     DisplayMetrics dm = res.getDisplayMetrics();
@@ -97,14 +95,12 @@ public class LolApplication extends Application{
                     res.updateConfiguration(conf, dm);
                 }
 
-                Commons.SERVICE_BASE_URL_SELECTED = "https://" + Commons.SELECTED_REGION +".api.pvp.net/api/lol";
             }
 
 
         }catch (Exception e){
             Commons.SELECTED_LANGUAGE = "en_us";
             Commons.SELECTED_REGION = "na";
-            Commons.SERVICE_BASE_URL_SELECTED = Commons.SERVICE_BASE_URL_NA;
             Locale myLocale = new Locale("en_us");
             Resources res = getResources();
             DisplayMetrics dm = res.getDisplayMetrics();

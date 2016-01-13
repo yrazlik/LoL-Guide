@@ -89,7 +89,9 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
     private void makeWeeklyFreeChampsRequest(){
         ArrayList<String> pathParams = new ArrayList<String>();
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+        pathParams.add("api");
+        pathParams.add("lol");
+        pathParams.add(Commons.SELECTED_REGION);
         pathParams.add("v1.2");
         pathParams.add("champion");
         queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
