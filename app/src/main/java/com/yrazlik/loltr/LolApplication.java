@@ -56,8 +56,7 @@ public class LolApplication extends Application{
             String region = prefs.getString(Commons.LOL_TR_SHARED_PREF_REGION, null);
 
             if(language == null || region == null){
-                Commons.REGION_SELECTED = false;
-               /* Locale locale = getApplicationContext().getResources().getConfiguration().locale;
+                Locale locale = getApplicationContext().getResources().getConfiguration().locale;
                 if(locale.getISO3Country().equalsIgnoreCase("tur") || locale.getISO3Language().equalsIgnoreCase("tur")){
                     Commons.SELECTED_LANGUAGE = "tr";
                     Commons.SELECTED_REGION = "tr";
@@ -78,9 +77,8 @@ public class LolApplication extends Application{
                     Configuration conf = res.getConfiguration();
                     conf.locale = myLocale;
                     res.updateConfiguration(conf, dm);
-                }*/
+                }
             }else{
-                Commons.REGION_SELECTED = true;
                 Commons.SELECTED_LANGUAGE = language;
                 Commons.SELECTED_REGION = region;
                 if(language.equalsIgnoreCase("tr")){
