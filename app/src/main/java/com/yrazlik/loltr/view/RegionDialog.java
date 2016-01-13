@@ -68,7 +68,6 @@ public class RegionDialog extends Dialog{
                 }else{
                     Commons.SELECTED_REGION = "tr";
                 }
-                Commons.REGION_SELECTED = true;
 
                 Locale locale = mContext.getApplicationContext().getResources().getConfiguration().locale;
                 if (locale.getISO3Country().equalsIgnoreCase("tur") || locale.getISO3Language().equalsIgnoreCase("tur")) {
