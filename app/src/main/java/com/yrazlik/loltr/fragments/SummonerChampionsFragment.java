@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
@@ -29,6 +30,8 @@ public class SummonerChampionsFragment extends BaseFragment{
 
     private RankedStatsResponse rankedStatsResponse;
     private List<ChampionStatsDto> champions;
+    private ImageView parentBG;
+
 
     @Nullable
     @Override
@@ -36,6 +39,9 @@ public class SummonerChampionsFragment extends BaseFragment{
         View v = inflater.inflate(R.layout.fragment_summoner_champions, container, false);
         noWatchListTV = (TextView)v.findViewById(R.id.noWatchListTV);
         champList = (ExpandableStickyListHeadersListView)v.findViewById(R.id.champList);
+        parentBG = (ImageView) v.findViewById(R.id.parentBG);
+        parentBG.setAlpha(0.3f);
+        parentBG.setBackgroundResource(R.drawable.mundo);
 
         Bundle extras = getArguments();
         if (extras != null) {

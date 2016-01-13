@@ -2,9 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/background_black_transparent">
+                android:background="@color/gray">
 
+    <ImageView
+        android:id="@+id/parentBG"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
 
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+        android:background="@color/app_color">
     <se.emilsjolander.stickylistheaders.ExpandableStickyListHeadersListView
         android:id="@+id/champList"
         android:layout_width="match_parent"
@@ -16,10 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:gravity="center_horizontal"
         android:layout_marginRight="15dp"
         android:layout_marginTop="30dp"
         android:text="@string/no_ranked_info"
-        android:visibility="gone"/>
-
+        android:visibility="visible"/>
+    </RelativeLayout>
 
 </RelativeLayout>

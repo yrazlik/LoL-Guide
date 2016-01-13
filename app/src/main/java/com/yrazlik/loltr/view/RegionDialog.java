@@ -2,6 +2,7 @@ package com.yrazlik.loltr.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -55,7 +56,7 @@ public class RegionDialog extends Dialog{
                     Commons.SELECTED_REGION = "eune";
                 }else if(region.equalsIgnoreCase("Oceania")){
                     Commons.SELECTED_REGION = "oce";
-                }else if(region.equalsIgnoreCase("Latin America North\", \"Latin America South")){
+                }else if(region.equalsIgnoreCase("Latin America South")){
                     Commons.SELECTED_REGION = "las";
                 }else if(region.equalsIgnoreCase("Latin America North")){
                     Commons.SELECTED_REGION = "lan";
@@ -87,6 +88,7 @@ public class RegionDialog extends Dialog{
                     conf.locale = myLocale;
                     res.updateConfiguration(conf, dm);
                 }
+                saveToSharedPrefs();
                 try{
                     if(Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
                         Toast.makeText(mContext.getApplicationContext(), "Region was set to " + Commons.SELECTED_REGION.toUpperCase(), Toast.LENGTH_SHORT).show();
@@ -98,5 +100,13 @@ public class RegionDialog extends Dialog{
             }
         });
         regionList.setAdapter(adapter);
+    }
+
+    private void saveToSharedPrefs(){
+        try{
+            SharedPreferences prefs = mContext.getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
+            prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, Commons.SELECTED_LANGUAGE).commit();
+            prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_REGION, Commons.SELECTED_REGION).commit();
+        }catch (Exception ignored){}
     }
 }
