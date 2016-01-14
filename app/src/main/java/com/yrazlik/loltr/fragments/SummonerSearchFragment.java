@@ -44,6 +44,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by yrazlik on 1/4/16.
@@ -270,6 +271,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             Integer requestId = (Integer) response;
             if(requestId == Commons.SUMMONER_BY_NAME_REQUEST) {
                 Toast.makeText(getContext(), R.string.cannot_find_username, Toast.LENGTH_SHORT).show();
+                ServiceRequest.hideLoading();
             }else if(requestId == Commons.RANKED_STATS_REQUEST) {
                 rankedStatsResponse = null;
                 rankedStatsResponseReceived = true;
@@ -289,7 +291,6 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private void openSummonerContainerFragment(){
         if(leagueInfoResponseReceived && recentMatchesResponseReceived && rankedStatsResponseReceived) {
             sortChampionsByMostPlayed();
-            ServiceRequest.hideLoading();
             FragmentManager fm = getFragmentManager();
             SummonerContainerFragment summonerContainerFragment = new SummonerContainerFragment();
 
@@ -302,9 +303,18 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             FragmentTransaction ft = fm.beginTransaction();
             Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
             summonerContainerFragment.setArguments(args);
+            ServiceRequest.hideLoading();
             ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
+            Random r = new Random();
+            int Low = 0;
+            int High = 2;
+            int result = r.nextInt(High-Low) + Low;
+            if(result < 1){
+                ((LolApplication)(getActivity().getApplication())).showInterstitial();
+            }
         }
     }
+
 
     private void sortChampionsByMostPlayed() {
         if (rankedStatsResponse != null) {

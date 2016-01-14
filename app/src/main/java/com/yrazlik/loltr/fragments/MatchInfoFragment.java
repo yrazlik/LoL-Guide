@@ -50,7 +50,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
         View v = inflater.inflate(R.layout.fragment_match_info, container, false);
         parentBG = (ImageView) v.findViewById(R.id.parentBG);
         parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.jinxx);
+        parentBG.setBackgroundResource(R.drawable.amumu);
         regionSpinner = (Spinner)v.findViewById(R.id.regionSpinner);
         searchButton = (Button)v.findViewById(R.id.searchButton);
         summonerNameET = (EditText)v.findViewById(R.id.summonerNameET);

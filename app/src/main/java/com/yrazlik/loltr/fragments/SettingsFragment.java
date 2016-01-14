@@ -174,6 +174,7 @@ public class SettingsFragment extends BaseFragment{
                     languageSpinner.setAdapter(languageSpinnerAdapter);
                     languageSpinnerAdapter.notifyDataSetChanged();
                 }
+                Commons.allItemsNew = null;
               /*  SettingsFragment frg = null;
                 frg = (SettingsFragment) getFragmentManager().findFragmentByTag(Commons.TAG_SETTINGS_FRAGMENT);
                 final FragmentTransaction ft = getFragmentManager().beginTransaction();

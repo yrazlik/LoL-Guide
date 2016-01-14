@@ -44,6 +44,7 @@ import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 @SuppressLint("NewApi") public class ChampionOverviewFragment extends BaseFragment implements ResponseListener, OnItemClickListener{
 	
@@ -106,10 +107,19 @@ import java.util.HashMap;
 		queryParams2.put("api_key", Commons.API_KEY);
 		
 		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, this);
-	
+        showInterstitial();
 		return v;	
 	}
-	
+
+    private void showInterstitial(){
+        Random r = new Random();
+        int Low = 0;
+        int High = 10;
+        int result = r.nextInt(High-Low) + Low;
+        if(result < 3){
+            ((LolApplication)(getActivity().getApplication())).showInterstitial();
+        }
+    }
 	private void getExtras(){
 		Bundle args = getArguments();
 		if(args != null){

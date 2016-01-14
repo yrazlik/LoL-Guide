@@ -216,6 +216,12 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     }
 
+    private void showInterstitial(){
+        if(((LolApplication)getApplication()).shouldShowInterstitial()){
+            ((LolApplication)getApplication()).showInterstitial();
+        }
+    }
+
 
     private void setDrawer() {
         leftMenuItems = getResources().getStringArray(R.array.titles);
@@ -298,6 +304,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             SummonerSearchFragment pFragment = new SummonerSearchFragment();
                             ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.PROFILE_FRAGMENT);
                             ft.commitAllowingStateLoss();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 1) {
@@ -309,6 +316,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             WeeklyFreeChampionsFragment cFragment = new WeeklyFreeChampionsFragment();
                             ft.replace(R.id.content_frame, cFragment).addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
                             ft.commitAllowingStateLoss();
+                            showInterstitial();
                         }
                     }, 350);
 
@@ -321,6 +329,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             DiscountsFragment fragment = new DiscountsFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.DISCOUNTS_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 3) {
@@ -332,6 +341,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             NewsFragment fragment = new NewsFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 4) {
@@ -343,6 +353,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             AllChampionsFragment fragment = new AllChampionsFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 5) {
@@ -354,6 +365,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             NewItemsFragment fragment = new NewItemsFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 6) {
@@ -365,6 +377,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             RunesFragment fragment = new RunesFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.RUNES_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 7) {
@@ -376,6 +389,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             AllChampionSkinsFragment fragment = new AllChampionSkinsFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_SKINS_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 8) {
@@ -387,6 +401,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             MatchInfoFragment fragment = new MatchInfoFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.MATCH_INFO_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 9) {
@@ -398,6 +413,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             LiveChannelsFragment fragment = new LiveChannelsFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.LIVE_CHANNELS_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 10) {
@@ -409,6 +425,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             SettingsFragment fragment = new SettingsFragment();
                             ft.replace(R.id.content_frame, fragment, Commons.TAG_SETTINGS_FRAGMENT).addToBackStack(Commons.SETTINGS_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 11) {
@@ -420,6 +437,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             ContactFragment fragment = new ContactFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CONTACT_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 } else if (position == 12) {
@@ -432,6 +450,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                             AboutFragment fragment = new AboutFragment();
                             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ABOUT_FRAGMENT);
                             ft.commit();
+                            showInterstitial();
                         }
                     }, 350);
                 }

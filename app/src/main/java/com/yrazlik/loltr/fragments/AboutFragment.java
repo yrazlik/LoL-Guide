@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -19,11 +20,15 @@ import com.yrazlik.loltr.commons.Commons;
 public class AboutFragment extends BaseFragment {
 
 
+    private ImageView parentBG;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_about, container, false);
 
+        parentBG = (ImageView) v.findViewById(R.id.parentBG);
+        parentBG.setAlpha(0.3f);
+        parentBG.setBackgroundResource(R.drawable.kogmav);
         TextView currentVersionTV = (TextView) v.findViewById(R.id.currentVersionTV);
         if(Commons.LATEST_VERSION != null) {
             currentVersionTV.setText("Version " + Commons.LATEST_VERSION + ".");
