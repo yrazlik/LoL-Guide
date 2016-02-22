@@ -10,13 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
 import com.yrazlik.loltr.data.Discount;
+import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
 
@@ -48,7 +52,23 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         if(LolApplication.firebaseInitialized){
             try{
                 Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-                
+                firebase.child("news").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                            postSnapshot.getValue(News.class);
+                        }
+                        dataSnapshot.exists();
+                        dataSnapshot.getValue();
+                        hideProgress();
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                        hideProgress();
+                    }
+                });
+
             }catch (Exception e){
                 hideProgress();
             }

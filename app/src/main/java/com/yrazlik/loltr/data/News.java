@@ -14,9 +14,9 @@ public class News {
     private String smallImage;
     private String largeImage;
     private String videoUrl;
-    private Date createdAt;
+    private String createdAt;
 
-    public News(String title, String titleEnglish, String message, String messageEnglish, String smallImage, String largeImage, String videoUrl, Date createdAt){
+    public News(String title, String titleEnglish, String message, String messageEnglish, String smallImage, String largeImage, String videoUrl, String createdAt){
         this.title = title;
         this.titleEnglish = titleEnglish;
         this.message = message;
@@ -68,11 +68,11 @@ public class News {
         this.videoUrl = videoUrl;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
