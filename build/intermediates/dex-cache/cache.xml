@@ -44,6 +44,13 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0_50d10f5cbccc698f64f7cb51135d1d6709f5c124.jar" />
     </item>
     <item
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.2/91731b8f5868a3e8a8a773f29b8d06b5c358f5bb/firebase-client-jvm-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="91731b8f5868a3e8a8a773f29b8d06b5c358f5bb">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.5.2_df7339f5024f99bf9640747ae5bb60a96fc892bb.jar" />
+    </item>
+    <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0"
@@ -205,6 +212,20 @@
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/library-1.0.19_0c38e7deaaa65ee3adf483c26081a16b0b26d5f6.jar" />
     </item>
     <item
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2_414fd435da91c329ec84a749c61bb1bbb565090e.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12_cceb69b8dc1d023865352f683f1dab3c8094646f.jar" />
+    </item>
+    <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0"
@@ -217,6 +238,27 @@
         revision="23.0.0"
         sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_ce5c930f083b2f3c9cc27bf898291032cf6f82c0.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.2/f19f10d6276aa0b380e2d05d2ab3272d693a5433/firebase-client-android-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f19f10d6276aa0b380e2d05d2ab3272d693a5433">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.5.2_96ac0cdde7fe86a1d107c5f174c274afe735a78c.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2_403081253c4604a24877c6102c33de4c7ef1a790.jar" />
+    </item>
+    <item
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2_83f01ec85adbb8c38121c210b38d2cf42143a727.jar" />
     </item>
     <item
         jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/jars/classes.jar"

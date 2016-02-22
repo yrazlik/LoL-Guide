@@ -15,6 +15,20 @@ android {
         }
     }
 
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+
+    defaultConfig {
+        multiDexEnabled true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -37,4 +51,5 @@ dependencies {
     compile files('libs/Parse-1.11.0.jar')
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
+    compile 'com.firebase:firebase-client-android:2.5.2+'
 }

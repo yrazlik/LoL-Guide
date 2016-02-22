@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
 import com.google.android.gms.ads.AdListener;
@@ -23,7 +24,7 @@ import java.util.Random;
 /**
  * Created by yrazlik on 3/3/15.
  */
-public class LolApplication extends Application{
+public class LolApplication extends MultiDexApplication{
 
     public static GoogleAnalytics analytics;
     public static Tracker tracker;
