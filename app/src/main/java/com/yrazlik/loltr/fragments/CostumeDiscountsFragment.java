@@ -46,6 +46,9 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
         if(progress != null){
             progress.show();
         }
+        
+
+
      /*   try {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Discount");
             query.findInBackground(new FindCallback<ParseObject>() {

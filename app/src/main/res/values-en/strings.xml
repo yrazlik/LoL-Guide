@@ -6,6 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="hello">Hello</string>
 
+    <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
+
+
     <dimen name="count">10dp</dimen>
     <string name="select_your_region">Select your region:</string>
 

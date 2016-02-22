@@ -39,31 +39,36 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.4074073">
+            <state vertical-scroll-proportion="0.0">
               <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LolApplication.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java">
+      <file leaf-file-name="ChampionDiscountsFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36319613">
-              <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.30266345">
+              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1699#1746#0" expanded="true" />
+                <element signature="e#4366#4506#0" expanded="true" />
+                <element signature="e#4505#4506#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <file leaf-file-name="CostumeDiscountsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
-              <folding />
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2019,12 +2024,15 @@
       <list>
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v23/values-v23.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewsFragment.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.java" />
       </list>
     </option>
   </component>
@@ -2360,9 +2368,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6290#6569#0" expanded="true" />
-            <element signature="e#6568#6569#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#6290#6569#0" expanded="false" />
+            <element signature="e#6568#6569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2391,54 +2399,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/service/ServiceRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="155" column="11" selection-start-line="155" selection-start-column="11" selection-end-line="155" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6290#6569#0" expanded="true" />
-            <element signature="e#6568#6569#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="3" selection-start-line="86" selection-start-column="3" selection-end-line="86" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4042#4182#0" expanded="true" />
-            <element signature="e#4181#4182#0" expanded="true" />
-            <element signature="e#4589#4814#0" expanded="true" />
-            <element signature="e#4813#4814#0" expanded="true" />
-            <element signature="e#5095#5096#0" expanded="true" />
-            <element signature="e#5131#5132#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="2" selection-start-line="91" selection-start-column="2" selection-end-line="91" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4268#4408#0" expanded="true" />
-            <element signature="e#4407#4408#0" expanded="true" />
-            <element signature="e#4814#5038#0" expanded="true" />
-            <element signature="e#5037#5038#0" expanded="true" />
-            <element signature="e#5319#5320#0" expanded="true" />
-            <element signature="e#5355#5356#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#6290#6569#0" expanded="false" />
+            <element signature="e#6568#6569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2456,20 +2424,20 @@
         <state vertical-scroll-proportion="0.07748184">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4559#6332#0" expanded="true" />
-            <element signature="e#6331#6332#0" expanded="true" />
-            <element signature="e#6478#6690#0" expanded="true" />
-            <element signature="e#6689#6690#0" expanded="true" />
-            <element signature="e#6876#7016#0" expanded="true" />
-            <element signature="e#7015#7016#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4559#6332#0" expanded="false" />
+            <element signature="e#6331#6332#0" expanded="false" />
+            <element signature="e#6478#6690#0" expanded="false" />
+            <element signature="e#6689#6690#0" expanded="false" />
+            <element signature="e#6876#7016#0" expanded="false" />
+            <element signature="e#7015#7016#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4074073">
+        <state vertical-scroll-proportion="0.0">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
@@ -2483,12 +2451,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/DiscountsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.30750605">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36319613">
-          <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/service/ServiceRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33171913">
+          <caret line="690" column="25" selection-start-line="690" selection-start-column="25" selection-end-line="690" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34974092">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34974092">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31088084">
+          <caret line="8" column="47" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30266345">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1699#1746#0" expanded="true" />
+            <element signature="e#4366#4506#0" expanded="true" />
+            <element signature="e#4505#4506#0" expanded="true" />
           </folding>
         </state>
       </provider>

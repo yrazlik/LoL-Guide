@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -32,6 +33,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
     private ListView discountsLV;
     private ChampionDiscountsAdapter adapter;
     private ArrayList<Discount> discounts;
+    private Dialog progress;
 
     @Nullable
     @Override
@@ -39,11 +41,21 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         View v = inflater.inflate(R.layout.fragment_champion_discount, container, false);
         discountsLV = (ListView) v.findViewById(R.id.discountLV);
         discounts = new ArrayList<>();
+        progress = ServiceRequest.showLoading(getContext());
+        showProgress();
 
-        final Dialog progress = ServiceRequest.showLoading(getContext());
-        if(progress != null){
-            progress.show();
+
+        if(LolApplication.firebaseInitialized){
+            try{
+                Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+                
+            }catch (Exception e){
+                hideProgress();
+            }
+        }else{
+            hideProgress();
         }
+
       /*  try {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Discount");
             query.findInBackground(new FindCallback<ParseObject>() {
@@ -116,6 +128,12 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
             return null;
         }
         return discounts;
+    }
+
+    private void showProgress(){
+        if(progress != null){
+            progress.show();
+        }
     }
 
     @Override
