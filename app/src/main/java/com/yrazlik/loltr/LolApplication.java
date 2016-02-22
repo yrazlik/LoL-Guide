@@ -15,8 +15,6 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.parse.Parse;
-import com.parse.ParseCrashReporting;
 import com.yrazlik.loltr.commons.Commons;
 
 import java.util.Locale;
@@ -58,12 +56,12 @@ public class LolApplication extends Application{
         }catch (Exception ignored){}
 
 
-        try {
+        /*try {
             ParseCrashReporting.enable(this);
             Parse.initialize(this, "tjNvuPzFqKLUGV3KjxKnsIK7qztkvorEkDCrn0Bz", "T0iDbKd213pDduIWFupDYVCusdwKeoSJUAWoRwSR");
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
 
         try {
             analytics = GoogleAnalytics.getInstance(this);

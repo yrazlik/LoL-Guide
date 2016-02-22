@@ -27,11 +27,6 @@ import android.widget.SimpleAdapter;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.parse.FindCallback;
-import com.parse.ParseAnalytics;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.fragments.AboutFragment;
@@ -103,7 +98,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         makeGetAllSpellsRequest();
 
 
-        try {
+      /*  try {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("LatestVersion");
             query.selectKeys(Arrays.asList("LATEST_VERSION"));
             query.findInBackground(new FindCallback<ParseObject>() {
@@ -124,8 +119,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         } catch (Exception e) {
             Commons.LATEST_VERSION = "5.24.2";
         }
-
-
+*/
+/*
         try {
             ParseQuery<ParseObject> query2 = ParseQuery.getQuery("LatestVersion");
             query2.selectKeys(Arrays.asList("LATEST_ITEM_VERSION"));
@@ -147,16 +142,18 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         } catch (Exception e) {
             Commons.RECOMMENDED_ITEMS_VERSION = "5.24.1";
         }
-
+*/
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolBar != null) {
             setSupportActionBar(mToolBar);
         }
+
+        /*
         try {
             ParseAnalytics.trackAppOpened(getIntent());
         } catch (Exception e) {
 
-        }
+        }*/
 
         adView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();

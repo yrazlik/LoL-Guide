@@ -12,10 +12,6 @@ import android.widget.ListView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
@@ -48,7 +44,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         if(progress != null){
             progress.show();
         }
-        try {
+      /*  try {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Discount");
             query.findInBackground(new FindCallback<ParseObject>() {
                 @Override
@@ -88,7 +84,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
 
         }catch (Exception e){
         }
-
+/*/
         return v;
     }
 

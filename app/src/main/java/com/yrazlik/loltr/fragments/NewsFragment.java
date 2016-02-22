@@ -13,10 +13,6 @@ import android.widget.ListView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.NewsAdapter;
@@ -50,7 +46,7 @@ public class NewsFragment extends BaseFragment {
             progress.show();
         }
 
-        try {
+     /*   try {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("News");
             query.findInBackground(new FindCallback<ParseObject>() {
                 @Override
@@ -103,7 +99,7 @@ public class NewsFragment extends BaseFragment {
 
         } catch (Exception e) {
         }
-
+*/
         newsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
