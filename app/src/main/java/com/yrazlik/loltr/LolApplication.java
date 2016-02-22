@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -26,6 +27,7 @@ import java.util.Random;
  */
 public class LolApplication extends MultiDexApplication{
 
+    public static boolean firebaseInitialized;
     public static GoogleAnalytics analytics;
     public static Tracker tracker;
     public static ImageLoader imageLoader;
@@ -57,12 +59,12 @@ public class LolApplication extends MultiDexApplication{
         }catch (Exception ignored){}
 
 
-        /*try {
-            ParseCrashReporting.enable(this);
-            Parse.initialize(this, "tjNvuPzFqKLUGV3KjxKnsIK7qztkvorEkDCrn0Bz", "T0iDbKd213pDduIWFupDYVCusdwKeoSJUAWoRwSR");
+        try {
+            Firebase.setAndroidContext(this);
+            firebaseInitialized = true;
         }catch (Exception e){
-            e.printStackTrace();
-        }*/
+            firebaseInitialized = false;
+        }
 
         try {
             analytics = GoogleAnalytics.getInstance(this);
