@@ -268,7 +268,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction ft = fm.beginTransaction();
             Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-            ft.addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).replace(R.id.content_frame, fragment).commit();
+            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
 			
 			break;
 
