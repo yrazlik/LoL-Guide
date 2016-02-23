@@ -13,13 +13,19 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.ListAdapter;
+import com.yrazlik.loltr.adapters.NewsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionRpIpCostsResponse;
@@ -27,6 +33,8 @@ import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -165,10 +173,61 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 				}
 				
 			}
-			if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
-				ServiceRequest.getInstance(getContext()).makeGetRequest(
-						Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
-						this);
+			if(LolApplication.firebaseInitialized){
+				if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
+					try{
+						Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+						firebase.child("championCosts").addListenerForSingleValueEvent(new ValueEventListener() {
+							@Override
+							public void onDataChange(DataSnapshot dataSnapshot) {
+								try {
+									ArrayList<Champion> weeklyFreeChampions = new ArrayList<Champion>();
+									HashMap<String, HashMap> championCosts = (HashMap<String, HashMap>) dataSnapshot.getValue();
+									HashMap<String, String> costs = championCosts.get("costs");
+									Iterator it = costs.entrySet().iterator();
+									while (it.hasNext()) {
+										Map.Entry pairs = (Map.Entry) it.next();
+										String key = (String) pairs.getKey();
+										for (Champion c : Commons.weeklyFreeChampions) {
+											if (String.valueOf(c.getId()).equals(key)) {
+												Map<String, String> keyValues = (Map<String, String>) pairs.getValue();
+												c.setChampionRp(String.valueOf(keyValues.get("rp_cost")));
+												c.setChampionIp(String.valueOf(keyValues.get("ip_cost")));
+												weeklyFreeChampions.add(c);
+											}
+										}
+									}
+									Commons.weeklyFreeChampions = weeklyFreeChampions;
+									adapter.notifyDataSetChanged();
+								}catch (Exception e){
+
+								}
+							}
+
+							@Override
+							public void onCancelled(FirebaseError firebaseError) {
+								if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
+									ServiceRequest.getInstance(getContext()).makeGetRequest(
+											Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
+											WeeklyFreeChampionsFragment.this);
+								}
+							}
+						});
+
+					}catch (Exception ignored){
+						if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
+							ServiceRequest.getInstance(getContext()).makeGetRequest(
+									Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
+									this);
+						}
+					}
+				}
+			}else {
+				if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
+					ServiceRequest.getInstance(getContext()).makeGetRequest(
+							Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
+							this);
+				}
 			}
 		} else if (response instanceof ChampionRpIpCostsResponse) {
 			ArrayList<Champion> weeklyFreeChampions = new ArrayList<Champion>();

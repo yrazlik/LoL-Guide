@@ -56,7 +56,7 @@ public class NewsAdapter extends ArrayAdapter<News>{
         String title = news.getTitle();
         String titleEnglish = news.getTitleEnglish();
         String smallImageUrl = news.getSmallImage();
-        String createdAt = news.getCreatedAt();
+        Date createdAt = news.getCreatedAt();
 
         if(Commons.SELECTED_LANGUAGE != null) {
             if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {

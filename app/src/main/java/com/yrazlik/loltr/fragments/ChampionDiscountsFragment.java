@@ -25,9 +25,11 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -52,15 +54,46 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         if(LolApplication.firebaseInitialized){
             try{
                 Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-                firebase.child("news").addListenerForSingleValueEvent(new ValueEventListener() {
+                firebase.child("discounts").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                            postSnapshot.getValue(News.class);
+                            HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
+                            if(keyValues != null && keyValues.size() > 0) {
+                                String discountType = (String) keyValues.get("discountType");
+
+                                if (discountType != null && discountType.equalsIgnoreCase("champion")) {
+                                    String startDate = (String) keyValues.get("startDate");
+                                    String endDate = (String) keyValues.get("endDate");
+                                    String priceBeforeDiscount = (String) keyValues.get("priceBeforeDiscount");
+                                    String priceAfterDiscount = (String) keyValues.get("priceAfterDiscount");
+                                    String name = (String) keyValues.get("name");
+                                    String nameEnglish = (String) keyValues.get("nameEnglish");
+                                    String imageUrl = (String) keyValues.get("imageUrl");
+                                    String createdAt = (String) keyValues.get("createdAt");
+                                    if (createdAt != null) {
+                                        try {
+                                            String[] values = createdAt.split("\\.");
+                                            int day = Integer.parseInt(values[0]);
+                                            int month = Integer.parseInt(values[1]);
+                                            int year = Integer.parseInt(values[2]);
+                                            Calendar c = Calendar.getInstance();
+                                            c.set(year, month - 1, day, 0, 0);
+                                            Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, c.getTime());
+                                            discounts.add(discount);
+                                        } catch (Exception ignored) {
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        dataSnapshot.exists();
-                        dataSnapshot.getValue();
                         hideProgress();
+                        discounts = sortByDateCreated(discounts);
+                        if(discounts != null && discounts.size() > 0) {
+                            Collections.reverse(discounts);
+                            adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
+                            discountsLV.setAdapter(adapter);
+                        }
                     }
 
                     @Override
@@ -76,47 +109,6 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
             hideProgress();
         }
 
-      /*  try {
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("Discount");
-            query.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> list, ParseException e) {
-                    try {
-                        if(e == null) {
-                            for (ParseObject post : list) {
-                                String discountType = post.getString("discountType");
-                                if(discountType != null && discountType.equalsIgnoreCase("champion")){
-                                    String startDate = post.getString("startDate");
-                                    String endDate = post.getString("endDate");
-                                    String name = post.getString("name");
-                                    String nameEnglish = post.getString("nameEnglish");
-                                    String priceBeforeDiscount = post.getString("priceBeforeDiscount");
-                                    String priceAfterDiscount = post.getString("priceAfterDiscount");
-                                    String imageUrl = post.getString("imageUrl");
-                                    Date createdAt = post.getCreatedAt();
-                                    Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, createdAt);
-                                    discounts.add(discount);
-                                }
-                            }
-                            hideProgress();
-                            discounts = sortByDateCreated(discounts);
-                            if(discounts != null && discounts.size() > 0) {
-                                Collections.reverse(discounts);
-                                adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
-                                discountsLV.setAdapter(adapter);
-                            }
-                        }else{
-                            hideProgress();
-                        }
-                    }catch (Exception ignored){
-                        hideProgress();
-                    }
-                }
-            });
-
-        }catch (Exception e){
-        }
-/*/
         return v;
     }
 

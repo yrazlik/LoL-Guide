@@ -9,7 +9,10 @@ import android.os.Handler;
 import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -19,6 +22,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.yrazlik.loltr.commons.Commons;
 
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
@@ -62,6 +66,33 @@ public class LolApplication extends MultiDexApplication{
         try {
             Firebase.setAndroidContext(this);
             firebaseInitialized = true;
+
+            Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+            firebase.child("latestVersion").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        String key = postSnapshot.getKey();
+                        String value = (String) postSnapshot.getValue();
+
+                        if (key != null && key.equalsIgnoreCase("latestVersion")) {
+                            if (value != null && value.length() > 0) {
+                                Commons.LATEST_VERSION = value;
+                            }
+                        } else if (key != null && key.equalsIgnoreCase("latestItemVersion")) {
+                            if (value != null && value.length() > 0) {
+                                Commons.RECOMMENDED_ITEMS_VERSION = value;
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+
         }catch (Exception e){
             firebaseInitialized = false;
         }

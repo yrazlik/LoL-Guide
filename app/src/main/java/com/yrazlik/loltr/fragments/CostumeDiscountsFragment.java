@@ -11,19 +11,26 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
 import com.yrazlik.loltr.adapters.CostumeDiscountsAdapter;
 import com.yrazlik.loltr.data.Discount;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -46,53 +53,65 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
         if(progress != null){
             progress.show();
         }
-        
 
+        if(LolApplication.firebaseInitialized){
+            try{
+                Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+                firebase.child("discounts").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                            HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
+                            if(keyValues != null && keyValues.size() > 0) {
+                                String discountType = (String) keyValues.get("discountType");
 
-     /*   try {
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("Discount");
-            query.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> list, ParseException e) {
-                    try {
-                        if(e == null) {
-                            for (ParseObject post : list) {
-                                String discountType = post.getString("discountType");
-                                if(discountType != null && discountType.equalsIgnoreCase("costume")){
-                                    String startDate = post.getString("startDate");
-                                    String endDate = post.getString("endDate");
-                                    String name = post.getString("name");
-                                    String nameEnglish = post.getString("nameEnglish");
-                                    String priceBeforeDiscount = post.getString("priceBeforeDiscount");
-                                    String priceAfterDiscount = post.getString("priceAfterDiscount");
-                                    String imageUrl = post.getString("imageUrl");
-                                    Date createdAt = post.getCreatedAt();
-                                    Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, createdAt);
-                                    discounts.add(discount);
+                                if (discountType != null && discountType.equalsIgnoreCase("costume")) {
+                                    String startDate = (String) keyValues.get("startDate");
+                                    String endDate = (String) keyValues.get("endDate");
+                                    String priceBeforeDiscount = (String) keyValues.get("priceBeforeDiscount");
+                                    String priceAfterDiscount = (String) keyValues.get("priceAfterDiscount");
+                                    String name = (String) keyValues.get("name");
+                                    String nameEnglish = (String) keyValues.get("nameEnglish");
+                                    String imageUrl = (String) keyValues.get("imageUrl");
+                                    String createdAt = (String) keyValues.get("createdAt");
+                                    if (createdAt != null) {
+                                        try {
+                                            String[] values = createdAt.split("\\.");
+                                            int day = Integer.parseInt(values[0]);
+                                            int month = Integer.parseInt(values[1]);
+                                            int year = Integer.parseInt(values[2]);
+                                            Calendar c = Calendar.getInstance();
+                                            c.set(year, month - 1, day, 0, 0);
+                                            Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, c.getTime());
+                                            discounts.add(discount);
+                                        } catch (Exception ignored) {
+                                        }
+                                    }
                                 }
                             }
-                            hideProgress();
-                            discounts = sortByDateCreated(discounts);
-                            if(discounts != null && discounts.size() > 0) {
-                                Collections.reverse(discounts);
-                                adapter = new CostumeDiscountsAdapter(getContext(), R.layout.list_row_discount_costumes, discounts);
-                                discountsLV.setAdapter(adapter);
-                            }
-                        }else{
-                            hideProgress();
-                            try {
-                                Toast.makeText(getContext(), R.string.networkError, Toast.LENGTH_SHORT).show();
-                            }catch (Exception ignored){}
                         }
-                    }catch (Exception ignored){
+                        hideProgress();
+                        discounts = sortByDateCreated(discounts);
+                        if(discounts != null && discounts.size() > 0) {
+                            Collections.reverse(discounts);
+                            adapter = new CostumeDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
+                            discountsLV.setAdapter(adapter);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
                         hideProgress();
                     }
-                }
-            });
+                });
 
-        }catch (Exception e){
+            }catch (Exception e){
+                hideProgress();
+            }
+        }else{
+            hideProgress();
         }
-*/
+
         return v;
     }
 

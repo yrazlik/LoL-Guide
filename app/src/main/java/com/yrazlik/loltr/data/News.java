@@ -1,10 +1,13 @@
 package com.yrazlik.loltr.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 
 /**
  * Created by yrazlik on 12/28/15.
  */
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class News {
 
     private String title;
@@ -14,9 +17,9 @@ public class News {
     private String smallImage;
     private String largeImage;
     private String videoUrl;
-    private String createdAt;
+    private Date createdAt;
 
-    public News(String title, String titleEnglish, String message, String messageEnglish, String smallImage, String largeImage, String videoUrl, String createdAt){
+    public News(String title, String titleEnglish, String message, String messageEnglish, String smallImage, String largeImage, String videoUrl, Date createdAt){
         this.title = title;
         this.titleEnglish = titleEnglish;
         this.message = message;
@@ -26,7 +29,6 @@ public class News {
         this.videoUrl = videoUrl;
         this.createdAt = createdAt;
     }
-
 
     public String getLargeImage() {
         return largeImage;
@@ -68,11 +70,11 @@ public class News {
         this.videoUrl = videoUrl;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
