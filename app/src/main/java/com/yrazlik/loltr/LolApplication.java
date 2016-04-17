@@ -67,32 +67,6 @@ public class LolApplication extends MultiDexApplication{
             Firebase.setAndroidContext(this);
             firebaseInitialized = true;
 
-            Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-            firebase.child("latestVersion").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                        String key = postSnapshot.getKey();
-                        String value = (String) postSnapshot.getValue();
-
-                        if (key != null && key.equalsIgnoreCase("latestVersion")) {
-                            if (value != null && value.length() > 0) {
-                                Commons.LATEST_VERSION = value;
-                            }
-                        } else if (key != null && key.equalsIgnoreCase("latestItemVersion")) {
-                            if (value != null && value.length() > 0) {
-                                Commons.RECOMMENDED_ITEMS_VERSION = value;
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-
         }catch (Exception e){
             firebaseInitialized = false;
         }

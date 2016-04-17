@@ -12,6 +12,10 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
@@ -23,6 +27,9 @@ import java.util.Locale;
  * Created by yrazlik on 1/13/16.
  */
 public class SplashActivity extends Activity{
+
+    private boolean mainActivityStarted = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +72,43 @@ public class SplashActivity extends Activity{
     }
 
     private void startMainActivity(){
-        Intent i = new Intent(this, MainActivity.class);
-        finish();
-        startActivity(i);
+        Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+        firebase.child("latestVersion").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String key = postSnapshot.getKey();
+                    String value = (String) postSnapshot.getValue();
+
+                    if (key != null && key.equalsIgnoreCase("latestVersion")) {
+                        if (value != null && value.length() > 0) {
+                            Commons.LATEST_VERSION = value;
+                        }
+                    } else if (key != null && key.equalsIgnoreCase("latestItemVersion")) {
+                        if (value != null && value.length() > 0) {
+                            Commons.RECOMMENDED_ITEMS_VERSION = value;
+                        }
+                    }
+                }
+                Commons.updateLatestVersionVariables();
+                if(!mainActivityStarted) {
+                    mainActivityStarted = true;
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    finish();
+                    startActivity(i);
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                if(!mainActivityStarted) {
+                    mainActivityStarted = true;
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    finish();
+                    startActivity(i);
+                }
+            }
+        });
     }
 
     private void setRegionAuomatically(){
