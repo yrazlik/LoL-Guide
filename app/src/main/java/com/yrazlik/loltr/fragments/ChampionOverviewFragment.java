@@ -114,9 +114,9 @@ import java.util.Random;
     private void showInterstitial(){
         Random r = new Random();
         int Low = 0;
-        int High = 10;
-        int result = r.nextInt(High-Low) + Low;
-        if(result < 3){
+        int High = 20;
+        int result = r.nextInt(High-Low) + Low + 1;
+        if(result == 7){
             ((LolApplication)(getActivity().getApplication())).showInterstitial();
         }
     }

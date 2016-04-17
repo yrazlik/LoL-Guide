@@ -307,9 +307,9 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
             Random r = new Random();
             int Low = 0;
-            int High = 10;
-            int result = r.nextInt(High-Low) + Low;
-            if(result < 3){
+            int High = 20;
+            int result = r.nextInt(High-Low) + Low + 1;
+            if(result == 7){
                 ((LolApplication)(getActivity().getApplication())).showInterstitial();
             }
         }
