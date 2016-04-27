@@ -4,14 +4,13 @@
                 android:layout_height="match_parent"
                 android:background="@color/background_black_transparent">
 
-    <ListView
-        android:id="@+id/matchHistoryLV"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/matchHistoryRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:descendantFocusability="blocksDescendants"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="8.0dp">
+        android:descendantFocusability="blocksDescendants" >
 
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

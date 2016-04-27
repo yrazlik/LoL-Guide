@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -16,13 +16,15 @@ import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.activities.MatchDetailActivity;
-import com.yrazlik.loltr.adapters.MatchHistoryAdapter;
+import com.yrazlik.loltr.adapters.MatchHistoryRVAdapter;
+import com.yrazlik.loltr.adapters.VerticalSpaceItemDecoration;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Game;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,8 +34,9 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
 
     private long summonerId;
     private String region = Commons.SELECTED_REGION;
-    private ListView matchHistoryLV;
-    private MatchHistoryAdapter adapter;
+    private RecyclerView matchHistoryRV;
+    private MatchHistoryRVAdapter adapter;
+    private RecyclerView.LayoutManager mLayoutManager;
     private List<Game> games;
     private RecentMatchesResponse recentMatchesResponse;
 
@@ -51,39 +54,35 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
         if(recentMatchesResponse != null){
             games = recentMatchesResponse.getGames();
         }
-        matchHistoryLV = (ListView) v.findViewById(R.id.matchHistoryLV);
-        matchHistoryLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Game game = adapter.getItem(position);
-              /*  MatchDetailFragment matchDetailFragment = new MatchDetailFragment();
-                matchDetailFragment.setGame(game);
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_BOTTOM_WITH_POPSTACK);
-                ft.replace(R.id.content_frame, matchDetailFragment).addToBackStack(Commons.MATCH_DETAIL_FRAGMENT).commit();*/
-
-                Intent i = new Intent(getContext(), MatchDetailActivity.class);
-                Bundle b = new Bundle();
-                b.putSerializable(MatchDetailActivity.EXTRA_GAME, game);
-                b.putLong(MatchDetailActivity.EXTRA_SUMMONER_ID, summonerId);
-                b.putString(MatchDetailActivity.EXTRA_REGION, region);
-                i.putExtras(b);
-                startActivity(i);
-            }
-        });
+        matchHistoryRV = (RecyclerView) v.findViewById(R.id.matchHistoryRV);
+        matchHistoryRV.addItemDecoration(new VerticalSpaceItemDecoration(20));
+        mLayoutManager = new LinearLayoutManager(getContext());
+        matchHistoryRV.setLayoutManager(mLayoutManager);
 
         if(games == null || games.size() == 0) {
             ServiceRequest.getInstance(getActivity()).makeGetRecentMatchesRequest(
                     Commons.RECENT_MATCHES_REQUEST, region, summonerId + "", null, MatchHistoryFragment.this);
         }else{
-            adapter = new MatchHistoryAdapter(getContext(), R.layout.list_row_match_history, games, summonerId);
-            matchHistoryLV.setAdapter(adapter);
+            adapter = new MatchHistoryRVAdapter(getContext(), games, R.layout.list_row_match_history_rv, recyclerViewClickListener);
+            matchHistoryRV.setAdapter(adapter);
         }
 
         reportGoogleAnalytics();
         return  v;
     }
+
+    private MatchHistoryRVAdapter.RecyclerViewClickListener recyclerViewClickListener = new MatchHistoryRVAdapter.RecyclerViewClickListener() {
+        @Override
+        public void onRecyclerViewItemClicked(Game clickedItem, int position) {
+            Intent i = new Intent(getContext(), MatchDetailActivity.class);
+            Bundle b = new Bundle();
+            b.putSerializable(MatchDetailActivity.EXTRA_GAME, clickedItem);
+            b.putLong(MatchDetailActivity.EXTRA_SUMMONER_ID, summonerId);
+            b.putString(MatchDetailActivity.EXTRA_REGION, region);
+            i.putExtras(b);
+            startActivity(i);
+        }
+    };
 
     @Override
     public void reportGoogleAnalytics() {
@@ -98,8 +97,8 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
             if(response != null) {
                 RecentMatchesResponse recentMatchesResponse = (RecentMatchesResponse) response;
                 games = recentMatchesResponse.getGames();
-                adapter = new MatchHistoryAdapter(getContext(), R.layout.list_row_match_history, recentMatchesResponse.getGames(), recentMatchesResponse.getSummonerId());
-                matchHistoryLV.setAdapter(adapter);
+                adapter = new MatchHistoryRVAdapter(getContext(), games, R.layout.list_row_match_history_rv, recyclerViewClickListener);
+                matchHistoryRV.setAdapter(adapter);
             }
         }
     }
