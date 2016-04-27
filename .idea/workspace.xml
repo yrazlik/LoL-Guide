@@ -19,529 +19,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1391068-8f35-43a0-be80-247c2e588452" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$anim.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$bool.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$dimen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$anim.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$bool.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$dimen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/all/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/LolApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$10.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$11.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$12.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$13.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$8.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5$9.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity$8.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/Manifest$permission.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/Manifest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/PlayerActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/PlayerActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$anim.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$array.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$bool.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$color.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$dimen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$integer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$styleable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FilterActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FilterActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FilterActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FullScreenSkinActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FullScreenVideoActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FullScreenVideoActivity$MyWVClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FullScreenVideoActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/ItemDetailActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/ItemDetailActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/ItemDetailActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchDetailActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity$2$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/AllChampionsListAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/AllChampionsListAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionDiscountsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionDiscountsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSkinsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSkinsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSpellsListAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSpellsListAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/CostumeDiscountsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/CostumeDiscountsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewItemsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewItemsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ItemsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ItemsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ListAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ListAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/LiveChannelsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/LiveChannelsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchHistoryAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchHistoryAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchInfoAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchInfoAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/NewsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/NewsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RecentSearchesAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RecentSearchesAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RuneAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RuneAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/StatisticsAdapter$ViewHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/StatisticsAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/commons/Commons$FontType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/commons/Commons.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Blocks.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Champion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/ChampionPrice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Channel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Data.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/DataContainer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Discount.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Entries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Game.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Gold.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Image.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Info.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Item.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/ItemImage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Items.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/LeagueDto.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/News.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Passive.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Player.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/PlayerStatsSummaryDto.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/RecentSearchItem.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Recommended.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Rune.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Skin.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Spell.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Statistics.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Stats.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Streams.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/Summoner.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/SummonerDto.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/SummonerNames.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/data/SummonerSpell.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/database/SavedResponsesDBContract$SavedShows.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/database/SavedResponsesDBContract.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/database/SavedShowsDbHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AboutFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllItemsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/BaseFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDetailFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDiscountsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDiscountsFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDiscountsFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionOverviewFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSkinsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSpellsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ContactFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ContactFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CostumeDiscountsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CostumeDiscountsFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CostumeDiscountsFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CountryFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/DiscountsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ItemDetailFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LegendFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity$mWebViewClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchDetailFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchInfoFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchInfoFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchInfoFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsDetailFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsDetailFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsDetailFragment$MyWVClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsDetailFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/RunesFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/SearchFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/SettingsFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/SettingsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/StrategyFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/listener/ResponseListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/requestclasses/AllChampionsRequest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/requestclasses/Request.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/AllChampionsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/AllItemsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ChampionLegendResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ChampionOverviewResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ChampionRpIpCostsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ChampionSkinsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ChampionSpellsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ChampionStrategyResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ItemDetailResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/ItemsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/LeagueInfoResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/LiveChannelsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/MatchInfoResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/RecentMatchesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/RecommendedItemsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/Response.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/RuneResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/StaticDataWithAltImagesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/StatsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/SummonerByNameResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/SummonerInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/SummonerInfoResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/SummonerNamesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/SummonerSpellsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/responseclasses/WeeklyFreeChampionsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/LruBitmapCache.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$10.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$11.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$12.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$13.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$8.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest$9.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView$AnimatedExpandableListAdapter$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView$AnimatedExpandableListAdapter$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView$AnimatedExpandableListAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView$DummyView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView$ExpandAnimation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView$GroupInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/AnimatedExpandableListView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/FadeInNetworkImageView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/VideoEnabledWebChromeClient$ToggledFullscreenCallback.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/VideoEnabledWebChromeClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/VideoEnabledWebView$JavascriptInterface$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/VideoEnabledWebView$JavascriptInterface.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/view/VideoEnabledWebView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
     </list>
     <ignored path="LoL-Guide.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -624,8 +104,8 @@
       <file leaf-file-name="AllItemsFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/AllItemsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33227345">
-              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.1891892">
+              <caret line="96" column="35" selection-start-line="96" selection-start-column="35" selection-end-line="96" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -2234,7 +1714,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4379184221000" />
+        <entry key="$PROJECT_DIR$" value="4379184476000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2612,18 +2092,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LoL-Guide" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2676,7 +2145,18 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LoL-Guide" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2983,7 +2463,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3009,8 +2489,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3125,7 +2605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3190,7 +2669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="128" column="37" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3516,8 +2994,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/AllItemsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33227345">
-          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.1891892">
+          <caret line="96" column="35" selection-start-line="96" selection-start-column="35" selection-end-line="96" selection-end-column="35" />
           <folding />
         </state>
       </provider>
