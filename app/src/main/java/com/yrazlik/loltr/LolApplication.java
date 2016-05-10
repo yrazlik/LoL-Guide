@@ -36,6 +36,7 @@ public class LolApplication extends MultiDexApplication{
     public static Tracker tracker;
     public static ImageLoader imageLoader;
     public InterstitialAd mInterstitialAd;
+    static int ad_show = 0;
 
     public InterstitialAd getmInterstitialAd() {
         return mInterstitialAd;
@@ -154,11 +155,10 @@ public class LolApplication extends MultiDexApplication{
     }
 
     public  boolean shouldShowInterstitial(){
-        Random r = new Random();
-        int Low = 0;
-        int High = 100;
-        int result = r.nextInt(High-Low) + Low;
-        if(result < 10){
+        ad_show++;
+        if(ad_show == 3){
+            return true;
+        } else if(ad_show != 0 && ad_show % 9 == 0){
             return true;
         }
         return false;

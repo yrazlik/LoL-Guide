@@ -112,13 +112,11 @@ import java.util.Random;
 	}
 
     private void showInterstitial(){
-        Random r = new Random();
-        int Low = 0;
-        int High = 20;
-        int result = r.nextInt(High-Low) + Low + 1;
-        if(result == 7){
-            ((LolApplication)(getActivity().getApplication())).showInterstitial();
-        }
+		try {
+			if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+				((LolApplication) (getActivity().getApplication())).showInterstitial();
+			}
+		}catch (Exception ignored){}
     }
 	private void getExtras(){
 		Bundle args = getArguments();

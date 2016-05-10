@@ -305,13 +305,11 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             summonerContainerFragment.setArguments(args);
             ServiceRequest.hideLoading();
             ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
-            Random r = new Random();
-            int Low = 0;
-            int High = 20;
-            int result = r.nextInt(High-Low) + Low + 1;
-            if(result == 7){
-                ((LolApplication)(getActivity().getApplication())).showInterstitial();
-            }
+            try {
+                if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+                    ((LolApplication) (getActivity().getApplication())).showInterstitial();
+                }
+            }catch (Exception ignored){}
         }
     }
 
