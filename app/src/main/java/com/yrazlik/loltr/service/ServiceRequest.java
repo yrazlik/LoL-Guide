@@ -24,6 +24,7 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.SummonerNames;
 import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.parsers.YahooRSSFeedParser;
 import com.yrazlik.loltr.requestclasses.Request;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionLegendResponse;
@@ -48,11 +49,14 @@ import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.responseclasses.SummonerNamesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
+import com.yrazlik.loltr.responseclasses.YahooRSSFeedResponse;
 
 import org.apache.http.HttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -700,5 +704,67 @@ public class ServiceRequest {
         }
     }
 
+    public void getRSSNews(final int requestID, final ResponseListener listener){
+        final Request request = new Request(requestID);
+        String urlString = Commons.YAHO_RSS_FEED_URL;
+        StringRequest getReq = new StringRequest(com.android.volley.Request.Method.GET, urlString, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                hideLoading();
+                YahooRSSFeedResponse parsedResponse = parseRSSFeedResponse(response);
+                listener.onSuccess(parsedResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideLoading();
+                NetworkResponse response = error.networkResponse;
+                if ((requestID == Commons.ALL_CHAMPIONS_REQUEST) || (requestID == Commons.SUMMONER_SPELLS_REQUEST) || (requestID == Commons.SUMMONER_NAMES_REQUEST)) {
+                    listener.onFailure(requestID);
+                } else {
+                    if (response != null && response.data != null) {
+                        String json = new String(response.data);
+                        json = trimMessage(json, "message");
+                        listener.onFailure(json);
+                    } else {
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            String json = new String(getContext().getResources().getString(R.string.networkError));
+                            listener.onFailure(json);
+                        } else if (error instanceof AuthFailureError) {
+                            //TODO
+                        } else if (error instanceof ServerError) {
+                            //TODO
+                        } else if (error instanceof NetworkError) {
+                            //TODO
+                        } else if (error instanceof ParseError) {
+                            //TODO
+                        }
+                    }
+                }
+            }
+        }){
+            @Override
+            public void addMarker(String tag) {
+                super.addMarker(tag);
+            }
+        };
+
+        getReq.setShouldCache(true);
+        addToRequestQueue(getReq, TAG_GET_REQUEST);
+        Dialog progress = showLoading(getContext());
+        if(progress != null){
+            try {
+                progress.show();
+            }catch (Exception ignored){}
+        }
+    }
+
+    private YahooRSSFeedResponse parseRSSFeedResponse(String response) {
+        try {
+            return new YahooRSSFeedParser().parse(response);
+        } catch (IOException e) {
+            return null;
+        }
+    }
 
 }

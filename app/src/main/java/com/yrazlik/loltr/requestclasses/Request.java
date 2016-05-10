@@ -21,6 +21,7 @@ public class Request {
 	public Request(){
 		
 	}
+
 	
 	public String getQueryParametersString() {
 
@@ -89,6 +90,10 @@ public class Request {
 		this.requestID = requestID;
 		this.pathParams = pathParams;
 		this.queryParams = queryParams;
+	}
+
+	public Request(int requestID){
+		this.requestID = requestID;
 	}
 	
 	

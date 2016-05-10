@@ -24,6 +24,7 @@ import com.yrazlik.loltr.adapters.NewsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Discount;
 import com.yrazlik.loltr.data.News;
+import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import java.util.List;
 /**
  * Created by yrazlik on 12/28/15.
  */
-public class NewsFragment extends BaseFragment {
+public class NewsFragment extends BaseFragment implements ResponseListener{
 
     private ListView newsLV;
     private NewsAdapter adapter;
@@ -53,6 +54,8 @@ public class NewsFragment extends BaseFragment {
         if(progress != null){
             progress.show();
         }
+
+        getRSSFeed();
 
         if(LolApplication.firebaseInitialized){
             try{
@@ -193,6 +196,10 @@ public class NewsFragment extends BaseFragment {
         });
     }
 
+    private void getRSSFeed(){
+        ArrayList<String> pathParams = new ArrayList<String>();
+        ServiceRequest.getInstance(getContext()).getRSSNews(Commons.RSS_NEWS_REQUEST, this);
+    }
 
 
     @Override
@@ -200,5 +207,15 @@ public class NewsFragment extends BaseFragment {
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
         t.setScreenName("NewsFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    @Override
+    public void onSuccess(Object response) {
+
+    }
+
+    @Override
+    public void onFailure(Object response) {
+
     }
 }

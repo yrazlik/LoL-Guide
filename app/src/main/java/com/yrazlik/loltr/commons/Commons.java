@@ -86,10 +86,11 @@ public class Commons {
     public static final int SUMMONER_SPELLS_REQUEST = 22;
     public static final int SUMMONER_NAMES_REQUEST = 23;
     public static final int RANKED_STATS_REQUEST = 24;
+    public static final int RSS_NEWS_REQUEST = 25;
 
 
 
-
+    public static String YAHO_RSS_FEED_URL = "https://esports.yahoo.com/league-of-legends/rss";
     public static String SELECTED_REGION = "tr";
     public static String SELECTED_LANGUAGE = "tr";
     public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://" + SELECTED_REGION + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
