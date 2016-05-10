@@ -175,7 +175,16 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 		FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
+		showInterstitial();
 		
+	}
+
+	private void showInterstitial(){
+		try {
+			if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+				((LolApplication) (getActivity().getApplication())).showInterstitial();
+			}
+		}catch (Exception ignored){}
 	}
 	
 	public static boolean containsIgnoreCase(String src, String what) {

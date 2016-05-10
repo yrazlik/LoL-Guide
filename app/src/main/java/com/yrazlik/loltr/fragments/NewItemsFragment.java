@@ -107,6 +107,7 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                         Intent i = new Intent(getContext(), ItemDetailActivity.class);
                         i.putExtra(EXTRA_ITEM_DETAIL, extraItemDataJSON);
                         i.putExtra(EXTRA_FIRST_ITEM_STACK, true);
+                        showInterstitial();
                         startActivity(i);
                     }
 
@@ -123,6 +124,14 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
             }
         });
 
+    }
+
+    private void showInterstitial(){
+        try {
+            if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+                ((LolApplication) (getActivity().getApplication())).showInterstitial();
+            }
+        }catch (Exception ignored){}
     }
 
     @Override

@@ -153,12 +153,21 @@ public class NewsFragment extends BaseFragment {
                     NewsDetailFragment fragment = new NewsDetailFragment();
                     fragment.setArguments(args);
                     fm.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_DETAIL_FRAGMENT).commit();
+                    showInterstitial();
 
                 }catch (Exception ignored){}
             }
         });
 
         return v;
+    }
+
+    private void showInterstitial(){
+        try {
+            if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+                ((LolApplication) (getActivity().getApplication())).showInterstitial();
+            }
+        }catch (Exception ignored){}
     }
 
     private ArrayList<News> sortByDateCreated(ArrayList<News> news){

@@ -118,6 +118,14 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
         return v;
     }
 
+    private void showInterstitial(){
+        try {
+            if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+                ((LolApplication) (getActivity().getApplication())).showInterstitial();
+            }
+        }catch (Exception ignored){}
+    }
+
     @Override
     public void onSuccess(Object response) {
         if(response instanceof SummonerInfoResponse){
@@ -150,6 +158,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
             Intent i = new Intent(getContext(), MatchInfoActivity.class);
             i.putExtra("MATCH_INFO_RESPONSE", resp);
             i.putExtra("SELECTED_REGION", selectedRegion);
+            showInterstitial();
             startActivity(i);
         }
 

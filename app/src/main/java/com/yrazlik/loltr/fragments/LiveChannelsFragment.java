@@ -86,12 +86,21 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
                 Streams s = (Streams) liveChannelsList.getItemAtPosition(position);
                 Intent i = new Intent(getContext(), LiveChannelActivity.class);
                 i.putExtra(LiveChannelActivity.EXTRA_STREAM_URL, s.getChannel().getUrl());
+                showInterstitial();
                 startActivity(i);
 
                 break;
             default:
                 break;
         }
+    }
+
+    private void showInterstitial(){
+        try {
+            if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+                ((LolApplication) (getActivity().getApplication())).showInterstitial();
+            }
+        }catch (Exception ignored){}
     }
 
     @Override

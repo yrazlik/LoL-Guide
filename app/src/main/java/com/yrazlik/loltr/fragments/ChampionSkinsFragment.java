@@ -99,8 +99,17 @@ public class ChampionSkinsFragment extends BaseFragment implements ResponseListe
         Intent i = new Intent(getActivity(), FullScreenSkinActivity.class);
         i.putExtra("EXTRA_SKIN_KEY", key);
         i.putExtra("EXTRA_SKIN_POSITION", position);
+        showInterstitial();
         startActivity(i);
 
+    }
+
+    private void showInterstitial(){
+        try {
+            if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+                ((LolApplication) (getActivity().getApplication())).showInterstitial();
+            }
+        }catch (Exception ignored){}
     }
 
     @Override
