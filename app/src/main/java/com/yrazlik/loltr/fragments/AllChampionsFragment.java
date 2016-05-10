@@ -241,8 +241,10 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 
 	@Override
 	public void onFailure(Object response) {
-		String errorMessage = (String)response;
-		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+		try {
+			String errorMessage = String.valueOf(response);
+			Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+		}catch (Exception ignored){}
 	}
 
 	@Override
