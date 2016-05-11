@@ -55,7 +55,7 @@ public class NewsFragment extends BaseFragment implements ResponseListener{
             progress.show();
         }
 
-        getRSSFeed();
+        //getRSSFeed();
 
         if(LolApplication.firebaseInitialized){
             try{
