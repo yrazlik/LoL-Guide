@@ -3,6 +3,7 @@ package com.yrazlik.loltr.fragments;
 
 
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.commons.Commons;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,9 +21,14 @@ public class CountryFragment extends Fragment{
 	
 		// Retrieving the currently selected item number
 		int position = getArguments().getInt("position");
-		
-		// List of rivers
-		String[] countries = getResources().getStringArray(R.array.titles);
+
+		String[] countries;
+
+		if(Commons.ADS_ENABLED) {
+			countries = getResources().getStringArray(R.array.titles);
+		} else {
+			countries = getResources().getStringArray(R.array.titles_noad);
+		}
 		
 		// Creating view correspoding to the fragment
 		View v = inflater.inflate(R.layout.fragment_layout, container, false);

@@ -26,6 +26,23 @@
         <item>Live Match Info</item>
         <item>Live Broadcasts</item>
         <item>Settings</item>
+        <item>Remove Ads</item>
+        <item>Contact Us</item>
+        <item>About</item>
+    </string-array>
+
+    <string-array name="titles_noad">
+        <item>Summoners</item>
+        <item>Weekly Free Champions</item>
+        <item>Discounts</item>
+        <item>News</item>
+        <item>Champions</item>
+        <item>Items</item>
+        <item>Runes</item>
+        <item>Skins</item>
+        <item>Live Match Info</item>
+        <item>Live Broadcasts</item>
+        <item>Settings</item>
         <item>Contact Us</item>
         <item>About</item>
     </string-array>
@@ -295,5 +312,7 @@
     <string name="largest_critical_strike">Largest Critical Strike</string>
     <string name="no_ranked_info">No ranked game info found for the summoner.</string>
     <string name="champions">CHAMPIONS</string>
+    <string name="remove_ads">Remove Ads</string>
+    <string name="remove_ads_explanation">You can donate us by removing ads and use the ad-free version of LoL Guide if you wish. </string>
 
 </resources>

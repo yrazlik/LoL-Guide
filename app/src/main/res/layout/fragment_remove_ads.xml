@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/app_color"
+    android:padding="16dp">
+    <TextView
+        android:id="@+id/removeAdsExplanation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/remove_ads_explanation"
+        android:textSize="16sp"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/removeAdsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/remove_ads"
+        android:layout_below="@+id/removeAdsExplanation"
+        android:layout_marginTop="10dp"
+        android:background="@color/material_dark_red"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

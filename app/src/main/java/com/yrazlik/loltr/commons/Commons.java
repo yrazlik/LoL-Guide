@@ -23,7 +23,7 @@ import java.util.Locale;
 
 public class Commons {
 
-    public static boolean ADS_ENABLED = false;
+    public static boolean ADS_ENABLED = true;
 	
 	private static Context mContext;
 	private static Commons mCommons;
@@ -141,6 +141,7 @@ public class Commons {
     public static final String SETTINGS_FRAGMENT = "com.yrazlik.loltr.fragments.settingsfragment";
     public static final String CONTACT_FRAGMENT = "com.yrazlik.loltr.fragments.contactfragment";
     public static final String ABOUT_FRAGMENT = "com.yrazlik.loltr.fragments.aboutfragment";
+    public static final String REMOVE_ADS_FRAGMENT = "com.yrazlik.loltr.fragments.removeadsfragment";
     public static final String CHAMPION_DETAILS_FRAGMENT = "com.yrazlik.loltr.fragments.championdetailsfragment";
     public static final String ITEM_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.itemdetailfragment";
     public static final String CHAMPION_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.championskinsfragment";

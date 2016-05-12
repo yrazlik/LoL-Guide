@@ -39,6 +39,7 @@ import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.NewsFragment;
+import com.yrazlik.loltr.fragments.RemoveAdsFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
 import com.yrazlik.loltr.fragments.SummonerSearchFragment;
@@ -67,11 +68,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     // Array of integers points to images stored in /res/drawable-ldpi/
     int[] mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
-            R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.contact,
+            R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
             R.drawable.info};
 
     // Array of strings to initial counts
-    String[] mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    String[] mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 
     public static Fragment activeFragment;
     private DrawerLayout mDrawerLayout;
@@ -93,8 +94,16 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onCreate(savedInstanceState);
         if(Commons.ADS_ENABLED) {
             setContentView(R.layout.activity_main);
+            mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+                    R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
+                    R.drawable.info};
+            mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         } else {
             setContentView(R.layout.activity_main_noad);
+            mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+                    R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.contact,
+                    R.drawable.info};
+            mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         }
 
 
@@ -227,7 +236,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 
     private void setDrawer() {
-        leftMenuItems = getResources().getStringArray(R.array.titles);
+        if(Commons.ADS_ENABLED) {
+            leftMenuItems = getResources().getStringArray(R.array.titles);
+        } else {
+            leftMenuItems = getResources().getStringArray(R.array.titles_noad);
+        }
 
         // Title of the activity
         mTitle = (String) getTitle();
@@ -285,182 +298,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         // ItemClick event handler for the drawer items
-        mDrawerList.setOnItemClickListener(new OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1,
-                                    int position, long arg3) {
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                final FragmentTransaction ft = fragmentManager.beginTransaction();
-                mDrawerLayout.closeDrawer(mDrawer);
-                if(fragmentManager.getBackStackEntryCount() > 0) {
-                    fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }
-
-                if (position == 0) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            SummonerSearchFragment pFragment = new SummonerSearchFragment();
-                            ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.PROFILE_FRAGMENT);
-                            ft.commitAllowingStateLoss();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 1) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            WeeklyFreeChampionsFragment cFragment = new WeeklyFreeChampionsFragment();
-                            ft.replace(R.id.content_frame, cFragment).addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
-                            ft.commitAllowingStateLoss();
-                            showInterstitial();
-                        }
-                    }, 350);
-
-                } else if (position == 2) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            DiscountsFragment fragment = new DiscountsFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.DISCOUNTS_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 3) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            NewsFragment fragment = new NewsFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 4) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            AllChampionsFragment fragment = new AllChampionsFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 5) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            NewItemsFragment fragment = new NewItemsFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 6) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            RunesFragment fragment = new RunesFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.RUNES_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 7) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            AllChampionSkinsFragment fragment = new AllChampionSkinsFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_SKINS_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 8) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            MatchInfoFragment fragment = new MatchInfoFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.MATCH_INFO_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 9) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            LiveChannelsFragment fragment = new LiveChannelsFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.LIVE_CHANNELS_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 10) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            SettingsFragment fragment = new SettingsFragment();
-                            ft.replace(R.id.content_frame, fragment, Commons.TAG_SETTINGS_FRAGMENT).addToBackStack(Commons.SETTINGS_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 11) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            ContactFragment fragment = new ContactFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CONTACT_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                } else if (position == 12) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            Log.d("TAGGG", "MainActivityOnClick");
-                            AboutFragment fragment = new AboutFragment();
-                            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ABOUT_FRAGMENT);
-                            ft.commit();
-                            showInterstitial();
-                        }
-                    }, 350);
-                }
-                // Closing the drawer
-
-            }
-        });
+        if(Commons.ADS_ENABLED) {
+            mDrawerList.setOnItemClickListener(leftMenuWithAdsClickListener);
+        } else {
+            mDrawerList.setOnItemClickListener(leftMenuNoAdsClickListener);
+        }
 
         // Enabling Up navigation
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -642,7 +484,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
     public void updateDrawer() {
-        leftMenuItems = getResources().getStringArray(R.array.titles);
+        if(Commons.ADS_ENABLED) {
+            leftMenuItems = getResources().getStringArray(R.array.titles);
+        } else {
+            leftMenuItems = getResources().getStringArray(R.array.titles_noad);
+        }
 
         setDrawer();
 
@@ -657,4 +503,363 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         //super.onSaveInstanceState(outState, outPersistentState);
     }
+
+    private OnItemClickListener leftMenuWithAdsClickListener = new OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            final FragmentTransaction ft = fragmentManager.beginTransaction();
+            mDrawerLayout.closeDrawer(mDrawer);
+            if(fragmentManager.getBackStackEntryCount() > 0) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+
+            if (position == 0) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        SummonerSearchFragment pFragment = new SummonerSearchFragment();
+                        ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.PROFILE_FRAGMENT);
+                        ft.commitAllowingStateLoss();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 1) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        WeeklyFreeChampionsFragment cFragment = new WeeklyFreeChampionsFragment();
+                        ft.replace(R.id.content_frame, cFragment).addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
+                        ft.commitAllowingStateLoss();
+                        showInterstitial();
+                    }
+                }, 350);
+
+            } else if (position == 2) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        DiscountsFragment fragment = new DiscountsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.DISCOUNTS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 3) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        NewsFragment fragment = new NewsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 4) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        AllChampionsFragment fragment = new AllChampionsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 5) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        NewItemsFragment fragment = new NewItemsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 6) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        RunesFragment fragment = new RunesFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.RUNES_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 7) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        AllChampionSkinsFragment fragment = new AllChampionSkinsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_SKINS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 8) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        MatchInfoFragment fragment = new MatchInfoFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.MATCH_INFO_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 9) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        LiveChannelsFragment fragment = new LiveChannelsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.LIVE_CHANNELS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 10) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        SettingsFragment fragment = new SettingsFragment();
+                        ft.replace(R.id.content_frame, fragment, Commons.TAG_SETTINGS_FRAGMENT).addToBackStack(Commons.SETTINGS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            }  else if (position == 11) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        RemoveAdsFragment fragment = new RemoveAdsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.REMOVE_ADS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            }
+            else if (position == 12) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        ContactFragment fragment = new ContactFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CONTACT_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 13) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        Log.d("TAGGG", "MainActivityOnClick");
+                        AboutFragment fragment = new AboutFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ABOUT_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            }
+
+            // Closing the drawer
+        }
+    };
+
+    private OnItemClickListener leftMenuNoAdsClickListener = new OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            final FragmentTransaction ft = fragmentManager.beginTransaction();
+            mDrawerLayout.closeDrawer(mDrawer);
+            if(fragmentManager.getBackStackEntryCount() > 0) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+
+            if (position == 0) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        SummonerSearchFragment pFragment = new SummonerSearchFragment();
+                        ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.PROFILE_FRAGMENT);
+                        ft.commitAllowingStateLoss();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 1) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        WeeklyFreeChampionsFragment cFragment = new WeeklyFreeChampionsFragment();
+                        ft.replace(R.id.content_frame, cFragment).addToBackStack(Commons.WEEKLY_FREE_CHAMPIONS_FRAGMENT);
+                        ft.commitAllowingStateLoss();
+                        showInterstitial();
+                    }
+                }, 350);
+
+            } else if (position == 2) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        DiscountsFragment fragment = new DiscountsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.DISCOUNTS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 3) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        NewsFragment fragment = new NewsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 4) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        AllChampionsFragment fragment = new AllChampionsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 5) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        NewItemsFragment fragment = new NewItemsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_ITEMS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 6) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        RunesFragment fragment = new RunesFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.RUNES_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 7) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        AllChampionSkinsFragment fragment = new AllChampionSkinsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ALL_CHAMPIONS_SKINS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 8) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        MatchInfoFragment fragment = new MatchInfoFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.MATCH_INFO_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 9) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        LiveChannelsFragment fragment = new LiveChannelsFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.LIVE_CHANNELS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 10) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        SettingsFragment fragment = new SettingsFragment();
+                        ft.replace(R.id.content_frame, fragment, Commons.TAG_SETTINGS_FRAGMENT).addToBackStack(Commons.SETTINGS_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 11) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        ContactFragment fragment = new ContactFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CONTACT_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 12) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        Log.d("TAGGG", "MainActivityOnClick");
+                        AboutFragment fragment = new AboutFragment();
+                        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.ABOUT_FRAGMENT);
+                        ft.commit();
+                        showInterstitial();
+                    }
+                }, 350);
+            }
+        }
+    };
 }
