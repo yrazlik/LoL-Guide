@@ -19,27 +19,42 @@ public class PaymentSevice {
     private static PaymentSevice mInstance;
     private IInAppBillingService mService;
     private ServiceConnection mServiceConn;
+    private MainActivity.IsAppPurchasedListener appPurchasedListener;
     private Context mContext;
 
-    public static PaymentSevice getInstance(Context context) {
+    public static PaymentSevice getInstance(Context context, MainActivity.IsAppPurchasedListener appPurchasedListener) {
         if(mInstance == null) {
-            mInstance = new PaymentSevice(context);
+            mInstance = new PaymentSevice(context, appPurchasedListener);
         }
         return mInstance;
     }
 
-    private PaymentSevice(Context context) {
+    public static PaymentSevice getInstance(Context context) {
+        if(mInstance == null) {
+            mInstance = new PaymentSevice(context, null);
+        }
+        return mInstance;
+    }
+
+    private PaymentSevice(Context context, final MainActivity.IsAppPurchasedListener appPurchasedListener) {
         this.mContext = context;
+        this.appPurchasedListener = appPurchasedListener;
         mServiceConn = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 mService = null;
+                if(appPurchasedListener != null) {
+                    appPurchasedListener.onAppPurchaseResultReceived();
+                }
             }
 
             @Override
             public void onServiceConnected(ComponentName name,
                                            IBinder service) {
                 mService = IInAppBillingService.Stub.asInterface(service);
+                if(appPurchasedListener != null) {
+                    appPurchasedListener.onAppPurchaseResultReceived();
+                }
             }
         };
     }

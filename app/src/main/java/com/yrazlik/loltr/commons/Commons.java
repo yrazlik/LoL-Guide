@@ -46,6 +46,7 @@ public class Commons {
 
     public static String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnZHsXqXjxssy8qMs7Ekl/PjTQDSlT9AcjyFOpauiVnBCOVv81zvJODMOsgLY1A+kMRvbjkrD2I3Ey6FVFfpE5Rl6gLSs6fDv9iEm22iDASU/pKMsMG4keaNgKxw9+GP0anyzvSbhuYar6MZHefcr/3WuElakkxN4z/wOGXcaIRx8ZNqk4Fh4CL06xERnD+ZT6jBFztUM8Jpdf+DdVoxqFamh8Cu74H+/2x4OGgp4JAU+HKJXDHE51x15ezDBHGpSGNeuH57Ew4xvq27Ixvx+GbfJYioiJmAYpZk5OuvK6Zx6YzS8jPy7kCXZJJRFswcKjuGL286dDhE2J6zPL3pRQwIDAQAB";
     public static final int REMOVE_ADS_REQUEST_CODE = 1111;
+    public static final String REMOVE_ADS_ID = "remove_ads";
 
     public static String TEXT = "AAA";
 

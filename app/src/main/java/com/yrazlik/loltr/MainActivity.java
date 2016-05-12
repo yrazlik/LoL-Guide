@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.os.RemoteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -27,6 +29,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.yrazlik.loltr.billing.PaymentSevice;
@@ -62,6 +65,10 @@ import java.util.Map;
 
 public class MainActivity extends ActionBarActivity implements ResponseListener {
 
+    public interface IsAppPurchasedListener {
+        void onAppPurchaseResultReceived();
+    }
+
     int allchampionsRequestCount = 0, allSpellsRequestCount = 0;
     int mPosition = -1;
     String mTitle = "";
@@ -91,11 +98,38 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private AdView adView;
     private Toolbar mToolBar;
 
-    @SuppressLint("NewApi")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setupInAppPurchases();
+    private IsAppPurchasedListener appPurchasedListener = new IsAppPurchasedListener() {
+        @Override
+        public void onAppPurchaseResultReceived() {
+            IInAppBillingService mService = PaymentSevice.getInstance(MainActivity.this).getService();
+            if(mService != null) {
+                try {
+                    Bundle ownedItems = mService.getPurchases(3, getPackageName(), "inapp", null);
+                    if(ownedItems != null) {
+                        int response = ownedItems.getInt("RESPONSE_CODE");
+                        if (response == 0) {
+                            ArrayList<String> ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                            if(ownedSkus != null && ownedSkus.size() > 0) {
+                                for (int i = 0; i < ownedSkus.size(); ++i) {
+                                    String sku = ownedSkus.get(i);
+                                    if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)) {
+                                        Commons.ADS_ENABLED = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (RemoteException e) {
+                    Commons.ADS_ENABLED = false;
+                }
+            } else {
+                Commons.ADS_ENABLED = false;
+            }
+            continueSetup();
+        }
+    };
+
+    private void continueSetup() {
         if(Commons.ADS_ENABLED) {
             setContentView(R.layout.activity_main);
             mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
@@ -114,63 +148,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         makeGetAllChampionsRequest();
         makeGetAllSpellsRequest();
 
-
-      /*  try {
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("LatestVersion");
-            query.selectKeys(Arrays.asList("LATEST_VERSION"));
-            query.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> list, ParseException e) {
-                    try {
-                        for (ParseObject post : list) {
-                            String latestVersion = post.getString("LATEST_VERSION");
-                            if (latestVersion != null && latestVersion.length() > 0) {
-                                Commons.LATEST_VERSION = latestVersion;
-                            }
-                        }
-                    } catch (Exception ignored) {
-                    }
-                }
-            });
-
-        } catch (Exception e) {
-            Commons.LATEST_VERSION = "5.24.2";
-        }
-*/
-/*
-        try {
-            ParseQuery<ParseObject> query2 = ParseQuery.getQuery("LatestVersion");
-            query2.selectKeys(Arrays.asList("LATEST_ITEM_VERSION"));
-            query2.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> list, ParseException e) {
-                    try {
-                        for (ParseObject post : list) {
-                            String latestItemVersion = post.getString("LATEST_ITEM_VERSION");
-
-                            if (latestItemVersion != null && latestItemVersion.length() > 0) {
-                                Commons.RECOMMENDED_ITEMS_VERSION = latestItemVersion;
-                            }
-                        }
-                    } catch (Exception ignored) {
-                    }
-                }
-            });
-        } catch (Exception e) {
-            Commons.RECOMMENDED_ITEMS_VERSION = "5.24.1";
-        }
-*/
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolBar != null) {
             setSupportActionBar(mToolBar);
         }
-
-        /*
-        try {
-            ParseAnalytics.trackAppOpened(getIntent());
-        } catch (Exception e) {
-
-        }*/
 
         adView = (AdView) findViewById(R.id.adView);
         if(adView != null) {
@@ -192,22 +173,20 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         String cat = leftMenuItems[1];
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
-/*
-        ParseQuery<ParseObject> costs = ParseQuery.getQuery("ChampionCosts");
-        costs.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> parseObjects, ParseException e) {
-                int i = 0;
-            }
-        });
+    }
 
-*/
+    @SuppressLint("NewApi")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setupInAppPurchases();
     }
 
     private void setupInAppPurchases() {
         Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
         serviceIntent.setPackage("com.android.vending");
-        bindService(serviceIntent, PaymentSevice.getInstance(this).getServiceConnection(), Context.BIND_AUTO_CREATE);
+        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, appPurchasedListener).getServiceConnection();
+        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
     }
 
     private void makeGetAllChampionsRequest(){
@@ -306,6 +285,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         // Setting event listener for the drawer
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+        if(mDrawerToggle != null) {
+            mDrawerToggle.syncState();
+        }
 
         // ItemClick event handler for the drawer items
         if(Commons.ADS_ENABLED) {
@@ -326,7 +308,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
+        if(mDrawerToggle != null) {
+            mDrawerToggle.syncState();
+        }
 
     }
 
