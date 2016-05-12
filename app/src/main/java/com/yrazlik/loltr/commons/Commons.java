@@ -22,6 +22,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Commons {
+
+    public static boolean ADS_ENABLED = false;
 	
 	private static Context mContext;
 	private static Commons mCommons;

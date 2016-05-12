@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.view.VideoEnabledWebChromeClient;
 import com.yrazlik.loltr.view.VideoEnabledWebView;
 
@@ -33,10 +34,16 @@ public class LiveChannelActivity extends Activity{
 
         streamUrl = getIntent().getStringExtra(EXTRA_STREAM_URL);
         // Set layout
-        setContentView(R.layout.fragment_live_video);
+        if(Commons.ADS_ENABLED) {
+            setContentView(R.layout.fragment_live_video);
+        } else {
+            setContentView(R.layout.fragment_live_video_noad);
+        }
         adView = (AdView)findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        if(adView != null) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
 
         // Save the web view
         webView = (VideoEnabledWebView) findViewById(R.id.webView);

@@ -132,24 +132,29 @@ public class LolApplication extends MultiDexApplication{
 
     public void requestNewInterstitial() {
         try {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mInterstitialAd.loadAd(adRequest);
+            if(Commons.ADS_ENABLED) {
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mInterstitialAd.loadAd(adRequest);
+            }
         }catch (Exception ignored){}
     }
 
     public void showInterstitial(){
-        if (mInterstitialAd.isLoaded()) {
-            try {
-                Handler h = new Handler();
-                h.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
-                            mInterstitialAd.show();
-                        }catch (Exception ignored){}
-                    }
-                }, 350);
-            }catch (Exception ignored){
+        if(Commons.ADS_ENABLED) {
+            if (mInterstitialAd.isLoaded()) {
+                try {
+                    Handler h = new Handler();
+                    h.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                mInterstitialAd.show();
+                            } catch (Exception ignored) {
+                            }
+                        }
+                    }, 350);
+                } catch (Exception ignored) {
+                }
             }
         }
     }

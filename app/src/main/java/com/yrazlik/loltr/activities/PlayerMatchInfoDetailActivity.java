@@ -47,10 +47,16 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_match_info_detail);
+        if(Commons.ADS_ENABLED) {
+            setContentView(R.layout.activity_player_match_info_detail);
+        } else {
+            setContentView(R.layout.activity_player_match_info_detail_noad);
+        }
         adView = (AdView)findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        if(adView != null) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
         getExtras();
         champImageIV = (ImageView)findViewById(R.id.champImage);
         userNameTV = (TextView)findViewById(R.id.userName);

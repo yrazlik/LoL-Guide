@@ -91,7 +91,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);// Getting an array of country
+        if(Commons.ADS_ENABLED) {
+            setContentView(R.layout.activity_main);
+        } else {
+            setContentView(R.layout.activity_main_noad);
+        }
 
 
         makeGetAllChampionsRequest();
@@ -156,8 +160,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }*/
 
         adView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        if(adView != null) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
         commons = Commons.getInstance(getApplicationContext());
 
         setDrawer();
