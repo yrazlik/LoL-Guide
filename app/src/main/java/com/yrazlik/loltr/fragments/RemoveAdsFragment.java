@@ -1,5 +1,8 @@
 package com.yrazlik.loltr.fragments;
 
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
@@ -11,8 +14,10 @@ import android.widget.Button;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
+import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
+import com.yrazlik.loltr.commons.Commons;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,8 +40,7 @@ public class RemoveAdsFragment extends BaseFragment{
             @Override
             public void onClick(View v) {
                 ArrayList<String> skuList = new ArrayList<String>();
-                skuList.add("premiumUpgrade");
-                skuList.add("gas");
+                skuList.add("remove_ads");
                 final Bundle querySkus = new Bundle();
                 querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
                 final Thread t = new Thread(new Runnable() {
@@ -53,8 +57,19 @@ public class RemoveAdsFragment extends BaseFragment{
                                     JSONObject object = new JSONObject(thisResponse);
                                     String sku = object.getString("productId");
                                     String price = object.getString("price");
-                                    /*    if (sku.equals("premiumUpgrade")) mPremiumUpgradePrice = price;
-                                        else if (sku.equals("gas")) mGasPrice = price;*/
+                                    if(sku.equalsIgnoreCase("remove_ads")){
+                                        Bundle buyIntentBundle = PaymentSevice.getInstance(getActivity()).buyRemoveAdsItem(sku);
+                                        if(buyIntentBundle != null) {
+                                            PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+                                            try {
+                                                getActivity().startIntentSenderForResult(pendingIntent.getIntentSender(),
+                                                        Commons.REMOVE_ADS_REQUEST_CODE, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                                                        Integer.valueOf(0));
+                                            } catch (IntentSender.SendIntentException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         } catch (RemoteException e) {

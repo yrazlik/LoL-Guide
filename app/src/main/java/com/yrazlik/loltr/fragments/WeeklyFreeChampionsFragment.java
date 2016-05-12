@@ -118,35 +118,37 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 	@Override
 	public void onSuccess(Object response) {
 		if (response instanceof WeeklyFreeChampionsResponse) {
-			WeeklyFreeChampionsResponse resp = (WeeklyFreeChampionsResponse) response;
+			try {
+				WeeklyFreeChampionsResponse resp = (WeeklyFreeChampionsResponse) response;
 
-            if(resp != null && resp.getChampions() != null && resp.getChampions().size() > 0) {
-                weeklyFreeChampIds = new ArrayList<String>();
-                for (Champion c : resp.getChampions()) {
-                    weeklyFreeChampIds.add(String.valueOf(c.getId()));
-                }
-                freeToPlayChampsSize = weeklyFreeChampIds.size();
-                ArrayList<String> pathParams = new ArrayList<String>();
-                pathParams.add("static-data");
-                pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-                pathParams.add("v1.2");
-                pathParams.add("champion");
-                HashMap<String, String> queryParams = new HashMap<String, String>();
-                queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-                queryParams.put("champData", "altimages");
-                queryParams.put("api_key", Commons.API_KEY);
-                ServiceRequest.getInstance(getContext()).makeGetRequest(
-                        Commons.ALL_CHAMPIONS_REQUEST,
-                        pathParams, queryParams, null, this);
-            }else{
-                try{
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    WeeklyFreeChampionsFragment fragment = new WeeklyFreeChampionsFragment();
-                    fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                }catch (Exception e){
-                    Commons.weeklyFreeChampions = null;
-                }
-            }
+				if (resp != null && resp.getChampions() != null && resp.getChampions().size() > 0) {
+					weeklyFreeChampIds = new ArrayList<String>();
+					for (Champion c : resp.getChampions()) {
+						weeklyFreeChampIds.add(String.valueOf(c.getId()));
+					}
+					freeToPlayChampsSize = weeklyFreeChampIds.size();
+					ArrayList<String> pathParams = new ArrayList<String>();
+					pathParams.add("static-data");
+					pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+					pathParams.add("v1.2");
+					pathParams.add("champion");
+					HashMap<String, String> queryParams = new HashMap<String, String>();
+					queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+					queryParams.put("champData", "altimages");
+					queryParams.put("api_key", Commons.API_KEY);
+					ServiceRequest.getInstance(getContext()).makeGetRequest(
+							Commons.ALL_CHAMPIONS_REQUEST,
+							pathParams, queryParams, null, this);
+				} else {
+					try {
+						FragmentManager fm = getActivity().getSupportFragmentManager();
+						WeeklyFreeChampionsFragment fragment = new WeeklyFreeChampionsFragment();
+						fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+					} catch (Exception e) {
+						Commons.weeklyFreeChampions = null;
+					}
+				}
+			}catch (Exception ignored) {}
 
 		} else if (response instanceof AllChampionsResponse) {
 			AllChampionsResponse resp = (AllChampionsResponse) response;

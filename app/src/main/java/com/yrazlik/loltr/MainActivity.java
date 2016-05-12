@@ -25,6 +25,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -877,6 +878,16 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onDestroy();
         if (PaymentSevice.getInstance(this).getServiceConnection() != null) {
             unbindService(PaymentSevice.getInstance(this).getServiceConnection());
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode ==  Commons.REMOVE_ADS_REQUEST_CODE) {
+            if(resultCode == RESULT_OK) {
+                Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
