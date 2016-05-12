@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
@@ -27,6 +28,7 @@ import android.widget.SimpleAdapter;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.fragments.AboutFragment;
@@ -92,6 +94,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setupInAppPurchases();
         if(Commons.ADS_ENABLED) {
             setContentView(R.layout.activity_main);
             mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
@@ -198,6 +201,12 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         });
 
 */
+    }
+
+    private void setupInAppPurchases() {
+        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        serviceIntent.setPackage("com.android.vending");
+        bindService(serviceIntent, PaymentSevice.getInstance(this).getServiceConnection(), Context.BIND_AUTO_CREATE);
     }
 
     private void makeGetAllChampionsRequest(){
@@ -862,4 +871,12 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             }
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (PaymentSevice.getInstance(this).getServiceConnection() != null) {
+            unbindService(PaymentSevice.getInstance(this).getServiceConnection());
+        }
+    }
 }

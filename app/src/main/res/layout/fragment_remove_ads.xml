@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/remove_ads_explanation"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textColor="@color/white"/>
 
     <Button
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/remove_ads"
         android:layout_below="@+id/removeAdsExplanation"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@color/material_dark_red"
         android:textColor="@color/white"/>
 
