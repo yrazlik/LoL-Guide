@@ -42,6 +42,7 @@ public class SplashActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
 
         if(Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0 || Commons.SELECTED_LANGUAGE == null || Commons.SELECTED_LANGUAGE.length() <= 0){
             setContentView(R.layout.activity_splash);
