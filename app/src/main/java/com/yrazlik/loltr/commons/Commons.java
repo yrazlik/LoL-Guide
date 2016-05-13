@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.commons;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentTransaction;
 
 import com.yrazlik.loltr.R;
@@ -23,7 +24,7 @@ import java.util.Locale;
 
 public class Commons {
 
-    public static boolean ADS_ENABLED = true;
+    public boolean ADS_ENABLED = true;
 	
 	private static Context mContext;
 	private static Commons mCommons;
@@ -53,6 +54,7 @@ public class Commons {
     public static final String LOL_TR_SHARED_PREFS = "LOL_TR_SHARED_PREFS";
     public static final String LOL_TR_SHARED_PREF_LANGUAGE = "LOL_TR_SHARED_PREF_LANGUAGE";
     public static final String LOL_TR_SHARED_PREF_REGION = "LOL_TR_SHARED_PREF_REGION";
+    public static final String LOL_TR_PURCHASED_AD_FREE = "LOL_TR_PURCHASED_AD_FREE";
 
     public static final String LOL_TR_SUMMONER_NAME = "LOL_TR_SUMMONER_NAME";
     public static final String LOL_TR_SUMMONER_ID = "LOL_TR_SUMMONER_ID";
@@ -319,6 +321,17 @@ public class Commons {
         }
         return null;
 
+    }
+
+    public void savePurchaseData() {
+        SharedPreferences prefs = mContext.getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
+        prefs.edit().putBoolean(Commons.LOL_TR_PURCHASED_AD_FREE, true).commit();
+    }
+
+    public boolean loadPurchaseData() {
+        SharedPreferences prefs = mContext.getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
+        boolean isPurchased = prefs.getBoolean(Commons.LOL_TR_PURCHASED_AD_FREE, false);
+        return isPurchased;
     }
 
 }

@@ -132,7 +132,7 @@ public class LolApplication extends MultiDexApplication{
 
     public void requestNewInterstitial() {
         try {
-            if(Commons.ADS_ENABLED) {
+            if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
                 AdRequest adRequest = new AdRequest.Builder().build();
                 mInterstitialAd.loadAd(adRequest);
             }
@@ -140,7 +140,7 @@ public class LolApplication extends MultiDexApplication{
     }
 
     public void showInterstitial(){
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             if (mInterstitialAd.isLoaded()) {
                 try {
                     Handler h = new Handler();

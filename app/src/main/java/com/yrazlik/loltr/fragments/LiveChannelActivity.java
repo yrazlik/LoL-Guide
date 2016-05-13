@@ -34,7 +34,7 @@ public class LiveChannelActivity extends Activity{
 
         streamUrl = getIntent().getStringExtra(EXTRA_STREAM_URL);
         // Set layout
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.fragment_live_video);
         } else {
             setContentView(R.layout.fragment_live_video_noad);

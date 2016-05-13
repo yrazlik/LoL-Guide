@@ -113,24 +113,24 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                                 for (int i = 0; i < ownedSkus.size(); ++i) {
                                     String sku = ownedSkus.get(i);
                                     if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)) {
-                                        Commons.ADS_ENABLED = false;
+                                        Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
                                     }
                                 }
                             }
                         }
                     }
                 } catch (RemoteException e) {
-                    Commons.ADS_ENABLED = false;
+                    Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
                 }
             } else {
-                Commons.ADS_ENABLED = false;
+                Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
             }
             continueSetup();
         }
     };
 
     private void continueSetup() {
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.activity_main);
             mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
                     R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
@@ -179,13 +179,20 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupInAppPurchases();
+        boolean isPurchased = Commons.getInstance(getApplicationContext()).loadPurchaseData();
+        if(isPurchased) {
+            Commons.getInstance(getApplicationContext()).ADS_ENABLED = true;
+            setupInAppPurchases(null);
+            continueSetup();
+        } else {
+            setupInAppPurchases(appPurchasedListener);
+        }
     }
 
-    private void setupInAppPurchases() {
+    private void setupInAppPurchases(IsAppPurchasedListener listener) {
         Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
         serviceIntent.setPackage("com.android.vending");
-        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, appPurchasedListener).getServiceConnection();
+        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, listener).getServiceConnection();
         bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
     }
 
@@ -225,7 +232,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 
     private void setDrawer() {
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             leftMenuItems = getResources().getStringArray(R.array.titles);
         } else {
             leftMenuItems = getResources().getStringArray(R.array.titles_noad);
@@ -290,7 +297,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
         // ItemClick event handler for the drawer items
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             mDrawerList.setOnItemClickListener(leftMenuWithAdsClickListener);
         } else {
             mDrawerList.setOnItemClickListener(leftMenuNoAdsClickListener);
@@ -478,7 +485,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
     public void updateDrawer() {
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             leftMenuItems = getResources().getStringArray(R.array.titles);
         } else {
             leftMenuItems = getResources().getStringArray(R.array.titles_noad);
@@ -870,6 +877,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==  Commons.REMOVE_ADS_REQUEST_CODE) {
             if(resultCode == RESULT_OK) {
+                Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
                 Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
             }
         }

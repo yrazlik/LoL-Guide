@@ -58,7 +58,7 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.activity_match_info);
         } else {
             setContentView(R.layout.activity_match_info_noad);

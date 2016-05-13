@@ -24,7 +24,7 @@ public class CountryFragment extends Fragment{
 
 		String[] countries;
 
-		if(Commons.ADS_ENABLED) {
+		if(Commons.getInstance(getActivity().getApplicationContext()).ADS_ENABLED) {
 			countries = getResources().getStringArray(R.array.titles);
 		} else {
 			countries = getResources().getStringArray(R.array.titles_noad);

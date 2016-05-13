@@ -47,7 +47,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(Commons.ADS_ENABLED) {
+        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.activity_player_match_info_detail);
         } else {
             setContentView(R.layout.activity_player_match_info_detail_noad);
