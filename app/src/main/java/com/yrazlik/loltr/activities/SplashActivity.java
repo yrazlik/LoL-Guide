@@ -168,7 +168,7 @@ public class SplashActivity extends Activity{
     private void setupInAppPurchases(IsAppPurchasedListener listener) {
         Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
         serviceIntent.setPackage("com.android.vending");
-        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, listener, false).getServiceConnection();
+        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, listener, true).getServiceConnection();
         bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
     }
 
@@ -208,7 +208,9 @@ public class SplashActivity extends Activity{
     protected void onPause() {
         super.onPause();
         if (PaymentSevice.getInstance(this).getServiceConnection() != null) {
-            unbindService(PaymentSevice.getInstance(this).getServiceConnection());
+            try {
+                unbindService(PaymentSevice.getInstance(this).getServiceConnection());
+            }catch (IllegalArgumentException ignored) {}
         }
     }
 }

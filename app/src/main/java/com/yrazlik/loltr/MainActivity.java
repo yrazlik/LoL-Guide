@@ -1,7 +1,9 @@
 package com.yrazlik.loltr;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,6 +34,7 @@ import android.widget.Toast;
 import com.android.vending.billing.IInAppBillingService;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.yrazlik.loltr.activities.SplashActivity;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
@@ -834,7 +837,11 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     protected void onDestroy() {
         super.onDestroy();
         if (PaymentSevice.getInstance(this).getServiceConnection() != null) {
-            unbindService(PaymentSevice.getInstance(this).getServiceConnection());
+            try {
+                unbindService(PaymentSevice.getInstance(this).getServiceConnection());
+            }catch (IllegalArgumentException e) {
+
+            }
         }
     }
 
@@ -844,7 +851,20 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         if(requestCode ==  Commons.REMOVE_ADS_REQUEST_CODE) {
             if(resultCode == RESULT_OK) {
                 Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
-                Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
+                Commons.getInstance(getApplicationContext()).savePurchaseData();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage(getResources().getString(R.string.purchase_successful)).setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent restartIntent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+                        PendingIntent intent = PendingIntent.getActivity(
+                                MainActivity.this, 0,
+                                restartIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                        manager.set(AlarmManager.RTC, System.currentTimeMillis() + 1, intent);
+                        System.exit(0);
+                    }
+                }).setCancelable(false).show();
             }
         }
     }

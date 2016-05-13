@@ -309,6 +309,7 @@
 
     <string name="remove_ads">Remove Ads</string>
     <string name="remove_ads_explanation">You can donate us by removing ads and use the ad-free version of LoL Guide if you wish. </string>
+    <string name="purchase_successful">You have succesfully removed ads. The app will restart now for the changes to take effect.</string>
 
 
 </resources>
