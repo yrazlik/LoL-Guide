@@ -10,6 +10,7 @@ import android.os.RemoteException;
 
 import com.android.vending.billing.IInAppBillingService;
 import com.yrazlik.loltr.MainActivity;
+import com.yrazlik.loltr.activities.SplashActivity;
 
 /**
  * Created by yrazlik on 12/05/16.
@@ -19,14 +20,19 @@ public class PaymentSevice {
     private static PaymentSevice mInstance;
     private IInAppBillingService mService;
     private ServiceConnection mServiceConn;
-    private MainActivity.IsAppPurchasedListener appPurchasedListener;
+    private SplashActivity.IsAppPurchasedListener appPurchasedListener;
     private Context mContext;
 
-    public static PaymentSevice getInstance(Context context, MainActivity.IsAppPurchasedListener appPurchasedListener) {
-        if(mInstance == null) {
+    public static PaymentSevice getInstance(Context context, SplashActivity.IsAppPurchasedListener appPurchasedListener, boolean reCreate) {
+        if(reCreate) {
             mInstance = new PaymentSevice(context, appPurchasedListener);
+            return mInstance;
+        } else {
+            if (mInstance == null) {
+                mInstance = new PaymentSevice(context, appPurchasedListener);
+            }
+            return mInstance;
         }
-        return mInstance;
     }
 
     public static PaymentSevice getInstance(Context context) {
@@ -36,7 +42,7 @@ public class PaymentSevice {
         return mInstance;
     }
 
-    private PaymentSevice(Context context, final MainActivity.IsAppPurchasedListener appPurchasedListener) {
+    private PaymentSevice(Context context, final SplashActivity.IsAppPurchasedListener appPurchasedListener) {
         this.mContext = context;
         this.appPurchasedListener = appPurchasedListener;
         mServiceConn = new ServiceConnection() {

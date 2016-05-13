@@ -5,28 +5,37 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.view.RegionDialog;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
  * Created by yrazlik on 1/13/16.
  */
 public class SplashActivity extends Activity{
+
+    public interface IsAppPurchasedListener {
+        void onAppPurchaseResultReceived();
+    }
 
     private boolean mainActivityStarted = false;
 
@@ -48,7 +57,7 @@ public class SplashActivity extends Activity{
                             }else{
                                 Toast.makeText(getApplicationContext(), "Bolge, " + Commons.SELECTED_REGION.toUpperCase() + " olarak secildi.", Toast.LENGTH_SHORT).show();
                             }
-                            startMainActivity();
+                            getPurchaseEvent();
                         } else {
                             saveToSharedPrefs();
                             if(Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
@@ -56,7 +65,7 @@ public class SplashActivity extends Activity{
                             }else{
                                 Toast.makeText(getApplicationContext(), "Bolge, " + Commons.SELECTED_REGION.toUpperCase() + " olarak secildi.", Toast.LENGTH_SHORT).show();
                             }
-                            startMainActivity();
+                            getPurchaseEvent();
                         }
                     }
 
@@ -64,10 +73,10 @@ public class SplashActivity extends Activity{
                 d.show();
             }else{
                 setRegionAuomatically();
-                startMainActivity();
+                getPurchaseEvent();
             }
         }else{
-            startMainActivity();
+            getPurchaseEvent();
         }
     }
 
@@ -142,5 +151,63 @@ public class SplashActivity extends Activity{
             prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, Commons.SELECTED_LANGUAGE).commit();
             prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_REGION, Commons.SELECTED_REGION).commit();
         }catch (Exception ignored){}
+    }
+
+    private void getPurchaseEvent() {
+        boolean isPurchased = Commons.getInstance(getApplicationContext()).loadPurchaseData();
+        if(isPurchased) {
+            Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+            setupInAppPurchases(null);
+            startMainActivity();
+        } else {
+            setupInAppPurchases(appPurchasedListener);
+        }
+    }
+
+    private void setupInAppPurchases(IsAppPurchasedListener listener) {
+        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        serviceIntent.setPackage("com.android.vending");
+        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, listener, false).getServiceConnection();
+        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+    }
+
+    private IsAppPurchasedListener appPurchasedListener = new IsAppPurchasedListener() {
+        @Override
+        public void onAppPurchaseResultReceived() {
+            IInAppBillingService mService = PaymentSevice.getInstance(SplashActivity.this).getService();
+            if(mService != null) {
+                try {
+                    Bundle ownedItems = mService.getPurchases(3, getPackageName(), "inapp", null);
+                    if(ownedItems != null) {
+                        int response = ownedItems.getInt("RESPONSE_CODE");
+                        if (response == 0) {
+                            ArrayList<String> ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+                            if(ownedSkus != null && ownedSkus.size() > 0) {
+                                for (int i = 0; i < ownedSkus.size(); ++i) {
+                                    String sku = ownedSkus.get(i);
+                                    if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)) {
+                                        Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+                                        Commons.getInstance(getApplicationContext()).savePurchaseData();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (RemoteException e) {
+                    Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+                }
+            } else {
+                Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+            }
+            startMainActivity();
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (PaymentSevice.getInstance(this).getServiceConnection() != null) {
+            unbindService(PaymentSevice.getInstance(this).getServiceConnection());
+        }
     }
 }

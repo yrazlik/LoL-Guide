@@ -65,9 +65,7 @@ import java.util.Map;
 
 public class MainActivity extends ActionBarActivity implements ResponseListener {
 
-    public interface IsAppPurchasedListener {
-        void onAppPurchaseResultReceived();
-    }
+
 
     int allchampionsRequestCount = 0, allSpellsRequestCount = 0;
     int mPosition = -1;
@@ -97,37 +95,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private Commons commons;
     private AdView adView;
     private Toolbar mToolBar;
-
-    private IsAppPurchasedListener appPurchasedListener = new IsAppPurchasedListener() {
-        @Override
-        public void onAppPurchaseResultReceived() {
-            IInAppBillingService mService = PaymentSevice.getInstance(MainActivity.this).getService();
-            if(mService != null) {
-                try {
-                    Bundle ownedItems = mService.getPurchases(3, getPackageName(), "inapp", null);
-                    if(ownedItems != null) {
-                        int response = ownedItems.getInt("RESPONSE_CODE");
-                        if (response == 0) {
-                            ArrayList<String> ownedSkus = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
-                            if(ownedSkus != null && ownedSkus.size() > 0) {
-                                for (int i = 0; i < ownedSkus.size(); ++i) {
-                                    String sku = ownedSkus.get(i);
-                                    if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)) {
-                                        Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } catch (RemoteException e) {
-                    Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
-                }
-            } else {
-                Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
-            }
-            continueSetup();
-        }
-    };
 
     private void continueSetup() {
         if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
@@ -179,21 +146,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boolean isPurchased = Commons.getInstance(getApplicationContext()).loadPurchaseData();
-        if(isPurchased) {
-            Commons.getInstance(getApplicationContext()).ADS_ENABLED = true;
-            setupInAppPurchases(null);
-            continueSetup();
-        } else {
-            setupInAppPurchases(appPurchasedListener);
-        }
-    }
-
-    private void setupInAppPurchases(IsAppPurchasedListener listener) {
-        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-        serviceIntent.setPackage("com.android.vending");
-        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, listener).getServiceConnection();
-        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+        setupInAppPurchases();
+        continueSetup();
     }
 
     private void makeGetAllChampionsRequest(){
@@ -863,6 +817,18 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             }
         }
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void setupInAppPurchases() {
+        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        serviceIntent.setPackage("com.android.vending");
+        ServiceConnection mServiceConn = PaymentSevice.getInstance(this, null, true).getServiceConnection();
+        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+    }
 
     @Override
     protected void onDestroy() {
