@@ -130,6 +130,9 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="com.yrazlik.loltr.activities.CreditsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"
             android:theme="@style/Theme.IAPTheme" />
         <activity

@@ -1,5 +1,6 @@
 package com.yrazlik.loltr.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.activities.CreditsActivity;
 import com.yrazlik.loltr.commons.Commons;
 
 /**
@@ -21,6 +23,7 @@ public class AboutFragment extends BaseFragment {
 
 
     private ImageView parentBG;
+    private TextView seeCreditsTV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,6 +37,14 @@ public class AboutFragment extends BaseFragment {
             currentVersionTV.setText("Version " + Commons.LATEST_VERSION + ".");
         }
 
+        seeCreditsTV = (TextView) v.findViewById(R.id.seeCreditsTV);
+        seeCreditsTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CreditsActivity.class);
+                getActivity().startActivity(i);
+            }
+        });
         return v;
     }
 
