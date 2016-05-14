@@ -17,7 +17,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:visibility="gone"
-            android:background="@drawable/close2"
+            android:background="@android:drawable/ic_menu_close_clear_cancel"
             android:layout_alignTop="@+id/videoView"
             android:layout_marginTop="-12dp"
             android:layout_alignParentRight="true"/>

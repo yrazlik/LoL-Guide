@@ -57,7 +57,7 @@
                              android:layout_alignParentTop="true"
                              android:background="@color/red_text_color"
                              android:gravity="center"
-                             android:src="@drawable/search_icon"/>
+                             android:src="@android:drawable/ic_menu_search"/>
 
 
             </RelativeLayout>
