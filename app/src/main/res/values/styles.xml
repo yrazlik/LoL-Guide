@@ -34,7 +34,6 @@
     
     <style name="ProgressBar">
         <item name="android:indeterminateOnly">true</item>
-        <item name="android:indeterminateDrawable">@drawable/loading_progress</item>
         <item name="android:indeterminateBehavior">repeat</item>
         <item name="android:indeterminateDuration">3500</item>
         <item name="android:minWidth">48dip</item>
