@@ -163,7 +163,7 @@ public class LolApplication extends MultiDexApplication{
         ad_show++;
         if(ad_show == 3){
             return true;
-        } else if(ad_show != 0 && ad_show % 9 == 0){
+        } else if(ad_show != 0 && ad_show % 10 == 0){
             return true;
         }
         return false;

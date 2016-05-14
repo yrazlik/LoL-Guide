@@ -175,7 +175,7 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 		FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
-		showInterstitial();
+	//	showInterstitial();
 		
 	}
 
