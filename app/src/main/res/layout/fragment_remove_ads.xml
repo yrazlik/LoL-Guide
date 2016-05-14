@@ -18,7 +18,7 @@
         android:text="@string/remove_ads"
         android:layout_below="@+id/removeAdsExplanation"
         android:layout_marginTop="15dp"
-        android:background="@color/material_dark_red"
+        android:background="@color/red_text_color"
         android:textColor="@color/white"/>
 
 </RelativeLayout>

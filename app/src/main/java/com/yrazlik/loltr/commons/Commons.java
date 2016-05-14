@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class Commons {
 
-    public boolean ADS_ENABLED = true;
+    public boolean ADS_ENABLED = false;
 	
 	private static Context mContext;
 	private static Commons mCommons;

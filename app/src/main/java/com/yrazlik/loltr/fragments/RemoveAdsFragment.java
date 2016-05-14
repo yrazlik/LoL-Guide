@@ -56,7 +56,6 @@ public class RemoveAdsFragment extends BaseFragment{
                                 for (String thisResponse : responseList) {
                                     JSONObject object = new JSONObject(thisResponse);
                                     String sku = object.getString("productId");
-                                    String price = object.getString("price");
                                     if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)){
                                         Bundle buyIntentBundle = PaymentSevice.getInstance(getActivity()).buyRemoveAdsItem(sku);
                                         if(buyIntentBundle != null) {

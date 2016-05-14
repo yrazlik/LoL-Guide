@@ -79,6 +79,26 @@
                     android:textSize="16sp"
                     android:textColor="@color/white"/>
 
+            <TextView
+                android:id="@+id/removeAdsExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_ads_explanation"
+                android:textSize="15sp"
+                android:layout_below="@+id/buttonSave"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/removeAdsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_ads"
+                android:layout_below="@+id/removeAdsExplanation"
+                android:layout_marginTop="15dp"
+                android:background="@color/red_text_color"
+                android:textColor="@color/white"/>
+
 
         </RelativeLayout>
     </ScrollView>
