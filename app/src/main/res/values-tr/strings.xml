@@ -303,7 +303,7 @@
     <string name="champions">ŞAMPİYONLAR</string>
 
     <string name="remove_ads">Reklamları Kaldır</string>
-    <string name="remove_ads_explanation">Bağışta bulunarak reklamları kaldırabilir ve LoL TR uygulamasını reklamsız olarak kullanabilirsiniz.</string>
+    <string name="remove_ads_explanation">İsterseniz reklamları kaldırabilir ve LoL TR uygulamasını reklamsız olarak kullanabilirsiniz.</string>
     <string name="purchase_successful">Reklamlar kaldırıldı. Uygulama yeniden başlatılacak.</string>
 
 </resources>

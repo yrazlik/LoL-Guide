@@ -31,9 +31,11 @@
 
         <ImageView
             android:id="@+id/filterIcon"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="3dp"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/filter_three"/>
     </RelativeLayout>
 

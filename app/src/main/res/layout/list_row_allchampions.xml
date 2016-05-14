@@ -35,8 +35,8 @@
 
     <ImageView
         android:id="@+id/rightArrow"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
         android:layout_centerVertical="true"
