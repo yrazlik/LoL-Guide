@@ -12,6 +12,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.DisplayMetrics;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.vending.billing.IInAppBillingService;
@@ -27,11 +28,18 @@ import com.yrazlik.loltr.view.RegionDialog;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by yrazlik on 1/13/16.
  */
 public class SplashActivity extends Activity{
+
+    private TextView loadingDotsTV;
+    private Timer timer;
+    private int [] dots = {R.string.oneDot, R.string.twoDots, R.string.threeDots};
+    int timerTick = 0;
 
     public interface IsAppPurchasedListener {
         void onAppPurchaseResultReceived();
@@ -43,6 +51,9 @@ public class SplashActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        loadingDotsTV = (TextView) findViewById(R.id.loadingDotsTV);
+
+        animateThreeDots();
 
         if(Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0 || Commons.SELECTED_LANGUAGE == null || Commons.SELECTED_LANGUAGE.length() <= 0){
             setContentView(R.layout.activity_splash);
@@ -79,6 +90,22 @@ public class SplashActivity extends Activity{
         }else{
             getPurchaseEvent();
         }
+    }
+
+    private void animateThreeDots() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingDotsTV.setText(dots[timerTick % 3]);
+                        timerTick++;
+                    }
+                });
+            }
+        }, 1, 500);
     }
 
     private void startMainActivity(){
@@ -211,6 +238,15 @@ public class SplashActivity extends Activity{
             try {
                 unbindService(PaymentSevice.getInstance(this).getServiceConnection());
             }catch (IllegalArgumentException ignored) {}
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(timer != null) {
+            timer.cancel();
+            timer.purge();
         }
     }
 }
