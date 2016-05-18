@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -78,13 +79,12 @@ public class AppRater {
         dialog.setTitle(mContext.getResources().getString(R.string.giveRating));
 
         LinearLayout ll = new LinearLayout(mContext);
+        ll.setPadding(20, 32, 20, 32);
         ll.setOrientation(LinearLayout.VERTICAL);
-       
+        ll.setGravity(Gravity.CENTER);
 
         TextView tv = new TextView(mContext);
         tv.setText(mContext.getResources().getString(R.string.rateUs));
-        tv.setWidth(240);
-        tv.setPadding(4, 0, 4, 10);
         ll.addView(tv);
 
         Button b1 = new Button(mContext);
@@ -124,6 +124,7 @@ public class AppRater {
         ll.addView(b3);
 
         dialog.setContentView(ll);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.show();
     }
 }

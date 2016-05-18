@@ -59,130 +59,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1391068-8f35-43a0-be80-247c2e588452" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_rating.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/v7/mediarouter/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/ads/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/analytics/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appindexing/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appinvite/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/appstate/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/auth/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/base/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/cast/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/drive/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/fitness/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/games/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/gcm/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/identity/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/location/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/maps/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/measurement/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/nearby/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/panorama/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/plus/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/safetynet/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/vision/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wallet/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/google/android/gms/wearable/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$menu.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$raw.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FilterActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/FilterActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/ItemDetailActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/ItemDetailActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchDetailActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchDetailActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/AllChampionsListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/AllChampionsListAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionDiscountsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionDiscountsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSkinsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSkinsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSpellsListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSpellsListAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/CostumeDiscountsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/CostumeDiscountsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewItemsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/GridViewItemsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ItemsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ItemsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ListAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/LiveChannelsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/LiveChannelsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchHistoryAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchHistoryAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchInfoAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchInfoAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/NewsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/NewsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RecentSearchesAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RecentSearchesAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RuneAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RuneAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/StatisticsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/StatisticsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AboutFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AboutFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllItemsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllItemsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionAbilitiesVideosFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDetailFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDetailFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionDiscountsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionOverviewFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionOverviewFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSkinsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSkinsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSpellsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSpellsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ContactFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ContactFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CostumeDiscountsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CountryFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/CountryFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/DiscountsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/DiscountsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ItemDetailFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ItemDetailFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LegendFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LegendFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchDetailFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchDetailFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchInfoFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchInfoFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsDetailFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsDetailFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/RunesFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/RunesFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/SettingsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/SettingsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/StrategyFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/StrategyFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/mediarouter/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/mediarouter/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/ads/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/ads/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/analytics/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/analytics/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/appindexing/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/appindexing/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/appinvite/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/appinvite/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/appstate/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/appstate/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/auth/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/auth/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/base/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/base/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/cast/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/cast/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/drive/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/drive/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/fitness/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/fitness/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/games/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/games/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/gcm/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/gcm/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/identity/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/identity/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/location/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/location/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/maps/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/maps/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/measurement/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/measurement/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/nearby/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/nearby/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/panorama/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/panorama/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/plus/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/plus/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/safetynet/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/safetynet/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/vision/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/vision/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/wallet/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/wallet/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/wearable/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/google/android/gms/wearable/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/yrazlik/loltr/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/yrazlik/loltr/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/SplashActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
@@ -218,10 +98,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
-              <folding>
-                <element signature="e#4041#4400#0" expanded="true" />
-                <element signature="e#4399#4400#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -232,19 +109,14 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="425" column="52" selection-start-line="425" selection-start-column="52" selection-end-line="425" selection-end-column="52" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#9712#9732#0" expanded="true" />
-                <element signature="e#9734#9755#0" expanded="true" />
-                <element signature="e#10115#10165#0" expanded="true" />
-                <element signature="e#16729#16956#0" expanded="true" />
-                <element signature="e#16955#16956#0" expanded="true" />
-                <element signature="e#35064#35118#0" expanded="true" />
-                <element signature="e#35138#35175#0" expanded="true" />
-                <element signature="e#36127#36172#0" expanded="true" />
-                <element signature="e#36192#36230#0" expanded="true" />
-                <element signature="e#36232#36412#0" expanded="true" />
-                <element signature="e#36411#36412#0" expanded="true" />
-                <element signature="e#36449#36486#0" expanded="true" />
+                <element signature="e#16121#16122#0" expanded="false" />
+                <element signature="e#16156#16157#0" expanded="false" />
+                <element signature="e#16860#16861#0" expanded="false" />
+                <element signature="e#16933#16934#0" expanded="false" />
+                <element signature="e#33753#33754#0" expanded="false" />
+                <element signature="e#33785#33786#0" expanded="false" />
+                <element signature="e#36361#36362#0" expanded="false" />
+                <element signature="e#36401#36402#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -253,36 +125,10 @@
       <file leaf-file-name="AppRater.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67654985">
-              <caret line="81" column="7" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.48247978">
+              <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2847#2901#0" expanded="true" />
-                <element signature="e#3083#3133#0" expanded="true" />
-                <element signature="e#3284#3338#0" expanded="true" />
-                <element signature="e#3371#3664#0" expanded="true" />
-                <element signature="e#3663#3664#0" expanded="true" />
-                <element signature="e#3753#3810#0" expanded="true" />
-                <element signature="e#3843#4017#0" expanded="true" />
-                <element signature="e#4016#4017#0" expanded="true" />
-                <element signature="e#4106#4163#0" expanded="true" />
-                <element signature="e#4196#4567#0" expanded="true" />
-                <element signature="e#4566#4567#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dialog_rating.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_rating.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9433963">
-              <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-              <folding>
-                <element signature="e#377#393#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2226,7 +2072,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/ContactFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_remove_ads.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/RemoveAdsFragment.java" />
@@ -2257,7 +2102,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_abilities.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/rune_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/AboutFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/CreditsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml" />
@@ -2272,9 +2116,11 @@
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en/values-en.xml" />
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-tr/values-tr.xml" />
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/themes.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java" />
       </list>
@@ -2490,6 +2336,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2501,7 +2348,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2871,13 +2717,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java</url>
-          <line>60</line>
+          <line>61</line>
           <properties />
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java</url>
-          <line>46</line>
+          <line>47</line>
           <properties />
           <option name="timeStamp" value="96" />
         </line-breakpoint>
@@ -2901,11 +2747,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/back.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_player_match_info_detail_noad.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -3026,13 +2867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7099447">
-          <caret line="97" column="43" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/AboutFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41888618">
@@ -3107,7 +2941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3221,19 +3054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_rating.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9433963">
-          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="e#377#393#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -3257,10 +3077,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
-          <folding>
-            <element signature="e#4041#4400#0" expanded="true" />
-            <element signature="e#4399#4400#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3268,7 +3085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.375">
           <caret line="265" column="33" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3277,187 +3093,187 @@
         <state vertical-scroll-proportion="-2.6862745">
           <caret line="474" column="37" selection-start-line="474" selection-start-column="37" selection-end-line="474" selection-end-column="37" />
           <folding>
-            <marker date="1463551729000" expanded="true" signature="99:162810" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="132:590" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="628:1054" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="67977:68178" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="68243:68727" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="68797:69228" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="69646:69845" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="69921:70130" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="70216:70523" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="70604:71000" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="71055:71222" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="71277:71444" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="71500:71712" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="71769:71939" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="71997:72169" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="72227:72399" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="72457:72629" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="72687:72859" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="72917:73086" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="73143:73325" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="73380:73551" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="73614:73796" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="73913:73926" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="74043:74056" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="74112:74286" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="74350:74534" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="74588:74753" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="74825:75036" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="75107:75244" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="75312:75375" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="75430:75602" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="75665:75848" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="75905:76073" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="76138:76320" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="76375:76541" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="76604:76786" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="76896:77060" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="77177:77361" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="77494:77685" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="77797:77976" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="78104:78290" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="78974:79075" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="79186:79199" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="79310:79323" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="79892:79905" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="80032:80045" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="80118:80131" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="80193:80479" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="80854:81199" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="81255:81432" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="81708:82229" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="82628:82973" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="83035:83212" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="83730:85583" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="85645:85825" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="85925:87907" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="87978:97334" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="96982:97101" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="97414:98601" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="98684:108138" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="107786:107905" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="108230:109419" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="109529:109955" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="110041:110285" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="110346:111408" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="111465:111664" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="111732:111900" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="111969:112447" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="112516:112941" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="113005:113614" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="113678:113762" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="113825:114290" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="114352:114854" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="114925:115229" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="115944:116042" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="116109:116186" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="116308:116506" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="116562:116762" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="116816:116932" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="117007:117073" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="117538:117705" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="117807:118247" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="118362:118511" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="118587:118849" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="118921:119202" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="119665:119864" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="119976:119989" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="120103:120116" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="120244:120355" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="120469:120566" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="120672:120685" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="120751:120878" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="120945:121333" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="121416:121514" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="121573:121636" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="121729:121895" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="121995:122008" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="122068:122195" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="122284:122297" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="122386:122741" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="122852:122865" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="122950:123150" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="123226:124037" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="124099:124331" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="124423:125063" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="125123:125235" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="125342:125571" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="125644:126438" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="126529:126716" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="126744:127182" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="127215:127308" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="127342:127436" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="127507:127873" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="127953:128063" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="128182:128254" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="128315:131116" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="131189:134118" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="134867:135424" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="136047:136060" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="136151:136289" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="136411:136627" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="136715:136787" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="136872:136939" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="137038:137110" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="137200:137277" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="137364:137520" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="137613:137690" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="137783:137863" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="137956:138034" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="138154:138308" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="138398:138507" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="138539:138843" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="140682:140695" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="141262:141275" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="142772:142785" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="143710:143723" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="143852:143865" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="144756:144769" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="144894:144907" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="146108:146218" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="146265:146375" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="146456:146677" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="147244:147951" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="148004:148700" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="149884:150352" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="150472:150536" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="150598:151065" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="151111:152069" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="152156:152169" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="152268:152281" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="152382:152395" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="152498:152511" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="152614:152627" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="153162:153175" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="153284:153297" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="155071:155084" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="155604:155617" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="155732:155745" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="157002:157015" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="157726:157739" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="157844:157857" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="157948:157961" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="158052:158065" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="158178:158191" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="159715:160128" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="160202:160369" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="160404:160572" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="160605:160727" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="160760:160882" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="160915:161037" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="161070:161192" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="161225:161347" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="161380:161502" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="161539:161712" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="161745:161867" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="161900:162022" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="162055:162177" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="162210:162332" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="162365:162487" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="162520:162642" placeholder="..." />
-            <marker date="1463551729000" expanded="true" signature="162675:162797" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="99:162855" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="132:590" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="628:1054" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="68022:68223" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="68288:68765" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="68797:69228" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="69646:69845" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="69921:70130" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="70216:70523" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="70604:71000" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="71055:71222" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="71277:71444" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="71500:71712" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="71769:71939" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="71997:72169" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="72227:72399" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="72457:72629" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="72687:72859" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="72917:73086" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="73143:73325" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="73380:73551" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="73614:73796" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="73913:73926" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="74043:74056" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="74112:74286" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="74350:74534" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="74588:74753" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="74825:75036" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="75107:75244" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="75312:75375" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="75430:75602" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="75665:75848" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="75905:76073" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="76138:76320" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="76375:76541" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="76604:76786" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="76896:77060" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="77177:77361" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="77494:77685" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="77797:77976" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="78104:78290" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="78974:79075" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="79186:79199" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="79310:79323" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="79892:79905" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="80032:80045" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="80118:80131" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="80193:80479" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="80854:81199" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="81255:81432" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="81708:82229" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="82628:82973" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="83035:83212" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="83730:85583" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="85645:85825" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="85925:87907" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="87978:97334" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="96982:97101" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="97414:98601" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="98684:108138" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="107786:107905" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="108230:109419" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="109529:109955" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="110041:110285" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="110346:111408" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="111465:111664" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="111732:111900" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="111969:112447" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="112516:112941" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="113005:113614" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="113678:113762" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="113825:114290" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="114352:114854" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="114925:115229" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="115944:116042" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="116109:116186" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="116308:116506" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="116562:116762" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="116816:116932" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="117007:117073" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="117538:117705" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="117807:118247" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="118362:118511" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="118587:118849" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="118921:119202" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="119665:119864" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="119976:119989" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="120103:120116" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="120244:120355" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="120469:120566" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="120672:120685" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="120751:120878" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="120945:121333" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="121416:121514" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="121573:121636" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="121729:121895" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="121995:122008" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="122068:122195" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="122284:122297" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="122386:122741" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="122852:122865" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="122950:123150" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="123226:124037" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="124099:124331" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="124423:125063" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="125123:125235" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="125342:125571" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="125644:126438" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="126529:126716" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="126744:127182" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="127215:127308" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="127462:127481" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="127552:127918" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="127998:128108" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="128227:128299" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="128360:131161" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="131234:134163" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="134912:135469" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="136092:136105" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="136196:136334" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="136456:136672" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="136760:136832" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="136917:136984" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="137083:137155" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="137245:137322" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="137409:137565" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="137658:137735" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="137828:137908" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="138001:138079" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="138199:138353" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="138443:138552" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="138584:138888" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="140727:140740" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="141307:141320" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="142817:142830" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="143755:143768" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="143897:143910" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="144801:144814" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="144939:144952" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="146153:146263" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="146310:146420" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="146501:146722" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="147289:147996" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="148049:148745" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="149929:150397" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="150517:150581" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="150643:151110" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="151156:152114" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="152201:152214" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="152313:152326" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="152427:152440" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="152543:152556" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="152659:152672" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="153207:153220" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="153329:153342" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="155116:155129" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="155649:155662" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="155777:155790" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="157047:157060" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="157771:157784" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="157889:157902" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="157993:158006" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="158097:158110" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="158223:158236" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="159760:160173" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="160247:160414" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="160449:160617" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="160650:160772" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="160805:160927" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="160960:161082" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="161115:161237" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="161270:161392" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="161425:161547" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="161584:161757" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="161790:161912" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="161945:162067" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="162100:162222" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="162255:162377" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="162410:162532" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="162565:162687" placeholder="..." />
+            <marker date="1463569266000" expanded="true" signature="162720:162842" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -3466,31 +3282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33161953">
           <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35759494">
-          <caret line="308" column="71" selection-start-line="308" selection-start-column="71" selection-end-line="308" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7848101">
-          <caret line="321" column="37" selection-start-line="321" selection-start-column="37" selection-end-line="321" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25675675">
-          <caret line="316" column="50" selection-start-line="316" selection-start-column="50" selection-end-line="316" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3499,40 +3290,75 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="425" column="52" selection-start-line="425" selection-start-column="52" selection-end-line="425" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9712#9732#0" expanded="true" />
-            <element signature="e#9734#9755#0" expanded="true" />
-            <element signature="e#10115#10165#0" expanded="true" />
-            <element signature="e#16729#16956#0" expanded="true" />
-            <element signature="e#16955#16956#0" expanded="true" />
-            <element signature="e#35064#35118#0" expanded="true" />
-            <element signature="e#35138#35175#0" expanded="true" />
-            <element signature="e#36127#36172#0" expanded="true" />
-            <element signature="e#36192#36230#0" expanded="true" />
-            <element signature="e#36232#36412#0" expanded="true" />
-            <element signature="e#36411#36412#0" expanded="true" />
-            <element signature="e#36449#36486#0" expanded="true" />
+            <element signature="e#16121#16122#0" expanded="false" />
+            <element signature="e#16156#16157#0" expanded="false" />
+            <element signature="e#16860#16861#0" expanded="false" />
+            <element signature="e#16933#16934#0" expanded="false" />
+            <element signature="e#33753#33754#0" expanded="false" />
+            <element signature="e#33785#33786#0" expanded="false" />
+            <element signature="e#36361#36362#0" expanded="false" />
+            <element signature="e#36401#36402#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/themes.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.328125">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.596875">
+          <caret line="315" column="111" selection-start-line="315" selection-start-column="111" selection-end-line="315" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.484375">
+          <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4375">
+          <caret line="326" column="125" selection-start-line="326" selection-start-column="0" selection-end-line="327" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_rating.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.375">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67654985">
-          <caret line="81" column="7" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.48247978">
+          <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2847#2901#0" expanded="true" />
-            <element signature="e#3083#3133#0" expanded="true" />
-            <element signature="e#3284#3338#0" expanded="true" />
-            <element signature="e#3371#3664#0" expanded="true" />
-            <element signature="e#3663#3664#0" expanded="true" />
-            <element signature="e#3753#3810#0" expanded="true" />
-            <element signature="e#3843#4017#0" expanded="true" />
-            <element signature="e#4016#4017#0" expanded="true" />
-            <element signature="e#4106#4163#0" expanded="true" />
-            <element signature="e#4196#4567#0" expanded="true" />
-            <element signature="e#4566#4567#0" expanded="true" />
           </folding>
         </state>
       </provider>
