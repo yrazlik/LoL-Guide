@@ -20,6 +20,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.yrazlik.loltr.AppRater;
 import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
@@ -51,6 +52,7 @@ public class SplashActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        AppRater.app_launched(getApplicationContext());
         loadingDotsTV = (TextView) findViewById(R.id.loadingDotsTV);
 
         animateThreeDots();

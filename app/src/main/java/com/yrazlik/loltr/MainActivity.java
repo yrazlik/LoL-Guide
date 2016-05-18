@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
@@ -420,25 +421,21 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             } else {
                 int count = getSupportFragmentManager().getBackStackEntryCount();
                 if (count <= 1) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setMessage(getResources().getString(R.string.areyousure)).setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    SharedPreferences prefs = getApplicationContext().getSharedPreferences(AppRater.SHARED_PREFS_APPRATER, 0);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    if (AppRater.showRateDialog(this, editor, new AppRater.DialogDismissedListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
+                        public void onDialogDismissed() {
+                            showAlertDialog();
                         }
-                    })
-                            .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            }).show();
+                    })) {
+                    } else {
+                        showAlertDialog();
+                    }
                 } else {
                     getSupportFragmentManager().popBackStack();
                 }
             }
-
-
         }
 
     public void updateDrawer() {
@@ -867,5 +864,21 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 }).setCancelable(false).show();
             }
         }
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage(getResources().getString(R.string.areyousure)).setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
     }
 }

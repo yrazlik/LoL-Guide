@@ -313,5 +313,10 @@
     <string name="oneDot">.</string>
     <string name="twoDots">..</string>
     <string name="threeDots">...</string>
+    <string name="rateUs">LoL TR\'yi beğendiyseniz lütfen bir dakikanızı ayırıp uygulamayı oylayın. Desteğiniz için teşekkürler!</string>
+    <string name="dontshowagain">Bir Daha Gösterme</string>
+    <string name="remindmelater">Daha Sonra Hatırlat</string>
+    <string name="giveRating">Puan Ver!</string>
+    <string name="rate">LoL TR\'yi değerlendirin!</string>
 
 </resources>
