@@ -1484,7 +1484,7 @@ int string abc_shareactionprovider_share_with 0x7f06000e
 int string abc_shareactionprovider_share_with_application 0x7f06000f
 int string abc_toolbar_collapse_description 0x7f060010
 int string abilities 0x7f060044
-int string accept 0x7f060136
+int string accept 0x7f060135
 int string action_settings 0x7f060045
 int string anErrorOccured 0x7f060046
 int string app_name 0x7f060047
@@ -1498,8 +1498,8 @@ int string assasin 0x7f06004e
 int string assists 0x7f06004f
 int string attack 0x7f060050
 int string attack_speed 0x7f060051
-int string auth_google_play_services_client_facebook_display_name 0x7f060137
-int string auth_google_play_services_client_google_display_name 0x7f060138
+int string auth_google_play_services_client_facebook_display_name 0x7f060136
+int string auth_google_play_services_client_google_display_name 0x7f060137
 int string average 0x7f060052
 int string bilgewater 0x7f060053
 int string bot 0x7f060054
@@ -1508,9 +1508,9 @@ int string c 0x7f060056
 int string cancel 0x7f060057
 int string cannot_find_username 0x7f060058
 int string cap5 0x7f060059
-int string cast_notification_connected_message 0x7f060139
-int string cast_notification_connecting_message 0x7f06013a
-int string cast_notification_disconnect 0x7f06013b
+int string cast_notification_connected_message 0x7f060138
+int string cast_notification_connecting_message 0x7f060139
+int string cast_notification_disconnect 0x7f06013a
 int string champion_sale 0x7f06005a
 int string champions 0x7f06005b
 int string chosenChampion 0x7f06005c
@@ -1547,8 +1547,8 @@ int string common_signin_button_text_long 0x7f06002d
 int string contact_text 0x7f06005e
 int string cooldown_reduction 0x7f06005f
 int string counter_pick 0x7f060060
-int string create_calendar_message 0x7f06013c
-int string create_calendar_title 0x7f06013d
+int string create_calendar_message 0x7f06013b
+int string create_calendar_title 0x7f06013c
 int string createdAt 0x7f060061
 int string credits 0x7f060062
 int string creditsExplanation 0x7f060063
@@ -1559,7 +1559,7 @@ int string damagePart 0x7f060067
 int string damage_dealt 0x7f060068
 int string damage_taken 0x7f060069
 int string deaths 0x7f06006a
-int string decline 0x7f06013e
+int string decline 0x7f06013d
 int string defence 0x7f06006b
 int string deffensiveItems 0x7f06006c
 int string destek 0x7f06006d
@@ -1697,7 +1697,6 @@ int string ranked 0x7f0600e3
 int string rankedCapitalStart 0x7f0600e4
 int string rankedStats 0x7f0600e5
 int string ranked_game 0x7f0600e6
-int string rate 0x7f060135
 int string rateUs 0x7f0600e7
 int string recentSearches 0x7f0600e8
 int string region 0x7f0600e9
@@ -1740,8 +1739,8 @@ int string sr6 0x7f06010d
 int string startingItems 0x7f06010e
 int string statistics 0x7f06010f
 int string status_bar_notification_info_overflow 0x7f06003b
-int string store_picture_message 0x7f06013f
-int string store_picture_title 0x7f060140
+int string store_picture_message 0x7f06013e
+int string store_picture_title 0x7f06013f
 int string strategy 0x7f060110
 int string suikastci 0x7f060111
 int string summonerName 0x7f060112

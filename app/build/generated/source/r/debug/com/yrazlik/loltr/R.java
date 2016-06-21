@@ -3243,7 +3243,7 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f06000f;
         public static final int abc_toolbar_collapse_description=0x7f060010;
         public static final int abilities=0x7f060044;
-        public static final int accept=0x7f060136;
+        public static final int accept=0x7f060135;
         public static final int action_settings=0x7f060045;
         public static final int anErrorOccured=0x7f060046;
         public static final int app_name=0x7f060047;
@@ -3257,8 +3257,8 @@ containing a value of this type.
         public static final int assists=0x7f06004f;
         public static final int attack=0x7f060050;
         public static final int attack_speed=0x7f060051;
-        public static final int auth_google_play_services_client_facebook_display_name=0x7f060137;
-        public static final int auth_google_play_services_client_google_display_name=0x7f060138;
+        public static final int auth_google_play_services_client_facebook_display_name=0x7f060136;
+        public static final int auth_google_play_services_client_google_display_name=0x7f060137;
         public static final int average=0x7f060052;
         public static final int bilgewater=0x7f060053;
         public static final int bot=0x7f060054;
@@ -3267,9 +3267,9 @@ containing a value of this type.
         public static final int cancel=0x7f060057;
         public static final int cannot_find_username=0x7f060058;
         public static final int cap5=0x7f060059;
-        public static final int cast_notification_connected_message=0x7f060139;
-        public static final int cast_notification_connecting_message=0x7f06013a;
-        public static final int cast_notification_disconnect=0x7f06013b;
+        public static final int cast_notification_connected_message=0x7f060138;
+        public static final int cast_notification_connecting_message=0x7f060139;
+        public static final int cast_notification_disconnect=0x7f06013a;
         public static final int champion_sale=0x7f06005a;
         public static final int champions=0x7f06005b;
         public static final int chosenChampion=0x7f06005c;
@@ -3306,8 +3306,8 @@ containing a value of this type.
         public static final int contact_text=0x7f06005e;
         public static final int cooldown_reduction=0x7f06005f;
         public static final int counter_pick=0x7f060060;
-        public static final int create_calendar_message=0x7f06013c;
-        public static final int create_calendar_title=0x7f06013d;
+        public static final int create_calendar_message=0x7f06013b;
+        public static final int create_calendar_title=0x7f06013c;
         public static final int createdAt=0x7f060061;
         public static final int credits=0x7f060062;
         public static final int creditsExplanation=0x7f060063;
@@ -3318,7 +3318,7 @@ containing a value of this type.
         public static final int damage_dealt=0x7f060068;
         public static final int damage_taken=0x7f060069;
         public static final int deaths=0x7f06006a;
-        public static final int decline=0x7f06013e;
+        public static final int decline=0x7f06013d;
         public static final int defence=0x7f06006b;
         public static final int deffensiveItems=0x7f06006c;
         public static final int destek=0x7f06006d;
@@ -3456,7 +3456,6 @@ containing a value of this type.
         public static final int rankedCapitalStart=0x7f0600e4;
         public static final int rankedStats=0x7f0600e5;
         public static final int ranked_game=0x7f0600e6;
-        public static final int rate=0x7f060135;
         public static final int rateUs=0x7f0600e7;
         public static final int recentSearches=0x7f0600e8;
         public static final int region=0x7f0600e9;
@@ -3499,8 +3498,8 @@ containing a value of this type.
         public static final int startingItems=0x7f06010e;
         public static final int statistics=0x7f06010f;
         public static final int status_bar_notification_info_overflow=0x7f06003b;
-        public static final int store_picture_message=0x7f06013f;
-        public static final int store_picture_title=0x7f060140;
+        public static final int store_picture_message=0x7f06013e;
+        public static final int store_picture_title=0x7f06013f;
         public static final int strategy=0x7f060110;
         public static final int suikastci=0x7f060111;
         public static final int summonerName=0x7f060112;
