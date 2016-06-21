@@ -48,6 +48,7 @@ public class SettingsFragment extends BaseFragment{
     private Button buttonSave;
     private TextView selectLanguageText, selectRegionText;
     private Button removeAdsButton;
+    private TextView removeAdsExplanation;
     private ImageView parentBG;
 
 
@@ -195,51 +196,62 @@ public class SettingsFragment extends BaseFragment{
         });
 
         removeAdsButton = (Button) v.findViewById(R.id.removeAdsButton);
-        removeAdsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList<String> skuList = new ArrayList<String>();
-                skuList.add("remove_ads");
-                final Bundle querySkus = new Bundle();
-                querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
-                final Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Bundle skuDetails = PaymentSevice.getInstance(getActivity()).getService().getSkuDetails(3, getActivity().getPackageName(), "inapp", querySkus);
-                            int response = skuDetails.getInt("RESPONSE_CODE");
-                            if (response == 0) {
-                                ArrayList<String> responseList
-                                        = skuDetails.getStringArrayList("DETAILS_LIST");
+        removeAdsExplanation = (TextView) v.findViewById(R.id.removeAdsExplanation);
+        if(Commons.getInstance(getContext()).ADS_ENABLED) {
+            removeAdsButton.setVisibility(View.VISIBLE);
+            removeAdsExplanation.setVisibility(View.VISIBLE);
+            removeAdsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sendPurchaseButtonClickEvent();
+                    ArrayList<String> skuList = new ArrayList<String>();
+                    skuList.add("remove_ads");
+                    final Bundle querySkus = new Bundle();
+                    querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+                    final Thread t = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Bundle skuDetails = PaymentSevice.getInstance(getActivity()).getService().getSkuDetails(3, getActivity().getPackageName(), "inapp", querySkus);
+                                int response = skuDetails.getInt("RESPONSE_CODE");
+                                if (response == 0) {
+                                    ArrayList<String> responseList
+                                            = skuDetails.getStringArrayList("DETAILS_LIST");
 
-                                for (String thisResponse : responseList) {
-                                    JSONObject object = new JSONObject(thisResponse);
-                                    String sku = object.getString("productId");
-                                    if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)){
-                                        Bundle buyIntentBundle = PaymentSevice.getInstance(getActivity()).buyRemoveAdsItem(sku);
-                                        if(buyIntentBundle != null) {
-                                            PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
-                                            try {
-                                                getActivity().startIntentSenderForResult(pendingIntent.getIntentSender(),
-                                                        Commons.REMOVE_ADS_REQUEST_CODE, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
-                                                        Integer.valueOf(0));
-                                            } catch (IntentSender.SendIntentException e) {
-                                                e.printStackTrace();
+                                    for (String thisResponse : responseList) {
+                                        JSONObject object = new JSONObject(thisResponse);
+                                        String sku = object.getString("productId");
+                                        if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)){
+                                            Bundle buyIntentBundle = PaymentSevice.getInstance(getActivity()).buyRemoveAdsItem(sku);
+                                            if(buyIntentBundle != null) {
+                                                PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+                                                try {
+                                                    getActivity().startIntentSenderForResult(pendingIntent.getIntentSender(),
+                                                            Commons.REMOVE_ADS_REQUEST_CODE, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                                                            Integer.valueOf(0));
+                                                } catch (IntentSender.SendIntentException e) {
+                                                    sendPurchaseFailEvent();
+                                                }
+                                            } else {
+                                                sendPurchaseFailEvent();
                                             }
                                         }
                                     }
                                 }
+                            } catch (RemoteException e) {
+                                sendPurchaseFailEvent();
+                            } catch (JSONException e) {
+                                sendPurchaseFailEvent();
                             }
-                        } catch (RemoteException e) {
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                });
-                t.start();
-            }
-        });
+                    });
+                    t.start();
+                }
+            });
+        } else {
+            removeAdsButton.setVisibility(View.GONE);
+            removeAdsExplanation.setVisibility(View.GONE);
+        }
 
         return v;
     }
@@ -251,6 +263,28 @@ public class SettingsFragment extends BaseFragment{
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
         t.setScreenName("SettingsFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    public void sendPurchaseButtonClickEvent() {
+        try {
+            Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+            t.send(new HitBuilders.EventBuilder().setCategory(Commons.PURCHASE_CLICK)
+                    .setAction(Commons.PURCHASE_CLICK)
+                    .setLabel(Commons.PURCHASE_CLICK)
+                    .build());
+        } catch (Exception e) {
+        }
+    }
+
+    public void sendPurchaseFailEvent() {
+        try {
+            Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+            t.send(new HitBuilders.EventBuilder().setCategory(Commons.PURCHASE_FAIL)
+                    .setAction(Commons.PURCHASE_FAIL)
+                    .setLabel(Commons.PURCHASE_FAIL)
+                    .build());
+        } catch (Exception e) {
+        }
     }
 
     public Context getContext() {

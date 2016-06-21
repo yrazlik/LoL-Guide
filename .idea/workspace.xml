@@ -59,13 +59,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1391068-8f35-43a0-be80-247c2e588452" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/MainActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllItemsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllItemsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionOverviewFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionOverviewFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSkinsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSkinsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSpellsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSpellsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ItemDetailFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ItemDetailFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LegendFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LegendFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchInfoFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchInfoFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/RunesFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/RunesFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/SettingsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/SettingsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/StrategyFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/StrategyFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/service/ServiceRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/RemoveAdsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/RemoveAdsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java" />
     </list>
     <ignored path="LoL-Guide.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/SplashActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+              <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -107,28 +125,61 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="425" column="52" selection-start-line="425" selection-start-column="52" selection-end-line="425" selection-end-column="52" />
+              <caret line="864" column="5" selection-start-line="864" selection-start-column="5" selection-end-line="864" selection-end-column="5" />
               <folding>
-                <element signature="e#16121#16122#0" expanded="false" />
-                <element signature="e#16156#16157#0" expanded="false" />
-                <element signature="e#16860#16861#0" expanded="false" />
-                <element signature="e#16933#16934#0" expanded="false" />
-                <element signature="e#33753#33754#0" expanded="false" />
-                <element signature="e#33785#33786#0" expanded="false" />
-                <element signature="e#36361#36362#0" expanded="false" />
-                <element signature="e#36401#36402#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#9616#9636#0" expanded="true" />
+                <element signature="e#9638#9659#0" expanded="true" />
+                <element signature="e#10019#10069#0" expanded="true" />
+                <element signature="e#35012#35066#0" expanded="true" />
+                <element signature="e#35086#35123#0" expanded="true" />
+                <element signature="e#36498#36543#0" expanded="true" />
+                <element signature="e#36563#36601#0" expanded="true" />
+                <element signature="e#36820#36857#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppRater.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java">
+      <file leaf-file-name="RemoveAdsFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/RemoveAdsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48247978">
-              <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.38837922">
+              <caret line="62" column="55" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1245#4079#0" expanded="true" />
+                <element signature="e#4078#4079#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="227" column="53" selection-start-line="227" selection-start-column="53" selection-end-line="227" selection-end-column="53" />
+              <folding>
+                <element signature="e#3135#3190#0" expanded="true" />
+                <element signature="e#3192#3234#0" expanded="true" />
+                <element signature="e#3357#3412#0" expanded="true" />
+                <element signature="e#3414#3456#0" expanded="true" />
+                <element signature="e#3519#3574#0" expanded="true" />
+                <element signature="e#3576#3618#0" expanded="true" />
+                <element signature="e#4437#9154#0" expanded="true" />
+                <element signature="e#4732#4774#0" expanded="true" />
+                <element signature="e#5220#5262#0" expanded="true" />
+                <element signature="e#7319#7384#0" expanded="true" />
+                <element signature="e#7594#7618#0" expanded="true" />
+                <element signature="e#7666#7688#0" expanded="true" />
+                <element signature="e#7736#7798#0" expanded="true" />
+                <element signature="e#7800#7849#0" expanded="true" />
+                <element signature="e#8195#8219#0" expanded="true" />
+                <element signature="e#8267#8289#0" expanded="true" />
+                <element signature="e#8337#8399#0" expanded="true" />
+                <element signature="e#8401#8450#0" expanded="true" />
+                <element signature="e#9153#9154#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2072,9 +2123,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_remove_ads.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/RemoveAdsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/MatchInfoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/LiveChannelActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/CountryFragment.java" />
@@ -2107,7 +2156,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_credits.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/AllChampionsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_rating.xml" />
@@ -2116,13 +2164,16 @@
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en/values-en.xml" />
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-tr/values-tr.xml" />
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/themes.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-tr/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/RemoveAdsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java" />
       </list>
     </option>
   </component>
@@ -2163,6 +2214,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2335,8 +2387,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2347,7 +2399,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2669,7 +2720,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39269406" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45966515" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39878234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -2689,7 +2741,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2711,7 +2762,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java</url>
-          <line>425</line>
+          <line>422</line>
           <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
@@ -2747,46 +2798,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_player_match_info_detail_noad.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6981132">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_player_match_info_detail.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6981132">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_match_info_noad.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6981132">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_match_info.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6981132">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_allchampions.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2834,16 +2845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5094337">
           <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6415095">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2937,13 +2938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_champion_overview.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
@@ -3017,13 +3011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="208" column="53" selection-start-line="208" selection-start-column="53" selection-end-line="208" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/aidl/debug/com/android/vending/billing/IInAppBillingService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0103627">
@@ -3038,19 +3025,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/billing/PaymentSevice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/scrim.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3061,22 +3039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.9433963">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7451456">
-          <caret line="174" column="5" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/SplashActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -3092,189 +3054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.6862745">
           <caret line="474" column="37" selection-start-line="474" selection-start-column="37" selection-end-line="474" selection-end-column="37" />
-          <folding>
-            <marker date="1463569266000" expanded="true" signature="99:162855" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="132:590" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="628:1054" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="68022:68223" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="68288:68765" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="68797:69228" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="69646:69845" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="69921:70130" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="70216:70523" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="70604:71000" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="71055:71222" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="71277:71444" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="71500:71712" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="71769:71939" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="71997:72169" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="72227:72399" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="72457:72629" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="72687:72859" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="72917:73086" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="73143:73325" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="73380:73551" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="73614:73796" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="73913:73926" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="74043:74056" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="74112:74286" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="74350:74534" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="74588:74753" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="74825:75036" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="75107:75244" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="75312:75375" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="75430:75602" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="75665:75848" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="75905:76073" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="76138:76320" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="76375:76541" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="76604:76786" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="76896:77060" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="77177:77361" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="77494:77685" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="77797:77976" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="78104:78290" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="78974:79075" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="79186:79199" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="79310:79323" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="79892:79905" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="80032:80045" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="80118:80131" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="80193:80479" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="80854:81199" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="81255:81432" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="81708:82229" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="82628:82973" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="83035:83212" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="83730:85583" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="85645:85825" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="85925:87907" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="87978:97334" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="96982:97101" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="97414:98601" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="98684:108138" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="107786:107905" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="108230:109419" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="109529:109955" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="110041:110285" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="110346:111408" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="111465:111664" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="111732:111900" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="111969:112447" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="112516:112941" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="113005:113614" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="113678:113762" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="113825:114290" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="114352:114854" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="114925:115229" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="115944:116042" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="116109:116186" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="116308:116506" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="116562:116762" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="116816:116932" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="117007:117073" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="117538:117705" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="117807:118247" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="118362:118511" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="118587:118849" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="118921:119202" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="119665:119864" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="119976:119989" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="120103:120116" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="120244:120355" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="120469:120566" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="120672:120685" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="120751:120878" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="120945:121333" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="121416:121514" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="121573:121636" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="121729:121895" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="121995:122008" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="122068:122195" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="122284:122297" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="122386:122741" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="122852:122865" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="122950:123150" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="123226:124037" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="124099:124331" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="124423:125063" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="125123:125235" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="125342:125571" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="125644:126438" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="126529:126716" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="126744:127182" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="127215:127308" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="127462:127481" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="127552:127918" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="127998:128108" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="128227:128299" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="128360:131161" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="131234:134163" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="134912:135469" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="136092:136105" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="136196:136334" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="136456:136672" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="136760:136832" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="136917:136984" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="137083:137155" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="137245:137322" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="137409:137565" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="137658:137735" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="137828:137908" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="138001:138079" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="138199:138353" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="138443:138552" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="138584:138888" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="140727:140740" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="141307:141320" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="142817:142830" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="143755:143768" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="143897:143910" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="144801:144814" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="144939:144952" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="146153:146263" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="146310:146420" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="146501:146722" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="147289:147996" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="148049:148745" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="149929:150397" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="150517:150581" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="150643:151110" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="151156:152114" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="152201:152214" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="152313:152326" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="152427:152440" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="152543:152556" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="152659:152672" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="153207:153220" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="153329:153342" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="155116:155129" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="155649:155662" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="155777:155790" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="157047:157060" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="157771:157784" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="157889:157902" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="157993:158006" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="158097:158110" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="158223:158236" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="159760:160173" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="160247:160414" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="160449:160617" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="160650:160772" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="160805:160927" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="160960:161082" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="161115:161237" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="161270:161392" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="161425:161547" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="161584:161757" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="161790:161912" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="161945:162067" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="162100:162222" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="162255:162377" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="162410:162532" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="162565:162687" placeholder="..." />
-            <marker date="1463569266000" expanded="true" signature="162720:162842" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3282,23 +3061,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33161953">
           <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="425" column="52" selection-start-line="425" selection-start-column="52" selection-end-line="425" selection-end-column="52" />
-          <folding>
-            <element signature="e#16121#16122#0" expanded="false" />
-            <element signature="e#16156#16157#0" expanded="false" />
-            <element signature="e#16860#16861#0" expanded="false" />
-            <element signature="e#16933#16934#0" expanded="false" />
-            <element signature="e#33753#33754#0" expanded="false" />
-            <element signature="e#33785#33786#0" expanded="false" />
-            <element signature="e#36361#36362#0" expanded="false" />
-            <element signature="e#36401#36402#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3326,14 +3088,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.484375">
-          <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4375">
@@ -3355,10 +3109,161 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/AppRater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48247978">
-          <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_remove_ads.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33088234">
+          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3731884">
+          <caret line="316" column="69" selection-start-line="316" selection-start-column="69" selection-end-line="316" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/billing/PaymentSevice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="142" column="56" selection-start-line="142" selection-start-column="56" selection-end-line="142" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20833333">
+          <caret line="82" column="53" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13761468">
+          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+          <folding>
+            <element signature="e#13011#13059#0" expanded="true" />
+            <element signature="e#13073#13123#0" expanded="true" />
+            <element signature="e#13147#13198#0" expanded="true" />
+            <element signature="e#13212#13263#0" expanded="true" />
+            <element signature="e#13287#13338#0" expanded="true" />
+            <element signature="e#13352#13405#0" expanded="true" />
+            <element signature="e#13429#13477#0" expanded="true" />
+            <element signature="e#13491#13539#0" expanded="true" />
+            <element signature="e#13563#13615#0" expanded="true" />
+            <element signature="e#13629#13680#0" expanded="true" />
+            <element signature="e#13704#13755#0" expanded="true" />
+            <element signature="e#13769#13819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="864" column="5" selection-start-line="864" selection-start-column="5" selection-end-line="864" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#9616#9636#0" expanded="true" />
+            <element signature="e#9638#9659#0" expanded="true" />
+            <element signature="e#10019#10069#0" expanded="true" />
+            <element signature="e#35012#35066#0" expanded="true" />
+            <element signature="e#35086#35123#0" expanded="true" />
+            <element signature="e#36498#36543#0" expanded="true" />
+            <element signature="e#36563#36601#0" expanded="true" />
+            <element signature="e#36820#36857#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="4072" column="16" selection-start-line="4072" selection-start-column="16" selection-end-line="4072" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SettingsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="227" column="53" selection-start-line="227" selection-start-column="53" selection-end-line="227" selection-end-column="53" />
+          <folding>
+            <element signature="e#3135#3190#0" expanded="true" />
+            <element signature="e#3192#3234#0" expanded="true" />
+            <element signature="e#3357#3412#0" expanded="true" />
+            <element signature="e#3414#3456#0" expanded="true" />
+            <element signature="e#3519#3574#0" expanded="true" />
+            <element signature="e#3576#3618#0" expanded="true" />
+            <element signature="e#4437#9154#0" expanded="true" />
+            <element signature="e#4732#4774#0" expanded="true" />
+            <element signature="e#5220#5262#0" expanded="true" />
+            <element signature="e#7319#7384#0" expanded="true" />
+            <element signature="e#7594#7618#0" expanded="true" />
+            <element signature="e#7666#7688#0" expanded="true" />
+            <element signature="e#7736#7798#0" expanded="true" />
+            <element signature="e#7800#7849#0" expanded="true" />
+            <element signature="e#8195#8219#0" expanded="true" />
+            <element signature="e#8267#8289#0" expanded="true" />
+            <element signature="e#8337#8399#0" expanded="true" />
+            <element signature="e#8401#8450#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/RemoveAdsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38837922">
+          <caret line="62" column="55" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1245#4079#0" expanded="true" />
+            <element signature="e#4078#4079#0" expanded="true" />
           </folding>
         </state>
       </provider>

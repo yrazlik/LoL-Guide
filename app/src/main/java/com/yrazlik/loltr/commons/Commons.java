@@ -51,6 +51,10 @@ public class Commons {
 
     public static String TEXT = "AAA";
 
+    public static final String PURCHASE_CLICK = "PURCHASE_CLICK";
+    public static final String PURCHASE_SUCCESSFUL = "PURCHASE_SUCCESSFUL";
+    public static final String PURCHASE_FAIL = "PURCHASE_FAIL";
+
     public static final String LOL_TR_SHARED_PREFS = "LOL_TR_SHARED_PREFS";
     public static final String LOL_TR_SHARED_PREF_LANGUAGE = "LOL_TR_SHARED_PREF_LANGUAGE";
     public static final String LOL_TR_SHARED_PREF_REGION = "LOL_TR_SHARED_PREF_REGION";
@@ -66,7 +70,7 @@ public class Commons {
 	public static String LATEST_VERSION = "6.7.1";
     public static String RECOMMENDED_ITEMS_VERSION = "6.7.1";
 	
-	public static final String API_KEY = "2f29b61a-a187-49ab-a000-f5a4abc17f04";
+	public static final String API_KEY = "adcd5cd2-a699-4e04-90e0-2e7b9e5d990a";
 	
 	public static final String TAG = "com.yrazlik.loltr";
 	

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 /**
  * Created by yrazlik on 12/05/16.
  */
-public class RemoveAdsFragment extends BaseFragment{
+public class RemoveAdsFragment extends BaseFragment {
 
     private Button removeAdsButton;
 
@@ -39,6 +39,7 @@ public class RemoveAdsFragment extends BaseFragment{
         removeAdsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sendPurchaseButtonClickEvent();
                 ArrayList<String> skuList = new ArrayList<String>();
                 skuList.add("remove_ads");
                 final Bundle querySkus = new Bundle();
@@ -56,25 +57,27 @@ public class RemoveAdsFragment extends BaseFragment{
                                 for (String thisResponse : responseList) {
                                     JSONObject object = new JSONObject(thisResponse);
                                     String sku = object.getString("productId");
-                                    if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)){
+                                    if (sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)) {
                                         Bundle buyIntentBundle = PaymentSevice.getInstance(getActivity()).buyRemoveAdsItem(sku);
-                                        if(buyIntentBundle != null) {
+                                        if (buyIntentBundle != null) {
                                             PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
                                             try {
                                                 getActivity().startIntentSenderForResult(pendingIntent.getIntentSender(),
                                                         Commons.REMOVE_ADS_REQUEST_CODE, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
                                                         Integer.valueOf(0));
                                             } catch (IntentSender.SendIntentException e) {
-                                                e.printStackTrace();
+                                                sendPurchaseFailEvent();
                                             }
+                                        } else {
+                                            sendPurchaseFailEvent();
                                         }
                                     }
                                 }
                             }
                         } catch (RemoteException e) {
-
+                            sendPurchaseFailEvent();
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            sendPurchaseFailEvent();
                         }
                     }
                 });
@@ -90,5 +93,27 @@ public class RemoveAdsFragment extends BaseFragment{
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
         t.setScreenName("RemoveAdsFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    public void sendPurchaseButtonClickEvent() {
+        try {
+            Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+            t.send(new HitBuilders.EventBuilder().setCategory(Commons.PURCHASE_CLICK)
+                    .setAction(Commons.PURCHASE_CLICK)
+                    .setLabel(Commons.PURCHASE_CLICK)
+                    .build());
+        } catch (Exception e) {
+        }
+    }
+
+    public void sendPurchaseFailEvent() {
+        try {
+            Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+            t.send(new HitBuilders.EventBuilder().setCategory(Commons.PURCHASE_FAIL)
+                    .setAction(Commons.PURCHASE_FAIL)
+                    .setLabel(Commons.PURCHASE_FAIL)
+                    .build());
+        } catch (Exception e) {
+        }
     }
 }

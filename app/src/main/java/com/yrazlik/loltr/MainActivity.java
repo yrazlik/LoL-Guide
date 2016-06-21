@@ -12,7 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
-import android.os.RemoteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -30,12 +29,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
-import com.android.vending.billing.IInAppBillingService;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.yrazlik.loltr.activities.SplashActivity;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
@@ -60,7 +58,6 @@ import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -849,6 +846,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             if(resultCode == RESULT_OK) {
                 Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
                 Commons.getInstance(getApplicationContext()).savePurchaseData();
+                sendPurchaseSuccessEvent();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setMessage(getResources().getString(R.string.purchase_successful)).setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
@@ -863,6 +861,17 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                     }
                 }).setCancelable(false).show();
             }
+        }
+    }
+
+    public void sendPurchaseSuccessEvent() {
+        try {
+            Tracker t = ((LolApplication) getApplication()).getTracker();
+            t.send(new HitBuilders.EventBuilder().setCategory(Commons.PURCHASE_SUCCESSFUL)
+                    .setAction(Commons.PURCHASE_SUCCESSFUL)
+                    .setLabel(Commons.PURCHASE_SUCCESSFUL)
+                    .build());
+        } catch (Exception e) {
         }
     }
 
