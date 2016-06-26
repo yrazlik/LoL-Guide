@@ -54,7 +54,7 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
         ViewHolder holder = new ViewHolder(v, new ViewHolder.ViewHolderClickListener() {
             @Override
             public void onItemClick(View caller, int position) {
-                if(position > 0 && position < games.size()) {
+                if(position >= 0 && position < games.size()) {
                     recyclerViewClickListener.onRecyclerViewItemClicked(games.get(position), position);
                 }
             }
