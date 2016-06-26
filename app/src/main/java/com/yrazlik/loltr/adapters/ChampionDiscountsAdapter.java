@@ -102,3 +102,4 @@ public class ChampionDiscountsAdapter extends ArrayAdapter<Discount>{
         public ImageView rpImage;
     }
 }
+ 
