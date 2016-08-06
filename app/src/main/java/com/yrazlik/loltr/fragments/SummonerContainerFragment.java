@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -38,7 +39,7 @@ public class SummonerContainerFragment extends BaseFragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_summoner_container, container, false);
+        final View v = inflater.inflate(R.layout.fragment_summoner_container, container, false);
 
         Bundle extras = getArguments();
         if (extras != null) {
@@ -51,21 +52,23 @@ public class SummonerContainerFragment extends BaseFragment{
 
         pager = (ViewPager) v.findViewById(R.id.pager);
         pager.setOffscreenPageLimit(3);
-        pager.setAdapter(new SummonerPagerAdapter(getChildFragmentManager()));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pager.setAdapter(new SummonerPagerAdapter(getChildFragmentManager()));
+                tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
+                tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
+                tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
+                tabs.setDividerColor(getResources().getColor(R.color.white));
+                tabs.setTextColor(getResources().getColor(R.color.white));
+                DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
+                int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
+                tabs.setTextSize(textSize);
 
-        tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
-        tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
-        tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
-        tabs.setDividerColor(getResources().getColor(R.color.white));
-        tabs.setTextColor(getResources().getColor(R.color.white));
-        DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
-        int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
-        tabs.setTextSize(textSize);
-
-        tabs.setIndicatorHeight(8);
-        tabs.setViewPager(pager);
-
-
+                tabs.setIndicatorHeight(8);
+                tabs.setViewPager(pager);
+            }
+        }, 300);
         return v;
     }
 
