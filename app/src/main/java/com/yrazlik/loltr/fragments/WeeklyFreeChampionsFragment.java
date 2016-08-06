@@ -269,6 +269,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 			fragment.setArguments(args);
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction ft = fm.beginTransaction();
+            ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out, R.anim.slide_right_in, R.anim.slide_right_out);
             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
 			
 			break;

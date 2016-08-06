@@ -2,8 +2,6 @@
 <resources>
 
     <string name="app_name">LoL TR</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="hello">Hello</string>
 
     <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
@@ -56,7 +54,6 @@
     <string name="menu">Menü</string>
     <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
     <string name="video">Video</string>
-    <string name="play">Oynat</string>
     <string name="mage">Mage</string>
     <string name="fighter">Fighter</string>
     <string name="assasin">Assassin</string>
@@ -69,18 +66,6 @@
     <string name="nisanci">Nisancı</string>
     <string name="destek">Destek</string>
     <string name="tags">Özellikler</string>
-    <string name="c">ç</string>
-    <string name="g">ğ</string>
-    <string name="i">ı</string>
-    <string name="o">ö</string>
-    <string name="s">ş</string>
-    <string name="u">ü</string>
-    <string name="C">Ç</string>
-    <string name="G">Ğ</string>
-    <string name="I">İ</string>
-    <string name="O">Ö</string>
-    <string name="S">Ş</string>
-    <string name="U">Ü</string>
     <string name="searchHint">Şampiyon adı giriniz ...</string>
     <string name="searchItemHint">Eşya adı giriniz ...</string>
     <string name="general">Genel Bakış</string>
@@ -154,24 +139,10 @@
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
 
-    <string name="turkey">Türkiye</string>
-
-    <string name="settings">Ayarlar</string>
     <string name="select_language">Dil:</string>
     <string name="select_region">Bölge:</string>
     <string name="english">İngilizce</string>
     <string name="turkish">Türkçe</string>
-    <string name="region_br">BR</string>
-    <string name="region_eune">EUNE</string>
-    <string name="region_euwe">EUW</string>
-    <string name="region_kr">KR</string>
-    <string name="region_lan">LAN</string>
-    <string name="region_las">LAS</string>
-    <string name="region_na">NA</string>
-    <string name="region_oce">OCE</string>
-    <string name="region_pbe">PBE</string>
-    <string name="region_ru">RU</string>
-    <string name="region_tr">TR</string>
     <string name="save">KAYDET</string>
 
     <string name="networkError">Lütfen internet bağlantınızı kontrol ediniz.</string>
@@ -189,15 +160,12 @@
 
     <string name="enter_username">Sihirdar ismi girin ...</string>
     <string name="select_your_region">Bölgenizi seçin:</string>
-    <string name="pleaseEnterYourSummonerName">Lütfen bir sihirdar ismi giriniz.</string>
     <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
     <string name="cannot_find_username">Kullanıcı bulunamadı. Lütfen kullanıcı adını ve bölgeyi doğru girdiğinizden emin olun</string>
 
 
     <string name="custom_game">Özel Oyun</string>
     <string name="tutorial">Eğitim</string>
-    <string name="tutorial_game">Eğitim Oyunu</string>
-    <string name="ranked_game">Dereceli Oyun</string>
 
     <string name="summoners_rift">Sihirdar Vadisi</string>
     <string name="aram">Sonsuz Uçurum</string>
@@ -260,7 +228,6 @@
     <string name="minions">Minyonlar</string>
     <string name="winrate">Kazanma Oranı</string>
     <string name="mostPlayed">En Çok Oynananlar</string>
-    <string name="rankedCapitalStart">Dereceli</string>
     <string name="team55">Takım 5v5</string>
     <string name="team33">Takım 3v3</string>
     <string name="kda">KDA</string>
@@ -268,7 +235,6 @@
     <string name="overview">GENEL BAKIŞ</string>
     <string name="match_history">KARŞILAŞMA GEÇMİŞİ</string>
 
-    <string name="season">Sezon</string>
     <string name="rankedStats">Dereceli İstatistikleri</string>
 
 

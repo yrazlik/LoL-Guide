@@ -110,7 +110,6 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                         showInterstitial();
                         startActivity(i);
                     }
-
                 }
             }
         });

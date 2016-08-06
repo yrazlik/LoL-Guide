@@ -1,70 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="list_item_selector_bg">#CECECE</color>
-    <color name="product_detail_sticky_black">#F2151529</color>
-    <color name="spinner_blue">#0b58a4</color>
     <color name="black">#000000</color>
-    <color name="fade_blue">#0064D2</color>
-    <color name="fade_gray">#6A6A6A</color>
     <color name="button_blue">#2260C0</color>
-    <color name="hyperlink_blue">#1462DB</color>
     <color name="gray">#EBEBEB</color>
-    <color name="warning_yellow">#ED9700</color>
-    <color name="cc_info_disabled">#80242436</color>
-    <color name="text_black">#222222</color>
-    <color name="roller_item_border">#DCDCDC</color>
     <color name="discount_green">#659C26</color>
-    <color name="old_price_gray">#7B7B7B</color>
-    <color name="navbar_bg">#F0F0F0</color>
-    <color name="divider_color">#CAC9CF</color>
     <color name="white">#FFFFFF</color>
-    <color name="sticky_text_color">#181825</color>
     <color name="sticky_text_color_transparent">#CC181825</color>
-    <color name="navbar_button_textcolor">#1B5FB8</color>
-    <color name="navbar_button_textcolor_pressed">#A4CDFF</color>
-    <color name="navbar_button_textcolor_disabled">#ACACAD</color>
     <color name="transparent_gray">#808e8e8e</color>
     <color name="touch_bg">#268e8e8e</color>
     <color name="blue_border">#6B97D6</color>
-    <color name="disabled_bg">#D9D9D9D9</color>
-    <color name="white_button_blue_textcolor">#1853BA</color>
-    <color name="app_bg">#F4F4F4</color>
-    <color name="dialog_border_gray">#CCB2B2B2</color>
-    <color name="dialog_bg">#D9F4F4F4</color>
-    <color name="disabled_textcolor">#838383</color>
     <color name="gg_red">#E61A37</color>
     <color name="transparent_black">#99000000</color>
-    <color name="bg_yellow">#E8C068</color>
 
 
-    <color name="divider_gray">#BBC6C9</color>
-    <color name="material_red">#D9F44336</color>
-    <color name="material_blue">#2196F3</color>
-    <color name="material_purple">#D9673AB7</color>
-    <color name="material_indigo">#3F51B5</color>
     <color name="material_green">#CC4F59C2</color>
-    <color name="material_deep_orange">#FF5722</color>
-    <color name="material_dark_red">#D97A0009</color>
-    <color name="material_dark_amber">#FFC107</color>
-    <color name="material_amber">#FFC107</color>
     <color name="material_dark_green">#CC0D1352</color>
-    <color name="material_blue_grey">#607D8B</color>
-    <color name="material_cyan">#00BCD4</color>
     <color name="app_color">@color/new_app_color</color>
     <color name="tab_color">#D9B40617</color>
-    <color name="material_divider">#B6B6B6</color>
     <color name="material_yellow">#D9A368</color>
-    <color name="episode_overview_bg">#CC987B2C</color>
-    <color name="transparent_dialog_bg">#8045454A</color>
-    <color name="deneme">#AB491F</color>
-    <color name="white_border">@color/divider_gray</color>
 
-    <color name="app_color_lighter">#E6148DB5</color>
     <color name="background_black_transparent">#F2262829</color>
     <color name="new_app_color">#CC040F34</color>
-    <color name="new_episode_overview_bg">#CCE8E9E5</color>
     <color name="red_text_color">#a6B40617</color>
-    <color name="progress_bg">#CCE1E6E8</color>
 
     <color name="menu_color">#3F51B5</color>
     <color name="loading_bg_color">#33000000</color>

@@ -72,44 +72,55 @@ import java.util.Random;
     private ProgressBar progress, progressStartingItems, progressEssentialItems, progressOffensiveItems, progressDeffensiveItems;
     private TextView textViewStartingItems, textViewEssentialItems, textViewOffensiveItems, textViewDeffensiveItems;
 
+    private ChampionOverviewResponse championOverviewResponse;
+    private RecommendedItemsResponse recommendedItemsResponse;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_champion_overview, container,
-				false);
+		View v = inflater.inflate(R.layout.fragment_champion_overview, container, false);
 		getExtras();
 		initUI(v);
-		
-		ArrayList<String> pathParams = new ArrayList<String>();
-		pathParams.add("static-data");
-		pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-		pathParams.add("v1.2");
-		pathParams.add("champion");
-		pathParams.add(String.valueOf(champId));
-		HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-		queryParams.put("version", Commons.LATEST_VERSION);
-		queryParams.put("champData", "info,tags");
-		queryParams.put("api_key", Commons.API_KEY);
-		
-		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, this);
-		
-		ArrayList<String> pathParams2 = new ArrayList<String>();
-		pathParams2.add("static-data");
-		pathParams2.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-		pathParams2.add("v1.2");
-		pathParams2.add("champion");
-		pathParams2.add(String.valueOf(champId));
-		HashMap<String, String> queryParams2 = new HashMap<String, String>();
-        queryParams2.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-		queryParams2.put("version", Commons.RECOMMENDED_ITEMS_VERSION);
-		queryParams2.put("champData", "recommended");
-		queryParams2.put("api_key", Commons.API_KEY);
-		
-		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, this);
+        getFragmentData();
         showInterstitial();
 		return v;	
 	}
+
+    private void getFragmentData() {
+        if(championOverviewResponse == null) {
+            ArrayList<String> pathParams = new ArrayList<String>();
+            pathParams.add("static-data");
+            pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+            pathParams.add("v1.2");
+            pathParams.add("champion");
+            pathParams.add(String.valueOf(champId));
+            HashMap<String, String> queryParams = new HashMap<String, String>();
+            queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+            queryParams.put("version", Commons.LATEST_VERSION);
+            queryParams.put("champData", "info,tags");
+            queryParams.put("api_key", Commons.API_KEY);
+            ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, this);
+        } else {
+            handleChampionOverviewResponse();
+        }
+
+        if(recommendedItemsResponse == null) {
+            ArrayList<String> pathParams2 = new ArrayList<String>();
+            pathParams2.add("static-data");
+            pathParams2.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+            pathParams2.add("v1.2");
+            pathParams2.add("champion");
+            pathParams2.add(String.valueOf(champId));
+            HashMap<String, String> queryParams2 = new HashMap<String, String>();
+            queryParams2.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+            queryParams2.put("version", Commons.RECOMMENDED_ITEMS_VERSION);
+            queryParams2.put("champData", "recommended");
+            queryParams2.put("api_key", Commons.API_KEY);
+            ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, this);
+        } else {
+            handleRecommendedItemsResponse();
+        }
+    }
 
     private void showInterstitial(){
 		try {
@@ -269,90 +280,99 @@ import java.util.Random;
 		}
 	}
 
-	@Override
-	public void onSuccess(Object response) {
-		if(response instanceof ChampionOverviewResponse){
-			ChampionOverviewResponse resp = (ChampionOverviewResponse)response;
-			champName.setText(resp.getName());
-			champTitle.setText(resp.getTitle());
-			setAbilityBars(resp);
-			setTags(resp);
-           /* Animation animZoom = new ScaleAnimation(0, 1, 0, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-            animZoom.setDuration(400);
-            champLogo.startAnimation(animZoom);*/
-		}else if(response instanceof RecommendedItemsResponse){
-            try {
-                boolean startingOK = false, essentialOK = false, offensiveOK = false, defensiveOK = false;
-                RecommendedItemsResponse resp = (RecommendedItemsResponse) response;
-                if (resp.getRecommended() != null) {
-                    for (Recommended r : resp.getRecommended()) {
-                        if (r.getMode().equals("CLASSIC")) {
-                            if (r.getBlocks() != null && r.getBlocks().size() > 0) {
-                                for (Blocks b : r.getBlocks()) {
-                                    ArrayList<Items> items = b.getItems();
-                                    if (items != null && items.size() > 0) {
-                                        if (b.getType().equals("starting")) {
-                                            startingOK = true;
-                                            startingItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-                                            gridviewStartingItems.setAdapter(startingItemsAdapter);
-                                            startingItemsAdapter.notifyDataSetChanged();
-                                            progressStartingItems.setVisibility(View.GONE);
-                                        } else if (b.getType().equals("essential")) {
-                                            essentialOK = true;
-                                            essentialItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-                                            gridviewEssentialItems.setAdapter(essentialItemsAdapter);
-                                            essentialItemsAdapter.notifyDataSetChanged();
-                                            progressEssentialItems.setVisibility(View.GONE);
-                                        } else if (b.getType().equals("offensive")) {
-                                            offensiveOK = true;
-                                            offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-                                            gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
-                                            offensiveItemsAdapter.notifyDataSetChanged();
-                                            progressOffensiveItems.setVisibility(View.GONE);
-                                        } else if (b.getType().equals("defensive")) {
-                                            defensiveOK = true;
-                                            deffensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-                                            gridviewDeffensiveItems.setAdapter(deffensiveItemsAdapter);
-                                            deffensiveItemsAdapter.notifyDataSetChanged();
-                                            progressDeffensiveItems.setVisibility(View.GONE);
-                                        } else if (b.getType().equals("ability_scaling")) {
-                                            offensiveOK = true;
-                                            offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
-                                            gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
-                                            offensiveItemsAdapter.notifyDataSetChanged();
-                                            progressOffensiveItems.setVisibility(View.GONE);
-                                        }
+    private void handleChampionOverviewResponse() {
+        if(championOverviewResponse != null) {
+            champName.setText(championOverviewResponse.getName());
+            champTitle.setText(championOverviewResponse.getTitle());
+            setAbilityBars(championOverviewResponse);
+            setTags(championOverviewResponse);
+        }
+    }
+
+    private void handleRecommendedItemsResponse() {
+        if(recommendedItemsResponse != null) {
+            boolean startingOK = false, essentialOK = false, offensiveOK = false, defensiveOK = false;
+            if (recommendedItemsResponse.getRecommended() != null) {
+                for (Recommended r : recommendedItemsResponse.getRecommended()) {
+                    if (r.getMode().equals("CLASSIC")) {
+                        if (r.getBlocks() != null && r.getBlocks().size() > 0) {
+                            for (Blocks b : r.getBlocks()) {
+                                ArrayList<Items> items = b.getItems();
+                                if (items != null && items.size() > 0) {
+                                    if (b.getType().equals("starting")) {
+                                        startingOK = true;
+                                        startingItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                        gridviewStartingItems.setAdapter(startingItemsAdapter);
+                                        startingItemsAdapter.notifyDataSetChanged();
+                                        progressStartingItems.setVisibility(View.GONE);
+                                    } else if (b.getType().equals("essential")) {
+                                        essentialOK = true;
+                                        essentialItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                        gridviewEssentialItems.setAdapter(essentialItemsAdapter);
+                                        essentialItemsAdapter.notifyDataSetChanged();
+                                        progressEssentialItems.setVisibility(View.GONE);
+                                    } else if (b.getType().equals("offensive")) {
+                                        offensiveOK = true;
+                                        offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                        gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
+                                        offensiveItemsAdapter.notifyDataSetChanged();
+                                        progressOffensiveItems.setVisibility(View.GONE);
+                                    } else if (b.getType().equals("defensive")) {
+                                        defensiveOK = true;
+                                        deffensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                        gridviewDeffensiveItems.setAdapter(deffensiveItemsAdapter);
+                                        deffensiveItemsAdapter.notifyDataSetChanged();
+                                        progressDeffensiveItems.setVisibility(View.GONE);
+                                    } else if (b.getType().equals("ability_scaling")) {
+                                        offensiveOK = true;
+                                        offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
+                                        gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
+                                        offensiveItemsAdapter.notifyDataSetChanged();
+                                        progressOffensiveItems.setVisibility(View.GONE);
                                     }
                                 }
                             }
                         }
                     }
-
-                    if(!startingOK){
-                        textViewStartingItems.setVisibility(View.GONE);
-                        progressStartingItems.setVisibility(View.GONE);
-                        gridviewStartingItems.setVisibility(View.GONE);
-                    }
-
-                    if(!essentialOK){
-                        textViewEssentialItems.setVisibility(View.GONE);
-                        progressEssentialItems.setVisibility(View.GONE);
-                        gridviewEssentialItems.setVisibility(View.GONE);
-                    }
-
-                    if(!defensiveOK){
-                        textViewDeffensiveItems.setVisibility(View.GONE);
-                        progressDeffensiveItems.setVisibility(View.GONE);
-                        gridviewDeffensiveItems.setVisibility(View.GONE);
-                    }
-
-                    if(!offensiveOK){
-                        textViewOffensiveItems.setVisibility(View.GONE);
-                        progressOffensiveItems.setVisibility(View.GONE);
-                        gridviewOffensiveItems.setVisibility(View.GONE);
-                    }
-
                 }
+
+                if(!startingOK){
+                    textViewStartingItems.setVisibility(View.GONE);
+                    progressStartingItems.setVisibility(View.GONE);
+                    gridviewStartingItems.setVisibility(View.GONE);
+                }
+
+                if(!essentialOK){
+                    textViewEssentialItems.setVisibility(View.GONE);
+                    progressEssentialItems.setVisibility(View.GONE);
+                    gridviewEssentialItems.setVisibility(View.GONE);
+                }
+
+                if(!defensiveOK){
+                    textViewDeffensiveItems.setVisibility(View.GONE);
+                    progressDeffensiveItems.setVisibility(View.GONE);
+                    gridviewDeffensiveItems.setVisibility(View.GONE);
+                }
+
+                if(!offensiveOK){
+                    textViewOffensiveItems.setVisibility(View.GONE);
+                    progressOffensiveItems.setVisibility(View.GONE);
+                    gridviewOffensiveItems.setVisibility(View.GONE);
+                }
+
+            }
+        }
+    }
+
+	@Override
+	public void onSuccess(Object response) {
+		if(response instanceof ChampionOverviewResponse){
+			championOverviewResponse = (ChampionOverviewResponse)response;
+            handleChampionOverviewResponse();
+		}else if(response instanceof RecommendedItemsResponse){
+            try {
+                recommendedItemsResponse = (RecommendedItemsResponse) response;
+                handleRecommendedItemsResponse();
             }catch (Exception e){}
 		}
 		
