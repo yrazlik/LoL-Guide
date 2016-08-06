@@ -26,6 +26,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.view.RegionDialog;
+import com.yrazlik.loltr.view.TypeWriter;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -41,6 +42,7 @@ public class SplashActivity extends Activity{
     private Timer timer;
     private int [] dots = {R.string.oneDot, R.string.twoDots, R.string.threeDots};
     int timerTick = 0;
+    private TypeWriter txtTypeWriter;
 
     public interface IsAppPurchasedListener {
         void onAppPurchaseResultReceived();
@@ -52,9 +54,13 @@ public class SplashActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        try {
+            txtTypeWriter = (TypeWriter) findViewById(R.id.txtTypeWriter);
+            txtTypeWriter.animateText(txtTypeWriter.getText().toString());
+        } catch (Exception ignored) {}
+
         AppRater.app_launched(getApplicationContext());
         loadingDotsTV = (TextView) findViewById(R.id.loadingDotsTV);
-
         animateThreeDots();
 
         if(Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0 || Commons.SELECTED_LANGUAGE == null || Commons.SELECTED_LANGUAGE.length() <= 0){
