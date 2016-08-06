@@ -41,7 +41,7 @@ public class ContactFragment extends BaseFragment{
                 String s = message.getText().toString();
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_EMAIL, new String[] { "yrazlik@gmail.com" });
+                i.putExtra(Intent.EXTRA_EMAIL, new String[] { "yrazlik@gmail.com", "loltrdestek@gmail.com" });
                 i.putExtra(Intent.EXTRA_TEXT, s);
                 startActivity(i);
             }
