@@ -67,8 +67,8 @@ public class Commons {
 
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
-	public static String LATEST_VERSION = "6.7.1";
-    public static String RECOMMENDED_ITEMS_VERSION = "6.7.1";
+	public static String LATEST_VERSION = "6.16.1";
+    public static String RECOMMENDED_ITEMS_VERSION = "6.16.1";
 	
 	public static final String API_KEY = "adcd5cd2-a699-4e04-90e0-2e7b9e5d990a";
 	

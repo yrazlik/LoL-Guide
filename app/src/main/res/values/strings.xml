@@ -279,7 +279,7 @@
     <string name="no_ranked_info">No ranked game info found for the summoner.</string>
     <string name="champions">CHAMPIONS</string>
     <string name="remove_ads">Remove Ads</string>
-    <string name="remove_ads_explanation">You can remove ads and use the ad-free version of LoL Guide if you wish. </string>
+    <string name="remove_ads_explanation">You can remove ads and use the ad-free version of LoL Guide by donating if you wish. If you get any trouble please contact us via loltrdestek@gmail.com.</string>
     <string name="purchase_successful">You have succesfully removed ads. The app will restart now for the changes to take effect.</string>
     <string name="credits">All images used in this app are suitable for commercial use.</string>
     <string name="see_credits">Click here to see the credits for the images.</string>
