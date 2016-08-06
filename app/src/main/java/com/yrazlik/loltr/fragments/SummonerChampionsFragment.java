@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +53,7 @@ public class SummonerChampionsFragment extends BaseFragment{
         }
 
         if(champions != null && champions.size() > 0){
-            ArrayList<Long> headerIds = new ArrayList<Long>();
+            final ArrayList<Long> headerIds = new ArrayList<Long>();
             for(int i = 0; i < champions.size(); i++){
                 ChampionStatsDto dto = champions.get(i);
                 if(dto != null && !headerIds.contains(dto.getId())){
@@ -66,11 +67,16 @@ public class SummonerChampionsFragment extends BaseFragment{
             adapter = new SummonerChampionsAdapter(getActivity(), R.layout.list_row_summoner_champions, champions);
             champList.setAdapter(adapter);
 
-            for(Long id : headerIds){
-                if(id != null) {
-                    champList.collapse(id);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    for(Long id : headerIds){
+                        if(id != null) {
+                            champList.collapse(id);
+                        }
+                    }
                 }
-            }
+            }, 750);
 
 
             champList.setOnHeaderClickListener(new StickyListHeadersListView.OnHeaderClickListener() {
