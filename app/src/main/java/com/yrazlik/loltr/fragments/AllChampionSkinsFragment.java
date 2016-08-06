@@ -118,6 +118,7 @@ public class AllChampionSkinsFragment extends BaseFragment implements ResponseLi
 		fragment.setArguments(args);
 		FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+        Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
 		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_SKINS_FRAGMENT).commit();
 		showInterstitial();
 		

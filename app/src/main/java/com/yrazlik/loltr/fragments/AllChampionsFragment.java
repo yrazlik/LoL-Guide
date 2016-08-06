@@ -2,6 +2,7 @@ package com.yrazlik.loltr.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -55,20 +56,32 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 		View v = inflater.inflate(R.layout.fragment_champions, container, false);
 		initUI(v);
 		if(Commons.allChampions == null || Commons.allChampions.size() == 0){
-			ArrayList<String> pathParams = new ArrayList<String>();
-			pathParams.add("static-data");
-			pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-			pathParams.add("v1.2");
-			pathParams.add("champion");
-			HashMap<String, String> queryParams = new HashMap<String, String>();
-            queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-            queryParams.put("version", Commons.LATEST_VERSION);
-			queryParams.put("champData", "altimages");
-			queryParams.put("api_key", Commons.API_KEY);
-			ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ArrayList<String> pathParams = new ArrayList<String>();
+                    pathParams.add("static-data");
+                    pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+                    pathParams.add("v1.2");
+                    pathParams.add("champion");
+                    HashMap<String, String> queryParams = new HashMap<String, String>();
+                    queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+                    queryParams.put("version", Commons.LATEST_VERSION);
+                    queryParams.put("champData", "altimages");
+                    queryParams.put("api_key", Commons.API_KEY);
+                    ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, AllChampionsFragment.this);
+                }
+            }, 400);
 		}else{
-			adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
-			gridView.setAdapter(adapter);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if(adapter == null || adapter.getCount() == 0) {
+                        adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
+                        gridView.setAdapter(adapter);
+                    }
+                }
+            }, 400);
 		}
 		
 		return v;
@@ -82,40 +95,6 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 		searchBar = (EditText)v.findViewById(R.id.edittextSearchBar);
 		searchBar.addTextChangedListener(this);
 		gridView.setOnItemClickListener(this);
-     /*   imageviewListGrid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(listViewChampions.getVisibility() == View.GONE){
-                    if(adapter != null) {
-                        ArrayList<Champion> currentChampsInAdapter = new ArrayList<Champion>();
-                        for(int i = 0; i< adapter.getCount(); i++){
-                            Champion c = (Champion)adapter.getItem(i);
-                            currentChampsInAdapter.add(c);
-                        }
-                        listAdapter = new AllChampionsListAdapter(getContext(), R.layout.list_row_allchampions, currentChampsInAdapter);
-                        listViewChampions.setVisibility(View.VISIBLE);
-                        gridView.setVisibility(View.GONE);
-                        imageviewListGrid.setBackgroundResource(R.drawable.listview);
-                        listViewChampions.setAdapter(listAdapter);
-                    }
-                }else {
-                    if(listAdapter != null) {
-                        ArrayList<Champion> currentChampsInAdapter = new ArrayList<Champion>();
-                        for(int i = 0; i< listAdapter.getCount(); i++){
-                            Champion c = (Champion)listAdapter.getItem(i);
-                            currentChampsInAdapter.add(c);
-                        }
-
-                        adapter = new GridViewAdapter(getContext(), R.layout.row_grid, currentChampsInAdapter);
-
-                        listViewChampions.setVisibility(View.GONE);
-                        gridView.setVisibility(View.VISIBLE);
-                        imageviewListGrid.setBackgroundResource(R.drawable.gridview);
-                        gridView.setAdapter(adapter);
-                    }
-                }
-            }
-        });*/
 	}
 	
 	@Override
@@ -174,9 +153,8 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 		fragment.setArguments(args);
 		FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+        Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
 		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
-	//	showInterstitial();
-		
 	}
 
 	private void showInterstitial(){

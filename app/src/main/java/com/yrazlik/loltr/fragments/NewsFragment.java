@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,87 +50,93 @@ public class NewsFragment extends BaseFragment implements ResponseListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_news, container, false);
         newsLV = (ListView) v.findViewById(R.id.newsLV);
-        news = new ArrayList<>();
-        final Dialog progress = ServiceRequest.showLoading(getActivity());
-        if(progress != null){
-            progress.show();
-        }
+        if(news == null) {
+            news = new ArrayList<>();
+            final Dialog progress = ServiceRequest.showLoading(getActivity());
+            if (progress != null) {
+                progress.show();
+            }
 
-        //getRSSFeed();
+            if (LolApplication.firebaseInitialized) {
+                try {
+                    Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+                    firebase.child("news").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
+                                if (keyValues != null && keyValues.size() > 0) {
+                                    String title = (String) keyValues.get("title");
+                                    String titleEnglish = (String) keyValues.get("titleEnglish");
+                                    String message = (String) keyValues.get("message");
+                                    String messageEnglish = (String) keyValues.get("messageEnglish");
+                                    String smallImage = (String) keyValues.get("smallImage");
+                                    String largeImage = (String) keyValues.get("largeImage");
+                                    String videoUrl = (String) keyValues.get("videoUrl");
+                                    String createdAt = (String) keyValues.get("createdAt");
 
-        if(LolApplication.firebaseInitialized){
-            try{
-                Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-                firebase.child("news").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
-                            if (keyValues != null && keyValues.size() > 0) {
-                                String title = (String) keyValues.get("title");
-                                String titleEnglish = (String) keyValues.get("titleEnglish");
-                                String message = (String) keyValues.get("message");
-                                String messageEnglish = (String) keyValues.get("messageEnglish");
-                                String smallImage = (String) keyValues.get("smallImage");
-                                String largeImage = (String) keyValues.get("largeImage");
-                                String videoUrl = (String) keyValues.get("videoUrl");
-                                String createdAt = (String) keyValues.get("createdAt");
+                                    if (createdAt != null) {
+                                        try {
+                                            String[] values = createdAt.split("\\.");
+                                            int day = Integer.parseInt(values[0]);
+                                            int month = Integer.parseInt(values[1]);
+                                            int year = Integer.parseInt(values[2]);
+                                            Calendar c = Calendar.getInstance();
+                                            c.set(year, month - 1, day, 0, 0);
 
-                                if(createdAt != null){
-                                    try {
-                                        String[] values = createdAt.split("\\.");
-                                        int day = Integer.parseInt(values[0]);
-                                        int month = Integer.parseInt(values[1]);
-                                        int year = Integer.parseInt(values[2]);
-                                        Calendar c = Calendar.getInstance();
-                                        c.set(year, month - 1, day, 0, 0);
+                                            if (Commons.SELECTED_LANGUAGE != null) {
+                                                if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
+                                                    if (title != null && title.length() > 0) {
+                                                        news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
 
-                                        if (Commons.SELECTED_LANGUAGE != null) {
-                                            if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
-                                                if (title != null && title.length() > 0) {
-                                                    news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
+                                                    }
+                                                } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
+                                                    if (titleEnglish != null && titleEnglish.length() > 0) {
+                                                        news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
 
+                                                    }
                                                 }
-                                            } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
+                                            } else {
                                                 if (titleEnglish != null && titleEnglish.length() > 0) {
                                                     news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
-
                                                 }
                                             }
-                                        } else {
-                                            if (titleEnglish != null && titleEnglish.length() > 0) {
-                                                news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
-                                            }
-                                        }
 
-                                    } catch (Exception ignored) {
+                                        } catch (Exception ignored) {
+                                        }
                                     }
                                 }
                             }
+
+                            if (news != null && news.size() > 0) {
+                                news = sortByDateCreated(news);
+                                Collections.reverse(news);
+                                hideProgress();
+                                adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
+                                newsLV.setAdapter(adapter);
+                            } else {
+                                hideProgress();
+                            }
                         }
 
-                        if(news != null && news.size() > 0) {
-                            news = sortByDateCreated(news);
-                            Collections.reverse(news);
-                            hideProgress();
-                            adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
-                            newsLV.setAdapter(adapter);
-                        }else{
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
                             hideProgress();
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                        hideProgress();
-                    }
-                });
-
-            }catch (Exception e){
+                } catch (Exception e) {
+                    hideProgress();
+                }
+            } else {
                 hideProgress();
             }
-        }else{
+        } else {
+            news = sortByDateCreated(news);
+            Collections.reverse(news);
             hideProgress();
+            adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
+            newsLV.setAdapter(adapter);
         }
 
         newsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -155,7 +162,9 @@ public class NewsFragment extends BaseFragment implements ResponseListener{
                     args.putString(NewsDetailFragment.EXTRA_WV_URL, selectedNews.getVideoUrl());
                     NewsDetailFragment fragment = new NewsDetailFragment();
                     fragment.setArguments(args);
-                    fm.beginTransaction().replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_DETAIL_FRAGMENT).commit();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+                    ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_DETAIL_FRAGMENT).commit();
                     showInterstitial();
 
                 }catch (Exception ignored){}

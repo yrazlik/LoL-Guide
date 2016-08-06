@@ -3,6 +3,7 @@ package com.yrazlik.loltr.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,21 +42,23 @@ public class ChampionSkinsFragment extends BaseFragment implements ResponseListe
         getExtras();
         skinsList = (ListView)v.findViewById(R.id.skinsList);
         skinsList.setOnItemClickListener(this);
-        ArrayList<String> pathParams = new ArrayList<String>();
-        pathParams.add("static-data");
-        pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-        pathParams.add("v1.2");
-        pathParams.add("champion");
-        pathParams.add(String.valueOf(champId));
-        HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-        queryParams.put("version", Commons.LATEST_VERSION);
-        queryParams.put("champData", "skins");
-        queryParams.put("api_key", Commons.API_KEY);
-
-        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, this);
-
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<String> pathParams = new ArrayList<String>();
+                pathParams.add("static-data");
+                pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
+                pathParams.add("v1.2");
+                pathParams.add("champion");
+                pathParams.add(String.valueOf(champId));
+                HashMap<String, String> queryParams = new HashMap<String, String>();
+                queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+                queryParams.put("version", Commons.LATEST_VERSION);
+                queryParams.put("champData", "skins");
+                queryParams.put("api_key", Commons.API_KEY);
+                ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, ChampionSkinsFragment.this);
+            }
+        }, 350);
         return v;
     }
 

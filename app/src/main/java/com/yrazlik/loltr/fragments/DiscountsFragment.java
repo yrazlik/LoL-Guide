@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -26,10 +27,14 @@ public class DiscountsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_discounts, container,
+        final View v = inflater.inflate(R.layout.fragment_discounts, container,
                 false);
-        setTabs(v);
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setTabs(v);
+            }
+        }, 350);
         return v;
     }
 

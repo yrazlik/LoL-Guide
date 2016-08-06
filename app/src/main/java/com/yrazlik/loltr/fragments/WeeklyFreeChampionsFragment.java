@@ -2,6 +2,7 @@ package com.yrazlik.loltr.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -81,14 +82,23 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
             Commons.weeklyFreeChampions = copyOfWeeklyFreeChampions;
 			adapter = new ListAdapter(getActivity(), R.layout.list_row,
 					Commons.weeklyFreeChampions);
-			list.setAdapter(adapter);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    list.setAdapter(adapter);
+                }
+            }, 400);
 		} else {
 			Commons.weeklyFreeChampions = new ArrayList<Champion>();
 			adapter = new ListAdapter(getActivity(), R.layout.list_row,
 					Commons.weeklyFreeChampions);
-			list.setAdapter(adapter);
-
-            makeWeeklyFreeChampsRequest();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    list.setAdapter(adapter);
+                    makeWeeklyFreeChampsRequest();
+                }
+            }, 400);
 		}
 		return v;
 
