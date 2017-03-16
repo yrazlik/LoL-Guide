@@ -5,14 +5,14 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:paddingLeft="10dp"
                 android:paddingRight="5dp"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
-                android:background="@drawable/selector_listview">
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/selector_listview_material">
 
     <com.pkmmte.view.CircularImageView
         android:id="@+id/imageViewChampionImage"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         app:border="true"
         app:border_color="@color/white"
         app:border_width="1.5dp"
@@ -29,14 +29,14 @@
 
         <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/textViewChampionName"
-            style="@style/whiteText18dp"
+            android:textAppearance="@style/sp16BlackBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/material_yellow"/>
+            android:textColor="@color/black"/>
 
         <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/textViewDateInterval"
-            style="@style/whiteText14dp"
+            android:textAppearance="@style/sp12GrayRegular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewChampionName"
@@ -66,7 +66,7 @@
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textViewRp"
-                style="@style/whiteText13dp"
+                android:textAppearance="@style/sp12GrayRegular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -92,7 +92,7 @@
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textViewIp"
-                style="@style/whiteText13dp"
+                android:textAppearance="@style/sp12GrayRegular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

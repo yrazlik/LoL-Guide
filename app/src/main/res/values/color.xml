@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#000000</color>
+    <color name="text_black">#323232</color>
+    <color name="text_gray">#B0B0B0</color>
+    <color name="divider_gray">#CDCDCD</color>
     <color name="button_blue">#2260C0</color>
     <color name="gray">#EBEBEB</color>
+    <color name="selector_touch_gray">#F7F7F7</color>
     <color name="discount_green">#659C26</color>
     <color name="white">#FFFFFF</color>
     <color name="sticky_text_color_transparent">#CC181825</color>
