@@ -36,6 +36,7 @@ public class LolApplication extends MultiDexApplication{
     public static Tracker tracker;
     public static ImageLoader imageLoader;
     public InterstitialAd mInterstitialAd;
+    public static Context mAppContext;
     static int ad_show = 0;
 
     public InterstitialAd getmInterstitialAd() {
@@ -46,9 +47,14 @@ public class LolApplication extends MultiDexApplication{
         this.mInterstitialAd = mInterstitialAd;
     }
 
+    public static Context getAppContext() {
+        return mAppContext;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mAppContext = getApplicationContext();
 
         try {
             mInterstitialAd = new InterstitialAd(getApplicationContext());

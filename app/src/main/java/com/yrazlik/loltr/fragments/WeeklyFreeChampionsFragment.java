@@ -22,11 +22,9 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.adapters.ListAdapter;
-import com.yrazlik.loltr.adapters.NewsAdapter;
+import com.yrazlik.loltr.adapters.WeeklyFreeChampionsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
-import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.ChampionRpIpCostsResponse;
@@ -34,8 +32,6 @@ import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -45,7 +41,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 		ResponseListener, OnItemClickListener {
 
 	ListView list;
-	ListAdapter adapter;
+	WeeklyFreeChampionsAdapter adapter;
 	int freeToPlayChampsSize;
 	ArrayList<String> weeklyFreeChampIds;
     int weeklyFreeChampsTrialCount = 0;
@@ -80,7 +76,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
                 copyOfWeeklyFreeChampions.add(c2);
             }
             Commons.weeklyFreeChampions = copyOfWeeklyFreeChampions;
-			adapter = new ListAdapter(getActivity(), R.layout.list_row,
+			adapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions,
 					Commons.weeklyFreeChampions);
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -90,7 +86,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
             }, 400);
 		} else {
 			Commons.weeklyFreeChampions = new ArrayList<Champion>();
-			adapter = new ListAdapter(getActivity(), R.layout.list_row,
+			adapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions,
 					Commons.weeklyFreeChampions);
             new Handler().postDelayed(new Runnable() {
                 @Override
