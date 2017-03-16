@@ -2,7 +2,6 @@ package com.yrazlik.loltr.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -27,10 +25,8 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
-import com.yrazlik.loltr.responseclasses.ChampionRpIpCostsResponse;
 import com.yrazlik.loltr.responseclasses.WeeklyFreeChampionsResponse;
-import com.yrazlik.loltr.service.ServiceRequest;
-
+import com.yrazlik.loltr.service.ServiceHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,130 +36,88 @@ import java.util.Map.Entry;
 public class WeeklyFreeChampionsFragment extends BaseFragment implements
 		ResponseListener, OnItemClickListener {
 
-	ListView list;
-	WeeklyFreeChampionsAdapter adapter;
-	int freeToPlayChampsSize;
-	ArrayList<String> weeklyFreeChampIds;
-    int weeklyFreeChampsTrialCount = 0;
+	private ListView weeklyFreeChampionsList;
+
+	private WeeklyFreeChampionsAdapter weeklyFreeChampionsAdapter;
+	private ArrayList<String> weeklyFreeChampIds;
+    private int weeklyFreeChampsTrialCount = 0;
+    private int freeToPlayChampsSize;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_weekly_free_champions,
-				container, false);
-		initUI(v);
 
-		if (Commons.weeklyFreeChampions != null) {
-            ArrayList<Champion>copyOfWeeklyFreeChampions = new ArrayList<Champion>();
-            for(Champion c : Commons.weeklyFreeChampions){
-                Champion c2 = new Champion();
-                c2.setChampionImageUrl(c.getChampionImageUrl());
-                c2.setChampionName(c.getChampionName());
-                c2.setChampionRp(c.getChampionRp());
-                c2.setChampionIp(c.getChampionIp());
-                c2.setBotMmEnabled(c.isBotMmEnabled());
-                c2.setId(c.getId());
-                c2.setTitle(c.getTitle());
-                c2.setRankedPlayEnabled(c.isRankedPlayEnabled());
-                c2.setBotEnabled(c.isBotEnabled());
-                c2.setActive(c.isActive());
-                c2.setFreeToPlay(c.isFreeToPlay());
-                c2.setKey(c.getKey());
-                c2.setTeamId(c.getTeamId());
-                c2.setPickTurn(c.getPickTurn());
-                c2.setChampionId(c.getChampionId());
-                c2.setDateInterval(Commons.getTuesday());
-                copyOfWeeklyFreeChampions.add(c2);
+		initUI(inflater, container);
+
+		if (Commons.weeklyFreeChampions != null && Commons.weeklyFreeChampions.size() > 0) {
+            if(weeklyFreeChampionsAdapter != null && weeklyFreeChampionsAdapter.getCount() > 0) {
+                notifyDataSetChanged();
+            } else {
+                populateWeeklyFreeChampionsList();
             }
-            Commons.weeklyFreeChampions = copyOfWeeklyFreeChampions;
-			adapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions,
-					Commons.weeklyFreeChampions);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    list.setAdapter(adapter);
-                }
-            }, 400);
 		} else {
-			Commons.weeklyFreeChampions = new ArrayList<Champion>();
-			adapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions,
-					Commons.weeklyFreeChampions);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    list.setAdapter(adapter);
-                    makeWeeklyFreeChampsRequest();
-                }
-            }, 400);
-		}
-		return v;
+           populateWeeklyFreeChampionsList();
+        }
+		return rootView;
 
 	}
 
-    private void makeWeeklyFreeChampsRequest(){
-        ArrayList<String> pathParams = new ArrayList<String>();
-        HashMap<String, String> queryParams = new HashMap<String, String>();
-        pathParams.add("api");
-        pathParams.add("lol");
-        pathParams.add(Commons.SELECTED_REGION);
-        pathParams.add("v1.2");
-        pathParams.add("champion");
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-        queryParams.put("api_key", Commons.API_KEY);
-        queryParams.put("freeToPlay", "true");
-        ServiceRequest.getInstance(getContext()).makeGetRequest(
-                Commons.WEEKLY_FREE_CHAMPIONS_REQUEST, pathParams,
-                queryParams, null, this);
+    private void populateWeeklyFreeChampionsList() {
+        Commons.weeklyFreeChampions = new ArrayList<>();
+        notifyDataSetChanged();
+        ServiceHelper.getInstance(getContext()).makeWeeklyFreeChampsRequest(this);
+    }
+
+    private void setWeeklyFreeChampionsAdapter() {
+        if(weeklyFreeChampionsAdapter == null) {
+            weeklyFreeChampionsAdapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions,
+                    Commons.weeklyFreeChampions);
+        }
+        weeklyFreeChampionsList.setAdapter(weeklyFreeChampionsAdapter);
+    }
+
+    private void notifyDataSetChanged() {
+        if(weeklyFreeChampionsAdapter != null) {
+            weeklyFreeChampionsAdapter.notifyDataSetChanged();
+        }
     }
 	
-	private void initUI(View v){
-		list = (ListView) v.findViewById(R.id.listViewWeeklyFreeChampions);
-		list.setOnItemClickListener(this);
+	private void initUI(LayoutInflater inflater, ViewGroup container){
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_weekly_free_champions, container, false);
+            weeklyFreeChampionsList = (ListView) rootView.findViewById(R.id.listViewWeeklyFreeChampions);
+            weeklyFreeChampionsList.setOnItemClickListener(this);
+        }
 	}
 
 	@Override
 	public void onSuccess(Object response) {
 		if (response instanceof WeeklyFreeChampionsResponse) {
-			try {
-				WeeklyFreeChampionsResponse resp = (WeeklyFreeChampionsResponse) response;
+            WeeklyFreeChampionsResponse resp = (WeeklyFreeChampionsResponse) response;
 
-				if (resp != null && resp.getChampions() != null && resp.getChampions().size() > 0) {
-					weeklyFreeChampIds = new ArrayList<String>();
-					for (Champion c : resp.getChampions()) {
-						weeklyFreeChampIds.add(String.valueOf(c.getId()));
-					}
-					freeToPlayChampsSize = weeklyFreeChampIds.size();
-					ArrayList<String> pathParams = new ArrayList<String>();
-					pathParams.add("static-data");
-					pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-					pathParams.add("v1.2");
-					pathParams.add("champion");
-					HashMap<String, String> queryParams = new HashMap<String, String>();
-					queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-					queryParams.put("champData", "altimages");
-					queryParams.put("api_key", Commons.API_KEY);
-					ServiceRequest.getInstance(getContext()).makeGetRequest(
-							Commons.ALL_CHAMPIONS_REQUEST,
-							pathParams, queryParams, null, this);
-				} else {
-					try {
-						FragmentManager fm = getActivity().getSupportFragmentManager();
-						WeeklyFreeChampionsFragment fragment = new WeeklyFreeChampionsFragment();
-						fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
-					} catch (Exception e) {
-						Commons.weeklyFreeChampions = null;
-					}
-				}
-			}catch (Exception ignored) {}
+            if (resp != null && resp.getChampions() != null && resp.getChampions().size() > 0) {
+                weeklyFreeChampIds = new ArrayList<>();
+                for (Champion c : resp.getChampions()) {
+                    try {
+                        weeklyFreeChampIds.add(String.valueOf(c.getId()));
+                    } catch (Exception ignored) {}
+                }
+                freeToPlayChampsSize = weeklyFreeChampIds.size();
+                ServiceHelper.getInstance(getContext()).makeGetAllChampionsRequest(this);
+            }
 
-		} else if (response instanceof AllChampionsResponse) {
+        } else if (response instanceof AllChampionsResponse) {
 			AllChampionsResponse resp = (AllChampionsResponse) response;
 			Map<String, Map<String, String>> data = resp.getData();
-			if(Commons.weeklyFreeChampions != null){
+
+            if(Commons.weeklyFreeChampions != null){
 				Commons.weeklyFreeChampions.clear();
 			}else{
-				Commons.weeklyFreeChampions = new ArrayList<Champion>();
+				Commons.weeklyFreeChampions = new ArrayList<>();
 			}
+
+            notifyDataSetChanged();
+
 			for(Entry<String, Map<String, String>> entry : data.entrySet()){
 				String key = entry.getKey();
 				String id = entry.getValue().get("id");
@@ -177,10 +131,11 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 						c.setKey(entry.getValue().get("key"));
 						c.setDateInterval(Commons.getTuesday());
 						Commons.weeklyFreeChampions.add(c);
+                        notifyDataSetChanged();
 					}
 				}
-				
 			}
+
 			if(LolApplication.firebaseInitialized){
 				if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
 					try{
@@ -206,66 +161,32 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 										}
 									}
 									Commons.weeklyFreeChampions = weeklyFreeChampions;
-									adapter.notifyDataSetChanged();
-								}catch (Exception e){
-
-								}
+                                    setWeeklyFreeChampionsAdapter();
+                                    notifyDataSetChanged();
+								}catch (Exception ignored){}
 							}
 
 							@Override
 							public void onCancelled(FirebaseError firebaseError) {
-								if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
-									ServiceRequest.getInstance(getContext()).makeGetRequest(
-											Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
-											WeeklyFreeChampionsFragment.this);
-								}
+                                setWeeklyFreeChampionsAdapter();
+                                notifyDataSetChanged();
 							}
 						});
 
-					}catch (Exception ignored){
-						if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
-							ServiceRequest.getInstance(getContext()).makeGetRequest(
-									Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
-									this);
-						}
-					}
+					}catch (Exception ignored){}
 				}
 			}else {
-				if (Commons.weeklyFreeChampions.size() == freeToPlayChampsSize) {
-					ServiceRequest.getInstance(getContext()).makeGetRequest(
-							Commons.CHAMPION_RP_IP_COSTS_REQUEST, null, null, null,
-							this);
-				}
+                setWeeklyFreeChampionsAdapter();
+                notifyDataSetChanged();
 			}
-		} else if (response instanceof ChampionRpIpCostsResponse) {
-			ArrayList<Champion> weeklyFreeChampions = new ArrayList<Champion>();
-			ChampionRpIpCostsResponse resp = (ChampionRpIpCostsResponse) response;
-			ArrayList<String> keys = new ArrayList<String>();
-			Map<String, Map<String, String>> costs = resp.getCosts();
-			Iterator it = costs.entrySet().iterator();
-			while (it.hasNext()) {
-				Map.Entry pairs = (Map.Entry) it.next();
-				String key = (String) pairs.getKey();
-				for(Champion c : Commons.weeklyFreeChampions){
-					if(String.valueOf(c.getId()).equals(key)){
-						Map<String, String> keyValues = (Map<String, String>) pairs.getValue();
-						c.setChampionRp(String.valueOf(keyValues.get("rp_cost")));
-						c.setChampionIp(String.valueOf(keyValues.get("ip_cost")));
-						weeklyFreeChampions.add(c);
-					}
-				}
-			}
-			Commons.weeklyFreeChampions = weeklyFreeChampions;
-			adapter.notifyDataSetChanged();
 		}
-
 	}
 	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		switch (parent.getId()) {
 		case R.id.listViewWeeklyFreeChampions:
-			Champion c = (Champion) list.getItemAtPosition(position);
+			Champion c = (Champion) weeklyFreeChampionsList.getItemAtPosition(position);
 			int champId = c.getId();
 			ChampionDetailFragment fragment = new ChampionDetailFragment();
 			Bundle args = new Bundle();
@@ -283,22 +204,31 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 		default:
 			break;
 		}
-		
 	}
 
 	@Override
-	public void onFailure(Object response) {
-        try {
-            String errorMessage = (String) response;
-            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
-        }catch (Exception ignored){}
-        Commons.weeklyFreeChampions = null;
-        if(weeklyFreeChampsTrialCount < 3){
-            weeklyFreeChampsTrialCount++;
-            makeWeeklyFreeChampsRequest();
-        }else{
-            Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_LONG).show();
-        }
+	public void onFailure(final Object response) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String errorMessage = (String) response;
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                }catch (Exception ignored){}
+
+                if(Commons.weeklyFreeChampions != null) {
+                    Commons.weeklyFreeChampions.clear();
+                    notifyDataSetChanged();
+                }
+
+                if(weeklyFreeChampsTrialCount < 3){
+                    weeklyFreeChampsTrialCount++;
+                    ServiceHelper.getInstance(getContext()).makeWeeklyFreeChampsRequest(WeeklyFreeChampionsFragment.this);
+                }else{
+                    Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 	}
 
 	@Override
