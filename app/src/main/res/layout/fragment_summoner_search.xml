@@ -1,113 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/bg_gray"
+                android:paddingBottom="10dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp">
 
-    <ImageView
-        android:id="@+id/parentBG"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:background="@color/bg_gray"
+        android:paddingBottom="10dp">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="10dp"
-                    android:background="@color/app_color">
-        <RelativeLayout
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/searchSummonerTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_gray"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:text="@string/searchSummoner"
+            android:textAppearance="@style/sp14BlackBold"
+            />
+
+        <android.support.v7.widget.CardView
             android:id="@+id/border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/border_white"
-            android:paddingBottom="15dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="10dp">
+            android:layout_below="@+id/searchSummonerTV"
+            android:background="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="0dp">
+
             <RelativeLayout
-                android:id="@+id/usernameRegionRL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="5dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="5dp">
 
-                <EditText
-                    android:id="@+id/usernameET"
-                    style="@style/whiteText14dp"
+                <RelativeLayout
+                    android:id="@+id/usernameRegionRL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/buttonSave"
-                    android:layout_alignTop="@+id/buttonSave"
-                    android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@+id/buttonSave"
-                    android:hint="@string/enter_username"
-                    android:imeOptions="actionDone"
-                    android:singleLine="true"
-                    android:textColorHint="@color/white"
-                    />
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical">
 
-                <ImageButton android:id="@+id/buttonSave"
-                             android:layout_width="80dp"
-                             android:layout_height="40dp"
-                             android:layout_alignParentRight="true"
-                             android:layout_alignParentTop="true"
-                             android:background="@color/red_text_color"
-                             android:gravity="center"
-                             android:src="@android:drawable/ic_menu_search"/>
+                    <EditText
+                        android:id="@+id/usernameET"
+                        style="@style/sp12BlackRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/buttonSearch"
+                        android:ellipsize="end"
+                        android:hint="@string/enter_username"
+                        android:imeOptions="actionDone"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColorHint="@color/text_gray"
+                        />
 
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/buttonSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="bottom|end"
+                        android:layout_margin="1dp"
+                        android:elevation="1dp"
+                        android:scaleType="center"
+                        android:src="@android:drawable/ic_menu_search"
+                        app:backgroundTint="@color/tab_color"
+                        app:fabSize="mini"
+                        app:rippleColor="@color/red_text_color"/>
+
+                </RelativeLayout>
+
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/infoTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/usernameRegionRL"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="7dp"
+                    android:text="@string/if_you_wanna_change_region"
+                    android:textAppearance="@style/sp12GrayRegular"/>
 
             </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
-            <TextView android:id="@+id/infoTV" style="@style/whiteText14dp"
-                      android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:layout_below="@+id/usernameRegionRL"
-                      android:layout_marginLeft="10dp"
-                      android:layout_marginRight="10dp"
-                      android:layout_marginTop="5dp"
-                      android:text="@string/if_you_wanna_change_region"
-                      android:textSize="12dp"/>
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/recentSearchesTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/border"
+            android:background="@color/bg_gray"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:text="@string/recentSearches"
+            android:textAppearance="@style/sp14BlackBold"
+            />
 
-        </RelativeLayout>
-
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:id="@+id/recentSearchesRL"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/border"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/border_white"
-            android:paddingBottom="15dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:visibility="visible">
+            android:layout_below="@+id/recentSearchesTV"
+            android:background="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="0dp">
 
-            <TextView
-                android:id="@+id/recentSearchesTV"
-                style="@style/whiteText16dp"
-                android:textColor="@color/material_yellow"
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/recentSearches"
-                />
+                android:layout_height="match_parent"
+                android:background="@drawable/border_white"
+                android:paddingBottom="15dp"
+                android:visibility="visible">
 
-            <ListView
-                android:id="@+id/recentSearchesLV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/recentSearchesTV"
-                android:layout_marginTop="10dp"
-                android:divider="@color/white"
-                android:dividerHeight="0.5dp">
+                <ListView
+                    android:id="@+id/recentSearchesLV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:divider="@drawable/list_divider_gray_with_margin"
+                    android:dividerHeight="0.5dp">
 
-            </ListView>
+                </ListView>
 
-        </RelativeLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </RelativeLayout>
 </RelativeLayout>

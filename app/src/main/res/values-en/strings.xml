@@ -227,6 +227,7 @@
     <string name="englishEnglish">English</string>
 
     <string name="recentSearches">Recent Searches</string>
+    <string name="searchSummoner">Summoner Search</string>
     <string name="region">Region:</string>
     <string name="if_you_wanna_change_region">*Summoner will be searched within selected region. You can change region from settings page.</string>
 

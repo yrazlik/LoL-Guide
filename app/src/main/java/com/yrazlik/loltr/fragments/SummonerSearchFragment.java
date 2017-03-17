@@ -3,10 +3,13 @@ package com.yrazlik.loltr.fragments;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +17,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -35,6 +37,7 @@ import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -51,9 +54,11 @@ import java.util.Random;
  */
 public class SummonerSearchFragment extends BaseFragment implements ResponseListener{
 
-    private RelativeLayout usernameRegionRL, recentSearchesRL;
+    private RelativeLayout usernameRegionRL;
+    private RobotoTextView recentSearchesTV;
+    private CardView recentSearchesRL;
     private EditText usernameET;
-    private ImageButton searchButton;
+    private FloatingActionButton searchButton;
     private String region = "";
     private String userId;
     private String userName;
@@ -65,79 +70,84 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private RecentMatchesResponse recentMatchesResponse;
     private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
-    private ImageView parentBG;
 
     private boolean recentMatchesResponseReceived, rankedStatsResponseReceived, leagueInfoResponseReceived;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_summoner_search, container, false);
 
-        recentMatchesResponseReceived = false;
-        rankedStatsResponseReceived = false;
-        leagueInfoResponseReceived = false;
-        region = Commons.SELECTED_REGION;
-        parentBG = (ImageView) v.findViewById(R.id.parentBG);
-        parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.teemo);
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_summoner_search, container, false);
 
-        usernameRegionRL = (RelativeLayout)v.findViewById(R.id.usernameRegionRL);
-        recentSearchesRL = (RelativeLayout)v.findViewById(R.id.recentSearchesRL);
-        usernameET = (EditText)v.findViewById(R.id.usernameET);
-        searchButton = (ImageButton)v.findViewById(R.id.buttonSave);
-        usernameET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    searchButton.performClick();
-                    return true;
-                }
-                return false;
-            }
-        });
-        recentSearchesLV = (ListView) v.findViewById(R.id.recentSearchesLV);
-        recentSearchesLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    RecentSearchItem item = recentSearchesArrayList.get(position);
-                    if(item != null){
-                        makeSearchRequest(item.getName());
+            recentMatchesResponseReceived = false;
+            rankedStatsResponseReceived = false;
+            leagueInfoResponseReceived = false;
+            region = Commons.SELECTED_REGION;
+
+            usernameRegionRL = (RelativeLayout) rootView.findViewById(R.id.usernameRegionRL);
+            recentSearchesRL = (CardView) rootView.findViewById(R.id.recentSearchesRL);
+            recentSearchesTV = (RobotoTextView) rootView.findViewById(R.id.recentSearchesTV);
+            usernameET = (EditText) rootView.findViewById(R.id.usernameET);
+            searchButton = (FloatingActionButton) rootView.findViewById(R.id.buttonSearch);
+            usernameET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if (actionId == EditorInfo.IME_ACTION_DONE) {
+                        searchButton.performClick();
+                        return true;
                     }
-                }catch (Exception ignored){}
-
-            }
-        });
-
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (usernameET.getText() == null || usernameET.getText().toString() == null || usernameET.getText().toString().length() <= 0) {
-                    Toast.makeText(getActivity(), R.string.pleaseEnterSummonerName, Toast.LENGTH_SHORT).show();
-                } else if (region == null || region.length() <= 0) {
-                    Toast.makeText(getActivity(), R.string.pleaseSelectYourRegion, Toast.LENGTH_SHORT).show();
-                } else {
-                   makeSearchRequest(usernameET.getText().toString());
+                    return false;
                 }
+            });
+            recentSearchesLV = (ListView) rootView.findViewById(R.id.recentSearchesLV);
+            recentSearchesLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    try {
+                        RecentSearchItem item = recentSearchesArrayList.get(position);
+                        if (item != null) {
+                            makeSearchRequest(item.getName());
+                        }
+                    } catch (Exception ignored) {
+                    }
+
+                }
+            });
+
+            searchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (usernameET.getText() == null || usernameET.getText().toString() == null || usernameET.getText().toString().length() <= 0) {
+                        Toast.makeText(getActivity(), R.string.pleaseEnterSummonerName, Toast.LENGTH_SHORT).show();
+                    } else if (region == null || region.length() <= 0) {
+                        Toast.makeText(getActivity(), R.string.pleaseSelectYourRegion, Toast.LENGTH_SHORT).show();
+                    } else {
+                        makeSearchRequest(usernameET.getText().toString());
+                    }
+                }
+            });
+
+            recentSearchesArrayList = Commons.loadRecentSearchesArrayList(getContext());
+            if (recentSearchesArrayList == null) {
+                recentSearchesArrayList = new ArrayList<>();
             }
-        });
 
-        recentSearchesArrayList = Commons.loadRecentSearchesArrayList(getContext());
-        if(recentSearchesArrayList == null){
-            recentSearchesArrayList = new ArrayList<>();
+            if (recentSearchesArrayList.size() > 0) {
+                recentSearchesRL.setVisibility(View.VISIBLE);
+                recentSearchesAdapter = new RecentSearchesAdapter(getContext(), R.layout.list_row_recentsearches, recentSearchesArrayList);
+                recentSearchesLV.setAdapter(recentSearchesAdapter);
+            } else {
+                recentSearchesRL.setVisibility(View.GONE);
+            }
         }
 
-        if(recentSearchesArrayList.size() > 0){
-            recentSearchesRL.setVisibility(View.VISIBLE);
-            recentSearchesAdapter = new RecentSearchesAdapter(getContext(), R.layout.list_row_recentsearches, recentSearchesArrayList);
-            recentSearchesLV.setAdapter(recentSearchesAdapter);
-        }else{
-            recentSearchesRL.setVisibility(View.GONE);
+        if(recentSearchesAdapter != null) {
+            recentSearchesAdapter.notifyDataSetChanged();
         }
 
-        return v;
+        return rootView;
     }
 
     private boolean isValid(String s){

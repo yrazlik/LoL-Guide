@@ -7,13 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import com.pkmmte.view.CircularImageView;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.RecentSearchItem;
-import com.yrazlik.loltr.service.ServiceRequest;
-import com.yrazlik.loltr.view.FadeInNetworkImageView;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.List;
 
@@ -24,13 +23,11 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearchItem>{
 
     private Context mContext;
     private int resourceId;
-    private List<RecentSearchItem> items;
 
     public RecentSearchesAdapter(Context context, int resource, List<RecentSearchItem> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.resourceId = resource;
-        this.items = objects;
     }
 
     @Override
@@ -43,19 +40,13 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearchItem>{
 
             holder = new ViewHolder();
             holder.row = (RelativeLayout) convertView.findViewById(R.id.row);
-            holder.summonerProfileIcon = (FadeInNetworkImageView)convertView.findViewById(R.id.summonerProfileIcon);
-            holder.summonerName = (TextView)convertView.findViewById(R.id.summonerName);
-            holder.summonerRegion = (TextView) convertView.findViewById(R.id.summonerRegion);
+            holder.summonerProfileIcon = (CircularImageView)convertView.findViewById(R.id.summonerProfileIcon);
+            holder.summonerName = (RobotoTextView)convertView.findViewById(R.id.summonerName);
+            holder.summonerRegion = (RobotoTextView) convertView.findViewById(R.id.summonerRegion);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-
-     /*   if(position%2 == 0){
-            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_green));
-        }else{
-            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_green));
-        }*/
 
         RecentSearchItem item = getItem(position);
 
@@ -67,8 +58,11 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearchItem>{
 
         if(item.getRegion() != null && item.getRegion().length() > 0){
             holder.summonerRegion.setText(mContext.getResources().getString(R.string.region) + " " + item.getRegion().toUpperCase());
+        } else {
+            holder.summonerRegion.setText(mContext.getResources().getString(R.string.region) + " ???");
         }
-        holder.summonerProfileIcon.setImageUrl(Commons.PROFILE_ICON_BASE_URL + item.getProfileIconId() + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+
+        LolImageLoader.getInstance().loadImage(Commons.PROFILE_ICON_BASE_URL + item.getProfileIconId() + ".png", holder.summonerProfileIcon);
 
         return convertView;
 
@@ -76,9 +70,9 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearchItem>{
 
 
     static class ViewHolder {
-        public FadeInNetworkImageView summonerProfileIcon;
-        public TextView summonerName;
-        public TextView summonerRegion;
+        public CircularImageView summonerProfileIcon;
+        public RobotoTextView summonerName;
+        public RobotoTextView summonerRegion;
         public RelativeLayout row;
     }
 }

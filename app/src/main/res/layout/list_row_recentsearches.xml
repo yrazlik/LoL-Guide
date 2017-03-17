@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
                 android:id="@+id/row"
-                android:layout_height="55dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-    <com.yrazlik.loltr.view.FadeInNetworkImageView
+    <com.pkmmte.view.CircularImageView
         android:id="@+id/summonerProfileIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/question_mark"></com.yrazlik.loltr.view.FadeInNetworkImageView>
-
+        android:layout_centerVertical="true">
+    </com.pkmmte.view.CircularImageView>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/summonerProfileIcon">
-        <TextView
+
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/summonerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            style="@style/whiteText13dp"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="@style/sp12BlackRegular"
             />
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/summonerRegion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_below="@+id/summonerName"
-            style="@style/whiteText11dp"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="@style/sp12BlackRegular"
             android:textStyle="italic"/>
     </RelativeLayout>
-
 
 </RelativeLayout>

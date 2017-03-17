@@ -42,7 +42,7 @@ public class RobotoTextView extends TextView {
 			Typeface tf = Typefaces.get(getContext(), FONT_BOLD);
 			this.setTypeface(tf);
 		} else if(currentTypeFace != null && currentTypeFace.getStyle() == Typeface.ITALIC){
-			Typeface tf = Typefaces.get(getContext(), FONT_MEDIUM);
+			Typeface tf = Typefaces.get(getContext(), FONT_NORMAL);
 			this.setTypeface(tf);
 		} else {
 			Typeface tf = Typefaces.get(getContext(), FONT_NORMAL);

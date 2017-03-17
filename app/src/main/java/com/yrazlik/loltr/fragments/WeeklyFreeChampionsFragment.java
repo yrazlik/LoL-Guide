@@ -208,27 +208,30 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 
 	@Override
 	public void onFailure(final Object response) {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    String errorMessage = (String) response;
-                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
-                }catch (Exception ignored){}
+        if(getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        String errorMessage = (String) response;
+                        Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                    } catch (Exception ignored) {
+                    }
 
-                if(Commons.weeklyFreeChampions != null) {
-                    Commons.weeklyFreeChampions.clear();
-                    notifyDataSetChanged();
-                }
+                    if (Commons.weeklyFreeChampions != null) {
+                        Commons.weeklyFreeChampions.clear();
+                        notifyDataSetChanged();
+                    }
 
-                if(weeklyFreeChampsTrialCount < 3){
-                    weeklyFreeChampsTrialCount++;
-                    ServiceHelper.getInstance(getContext()).makeWeeklyFreeChampsRequest(WeeklyFreeChampionsFragment.this);
-                }else{
-                    Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_LONG).show();
+                    if (weeklyFreeChampsTrialCount < 3) {
+                        weeklyFreeChampsTrialCount++;
+                        ServiceHelper.getInstance(getContext()).makeWeeklyFreeChampsRequest(WeeklyFreeChampionsFragment.this);
+                    } else {
+                        Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+        }
 	}
 
 	@Override
