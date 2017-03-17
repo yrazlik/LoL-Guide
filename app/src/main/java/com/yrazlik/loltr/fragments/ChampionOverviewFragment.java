@@ -147,6 +147,11 @@ import java.util.HashMap;
         textViewEssentialItems = (RobotoTextView)v.findViewById(R.id.textViewEssentialItems);
         textViewOffensiveItems = (RobotoTextView)v.findViewById(R.id.textViewOffensiveItems);
         textViewStartingItems = (RobotoTextView)v.findViewById(R.id.textViewStartingItems);
+        textViewDeffensiveItems.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        textViewEssentialItems.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        textViewOffensiveItems.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        textViewStartingItems.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
         LolImageLoader.getInstance().loadImage(champLogoImageUrl, champLogo);
 		champName = (RobotoTextView) v.findViewById(R.id.textViewChampName);
 		champTitle = (RobotoTextView)v.findViewById(R.id.textViewChampTitle);

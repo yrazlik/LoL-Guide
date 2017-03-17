@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_gray"
     android:fillViewport="true">
 
@@ -19,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            app:cardCornerRadius="0dp"
             android:elevation="5dp">
 
 
@@ -179,6 +181,7 @@
             android:layout_below="@+id/topPart"
             android:layout_marginTop="5dp"
             android:background="@color/white"
+            app:cardCornerRadius="0dp"
             android:elevation="5dp">
 
             <RelativeLayout
@@ -213,13 +216,14 @@
             android:layout_below="@+id/relativeLayoutagsContainer"
             android:layout_marginTop="5dp"
             android:background="@color/white"
+            app:cardCornerRadius="0dp"
             android:elevation="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_margin="10dp">
 
                 <com.yrazlik.loltr.view.RobotoTextView
                     android:id="@+id/textViewStartingItems"
