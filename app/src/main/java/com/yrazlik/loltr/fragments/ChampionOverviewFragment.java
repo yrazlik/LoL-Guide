@@ -6,7 +6,6 @@ import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,16 +20,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.androidquery.AQuery;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.pkmmte.view.CircularImageView;
 import com.yrazlik.loltr.LolApplication;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.GridViewItemsAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -41,10 +37,9 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
-
+import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 @SuppressLint("NewApi") public class ChampionOverviewFragment extends BaseFragment implements ResponseListener, OnItemClickListener{
 	
@@ -52,25 +47,21 @@ import java.util.Random;
 	
 	private int champId;
 	private String champLogoImageUrl;
-	private String extraChampName;
-	
-	private ImageView champLogo;
-	private ImageView splashImage;
-	private TextView champName;
-	private TextView champTitle;
-	private Typeface typeFace;
+
+	private CircularImageView champLogo;
+	private RobotoTextView champName;
+	private RobotoTextView champTitle;
 	private RelativeLayout barAttack;
 	private RelativeLayout barDefense;
 	private RelativeLayout barMagic;
 	private RelativeLayout barDifficulty;
-	private TextView tags;
-	private TextView tagsTitle;
+	private RobotoTextView tags;
+	private RobotoTextView tagsTitle;
 	public static int lastSelectedChampionId;
-    private AQuery aq;
+
 	private GridView gridviewStartingItems, gridviewEssentialItems, gridviewOffensiveItems, gridviewDeffensiveItems;
 	private GridViewItemsAdapter startingItemsAdapter, essentialItemsAdapter, offensiveItemsAdapter, deffensiveItemsAdapter;
-    private ProgressBar progress, progressStartingItems, progressEssentialItems, progressOffensiveItems, progressDeffensiveItems;
-    private TextView textViewStartingItems, textViewEssentialItems, textViewOffensiveItems, textViewDeffensiveItems;
+    private RobotoTextView textViewStartingItems, textViewEssentialItems, textViewOffensiveItems, textViewDeffensiveItems;
 
     private ChampionOverviewResponse championOverviewResponse;
     private RecommendedItemsResponse recommendedItemsResponse;
@@ -78,12 +69,15 @@ import java.util.Random;
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_champion_overview, container, false);
-		getExtras();
-		initUI(v);
-        getFragmentData();
-        showInterstitial();
-		return v;	
+
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_champion_overview, container, false);
+            getExtras();
+            initUI(rootView);
+            getFragmentData();
+            showInterstitial();
+        }
+		return rootView;
 	}
 
     private void getFragmentData() {
@@ -135,7 +129,6 @@ import java.util.Random;
 			champId = args.getInt(ChampionDetailFragment.EXTRA_CHAMPION_ID);
 			lastSelectedChampionId = champId;
 			champLogoImageUrl = args.getString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL);
-			extraChampName = args.getString(ChampionDetailFragment.EXTRA_CHAMPION_NAME);
 		}
 	}
 	
@@ -148,28 +141,18 @@ import java.util.Random;
 		gridviewEssentialItems.setOnItemClickListener(this);
 		gridviewOffensiveItems.setOnItemClickListener(this);
 		gridviewDeffensiveItems.setOnItemClickListener(this);
-		typeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/dinproregular.ttf");
-		champLogo = (ImageView)v.findViewById(R.id.imageViewChampionImage);
-		aq = new AQuery(champLogo);
-        progress = (ProgressBar)v.findViewById(R.id.imageProgress);
-        progressStartingItems = (ProgressBar)v.findViewById(R.id.progressStartingItems);
-        progressEssentialItems = (ProgressBar)v.findViewById(R.id.progressEssentialItems);
-        progressOffensiveItems = (ProgressBar)v.findViewById(R.id.progressOffensiveItems);
-        progressDeffensiveItems = (ProgressBar)v.findViewById(R.id.progressDeffensiveItems);
-        textViewDeffensiveItems = (TextView)v.findViewById(R.id.textViewDeffensiveItems);
-        textViewEssentialItems = (TextView)v.findViewById(R.id.textViewEssentialItems);
-        textViewOffensiveItems = (TextView)v.findViewById(R.id.textViewOffensiveItems);
-        textViewStartingItems = (TextView)v.findViewById(R.id.textViewStartingItems);
-        aq.progress(progress).image(champLogoImageUrl, true, true);
-		champName = (TextView)v.findViewById(R.id.textViewChampName);
-		champTitle = (TextView)v.findViewById(R.id.textViewChampTitle);
-		tags = (TextView)v.findViewById(R.id.textviewTags);
-		tagsTitle = (TextView) v.findViewById(R.id.textviewTagsTitle);
+		champLogo = (CircularImageView)v.findViewById(R.id.imageViewChampionImage);
+
+        textViewDeffensiveItems = (RobotoTextView) v.findViewById(R.id.textViewDeffensiveItems);
+        textViewEssentialItems = (RobotoTextView)v.findViewById(R.id.textViewEssentialItems);
+        textViewOffensiveItems = (RobotoTextView)v.findViewById(R.id.textViewOffensiveItems);
+        textViewStartingItems = (RobotoTextView)v.findViewById(R.id.textViewStartingItems);
+        LolImageLoader.getInstance().loadImage(champLogoImageUrl, champLogo);
+		champName = (RobotoTextView) v.findViewById(R.id.textViewChampName);
+		champTitle = (RobotoTextView)v.findViewById(R.id.textViewChampTitle);
+		tags = (RobotoTextView)v.findViewById(R.id.textviewTags);
+		tagsTitle = (RobotoTextView) v.findViewById(R.id.textviewTagsTitle);
 		tagsTitle.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-		tagsTitle.setTypeface(typeFace);
-		tags.setTypeface(typeFace);
-		champName.setTypeface(typeFace);
-		champTitle.setTypeface(typeFace);
 		barAttack = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarAttack);
 		barDefense = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarDefense);
 		barMagic = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarMagic);
@@ -304,31 +287,26 @@ import java.util.Random;
                                         startingItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                         gridviewStartingItems.setAdapter(startingItemsAdapter);
                                         startingItemsAdapter.notifyDataSetChanged();
-                                        progressStartingItems.setVisibility(View.GONE);
                                     } else if (b.getType().equals("essential")) {
                                         essentialOK = true;
                                         essentialItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                         gridviewEssentialItems.setAdapter(essentialItemsAdapter);
                                         essentialItemsAdapter.notifyDataSetChanged();
-                                        progressEssentialItems.setVisibility(View.GONE);
                                     } else if (b.getType().equals("offensive")) {
                                         offensiveOK = true;
                                         offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                         gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
                                         offensiveItemsAdapter.notifyDataSetChanged();
-                                        progressOffensiveItems.setVisibility(View.GONE);
                                     } else if (b.getType().equals("defensive")) {
                                         defensiveOK = true;
                                         deffensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                         gridviewDeffensiveItems.setAdapter(deffensiveItemsAdapter);
                                         deffensiveItemsAdapter.notifyDataSetChanged();
-                                        progressDeffensiveItems.setVisibility(View.GONE);
                                     } else if (b.getType().equals("ability_scaling")) {
                                         offensiveOK = true;
                                         offensiveItemsAdapter = new GridViewItemsAdapter(getContext(), R.layout.row_grid_items, items);
                                         gridviewOffensiveItems.setAdapter(offensiveItemsAdapter);
                                         offensiveItemsAdapter.notifyDataSetChanged();
-                                        progressOffensiveItems.setVisibility(View.GONE);
                                     }
                                 }
                             }
@@ -338,25 +316,21 @@ import java.util.Random;
 
                 if(!startingOK){
                     textViewStartingItems.setVisibility(View.GONE);
-                    progressStartingItems.setVisibility(View.GONE);
                     gridviewStartingItems.setVisibility(View.GONE);
                 }
 
                 if(!essentialOK){
                     textViewEssentialItems.setVisibility(View.GONE);
-                    progressEssentialItems.setVisibility(View.GONE);
                     gridviewEssentialItems.setVisibility(View.GONE);
                 }
 
                 if(!defensiveOK){
                     textViewDeffensiveItems.setVisibility(View.GONE);
-                    progressDeffensiveItems.setVisibility(View.GONE);
                     gridviewDeffensiveItems.setVisibility(View.GONE);
                 }
 
                 if(!offensiveOK){
                     textViewOffensiveItems.setVisibility(View.GONE);
-                    progressOffensiveItems.setVisibility(View.GONE);
                     gridviewOffensiveItems.setVisibility(View.GONE);
                 }
 

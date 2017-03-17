@@ -4,6 +4,7 @@
     <color name="text_black">#323232</color>
     <color name="text_gray">#B0B0B0</color>
     <color name="divider_gray">#CDCDCD</color>
+    <color name="bg_gray">#EAEAEA</color>
     <color name="button_blue">#2260C0</color>
     <color name="gray">#EBEBEB</color>
     <color name="selector_touch_gray">#F7F7F7</color>
@@ -15,12 +16,13 @@
     <color name="blue_border">#6B97D6</color>
     <color name="gg_red">#E61A37</color>
     <color name="transparent_black">#99000000</color>
+    <color name="background_tab_pressed">#F6F6F6</color>
 
 
     <color name="material_green">#CC4F59C2</color>
     <color name="material_dark_green">#CC0D1352</color>
     <color name="app_color">@color/new_app_color</color>
-    <color name="tab_color">#F44336</color>
+    <color name="tab_color">#248F46</color>
     <color name="material_yellow">#D9A368</color>
 
     <color name="background_black_transparent">#F2262829</color>

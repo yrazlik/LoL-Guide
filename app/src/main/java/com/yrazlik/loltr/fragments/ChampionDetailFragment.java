@@ -11,12 +11,11 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.astuetz.PagerSlidingTabStrip;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.view.PagerSlidingTabStrip;
 
 
 public class ChampionDetailFragment extends BaseFragment {
@@ -58,8 +57,8 @@ public class ChampionDetailFragment extends BaseFragment {
         pager.setAdapter(new ChampionDetailAdapter(getChildFragmentManager()));
 
         tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
-        tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
-        tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
+        tabs.setIndicatorColor(getResources().getColor(R.color.white));
+        tabs.setBackgroundColor(getResources().getColor(R.color.tab_color));
         tabs.setDividerColor(getResources().getColor(R.color.white));
         tabs.setTextColor(getResources().getColor(R.color.white));
         DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();

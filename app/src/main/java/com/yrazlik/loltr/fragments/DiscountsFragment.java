@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.view.PagerSlidingTabStrip;
 
 /**
  * Created by yrazlik on 12/25/15.

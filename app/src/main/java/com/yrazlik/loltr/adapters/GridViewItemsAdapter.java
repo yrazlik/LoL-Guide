@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
-import com.androidquery.AQuery;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Items;
@@ -22,7 +21,6 @@ public class GridViewItemsAdapter extends ArrayAdapter<Items>{
 	private int layoutResourceId;
 	private ArrayList<Items> data = new ArrayList<Items>();
 	private ViewHolder holder;
-    private AQuery aq;
 
 	public GridViewItemsAdapter(Context context, int layoutResourceId,
 			ArrayList<Items> data) {
@@ -48,8 +46,7 @@ public class GridViewItemsAdapter extends ArrayAdapter<Items>{
 			holder = (ViewHolder) row.getTag();
 		}
 		Items item = data.get(position);
-        aq = new AQuery(holder.itemImage);
-        aq.progress(holder.progress).image(Commons.ITEM_IMAGES_BASE_URL + String.valueOf(item.getId()) + ".png", true, true);
+        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + String.valueOf(item.getId()) + ".png", holder.itemImage);
 		return row;
 	}
 	

@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/background_black_transparent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:fillViewport="true">
 
-    <ImageView
-        android:id="@+id/imageViewSplashImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_black_transparent"/>
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/topPart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:orientation="vertical">
+            android:background="@color/white"
+            android:elevation="5dp">
+
 
             <RelativeLayout
-                android:id="@+id/topPart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:paddingBottom="10dp"
-                android:background="@drawable/border_component">
+                android:paddingBottom="10dp">
+
                 <RelativeLayout
                     android:id="@+id/relativeLayoutTopPart"
                     android:layout_width="wrap_content"
@@ -37,19 +34,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp">
 
-                    <ImageView
+                    <com.pkmmte.view.CircularImageView
                         android:id="@+id/imageViewChampionImage"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_centerVertical="true"/>
-                    <ProgressBar
-                        android:id="@+id/imageProgress"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="35dp"
-
-                        />
 
                     <RelativeLayout
                         android:id="@+id/relativeLayoutTitleContainer"
@@ -58,22 +47,26 @@
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/imageViewChampionImage">
 
-                        <TextView
+                        <com.yrazlik.loltr.view.RobotoTextView
                             android:id="@+id/textViewChampName"
-                            style="@style/whiteText20dp"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/material_yellow"
-                            android:layout_marginLeft="10dp"/>
+                            android:layout_marginLeft="10dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Cassiopedia"
+                            android:textAppearance="@style/sp18BlackBold"/>
 
-                        <TextView
+                        <com.yrazlik.loltr.view.RobotoTextView
                             android:id="@+id/textViewChampTitle"
-                            style="@style/whiteText15dp"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textViewChampName"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"/>
+                            android:layout_marginTop="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textAppearance="@style/sp14GrayRegular"/>
                     </RelativeLayout>
                 </RelativeLayout>
 
@@ -177,55 +170,63 @@
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/relativeLayoutagsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topPart"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:elevation="5dp">
+
             <RelativeLayout
-                android:id="@+id/relativeLayoutagsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/topPart"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:padding="10dp"
-                android:background="@drawable/border_component">
+                android:padding="10dp">
 
-                <TextView
+                <com.yrazlik.loltr.view.RobotoTextView
                     android:id="@+id/textviewTagsTitle"
-                    style="@style/whiteText20dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/material_yellow"
-                    android:text="@string/tags"/>
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/tags"
+                    android:textAppearance="@style/sp16BlackBold"/>
 
-                <TextView
+                <com.yrazlik.loltr.view.RobotoTextView
                     android:id="@+id/textviewTags"
-                    style="@style/whiteText15dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textviewTagsTitle"
                     android:layout_marginTop="5dp"
-                    android:text="@string/tags"/>
+                    android:text="@string/tags"
+                    android:textAppearance="@style/sp14GrayRegular"/>
             </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/linearLayoutRecommendedItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayoutagsContainer"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:elevation="5dp">
 
             <LinearLayout
-                android:id="@+id/linearLayoutRecommendedItems"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relativeLayoutagsContainer"
                 android:orientation="vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:padding="10dp"
-                android:background="@drawable/border_component"
-                android:paddingBottom="30dp">
+                android:padding="10dp">
 
-                <TextView
+                <com.yrazlik.loltr.view.RobotoTextView
                     android:id="@+id/textViewStartingItems"
-                    style="@style/whiteText16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/material_yellow"
-                    android:text="@string/startingItems"/>
+                    android:text="@string/startingItems"
+                    android:textAppearance="@style/sp16BlackBold"/>
 
                 <GridView
                     android:id="@+id/gridviewStartingItems"
@@ -240,18 +241,13 @@
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp">
                 </GridView>
-                <ProgressBar
-                    android:id="@+id/progressStartingItems"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
 
-                <TextView
+                <com.yrazlik.loltr.view.RobotoTextView
                     android:id="@+id/textViewEssentialItems"
-                    style="@style/whiteText16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/material_yellow"
-                    android:text="@string/essentialItems"/>
+                    android:text="@string/essentialItems"
+                    android:textAppearance="@style/sp16BlackBold"/>
 
                 <GridView
                     android:id="@+id/gridviewEssentialItems"
@@ -266,18 +262,13 @@
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp">
                 </GridView>
-                <ProgressBar
-                    android:id="@+id/progressEssentialItems"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
 
-                <TextView
+                <com.yrazlik.loltr.view.RobotoTextView
                     android:id="@+id/textViewOffensiveItems"
-                    style="@style/whiteText16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/material_yellow"
-                    android:text="@string/offensiveItems"/>
+                    android:text="@string/offensiveItems"
+                    android:textAppearance="@style/sp16BlackBold"/>
 
                 <GridView
                     android:id="@+id/gridviewOffensiveItems"
@@ -292,18 +283,13 @@
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp">
                 </GridView>
-                <ProgressBar
-                    android:id="@+id/progressOffensiveItems"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
 
-                <TextView
+                <com.yrazlik.loltr.view.RobotoTextView
                     android:id="@+id/textViewDeffensiveItems"
-                    style="@style/whiteText16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/material_yellow"
-                    android:text="@string/deffensiveItems"/>
+                    android:text="@string/deffensiveItems"
+                    android:textAppearance="@style/sp16BlackBold"/>
 
                 <GridView
                     android:id="@+id/gridviewDeffensiveItems"
@@ -318,13 +304,7 @@
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="5dp">
                 </GridView>
-                <ProgressBar
-                    android:id="@+id/progressDeffensiveItems"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
-
             </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
-
-</RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
