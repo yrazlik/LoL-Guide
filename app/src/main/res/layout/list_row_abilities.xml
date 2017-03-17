@@ -1,89 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:elevation="3dp"
+    app:cardCornerRadius="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutSpellTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:background="@color/white">
+
+            <com.yrazlik.loltr.view.RobotoTextView
+                android:id="@+id/textViewSpellTitle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:textAppearance="@style/sp14BlackBold"/>
 
-    <RelativeLayout android:id="@+id/relativeLayoutSpellTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@color/tab_color">
+        </RelativeLayout>
 
-        <TextView android:id="@+id/textViewSpellTitle"
-                  style="@style/whiteText14dp"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_centerInParent="true"
-                  android:textColor="@color/material_yellow"
-                  android:layout_toLeftOf="@+id/imageButtonPlayVideo"
-                  android:gravity="center_horizontal"/>
-
-        <ImageButton android:id="@+id/imageButtonPlayVideo"
-                     android:layout_width="20dp"
-                     android:layout_height="20dp"
-                     android:layout_centerVertical="true"
-                     android:layout_marginRight="5dp"
-                     android:layout_toLeftOf="@+id/textViewVideo"
-                     android:background="@drawable/v2"
-                     android:focusable="true"
-                     android:paddingBottom="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingTop="5dp"/>
-        <TextView android:id="@+id/textViewVideo"
-                  style="@style/whiteText14dp"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignParentRight="true"
-                  android:layout_centerVertical="true"
-                  android:layout_marginRight="5dp"
-                  android:paddingBottom="5dp"
-                  android:paddingLeft="5dp"
-                  android:paddingTop="5dp"
-                  android:text="@string/video"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout android:id="@+id/relativeLayoutSpellBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/relativeLayoutSpellTitle"
-                    android:background="@color/material_dark_green">
-
-        <ImageView
-            android:id="@+id/imageViewSpellImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
+        <View
+            android:id="@+id/titleSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/relativeLayoutSpellTitle"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"/>
-        <ProgressBar
-            android:id="@+id/imageProgress"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/divider_gray">
+        </View>
 
-            />
+        <RelativeLayout
+            android:id="@+id/relativeLayoutSpellBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleSeparator"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:background="@color/white">
 
-        <TextView android:id="@+id/textViewSpellBody"
-                  style="@style/whiteText14dp"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_centerVertical="true"
-                  android:layout_marginBottom="15dp"
-                  android:layout_marginLeft="10dp"
-                  android:layout_marginRight="10dp"
-                  android:layout_marginTop="15dp"
-                  android:layout_toLeftOf="@+id/textViewSpellKey"
-                  android:layout_toRightOf="@+id/imageViewSpellImage"/>
+            <com.pkmmte.view.CircularImageView
+                android:id="@+id/imageViewSpellImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"/>
 
-        <TextView android:id="@+id/textViewSpellKey"
-                  style="@style/whiteText30dp"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignParentRight="true"
-                  android:layout_centerVertical="true"
-                  android:layout_marginRight="10dp"/>
+            <com.yrazlik.loltr.view.RobotoTextView
+                android:id="@+id/textViewSpellBody"
+                android:textAppearance="@style/sp12GrayRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="asdasdasdasdasdasdqweqweqweqwe"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/imageViewSpellImage"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/specsSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/relativeLayoutSpellBody"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/divider_gray">
+        </View>
+
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/textViewVideo"
+            android:layout_below="@+id/specsSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/arrow_right_blue_thin"
+            android:text="@string/video"
+            android:textAppearance="@style/sp14BlueRegular"/>
 
     </RelativeLayout>
-
-</RelativeLayout>
+</android.support.v7.widget.CardView>

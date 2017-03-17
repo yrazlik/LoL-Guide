@@ -16,10 +16,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.pkmmte.view.CircularImageView;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Spell;
 import com.yrazlik.loltr.fragments.ChampionAbilitiesVideosFragment;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.List;
 
@@ -27,15 +30,11 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 		OnClickListener {
 
 	private Context mContext;
-	private Typeface typeFace;
-    private AQuery aq;
 
 	public ChampionSpellsListAdapter(Context context, int resource,
 			List<Spell> objects) {
 		super(context, resource, objects);
 		this.mContext = context;
-		typeFace = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/dinproregular.ttf");
 	}
 
 	@Override
@@ -47,18 +46,14 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 					false);
 
 			holder = new ViewHolder();
-			holder.spellImage = (ImageView) convertView
+			holder.spellImage = (CircularImageView) convertView
 					.findViewById(R.id.imageViewSpellImage);
-			holder.spellTitle = (TextView) convertView
+			holder.spellTitle = (RobotoTextView) convertView
 					.findViewById(R.id.textViewSpellTitle);
-			holder.spellBody = (TextView) convertView
+			holder.spellBody = (RobotoTextView) convertView
 					.findViewById(R.id.textViewSpellBody);
-			holder.spellKey = (TextView) convertView
-					.findViewById(R.id.textViewSpellKey);
-			holder.playVideoButton = (ImageButton) convertView
-					.findViewById(R.id.imageButtonPlayVideo);
 
-            holder.textViewVideo = (TextView) convertView.findViewById(R.id.textViewVideo);
+            holder.textViewVideo = (RobotoTextView) convertView.findViewById(R.id.textViewVideo);
             holder.progress = (ProgressBar) convertView.findViewById(R.id.imageProgress);
 			
 			convertView.setTag(holder);
@@ -67,23 +62,23 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 		}
 
 		Spell championSpell = getItem(position);
-		holder.spellTitle.setText(championSpell.getName());
+        String spellKey = championSpell.getSpellKey();
+        if(spellKey != null && spellKey.trim().toString().length() > 0) {
+            spellKey = spellKey + " : ";
+        } else {
+            spellKey = "";
+        }
+		holder.spellTitle.setText(spellKey + championSpell.getName());
 		holder.spellBody.setText(championSpell.getSanitizedDescription());
-		holder.spellKey.setText(championSpell.getSpellKey());
-        aq = new AQuery(holder.spellImage);
 
 		if (championSpell.getName().contains(getContext().getResources().getString(R.string.passive))) {
-            aq.progress(holder.progress).image(Commons.CHAMPION_PASSIVE_IMAGE_BASE_URL
-                    + championSpell.getImage().getFull(), true, true);
+            LolImageLoader.getInstance().loadImage(Commons.CHAMPION_PASSIVE_IMAGE_BASE_URL
+                    + championSpell.getImage().getFull(), holder.spellImage);
 		} else {
-            aq.progress(holder.progress).image(Commons.CHAMPION_SPELL_IMAGE_BASE_URL
-                    + championSpell.getImage().getFull(), true, true);
+            LolImageLoader.getInstance().loadImage(Commons.CHAMPION_SPELL_IMAGE_BASE_URL
+                    + championSpell.getImage().getFull(), holder.spellImage);
 		}
-		holder.spellKey.setTypeface(typeFace);
-		holder.spellBody.setTypeface(typeFace);
-		holder.spellTitle.setTypeface(typeFace);
-		holder.playVideoButton.setTag(position);
-		holder.playVideoButton.setOnClickListener(this);
+
         holder.textViewVideo.setTag(position);
         holder.textViewVideo.setOnClickListener(this);
 
@@ -92,18 +87,16 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 	}
 
 	static class ViewHolder {
-		public ImageView spellImage;
-		public TextView spellTitle;
-		public TextView spellBody;
-		public TextView spellKey;
-		public ImageButton playVideoButton;
-        public TextView textViewVideo;
+		public CircularImageView spellImage;
+		public RobotoTextView spellTitle;
+		public RobotoTextView spellBody;
+        public RobotoTextView textViewVideo;
         public ProgressBar progress;
 	}
 	
 	@Override
 	public void onClick(View v) {
-		if (v.getId() == R.id.imageButtonPlayVideo || v.getId() == R.id.textViewVideo) {
+		if (v.getId() == R.id.textViewVideo) {
 			int key = (Integer) v.getTag();
 			ChampionAbilitiesVideosFragment fragment = new ChampionAbilitiesVideosFragment();
 			Bundle args = new Bundle();
@@ -111,7 +104,5 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 			fragment.setArguments(args);
 			fragment.show(((FragmentActivity)getContext()).getSupportFragmentManager(), "");
 		}
-
 	}
-
 }

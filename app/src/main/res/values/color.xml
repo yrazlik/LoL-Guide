@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#000000</color>
     <color name="text_black">#323232</color>
-    <color name="text_gray">#B0B0B0</color>
+    <color name="text_gray">#919191</color>
     <color name="divider_gray">#CDCDCD</color>
     <color name="bg_gray">#EAEAEA</color>
     <color name="button_blue">#2260C0</color>
@@ -17,6 +17,9 @@
     <color name="gg_red">#E61A37</color>
     <color name="transparent_black">#99000000</color>
     <color name="background_tab_pressed">#F6F6F6</color>
+    <color name="title_bg_gray">#F5F5F5</color>
+    <color name="text_blue">#2260BF</color>
+
 
 
     <color name="material_green">#CC4F59C2</color>

@@ -89,4 +89,19 @@ public class ServiceHelper {
         ServiceRequest.getInstance(mContext).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, false, responseListener);
     }
 
+    public void makeChampionSpellsRequest(int champId, ResponseListener responseListener) {
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("static-data");
+        pathParams.add(Commons.getInstance(mContext.getApplicationContext()).getRegion());
+        pathParams.add("v1.2");
+        pathParams.add("champion");
+        pathParams.add(String.valueOf(champId));
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("locale", Commons.getInstance(mContext.getApplicationContext()).getLocale());
+        queryParams.put("version", Commons.LATEST_VERSION);
+        queryParams.put("champData", "passive,spells");
+        queryParams.put("api_key", Commons.API_KEY);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, responseListener);
+    }
+
 }

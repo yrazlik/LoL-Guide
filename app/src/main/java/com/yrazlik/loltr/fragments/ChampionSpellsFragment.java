@@ -19,6 +19,7 @@ import com.yrazlik.loltr.data.Passive;
 import com.yrazlik.loltr.data.Spell;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionSpellsResponse;
+import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
@@ -34,24 +35,13 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_champion_spells, container, false);
-		initUI(v);
-		getExtras();
-		
-		ArrayList<String> pathParams = new ArrayList<String>();
-		pathParams.add("static-data");
-		pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-		pathParams.add("v1.2");
-		pathParams.add("champion");
-		pathParams.add(String.valueOf(champId));
-		HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-		queryParams.put("version", Commons.LATEST_VERSION);
-		queryParams.put("champData", "passive,spells");
-		queryParams.put("api_key", Commons.API_KEY);
-		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, this);
-		return v;
-
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_champion_spells, container, false);
+            initUI(rootView);
+            getExtras();
+            ServiceHelper.getInstance(getContext()).makeChampionSpellsRequest(champId, this);
+        }
+        return rootView;
 	}
 	
 	private void getExtras(){
@@ -88,6 +78,7 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 	@Override
 	public void onSuccess(Object response) {
 		if(response instanceof ChampionSpellsResponse){
+            dismissProgress();
             try {
                 ChampionSpellsResponse resp = (ChampionSpellsResponse) response;
                 ArrayList<Spell> spells = resp.getSpells();
@@ -101,9 +92,7 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
                 }
                 adapter.notifyDataSetChanged();
             }catch (Exception ignored){}
-			
 		}
-		
 	}
 
 	@Override
