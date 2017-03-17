@@ -36,7 +36,7 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
 	@Override
 	@NonNull
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = new Dialog(getActivity(), R.style.DialogFullScreenTheme);
+        Dialog dialog = new Dialog(getActivity(), R.style.DialogFullScreenTheme2);
         dialog.setContentView(R.layout.fragment_abilities_videos);
 
         dialog.getWindow().getAttributes().windowAnimations = R.style.dialogAnimation;
