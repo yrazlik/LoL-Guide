@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/content">
+    <RelativeLayout
+        android:id="@+id/progressBackgroundPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:id="@+id/loadingView1"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                style="@style/LolProgressBarGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"/>
+            <com.tmob.customcomponents.GGTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Yükleniyor..."/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:id="@+id/loadingView2"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_progress_bg"
+            android:gravity="center"
+            android:padding="13dp">
+
+            <ProgressBar
+                style="@style/LolProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"/>
+
+            <com.tmob.customcomponents.GGTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/white"
+                android:text="Yükleniyor..."/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

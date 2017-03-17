@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -36,10 +37,9 @@ import com.yrazlik.loltr.data.Recommended;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
-import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @SuppressLint("NewApi") public class ChampionOverviewFragment extends BaseFragment implements ResponseListener, OnItemClickListener{
 	
@@ -72,6 +72,7 @@ import java.util.HashMap;
 
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_champion_overview, container, false);
+            showProgressWithWhiteBG();
             getExtras();
             initUI(rootView);
             getFragmentData();
@@ -80,68 +81,25 @@ import java.util.HashMap;
 		return rootView;
 	}
 
-    private void getFragmentData() {
-        if(championOverviewResponse == null) {
-            ArrayList<String> pathParams = new ArrayList<String>();
-            pathParams.add("static-data");
-            pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-            pathParams.add("v1.2");
-            pathParams.add("champion");
-            pathParams.add(String.valueOf(champId));
-            HashMap<String, String> queryParams = new HashMap<String, String>();
-            queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-            queryParams.put("version", Commons.LATEST_VERSION);
-            queryParams.put("champData", "info,tags");
-            queryParams.put("api_key", Commons.API_KEY);
-            ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, this);
-        } else {
-            handleChampionOverviewResponse();
-        }
-
-        if(recommendedItemsResponse == null) {
-            ArrayList<String> pathParams2 = new ArrayList<String>();
-            pathParams2.add("static-data");
-            pathParams2.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-            pathParams2.add("v1.2");
-            pathParams2.add("champion");
-            pathParams2.add(String.valueOf(champId));
-            HashMap<String, String> queryParams2 = new HashMap<String, String>();
-            queryParams2.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-            queryParams2.put("version", Commons.RECOMMENDED_ITEMS_VERSION);
-            queryParams2.put("champData", "recommended");
-            queryParams2.put("api_key", Commons.API_KEY);
-            ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, this);
-        } else {
-            handleRecommendedItemsResponse();
+    private void getExtras(){
+        Bundle args = getArguments();
+        if(args != null){
+            champId = args.getInt(ChampionDetailFragment.EXTRA_CHAMPION_ID);
+            lastSelectedChampionId = champId;
+            champLogoImageUrl = args.getString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL);
         }
     }
 
-    private void showInterstitial(){
-		try {
-			if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
-				((LolApplication) (getActivity().getApplication())).showInterstitial();
-			}
-		}catch (Exception ignored){}
-    }
-	private void getExtras(){
-		Bundle args = getArguments();
-		if(args != null){
-			champId = args.getInt(ChampionDetailFragment.EXTRA_CHAMPION_ID);
-			lastSelectedChampionId = champId;
-			champLogoImageUrl = args.getString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL);
-		}
-	}
-	
-	private void initUI(View v){
-		gridviewStartingItems = (GridView)v.findViewById(R.id.gridviewStartingItems);
-		gridviewEssentialItems = (GridView)v.findViewById(R.id.gridviewEssentialItems);
-		gridviewOffensiveItems = (GridView)v.findViewById(R.id.gridviewOffensiveItems);
-		gridviewDeffensiveItems = (GridView)v.findViewById(R.id.gridviewDeffensiveItems);
-		gridviewStartingItems.setOnItemClickListener(this);
-		gridviewEssentialItems.setOnItemClickListener(this);
-		gridviewOffensiveItems.setOnItemClickListener(this);
-		gridviewDeffensiveItems.setOnItemClickListener(this);
-		champLogo = (CircularImageView)v.findViewById(R.id.imageViewChampionImage);
+    private void initUI(View v){
+        gridviewStartingItems = (GridView)v.findViewById(R.id.gridviewStartingItems);
+        gridviewEssentialItems = (GridView)v.findViewById(R.id.gridviewEssentialItems);
+        gridviewOffensiveItems = (GridView)v.findViewById(R.id.gridviewOffensiveItems);
+        gridviewDeffensiveItems = (GridView)v.findViewById(R.id.gridviewDeffensiveItems);
+        gridviewStartingItems.setOnItemClickListener(this);
+        gridviewEssentialItems.setOnItemClickListener(this);
+        gridviewOffensiveItems.setOnItemClickListener(this);
+        gridviewDeffensiveItems.setOnItemClickListener(this);
+        champLogo = (CircularImageView)v.findViewById(R.id.imageViewChampionImage);
 
         textViewDeffensiveItems = (RobotoTextView) v.findViewById(R.id.textViewDeffensiveItems);
         textViewEssentialItems = (RobotoTextView)v.findViewById(R.id.textViewEssentialItems);
@@ -153,16 +111,32 @@ import java.util.HashMap;
         textViewStartingItems.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
         LolImageLoader.getInstance().loadImage(champLogoImageUrl, champLogo);
-		champName = (RobotoTextView) v.findViewById(R.id.textViewChampName);
-		champTitle = (RobotoTextView)v.findViewById(R.id.textViewChampTitle);
-		tags = (RobotoTextView)v.findViewById(R.id.textviewTags);
-		tagsTitle = (RobotoTextView) v.findViewById(R.id.textviewTagsTitle);
-		tagsTitle.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-		barAttack = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarAttack);
-		barDefense = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarDefense);
-		barMagic = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarMagic);
-		barDifficulty = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarDifficulty);
-	}
+        champName = (RobotoTextView) v.findViewById(R.id.textViewChampName);
+        champTitle = (RobotoTextView)v.findViewById(R.id.textViewChampTitle);
+        tags = (RobotoTextView)v.findViewById(R.id.textviewTags);
+        tagsTitle = (RobotoTextView) v.findViewById(R.id.textviewTagsTitle);
+        tagsTitle.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        barAttack = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarAttack);
+        barDefense = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarDefense);
+        barMagic = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarMagic);
+        barDifficulty = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarDifficulty);
+    }
+
+    private void getFragmentData() {
+        if(championOverviewResponse == null) {
+            ServiceHelper.getInstance(getContext()).makeChampionOverviewRequest(champId, this);
+        } else {
+            handleChampionOverviewResponse();
+        }
+    }
+
+    private void showInterstitial(){
+		try {
+			if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+				((LolApplication) (getActivity().getApplication())).showInterstitial();
+			}
+		}catch (Exception ignored){}
+    }
 	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -202,12 +176,9 @@ import java.util.HashMap;
 		        InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 		        inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 		    }
-		}catch(Exception e){
-			
-		}
+		}catch(Exception e){}
 	}
 
-	
 	private void setBarLength(View v, int length){
         int pixels = 0;
         try {
@@ -220,21 +191,24 @@ import java.util.HashMap;
             ViewGroup.LayoutParams params = v.getLayoutParams();
             params.width = pixels;
             v.setLayoutParams(params);
-        }catch (Exception e){
-
-        }
+        }catch (Exception e){}
 	}
 	
-	private void setAbilityBars(ChampionOverviewResponse resp) {
-		
-		setBarLength(barAttack, resp.getInfo().getAttack());
-		setBarLength(barDefense, resp.getInfo().getDefense());
-		setBarLength(barMagic, resp.getInfo().getMagic());
-		setBarLength(barDifficulty, resp.getInfo().getDifficulty());
-		stretchBar(barAttack);
-		stretchBar(barDefense);
-		stretchBar(barMagic);
-		stretchBar(barDifficulty);
+	private void setAbilityBars(final ChampionOverviewResponse resp) {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setBarLength(barAttack, resp.getInfo().getAttack());
+                setBarLength(barDefense, resp.getInfo().getDefense());
+                setBarLength(barMagic, resp.getInfo().getMagic());
+                setBarLength(barDifficulty, resp.getInfo().getDifficulty());
+                stretchBar(barAttack);
+                stretchBar(barDefense);
+                stretchBar(barMagic);
+                stretchBar(barDifficulty);
+            }
+        }, 620);
 		
 	}
 	
@@ -274,6 +248,12 @@ import java.util.HashMap;
             champTitle.setText(championOverviewResponse.getTitle());
             setAbilityBars(championOverviewResponse);
             setTags(championOverviewResponse);
+        }
+
+        if(recommendedItemsResponse == null) {
+            ServiceHelper.getInstance(getContext()).makeRecommendedItemsRequest(champId, this);
+        } else {
+            handleRecommendedItemsResponse();
         }
     }
 
@@ -348,17 +328,20 @@ import java.util.HashMap;
 		if(response instanceof ChampionOverviewResponse){
 			championOverviewResponse = (ChampionOverviewResponse)response;
             handleChampionOverviewResponse();
-		}else if(response instanceof RecommendedItemsResponse){
+		}else if(response instanceof RecommendedItemsResponse){;
             try {
+                dismissProgress();
                 recommendedItemsResponse = (RecommendedItemsResponse) response;
                 handleRecommendedItemsResponse();
-            }catch (Exception e){}
+            }catch (Exception e){
+                dismissProgress();
+            }
 		}
-		
 	}
 
 	@Override
 	public void onFailure(Object response) {
+        dismissProgress();
 		String errorMessage = (String)response;
 		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
 	}
