@@ -222,6 +222,8 @@
     <string name="recentSearches">Son Aramalar</string>
     <string name="searchSummoner">Sihirdar Arama</string>
     <string name="region">Bölge:</string>
+    <string name="no_team">Takım Bulunamadı.</string>
+    <string name="no_league_pts">Lig puanı bulunamadı</string>
 
     <string name="if_you_wanna_change_region">*Oyuncu, seçilen bölgede aranacaktır. Bölge seçimini ayarlar sayfasından değiştirebilirsiniz.</string>
 

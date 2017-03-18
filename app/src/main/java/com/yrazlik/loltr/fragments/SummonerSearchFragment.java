@@ -133,21 +133,25 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             if (recentSearchesArrayList == null) {
                 recentSearchesArrayList = new ArrayList<>();
             }
+        }
 
-            if (recentSearchesArrayList.size() > 0) {
-                recentSearchesRL.setVisibility(View.VISIBLE);
+        setRecentSearchesList();
+
+        return rootView;
+    }
+
+    private void setRecentSearchesList() {
+        if (recentSearchesArrayList.size() > 0) {
+            recentSearchesRL.setVisibility(View.VISIBLE);
+            if(recentSearchesAdapter == null) {
                 recentSearchesAdapter = new RecentSearchesAdapter(getContext(), R.layout.list_row_recentsearches, recentSearchesArrayList);
                 recentSearchesLV.setAdapter(recentSearchesAdapter);
             } else {
-                recentSearchesRL.setVisibility(View.GONE);
+                recentSearchesAdapter.notifyDataSetChanged();
             }
+        } else {
+            recentSearchesRL.setVisibility(View.GONE);
         }
-
-        if(recentSearchesAdapter != null) {
-            recentSearchesAdapter.notifyDataSetChanged();
-        }
-
-        return rootView;
     }
 
     private boolean isValid(String s){

@@ -167,6 +167,24 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="sp10GrayRegular">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="sp10BlackRegular">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="sp10WhiteRegular">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="sp13BlackRegular">
         <item name="android:textColor">@color/text_black</item>
         <item name="android:textSize">13dp</item>

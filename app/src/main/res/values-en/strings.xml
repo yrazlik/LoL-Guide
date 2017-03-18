@@ -225,6 +225,8 @@
     <string name="turkishEnglish">Turkish</string>
     <string name="englishTurkish">İngilizce</string>
     <string name="englishEnglish">English</string>
+    <string name="no_team">No Team</string>
+    <string name="no_league_pts">No league points</string>
 
     <string name="recentSearches">Recent Searches</string>
     <string name="searchSummoner">Summoner Search</string>

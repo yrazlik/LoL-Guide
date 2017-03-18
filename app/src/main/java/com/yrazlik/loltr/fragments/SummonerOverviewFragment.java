@@ -1,10 +1,13 @@
 package com.yrazlik.loltr.fragments;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -12,7 +15,9 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.pkmmte.view.CircularImageView;
 import com.yrazlik.loltr.LolApplication;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.AggregatedStatsDto;
@@ -29,6 +34,7 @@ import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,53 +49,55 @@ public class SummonerOverviewFragment extends BaseFragment {
 
     ScrollView parent;
     //header part
-    private FadeInNetworkImageView profileIconIV;
-    private TextView summonerNameTV;
-    private TextView regionLevelTV;
+    private CircularImageView profileIconIV;
+    private RobotoTextView summonerNameTV;
+    private RobotoTextView regionLevelTV;
 
     //averages part
-    private RelativeLayout kdaRL;
-    private TextView averageTV;
+    private CardView kdaRL;
+    private RobotoTextView averageTV;
     private LinearLayout averagesLL;
     private RelativeLayout kdaContainer;
-    private TextView kdaStatsTV;
-    private TextView kdaStatsStringTV;
+    private RobotoTextView kdaStatsTV;
+    private RobotoTextView kdaStatsStringTV;
     private RelativeLayout minionsContainer;
-    private TextView minionsStatsTV;
-    private TextView minionsStatsStringTV;
+    private RobotoTextView minionsStatsTV;
+    private RobotoTextView minionsStatsStringTV;
     private RelativeLayout winRateContainer;
-    private TextView winRateStatsTV;
-    private TextView winRateStatsStringTV;
+    private RobotoTextView winRateStatsTV;
+    private RobotoTextView winRateStatsStringTV;
 
     //most played part
     private LinearLayout mostPlayedLL;
-    private FadeInNetworkImageView mostPlayedIV1;
-    private TextView mostPlayedTV1;
-    private TextView kdaTV1;
-    private TextView winRateTV1;
-    private FadeInNetworkImageView mostPlayedIV2;
-    private TextView mostPlayedTV2;
-    private TextView kdaTV2;
-    private TextView winRateTV2;
-    private FadeInNetworkImageView mostPlayedIV3;
-    private TextView mostPlayedTV3;
-    private TextView kdaTV3;
-    private TextView winRateTV3;
+    private RobotoTextView mostPlayedTV;
+    private CircularImageView mostPlayedIV1;
+    private RobotoTextView mostPlayedTV1;
+    private RobotoTextView kdaTV1;
+    private RobotoTextView winRateTV1;
+    private CircularImageView mostPlayedIV2;
+    private RobotoTextView mostPlayedTV2;
+    private RobotoTextView kdaTV2;
+    private RobotoTextView winRateTV2;
+    private CircularImageView mostPlayedIV3;
+    private RobotoTextView mostPlayedTV3;
+    private RobotoTextView kdaTV3;
+    private RobotoTextView winRateTV3;
 
     //ranked part
-    private RelativeLayout rankedRL;
-    private FadeInNetworkImageView rankedLeagueIV;
-    private TextView soloDuoTV;
-    private TextView leagueNameTV;
-    private TextView winLoseLPTV;
-    private FadeInNetworkImageView ranked5v5IV;
-    private TextView team5v5rankTV;
-    private TextView team5v5lpTV;
-    private TextView team5v5nameTV;
-    private FadeInNetworkImageView ranked3v3IV;
-    private TextView team3v3rankTV;
-    private TextView team3v3lpTV;
-    private TextView team3v3nameTV;
+    private CardView rankedRL;
+    private RobotoTextView rankedTV;
+    private ImageView rankedLeagueIV;
+    private RobotoTextView soloDuoTV;
+    private RobotoTextView leagueNameTV;
+    private RobotoTextView winLoseLPTV;
+    private ImageView ranked5v5IV;
+    private RobotoTextView team5v5rankTV;
+    private RobotoTextView team5v5lpTV;
+    private RobotoTextView team5v5nameTV;
+    private ImageView ranked3v3IV;
+    private RobotoTextView team3v3rankTV;
+    private RobotoTextView team3v3lpTV;
+    private RobotoTextView team3v3nameTV;
 
     public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RECENTMATCHES";
     public static final String EXTRA_SUMMONER_INFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_SUMMONER_INFO";
@@ -129,58 +137,65 @@ public class SummonerOverviewFragment extends BaseFragment {
 
         //header part
         parent = (ScrollView) v.findViewById(R.id.parent);
-        profileIconIV = (FadeInNetworkImageView) v.findViewById(R.id.profileIconIV);
-        summonerNameTV = (TextView) v.findViewById(R.id.summonerNameTV);
-        regionLevelTV = (TextView) v.findViewById(R.id.regionLevelTV);
+        profileIconIV = (CircularImageView) v.findViewById(R.id.profileIconIV);
+        summonerNameTV = (RobotoTextView) v.findViewById(R.id.summonerNameTV);
+        regionLevelTV = (RobotoTextView) v.findViewById(R.id.regionLevelTV);
 
         //averages part
-        kdaRL = (RelativeLayout) v.findViewById(R.id.kdaRL);
+        kdaRL = (CardView) v.findViewById(R.id.kdaRL);
         kdaRL.setVisibility(View.VISIBLE);
-        averageTV = (TextView) v.findViewById(R.id.averageTV);
+        averageTV = (RobotoTextView) v.findViewById(R.id.averageTV);
         averagesLL = (LinearLayout) v.findViewById(R.id.averagesLL);
         kdaContainer = (RelativeLayout) v.findViewById(R.id.kdaContainer);
-        kdaStatsTV = (TextView) v.findViewById(R.id.kdaStatsTV);
-        kdaStatsStringTV = (TextView) v.findViewById(R.id.kdaStatsStringTV);
+        kdaStatsTV = (RobotoTextView) v.findViewById(R.id.kdaStatsTV);
+        kdaStatsStringTV = (RobotoTextView) v.findViewById(R.id.kdaStatsStringTV);
         minionsContainer = (RelativeLayout) v.findViewById(R.id.minionsContainer);
-        minionsStatsTV = (TextView) v.findViewById(R.id.minionsStatsTV);
-        minionsStatsStringTV = (TextView) v.findViewById(R.id.minionsStatsStringTV);
+        minionsStatsTV = (RobotoTextView) v.findViewById(R.id.minionsStatsTV);
+        minionsStatsStringTV = (RobotoTextView) v.findViewById(R.id.minionsStatsStringTV);
         winRateContainer = (RelativeLayout) v.findViewById(R.id.winRateContainer);
-        winRateStatsTV = (TextView) v.findViewById(R.id.winRateStatsTV);
-        winRateStatsStringTV = (TextView) v.findViewById(R.id.winRateStatsStringTV);
+        winRateStatsTV = (RobotoTextView) v.findViewById(R.id.winRateStatsTV);
+        winRateStatsStringTV = (RobotoTextView) v.findViewById(R.id.winRateStatsStringTV);
+
+        averageTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
         //most played part
         mostPlayedLL = (LinearLayout) v.findViewById(R.id.mostPlayedLL);
-        mostPlayedIV1 = (FadeInNetworkImageView) v.findViewById(R.id.mostPlayedIV1);
-        mostPlayedTV1 = (TextView) v.findViewById(R.id.mostPlayedTV1);
-        kdaTV1 = (TextView) v.findViewById(R.id.kdaTV1);
-        winRateTV1 = (TextView) v.findViewById(R.id.winRateTV1);
-        mostPlayedIV2 = (FadeInNetworkImageView) v.findViewById(R.id.mostPlayedIV2);
-        mostPlayedTV2 = (TextView) v.findViewById(R.id.mostPlayedTV2);
-        kdaTV2 = (TextView) v.findViewById(R.id.kdaTV2);
-        winRateTV2 = (TextView) v.findViewById(R.id.winRateTV2);
-        mostPlayedIV3 = (FadeInNetworkImageView) v.findViewById(R.id.mostPlayedIV3);
-        mostPlayedTV3 = (TextView) v.findViewById(R.id.mostPlayedTV3);
-        kdaTV3 = (TextView) v.findViewById(R.id.kdaTV3);
-        winRateTV3 = (TextView) v.findViewById(R.id.winRateTV3);
+        mostPlayedTV = (RobotoTextView) v.findViewById(R.id.mostPlayedTV);
+        mostPlayedIV1 = (CircularImageView) v.findViewById(R.id.mostPlayedIV1);
+        mostPlayedTV1 = (RobotoTextView) v.findViewById(R.id.mostPlayedTV1);
+        kdaTV1 = (RobotoTextView) v.findViewById(R.id.kdaTV1);
+        winRateTV1 = (RobotoTextView) v.findViewById(R.id.winRateTV1);
+        mostPlayedIV2 = (CircularImageView) v.findViewById(R.id.mostPlayedIV2);
+        mostPlayedTV2 = (RobotoTextView) v.findViewById(R.id.mostPlayedTV2);
+        kdaTV2 = (RobotoTextView) v.findViewById(R.id.kdaTV2);
+        winRateTV2 = (RobotoTextView) v.findViewById(R.id.winRateTV2);
+        mostPlayedIV3 = (CircularImageView) v.findViewById(R.id.mostPlayedIV3);
+        mostPlayedTV3 = (RobotoTextView) v.findViewById(R.id.mostPlayedTV3);
+        kdaTV3 = (RobotoTextView) v.findViewById(R.id.kdaTV3);
+        winRateTV3 = (RobotoTextView) v.findViewById(R.id.winRateTV3);
+
+        mostPlayedTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
         //ranked part
-        rankedRL = (RelativeLayout) v.findViewById(R.id.rankedRL);
-        rankedLeagueIV = (FadeInNetworkImageView) v.findViewById(R.id.rankedLeagueIV);
-        soloDuoTV = (TextView) v.findViewById(R.id.soloDuoTV);
-        leagueNameTV = (TextView) v.findViewById(R.id.leagueNameTV);
-        winLoseLPTV = (TextView) v.findViewById(R.id.winLoseLPTV);
-        ranked5v5IV = (FadeInNetworkImageView) v.findViewById(R.id.ranked5v5IV);
-        team5v5rankTV = (TextView) v.findViewById(R.id.team5v5rankTV);
-        team5v5lpTV = (TextView) v.findViewById(R.id.team5v5lpTV);
-        team5v5nameTV = (TextView) v.findViewById(R.id.team5v5nameTV);
-        ranked3v3IV = (FadeInNetworkImageView) v.findViewById(R.id.ranked3v3IV);
-        team3v3rankTV = (TextView) v.findViewById(R.id.team3v3rankTV);
-        team3v3lpTV = (TextView) v.findViewById(R.id.team3v3lpTV);
-        team3v3nameTV = (TextView) v.findViewById(R.id.team3v3nameTV);
+        rankedRL = (CardView) v.findViewById(R.id.rankedRL);
+        rankedTV = (RobotoTextView) v.findViewById(R.id.rankedTV);
+        rankedLeagueIV = (ImageView) v.findViewById(R.id.rankedLeagueIV);
+        soloDuoTV = (RobotoTextView) v.findViewById(R.id.soloDuoTV);
+        leagueNameTV = (RobotoTextView) v.findViewById(R.id.leagueNameTV);
+        winLoseLPTV = (RobotoTextView) v.findViewById(R.id.winLoseLPTV);
+        ranked5v5IV = (ImageView) v.findViewById(R.id.ranked5v5IV);
+        team5v5rankTV = (RobotoTextView) v.findViewById(R.id.team5v5rankTV);
+        team5v5lpTV = (RobotoTextView) v.findViewById(R.id.team5v5lpTV);
+        team5v5nameTV = (RobotoTextView) v.findViewById(R.id.team5v5nameTV);
+        ranked3v3IV = (ImageView) v.findViewById(R.id.ranked3v3IV);
+        team3v3rankTV = (RobotoTextView) v.findViewById(R.id.team3v3rankTV);
+        team3v3lpTV = (RobotoTextView) v.findViewById(R.id.team3v3lpTV);
+        team3v3nameTV = (RobotoTextView) v.findViewById(R.id.team3v3nameTV);
+        rankedTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
         //populate header part
         if (summonerInfo != null) {
-            profileIconIV.setImageUrl(Commons.PROFILE_ICON_BASE_URL + summonerInfo.getProfileIconId() + ".png", ServiceRequest.getInstance(getActivity()).getImageLoader());
+            LolImageLoader.getInstance().loadImage(Commons.PROFILE_ICON_BASE_URL + summonerInfo.getProfileIconId() + ".png", profileIconIV);
             summonerNameTV.setText(summonerInfo.getName());
             regionLevelTV.setText(getResources().getString(R.string.region) + " " + Commons.getRegion().toUpperCase() + ", Level:" + summonerInfo.getSummonerLevel());
         }
@@ -413,7 +428,7 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 try {
-                    mostPlayedIV1.setImageUrl(champ1ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
+                    LolImageLoader.getInstance().loadImage(champ1ImageUrl, mostPlayedIV1);
                     mostPlayedTV1.setText(champ1Name);
                     kdaTV1.setText((int)Math.round((double)(champions.get(0).getStats().getTotalChampionKills()/(double)(champions.get(0).getStats().getTotalSessionsPlayed())))
                             + "/" + ((int)Math.round((double)(champions.get(0).getStats().getTotalDeathsPerSession()/(double)(champions.get(0).getStats().getTotalSessionsPlayed())))) +
@@ -423,7 +438,7 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 try {
-                    mostPlayedIV2.setImageUrl(champ2ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
+                    LolImageLoader.getInstance().loadImage(champ2ImageUrl, mostPlayedIV2);
                     mostPlayedTV2.setText(champ2Name);
                     kdaTV2.setText(((int)Math.round((double)(champions.get(1).getStats().getTotalChampionKills()/(double)(champions.get(1).getStats().getTotalSessionsPlayed())))
                             + "/" + ((int)Math.round((double)(champions.get(1).getStats().getTotalDeathsPerSession()/(double)(champions.get(1).getStats().getTotalSessionsPlayed())))) +
@@ -433,7 +448,7 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 try {
-                    mostPlayedIV3.setImageUrl(champ3ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
+                    LolImageLoader.getInstance().loadImage(champ3ImageUrl, mostPlayedIV3);
                     mostPlayedTV3.setText(champ3Name);
                     kdaTV3.setText(((int)Math.round((double)(champions.get(2).getStats().getTotalChampionKills()/(double)(champions.get(2).getStats().getTotalSessionsPlayed())))
                             + "/" + ((int)Math.round((double)(champions.get(2).getStats().getTotalDeathsPerSession()/(double)(champions.get(2).getStats().getTotalSessionsPlayed())))) +
@@ -581,7 +596,7 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 try {
-                    mostPlayedIV1.setImageUrl(champ1ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
+                    LolImageLoader.getInstance().loadImage(champ1ImageUrl, mostPlayedIV1);
                     mostPlayedTV1.setText(champ1Name);
                     kdaTV1.setText((int) Math.round((((double) (champGameAnalysises.get(0).getKillCount())) / (double) (champGameAnalysises.get(0).getTotalPlayCount())))
                             + "/" + (int) Math.round((((double) (champGameAnalysises.get(0).getDeathCount())) / (double) (champGameAnalysises.get(0).getTotalPlayCount()))) +
@@ -591,7 +606,7 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 try {
-                    mostPlayedIV2.setImageUrl(champ2ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
+                    LolImageLoader.getInstance().loadImage(champ2ImageUrl, mostPlayedIV2);
                     mostPlayedTV2.setText(champ2Name);
                     kdaTV2.setText((int) Math.round((((double) (champGameAnalysises.get(1).getKillCount())) / (double) (champGameAnalysises.get(1).getTotalPlayCount())))
                             + "/" + (int) Math.round((((double) (champGameAnalysises.get(1).getDeathCount())) / (double) (champGameAnalysises.get(1).getTotalPlayCount()))) +
@@ -601,7 +616,7 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 try {
-                    mostPlayedIV3.setImageUrl(champ3ImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
+                    LolImageLoader.getInstance().loadImage(champ3ImageUrl, mostPlayedIV3);
                     mostPlayedTV3.setText(champ3Name);
                     kdaTV3.setText((int) Math.round((((double) (champGameAnalysises.get(2).getKillCount())) / (double) (champGameAnalysises.get(2).getTotalPlayCount())))
                             + "/" + (int) Math.round((((double) (champGameAnalysises.get(2).getDeathCount())) / (double) (champGameAnalysises.get(2).getTotalPlayCount()))) +

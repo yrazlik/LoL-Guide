@@ -219,6 +219,8 @@
     <string name="wardPlaced">Ward Placed</string>
     <string name="wardKilled">Ward Killed</string>
     <string name="ipEarned">Ip Earned</string>
+    <string name="no_team">No Team</string>
+    <string name="no_league_pts">No league points</string>
 
     <string name="languageTurkish">Dil</string>
     <string name="languageEnglish">Language</string>

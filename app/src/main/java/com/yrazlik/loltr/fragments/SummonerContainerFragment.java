@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,14 +57,15 @@ public class SummonerContainerFragment extends BaseFragment{
             @Override
             public void run() {
                 pager.setAdapter(new SummonerPagerAdapter(getChildFragmentManager()));
+
                 tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
-                tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
-                tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
+                tabs.setIndicatorColor(getResources().getColor(R.color.white));
+                tabs.setBackgroundColor(getResources().getColor(R.color.tab_color));
                 tabs.setDividerColor(getResources().getColor(R.color.white));
                 tabs.setTextColor(getResources().getColor(R.color.white));
-                int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
+                DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
+                int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getActivity().getResources().getDisplayMetrics());
                 tabs.setTextSize(textSize);
-
                 tabs.setIndicatorHeight(8);
                 tabs.setViewPager(pager);
             }
