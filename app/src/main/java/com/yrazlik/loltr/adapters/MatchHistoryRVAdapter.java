@@ -5,9 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
@@ -16,6 +19,7 @@ import com.yrazlik.loltr.data.Stats;
 import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -36,6 +40,7 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
     private int rowLayoutId;
     private Context mContext;
     private RecyclerViewClickListener recyclerViewClickListener;
+    private DisplayImageOptions mOptions;
 
     public interface RecyclerViewClickListener{
         void onRecyclerViewItemClicked(Game clickedItem, int position);
@@ -46,6 +51,9 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
         this.games = games;
         this.rowLayoutId = rowLayoutId;
         this.recyclerViewClickListener = listener;
+        mOptions = new DisplayImageOptions.Builder().resetViewBeforeLoading(true).showImageOnLoading(R.drawable.nothing).showImageForEmptyUri(R.drawable.nothing)
+                .showImageOnFail(R.drawable.nothing).cacheOnDisk(true).cacheInMemory(true)
+                .build();
     }
 
     @Override
@@ -97,19 +105,9 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
                         }
                     }
 
-                    if (spell1Name != null) {
-                        holder.spell1.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, ServiceRequest.getInstance(mContext).getImageLoader());
-                    } else {
-                        holder.spell1.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.spell1.setBackgroundResource(R.drawable.question_mark);
-                    }
+                    LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, holder.spell1);
+                    LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, holder.spell2);
 
-                    if (spell2Name != null) {
-                        holder.spell2.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, ServiceRequest.getInstance(mContext).getImageLoader());
-                    } else {
-                        holder.spell2.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.spell2.setBackgroundResource(R.drawable.question_mark);
-                    }
                 }
 
                 long createDate = game.getCreateDate();
@@ -130,19 +128,14 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
                     }
                 }
 
-                if (champImageUrl != null) {
-                    holder.champIV.setImageUrl(champImageUrl, ServiceRequest.getInstance(mContext).getImageLoader());
-                } else {
-                    holder.champIV.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                    holder.champIV.setBackgroundResource(R.drawable.question_mark);
-                }
+                LolImageLoader.getInstance().loadImage(champImageUrl, holder.champIV);
 
                 Stats stats = game.getStats();
                 if (stats != null) {
                     if (stats.isWin()) {
-                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.discount_green));
+                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.material_light_green));
                     } else {
-                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.gg_red));
+                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_red));
                     }
 
                     holder.levelTV.setText(stats.getLevel() + "");
@@ -161,47 +154,42 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
                     int item5 = stats.getItem5();
                     int item6 = stats.getItem6();
 
-                    if (item0 != 0) {
-                        holder.item0.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + item0 + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+                    if(item0 != 0) {
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item0 + ".png", holder.item0, mOptions);
                     } else {
-                        holder.item0.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.item0.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", holder.item0, mOptions);
                     }
+
                     if (item1 != 0) {
-                        holder.item1.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + item1 + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item1 + ".png", holder.item1, mOptions);
                     } else {
-                        holder.item1.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.item1.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", holder.item1, mOptions);
                     }
+
                     if (item2 != 0) {
-                        holder.item2.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + item2 + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item2 + ".png", holder.item2, mOptions);
                     } else {
-                        holder.item2.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.item2.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", holder.item2, mOptions);
                     }
                     if (item3 != 0) {
-                        holder.item3.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + item3 + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item3 + ".png", holder.item3, mOptions);
                     } else {
-                        holder.item3.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.item3.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", holder.item3, mOptions);
                     }
                     if (item4 != 0) {
-                        holder.item4.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + item4 + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item4 + ".png", holder.item4, mOptions);
                     } else {
-                        holder.item4.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.item4.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", holder.item4, mOptions);
                     }
                     if (item5 != 0) {
-                        holder.item5.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + item5 + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item5 + ".png", holder.item5, mOptions);
                     } else {
-                        holder.item5.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.item5.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", holder.item5, mOptions);
                     }
                     if (item6 != 0) {
-                        holder.item6.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + item6 + ".png", ServiceRequest.getInstance(mContext).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item6 + ".png", holder.item6, mOptions);
                     } else {
-                        holder.item6.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                        holder.item6.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", holder.item6, mOptions);
                     }
                 }
             }
@@ -215,45 +203,45 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private RelativeLayout winLoseLabel;
-        private FadeInNetworkImageView champIV;
-        private TextView levelTV;
-        private TextView matchTypeTV;
-        private TextView matchModeTV;
-        private TextView kdaTV;
-        private TextView goldTV;
-        private TextView matchTimeTV;
-        private TextView matchDateTV;
-        private FadeInNetworkImageView spell1;
-        private FadeInNetworkImageView spell2;
-        private FadeInNetworkImageView item0;
-        private FadeInNetworkImageView item1;
-        private FadeInNetworkImageView item2;
-        private FadeInNetworkImageView item3;
-        private FadeInNetworkImageView item4;
-        private FadeInNetworkImageView item5;
-        private FadeInNetworkImageView item6;
+        private ImageView champIV;
+        private RobotoTextView levelTV;
+        private RobotoTextView matchTypeTV;
+        private RobotoTextView matchModeTV;
+        private RobotoTextView kdaTV;
+        private RobotoTextView goldTV;
+        private RobotoTextView matchTimeTV;
+        private RobotoTextView matchDateTV;
+        private ImageView spell1;
+        private ImageView spell2;
+        private ImageView item0;
+        private ImageView item1;
+        private ImageView item2;
+        private ImageView item3;
+        private ImageView item4;
+        private ImageView item5;
+        private ImageView item6;
         public ViewHolderClickListener mItemClickListener;
 
         public ViewHolder(View itemView, ViewHolderClickListener clickListener) {
             super(itemView);
             this.winLoseLabel = (RelativeLayout) itemView.findViewById(R.id.winLoseLabel);
-            this.champIV = (FadeInNetworkImageView) itemView.findViewById(R.id.champIV);
-            this.levelTV = (TextView) itemView.findViewById(R.id.levelTV);
-            this.matchTypeTV = (TextView) itemView.findViewById(R.id.matchTypeTV);
-            this.matchModeTV = (TextView) itemView.findViewById(R.id.matchModeTV);
-            this.kdaTV = (TextView) itemView.findViewById(R.id.kdaTV);
-            this.goldTV = (TextView) itemView.findViewById(R.id.goldTV);
-            this.matchTimeTV = (TextView) itemView.findViewById(R.id.matchTimeTV);
-            this.matchDateTV = (TextView) itemView.findViewById(R.id.matchDateTV);
-            this.spell1 = (FadeInNetworkImageView) itemView.findViewById(R.id.spell1);
-            this.spell2 = (FadeInNetworkImageView) itemView.findViewById(R.id.spell2);
-            this.item0 = (FadeInNetworkImageView) itemView.findViewById(R.id.item0);
-            this.item1 = (FadeInNetworkImageView) itemView.findViewById(R.id.item1);
-            this.item2 = (FadeInNetworkImageView) itemView.findViewById(R.id.item2);
-            this.item3 = (FadeInNetworkImageView) itemView.findViewById(R.id.item3);
-            this.item4 = (FadeInNetworkImageView) itemView.findViewById(R.id.item4);
-            this.item5 = (FadeInNetworkImageView) itemView.findViewById(R.id.item5);
-            this.item6 = (FadeInNetworkImageView) itemView.findViewById(R.id.item6);
+            this.champIV = (ImageView) itemView.findViewById(R.id.champIV);
+            this.levelTV = (RobotoTextView) itemView.findViewById(R.id.levelTV);
+            this.matchTypeTV = (RobotoTextView) itemView.findViewById(R.id.matchTypeTV);
+            this.matchModeTV = (RobotoTextView) itemView.findViewById(R.id.matchModeTV);
+            this.kdaTV = (RobotoTextView) itemView.findViewById(R.id.kdaTV);
+            this.goldTV = (RobotoTextView) itemView.findViewById(R.id.goldTV);
+            this.matchTimeTV = (RobotoTextView) itemView.findViewById(R.id.matchTimeTV);
+            this.matchDateTV = (RobotoTextView) itemView.findViewById(R.id.matchDateTV);
+            this.spell1 = (ImageView) itemView.findViewById(R.id.spell1);
+            this.spell2 = (ImageView) itemView.findViewById(R.id.spell2);
+            this.item0 = (ImageView) itemView.findViewById(R.id.item0);
+            this.item1 = (ImageView) itemView.findViewById(R.id.item1);
+            this.item2 = (ImageView) itemView.findViewById(R.id.item2);
+            this.item3 = (ImageView) itemView.findViewById(R.id.item3);
+            this.item4 = (ImageView) itemView.findViewById(R.id.item4);
+            this.item5 = (ImageView) itemView.findViewById(R.id.item5);
+            this.item6 = (ImageView) itemView.findViewById(R.id.item6);
             this.mItemClickListener = clickListener;
             this.itemView.setOnClickListener(this);
         }

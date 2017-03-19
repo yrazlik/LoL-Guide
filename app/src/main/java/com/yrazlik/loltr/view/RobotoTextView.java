@@ -13,6 +13,7 @@ public class RobotoTextView extends TextView {
     public static final String FONT_NORMAL = "fonts/Roboto.ttf";
     public static final String FONT_MEDIUM = "fonts/Roboto-Medium.ttf";
     public static final String FONT_BOLD = "fonts/Roboto-Medium.ttf";
+    public static final String FONT_ITALIC = "fonts/Roboto-Italic.ttf";
 
 	public RobotoTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -42,7 +43,7 @@ public class RobotoTextView extends TextView {
 			Typeface tf = Typefaces.get(getContext(), FONT_BOLD);
 			this.setTypeface(tf);
 		} else if(currentTypeFace != null && currentTypeFace.getStyle() == Typeface.ITALIC){
-			Typeface tf = Typefaces.get(getContext(), FONT_NORMAL);
+			Typeface tf = Typefaces.get(getContext(), FONT_ITALIC);
 			this.setTypeface(tf);
 		} else {
 			Typeface tf = Typefaces.get(getContext(), FONT_NORMAL);

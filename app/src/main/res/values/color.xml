@@ -22,6 +22,9 @@
     <color name="text_blue">#2260BF</color>
     <color name="cardview_bg">#FFFFFF</color>
 
+    <color name="material_light_green">#76ff03</color>
+    <color name="material_dark_red">#dd2c00</color>
+
 
 
     <color name="material_green">#CC4F59C2</color>
