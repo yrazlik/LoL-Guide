@@ -115,25 +115,26 @@ public class SummonerOverviewFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_summoner_overview, container, false);
 
-        Bundle extras = getArguments();
-        if (extras != null) {
-            recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
-            summonerInfo = (SummonerInfo) extras.getSerializable(EXTRA_SUMMONER_INFO);
-            rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_RANKEDSTATS);
-            leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(EXTRA_LEAGUEINFO);
-            averageStats = (ChampionStatsDto) extras.getSerializable(EXTRA_AVERAGESTATS);
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_summoner_overview, container, false);
+
+            Bundle extras = getArguments();
+            if (extras != null) {
+                recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(EXTRA_RECENTMATCHES);
+                summonerInfo = (SummonerInfo) extras.getSerializable(EXTRA_SUMMONER_INFO);
+                rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_RANKEDSTATS);
+                leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(EXTRA_LEAGUEINFO);
+                averageStats = (ChampionStatsDto) extras.getSerializable(EXTRA_AVERAGESTATS);
+            }
+
+            initUI(rootView);
         }
 
-        initUI(v);
-
-        return v;
+        return rootView;
     }
 
     private void initUI(View v) {
-
-        parent = (ScrollView) v.findViewById(R.id.parent);
 
         //header part
         parent = (ScrollView) v.findViewById(R.id.parent);
@@ -222,9 +223,6 @@ public class SummonerOverviewFragment extends BaseFragment {
             populateRankedPart();
 
         }
-
-
-        parent.setVisibility(View.VISIBLE);
     }
 
     private int getLeagueBadgeImage(String league) {

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -36,6 +37,8 @@ public class SummonerContainerFragment extends BaseFragment{
     private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
 
+    private CardView loadingBg;
+
 
     @Nullable
     @Override
@@ -51,6 +54,7 @@ public class SummonerContainerFragment extends BaseFragment{
             averageStats = (ChampionStatsDto) extras.getSerializable(SummonerOverviewFragment.EXTRA_AVERAGESTATS);
         }
 
+        loadingBg = (CardView) v.findViewById(R.id.loadingBg);
         pager = (ViewPager) v.findViewById(R.id.pager);
         pager.setOffscreenPageLimit(3);
         new Handler().postDelayed(new Runnable() {
@@ -68,8 +72,9 @@ public class SummonerContainerFragment extends BaseFragment{
                 tabs.setTextSize(textSize);
                 tabs.setIndicatorHeight(8);
                 tabs.setViewPager(pager);
+                loadingBg.setVisibility(View.GONE);
             }
-        }, 300);
+        }, 500);
         return v;
     }
 

@@ -71,8 +71,6 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
 
-    private boolean recentMatchesResponseReceived, rankedStatsResponseReceived, leagueInfoResponseReceived;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,9 +78,6 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_summoner_search, container, false);
 
-            recentMatchesResponseReceived = false;
-            rankedStatsResponseReceived = false;
-            leagueInfoResponseReceived = false;
             region = Commons.SELECTED_REGION;
 
             usernameRegionRL = (RelativeLayout) rootView.findViewById(R.id.usernameRegionRL);
@@ -257,73 +252,67 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             ServiceRequest.getInstance(getActivity()).makeGetRecentMatchesRequest(
                     Commons.RECENT_MATCHES_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
 
+        }else if(response instanceof RecentMatchesResponse){
+            recentMatchesResponse = (RecentMatchesResponse) response;
             ServiceRequest.getInstance(getActivity()).makeGetRankedStatsRequest(
                     Commons.RANKED_STATS_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
 
+        }else if(response instanceof RankedStatsResponse){
+            rankedStatsResponse = (RankedStatsResponse) response;
             ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
                     Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
 
-        }else if(response instanceof RecentMatchesResponse){
-            recentMatchesResponse = (RecentMatchesResponse) response;
-            recentMatchesResponseReceived = true;
-            openSummonerContainerFragment();
-        }else if(response instanceof RankedStatsResponse){
-            rankedStatsResponse = (RankedStatsResponse) response;
-            rankedStatsResponseReceived = true;
-            openSummonerContainerFragment();
         }else if ((response instanceof LeagueInfoResponse)){
             leagueInfoResponse = (LeagueInfoResponse) response;
-            openSummonerContainerFragment();
-            leagueInfoResponseReceived = true;
             openSummonerContainerFragment();
         }
     }
 
     @Override
     public void onFailure(Object response) {
+        ServiceRequest.hideLoading();
         if(response instanceof Integer){
             Integer requestId = (Integer) response;
             if(requestId == Commons.SUMMONER_BY_NAME_REQUEST) {
                 Toast.makeText(getContext(), R.string.cannot_find_username, Toast.LENGTH_SHORT).show();
-                ServiceRequest.hideLoading();
-            }else if(requestId == Commons.RANKED_STATS_REQUEST) {
+            } else if(requestId == Commons.RECENT_MATCHES_REQUEST){
+                recentMatchesResponse = null;
+                ServiceRequest.getInstance(getActivity()).makeGetRankedStatsRequest(
+                        Commons.RANKED_STATS_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+
+            } else if(requestId == Commons.RANKED_STATS_REQUEST) {
                 rankedStatsResponse = null;
-                rankedStatsResponseReceived = true;
-                openSummonerContainerFragment();
+                ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
+                        Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+
             }else if(requestId == Commons.LEAGUE_INFO_REQUEST) {
                 leagueInfoResponse = null;
-                leagueInfoResponseReceived = true;
-                openSummonerContainerFragment();
-            }else if(requestId == Commons.RECENT_MATCHES_REQUEST){
-                recentMatchesResponse = null;
-                recentMatchesResponseReceived = true;
                 openSummonerContainerFragment();
             }
         }
     }
 
-    private void openSummonerContainerFragment(){
-        if(leagueInfoResponseReceived && recentMatchesResponseReceived && rankedStatsResponseReceived) {
-            sortChampionsByMostPlayed();
-            FragmentManager fm = getFragmentManager();
-            SummonerContainerFragment summonerContainerFragment = new SummonerContainerFragment();
+    private synchronized void openSummonerContainerFragment() {
+        sortChampionsByMostPlayed();
+        FragmentManager fm = getFragmentManager();
+        SummonerContainerFragment summonerContainerFragment = new SummonerContainerFragment();
 
-            Bundle args = new Bundle();
-            args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
-            args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
-            args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
-            args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
-            args.putSerializable(SummonerOverviewFragment.EXTRA_AVERAGESTATS, averageStats);
-            FragmentTransaction ft = fm.beginTransaction();
-            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-            summonerContainerFragment.setArguments(args);
-            ServiceRequest.hideLoading();
-            ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
-            try {
-                if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
-                    ((LolApplication) (getActivity().getApplication())).showInterstitial();
-                }
-            }catch (Exception ignored){}
+        Bundle args = new Bundle();
+        args.putSerializable(SummonerOverviewFragment.EXTRA_SUMMONER_INFO, summonerByNameResponse);
+        args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
+        args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
+        args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
+        args.putSerializable(SummonerOverviewFragment.EXTRA_AVERAGESTATS, averageStats);
+        FragmentTransaction ft = fm.beginTransaction();
+        Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+        summonerContainerFragment.setArguments(args);
+        ServiceRequest.hideLoading();
+        ft.replace(R.id.content_frame, summonerContainerFragment).addToBackStack(Commons.SUMMONER_CONTAINER_FRAGMENT).commit();
+        try {
+            if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
+                ((LolApplication) (getActivity().getApplication())).showInterstitial();
+            }
+        } catch (Exception ignored) {
         }
     }
 

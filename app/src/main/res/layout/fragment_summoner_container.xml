@@ -17,4 +17,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tabs" />
 
+    <include
+        android:id="@+id/loadingBg"
+        layout="@layout/loading_view_fullscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </include>
+
+
 </RelativeLayout>
