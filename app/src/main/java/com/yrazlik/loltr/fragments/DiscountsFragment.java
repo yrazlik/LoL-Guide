@@ -19,7 +19,7 @@ import com.yrazlik.loltr.view.PagerSlidingTabStrip;
 /**
  * Created by yrazlik on 12/25/15.
  */
-public class DiscountsFragment extends BaseFragment{
+public class DiscountsFragment extends BaseFragment {
 
     private ViewPager pager;
     private PagerSlidingTabStrip tabs;
@@ -27,31 +27,28 @@ public class DiscountsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_discounts, container,
-                false);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                setTabs(v);
-            }
-        }, 350);
-        return v;
+
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_discounts, container, false);
+            setTabs(rootView);
+        }
+
+        return rootView;
     }
 
-    private void setTabs(View v){
+    private void setTabs(View v) {
         pager = (ViewPager) v.findViewById(R.id.pager);
         pager.setOffscreenPageLimit(1);
         pager.setAdapter(new DiscountsPagerAdapter(getChildFragmentManager()));
 
         tabs = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
-        tabs.setIndicatorColor(getResources().getColor(R.color.tab_color));
-        tabs.setBackgroundColor(getResources().getColor(R.color.app_color));
+        tabs.setIndicatorColor(getResources().getColor(R.color.white));
+        tabs.setBackgroundColor(getResources().getColor(R.color.tab_color));
         tabs.setDividerColor(getResources().getColor(R.color.white));
         tabs.setTextColor(getResources().getColor(R.color.white));
         DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
         int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
         tabs.setTextSize(textSize);
-
         tabs.setIndicatorHeight(8);
         tabs.setViewPager(pager);
     }
@@ -61,24 +58,27 @@ public class DiscountsFragment extends BaseFragment{
         public DiscountsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
+
         @Override
         public CharSequence getPageTitle(int position) {
-            if(position == 0){
+            if (position == 0) {
                 return getResources().getString(R.string.champion_sale);
-            }else {
+            } else {
                 return getResources().getString(R.string.skin_sale);
             }
         }
+
         @Override
         public int getCount() {
             return 2;
         }
+
         @Override
         public Fragment getItem(int position) {
-            if(position == 0){
+            if (position == 0) {
                 ChampionDiscountsFragment championDiscountsFragment = new ChampionDiscountsFragment();
                 return championDiscountsFragment;
-            }else{
+            } else {
                 CostumeDiscountsFragment costumeDiscountsFragment = new CostumeDiscountsFragment();
                 return costumeDiscountsFragment;
             }

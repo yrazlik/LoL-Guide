@@ -44,72 +44,75 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_champion_discount, container, false);
-        discountsLV = (ListView) v.findViewById(R.id.discountLV);
-        discounts = new ArrayList<>();
-        progress = ServiceRequest.showLoading(getContext());
-        showProgress();
+
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_champion_discount, container, false);
+            discountsLV = (ListView) rootView.findViewById(R.id.discountLV);
+            discounts = new ArrayList<>();
+            progress = ServiceRequest.showLoading(getContext());
+            showProgress();
 
 
-        if(LolApplication.firebaseInitialized){
-            try{
-                Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-                firebase.child("discounts").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                            HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
-                            if(keyValues != null && keyValues.size() > 0) {
-                                String discountType = (String) keyValues.get("discountType");
+            if (LolApplication.firebaseInitialized) {
+                try {
+                    Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+                    firebase.child("discounts").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
+                                if (keyValues != null && keyValues.size() > 0) {
+                                    String discountType = (String) keyValues.get("discountType");
 
-                                if (discountType != null && discountType.equalsIgnoreCase("champion")) {
-                                    String startDate = (String) keyValues.get("startDate");
-                                    String endDate = (String) keyValues.get("endDate");
-                                    String priceBeforeDiscount = (String) keyValues.get("priceBeforeDiscount");
-                                    String priceAfterDiscount = (String) keyValues.get("priceAfterDiscount");
-                                    String name = (String) keyValues.get("name");
-                                    String nameEnglish = (String) keyValues.get("nameEnglish");
-                                    String imageUrl = (String) keyValues.get("imageUrl");
-                                    String createdAt = (String) keyValues.get("createdAt");
-                                    if (createdAt != null) {
-                                        try {
-                                            String[] values = createdAt.split("\\.");
-                                            int day = Integer.parseInt(values[0]);
-                                            int month = Integer.parseInt(values[1]);
-                                            int year = Integer.parseInt(values[2]);
-                                            Calendar c = Calendar.getInstance();
-                                            c.set(year, month - 1, day, 0, 0);
-                                            Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, c.getTime());
-                                            discounts.add(discount);
-                                        } catch (Exception ignored) {
+                                    if (discountType != null && discountType.equalsIgnoreCase("champion")) {
+                                        String startDate = (String) keyValues.get("startDate");
+                                        String endDate = (String) keyValues.get("endDate");
+                                        String priceBeforeDiscount = (String) keyValues.get("priceBeforeDiscount");
+                                        String priceAfterDiscount = (String) keyValues.get("priceAfterDiscount");
+                                        String name = (String) keyValues.get("name");
+                                        String nameEnglish = (String) keyValues.get("nameEnglish");
+                                        String imageUrl = (String) keyValues.get("imageUrl");
+                                        String createdAt = (String) keyValues.get("createdAt");
+                                        if (createdAt != null) {
+                                            try {
+                                                String[] values = createdAt.split("\\.");
+                                                int day = Integer.parseInt(values[0]);
+                                                int month = Integer.parseInt(values[1]);
+                                                int year = Integer.parseInt(values[2]);
+                                                Calendar c = Calendar.getInstance();
+                                                c.set(year, month - 1, day, 0, 0);
+                                                Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, c.getTime());
+                                                discounts.add(discount);
+                                            } catch (Exception ignored) {
+                                            }
                                         }
                                     }
                                 }
                             }
+                            hideProgress();
+                            discounts = sortByDateCreated(discounts);
+                            if (discounts != null && discounts.size() > 0) {
+                                Collections.reverse(discounts);
+                                adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
+                                discountsLV.setAdapter(adapter);
+                            }
                         }
-                        hideProgress();
-                        discounts = sortByDateCreated(discounts);
-                        if(discounts != null && discounts.size() > 0) {
-                            Collections.reverse(discounts);
-                            adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
-                            discountsLV.setAdapter(adapter);
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                            hideProgress();
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                        hideProgress();
-                    }
-                });
-
-            }catch (Exception e){
+                } catch (Exception e) {
+                    hideProgress();
+                }
+            } else {
                 hideProgress();
             }
-        }else{
-            hideProgress();
         }
 
-        return v;
+        return rootView;
     }
 
     private void hideProgress(){

@@ -11,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Discount;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 
@@ -42,11 +44,11 @@ public class CostumeDiscountsAdapter extends ArrayAdapter<Discount>{
             convertView = inflater.inflate(R.layout.list_row_discount_costumes, parent, false);
 
             holder = new ViewHolder();
-            holder.discountImage = (NetworkImageView)convertView.findViewById(R.id.discountImage);
-            holder.discountName = (TextView)convertView.findViewById(R.id.name);
-            holder.date = (TextView)convertView.findViewById(R.id.date);
-            holder.priceBeforeDiscount = (TextView)convertView.findViewById(R.id.priceBeforeDiscount);
-            holder.priceAfterDiscount = (TextView)convertView.findViewById(R.id.priceAfterDiscount);
+            holder.discountImage = (ImageView) convertView.findViewById(R.id.discountImage);
+            holder.discountName = (RobotoTextView)convertView.findViewById(R.id.name);
+            holder.date = (RobotoTextView)convertView.findViewById(R.id.date);
+            holder.priceBeforeDiscount = (RobotoTextView)convertView.findViewById(R.id.priceBeforeDiscount);
+            holder.priceAfterDiscount = (RobotoTextView)convertView.findViewById(R.id.priceAfterDiscount);
             holder.rpImage = (ImageView)convertView.findViewById(R.id.rpImage);
             convertView.setTag(holder);
         }else{
@@ -57,7 +59,7 @@ public class CostumeDiscountsAdapter extends ArrayAdapter<Discount>{
 
         if (discount != null){
             if(discount.getImageUrl() != null){
-                holder.discountImage.setImageUrl(discount.getImageUrl(), ServiceRequest.getInstance(mContext).getImageLoader());
+                LolImageLoader.getInstance().loadImage(discount.getImageUrl(),  holder.discountImage);
             }
 
             if(Commons.SELECTED_LANGUAGE != null) {
@@ -94,11 +96,11 @@ public class CostumeDiscountsAdapter extends ArrayAdapter<Discount>{
     }
 
     static class ViewHolder {
-        public NetworkImageView discountImage;
-        public TextView  discountName;
-        public TextView  date;
-        public TextView  priceBeforeDiscount;
-        public TextView  priceAfterDiscount;
+        public ImageView discountImage;
+        public RobotoTextView discountName;
+        public RobotoTextView  date;
+        public RobotoTextView  priceBeforeDiscount;
+        public RobotoTextView  priceAfterDiscount;
         public ImageView rpImage;
     }
 }
