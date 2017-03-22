@@ -103,5 +103,4 @@ public class ServiceHelper {
         queryParams.put("api_key", Commons.API_KEY);
         ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, responseListener);
     }
-
 }

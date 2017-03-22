@@ -8,12 +8,11 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-public class RobotoTextView extends TextView {
+import static com.yrazlik.loltr.commons.Commons.FONT_BOLD;
+import static com.yrazlik.loltr.commons.Commons.FONT_ITALIC;
+import static com.yrazlik.loltr.commons.Commons.FONT_NORMAL;
 
-    public static final String FONT_NORMAL = "fonts/Roboto.ttf";
-    public static final String FONT_MEDIUM = "fonts/Roboto-Medium.ttf";
-    public static final String FONT_BOLD = "fonts/Roboto-Medium.ttf";
-    public static final String FONT_ITALIC = "fonts/Roboto-Italic.ttf";
+public class RobotoTextView extends TextView {
 
 	public RobotoTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);

@@ -21,6 +21,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:cardCornerRadius="0dp"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false"
             android:elevation="2dp">
 
 
@@ -182,6 +184,8 @@
             android:layout_marginTop="5dp"
             android:background="@color/white"
             app:cardCornerRadius="0dp"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false"
             android:elevation="2dp">
 
             <RelativeLayout
@@ -217,6 +221,8 @@
             android:layout_marginTop="5dp"
             android:background="@color/white"
             app:cardCornerRadius="0dp"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false"
             android:elevation="2dp">
 
             <LinearLayout

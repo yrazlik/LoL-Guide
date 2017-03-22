@@ -2,7 +2,6 @@ package com.yrazlik.loltr.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,82 +15,62 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.adapters.AllChampionsListAdapter;
 import com.yrazlik.loltr.adapters.GridViewAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
-import com.yrazlik.loltr.service.ServiceRequest;
-
+import com.yrazlik.loltr.service.ServiceHelper;
+import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 public class AllChampionsFragment extends BaseFragment implements ResponseListener, OnItemClickListener, TextWatcher{
 	
 	private GridView gridView;
-    private ListView listViewChampions;
 	private GridViewAdapter adapter;
-    private AllChampionsListAdapter listAdapter;
 	private EditText searchBar;
-    private TextView noChampsFoundTV;
+    private RobotoTextView noChampsFoundTV;
     private ArrayList<Champion> searchResultChampions;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-	
-		View v = inflater.inflate(R.layout.fragment_champions, container, false);
-		initUI(v);
-		if(Commons.allChampions == null || Commons.allChampions.size() == 0){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    ArrayList<String> pathParams = new ArrayList<String>();
-                    pathParams.add("static-data");
-                    pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-                    pathParams.add("v1.2");
-                    pathParams.add("champion");
-                    HashMap<String, String> queryParams = new HashMap<String, String>();
-                    queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-                    queryParams.put("version", Commons.LATEST_VERSION);
-                    queryParams.put("champData", "altimages");
-                    queryParams.put("api_key", Commons.API_KEY);
-                    ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, AllChampionsFragment.this);
-                }
-            }, 400);
-		}else{
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if(adapter == null || adapter.getCount() == 0) {
-                        adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
-                        gridView.setAdapter(adapter);
-                    }
-                }
-            }, 400);
-		}
+
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_champions, container, false);
+            initUI(rootView);
+        }
+
+        if (Commons.allChampions == null || Commons.allChampions.size() == 0) {
+            ServiceHelper.getInstance(getContext()).makeGetAllChampionsRequest(this);
+        } else {
+            setAdapter();
+        }
 		
-		return v;
-		
+		return rootView;
 	}
+
+    private void setAdapter() {
+        if (adapter == null || adapter.getCount() == 0) {
+            adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
+            gridView.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+    }
 	
 	private void initUI(View v){
-        noChampsFoundTV = (TextView)v.findViewById(R.id.noChampsFoundTV);
+        noChampsFoundTV = (RobotoTextView) v.findViewById(R.id.noChampsFoundTV);
 		gridView = (GridView)v.findViewById(R.id.gridview_champions);
-        listViewChampions = (ListView)v.findViewById(R.id.listview_champions);
 		searchBar = (EditText)v.findViewById(R.id.edittextSearchBar);
 		searchBar.addTextChangedListener(this);
 		gridView.setOnItemClickListener(this);
@@ -155,14 +134,6 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
         FragmentTransaction ft = fm.beginTransaction();
         Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
 		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
-	}
-
-	private void showInterstitial(){
-		try {
-			if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
-				((LolApplication) (getActivity().getApplication())).showInterstitial();
-			}
-		}catch (Exception ignored){}
 	}
 	
 	public static boolean containsIgnoreCase(String src, String what) {

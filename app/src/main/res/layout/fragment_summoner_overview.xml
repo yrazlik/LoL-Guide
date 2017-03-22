@@ -65,8 +65,8 @@
 
                 <com.pkmmte.view.CircularImageView
                     android:id="@+id/profileIconIV"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"/>
@@ -81,7 +81,7 @@
             app:cardPreventCornerOverlap="false"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/cardview_margin_top"
             android:background="@color/cardview_bg">
 
             <RelativeLayout
@@ -203,7 +203,7 @@
             app:cardUseCompatPadding="true"
             app:cardPreventCornerOverlap="false"
             android:layout_below="@+id/kdaRL"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/cardview_margin_top"
             android:background="@color/cardview_bg">
 
             <HorizontalScrollView
@@ -250,8 +250,8 @@
 
                                 <com.pkmmte.view.CircularImageView
                                     android:id="@+id/mostPlayedIV1"
-                                    android:layout_width="55dp"
-                                    android:layout_height="55dp"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
                                     android:layout_centerHorizontal="true">
 
                                 </com.pkmmte.view.CircularImageView>
@@ -323,8 +323,8 @@
 
                                 <com.pkmmte.view.CircularImageView
                                     android:id="@+id/mostPlayedIV2"
-                                    android:layout_width="55dp"
-                                    android:layout_height="55dp"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
                                     android:layout_centerHorizontal="true">
 
                                 </com.pkmmte.view.CircularImageView>
@@ -396,8 +396,8 @@
 
                                 <com.pkmmte.view.CircularImageView
                                     android:id="@+id/mostPlayedIV3"
-                                    android:layout_width="55dp"
-                                    android:layout_height="55dp"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
                                     android:layout_centerHorizontal="true">
 
                                 </com.pkmmte.view.CircularImageView>
@@ -464,7 +464,7 @@
             app:cardUseCompatPadding="true"
             app:cardPreventCornerOverlap="false"
             android:layout_below="@+id/mostPlayedSV"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/cardview_margin_top"
             android:background="@color/cardview_bg">
 
             <RelativeLayout
