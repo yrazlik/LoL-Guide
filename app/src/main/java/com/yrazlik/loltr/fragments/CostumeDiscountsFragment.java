@@ -2,12 +2,14 @@ package com.yrazlik.loltr.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.activities.FullScreenImageActivity;
 import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
 import com.yrazlik.loltr.adapters.CostumeDiscountsAdapter;
 import com.yrazlik.loltr.data.Discount;
@@ -36,7 +39,7 @@ import java.util.List;
 /**
  * Created by yrazlik on 12/25/15.
  */
-public class CostumeDiscountsFragment extends BaseFragment implements ResponseListener{
+public class CostumeDiscountsFragment extends BaseFragment implements ResponseListener, AdapterView.OnItemClickListener{
 
     private ListView discountsLV;
     private CostumeDiscountsAdapter adapter;
@@ -49,6 +52,7 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_discount_costumes, container, false);
             discountsLV = (ListView) rootView.findViewById(R.id.discountLV);
+            discountsLV.setOnItemClickListener(this);
             discounts = new ArrayList<>();
 
             final Dialog progress = ServiceRequest.showLoading(getContext());
@@ -145,6 +149,16 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
             return null;
         }
         return discounts;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        try {
+            Discount d = (Discount) parent.getAdapter().getItem(position);
+            Intent i = new Intent(getActivity(), FullScreenImageActivity.class);
+            i.putExtra(FullScreenImageActivity.EXTRA_IMAGE_URL, d.getImageUrl());
+            startActivity(i);
+        } catch (Exception ignored) {}
     }
 
     @Override

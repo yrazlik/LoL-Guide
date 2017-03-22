@@ -4,10 +4,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.firebase.client.DataSnapshot;
@@ -19,6 +22,8 @@ import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Discount;
 import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
@@ -35,7 +40,7 @@ import java.util.List;
 /**
  * Created by yrazlik on 12/25/15.
  */
-public class ChampionDiscountsFragment extends BaseFragment implements ResponseListener{
+public class ChampionDiscountsFragment extends BaseFragment implements ResponseListener, AdapterView.OnItemClickListener{
     private ListView discountsLV;
     private ChampionDiscountsAdapter adapter;
     private ArrayList<Discount> discounts;
@@ -50,6 +55,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
             discountsLV = (ListView) rootView.findViewById(R.id.discountLV);
             discounts = new ArrayList<>();
             progress = ServiceRequest.showLoading(getContext());
+            discountsLV.setOnItemClickListener(this);
             showProgress();
 
 
@@ -73,6 +79,12 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
                                         String nameEnglish = (String) keyValues.get("nameEnglish");
                                         String imageUrl = (String) keyValues.get("imageUrl");
                                         String createdAt = (String) keyValues.get("createdAt");
+
+                                        long championId = 0;
+                                        try {
+                                            championId = (long) keyValues.get("champId");
+                                        } catch (Exception ignored) {}
+
                                         if (createdAt != null) {
                                             try {
                                                 String[] values = createdAt.split("\\.");
@@ -81,7 +93,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
                                                 int year = Integer.parseInt(values[2]);
                                                 Calendar c = Calendar.getInstance();
                                                 c.set(year, month - 1, day, 0, 0);
-                                                Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, c.getTime());
+                                                Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, championId, c.getTime());
                                                 discounts.add(discount);
                                             } catch (Exception ignored) {
                                             }
@@ -149,6 +161,26 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         if(progress != null){
             progress.show();
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        try {
+            Discount d = (Discount) discountsLV.getItemAtPosition(position);
+            int champId = (int) d.getChampionId();
+            if (champId != 0) {
+                ChampionDetailFragment fragment = new ChampionDetailFragment();
+                Bundle args = new Bundle();
+                args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
+                args.putString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL, d.getImageUrl());
+                args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, d.getName());
+                fragment.setArguments(args);
+                FragmentManager fm = getParentFragment().getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out, R.anim.slide_right_in, R.anim.slide_right_out);
+                ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
+            }
+        } catch (Exception ignored) {}
     }
 
     @Override

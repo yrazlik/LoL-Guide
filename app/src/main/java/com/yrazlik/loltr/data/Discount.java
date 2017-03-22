@@ -15,6 +15,7 @@ public class Discount {
     private String priceBeforeDiscount;
     private String priceAfterDiscount;
     private String imageUrl;
+    private long championId;
     private Date createdAt;
 
     public Discount(String discountType, String startDate, String endDate, String name, String nameEnglish, String priceBeforeDiscount, String priceAfterDiscount, String imageUrl, Date createdAt){
@@ -26,6 +27,19 @@ public class Discount {
         this.priceBeforeDiscount = priceBeforeDiscount;
         this.priceAfterDiscount = priceAfterDiscount;
         this.imageUrl = imageUrl;
+        this.createdAt = createdAt;
+    }
+
+    public Discount(String discountType, String startDate, String endDate, String name, String nameEnglish, String priceBeforeDiscount, String priceAfterDiscount, String imageUrl, long champId, Date createdAt){
+        this.discountType = discountType;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.name = name;
+        this.nameEnglish = nameEnglish;
+        this.priceBeforeDiscount = priceBeforeDiscount;
+        this.priceAfterDiscount = priceAfterDiscount;
+        this.imageUrl = imageUrl;
+        this.championId = champId;
         this.createdAt = createdAt;
     }
 
@@ -91,6 +105,14 @@ public class Discount {
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
+    }
+
+    public long getChampionId() {
+        return championId;
+    }
+
+    public void setChampionId(int championId) {
+        this.championId = championId;
     }
 
     public Date getCreatedAt() {
