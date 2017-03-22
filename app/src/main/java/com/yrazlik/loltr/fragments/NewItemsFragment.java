@@ -27,6 +27,7 @@ import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.data.Data;
 import com.yrazlik.loltr.responseclasses.ItemsResponse;
+import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
@@ -54,23 +55,24 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_items_new, container, false);
-        initUI(v);
 
-        if(Commons.allItemsNew == null || Commons.allItemsNew.size() <= 0) {
-            ArrayList<String> pathParams = new ArrayList<String>();
-            pathParams.add("static-data");
-            pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-            pathParams.add("v1.2");
-            pathParams.add("item");
-            HashMap<String, String> queryParams = new HashMap<String, String>();
-            queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-            queryParams.put("version", Commons.LATEST_VERSION);
-            queryParams.put("itemListData", "all");
-            queryParams.put("api_key", Commons.API_KEY);
+        if(rootView == null) {
+            showProgressWithWhiteBG();
+            rootView = inflater.inflate(R.layout.fragment_items_new, container, false);
+            initUI(rootView);
+        }
 
-            ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
-        }else {
+        setItemsAdapter();
+
+        return rootView;
+    }
+
+    private void setItemsAdapter() {
+        if (Commons.allItemsNew == null || Commons.allItemsNew.size() <= 0) {
+            showProgressWithWhiteBG();
+            ServiceHelper.getInstance(getContext()).makeGetAllItemsRequest(this);
+        } else {
+            dismissProgress();
             try {
                 Collections.sort(Commons.allItemsNew, new Comparator<Item>() {
                     @Override
@@ -78,13 +80,17 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                         return i1.getData().getName().compareTo(i2.getData().getName());
                     }
                 });
-            }catch (Exception ignored){}
-            allItems = Commons.allItemsNew;
-            itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, Commons.allItemsNew);
-            itemsLV.setAdapter(itemsLVAdapter);
-        }
+            } catch (Exception ignored) {}
 
-        return v;
+            allItems = Commons.allItemsNew;
+
+            if(itemsLVAdapter == null || itemsLVAdapter.getCount() == 0) {
+                itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, Commons.allItemsNew);
+                itemsLV.setAdapter(itemsLVAdapter);
+            } else {
+                itemsLVAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     private void initUI(View v){
@@ -148,6 +154,7 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
 
     @Override
     public void onSuccess(Object response) {
+        dismissProgress();
         if(response instanceof ItemsResponse){
             ItemsResponse resp = (ItemsResponse)response;
             if(allItems == null){
@@ -180,14 +187,12 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                     itemsLV.setAdapter(itemsLVAdapter);
                 }
             }catch (Exception ignored){}
-
-
         }
     }
 
     @Override
     public void onFailure(Object response) {
-
+        showRetryView();
     }
 
     @Override
@@ -248,6 +253,12 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
     @Override
     public void afterTextChanged(Editable s) {
 
+    }
+
+    @Override
+    protected void retry() {
+        super.retry();
+        setItemsAdapter();
     }
 
     @Override

@@ -1,46 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/app_color"
-    android:minHeight="60dp">
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_listview_material"
+                android:padding="10dp">
 
 
     <ImageView
         android:id="@+id/item_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"/>
+        android:layout_centerVertical="true"/>
 
     <RelativeLayout
         android:id="@+id/textContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/item_image"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/arrowRight"
+        android:layout_toRightOf="@+id/item_image">
 
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/whiteText17dp"
-            android:textColor="@color/material_yellow"/>
+            android:textAppearance="@style/sp14BlackBold"/>
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/shortDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/whiteText14dp"
             android:layout_below="@+id/itemName"
-            android:layout_marginTop="5dp"/>
-
-
-
+            android:layout_marginTop="5dp"
+            android:textAppearance="@style/sp12GrayRegular"/>
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/arrowRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/arrow_right_blue_thin"/>
 
 </RelativeLayout>

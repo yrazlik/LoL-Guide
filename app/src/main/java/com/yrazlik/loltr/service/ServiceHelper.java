@@ -103,4 +103,19 @@ public class ServiceHelper {
         queryParams.put("api_key", Commons.API_KEY);
         ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, responseListener);
     }
+
+    public void makeGetAllItemsRequest(ResponseListener responseListener) {
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("static-data");
+        pathParams.add(Commons.getInstance(mContext.getApplicationContext()).getRegion());
+        pathParams.add("v1.2");
+        pathParams.add("item");
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("locale", Commons.getInstance(mContext.getApplicationContext()).getLocale());
+        queryParams.put("version", Commons.LATEST_VERSION);
+        queryParams.put("itemListData", "all");
+        queryParams.put("api_key", Commons.API_KEY);
+
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, false, responseListener);
+    }
 }

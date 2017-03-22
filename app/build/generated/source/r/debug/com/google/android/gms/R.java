@@ -423,14 +423,14 @@ public final class R {
 		public static final int normal = 0x7f0d001a;
 		public static final int omnibox_title_section = 0x7f0d0064;
 		public static final int omnibox_url_section = 0x7f0d0065;
-		public static final int place_autocomplete_clear_button = 0x7f0d026c;
-		public static final int place_autocomplete_powered_by_google = 0x7f0d026e;
-		public static final int place_autocomplete_prediction_primary_text = 0x7f0d0270;
-		public static final int place_autocomplete_prediction_secondary_text = 0x7f0d0271;
-		public static final int place_autocomplete_progress = 0x7f0d026f;
-		public static final int place_autocomplete_search_button = 0x7f0d026a;
-		public static final int place_autocomplete_search_input = 0x7f0d026b;
-		public static final int place_autocomplete_separator = 0x7f0d026d;
+		public static final int place_autocomplete_clear_button = 0x7f0d026f;
+		public static final int place_autocomplete_powered_by_google = 0x7f0d0271;
+		public static final int place_autocomplete_prediction_primary_text = 0x7f0d0273;
+		public static final int place_autocomplete_prediction_secondary_text = 0x7f0d0274;
+		public static final int place_autocomplete_progress = 0x7f0d0272;
+		public static final int place_autocomplete_search_button = 0x7f0d026d;
+		public static final int place_autocomplete_search_input = 0x7f0d026e;
+		public static final int place_autocomplete_separator = 0x7f0d0270;
 		public static final int plain = 0x7f0d005d;
 		public static final int production = 0x7f0d006e;
 		public static final int progressBar = 0x7f0d0116;
@@ -496,8 +496,8 @@ public final class R {
 		public static final int cast_forward_10 = 0x7f060020;
 		public static final int cast_forward_30 = 0x7f060021;
 		public static final int cast_intro_overlay_button_text = 0x7f060022;
-		public static final int cast_invalid_stream_duration_text = 0x7f060150;
-		public static final int cast_invalid_stream_position_text = 0x7f060151;
+		public static final int cast_invalid_stream_duration_text = 0x7f060151;
+		public static final int cast_invalid_stream_position_text = 0x7f060152;
 		public static final int cast_mute = 0x7f060023;
 		public static final int cast_notification_connected_message = 0x7f060024;
 		public static final int cast_notification_connecting_message = 0x7f060025;
@@ -550,9 +550,9 @@ public final class R {
 		public static final int place_autocomplete_search_hint = 0x7f060064;
 		public static final int store_picture_message = 0x7f060066;
 		public static final int store_picture_title = 0x7f060067;
-		public static final int tagmanager_preview_dialog_button = 0x7f060152;
-		public static final int tagmanager_preview_dialog_message = 0x7f060153;
-		public static final int tagmanager_preview_dialog_title = 0x7f060154;
+		public static final int tagmanager_preview_dialog_button = 0x7f060153;
+		public static final int tagmanager_preview_dialog_message = 0x7f060154;
+		public static final int tagmanager_preview_dialog_title = 0x7f060155;
 		public static final int wallet_buy_button_place_holder = 0x7f060068;
 	}
 	public static final class style {

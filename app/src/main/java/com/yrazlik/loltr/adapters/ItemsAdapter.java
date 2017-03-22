@@ -11,12 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Gold;
 import com.yrazlik.loltr.data.Image;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Data;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 
@@ -28,7 +30,6 @@ public class ItemsAdapter extends ArrayAdapter<Item>{
     private Context mContext;
     private int layoutId;
     private ArrayList<Item> items;
-    private AQuery aq;
 
     public ItemsAdapter(Context context, int resource, ArrayList<Item> objects) {
         super(context, resource, objects);
@@ -55,8 +56,8 @@ public class ItemsAdapter extends ArrayAdapter<Item>{
             holder = new ViewHolder();
             holder.itemImage = (ImageView)convertView.findViewById(R.id.item_image);
             holder.textContainer = (RelativeLayout)convertView.findViewById(R.id.textContainer);
-            holder.itemName = (TextView)convertView.findViewById(R.id.itemName);
-            holder.shortDescription = (TextView)convertView.findViewById(R.id.shortDescription);
+            holder.itemName = (RobotoTextView)convertView.findViewById(R.id.itemName);
+            holder.shortDescription = (RobotoTextView)convertView.findViewById(R.id.shortDescription);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -80,9 +81,7 @@ public class ItemsAdapter extends ArrayAdapter<Item>{
                 String imageUrl = itemImage.getFull();
                 if(imageUrl != null){
                     imageUrl = Commons.ITEM_IMAGES_BASE_URL + imageUrl;
-                  //  LolApplication.imageLoader.loadImage(imageUrl, null);
-                    aq = new AQuery(holder.itemImage);
-                    aq.image(imageUrl, true, true, 0, 0, null, android.R.anim.fade_in);
+                    LolImageLoader.getInstance().loadImage(imageUrl, holder.itemImage);
                 }
             }
 
@@ -98,7 +97,7 @@ public class ItemsAdapter extends ArrayAdapter<Item>{
     static class ViewHolder{
         public ImageView itemImage;
         public RelativeLayout textContainer;
-        public TextView itemName;
-        public TextView shortDescription;
+        public RobotoTextView itemName;
+        public RobotoTextView shortDescription;
     }
 }

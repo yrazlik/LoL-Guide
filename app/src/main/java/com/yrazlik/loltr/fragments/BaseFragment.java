@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.view.ConnectionProgressController;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 /**
  * Created by yrazlik on 8/4/15.
@@ -31,9 +32,35 @@ public abstract class BaseFragment extends Fragment{
         if(rootView != null) {
             CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
             if (loadingView != null) {
+                loadingView.findViewById(R.id.retryContainer).setOnClickListener(null);
+                loadingView.findViewById(R.id.imgRetry).setVisibility(View.GONE);
+                loadingView.findViewById(R.id.progress).setVisibility(View.VISIBLE);
+                ((RobotoTextView) loadingView.findViewById(R.id.loadingText)).setText(getString(R.string.loading));
                 loadingView.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    protected void showRetryView() {
+        if(rootView != null) {
+            CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
+            if (loadingView != null) {
+                loadingView.findViewById(R.id.imgRetry).setVisibility(View.VISIBLE);
+                loadingView.findViewById(R.id.progress).setVisibility(View.GONE);
+                ((RobotoTextView) loadingView.findViewById(R.id.loadingText)).setText(getString(R.string.retry));
+                loadingView.findViewById(R.id.retryContainer).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        retry();
+                    }
+                });
+                loadingView.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    protected void retry() {
+
     }
 
     protected void dismissProgress() {
@@ -42,6 +69,4 @@ public abstract class BaseFragment extends Fragment{
             loadingView.setVisibility(View.GONE);
         }
     }
-
-
 }
