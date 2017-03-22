@@ -1,171 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/app_color" >
+                android:background="@color/bg_gray">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
 
-            <ImageView
-                android:id="@+id/imageViewItemImage"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutTitleContainer"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="5dp"
-                android:layout_toRightOf="@+id/imageViewItemImage"
-                android:gravity="center_vertical" >
-
-                <TextView
-                    android:id="@+id/textViewItemName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/whiteText20dp"
-                    android:textColor="@color/material_yellow"/>
-
-                <TextView
-                    android:id="@+id/textViewItemGold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewItemName"
-                    android:layout_marginRight="10dp"
-                    style="@style/whiteText16dp"
-                    android:layout_marginTop="5dp" />
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/textViewDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageViewItemImage"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                style="@style/whiteText16dp"
-                android:textColor="@color/material_yellow"
-                android:textStyle="bold"
-                android:text="@string/explanation"/>
-
-            <View
-                android:id="@+id/separator1"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_below="@+id/textViewDescription"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/white"/>
-
-            <TextView
-                android:id="@+id/textViewDetailedDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/separator1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                style="@style/whiteText14dp"
-                android:layout_marginTop="5dp" />
-
-            <TextView
-                android:id="@+id/itemFromText"
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/itemFrom"
-                android:layout_below="@+id/textViewDetailedDescription"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                style="@style/whiteText16dp"
-                android:textColor="@color/material_yellow"
-                android:textStyle="bold"/>
+                android:background="@color/cardview_bg"
+                android:elevation="2dp"
+                app:cardCornerRadius="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-            <View
-                android:id="@+id/separator2"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_below="@+id/itemFromText"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/white"/>
-
-            <LinearLayout
-                android:id="@+id/buildFromLL"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/separator2"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/noFromTV"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    style="@style/whiteText14dp"
-                    android:text="@string/noFrom"/>
+                    android:background="@color/cardview_bg"
+                    android:padding="10dp">
 
+                    <ImageView
+                        android:id="@+id/imageViewItemImage"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"/>
 
-            </LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/relativeLayoutTitleContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/imageViewItemImage"
+                        android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/itemToText"
+                        <com.yrazlik.loltr.view.RobotoTextView
+                            android:id="@+id/textViewItemName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/sp16BlackBold"/>
+
+                        <TextView
+                            android:id="@+id/textViewItemGold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textViewItemName"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textAppearance="@style/sp14GrayRegular"/>
+                    </RelativeLayout>
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/textViewDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageViewItemImage"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/explanation"
+                        android:textAppearance="@style/sp14BlackBold"/>
+
+                    <View
+                        android:id="@+id/separator1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_below="@+id/textViewDescription"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/text_black"/>
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/textViewDetailedDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/separator1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textAppearance="@style/sp12GrayRegular"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardViewItemFrom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/itemTo"
-                android:layout_below="@+id/buildFromLL"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                style="@style/whiteText16dp"
-                android:textColor="@color/material_yellow"
-                android:textStyle="bold"/>
+                android:layout_below="@+id/cardViewDescription"
+                android:layout_marginTop="@dimen/cardview_margin_top"
+                android:background="@color/cardview_bg"
+                android:elevation="2dp"
+                app:cardCornerRadius="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-            <View
-                android:id="@+id/separator3"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_below="@+id/itemToText"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/white"/>
-
-            <LinearLayout
-                android:id="@+id/buildToLL"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/separator3"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/noToTV"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    style="@style/whiteText14dp"
-                    android:text="@string/noTo"/>
+                    android:padding="10dp"
+                    android:background="@color/cardview_bg">
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/itemFromText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/itemFrom"
+                        android:textAppearance="@style/sp14BlackBold"/>
+
+                    <View
+                        android:id="@+id/separator2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_below="@+id/itemFromText"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/text_black"/>
+
+                    <LinearLayout
+                        android:id="@+id/buildFromLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/separator2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <com.yrazlik.loltr.view.RobotoTextView
+                            android:id="@+id/noFromTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/noFrom"
+                            android:textAppearance="@style/sp12GrayRegular"
+                            android:visibility="gone"/>
 
 
-            </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardViewItemTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardViewItemFrom"
+                android:layout_marginTop="@dimen/cardview_margin_top"
+                android:background="@color/cardview_bg"
+                android:elevation="2dp"
+                app:cardCornerRadius="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@color/cardview_bg">
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/itemToText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/itemTo"
+                        android:textAppearance="@style/sp14BlackBold"/>
+
+                    <View
+                        android:id="@+id/separator3"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_below="@+id/itemToText"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/text_black"/>
+
+                    <LinearLayout
+                        android:id="@+id/buildToLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/separator3"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <com.yrazlik.loltr.view.RobotoTextView
+                            android:id="@+id/noToTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/noTo"
+                            android:textAppearance="@style/sp12GrayRegular"
+                            android:visibility="gone"/>
 
 
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </RelativeLayout>
     </ScrollView>
 

@@ -50,7 +50,7 @@ public class ItemDetailActivity extends ActionBarActivity {
         setContentView(R.layout.activity_item_detail);
         overridePendingTransition(R.anim.slide_left_in, android.R.anim.fade_out);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>" + getString(R.string.itemDetail) + "</font>"));
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#D9B40617")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#248F46")));
         getSupportActionBar().show();
         Intent i = getIntent();
         if (i != null) {
