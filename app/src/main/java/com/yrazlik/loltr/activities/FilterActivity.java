@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.view.RobotoButton;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,7 @@ public class FilterActivity extends ActionBarActivity implements CompoundButton.
             cbAttackSpeed, cbLifeSteal, cbArmorPenetration, cbSpellDamage, cbCooldownReduction, cbMana,
             cbManaReg, cbMagicPenetration, cbSpellVamp, cbVision, cbMovement, cbConsumable, cbGold;
 
-    private Button buttonOk, buttonCancel;
+    private RobotoButton buttonOk, buttonCancel;
 
     private ArrayList<String> filters;
 
@@ -57,7 +58,7 @@ public class FilterActivity extends ActionBarActivity implements CompoundButton.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_filter_items);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>" + getString(R.string.filter) + "</font>"));
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#D9B40617")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#248F46")));
         getSupportActionBar().show();
         Intent i = getIntent();
         if(i != null){
@@ -89,8 +90,8 @@ public class FilterActivity extends ActionBarActivity implements CompoundButton.
         cbMovement = (CheckBox) findViewById(R.id.cbMovement);
         cbConsumable = (CheckBox) findViewById(R.id.cbConsumable);
         cbGold = (CheckBox) findViewById(R.id.cbGold);
-        buttonOk = (Button) findViewById(R.id.buttonOk);
-        buttonCancel = (Button) findViewById(R.id.buttonCancel);
+        buttonOk = (RobotoButton) findViewById(R.id.buttonOk);
+        buttonCancel = (RobotoButton) findViewById(R.id.buttonCancel);
 
         cbHealth.setOnCheckedChangeListener(this);
         cbMagicResistance.setOnCheckedChangeListener(this);

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/app_color"
+                android:background="@color/white"
                 android:padding="15dp">
 
     <ScrollView
@@ -18,25 +18,23 @@
                 android:id="@+id/icon_defence"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:background="@drawable/shield"
                 android:layout_above="@id/separator1"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/shield"/>
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/defenceText"
+                android:textAppearance="@style/sp16BlackBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon_defence"
                 android:layout_marginLeft="5dp"
-                android:text="@string/defence"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"
-                android:textStyle="bold"/>
+                android:layout_toRightOf="@+id/icon_defence"
+                android:text="@string/defence"/>
 
             <View
                 android:id="@+id/separator1"
                 android:layout_width="match_parent"
-                android:layout_height="0.7dp"
+                android:layout_height="0.5dp"
                 android:layout_below="@+id/defenceText"
                 android:layout_marginTop="3dp"
                 android:background="@android:color/darker_gray"/>
@@ -54,31 +52,30 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbHealth"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbHealth"
                         android:text="@string/health"/>
 
                     <CheckBox
                         android:id="@+id/cbHealth"
-                        android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="2dp"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbHealth"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbHealth"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
 
 
                 <RelativeLayout
@@ -86,27 +83,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbMagicResistance"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbMagicResistance"
                         android:text="@string/magic_resistance"/>
 
                     <CheckBox
                         android:id="@+id/cbMagicResistance"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbMagicResistance"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbMagicResistance"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -115,27 +112,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbHealthRegen"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbHealthRegen"
                         android:text="@string/health_regeneration"/>
 
                     <CheckBox
                         android:id="@+id/cbHealthRegen"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbHealthRegen"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbHealthRegen"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -144,30 +141,29 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbArmor"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbArmor"
                         android:text="@string/armor"/>
 
                     <CheckBox
                         android:id="@+id/cbArmor"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbArmor"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbArmor"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
 
 
             </LinearLayout>
@@ -176,27 +172,25 @@
                 android:id="@+id/icon_attack"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:background="@drawable/swords"
                 android:layout_above="@id/separator2"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/swords"/>
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/attackText"
+                android:textAppearance="@style/sp16BlackBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filterDefence"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/icon_attack"
-                android:layout_marginLeft="5dp"
-                android:text="@string/attack"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"
-                android:textStyle="bold"/>
+                android:text="@string/attack"/>
 
             <View
                 android:id="@+id/separator2"
                 android:layout_width="match_parent"
-                android:layout_height="0.7dp"
+                android:layout_height="0.5dp"
                 android:layout_below="@+id/attackText"
                 android:layout_marginTop="3dp"
                 android:background="@android:color/darker_gray"/>
@@ -214,31 +208,30 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbDamage"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbDamage"
                         android:text="@string/damage"/>
 
                     <CheckBox
                         android:id="@+id/cbDamage"
-                        android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="2dp"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbDamage"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbDamage"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
 
 
                 <RelativeLayout
@@ -246,27 +239,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbCriticalStrike"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbCriticalStrike"
                         android:text="@string/critical"/>
 
                     <CheckBox
                         android:id="@+id/cbCriticalStrike"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbCriticalStrike"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbCriticalStrike"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -275,27 +268,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbAttackSpeed"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbAttackSpeed"
                         android:text="@string/attack_speed"/>
 
                     <CheckBox
                         android:id="@+id/cbAttackSpeed"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbAttackSpeed"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbAttackSpeed"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -304,27 +297,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbLifeSteal"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbLifeSteal"
                         android:text="@string/life_steal"/>
 
                     <CheckBox
                         android:id="@+id/cbLifeSteal"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbLifeSteal"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbLifeSteal"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -333,30 +326,29 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbArmorPenetration"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbArmorPenetration"
                         android:text="@string/armor_penetration"/>
 
                     <CheckBox
                         android:id="@+id/cbArmorPenetration"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbArmorPenetration"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbArmorPenetration"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
 
 
             </LinearLayout>
@@ -365,27 +357,25 @@
                 android:id="@+id/icon_magic"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:background="@drawable/magic2"
                 android:layout_above="@id/separator3"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/magic2"/>
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/magicText"
+                android:textAppearance="@style/sp16BlackBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filterAttack"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/icon_magic"
-                android:layout_marginLeft="5dp"
-                android:text="@string/magic"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"
-                android:textStyle="bold"/>
+                android:text="@string/magic"/>
 
             <View
                 android:id="@+id/separator3"
                 android:layout_width="match_parent"
-                android:layout_height="0.7dp"
+                android:layout_height="0.5dp"
                 android:layout_below="@+id/magicText"
                 android:layout_marginTop="3dp"
                 android:background="@android:color/darker_gray"/>
@@ -403,31 +393,30 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbSpellDamage"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbSpellDamage"
                         android:text="@string/spell_damage"/>
 
                     <CheckBox
                         android:id="@+id/cbSpellDamage"
-                        android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="2dp"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbSpellDamage"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbSpellDamage"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
 
 
                 <RelativeLayout
@@ -435,27 +424,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbCooldownReduction"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbCooldownReduction"
                         android:text="@string/cooldown_reduction"/>
 
                     <CheckBox
                         android:id="@+id/cbCooldownReduction"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbCooldownReduction"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbCooldownReduction"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -464,27 +453,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbMana"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbMana"
                         android:text="@string/mana"/>
 
                     <CheckBox
                         android:id="@+id/cbMana"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbMana"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbMana"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -493,27 +482,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbManaReg"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbManaReg"
                         android:text="@string/mana_reg"/>
 
                     <CheckBox
                         android:id="@+id/cbManaReg"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbManaReg"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbManaReg"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -522,27 +511,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbMagicPenetration"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbMagicPenetration"
                         android:text="@string/magic_penet"/>
 
                     <CheckBox
                         android:id="@+id/cbMagicPenetration"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbMagicPenetration"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbMagicPenetration"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -551,30 +540,29 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbSpellVamp"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbSpellVamp"
                         android:text="@string/spell_vamp"/>
 
                     <CheckBox
                         android:id="@+id/cbSpellVamp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbSpellVamp"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbSpellVamp"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
 
 
             </LinearLayout>
@@ -583,27 +571,25 @@
                 android:id="@+id/icon_other"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:background="@drawable/flask"
                 android:layout_above="@+id/separator4"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/flask"/>
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/otherText"
+                android:textAppearance="@style/sp16BlackBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/filterMagic"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/icon_other"
-                android:layout_marginLeft="5dp"
-                android:text="@string/others"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"
-                android:textStyle="bold"/>
+                android:text="@string/others"/>
 
             <View
                 android:id="@+id/separator4"
                 android:layout_width="match_parent"
-                android:layout_height="0.7dp"
+                android:layout_height="0.5dp"
                 android:layout_below="@+id/otherText"
                 android:layout_marginTop="3dp"
                 android:background="@android:color/darker_gray"/>
@@ -621,31 +607,30 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbVision"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbVision"
                         android:text="@string/vision"/>
 
                     <CheckBox
                         android:id="@+id/cbVision"
-                        android:layout_marginTop="2dp"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="2dp"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbVision"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbVision"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
 
 
                 <RelativeLayout
@@ -653,27 +638,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbMovement"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbMovement"
                         android:text="@string/movement"/>
 
                     <CheckBox
                         android:id="@+id/cbMovement"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbMovement"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbMovement"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -682,27 +667,27 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbConsumable"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbConsumable"
                         android:text="@string/Consumable"/>
 
                     <CheckBox
                         android:id="@+id/cbConsumable"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbConsumable"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbConsumable"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
 
@@ -711,32 +696,29 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/cbGold"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:textAppearance="@style/sp12BlackRegular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_centerVertical="true"
-                        style="@style/whiteText14dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/cbGold"
                         android:text="@string/gold_give"/>
 
                     <CheckBox
                         android:id="@+id/cbGold"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:buttonTint="@color/white"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:buttonTint="@color/text_gray"/>
 
                     <View
-                        android:layout_below="@+id/cbGold"
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_below="@+id/cbGold"
+                        android:background="@android:color/darker_gray"/>
 
                 </RelativeLayout>
-
-
-
 
 
             </LinearLayout>
@@ -745,34 +727,40 @@
                 android:id="@+id/buttonsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_below="@+id/filterOthers"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <Button
+                <com.yrazlik.loltr.view.RobotoButton
                     android:id="@+id/buttonCancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:minHeight="45dp"
                     android:layout_weight="10"
-                    android:background="@drawable/selector_secondary_button"
-                    android:textColor="@color/white"
-                    android:text="@string/cancel"/>
+                    android:background="@drawable/selector_new_primary_button"
+                    android:minHeight="45dp"
+                    android:text="@string/cancel"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_blue"/>
 
                 <RelativeLayout
-                    android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"></RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"></RelativeLayout>
 
-                <Button
+                <com.yrazlik.loltr.view.RobotoButton
                     android:id="@+id/buttonOk"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:minHeight="45dp"
                     android:layout_weight="10"
-                    android:background="@drawable/selector_primary_button"
-                    android:textColor="@color/white"
-                    android:text="@string/ok"/>
+                    android:background="@drawable/selector_new_primary_button"
+                    android:minHeight="45dp"
+                    android:text="@string/ok"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/text_blue"/>
 
 
             </LinearLayout>
