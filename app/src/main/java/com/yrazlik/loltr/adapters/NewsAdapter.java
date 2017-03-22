@@ -11,10 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,10 +45,10 @@ public class NewsAdapter extends ArrayAdapter<News>{
 
             holder = new ViewHolder();
             holder.relativeLayoutTextContainer = (RelativeLayout)convertView.findViewById(R.id.relativeLayoutTextContainer);
-            holder.smallImage = (NetworkImageView) convertView.findViewById(R.id.newsIV);
+            holder.smallImage = (ImageView) convertView.findViewById(R.id.newsIV);
             holder.rightArrow = (ImageView) convertView.findViewById(R.id.rightArrow);
-            holder.title = (TextView) convertView.findViewById(R.id.newsTitleTV);
-            holder.date = (TextView) convertView.findViewById(R.id.dateTV);
+            holder.title = (RobotoTextView) convertView.findViewById(R.id.newsTitleTV);
+            holder.date = (RobotoTextView) convertView.findViewById(R.id.dateTV);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -109,7 +111,7 @@ public class NewsAdapter extends ArrayAdapter<News>{
         }
 
         if(smallImageUrl != null){
-            holder.smallImage.setImageUrl(smallImageUrl, ServiceRequest.getInstance(mContext).getImageLoader());
+            LolImageLoader.getInstance().loadImage(smallImageUrl, holder.smallImage);
         }
 
         return convertView;
@@ -118,9 +120,9 @@ public class NewsAdapter extends ArrayAdapter<News>{
 
     static class ViewHolder {
         public RelativeLayout relativeLayoutTextContainer;
-        public NetworkImageView smallImage;
+        public ImageView smallImage;
         public ImageView rightArrow;
-        public TextView title;
-        public TextView date;
+        public RobotoTextView title;
+        public RobotoTextView date;
     }
 }

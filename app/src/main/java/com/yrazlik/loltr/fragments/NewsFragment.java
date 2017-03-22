@@ -39,7 +39,7 @@ import java.util.List;
 /**
  * Created by yrazlik on 12/28/15.
  */
-public class NewsFragment extends BaseFragment implements ResponseListener{
+public class NewsFragment extends BaseFragment implements ResponseListener, AdapterView.OnItemClickListener{
 
     private ListView newsLV;
     private NewsAdapter adapter;
@@ -48,14 +48,21 @@ public class NewsFragment extends BaseFragment implements ResponseListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_news, container, false);
-        newsLV = (ListView) v.findViewById(R.id.newsLV);
-        if(news == null) {
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_news, container, false);
+            newsLV = (ListView) rootView.findViewById(R.id.newsLV);
+            newsLV.setOnItemClickListener(this);
+        }
+
+        setNewsAdapter();
+
+        return rootView;
+    }
+
+    private void setNewsAdapter() {
+        if (news == null) {
             news = new ArrayList<>();
-            final Dialog progress = ServiceRequest.showLoading(getActivity());
-            if (progress != null) {
-                progress.show();
-            }
+            showProgressWithWhiteBG();
 
             if (LolApplication.firebaseInitialized) {
                 try {
@@ -108,70 +115,36 @@ public class NewsFragment extends BaseFragment implements ResponseListener{
                                 }
                             }
 
+                            dismissProgress();
+
                             if (news != null && news.size() > 0) {
                                 news = sortByDateCreated(news);
                                 Collections.reverse(news);
-                                hideProgress();
                                 adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
                                 newsLV.setAdapter(adapter);
-                            } else {
-                                hideProgress();
                             }
                         }
 
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
-                            hideProgress();
+                            dismissProgress();
                         }
                     });
 
-                } catch (Exception e) {
-                    hideProgress();
-                }
-            } else {
-                hideProgress();
+                } catch (Exception e) {}
             }
         } else {
             news = sortByDateCreated(news);
             Collections.reverse(news);
-            hideProgress();
-            adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
-            newsLV.setAdapter(adapter);
-        }
+            dismissProgress();
 
-        newsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    News selectedNews = news.get(position);
-
-                    FragmentManager fm = getFragmentManager();
-                    Bundle args = new Bundle();
-                    if(selectedNews.getTitle() != null && selectedNews.getTitle().length() > 0) {
-                        args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitle());
-                    }else if(selectedNews.getTitleEnglish() != null && selectedNews.getTitleEnglish().length() > 0){
-                        args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitleEnglish());
-                    }
-
-                    if(selectedNews.getMessage() != null && selectedNews.getMessage().length() > 0) {
-                        args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getMessage());
-                    }else if(selectedNews.getMessageEnglish() != null && selectedNews.getMessageEnglish().length() > 0) {
-                        args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getMessageEnglish());
-                    }
-                    args.putString(NewsDetailFragment.EXTRA_IMAGE_URL, selectedNews.getLargeImage());
-                    args.putString(NewsDetailFragment.EXTRA_WV_URL, selectedNews.getVideoUrl());
-                    NewsDetailFragment fragment = new NewsDetailFragment();
-                    fragment.setArguments(args);
-                    FragmentTransaction ft = fm.beginTransaction();
-                    Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-                    ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_DETAIL_FRAGMENT).commit();
-                    showInterstitial();
-
-                }catch (Exception ignored){}
+            if(adapter != null) {
+                adapter.notifyDataSetChanged();
+            } else {
+                adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
+                newsLV.setAdapter(adapter);
             }
-        });
-
-        return v;
+        }
     }
 
     private void showInterstitial(){
@@ -196,20 +169,36 @@ public class NewsFragment extends BaseFragment implements ResponseListener{
         return news;
     }
 
-    private void hideProgress(){
-        ((ActionBarActivity)getActivity()).runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ServiceRequest.hideLoading();
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        try {
+            News selectedNews = news.get(position);
+
+            FragmentManager fm = getFragmentManager();
+            Bundle args = new Bundle();
+            if (selectedNews.getTitle() != null && selectedNews.getTitle().length() > 0) {
+                args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitle());
+            } else if (selectedNews.getTitleEnglish() != null && selectedNews.getTitleEnglish().length() > 0) {
+                args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitleEnglish());
             }
-        });
-    }
 
-    private void getRSSFeed(){
-        ArrayList<String> pathParams = new ArrayList<String>();
-        ServiceRequest.getInstance(getContext()).getRSSNews(Commons.RSS_NEWS_REQUEST, this);
-    }
+            if (selectedNews.getMessage() != null && selectedNews.getMessage().length() > 0) {
+                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getMessage());
+            } else if (selectedNews.getMessageEnglish() != null && selectedNews.getMessageEnglish().length() > 0) {
+                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getMessageEnglish());
+            }
+            args.putString(NewsDetailFragment.EXTRA_IMAGE_URL, selectedNews.getLargeImage());
+            args.putString(NewsDetailFragment.EXTRA_WV_URL, selectedNews.getVideoUrl());
+            NewsDetailFragment fragment = new NewsDetailFragment();
+            fragment.setArguments(args);
+            FragmentTransaction ft = fm.beginTransaction();
+            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_DETAIL_FRAGMENT).commit();
+            showInterstitial();
 
+        } catch (Exception ignored) {
+        }
+    }
 
     @Override
     public void reportGoogleAnalytics() {

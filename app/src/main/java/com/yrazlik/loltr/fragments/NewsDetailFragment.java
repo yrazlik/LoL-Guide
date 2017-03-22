@@ -12,6 +12,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,9 +20,11 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.activities.FullScreenVideoActivity;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 /**
  * Created by yrazlik on 12/28/15.
@@ -33,8 +36,8 @@ public class NewsDetailFragment extends BaseFragment{
     public static final String EXTRA_IMAGE_URL = "com.yrazlik.loltr.fragments.newsdetailfragment.extraimageurl";
     public static final String EXTRA_WV_URL  ="com.yrazlik.loltr.fragments.newsdetailfragment.extrawvurl";
 
-    private TextView titleTV, messageTV;
-    private NetworkImageView largeImage;
+    private RobotoTextView titleTV, messageTV;
+    private ImageView largeImage;
     private WebView wv;
     private WebChromeClient webChromeClient;
     private RelativeLayout wvLayout;
@@ -49,9 +52,9 @@ public class NewsDetailFragment extends BaseFragment{
 
         watchFullScreenTV = (TextView) v.findViewById(R.id.watchFullScreenTV);
         clickToUpdateTV = (TextView) v.findViewById(R.id.clickToUpdate);
-        titleTV = (TextView) v.findViewById(R.id.title);
-        messageTV = (TextView) v.findViewById(R.id.message);
-        largeImage = (NetworkImageView) v.findViewById(R.id.largeImage);
+        titleTV = (RobotoTextView) v.findViewById(R.id.title);
+        messageTV = (RobotoTextView) v.findViewById(R.id.message);
+        largeImage = (ImageView) v.findViewById(R.id.largeImage);
         webChromeClient = new WebChromeClient();
         wvLayout = (RelativeLayout)v.findViewById(R.id.wvLayout);
         wv = (WebView) v.findViewById(R.id.wv);
@@ -81,7 +84,7 @@ public class NewsDetailFragment extends BaseFragment{
             }
 
             if(imageUrl != null){
-                largeImage.setImageUrl(imageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
+                LolImageLoader.getInstance().loadImage(imageUrl, largeImage);
             }
 
             watchFullScreenTV.setOnClickListener(new View.OnClickListener() {

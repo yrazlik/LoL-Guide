@@ -22,6 +22,7 @@
             android:id="@+id/header"
             app:cardUseCompatPadding="true"
             app:cardPreventCornerOverlap="false"
+            app:cardCornerRadius="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -81,6 +82,7 @@
             app:cardPreventCornerOverlap="false"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header"
+            app:cardCornerRadius="0dp"
             android:layout_marginTop="@dimen/cardview_margin_top"
             android:background="@color/cardview_bg">
 
@@ -203,6 +205,7 @@
             app:cardUseCompatPadding="true"
             app:cardPreventCornerOverlap="false"
             android:layout_below="@+id/kdaRL"
+            app:cardCornerRadius="0dp"
             android:layout_marginTop="@dimen/cardview_margin_top"
             android:background="@color/cardview_bg">
 
@@ -463,6 +466,7 @@
             android:layout_height="wrap_content"
             app:cardUseCompatPadding="true"
             app:cardPreventCornerOverlap="false"
+            app:cardCornerRadius="0dp"
             android:layout_below="@+id/mostPlayedSV"
             android:layout_marginTop="@dimen/cardview_margin_top"
             android:background="@color/cardview_bg">
