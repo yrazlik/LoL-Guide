@@ -230,30 +230,7 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
         if(response instanceof AllChampionsResponse){
             AllChampionsResponse resp = (AllChampionsResponse) response;
             Map<String, Map<String, String>> data = resp.getData();
-            if(Commons.allChampions != null){
-                Commons.allChampions.clear();
-            }else{
-                Commons.allChampions = new ArrayList<Champion>();
-            }
-            for(Map.Entry<String, Map<String, String>> entry : data.entrySet()){
-                String key = entry.getKey();
-                String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
-                Champion c = new Champion();
-                c.setChampionImageUrl(imageUrl);
-                c.setChampionName(entry.getValue().get("name"));
-                c.setId(Integer.parseInt(entry.getValue().get("id")));
-                c.setKey(entry.getValue().get("key"));
-                Commons.allChampions.add(c);
-            }
-            if(Commons.allChampions != null) {
-                Collections.sort(Commons.allChampions, new Comparator<Champion>() {
-                    @Override
-                    public int compare(Champion c1, Champion c2) {
-                        return c1.getChampionName().compareTo(c2.getChampionName());
-                    }
-                });
-            }
-
+            Commons.setAllChampions(resp);
             setAdapters();
 
         }

@@ -33,8 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/searchSummonerTV"
             android:background="@color/white"
-            android:elevation="2dp"
-            app:cardCornerRadius="0dp">
+            android:elevation="1dp"
+            app:cardCornerRadius="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -120,8 +122,10 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/recentSearchesTV"
             android:background="@color/white"
-            android:elevation="2dp"
-            app:cardCornerRadius="0dp">
+            android:elevation="1dp"
+            app:cardCornerRadius="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
 
             <RelativeLayout

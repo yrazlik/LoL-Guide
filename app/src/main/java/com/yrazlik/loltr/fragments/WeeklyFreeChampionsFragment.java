@@ -114,6 +114,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
         } else if (response instanceof AllChampionsResponse) {
             dismissProgress();
 			AllChampionsResponse resp = (AllChampionsResponse) response;
+            Commons.setAllChampions(resp);
 			Map<String, Map<String, String>> data = resp.getData();
 
             if(Commons.weeklyFreeChampions != null){
