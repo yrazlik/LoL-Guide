@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:background="@drawable/selector_listview"
-    android:layout_width="match_parent" android:layout_height="60dp">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/cardview_bg"
+                                    android:elevation="1dp"
+                                    app:cardCornerRadius="0dp"
+                                    app:cardPreventCornerOverlap="false"
+                                    app:cardUseCompatPadding="true">
 
-    <ImageView
-        android:id="@+id/imageViewChannelLogo"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"/>
-    <ProgressBar
-        android:id="@+id/imageProgress"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="25dp"
-
-        />
-
-    <TextView
-        android:id="@+id/textViewChannelName"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imageViewChannelLogo"
-        android:layout_marginLeft="10dp"
-        android:layout_toLeftOf="@+id/imageViewPlayChannel"
-        android:layout_marginRight="5dp"
-        android:singleLine="true"
-        style="@style/whiteText14dp"
-        android:text="RiotGamesTurkish"/>
+        android:background="@drawable/selector_listview_material"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
 
-    <ImageView
-        android:id="@+id/imageViewPlayChannel"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/v2"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"/>
+        <com.pkmmte.view.CircularImageView
+            android:id="@+id/imageViewChannelLogo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"/>
 
-</RelativeLayout>
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/textViewChannelName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/imageViewPlayChannel"
+            android:layout_toRightOf="@+id/imageViewChannelLogo"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="RiotGamesTurkish"
+            android:textAppearance="@style/sp14BlackBold"/>
+
+        <ImageView
+            android:id="@+id/imageViewPlayChannel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_right_blue_thin"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

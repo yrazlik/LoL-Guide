@@ -14,6 +14,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="question_mark">\?\?\?</string>
+    <string name="enter_text_here">Enter text here...</string>
 
     <string-array name="titles">
         <item>Summoners</item>

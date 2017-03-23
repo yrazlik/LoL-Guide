@@ -15,29 +15,25 @@ import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.activities.CreditsActivity;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 /**
  * Created by yrazlik on 1/6/15.
  */
 public class AboutFragment extends BaseFragment {
 
-
-    private ImageView parentBG;
-    private TextView seeCreditsTV;
+    private RobotoTextView seeCreditsTV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_about, container, false);
 
-        parentBG = (ImageView) v.findViewById(R.id.parentBG);
-        parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.kogmav);
         TextView currentVersionTV = (TextView) v.findViewById(R.id.currentVersionTV);
         if(Commons.LATEST_VERSION != null) {
             currentVersionTV.setText("Version " + Commons.LATEST_VERSION + ".");
         }
 
-        seeCreditsTV = (TextView) v.findViewById(R.id.seeCreditsTV);
+        seeCreditsTV = (RobotoTextView) v.findViewById(R.id.seeCreditsTV);
         seeCreditsTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

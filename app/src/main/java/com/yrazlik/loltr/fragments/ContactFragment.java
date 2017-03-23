@@ -15,25 +15,23 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.view.RobotoButton;
+import com.yrazlik.loltr.view.RobotoEditText;
 
 /**
  * Created by yrazlik on 1/6/15.
  */
 public class ContactFragment extends BaseFragment{
 
-    private Button send;
-    private EditText message;
-    private ImageView parentBG;
+    private RobotoButton send;
+    private RobotoEditText message;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d("TAGGG", "ContactFragmentOnCreateView");
         View v = inflater.inflate(R.layout.fragment_contact, container, false);
-        parentBG = (ImageView) v.findViewById(R.id.parentBG);
-        parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.annie);
-        send = (Button)v.findViewById(R.id.buttonContact);
-        message = (EditText)v.findViewById(R.id.edittextContactBox);
+        send = (RobotoButton) v.findViewById(R.id.buttonContact);
+        message = (RobotoEditText) v.findViewById(R.id.edittextContactBox);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,6 +7,7 @@
     <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
 
     <dimen name="count">10dp</dimen>
+    <string name="enter_text_here">Enter text here...</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

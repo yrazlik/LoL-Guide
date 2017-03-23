@@ -37,35 +37,55 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_livechannels, container, false);
 
-        errorText = (TextView)v.findViewById(R.id.errorText);
-        errorText.setVisibility(View.GONE);
-        liveChannelsList = (ListView) v.findViewById(R.id.listViewLiveChannels);
-        liveChannelsList.setOnItemClickListener(this);
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_livechannels, container, false);
+            errorText = (TextView) rootView.findViewById(R.id.errorText);
+            errorText.setVisibility(View.GONE);
+            liveChannelsList = (ListView) rootView.findViewById(R.id.listViewLiveChannels);
+            liveChannelsList.setOnItemClickListener(this);
+        }
+
+        requestLiveChannels();
+        return rootView;
+    }
+
+    private void requestLiveChannels() {
         ArrayList<String> pathParams = new ArrayList<String>();
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.LIVE_CHANNELS_REQUEST, pathParams, queryParams, null, this);
-
-        return v;
+        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.LIVE_CHANNELS_REQUEST, pathParams, queryParams, null, false, this);
     }
 
 
     @Override
     public void onSuccess(Object response) {
+        dismissProgress();
         if(response instanceof LiveChannelsResponse){
             errorText.setVisibility(View.GONE);
             LiveChannelsResponse resp = (LiveChannelsResponse) response;
             ArrayList<Streams> channels = resp.getStreams();
             adapter = new LiveChannelsAdapter(getContext(), R.layout.list_row_livechannel, channels);
             liveChannelsList.setAdapter(adapter);
-
         }
     }
 
     @Override
-    public void onFailure(Object response) {
-        errorText.setVisibility(View.VISIBLE);
+    public void onFailure(final Object response) {
+        if(getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    errorText.setVisibility(View.VISIBLE);
+                    showRetryView();
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void retry() {
+        super.retry();
+        requestLiveChannels();
     }
 
     @Override
