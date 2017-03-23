@@ -61,11 +61,6 @@ public class AllChampionsListAdapter extends ArrayAdapter<Champion> {
         //   holder.aq.recycle(holder.championImage).image(champion.getChampionImageUrl(), true, true, 0, 0, null, android.R.anim.fade_in);
       //  LolApplication.imageLoader.displayImage(champion.getChampionImageUrl(), holder.championImage);
         holder.champInfo.setText(champion.getTitle());
-        Typeface typeFace = Typeface.createFromAsset(mContext.getAssets(), "fonts/dinproregular.ttf");
-        holder.championName.setTypeface(typeFace);
-        holder.champInfo.setTypeface(typeFace);
-
-
         return convertView;
 
     }

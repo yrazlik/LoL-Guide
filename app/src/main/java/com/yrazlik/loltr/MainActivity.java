@@ -12,7 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -26,17 +25,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.adapters.LeftMenuListAdapter;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.data.LeftMenuItem;
 import com.yrazlik.loltr.fragments.AboutFragment;
 import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
 import com.yrazlik.loltr.fragments.AllChampionsFragment;
@@ -53,17 +53,11 @@ import com.yrazlik.loltr.fragments.SettingsFragment;
 import com.yrazlik.loltr.fragments.SummonerSearchFragment;
 import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
-import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends ActionBarActivity implements ResponseListener {
 
@@ -74,7 +68,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     String[] leftMenuItems;
 
     // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+    int[] mFlags = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
             R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
             R.drawable.info};
 
@@ -84,9 +78,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    private LinearLayout mDrawer;
-    private List<HashMap<String, String>> mList;
-    private SimpleAdapter mAdapter;
+    private RelativeLayout mDrawer;
+    private List<LeftMenuItem> mList;
+
+    private LeftMenuListAdapter mAdapter;
     final private String COUNTRY = "country";
     final private String FLAG = "flag";
     final private String COUNT = "count";
@@ -97,13 +92,13 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private void continueSetup() {
         if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.activity_main);
-            mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+            mFlags = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.dollar, R.drawable.discount, R.drawable.news, R.drawable.champion,
                     R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
                     R.drawable.info};
             mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         } else {
             setContentView(R.layout.activity_main_noad);
-            mFlags = new int[]{R.drawable.profile, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+            mFlags = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.dollar, R.drawable.discount, R.drawable.news, R.drawable.champion,
                     R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.contact,
                     R.drawable.info};
             mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
@@ -128,13 +123,12 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mDrawerList.performItemClick(mDrawerList.getAdapter().getView(1, null, null),
-                        1,
-                        mDrawerList.getAdapter().getItemId(1));
+                mDrawerList.performItemClick(mDrawerList.getAdapter().getView(1, null, null), 2,
+                        mDrawerList.getAdapter().getItemId(2));
             }
         }, 250);
 
-        String cat = leftMenuItems[1];
+        String cat = leftMenuItems[2];
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
     }
 
@@ -165,31 +159,25 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         // Getting a reference to the drawer listview
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
-
-        // Getting a reference to the sidebar drawer ( Title + ListView )
-        mDrawer = (LinearLayout) findViewById(R.id.drawer);
-
-        // Each row in the list stores country name, count and flag
-        mList = new ArrayList<HashMap<String, String>>();
-
-        for (int i = 0; i < leftMenuItems.length; i++) {
-            HashMap<String, String> hm = new HashMap<String, String>();
-            hm.put(COUNTRY, leftMenuItems[i]);
-            hm.put(COUNT, mCount[i]);
-            hm.put(FLAG, Integer.toString(mFlags[i]));
-            mList.add(hm);
+        if(mDrawerList.getHeaderViewsCount() == 0) {
+            View headerView = getLayoutInflater().inflate(R.layout.menu_header_view, null, false);
+            mDrawerList.addHeaderView(headerView, null, false);
         }
 
-        // Keys used in Hashmap
-        String[] from = {FLAG, COUNTRY, COUNT};
+        // Getting a reference to the sidebar drawer ( Title + ListView )
+        mDrawer = (RelativeLayout) findViewById(R.id.drawer);
 
-        // Ids of views in listview_layout
-        int[] to = {R.id.flag, R.id.country, R.id.count};
+        // Each row in the list stores country name, count and flag
+        mList = new ArrayList<>();
+
+        for (int i = 0; i < leftMenuItems.length; i++) {
+            LeftMenuItem item = new LeftMenuItem(mFlags[i], leftMenuItems[i]);
+            mList.add(item);
+        }
 
         // Instantiating an adapter to store each items
-        // R.layout.drawer_layout defines the layout of each item
-        mAdapter = new SimpleAdapter(this, mList, R.layout.drawer_layout, from,
-                to);
+        // R.layout.drawer_listrow defines the layout of each item
+        mAdapter = new LeftMenuListAdapter(this, R.layout.drawer_listrow, mList);
 
         // Getting reference to DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -251,55 +239,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void incrementHitCount(int position) {
-        HashMap<String, String> item = mList.get(position);
-        String count = item.get(COUNT);
-        item.remove(COUNT);
-        if (count.equals("")) {
-            count = "  1  ";
-        } else {
-            int cnt = Integer.parseInt(count.trim());
-            cnt++;
-            count = "  " + cnt + "  ";
-        }
-        item.put(COUNT, count);
-        mAdapter.notifyDataSetChanged();
-    }
-
-    public void showFragment(int position) {
-
-        // Currently selected country
-        mTitle = leftMenuItems[position];
-
-        // Creating a fragment object
-        CountryFragment cFragment = new CountryFragment();
-
-        // Creating a Bundle object
-        Bundle data = new Bundle();
-
-        // Setting the index of the currently selected item of mDrawerList
-        data.putInt("position", position);
-
-        // Setting the position to the fragment
-        cFragment.setArguments(data);
-
-        // Getting reference to the FragmentManager
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        // Creating a fragment transaction
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-
-        // Adding a fragment to the fragment transaction
-        ft.replace(R.id.content_frame, cFragment);
-
-        // Committing the transaction
-        ft.commit();
-    }
-
     // Highlight the selected country : 0 to 4
     public void highlightSelectedCountry() {
-        int selectedItem = mDrawerList.getCheckedItemPosition();
+        int selectedItem = mDrawerList.getCheckedItemPosition() - mDrawerList.getHeaderViewsCount();
 
         mPosition = selectedItem;
 
@@ -307,6 +249,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         if (mPosition != -1) {
             String cat = leftMenuItems[mPosition];
             getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+            mAdapter.setSelectedItem(mPosition);
+            mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -333,8 +277,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         @Override
         public void onBackPressed () {
-            if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
-                mDrawerLayout.closeDrawer(Gravity.START);
+            if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
             } else {
                 int count = getSupportFragmentManager().getBackStackEntryCount();
                 if (count <= 1) {
@@ -379,6 +323,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private OnItemClickListener leftMenuWithAdsClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            position = position - mDrawerList.getHeaderViewsCount();
             FragmentManager fragmentManager = getSupportFragmentManager();
             final FragmentTransaction ft = fragmentManager.beginTransaction();
             mDrawerLayout.closeDrawer(mDrawer);
@@ -566,6 +511,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private OnItemClickListener leftMenuNoAdsClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            position = position - mDrawerList.getHeaderViewsCount();
             FragmentManager fragmentManager = getSupportFragmentManager();
             final FragmentTransaction ft = fragmentManager.beginTransaction();
             mDrawerLayout.closeDrawer(mDrawer);

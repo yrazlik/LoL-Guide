@@ -39,7 +39,7 @@
     <color name="new_app_color">#CC040F34</color>
     <color name="red_text_color">#a6B40617</color>
 
-    <color name="menu_color">#3F51B5</color>
+    <color name="menu_color">#FFFFFF</color>
     <color name="loading_bg_color">#33000000</color>
 
 </resources>
