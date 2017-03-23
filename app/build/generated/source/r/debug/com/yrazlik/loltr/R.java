@@ -4050,7 +4050,7 @@ containing a value of this type.
         public static final int mundo=0x7f02017b;
         public static final int news=0x7f02017c;
         public static final int nothing=0x7f02017d;
-        public static final int notification_template_icon_bg=0x7f0201c6;
+        public static final int notification_template_icon_bg=0x7f0201c7;
         public static final int places_ic_clear=0x7f02017e;
         public static final int places_ic_search=0x7f02017f;
         public static final int plat_badge=0x7f020180;
@@ -4123,6 +4123,7 @@ containing a value of this type.
         public static final int tv2=0x7f0201c3;
         public static final int unranked_badge=0x7f0201c4;
         public static final int v2=0x7f0201c5;
+        public static final int white_bg=0x7f0201c6;
     }
     public static final class id {
         public static final int action0=0x7f0d0265;

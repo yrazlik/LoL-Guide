@@ -41,7 +41,7 @@ public class ServiceHelper {
         queryParams.put("freeToPlay", "true");
         ServiceRequest.getInstance(mContext).makeGetRequest(
                 Commons.WEEKLY_FREE_CHAMPIONS_REQUEST, pathParams,
-                queryParams, null, responseListener);
+                queryParams, null, false, responseListener);
     }
 
     public void makeGetAllChampionsRequest(ResponseListener responseListener) {
@@ -56,7 +56,7 @@ public class ServiceHelper {
         queryParams.put("api_key", Commons.API_KEY);
         ServiceRequest.getInstance(mContext).makeGetRequest(
                 Commons.ALL_CHAMPIONS_REQUEST,
-                pathParams, queryParams, null, responseListener);
+                pathParams, queryParams, null, false, responseListener);
     }
 
     public void makeChampionOverviewRequest(int champId, ResponseListener responseListener) {
@@ -101,7 +101,7 @@ public class ServiceHelper {
         queryParams.put("version", Commons.LATEST_VERSION);
         queryParams.put("champData", "passive,spells");
         queryParams.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, false, responseListener);
     }
 
     public void makeGetAllItemsRequest(ResponseListener responseListener) {
@@ -131,6 +131,35 @@ public class ServiceHelper {
         queryParams.put("runeListData", "image,sanitizedDescription");
         queryParams.put("api_key", Commons.API_KEY);
         ServiceRequest.getInstance(mContext).makeGetRequest(Commons.ALL_RUNES_REQUEST, pathParams, queryParams, null, false, responseListener);
+
+    }
+
+    public void makeChampionSkinsRequest(int champId, ResponseListener responseListener) {
+        ArrayList<String> pathParams = new ArrayList<String>();
+        pathParams.add("static-data");
+        pathParams.add(Commons.getInstance(mContext.getApplicationContext()).getRegion());
+        pathParams.add("v1.2");
+        pathParams.add("champion");
+        pathParams.add(String.valueOf(champId));
+        HashMap<String, String> queryParams = new HashMap<String, String>();
+        queryParams.put("locale", Commons.getInstance(mContext.getApplicationContext()).getLocale());
+        queryParams.put("version", Commons.LATEST_VERSION);
+        queryParams.put("champData", "skins");
+        queryParams.put("api_key", Commons.API_KEY);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, false, responseListener);
+
+    }
+
+    public void makeGetAllSpellsRequest(ResponseListener responseListener) {
+        ArrayList<String> pathParams2 = new ArrayList<>();
+        pathParams2.add("static-data");
+        pathParams2.add(Commons.getInstance(mContext.getApplicationContext()).getRegion());
+        pathParams2.add("v1.2");
+        pathParams2.add("summoner-spell");
+        HashMap<String, String> queryParams2 = new HashMap<String, String>();
+        queryParams2.put("spellData", "image");
+        queryParams2.put("api_key", Commons.API_KEY);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.SUMMONER_SPELLS_REQUEST, pathParams2, queryParams2, null, false, responseListener);
 
     }
 }

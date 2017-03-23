@@ -26,6 +26,7 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
+import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
@@ -44,27 +45,21 @@ public class AllChampionSkinsFragment extends BaseFragment implements ResponseLi
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-	
-		View v = inflater.inflate(R.layout.fragment_champions, container, false);
-		initUI(v);
-		if(Commons.allChampions == null || Commons.allChampions.size() == 0){
-			ArrayList<String> pathParams = new ArrayList<String>();
-			pathParams.add("static-data");
-			pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-			pathParams.add("v1.2");
-			pathParams.add("champion");
-			HashMap<String, String> queryParams = new HashMap<String, String>();
-            queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-            queryParams.put("version", Commons.LATEST_VERSION);
-			queryParams.put("champData", "altimages");
-			queryParams.put("api_key", Commons.API_KEY);
-			ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
-		}else{
-			adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
-			gridView.setAdapter(adapter);
+
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_champions, container, false);
+            initUI(rootView);
+        }
+
+
+		if(Commons.allChampions == null || Commons.allChampions.size() == 0) {
+            showProgressWithWhiteBG();
+            ServiceHelper.getInstance(getContext()).makeGetAllChampionsRequest(this);
+        }else{
+            setAdapter();
 		}
 		
-		return v;
+		return rootView;
 		
 	}
 	
@@ -74,6 +69,16 @@ public class AllChampionSkinsFragment extends BaseFragment implements ResponseLi
 		searchBar.addTextChangedListener(this);
 		gridView.setOnItemClickListener(this);
 	}
+
+    private void setAdapter() {
+        dismissProgress();
+        if (adapter == null || adapter.getCount() == 0) {
+            adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
+            gridView.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+    }
 	
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -156,6 +161,7 @@ public class AllChampionSkinsFragment extends BaseFragment implements ResponseLi
 	@Override
 	public void onSuccess(Object response) {
 		try{
+            dismissProgress();
 			if(response instanceof AllChampionsResponse){
 				AllChampionsResponse resp = (AllChampionsResponse) response;
 				Map<String, Map<String, String>> data = resp.getData();
@@ -193,9 +199,17 @@ public class AllChampionSkinsFragment extends BaseFragment implements ResponseLi
 	}
 
 	@Override
-	public void onFailure(Object response) {
-		String errorMessage = (String)response;
-		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+	public void onFailure(final Object response) {
+        dismissProgress();
+        if(getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    String errorMessage = (String) response;
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                }
+            });
+        }
 	}
 
 	@Override

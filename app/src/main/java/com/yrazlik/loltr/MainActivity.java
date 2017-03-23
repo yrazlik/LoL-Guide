@@ -55,6 +55,7 @@ import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
+import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
@@ -66,9 +67,6 @@ import java.util.Map;
 
 public class MainActivity extends ActionBarActivity implements ResponseListener {
 
-
-
-    int allchampionsRequestCount = 0, allSpellsRequestCount = 0;
     int mPosition = -1;
     String mTitle = "";
 
@@ -83,7 +81,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     // Array of strings to initial counts
     String[] mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 
-    public static Fragment activeFragment;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -112,9 +109,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         }
 
-
-        makeGetAllChampionsRequest();
-        makeGetAllSpellsRequest();
+        ServiceHelper.getInstance(getContext()).makeGetAllSpellsRequest(this);
 
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolBar != null) {
@@ -149,34 +144,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onCreate(savedInstanceState);
         setupInAppPurchases();
         continueSetup();
-    }
-
-    private void makeGetAllChampionsRequest(){
-        ArrayList<String> pathParams = new ArrayList<String>();
-        pathParams.add("static-data");
-        pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-        pathParams.add("v1.2");
-        pathParams.add("champion");
-        HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-        queryParams.put("version", Commons.LATEST_VERSION);
-        queryParams.put("champData", "altimages");
-        queryParams.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
-
-    }
-
-    private void makeGetAllSpellsRequest(){
-        ArrayList<String> pathParams2 = new ArrayList<>();
-        pathParams2.add("static-data");
-        pathParams2.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-        pathParams2.add("v1.2");
-        pathParams2.add("summoner-spell");
-        HashMap<String, String> queryParams2 = new HashMap<String, String>();
-        queryParams2.put("spellData", "image");
-        queryParams2.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.SUMMONER_SPELLS_REQUEST, pathParams2, queryParams2, null, this);
-
     }
 
     private void showInterstitial(){
@@ -390,20 +357,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         @Override
         public void onFailure (Object response){
-            if(response instanceof Integer){
-                Integer requestID = (Integer) response;
-                if(requestID == Commons.ALL_CHAMPIONS_REQUEST) {
-                    if (allchampionsRequestCount < 3) {
-                        allchampionsRequestCount++;
-                        makeGetAllChampionsRequest();
-                    }
-                }else if(requestID == Commons.SUMMONER_SPELLS_REQUEST){
-                    if(allSpellsRequestCount < 3){
-                        allSpellsRequestCount++;
-                        makeGetAllSpellsRequest();
-                    }
-                }
-            }
         }
 
         @Override

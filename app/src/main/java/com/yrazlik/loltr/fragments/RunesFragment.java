@@ -101,7 +101,14 @@ public class RunesFragment extends BaseFragment implements ResponseListener{
 	public void onFailure(Object response) {
 		String errorMessage = (String) response;
 		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
-        showRetryView();
+        if(getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showRetryView();
+                }
+            });
+        }
 	}
 
     @Override

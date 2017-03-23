@@ -40,7 +40,6 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 
 	private WeeklyFreeChampionsAdapter weeklyFreeChampionsAdapter;
 	private ArrayList<String> weeklyFreeChampIds;
-    private int weeklyFreeChampsTrialCount = 0;
     private int freeToPlayChampsSize;
 
 	@Override
@@ -48,21 +47,26 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 		initUI(inflater, container);
-
-		if (Commons.weeklyFreeChampions != null && Commons.weeklyFreeChampions.size() > 0) {
-            if(weeklyFreeChampionsAdapter != null && weeklyFreeChampionsAdapter.getCount() > 0) {
-                notifyDataSetChanged();
-            } else {
-                populateWeeklyFreeChampionsList();
-            }
-		} else {
-           populateWeeklyFreeChampionsList();
-        }
+		populatePage();
 		return rootView;
 
 	}
 
+    private void populatePage() {
+        if (Commons.weeklyFreeChampions != null && Commons.weeklyFreeChampions.size() > 0) {
+            if(weeklyFreeChampionsAdapter != null && weeklyFreeChampionsAdapter.getCount() > 0) {
+                dismissProgress();
+                notifyDataSetChanged();
+            } else {
+                populateWeeklyFreeChampionsList();
+            }
+        } else {
+            populateWeeklyFreeChampionsList();
+        }
+    }
+
     private void populateWeeklyFreeChampionsList() {
+        showProgressWithWhiteBG();
         Commons.weeklyFreeChampions = new ArrayList<>();
         notifyDataSetChanged();
         ServiceHelper.getInstance(getContext()).makeWeeklyFreeChampsRequest(this);
@@ -85,6 +89,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
 	private void initUI(LayoutInflater inflater, ViewGroup container){
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_weekly_free_champions, container, false);
+            showProgressWithWhiteBG();
             weeklyFreeChampionsList = (ListView) rootView.findViewById(R.id.listViewWeeklyFreeChampions);
             weeklyFreeChampionsList.setOnItemClickListener(this);
         }
@@ -107,6 +112,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
             }
 
         } else if (response instanceof AllChampionsResponse) {
+            dismissProgress();
 			AllChampionsResponse resp = (AllChampionsResponse) response;
 			Map<String, Map<String, String>> data = resp.getData();
 
@@ -212,29 +218,28 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    showRetryView();
                     try {
                         String errorMessage = (String) response;
                         Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
-                    } catch (Exception ignored) {
-                    }
+                    } catch (Exception ignored) {}
 
                     if (Commons.weeklyFreeChampions != null) {
                         Commons.weeklyFreeChampions.clear();
                         notifyDataSetChanged();
-                    }
-
-                    if (weeklyFreeChampsTrialCount < 3) {
-                        weeklyFreeChampsTrialCount++;
-                        ServiceHelper.getInstance(getContext()).makeWeeklyFreeChampsRequest(WeeklyFreeChampionsFragment.this);
-                    } else {
-                        Toast.makeText(getContext(), R.string.anErrorOccured, Toast.LENGTH_LONG).show();
                     }
                 }
             });
         }
 	}
 
-	@Override
+    @Override
+    protected void retry() {
+        super.retry();
+        populatePage();
+    }
+
+    @Override
 	public Context getContext() {
 		return getActivity();
 	}

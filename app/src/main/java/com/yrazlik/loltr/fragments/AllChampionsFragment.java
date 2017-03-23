@@ -47,6 +47,7 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_champions, container, false);
+            showProgressWithWhiteBG();
             initUI(rootView);
         }
 
@@ -60,6 +61,7 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 	}
 
     private void setAdapter() {
+        dismissProgress();
         if (adapter == null || adapter.getCount() == 0) {
             adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
             gridView.setAdapter(adapter);
@@ -160,6 +162,7 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 	@Override
 	public void onSuccess(Object response) {
 		try{
+            dismissProgress();
 			if(response instanceof AllChampionsResponse){
 				AllChampionsResponse resp = (AllChampionsResponse) response;
 				Map<String, Map<String, String>> data = resp.getData();
@@ -198,14 +201,28 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
 	}
 
 	@Override
-	public void onFailure(Object response) {
+	public void onFailure(final Object response) {
 		try {
-			String errorMessage = String.valueOf(response);
-			Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+            if(getActivity() != null) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String errorMessage = String.valueOf(response);
+                        Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                        showRetryView();
+                    }
+                });
+            }
 		}catch (Exception ignored){}
 	}
 
-	@Override
+    @Override
+    protected void retry() {
+        super.retry();
+        setAdapter();
+    }
+
+    @Override
 	public Context getContext() {
 		return getActivity();
 	}

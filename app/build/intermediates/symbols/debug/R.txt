@@ -1188,7 +1188,7 @@ int drawable mr_ic_play_light 0x7f02017a
 int drawable mundo 0x7f02017b
 int drawable news 0x7f02017c
 int drawable nothing 0x7f02017d
-int drawable notification_template_icon_bg 0x7f0201c6
+int drawable notification_template_icon_bg 0x7f0201c7
 int drawable places_ic_clear 0x7f02017e
 int drawable places_ic_search 0x7f02017f
 int drawable plat_badge 0x7f020180
@@ -1261,6 +1261,7 @@ int drawable teemo 0x7f0201c2
 int drawable tv2 0x7f0201c3
 int drawable unranked_badge 0x7f0201c4
 int drawable v2 0x7f0201c5
+int drawable white_bg 0x7f0201c6
 int id action0 0x7f0d0265
 int id action_bar 0x7f0d00a7
 int id action_bar_activity_content 0x7f0d0000

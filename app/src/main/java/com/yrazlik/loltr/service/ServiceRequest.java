@@ -637,26 +637,6 @@ public class ServiceRequest {
         }
     }
 
-    public static Dialog showLoadingCancelable(Context context) {
-        try {
-            if(context != null) {
-
-                Dialog d = new Dialog(context, R.style.customDialogTheme);
-                d.setContentView(R.layout.loading_view);
-
-
-                d.setCancelable(true);
-                d.setCanceledOnTouchOutside(true);
-
-                return d;
-            }else {
-                return null;
-            }
-        }catch (Exception e){
-            return null;
-        }
-    }
-
     public void makeGetRankedStatsRequest(final int requestID, String region, String summonerId, Object requestData,
                                             final ResponseListener listener){
 

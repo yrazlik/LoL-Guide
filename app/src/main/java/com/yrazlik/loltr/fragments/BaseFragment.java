@@ -64,9 +64,14 @@ public abstract class BaseFragment extends Fragment{
     }
 
     protected void dismissProgress() {
-        CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
-        if(loadingView != null) {
-            loadingView.setVisibility(View.GONE);
-        }
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
+                if(loadingView != null) {
+                    loadingView.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 }

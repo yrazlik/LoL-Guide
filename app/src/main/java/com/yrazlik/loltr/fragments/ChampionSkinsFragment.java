@@ -16,12 +16,14 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.activities.FullScreenImageActivity;
 import com.yrazlik.loltr.activities.FullScreenSkinActivity;
 import com.yrazlik.loltr.adapters.ChampionSkinsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Skin;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionSkinsResponse;
+import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
@@ -32,34 +34,26 @@ import java.util.HashMap;
  */
 public class ChampionSkinsFragment extends BaseFragment implements ResponseListener, AdapterView.OnItemClickListener{
 
-    ListView skinsList;
-    ChampionSkinsAdapter adapter;
-    int champId;
-    String key;
+    private ListView skinsList;
+    private ChampionSkinsAdapter adapter;
+    private ArrayList<Skin> skins;
+    private int champId;
+    private String key;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_champion_skins, container, false);
-        getExtras();
-        skinsList = (ListView)v.findViewById(R.id.skinsList);
-        skinsList.setOnItemClickListener(this);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ArrayList<String> pathParams = new ArrayList<String>();
-                pathParams.add("static-data");
-                pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-                pathParams.add("v1.2");
-                pathParams.add("champion");
-                pathParams.add(String.valueOf(champId));
-                HashMap<String, String> queryParams = new HashMap<String, String>();
-                queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-                queryParams.put("version", Commons.LATEST_VERSION);
-                queryParams.put("champData", "skins");
-                queryParams.put("api_key", Commons.API_KEY);
-                ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, ChampionSkinsFragment.this);
-            }
-        }, 350);
-        return v;
+
+        if(rootView == null) {
+            showProgressWithWhiteBG();
+            rootView = inflater.inflate(R.layout.fragment_champion_skins, container, false);
+            getExtras();
+            skinsList = (ListView) rootView.findViewById(R.id.skinsList);
+            skinsList.setOnItemClickListener(this);
+        }
+
+        setSkinsAdapter();
+
+        return rootView;
     }
 
     private void getExtras() {
@@ -69,26 +63,51 @@ public class ChampionSkinsFragment extends BaseFragment implements ResponseListe
         }
     }
 
-    @Override
-    public void onSuccess(Object response) {
-        if(response instanceof ChampionSkinsResponse) {
-            ChampionSkinsResponse resp = (ChampionSkinsResponse) response;
-            ArrayList<Skin> skins = resp.getSkins();
-            key = resp.getKey();
-            adapter = null;
-            adapter = new ChampionSkinsAdapter(getContext(), R.layout.listrow_champion_skins, skins, key);
-            skinsList.setAdapter(adapter);
+    private void setSkinsAdapter() {
+        if(skins == null || skins.size() == 0) {
+            ServiceHelper.getInstance(getContext()).makeChampionSkinsRequest(champId, this);
+        } else {
+            if(adapter == null || adapter.getCount() == 0) {
+                dismissProgress();
+                adapter = new ChampionSkinsAdapter(getContext(), R.layout.listrow_champion_skins, skins, key);
+                skinsList.setAdapter(adapter);
+            } else {
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 
     @Override
-    public void onFailure(Object response) {
-        try {
-            String errorMessage = (String) response;
-            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
-        }catch (Exception e){
-
+    public void onSuccess(Object response) {
+        dismissProgress();
+        if(response instanceof ChampionSkinsResponse) {
+            ChampionSkinsResponse resp = (ChampionSkinsResponse) response;
+            skins = resp.getSkins();
+            key = resp.getKey();
+            setSkinsAdapter();
         }
+    }
+
+    @Override
+    public void onFailure(final Object response) {
+        try {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showRetryView();
+                    String errorMessage = (String) response;
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                }
+            });
+        }catch (Exception e){}
+
+
+    }
+
+    @Override
+    protected void retry() {
+        super.retry();
+        setSkinsAdapter();
     }
 
     @Override
@@ -98,13 +117,12 @@ public class ChampionSkinsFragment extends BaseFragment implements ResponseListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Skin s = (Skin)skinsList.getItemAtPosition(position);
-        Intent i = new Intent(getActivity(), FullScreenSkinActivity.class);
-        i.putExtra("EXTRA_SKIN_KEY", key);
-        i.putExtra("EXTRA_SKIN_POSITION", position);
-        showInterstitial();
-        startActivity(i);
-
+        try {
+            Intent i = new Intent(getActivity(), FullScreenImageActivity.class);
+            i.putExtra(FullScreenImageActivity.EXTRA_IMAGE_URL, ((ChampionSkinsAdapter) parent.getAdapter()).getImageUrl(position));
+            showInterstitial();
+            startActivity(i);
+        }catch (Exception ignored) {}
     }
 
     private void showInterstitial(){

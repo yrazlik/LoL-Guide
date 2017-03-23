@@ -192,7 +192,14 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
 
     @Override
     public void onFailure(Object response) {
-        showRetryView();
+        if(getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showRetryView();
+                }
+            });
+        }
     }
 
     @Override
