@@ -28,6 +28,8 @@ import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.view.RobotoButton;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,11 +47,10 @@ public class SettingsFragment extends BaseFragment{
     String[] languages;
     private Spinner languageSpinner, regionSpinner;
     private ArrayAdapter<String> languageSpinnerAdapter, regionSpinnerAdapter;
-    private Button buttonSave;
-    private TextView selectLanguageText, selectRegionText;
-    private Button removeAdsButton;
-    private TextView removeAdsExplanation;
-    private ImageView parentBG;
+    private RobotoButton buttonSave;
+    private RobotoTextView selectLanguageText, selectRegionText;
+    private RobotoButton removeAdsButton;
+    private RobotoTextView removeAdsExplanation;
 
 
 
@@ -57,11 +58,8 @@ public class SettingsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
-        selectLanguageText = (TextView) v.findViewById(R.id.selectLanguageText);
-        selectRegionText = (TextView) v.findViewById(R.id.selectRegionText);
-        parentBG = (ImageView) v.findViewById(R.id.parentBG);
-        parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.riven);
+        selectLanguageText = (RobotoTextView) v.findViewById(R.id.selectLanguageText);
+        selectRegionText = (RobotoTextView) v.findViewById(R.id.selectRegionText);
 
         SharedPreferences prefs = getContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
         String region = prefs.getString(Commons.LOL_TR_SHARED_PREF_REGION, null);
@@ -100,7 +98,7 @@ public class SettingsFragment extends BaseFragment{
 
         languageSpinner = (Spinner)v.findViewById(R.id.languageSpinner);
         regionSpinner = (Spinner)v.findViewById(R.id.regionSpinner);
-        buttonSave = (Button)v.findViewById(R.id.buttonSave);
+        buttonSave = (RobotoButton) v.findViewById(R.id.buttonSave);
 
 
         languageSpinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, languages);
@@ -195,8 +193,8 @@ public class SettingsFragment extends BaseFragment{
             }
         });
 
-        removeAdsButton = (Button) v.findViewById(R.id.removeAdsButton);
-        removeAdsExplanation = (TextView) v.findViewById(R.id.removeAdsExplanation);
+        removeAdsButton = (RobotoButton) v.findViewById(R.id.removeAdsButton);
+        removeAdsExplanation = (RobotoTextView) v.findViewById(R.id.removeAdsExplanation);
         if(Commons.getInstance(getContext()).ADS_ENABLED) {
             removeAdsButton.setVisibility(View.VISIBLE);
             removeAdsExplanation.setVisibility(View.VISIBLE);

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-    android:background="@color/white">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@color/bg_gray"
+    android:fillViewport="true">
 
-    <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:id="@+id/parentBG"/>
-    <ScrollView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/app_color"
-        android:fillViewport="true"
-        android:layout_centerHorizontal="true">
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_bg"
+        android:elevation="0dp"
+        app:cardCornerRadius="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -21,16 +25,16 @@
             android:paddingRight="20dp"
             android:paddingTop="35dp">
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/selectLanguageText"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/languageSpinner"
                 android:layout_alignTop="@+id/languageSpinner"
                 android:gravity="center_vertical"
                 android:minWidth="50dp"
                 android:text="@string/select_language"
-                style="@style/whiteText18dp"
-                android:textStyle="bold"
+                android:textAppearance="@style/sp14BlackBold"
                 />
 
             <Spinner
@@ -39,13 +43,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/selectLanguageText">
-
-
             </Spinner>
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/selectRegionText"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/regionSpinner"
                 android:layout_alignLeft="@+id/selectLanguageText"
                 android:layout_alignRight="@+id/selectLanguageText"
@@ -53,8 +56,7 @@
                 android:gravity="center_vertical"
                 android:minWidth="50dp"
                 android:text="@string/select_region"
-                style="@style/whiteText18dp"
-                android:textStyle="bold"
+                android:textAppearance="@style/sp14BlackBold"
                 />
 
             <Spinner
@@ -68,40 +70,41 @@
                 android:layout_toRightOf="@+id/selectRegionText">
             </Spinner>
 
-            <Button
+            <com.yrazlik.loltr.view.RobotoButton
                 android:id="@+id/buttonSave"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_below="@+id/regionSpinner"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/red_text_color"
-                    android:minHeight="50dp"
-                    android:text="@string/save"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/regionSpinner"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/selector_new_primary_button"
+                android:minHeight="50dp"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/text_blue"
+                android:textSize="12sp"/>
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/removeAdsExplanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/remove_ads_explanation"
-                android:textSize="15sp"
                 android:layout_below="@+id/buttonSave"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/white"/>
+                android:text="@string/remove_ads_explanation"
+                android:textAppearance="@style/sp12BlackRegular"/>
 
-            <Button
+            <com.yrazlik.loltr.view.RobotoButton
                 android:id="@+id/removeAdsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/remove_ads"
                 android:layout_below="@+id/removeAdsExplanation"
                 android:layout_marginTop="15dp"
-                android:textSize="14sp"
-                android:background="@color/red_text_color"
-                android:textColor="@color/white"/>
+                android:background="@drawable/selector_new_primary_button"
+                android:text="@string/remove_ads"
+                android:textAllCaps="false"
+                android:textColor="@color/text_blue"
+                android:textSize="12sp"/>
 
 
         </RelativeLayout>
-    </ScrollView>
-
-</RelativeLayout>
+    </android.support.v7.widget.CardView>
+</ScrollView>

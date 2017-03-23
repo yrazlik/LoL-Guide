@@ -154,7 +154,7 @@
     <string name="select_your_region">Select your region:</string>
     <string name="english">English</string>
     <string name="turkish">Turkish</string>
-    <string name="save">SAVE</string>
+    <string name="save">Save</string>
 
     <string name="preferences_saved">Preferences Saved.</string>
     <string name="networkError">Please check your Internet connection.</string>
