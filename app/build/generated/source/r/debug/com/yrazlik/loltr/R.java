@@ -4347,6 +4347,7 @@ containing a value of this type.
         public static final int imageViewMagic=0x7f0d0162;
         public static final int imageViewPlayChannel=0x7f0d0230;
         public static final int imageViewRp=0x7f0d023b;
+        public static final int imageViewRuneImage=0x7f0d027d;
         public static final int imageViewSpellImage=0x7f0d021b;
         public static final int imageViewSplashImage=0x7f0d0182;
         public static final int imageviewSearch=0x7f0d0150;
@@ -4699,6 +4700,7 @@ containing a value of this type.
         public static final int textViewItemName=0x7f0d00bf;
         public static final int textViewOffensiveItems=0x7f0d016f;
         public static final int textViewRp=0x7f0d023c;
+        public static final int textViewRuneName=0x7f0d027e;
         public static final int textViewSpellBody=0x7f0d021c;
         public static final int textViewSpellTitle=0x7f0d0218;
         public static final int textViewStartingItems=0x7f0d016b;

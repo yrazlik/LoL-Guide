@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:background="@color/app_color">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_listview_material"
+                android:padding="10dp">
 
     <ImageView
-        android:id="@+id/imageViewChampionImage"
-        android:layout_width="65dp"
-        android:layout_height="65dp"/>
-    <ProgressBar
-        android:id="@+id/imageProgress"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/imageViewRuneImage"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="25dp"
-
-        />
+        android:layout_width="55dp"
+        android:layout_height="55dp"/>
 
     <RelativeLayout
         android:id="@+id/relativeLayoutTextContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/imageViewChampionImage" >
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/imageViewRuneImage">
 
-        <TextView
-            android:id="@+id/textViewChampionName"
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/textViewRuneName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/whiteText15dp" />
+            android:textAppearance="@style/sp12GrayRegular"/>
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/textViewDateInterval"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewChampionName"
+            android:layout_below="@+id/textViewRuneName"
             android:layout_marginTop="3dp"
-            style="@style/whiteText12dp" />
+            android:textAppearance="@style/sp10GrayRegular"/>
     </RelativeLayout>
 
 </RelativeLayout>

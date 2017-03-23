@@ -1483,6 +1483,7 @@ int id imageViewItemImage 0x7f0d00bd
 int id imageViewMagic 0x7f0d0162
 int id imageViewPlayChannel 0x7f0d0230
 int id imageViewRp 0x7f0d023b
+int id imageViewRuneImage 0x7f0d027d
 int id imageViewSpellImage 0x7f0d021b
 int id imageViewSplashImage 0x7f0d0182
 int id imageviewSearch 0x7f0d0150
@@ -1835,6 +1836,7 @@ int id textViewItemGold 0x7f0d00c0
 int id textViewItemName 0x7f0d00bf
 int id textViewOffensiveItems 0x7f0d016f
 int id textViewRp 0x7f0d023c
+int id textViewRuneName 0x7f0d027e
 int id textViewSpellBody 0x7f0d021c
 int id textViewSpellTitle 0x7f0d0218
 int id textViewStartingItems 0x7f0d016b

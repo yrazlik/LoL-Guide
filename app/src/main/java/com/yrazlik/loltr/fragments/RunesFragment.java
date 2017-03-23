@@ -19,6 +19,7 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Rune;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.RuneResponse;
+import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
@@ -28,43 +29,55 @@ import java.util.Map.Entry;
 
 public class RunesFragment extends BaseFragment implements ResponseListener{
 
-	ListView list;
-	RuneAdapter adapter;
-	ArrayList<Rune> runes;
+	private ListView runesLV;
+	private RuneAdapter runesAdapter;
+	private ArrayList<Rune> runes;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_runes, container, false);
-		initUI(v);
-		ArrayList<String> pathParams = new ArrayList<String>();
-		pathParams.add("static-data");
-		pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-		pathParams.add("v1.2");
-		pathParams.add("rune");
-		HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
-        queryParams.put("version", Commons.LATEST_VERSION);
-		queryParams.put("runeListData", "image,sanitizedDescription");
-		queryParams.put("api_key", Commons.API_KEY);
-		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_RUNES_REQUEST, pathParams, queryParams, null, this);
-		
-		return v;
+
+        if(rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_runes, container, false);
+            initUI(rootView);
+        }
+
+        setRunesAdapter();
+
+		return rootView;
 
 	}
 
 	private void initUI(View v) {
-		list = (ListView) v.findViewById(R.id.listViewRunes);
+		runesLV = (ListView) v.findViewById(R.id.listViewRunes);
 	}
+
+    private void setRunesAdapter() {
+        if(runes == null || runes.size() == 0) {
+            showProgressWithWhiteBG();
+            ServiceHelper.getInstance(getContext()).makeGetAllRunesRequest(this);
+        } else {
+            if(runesAdapter == null || runesAdapter.getCount() == 0) {
+                if(getContext() != null){
+                    runesAdapter = new RuneAdapter(getContext(), R.layout.rune_row, runes);
+                    runesLV.setAdapter(runesAdapter);
+                    runesAdapter.notifyDataSetChanged();
+                }
+            } else {
+                runesAdapter.notifyDataSetChanged();
+            }
+        }
+    }
 
 	@Override
 	public void onSuccess(Object response) {
+        dismissProgress();
 		if (response instanceof RuneResponse) {
 			RuneResponse resp = (RuneResponse)response;
 			if(runes != null){
 				runes.clear();
 			}else{
-				runes = new ArrayList<Rune>();
+				runes = new ArrayList<>();
 			}
 			
 			Map<String, Map<String, Object>> data = resp.getData();
@@ -79,27 +92,25 @@ public class RunesFragment extends BaseFragment implements ResponseListener{
 				rune.setImageUrl(imageUrl);
 				runes.add(rune);
 			}
-            try{
-                if(getContext() != null){
-                    adapter = new RuneAdapter(getContext(), R.layout.rune_row, runes);
-                    list.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                }
-            }catch (Exception ignored){}
 
+            setRunesAdapter();
 		}
-		
-		
-
 	}
 
 	@Override
 	public void onFailure(Object response) {
 		String errorMessage = (String) response;
 		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        showRetryView();
 	}
 
-	@Override
+    @Override
+    protected void retry() {
+        super.retry();
+        setRunesAdapter();
+    }
+
+    @Override
 	public Context getContext() {
 		return getActivity();
 	}
