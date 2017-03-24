@@ -27,7 +27,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -41,7 +40,6 @@ import com.yrazlik.loltr.fragments.AboutFragment;
 import com.yrazlik.loltr.fragments.AllChampionSkinsFragment;
 import com.yrazlik.loltr.fragments.AllChampionsFragment;
 import com.yrazlik.loltr.fragments.ContactFragment;
-import com.yrazlik.loltr.fragments.CountryFragment;
 import com.yrazlik.loltr.fragments.DiscountsFragment;
 import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
@@ -82,10 +80,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private List<LeftMenuItem> mList;
 
     private LeftMenuListAdapter mAdapter;
-    final private String COUNTRY = "country";
-    final private String FLAG = "flag";
-    final private String COUNT = "count";
-    private Commons commons;
     private AdView adView;
     private Toolbar mToolBar;
 
@@ -116,7 +110,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
         }
-        commons = Commons.getInstance(getApplicationContext());
 
         setDrawer();
         Handler h = new Handler();
@@ -128,8 +121,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             }
         }, 250);
 
-        String cat = leftMenuItems[2];
+        String cat = leftMenuItems[1];
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+        highlightSelectedMenuRow(2);
     }
 
     @SuppressLint("NewApi")
@@ -188,7 +182,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
             /** Called when drawer is closed */
             public void onDrawerClosed(View view) {
-                highlightSelectedCountry();
+                highlightSelectedMenuRow();
                 supportInvalidateOptionsMenu();
             }
 
@@ -240,13 +234,26 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     }
 
     // Highlight the selected country : 0 to 4
-    public void highlightSelectedCountry() {
+    public void highlightSelectedMenuRow() {
         int selectedItem = mDrawerList.getCheckedItemPosition() - mDrawerList.getHeaderViewsCount();
 
         mPosition = selectedItem;
 
 
-        if (mPosition != -1) {
+        if (mPosition > -1) {
+            String cat = leftMenuItems[mPosition];
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+            mAdapter.setSelectedItem(mPosition);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public void highlightSelectedMenuRow(int position) {
+        int selectedItem = position - mDrawerList.getHeaderViewsCount();
+
+        mPosition = selectedItem;
+
+        if (mPosition > -1) {
             String cat = leftMenuItems[mPosition];
             getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
             mAdapter.setSelectedItem(mPosition);

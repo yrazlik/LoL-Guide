@@ -49,7 +49,7 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
 		queryParams.put("champData", "allytips,enemytips");
 		queryParams.put("api_key", Commons.API_KEY);
 		
-		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_STRATEGY_REQUEST, pathParams, queryParams, null, this);
+		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_STRATEGY_REQUEST, pathParams, queryParams, null, false, this);
 		
 		return v;
 	}
