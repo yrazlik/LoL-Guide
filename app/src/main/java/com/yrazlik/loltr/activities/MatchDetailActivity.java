@@ -2,6 +2,7 @@ package com.yrazlik.loltr.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,9 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.yrazlik.loltr.LolApplication;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.StatisticsAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -31,6 +34,7 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.SummonerNamesResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -51,36 +55,37 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     public static final String EXTRA_SUMMONER_ID = "com.yrazlik.loltr.activities.EXTRA_SUMMONER_ID";
     public static final String EXTRA_REGION = "com.yrazlik.loltr.activities.EXTRA_REGION";
 
-    private ProgressBar progress;
+    private DisplayImageOptions mOptions;
+
     private ScrollView parent;
     private RelativeLayout winLoseLabel;
-    private FadeInNetworkImageView champIV;
-    private TextView levelTV;
+    private ImageView champIV;
+    private RobotoTextView levelTV;
     private RelativeLayout textContainer;
     private RelativeLayout matchInfoContainer;
-    private TextView matchTypeTV;
-    private TextView matchModeTV;
-    private TextView kdaTV;
+    private RobotoTextView matchTypeTV;
+    private RobotoTextView matchModeTV;
+    private RobotoTextView kdaTV;
     private RelativeLayout goldContainer;
     private ImageView goldIV;
-    private TextView goldTV;
+    private RobotoTextView goldTV;
     private RelativeLayout timeContainer;
-    private TextView matchTimeTV;
-    private TextView matchDateTV;
+    private RobotoTextView matchTimeTV;
+    private RobotoTextView matchDateTV;
     private View separator;
     private RelativeLayout spellsContainer;
-    private FadeInNetworkImageView spell1;
-    private FadeInNetworkImageView spell2;
+    private ImageView spell1;
+    private ImageView spell2;
     private RelativeLayout itemsContainer;
     private HorizontalScrollView itemsSV;
     private RelativeLayout itemsRL;
-    private FadeInNetworkImageView item0;
-    private FadeInNetworkImageView item1;
-    private FadeInNetworkImageView item2;
-    private FadeInNetworkImageView item3;
-    private FadeInNetworkImageView item4;
-    private FadeInNetworkImageView item5;
-    private FadeInNetworkImageView item6;
+    private ImageView item0;
+    private ImageView item1;
+    private ImageView item2;
+    private ImageView item3;
+    private ImageView item4;
+    private ImageView item5;
+    private ImageView item6;
     private ListView statisticsLV;
     private StatisticsAdapter statisticsAdapter;
 
@@ -88,7 +93,7 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     private LinearLayout teamsContainer;
     private LinearLayout team1LL, team2LL;
     private RelativeLayout statisticsContainer;
-    private TextView statisticsTV;
+    private RobotoTextView statisticsTV, team1TV, team2TV;
     private List<SummonerNames> summonerNames;
     private String region;
 
@@ -105,6 +110,11 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_match_detail);
+
+        mOptions = new DisplayImageOptions.Builder().resetViewBeforeLoading(true).showImageOnLoading(R.drawable.question_mark).showImageForEmptyUri(R.drawable.block)
+                .showImageOnFail(R.drawable.question_mark).cacheOnDisk(true).cacheInMemory(true)
+                .build();
+
         if(getIntent() != null){
             Bundle extras = getIntent().getExtras();
             if(extras != null){
@@ -137,43 +147,47 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     }
 
     private void initUI() {
-        progress = (ProgressBar) findViewById(R.id.progress);
         parent = (ScrollView) findViewById(R.id.parent);
         winLoseLabel = (RelativeLayout) findViewById(R.id.winLoseLabel);
-        champIV = (FadeInNetworkImageView) findViewById(R.id.champIV);
-        levelTV = (TextView) findViewById(R.id.levelTV);
+        champIV = (ImageView) findViewById(R.id.champIV);
+        levelTV = (RobotoTextView) findViewById(R.id.levelTV);
         textContainer = (RelativeLayout) findViewById(R.id.textContainer);
         matchInfoContainer = (RelativeLayout) findViewById(R.id.matchInfoContainer);
-        matchTypeTV = (TextView) findViewById(R.id.matchTypeTV);
-        matchModeTV = (TextView) findViewById(R.id.matchModeTV);
-        kdaTV = (TextView) findViewById(R.id.kdaTV);
+        matchTypeTV = (RobotoTextView) findViewById(R.id.matchTypeTV);
+        matchModeTV = (RobotoTextView) findViewById(R.id.matchModeTV);
+        kdaTV = (RobotoTextView) findViewById(R.id.kdaTV);
         goldContainer = (RelativeLayout) findViewById(R.id.goldContainer);
         goldIV = (ImageView) findViewById(R.id.goldIV);
-        goldTV = (TextView) findViewById(R.id.goldTV);
+        goldTV = (RobotoTextView) findViewById(R.id.goldTV);
         timeContainer = (RelativeLayout) findViewById(R.id.timeContainer);
-        matchTimeTV = (TextView) findViewById(R.id.matchTimeTV);
-        matchDateTV = (TextView) findViewById(R.id.matchDateTV);
+        matchTimeTV = (RobotoTextView) findViewById(R.id.matchTimeTV);
+        matchDateTV = (RobotoTextView) findViewById(R.id.matchDateTV);
         separator = (View) findViewById(R.id.separator);
         spellsContainer = (RelativeLayout) findViewById(R.id.spellsContainer);
-        spell1 = (FadeInNetworkImageView) findViewById(R.id.spell1);
-        spell2 = (FadeInNetworkImageView) findViewById(R.id.spell2);
+        spell1 = (ImageView) findViewById(R.id.spell1);
+        spell2 = (ImageView) findViewById(R.id.spell2);
         itemsContainer = (RelativeLayout) findViewById(R.id.itemsContainer);
         itemsSV = (HorizontalScrollView) findViewById(R.id.itemsSV);
         itemsRL = (RelativeLayout) findViewById(R.id.itemsRL);
-        item0 = (FadeInNetworkImageView) findViewById(R.id.item0);
-        item1 = (FadeInNetworkImageView) findViewById(R.id.item1);
-        item2 = (FadeInNetworkImageView) findViewById(R.id.item2);
-        item3 = (FadeInNetworkImageView) findViewById(R.id.item3);
-        item4 = (FadeInNetworkImageView) findViewById(R.id.item4);
-        item5 = (FadeInNetworkImageView) findViewById(R.id.item5);
-        item6 = (FadeInNetworkImageView) findViewById(R.id.item6);
+        item0 = (ImageView) findViewById(R.id.item0);
+        item1 = (ImageView) findViewById(R.id.item1);
+        item2 = (ImageView) findViewById(R.id.item2);
+        item3 = (ImageView) findViewById(R.id.item3);
+        item4 = (ImageView) findViewById(R.id.item4);
+        item5 = (ImageView) findViewById(R.id.item5);
+        item6 = (ImageView) findViewById(R.id.item6);
         statisticsLV = (ListView) findViewById(R.id.statisticsLV);
 
         teamsContainer = (LinearLayout) findViewById(R.id.teamsContainer);
         team1LL = (LinearLayout) findViewById(R.id.team1LL);
         team2LL = (LinearLayout) findViewById(R.id.team2LL);
         statisticsContainer = (RelativeLayout) findViewById(R.id.statisticsContainer);
-        statisticsTV = (TextView) findViewById(R.id.statisticsTV);
+        statisticsTV = (RobotoTextView) findViewById(R.id.statisticsTV);
+        team1TV = (RobotoTextView) findViewById(R.id.team1TV);
+        team2TV = (RobotoTextView) findViewById(R.id.team2TV);
+        statisticsTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        team1TV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        team2TV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
         if (game != null) {
             if (game != null) {
@@ -207,19 +221,8 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
                         }
                     }
 
-                    if (spell1Name != null) {
-                        spell1.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, ServiceRequest.getInstance((this)).getImageLoader());
-                    } else {
-                        spell1.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        spell1.setBackgroundResource(R.drawable.question_mark);
-                    }
-
-                    if (spell2Name != null) {
-                        spell2.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, ServiceRequest.getInstance(this).getImageLoader());
-                    } else {
-                        spell2.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        spell2.setBackgroundResource(R.drawable.question_mark);
-                    }
+                    LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, spell1);
+                    LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, spell2);
                 }
 
                 long createDate = game.getCreateDate();
@@ -240,12 +243,9 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
                     }
                 }
 
-                if (champImageUrl != null) {
-                    champIV.setImageUrl(champImageUrl, ServiceRequest.getInstance(this).getImageLoader());
-                } else {
-                    champIV.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                    champIV.setBackgroundResource(R.drawable.question_mark);
-                }
+
+                LolImageLoader.getInstance().loadImage(champImageUrl, champIV);
+
 
                 Stats stats = game.getStats();
                 if (stats != null) {
@@ -272,46 +272,39 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
                     int summonerItem6 = stats.getItem6();
 
                     if (summonerItem0 != 0) {
-                        item0.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + summonerItem0 + ".png", ServiceRequest.getInstance(this).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + summonerItem0 + ".png", item0, mOptions);
                     } else {
-                        item0.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        item0.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", item0, mOptions);
                     }
                     if (summonerItem1 != 0) {
-                        item1.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + summonerItem1 + ".png", ServiceRequest.getInstance(this).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + summonerItem1 + ".png", item1, mOptions);
                     } else {
-                        item1.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        item1.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", item1, mOptions);
                     }
                     if (summonerItem2 != 0) {
-                        item2.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + summonerItem2 + ".png", ServiceRequest.getInstance(this).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + summonerItem2 + ".png", item2, mOptions);
                     } else {
-                        item2.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        item2.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", item2, mOptions);
                     }
                     if (summonerItem3 != 0) {
-                        item3.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + summonerItem3 + ".png", ServiceRequest.getInstance(this).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + summonerItem3 + ".png", item3, mOptions);
                     } else {
-                        item3.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        item3.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", item3, mOptions);
                     }
                     if (summonerItem4 != 0) {
-                        item4.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + summonerItem4 + ".png", ServiceRequest.getInstance(this).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + summonerItem4 + ".png", item4, mOptions);
                     } else {
-                        item4.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        item4.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", item4, mOptions);
                     }
                     if (summonerItem5 != 0) {
-                        item5.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + summonerItem5 + ".png", ServiceRequest.getInstance(this).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + summonerItem5 + ".png", item5, mOptions);
                     } else {
-                        item5.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        item5.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", item5, mOptions);
                     }
                     if (summonerItem6 != 0) {
-                        item6.setImageUrl(Commons.ITEM_IMAGES_BASE_URL + summonerItem6 + ".png", ServiceRequest.getInstance(this).getImageLoader());
+                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + summonerItem6 + ".png", item6, mOptions);
                     } else {
-                        item6.setImageUrl(null, ServiceRequest.getInstance(this).getImageLoader());
-                        item6.setBackgroundResource(R.drawable.nothing);
+                        LolImageLoader.getInstance().loadImage("", item6, mOptions);
                     }
 
                     ArrayList<Statistics> statistics = new ArrayList<>();
@@ -384,17 +377,13 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
             }
         }
 
-
-
-
-        progress.setVisibility(View.GONE);
         parent.setVisibility(View.VISIBLE);
     }
 
     private void createPlayerLayoutAndAdd(long playerId, int championID, LayoutInflater inflater, int teamID, ArrayList<Integer> teamIds){
         RelativeLayout summonerLayout = (RelativeLayout) inflater.inflate(R.layout.view_team_player, null);
-        FadeInNetworkImageView champIV = (FadeInNetworkImageView) summonerLayout.findViewById(R.id.champIV);
-        TextView summonerNameTV = (TextView) summonerLayout.findViewById(R.id.summonerNameTV);
+        ImageView champIV = (ImageView) summonerLayout.findViewById(R.id.champIV);
+        RobotoTextView summonerNameTV = (RobotoTextView) summonerLayout.findViewById(R.id.summonerNameTV);
 
         String champImageUrl = null;
         if(Commons.allChampions != null && Commons.allChampions.size() > 0){
@@ -421,18 +410,21 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
             }
         }
 
-        if(champImageUrl != null) {
-            champIV.setImageUrl(champImageUrl, ServiceRequest.getInstance(MatchDetailActivity.this).getImageLoader());
-        }else{
-            champIV.setImageUrl(null, ServiceRequest.getInstance(MatchDetailActivity.this).getImageLoader());
-            champIV.setBackgroundResource(R.drawable.question_mark);
-        }
+        LolImageLoader.getInstance().loadImage(champImageUrl, champIV);
 
         if (teamID == teamIds.get(0)){
             team1LL.addView(summonerLayout);
         } else if (teamID == teamIds.get(1)){
             team2LL.addView(summonerLayout);
         }
+
+        parent.post(new Runnable() {
+            @Override
+            public void run() {
+                parent.scrollTo(0, 0);
+            }
+        });
+
     }
 
     private static final NavigableMap<Long, String> suffixes = new TreeMap<>();

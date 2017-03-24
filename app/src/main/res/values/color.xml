@@ -24,6 +24,9 @@
     <color name="cardview_bg">#FFFFFF</color>
     <color name="circle_image_border_color">#FFFFFF</color>
 
+    <color name="statistics_row_light_color">#4db6ac</color>
+    <color name="statistics_row_dark_color">#00695c</color>
+
 
     <color name="material_light_green">#76ff03</color>
     <color name="material_dark_red">#dd2c00</color>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Statistics;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.List;
 
@@ -39,17 +40,17 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
 
             holder = new ViewHolder();
             holder.row = (LinearLayout) convertView.findViewById(R.id.row);
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            holder.value = (TextView) convertView.findViewById(R.id.value);
+            holder.name = (RobotoTextView) convertView.findViewById(R.id.name);
+            holder.value = (RobotoTextView) convertView.findViewById(R.id.value);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
         if(position%2 != 0){
-            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_green));
+            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.statistics_row_dark_color));
         }else{
-            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.material_green));
+            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.statistics_row_light_color));
         }
 
         Statistics statistics = getItem(position);
@@ -81,8 +82,8 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
     }
 
     static class ViewHolder {
-        public TextView name;
-        public TextView value;
+        public RobotoTextView name;
+        public RobotoTextView value;
         public LinearLayout row;
     }
 }
