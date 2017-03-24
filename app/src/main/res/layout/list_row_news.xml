@@ -12,53 +12,71 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_listview_material"
-        android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp">
 
+
         <ImageView
             android:id="@+id/newsIV"
-            android:layout_width="70dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"/>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayoutTextContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/rightArrow"
-            android:layout_toRightOf="@+id/newsIV">
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/teemo_bg"/>
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/newsTitleTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textAppearance="@style/sp14BlackBold"/>
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/newsTitleTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/newsIV"
+            android:background="@color/transparent_black_gray"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Title Here"
+            android:textAppearance="@style/sp14WhiteBold"/>
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/dateTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newsTitleTV"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textAppearance="@style/sp12GrayItalic"/>
-        </RelativeLayout>
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/shortDescTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/newsIV"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:text="Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet "
+            android:textAppearance="@style/sp13GrayRegular"/>
 
-        <ImageView
-            android:id="@+id/rightArrow"
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/shortDescTV"
+            android:layout_marginTop="15dp"
+            android:background="@color/divider_gray">
+        </View>
+
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/txtSeeMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/arrow_right_blue_thin"/>
+            android:layout_below="@+id/separator"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/arrow_right_blue_thin"
+            android:focusable="false"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="15dp"
+            android:text="@string/read_more"
+            android:textAppearance="@style/sp14BlueRegular"/>
 
 
     </RelativeLayout>

@@ -74,13 +74,11 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                                 HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
                                 if (keyValues != null && keyValues.size() > 0) {
                                     String url = (String) keyValues.get("url");
-                                    String title = (String) keyValues.get("title");
-                                    String titleEnglish = (String) keyValues.get("titleEnglish");
-                                    String message = (String) keyValues.get("message");
-                                    String messageEnglish = (String) keyValues.get("messageEnglish");
-                                    String smallImage = (String) keyValues.get("smallImage");
-                                    String largeImage = (String) keyValues.get("largeImage");
-                                    String videoUrl = (String) keyValues.get("videoUrl");
+                                    String title = (String) keyValues.get("newsTitle");
+                                    String titleEnglish = (String) keyValues.get("newsTitleEnglish");
+                                    String message = (String) keyValues.get("shortDesc");
+                                    String messageEnglish = (String) keyValues.get("shortDescEnglish");
+                                    String smallImage = (String) keyValues.get("img");
                                     String createdAt = (String) keyValues.get("createdAt");
 
                                     if (createdAt != null) {
@@ -95,18 +93,18 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                                             if (Commons.SELECTED_LANGUAGE != null) {
                                                 if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
                                                     if (title != null && title.length() > 0) {
-                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
+                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, c.getTime()));
 
                                                     }
                                                 } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
                                                     if (titleEnglish != null && titleEnglish.length() > 0) {
-                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
+                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, c.getTime()));
 
                                                     }
                                                 }
                                             } else {
                                                 if (titleEnglish != null && titleEnglish.length() > 0) {
-                                                    news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
+                                                    news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, c.getTime()));
                                                 }
                                             }
 
@@ -185,10 +183,10 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                 args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitleEnglish());
             }
 
-            if (selectedNews.getMessage() != null && selectedNews.getMessage().length() > 0) {
-                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getMessage());
-            } else if (selectedNews.getMessageEnglish() != null && selectedNews.getMessageEnglish().length() > 0) {
-                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getMessageEnglish());
+            if (selectedNews.getShortDesc() != null && selectedNews.getShortDesc().length() > 0) {
+                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getShortDesc());
+            } else if (selectedNews.getShortDescEnglish() != null && selectedNews.getShortDescEnglish().length() > 0) {
+                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getShortDescEnglish());
             }
             args.putString(NewsDetailFragment.EXTRA_IMAGE_URL, selectedNews.getLargeImage());
             args.putString(NewsDetailFragment.EXTRA_WV_URL, selectedNews.getVideoUrl());

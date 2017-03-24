@@ -53,7 +53,7 @@ public class NewsDetailFragment extends BaseFragment{
         watchFullScreenTV = (TextView) v.findViewById(R.id.watchFullScreenTV);
         clickToUpdateTV = (TextView) v.findViewById(R.id.clickToUpdate);
         titleTV = (RobotoTextView) v.findViewById(R.id.title);
-        messageTV = (RobotoTextView) v.findViewById(R.id.message);
+        //messageTV = (RobotoTextView) v.findViewById(R.id.message);
         largeImage = (ImageView) v.findViewById(R.id.largeImage);
         webChromeClient = new WebChromeClient();
         wvLayout = (RelativeLayout)v.findViewById(R.id.wvLayout);

@@ -13,22 +13,18 @@ public class News {
     private String url;
     private String title;
     private String titleEnglish;
-    private String message;
-    private String messageEnglish;
-    private String smallImage;
-    private String largeImage;
-    private String videoUrl;
+    private String shortDesc;
+    private String shortDescEnglish;
+    private String img;
     private Date createdAt;
 
-    public News(String url, String title, String titleEnglish, String message, String messageEnglish, String smallImage, String largeImage, String videoUrl, Date createdAt){
+    public News(String url, String title, String titleEnglish, String shortDesc, String shortDescEnglish, String img, Date createdAt){
         this.url = url;
         this.title = title;
         this.titleEnglish = titleEnglish;
-        this.message = message;
-        this.messageEnglish = messageEnglish;
-        this.smallImage = smallImage;
-        this.largeImage = largeImage;
-        this.videoUrl = videoUrl;
+        this.shortDesc = shortDesc;
+        this.shortDescEnglish = shortDescEnglish;
+        this.img = img;
         this.createdAt = createdAt;
     }
 
@@ -40,28 +36,20 @@ public class News {
         this.url = url;
     }
 
-    public String getLargeImage() {
-        return largeImage;
+    public String getShortDesc() {
+        return shortDesc;
     }
 
-    public void setLargeImage(String largeImage) {
-        this.largeImage = largeImage;
+    public void setShortDesc(String shortDesc) {
+        this.shortDesc = shortDesc;
     }
 
-    public String getMessage() {
-        return message;
+    public String getImg() {
+        return img;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getSmallImage() {
-        return smallImage;
-    }
-
-    public void setSmallImage(String smallImage) {
-        this.smallImage = smallImage;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getTitle() {
@@ -72,14 +60,6 @@ public class News {
         this.title = title;
     }
 
-    public String getVideoUrl() {
-        return videoUrl;
-    }
-
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-    }
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -88,12 +68,12 @@ public class News {
         this.createdAt = createdAt;
     }
 
-    public String getMessageEnglish() {
-        return messageEnglish;
+    public String getShortDescEnglish() {
+        return shortDescEnglish;
     }
 
-    public void setMessageEnglish(String messageEnglish) {
-        this.messageEnglish = messageEnglish;
+    public void setShortDescEnglish(String shortDescEnglish) {
+        this.shortDescEnglish = shortDescEnglish;
     }
 
     public String getTitleEnglish() {

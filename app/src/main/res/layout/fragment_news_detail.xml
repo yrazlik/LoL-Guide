@@ -39,7 +39,7 @@
                 android:scaleType="fitCenter"/>
 
             <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/message"
+                android:id="@+id/shortDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/largeImage"
@@ -52,7 +52,7 @@
                 android:id="@+id/blank"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_below="@+id/message"></View>
+                android:layout_below="@+id/shortDesc"></View>
 
             <RelativeLayout
                 android:id="@+id/wvLayout"

@@ -292,5 +292,6 @@
     <string name="dontshowagain">Don\'t Show Again</string>
     <string name="remindmelater">Remind Me Later</string>
     <string name="giveRating">Rate LoL Guide!</string>
+    <string name="read_more">Read More</string>
 
 </resources>
