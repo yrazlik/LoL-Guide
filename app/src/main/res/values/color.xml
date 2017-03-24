@@ -17,6 +17,7 @@
     <color name="gg_red">#E61A37</color>
     <color name="transparent_black">#99000000</color>
     <color name="transparent_black_gray">#99292929</color>
+    <color name="dark_gray">#292929</color>
     <color name="background_tab_pressed">#F6F6F6</color>
     <color name="title_bg_gray">#F5F5F5</color>
     <color name="text_blue">#2260BF</color>

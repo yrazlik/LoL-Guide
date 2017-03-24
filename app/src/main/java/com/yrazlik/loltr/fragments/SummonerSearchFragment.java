@@ -173,7 +173,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         pathParams.add("summoner");
         pathParams.add("by-name");
         try {
-            pathParams.add(URLEncoder.encode(itemName, "UTF-8").replace("+", "%20"));
+            pathParams.add(URLEncoder.encode(itemName.toLowerCase(), "UTF-8").replace("+", "%20"));
         } catch (UnsupportedEncodingException e) {
             pathParams.add(usernameET.getText().toString());
         }

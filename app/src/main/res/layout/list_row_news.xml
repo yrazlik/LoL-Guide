@@ -23,8 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/teemo_bg"/>
+            android:scaleType="fitCenter"/>
 
         <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/newsTitleTV"
@@ -38,7 +37,6 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:text="Title Here"
             android:textAppearance="@style/sp14WhiteBold"/>
 
         <com.yrazlik.loltr.view.RobotoTextView
@@ -49,8 +47,9 @@
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="5"
-            android:text="Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet "
-            android:textAppearance="@style/sp13GrayRegular"/>
+            android:textSize="13sp"
+            android:textStyle="normal"
+            android:textColor="@color/dark_gray"/>
 
         <View
             android:id="@+id/separator"
