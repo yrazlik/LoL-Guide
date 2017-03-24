@@ -104,6 +104,7 @@ public class SummonerOverviewFragment extends BaseFragment {
     public static final String EXTRA_RANKEDSTATS = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RANKEDSTATS";
     public static final String EXTRA_LEAGUEINFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_LEAGUEINFO";
     public static final String EXTRA_AVERAGESTATS = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_AVERAGESTATS";
+    public static final String EXTRA_REGION = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_REGION";
 
     private RecentMatchesResponse recentMatchesResponse;
     private SummonerInfo summonerInfo;
@@ -111,6 +112,7 @@ public class SummonerOverviewFragment extends BaseFragment {
     private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
     private String kdaString = "?/?/?", minionsString = "???", winRateString = "?%";
+    private String region = "";
 
     @Nullable
     @Override
@@ -126,6 +128,7 @@ public class SummonerOverviewFragment extends BaseFragment {
                 rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_RANKEDSTATS);
                 leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(EXTRA_LEAGUEINFO);
                 averageStats = (ChampionStatsDto) extras.getSerializable(EXTRA_AVERAGESTATS);
+                region = extras.getString(EXTRA_REGION, "");
             }
 
             initUI(rootView);
@@ -198,7 +201,7 @@ public class SummonerOverviewFragment extends BaseFragment {
         if (summonerInfo != null) {
             LolImageLoader.getInstance().loadImage(Commons.PROFILE_ICON_BASE_URL + summonerInfo.getProfileIconId() + ".png", profileIconIV);
             summonerNameTV.setText(summonerInfo.getName());
-            regionLevelTV.setText(getResources().getString(R.string.region) + " " + Commons.getRegion().toUpperCase() + ", Level:" + summonerInfo.getSummonerLevel());
+            regionLevelTV.setText(getResources().getString(R.string.region) + " " + region.toUpperCase() + ", Level:" + summonerInfo.getSummonerLevel());
         }
 
         if (rankedStatsResponse == null) {

@@ -143,6 +143,12 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="sp12BlackBold">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="sp16BlackBold">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_black</item>
@@ -166,6 +172,13 @@
         <item name="android:textColor">@color/text_gray</item>
         <item name="android:textStyle">normal</item>
     </style>
+
+    <style name="sp12GrayBold">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
     <style name="sp12GrayItalic">
         <item name="android:textSize">12sp</item>
@@ -283,6 +296,16 @@
         <item name="android:maxWidth">37dip</item>
         <item name="android:minHeight">37dip</item>
         <item name="android:maxHeight">37dip</item>
+    </style>
+
+    <style name="spinner_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:background">@drawable/gradient_spinner</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:popupBackground">#DFFFFFFF</item>
     </style>
 
 </resources>

@@ -112,7 +112,7 @@ public class Commons {
     public static final int RANKED_STATS_REQUEST = 24;
     public static final int RSS_NEWS_REQUEST = 25;
 
-
+    public static String[] regions = {"TR", "EUW", "NA", "EUNE", "OCE", "BR", "LAN", "LAS", "RU", "KR"};
 
     public static String YAHO_RSS_FEED_URL = "https://esports.yahoo.com/league-of-legends/rss";
     public static String SELECTED_REGION = "tr";

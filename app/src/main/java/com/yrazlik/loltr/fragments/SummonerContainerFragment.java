@@ -36,6 +36,7 @@ public class SummonerContainerFragment extends BaseFragment{
     private RankedStatsResponse rankedStatsResponse;
     private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
+    private String region;
 
     private CardView loadingBg;
 
@@ -52,6 +53,7 @@ public class SummonerContainerFragment extends BaseFragment{
             rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS);
             leagueInfoResponse = (LeagueInfoResponse) extras.getSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO);
             averageStats = (ChampionStatsDto) extras.getSerializable(SummonerOverviewFragment.EXTRA_AVERAGESTATS);
+            region = extras.getString(SummonerOverviewFragment.EXTRA_REGION, "");
         }
 
         loadingBg = (CardView) v.findViewById(R.id.loadingBg);
@@ -111,6 +113,7 @@ public class SummonerContainerFragment extends BaseFragment{
                 args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
                 args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
                 args.putSerializable(SummonerOverviewFragment.EXTRA_AVERAGESTATS, averageStats);
+                args.putSerializable(SummonerOverviewFragment.EXTRA_REGION, region);
                 SummonerOverviewFragment summonerOverviewFragment = new SummonerOverviewFragment();
                 summonerOverviewFragment.setArguments(args);
                 return summonerOverviewFragment;

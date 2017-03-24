@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.CardView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -16,10 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.RecentSearchesAdapter;
+import com.yrazlik.loltr.adapters.SimpleSpinnerAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.ChampionStatsDto;
 import com.yrazlik.loltr.data.RecentSearchItem;
@@ -37,11 +41,14 @@ import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoButton;
+import com.yrazlik.loltr.view.RobotoEditText;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -57,8 +64,10 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private RelativeLayout usernameRegionRL;
     private RobotoTextView recentSearchesTV;
     private CardView recentSearchesRL;
-    private EditText usernameET;
-    private FloatingActionButton searchButton;
+    private RobotoEditText usernameET;
+    private Spinner regionSpinner;
+    private RobotoTextView regionTV, enterSummonerNameTV;
+    private RobotoButton searchButton;
     private String region = "";
     private String userId;
     private String userName;
@@ -70,21 +79,45 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     private RecentMatchesResponse recentMatchesResponse;
     private LeagueInfoResponse leagueInfoResponse;
     private ChampionStatsDto averageStats;
+    private SimpleSpinnerAdapter spinnerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if(rootView == null) {
+            region = Commons.getRegion();
             rootView = inflater.inflate(R.layout.fragment_summoner_search, container, false);
-
-            region = Commons.SELECTED_REGION;
 
             usernameRegionRL = (RelativeLayout) rootView.findViewById(R.id.usernameRegionRL);
             recentSearchesRL = (CardView) rootView.findViewById(R.id.recentSearchesRL);
             recentSearchesTV = (RobotoTextView) rootView.findViewById(R.id.recentSearchesTV);
-            usernameET = (EditText) rootView.findViewById(R.id.usernameET);
-            searchButton = (FloatingActionButton) rootView.findViewById(R.id.buttonSearch);
+            enterSummonerNameTV = (RobotoTextView) rootView.findViewById(R.id.enterSummonerNameTV);
+            regionTV = (RobotoTextView) rootView.findViewById(R.id.regionTV);
+            enterSummonerNameTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            regionTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            regionSpinner = (AppCompatSpinner) rootView.findViewById(R.id.regionSpinner);
+            usernameET = (RobotoEditText) rootView.findViewById(R.id.usernameET);
+            searchButton = (RobotoButton) rootView.findViewById(R.id.buttonSearch);
+
+            spinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(Commons.regions)));
+
+            regionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String selectedRegion = (String) parent.getAdapter().getItem(position);
+                    region = selectedRegion;
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            regionSpinner.setAdapter(spinnerAdapter);
+
+
             usernameET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -101,8 +134,9 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     try {
                         RecentSearchItem item = recentSearchesArrayList.get(position);
+                        region = item.getRegion();
                         if (item != null) {
-                            makeSearchRequest(item.getName());
+                            makeSearchRequest(item.getName(), item.getRegion());
                         }
                     } catch (Exception ignored) {
                     }
@@ -119,7 +153,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                     } else if (region == null || region.length() <= 0) {
                         Toast.makeText(getActivity(), R.string.pleaseSelectYourRegion, Toast.LENGTH_SHORT).show();
                     } else {
-                        makeSearchRequest(usernameET.getText().toString());
+                        makeSearchRequest(usernameET.getText().toString(), region);
                     }
                 }
             });
@@ -163,12 +197,12 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         }
     }
 
-    private void makeSearchRequest(String itemName){
+    private void makeSearchRequest(String itemName, String selectedRegion){
         showLoading();
         ArrayList<String> pathParams = new ArrayList<String>();
         pathParams.add("api");
         pathParams.add("lol");
-        pathParams.add(region);
+        pathParams.add(selectedRegion);
         pathParams.add("v1.4");
         pathParams.add("summoner");
         pathParams.add("by-name");
@@ -180,7 +214,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         HashMap<String, String> queryParams = new HashMap<String, String>();
         queryParams.put("api_key", Commons.API_KEY);
         ServiceRequest.getInstance(getActivity()).makeSummonerByNameRequest(
-                Commons.SUMMONER_BY_NAME_REQUEST, region,
+                Commons.SUMMONER_BY_NAME_REQUEST, selectedRegion,
                 pathParams, queryParams, null, SummonerSearchFragment.this);
 
 
@@ -303,6 +337,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         args.putSerializable(SummonerOverviewFragment.EXTRA_RANKEDSTATS, rankedStatsResponse);
         args.putSerializable(SummonerOverviewFragment.EXTRA_LEAGUEINFO, leagueInfoResponse);
         args.putSerializable(SummonerOverviewFragment.EXTRA_AVERAGESTATS, averageStats);
+        args.putString(SummonerOverviewFragment.EXTRA_REGION, region);
         FragmentTransaction ft = fm.beginTransaction();
         Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
         summonerContainerFragment.setArguments(args);

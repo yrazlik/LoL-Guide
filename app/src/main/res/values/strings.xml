@@ -61,6 +61,7 @@
     <string name="select_category">Choose Category</string>
     <string name="menu">Menu</string>
     <string name="pleaseEnterSummonerName">Please enter a summoner name.</string>
+    <string name="summonerNameTitle">Summoner Name:</string>
     <string name="pleaseSelectYourRegion">Please select your region.</string>
     <string name="video">Video</string>
     <string name="mage">Mage</string>
@@ -87,7 +88,7 @@
     <string name="offensiveItems">Offensive Items</string>
     <string name="gold">Gold</string>
     <string name="searchC">SEARCH</string>
-    <string name="search">SEARCH</string>
+    <string name="search">Search</string>
     <string name="loading">Loading...</string>
     <string name="retry">Click to retry</string>
     <string name="summonerName">Enter summoner name...</string>
@@ -171,6 +172,7 @@
     </string>
 
     <string name="enter_username">Enter summoner name ...</string>
+    <string name="summoner_name_hint">e.g. Dyrus</string>
 
     <string name="cannot_find_username">Could not find the user, please make sure you entered
         summoner name and region correctly

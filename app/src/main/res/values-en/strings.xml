@@ -92,6 +92,8 @@
     <string name="search">SEARCH</string>
     <string name="loading">Loading...</string>
     <string name="summonerName">Enter summoner name...</string>
+    <string name="summonerNameTitle">Summoner Name:</string>
+    <string name="summoner_name_hint">e.g. Dyrus</string>
     <string name="selectRegion">Choose Region:</string>
     <string name="anErrorOccured">A connection error occured. Please try again.</string>
     <string name="team1">TEAM 1</string>
