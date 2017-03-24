@@ -133,7 +133,7 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
                 Stats stats = game.getStats();
                 if (stats != null) {
                     if (stats.isWin()) {
-                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.material_light_green));
+                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.discount_green));
                     } else {
                         holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_red));
                     }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
@@ -57,6 +58,7 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
 
     private DisplayImageOptions mOptions;
 
+    private CardView loadingView;
     private ScrollView parent;
     private RelativeLayout winLoseLabel;
     private ImageView champIV;
@@ -147,6 +149,7 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
     }
 
     private void initUI() {
+        loadingView = (CardView) findViewById(R.id.loadingView);
         parent = (ScrollView) findViewById(R.id.parent);
         winLoseLabel = (RelativeLayout) findViewById(R.id.winLoseLabel);
         champIV = (ImageView) findViewById(R.id.champIV);
@@ -377,6 +380,7 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
             }
         }
 
+        loadingView.setVisibility(View.GONE);
         parent.setVisibility(View.VISIBLE);
     }
 

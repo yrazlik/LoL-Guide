@@ -22,7 +22,7 @@
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
-            android:background="@color/material_light_green">
+            android:background="@color/discount_green">
         </RelativeLayout>
 
         <ImageView
