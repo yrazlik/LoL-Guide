@@ -2,6 +2,7 @@ package com.yrazlik.loltr.service;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -166,16 +167,16 @@ public class ServiceRequest {
                 hideLoading();
                 NetworkResponse response = error.networkResponse;
                 if ((requestID == Commons.ALL_CHAMPIONS_REQUEST) || (requestID == Commons.SUMMONER_SPELLS_REQUEST) || (requestID == Commons.SUMMONER_NAMES_REQUEST)) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else {
                     if (response != null && response.data != null) {
                         String json = new String(response.data);
                         json = trimMessage(json, "message");
-                        listener.onFailure(json);
+                        onFailure(listener, json);
                     } else {
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             String json = new String(getContext().getResources().getString(R.string.networkError));
-                            listener.onFailure(json);
+                            onFailure(listener, json);
                         } else if (error instanceof AuthFailureError) {
                             //TODO
                         } else if (error instanceof ServerError) {
@@ -223,16 +224,16 @@ public class ServiceRequest {
                 hideLoading();
                 NetworkResponse response = error.networkResponse;
                 if ((requestID == Commons.ALL_CHAMPIONS_REQUEST) || (requestID == Commons.SUMMONER_SPELLS_REQUEST) || (requestID == Commons.SUMMONER_NAMES_REQUEST)) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else {
                     if (response != null && response.data != null) {
                         String json = new String(response.data);
                         json = trimMessage(json, "message");
-                        listener.onFailure(json);
+                        onFailure(listener, json);
                     } else {
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             String json = new String(getContext().getResources().getString(R.string.networkError));
-                            listener.onFailure(json);
+                            onFailure(listener, json);
                         } else if (error instanceof AuthFailureError) {
                             //TODO
                         } else if (error instanceof ServerError) {
@@ -281,25 +282,18 @@ public class ServiceRequest {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               // hideLoading();
-               /* NetworkResponse response = error.networkResponse;
-                if(response != null && response.data != null){
-                    String json = new String(response.data);
-                    json = trimMessage(json, "message");
-                    listener.onFailure(json);
-                }*/
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                     String json = new String(getContext().getResources().getString(R.string.networkError));
-                    listener.onFailure(json);
+                    onFailure(listener, json);
                 } else if (error instanceof AuthFailureError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof ServerError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof NetworkError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof ParseError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 }
             }
         }){
@@ -347,25 +341,18 @@ public class ServiceRequest {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               // hideLoading();
-               /* NetworkResponse response = error.networkResponse;
-                if(response != null && response.data != null){
-                    String json = new String(response.data);
-                    json = trimMessage(json, "message");
-                    listener.onFailure(json);
-                }*/
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                     String json = new String(getContext().getResources().getString(R.string.networkError));
-                    listener.onFailure(json);
+                    onFailure(listener, json);
                 } else if (error instanceof AuthFailureError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof ServerError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof NetworkError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof ParseError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 }
             }
         }){
@@ -411,24 +398,18 @@ public class ServiceRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideLoading();
-               /* NetworkResponse response = error.networkResponse;
-                if(response != null && response.data != null){
-                    String json = new String(response.data);
-                    json = trimMessage(json, "message");
-                    listener.onFailure(json);
-                }*/
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                     String json = new String(getContext().getResources().getString(R.string.networkError));
-                    listener.onFailure(json);
+                    onFailure(listener, json);
                 } else if (error instanceof AuthFailureError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof ServerError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof NetworkError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else if (error instanceof ParseError) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 }
             }
         }){
@@ -666,7 +647,7 @@ public class ServiceRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
              //   hideLoading();
-                listener.onFailure(requestID);
+                onFailure(listener, requestID);
             }
         }){
             @Override
@@ -714,7 +695,7 @@ public class ServiceRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //hideLoading();
-                listener.onFailure(requestID);
+                onFailure(listener, requestID);
             }
         }){
             @Override
@@ -761,16 +742,16 @@ public class ServiceRequest {
                 hideLoading();
                 NetworkResponse response = error.networkResponse;
                 if ((requestID == Commons.ALL_CHAMPIONS_REQUEST) || (requestID == Commons.SUMMONER_SPELLS_REQUEST) || (requestID == Commons.SUMMONER_NAMES_REQUEST)) {
-                    listener.onFailure(requestID);
+                    onFailure(listener, requestID);
                 } else {
                     if (response != null && response.data != null) {
                         String json = new String(response.data);
                         json = trimMessage(json, "message");
-                        listener.onFailure(json);
+                        onFailure(listener, json);
                     } else {
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             String json = new String(getContext().getResources().getString(R.string.networkError));
-                            listener.onFailure(json);
+                            onFailure(listener, json);
                         } else if (error instanceof AuthFailureError) {
                             //TODO
                         } else if (error instanceof ServerError) {
@@ -806,6 +787,24 @@ public class ServiceRequest {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    private void onFailure(final ResponseListener listener, final int requestId) {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                listener.onFailure(requestId);
+            }
+        });
+    }
+
+    private void onFailure(final ResponseListener listener, final String json) {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                listener.onFailure(json);
+            }
+        });
     }
 
 }

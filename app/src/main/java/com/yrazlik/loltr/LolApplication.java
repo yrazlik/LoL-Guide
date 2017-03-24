@@ -158,7 +158,7 @@ public class LolApplication extends MultiDexApplication{
                             } catch (Exception ignored) {
                             }
                         }
-                    }, 350);
+                    }, 1000);
                 } catch (Exception ignored) {
                 }
             }
@@ -169,7 +169,7 @@ public class LolApplication extends MultiDexApplication{
         ad_show++;
         if(ad_show == 3){
             return true;
-        } else if(ad_show != 0 && ad_show % 10 == 0){
+        } else if(ad_show != 0 && ad_show % 18 == 0){
             return true;
         }
         return false;

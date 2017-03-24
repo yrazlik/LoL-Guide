@@ -43,18 +43,22 @@ public abstract class BaseFragment extends Fragment{
 
     protected void showRetryView() {
         if(rootView != null) {
-            CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
-            if (loadingView != null) {
-                loadingView.findViewById(R.id.imgRetry).setVisibility(View.VISIBLE);
-                loadingView.findViewById(R.id.progress).setVisibility(View.GONE);
-                ((RobotoTextView) loadingView.findViewById(R.id.loadingText)).setText(getString(R.string.retry));
-                loadingView.findViewById(R.id.retryContainer).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        retry();
-                    }
-                });
-                loadingView.setVisibility(View.VISIBLE);
+            try {
+                CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
+                if (loadingView != null) {
+                    loadingView.findViewById(R.id.imgRetry).setVisibility(View.VISIBLE);
+                    loadingView.findViewById(R.id.progress).setVisibility(View.GONE);
+                    ((RobotoTextView) loadingView.findViewById(R.id.loadingText)).setText(getString(R.string.retry));
+                    loadingView.findViewById(R.id.retryContainer).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            retry();
+                        }
+                    });
+                    loadingView.setVisibility(View.VISIBLE);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -68,9 +72,13 @@ public abstract class BaseFragment extends Fragment{
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
-                    if (loadingView != null) {
-                        loadingView.setVisibility(View.GONE);
+                    try {
+                        CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
+                        if (loadingView != null) {
+                            loadingView.setVisibility(View.GONE);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
             });

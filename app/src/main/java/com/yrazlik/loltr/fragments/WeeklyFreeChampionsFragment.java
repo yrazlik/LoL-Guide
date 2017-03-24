@@ -58,7 +58,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
                 dismissProgress();
                 notifyDataSetChanged();
             } else {
-                populateWeeklyFreeChampionsList();
+                setWeeklyFreeChampionsAdapter();
             }
         } else {
             populateWeeklyFreeChampionsList();
@@ -73,11 +73,14 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements
     }
 
     private void setWeeklyFreeChampionsAdapter() {
+        dismissProgress();
         if(weeklyFreeChampionsAdapter == null) {
             weeklyFreeChampionsAdapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions,
                     Commons.weeklyFreeChampions);
+            weeklyFreeChampionsList.setAdapter(weeklyFreeChampionsAdapter);
+        } else {
+            weeklyFreeChampionsAdapter.notifyDataSetChanged();
         }
-        weeklyFreeChampionsList.setAdapter(weeklyFreeChampionsAdapter);
     }
 
     private void notifyDataSetChanged() {
