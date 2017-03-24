@@ -73,6 +73,7 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                 HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
                                 if (keyValues != null && keyValues.size() > 0) {
+                                    String url = (String) keyValues.get("url");
                                     String title = (String) keyValues.get("title");
                                     String titleEnglish = (String) keyValues.get("titleEnglish");
                                     String message = (String) keyValues.get("message");
@@ -94,18 +95,18 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                                             if (Commons.SELECTED_LANGUAGE != null) {
                                                 if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
                                                     if (title != null && title.length() > 0) {
-                                                        news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
+                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
 
                                                     }
                                                 } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
                                                     if (titleEnglish != null && titleEnglish.length() > 0) {
-                                                        news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
+                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
 
                                                     }
                                                 }
                                             } else {
                                                 if (titleEnglish != null && titleEnglish.length() > 0) {
-                                                    news.add(new News(title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
+                                                    news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, largeImage, videoUrl, c.getTime()));
                                                 }
                                             }
 
@@ -174,7 +175,9 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
         try {
             News selectedNews = news.get(position);
 
-            FragmentManager fm = getFragmentManager();
+
+
+         /*   FragmentManager fm = getFragmentManager();
             Bundle args = new Bundle();
             if (selectedNews.getTitle() != null && selectedNews.getTitle().length() > 0) {
                 args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitle());
@@ -194,7 +197,9 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
             FragmentTransaction ft = fm.beginTransaction();
             Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
             ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_DETAIL_FRAGMENT).commit();
-            showInterstitial();
+            showInterstitial();*/
+
+            Commons.openInBrowser(getContext(), selectedNews.getUrl());
 
         } catch (Exception ignored) {
         }

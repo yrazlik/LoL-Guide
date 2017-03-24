@@ -1,8 +1,11 @@
 package com.yrazlik.loltr.commons;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
@@ -375,5 +378,15 @@ public class Commons {
                 });
             }
         } catch (Exception ignored) {}
+    }
+
+    public static void openInBrowser(Context context, String url) {
+        try {
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            context.startActivity(i);
+        }catch (Exception e) {
+            Log.d("LoLApp", "Invalid url");
+        }
     }
 }

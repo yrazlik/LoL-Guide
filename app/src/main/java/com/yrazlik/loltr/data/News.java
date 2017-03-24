@@ -10,6 +10,7 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class News {
 
+    private String url;
     private String title;
     private String titleEnglish;
     private String message;
@@ -19,7 +20,8 @@ public class News {
     private String videoUrl;
     private Date createdAt;
 
-    public News(String title, String titleEnglish, String message, String messageEnglish, String smallImage, String largeImage, String videoUrl, Date createdAt){
+    public News(String url, String title, String titleEnglish, String message, String messageEnglish, String smallImage, String largeImage, String videoUrl, Date createdAt){
+        this.url = url;
         this.title = title;
         this.titleEnglish = titleEnglish;
         this.message = message;
@@ -28,6 +30,14 @@ public class News {
         this.largeImage = largeImage;
         this.videoUrl = videoUrl;
         this.createdAt = createdAt;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getLargeImage() {
