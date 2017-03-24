@@ -94,8 +94,8 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             recentSearchesTV = (RobotoTextView) rootView.findViewById(R.id.recentSearchesTV);
             enterSummonerNameTV = (RobotoTextView) rootView.findViewById(R.id.enterSummonerNameTV);
             regionTV = (RobotoTextView) rootView.findViewById(R.id.regionTV);
-            enterSummonerNameTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-            regionTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            Commons.underline(enterSummonerNameTV);
+            Commons.underline(regionTV);
             regionSpinner = (AppCompatSpinner) rootView.findViewById(R.id.regionSpinner);
             usernameET = (RobotoEditText) rootView.findViewById(R.id.usernameET);
             searchButton = (RobotoButton) rootView.findViewById(R.id.buttonSearch);

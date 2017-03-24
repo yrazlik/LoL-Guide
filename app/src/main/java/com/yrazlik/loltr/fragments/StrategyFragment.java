@@ -19,6 +19,7 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionStrategyResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,8 +27,7 @@ import java.util.HashMap;
 public class StrategyFragment extends BaseFragment implements ResponseListener{
 	
 	private int champId;
-	private TextView allyTips, enemyTips, allyTipsTitle, enemyTipstitle;
-	private Typeface typeFace, typeFaceBold;
+	private RobotoTextView allyTips, enemyTips, allyTipsTitle, enemyTipstitle;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -62,12 +62,10 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
 	}
 
 	private void initUI(View v){
-		typeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/dinproregular.ttf");
-		typeFaceBold = Typeface.createFromAsset(getContext().getAssets(), "fonts/dinprobold.ttf");
-		allyTips = (TextView)v.findViewById(R.id.textviewAllyTips);
-		enemyTips = (TextView)v.findViewById(R.id.textviewEnemyTips);
-		allyTipsTitle = (TextView)v.findViewById(R.id.textviewAllyTipsTitle);
-		enemyTipstitle = (TextView)v.findViewById(R.id.textviewEnemyTipsTitle);
+		allyTips = (RobotoTextView)v.findViewById(R.id.textviewAllyTips);
+		enemyTips = (RobotoTextView)v.findViewById(R.id.textviewEnemyTips);
+		allyTipsTitle = (RobotoTextView)v.findViewById(R.id.textviewAllyTipsTitle);
+		enemyTipstitle = (RobotoTextView)v.findViewById(R.id.textviewEnemyTipsTitle);
 	}
 	
 	@Override
@@ -94,15 +92,10 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
                 allyTipsTitle.setText("When you are playing as " + key + ":");
                 enemyTipstitle.setText("When the opponent is " + key + ":");
             }
-			allyTipsTitle.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-			enemyTipstitle.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+            Commons.underline(allyTipsTitle);
+            Commons.underline(enemyTipstitle);
 			allyTips.setText(allyTipsString);
 			enemyTips.setText(enemyTipsString);
-			allyTips.setTypeface(typeFace);
-			enemyTips.setTypeface(typeFace);
-			allyTipsTitle.setTypeface(typeFaceBold);
-			enemyTipstitle.setTypeface(typeFaceBold);
-			
 		}
 		
 	}

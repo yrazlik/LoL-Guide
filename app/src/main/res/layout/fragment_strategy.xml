@@ -1,61 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/background_black_transparent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/cardview_bg">
 
     <ImageView
         android:id="@+id/imageViewSplashImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/material_dark_green" />
+        android:background="@color/cardview_bg"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="35dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="35dp" >
+            android:paddingTop="15dp">
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textviewAllyTipsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:textColor="@color/material_yellow"
-                style="@style/whiteText15dp"/>
-            <TextView
+                android:textAppearance="@style/sp14BlackBold"/>
+
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textviewAllyTips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textviewAllyTipsTitle"
                 android:layout_marginTop="15dp"
                 android:gravity="center_vertical"
-                style="@style/whiteText14dp"
-                android:layout_below="@+id/textviewAllyTipsTitle" />
-            
-            
-            <TextView
+                android:textAppearance="@style/sp12BlackRegular"/>
+
+
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textviewEnemyTipsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textviewAllyTips"
                 android:gravity="center_vertical"
-                style="@style/whiteText15dp"
-                android:textColor="@color/material_yellow"
-                android:layout_below="@+id/textviewAllyTips" />
-            
-            <TextView
+                android:textAppearance="@style/sp14BlackBold"/>
+
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textviewEnemyTips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textviewEnemyTipsTitle"
                 android:layout_marginTop="15dp"
                 android:gravity="center_vertical"
-                style="@style/whiteText14dp"
-                android:layout_below="@+id/textviewEnemyTipsTitle" />
+                android:textAppearance="@style/sp12BlackRegular"/>
         </RelativeLayout>
     </ScrollView>
 

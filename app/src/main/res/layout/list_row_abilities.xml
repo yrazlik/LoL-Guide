@@ -29,7 +29,7 @@
                 android:ellipsize="end"
                 android:gravity="center_horizontal"
                 android:maxLines="1"
-                android:textAppearance="@style/sp14BlackBold"/>
+                android:textAppearance="@style/sp13BlackBold"/>
 
         </RelativeLayout>
 
@@ -100,7 +100,7 @@
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/arrow_right_blue_thin"
             android:text="@string/video"
-            android:textAppearance="@style/sp14BlueRegular"/>
+            android:textAppearance="@style/sp13BlueRegular"/>
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

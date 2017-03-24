@@ -20,6 +20,7 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_bg"
             android:paddingBottom="35dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -39,10 +40,12 @@
 
             <Spinner
                 android:id="@+id/languageSpinner"
+                style="@style/spinner_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/selectLanguageText">
+                android:layout_toRightOf="@+id/selectLanguageText"
+                android:spinnerMode="dialog">
             </Spinner>
 
             <com.yrazlik.loltr.view.RobotoTextView
@@ -61,13 +64,15 @@
 
             <Spinner
                 android:id="@+id/regionSpinner"
+                style="@style/spinner_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/languageSpinner"
                 android:layout_alignRight="@+id/languageSpinner"
                 android:layout_below="@+id/languageSpinner"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/selectRegionText">
+                android:layout_toRightOf="@+id/selectRegionText"
+                android:spinnerMode="dialog">
             </Spinner>
 
             <com.yrazlik.loltr.view.RobotoButton
@@ -76,12 +81,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/regionSpinner"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/selector_new_primary_button"
-                android:minHeight="50dp"
+                android:background="@color/tab_color"
+                android:minHeight="35dp"
                 android:text="@string/save"
                 android:textAllCaps="false"
-                android:textColor="@color/text_blue"
-                android:textSize="12sp"/>
+                android:textColor="@color/white"
+                android:textSize="13sp"/>
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/removeAdsExplanation"
@@ -98,11 +103,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/removeAdsExplanation"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/selector_new_primary_button"
+                android:background="@color/tab_color"
+                android:minHeight="35dp"
                 android:text="@string/remove_ads"
                 android:textAllCaps="false"
-                android:textColor="@color/text_blue"
-                android:textSize="12sp"/>
+                android:textColor="@color/white"
+                android:textSize="13sp"/>
 
 
         </RelativeLayout>

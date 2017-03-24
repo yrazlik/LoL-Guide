@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/app_color"
+    android:background="@color/white"
     android:padding="16dp">
-    <TextView
+    <com.yrazlik.loltr.view.RobotoTextView
         android:id="@+id/removeAdsExplanation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/remove_ads_explanation"
-        android:textSize="15sp"
-        android:textColor="@color/white"/>
+        android:textSize="13sp"
+        android:textColor="@color/text_black"/>
 
-    <Button
+    <com.yrazlik.loltr.view.RobotoButton
         android:id="@+id/removeAdsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/remove_ads"
         android:layout_below="@+id/removeAdsExplanation"
         android:layout_marginTop="15dp"
-        android:background="@color/red_text_color"
+        android:minHeight="35dp"
+        android:textSize="13sp"
+        android:textAllCaps="false"
+        android:background="@color/tab_color"
         android:textColor="@color/white"/>
 
 </RelativeLayout>

@@ -55,6 +55,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/menuTV"
                 android:background="@color/menu_color"
+                android:scrollbars="none"
                 android:choiceMode="singleChoice"
                 android:divider="@drawable/list_divider_gray_with_margin"
                 android:dividerHeight="0.5dp"/>

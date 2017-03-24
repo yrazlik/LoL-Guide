@@ -160,7 +160,7 @@ public class SummonerOverviewFragment extends BaseFragment {
         winRateStatsTV = (RobotoTextView) v.findViewById(R.id.winRateStatsTV);
         winRateStatsStringTV = (RobotoTextView) v.findViewById(R.id.winRateStatsStringTV);
 
-        averageTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        Commons.underline(averageTV);
 
         //most played part
         mostPlayedLL = (LinearLayout) v.findViewById(R.id.mostPlayedLL);
@@ -178,7 +178,7 @@ public class SummonerOverviewFragment extends BaseFragment {
         kdaTV3 = (RobotoTextView) v.findViewById(R.id.kdaTV3);
         winRateTV3 = (RobotoTextView) v.findViewById(R.id.winRateTV3);
 
-        mostPlayedTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        Commons.underline(mostPlayedTV);
 
         //ranked part
         rankedRL = (CardView) v.findViewById(R.id.rankedRL);
@@ -195,7 +195,8 @@ public class SummonerOverviewFragment extends BaseFragment {
         team3v3rankTV = (RobotoTextView) v.findViewById(R.id.team3v3rankTV);
         team3v3lpTV = (RobotoTextView) v.findViewById(R.id.team3v3lpTV);
         team3v3nameTV = (RobotoTextView) v.findViewById(R.id.team3v3nameTV);
-        rankedTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+        Commons.underline(rankedTV);
 
         //populate header part
         if (summonerInfo != null) {

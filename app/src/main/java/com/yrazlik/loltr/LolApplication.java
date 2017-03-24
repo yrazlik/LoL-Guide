@@ -158,7 +158,7 @@ public class LolApplication extends MultiDexApplication{
                             } catch (Exception ignored) {
                             }
                         }
-                    }, 1000);
+                    }, 1500);
                 } catch (Exception ignored) {
                 }
             }

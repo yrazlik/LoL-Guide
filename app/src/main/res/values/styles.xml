@@ -131,6 +131,12 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="sp13BlueRegular">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text_blue</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="sp14BlackRegular">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_black</item>
@@ -232,6 +238,12 @@
         <item name="android:textColor">@color/text_black</item>
         <item name="android:textSize">13dp</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="sp13BlackBold">
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="sp13GrayRegular">

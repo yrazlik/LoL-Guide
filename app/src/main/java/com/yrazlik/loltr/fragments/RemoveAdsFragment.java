@@ -18,6 +18,7 @@ import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.view.RobotoButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,13 +30,13 @@ import java.util.ArrayList;
  */
 public class RemoveAdsFragment extends BaseFragment {
 
-    private Button removeAdsButton;
+    private RobotoButton removeAdsButton;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_remove_ads, container, false);
-        removeAdsButton = (Button) v.findViewById(R.id.removeAdsButton);
+        removeAdsButton = (RobotoButton) v.findViewById(R.id.removeAdsButton);
         removeAdsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

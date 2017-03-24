@@ -18,15 +18,15 @@ import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionLegendResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LegendFragment extends BaseFragment implements ResponseListener{
 
-	TextView legend;
+	private RobotoTextView legend;
 	private int champId;
-	private Typeface typeFace;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -59,8 +59,7 @@ public class LegendFragment extends BaseFragment implements ResponseListener{
 	}
 	
 	private void initUI(View v){
-		typeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/dinproregular.ttf");
-		legend = (TextView)v.findViewById(R.id.textviewLegend);
+		legend = (RobotoTextView)v.findViewById(R.id.textviewLegend);
 	}
 
 	private String formatLoreString(String lore) {
@@ -77,7 +76,6 @@ public class LegendFragment extends BaseFragment implements ResponseListener{
 			String lore = resp.getLore();
 			lore = formatLoreString(lore);
 			legend.setText(lore);
-			legend.setTypeface(typeFace);
 		}
 		
 	}

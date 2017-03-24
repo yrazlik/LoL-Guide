@@ -26,6 +26,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.adapters.SimpleSpinnerAdapter;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.view.RobotoButton;
@@ -35,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 
 /**
@@ -46,7 +48,7 @@ public class SettingsFragment extends BaseFragment{
     private String[] regions = {"TR", "EUW", "NA", "EUNE", "OCE", "BR", "LAN", "LAS", "RU", "KR"};
     String[] languages;
     private Spinner languageSpinner, regionSpinner;
-    private ArrayAdapter<String> languageSpinnerAdapter, regionSpinnerAdapter;
+    private SimpleSpinnerAdapter languageSpinnerAdapter, regionSpinnerAdapter;
     private RobotoButton buttonSave;
     private RobotoTextView selectLanguageText, selectRegionText;
     private RobotoButton removeAdsButton;
@@ -101,8 +103,8 @@ public class SettingsFragment extends BaseFragment{
         buttonSave = (RobotoButton) v.findViewById(R.id.buttonSave);
 
 
-        languageSpinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, languages);
-        regionSpinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, regions);
+        languageSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(languages)));
+        regionSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(regions)));
 
         languageSpinner.setAdapter(languageSpinnerAdapter);
         languageSpinnerAdapter.notifyDataSetChanged();
@@ -171,14 +173,14 @@ public class SettingsFragment extends BaseFragment{
                     selectLanguageText.setText(R.string.languageTurkish);
                     selectRegionText.setText(R.string.regionTurkish);
                     languages = new String[]{getContext().getResources().getString(R.string.turkishTurkish), getResources().getString(R.string.englishTurkish)};
-                    languageSpinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, languages);
+                    languageSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(languages)));
                     languageSpinner.setAdapter(languageSpinnerAdapter);
                     languageSpinnerAdapter.notifyDataSetChanged();
                 }else{
                     selectLanguageText.setText(R.string.languageEnglish);
                     selectRegionText.setText(R.string.regionEnglish);
                     languages = new String[]{getContext().getResources().getString(R.string.englishEnglish), getResources().getString(R.string.turkishEnglish)};
-                    languageSpinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, languages);
+                    languageSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(languages)));
                     languageSpinner.setAdapter(languageSpinnerAdapter);
                     languageSpinnerAdapter.notifyDataSetChanged();
                 }

@@ -203,6 +203,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardUseCompatPadding="true"
+            android:focusable="false"
             app:cardPreventCornerOverlap="false"
             android:layout_below="@+id/kdaRL"
             app:cardCornerRadius="0dp"
@@ -236,6 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/mostPlayedTV"
                         android:layout_marginTop="10dp"
+                        android:focusable="false"
                         android:orientation="horizontal"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp">

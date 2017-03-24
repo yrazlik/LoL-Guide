@@ -16,8 +16,9 @@
             android:layout_marginTop="15dp"
             android:visibility="gone">
 
-            <TextView
-                style="@style/whiteText14dp"
+            <com.yrazlik.loltr.view.RobotoTextView
+                android:id="@+id/noRankedTV"
+                android:textAppearance="@style/sp13BlackBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -36,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/rankedStats"
-                android:textAppearance="@style/sp14BlackBold"/>
+                android:textAppearance="@style/sp13BlackBold"/>
 
             <ListView
                 android:id="@+id/statisticsLV"

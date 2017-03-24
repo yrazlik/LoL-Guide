@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:textColor="@color/text_gray"
-        android:textSize="15sp"/>
+        android:textSize="13sp"/>
 
 </RelativeLayout>

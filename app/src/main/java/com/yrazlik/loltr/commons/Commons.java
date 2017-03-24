@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
@@ -15,6 +18,7 @@ import com.yrazlik.loltr.data.RecentSearchItem;
 import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -387,6 +391,14 @@ public class Commons {
             context.startActivity(i);
         }catch (Exception e) {
             Log.d("LoLApp", "Invalid url");
+        }
+    }
+
+    public static void underline(RobotoTextView tv) {
+        if(tv != null) {
+            SpannableString content = new SpannableString(tv.getText().toString());
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            tv.setText(content);
         }
     }
 }

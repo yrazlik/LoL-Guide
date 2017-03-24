@@ -16,7 +16,7 @@
 
         <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/noWatchListTV"
-            style="@style/sp14BlackRegular"
+            style="@style/sp13BlackBold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"

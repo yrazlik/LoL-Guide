@@ -94,7 +94,7 @@
     <string name="playerDetail">Oyuncu Detayı</string>
     <string name="detailInfo">Detay</string>
     <string name="leagueInfo">Lig Bilgisi</string>
-    <string name="matchHistory">Karşılaşma Geçmişi</string>
+    <string name="matchHistory">Karşılaşmalar</string>
     <string name="lvl">Lvl.</string>
     <string name="league">Lig</string>
     <string name="unranked">UNRANKED</string>
@@ -238,7 +238,7 @@
     <string name="kda">KDA</string>
     <string name="solo_duo">Tekli/Çiftli</string>
     <string name="overview">GENEL BAKIŞ</string>
-    <string name="match_history">KARŞILAŞMA GEÇMİŞİ</string>
+    <string name="match_history">KARŞILAŞMALAR</string>
 
     <string name="rankedStats">Dereceli İstatistikleri</string>
 

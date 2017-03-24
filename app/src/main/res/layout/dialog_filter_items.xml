@@ -736,13 +736,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
-                    android:background="@drawable/selector_new_primary_button"
-                    android:minHeight="45dp"
+                    android:background="@color/tab_color"
+                    android:minHeight="35dp"
                     android:text="@string/cancel"
                     android:textSize="13sp"
                     android:textStyle="normal"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_blue"/>
+                    android:textColor="@color/white"/>
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -754,13 +754,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
-                    android:background="@drawable/selector_new_primary_button"
-                    android:minHeight="45dp"
+                    android:background="@color/tab_color"
+                    android:minHeight="35dp"
                     android:text="@string/ok"
                     android:textAllCaps="false"
                     android:textSize="13sp"
                     android:textStyle="normal"
-                    android:textColor="@color/text_blue"/>
+                    android:textColor="@color/white"/>
 
 
             </LinearLayout>

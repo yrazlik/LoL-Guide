@@ -188,9 +188,9 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
         statisticsTV = (RobotoTextView) findViewById(R.id.statisticsTV);
         team1TV = (RobotoTextView) findViewById(R.id.team1TV);
         team2TV = (RobotoTextView) findViewById(R.id.team2TV);
-        statisticsTV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-        team1TV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-        team2TV.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        Commons.underline(statisticsTV);
+        Commons.underline(team1TV);
+        Commons.underline(team2TV);
 
         if (game != null) {
             if (game != null) {

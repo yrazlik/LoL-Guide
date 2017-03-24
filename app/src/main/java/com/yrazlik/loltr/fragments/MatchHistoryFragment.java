@@ -55,7 +55,7 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
             games = recentMatchesResponse.getGames();
         }
         matchHistoryRV = (RecyclerView) v.findViewById(R.id.matchHistoryRV);
-        matchHistoryRV.addItemDecoration(new VerticalSpaceItemDecoration(20));
+        matchHistoryRV.addItemDecoration(new VerticalSpaceItemDecoration(12));
         mLayoutManager = new LinearLayoutManager(getContext());
         matchHistoryRV.setLayoutManager(mLayoutManager);
 

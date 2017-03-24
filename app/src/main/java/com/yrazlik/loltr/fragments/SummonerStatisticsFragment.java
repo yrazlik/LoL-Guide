@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.StatisticsAdapter;
+import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.AggregatedStatsDto;
 import com.yrazlik.loltr.data.ChampionStatsDto;
 import com.yrazlik.loltr.data.Statistics;
@@ -29,6 +30,7 @@ public class SummonerStatisticsFragment extends BaseFragment {
 
     private RelativeLayout noRankedRL, rankedStatisticsRL;
     private RobotoTextView title;
+    private RobotoTextView noRankedTV;
     private ListView statisticsLV;
     private StatisticsAdapter statisticsAdapter;
 
@@ -52,7 +54,8 @@ public class SummonerStatisticsFragment extends BaseFragment {
         noRankedRL = (RelativeLayout) v.findViewById(R.id.noRankedRL);
         rankedStatisticsRL = (RelativeLayout) v.findViewById(R.id.rankedStatisticsRL);
         title = (RobotoTextView) v.findViewById(R.id.title);
-        title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        noRankedTV = (RobotoTextView) v.findViewById(R.id.noRankedTV);
+        Commons.underline(title);
         statisticsLV = (ListView) v.findViewById(R.id.statisticsLV);
 
         if (rankedStatsResponse != null) {
@@ -78,6 +81,7 @@ public class SummonerStatisticsFragment extends BaseFragment {
             List<Statistics> statistics = new ArrayList<>();
             AggregatedStatsDto stats = averageStats.getStats();
             if (stats != null) {
+                noRankedTV.setVisibility(View.GONE);
                 statistics.add(new Statistics(getResources().getString(R.string.games_played), stats.getTotalSessionsPlayed() + "", false));
                 statistics.add(new Statistics(getResources().getString(R.string.games_won), stats.getTotalSessionsWon() + "", false));
                 statistics.add(new Statistics(getResources().getString(R.string.kill_death), "" + "", true));
@@ -104,6 +108,8 @@ public class SummonerStatisticsFragment extends BaseFragment {
                 statistics.add(new Statistics(getResources().getString(R.string.largest_critical_strike), stats.getMaxLargestCriticalStrike() + "", false));
                 statisticsLV.setAdapter(new StatisticsAdapter(getActivity(), R.layout.list_row_statistics, statistics));
 
+            } else {
+                noRankedTV.setVisibility(View.VISIBLE);
             }
         }
     }
