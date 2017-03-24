@@ -92,15 +92,15 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private void continueSetup() {
         if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.activity_main);
-            mFlags = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.dollar, R.drawable.discount, R.drawable.news, R.drawable.champion,
-                    R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
-                    R.drawable.info};
+            mFlags = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+                    R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_block, R.drawable.ic_mail,
+                    R.drawable.ic_info};
             mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         } else {
             setContentView(R.layout.activity_main_noad);
-            mFlags = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.dollar, R.drawable.discount, R.drawable.news, R.drawable.champion,
-                    R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.contact,
-                    R.drawable.info};
+            mFlags = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+                    R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_mail,
+                    R.drawable.ic_info};
             mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         }
 
