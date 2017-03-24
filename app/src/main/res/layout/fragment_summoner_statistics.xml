@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/parentBG"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:background="@color/cardview_bg"
+        android:padding="10dp">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:background="@color/app_color">
         <RelativeLayout
             android:id="@+id/noRankedRL"
             android:layout_width="match_parent"
@@ -21,23 +16,27 @@
             android:layout_marginTop="15dp"
             android:visibility="gone">
 
-            <TextView style="@style/whiteText14dp" android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:gravity="center_horizontal"
-                      android:text="@string/no_ranked_info"/>
+            <TextView
+                style="@style/whiteText14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/no_ranked_info"/>
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/rankedStatisticsRL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
+
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/title"
-                style="@style/whiteText16dp" android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@color/material_yellow"
-                android:text="@string/rankedStats"/>
+                android:text="@string/rankedStats"
+                android:textAppearance="@style/sp14BlackBold"/>
 
             <ListView
                 android:id="@+id/statisticsLV"

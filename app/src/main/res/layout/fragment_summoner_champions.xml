@@ -4,31 +4,27 @@
                 android:layout_height="match_parent"
                 android:background="@color/gray">
 
-    <ImageView
-        android:id="@+id/parentBG"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:background="@color/cardview_bg">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-        android:background="@color/app_color">
-    <se.emilsjolander.stickylistheaders.ExpandableStickyListHeadersListView
-        android:id="@+id/champList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <se.emilsjolander.stickylistheaders.ExpandableStickyListHeadersListView
+            android:id="@+id/champList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/noWatchListTV"
-        style="@style/whiteText14dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:gravity="center_horizontal"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/no_ranked_info"
-        android:visibility="visible"/>
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:id="@+id/noWatchListTV"
+            style="@style/sp14BlackRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/no_ranked_info"
+            android:visibility="visible"/>
     </RelativeLayout>
 
 </RelativeLayout>

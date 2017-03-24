@@ -2,27 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/material_dark_green"
+                android:background="@drawable/selector_listview_material"
                 android:minHeight="90dp"
                 android:orientation="vertical"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="0.7dp"
+        android:layout_height="0.5dp"
         android:layout_alignParentTop="true"
-        android:background="@color/white"></View>
+        android:background="@color/divider_gray"></View>
 
-    <com.yrazlik.loltr.view.FadeInNetworkImageView
+    <com.pkmmte.view.CircularImageView
         android:id="@+id/champIV"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"/>
 
-    <ImageView
+    <com.yrazlik.loltr.view.RobotoTextView
         android:id="@+id/swordsIV"
         android:layout_width="15dp"
         android:layout_height="15dp"
@@ -31,7 +31,7 @@
         android:layout_toRightOf="@+id/champIV"
         android:background="@drawable/ip"/>
 
-    <TextView
+    <com.yrazlik.loltr.view.RobotoTextView
         android:id="@+id/kdaTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/swordsIV"
         android:text=" ?/?/? "
-        style="@style/whiteText12dp"/>
+        android:textAppearance="@style/sp12BlackRegular"/>
 
     <RelativeLayout
         android:id="@+id/goldContainerRL"
@@ -56,16 +56,16 @@
             android:layout_centerVertical="true"
             android:background="@drawable/coins"/>
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/goldTV"
             android:layout_width="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/goldIV"
-            android:layout_marginLeft="5dp"
             android:text=" ??? "
-            style="@style/whiteText12dp"/>
+            android:textAppearance="@style/sp12BlackRegular"/>
 
     </RelativeLayout>
 
@@ -74,33 +74,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/downArrow">
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/gamesPlayedTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" ??? "
-            style="@style/whiteText12dp"/>
+            android:textAppearance="@style/sp12BlackRegular"/>
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/winCountTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/gamesPlayedTV"
             android:layout_marginTop="5dp"
             android:text=" ??? "
-            style="@style/whiteText12dp"/>
+            android:textAppearance="@style/sp12BlackRegular"/>
 
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/downArrow"
-        android:layout_width="20dp" android:layout_height="20dp"
-        android:layout_marginRight="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/arrow_down"/>
+        android:background="@drawable/arrow_down_black_thin"/>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.yrazlik.loltr.fragments;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.yrazlik.loltr.data.AggregatedStatsDto;
 import com.yrazlik.loltr.data.ChampionStatsDto;
 import com.yrazlik.loltr.data.Statistics;
 import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,17 +25,15 @@ import java.util.List;
 /**
  * Created by yrazlik on 1/12/16.
  */
-public class SummonerStatisticsFragment extends BaseFragment{
+public class SummonerStatisticsFragment extends BaseFragment {
 
     private RelativeLayout noRankedRL, rankedStatisticsRL;
-    private TextView title;
+    private RobotoTextView title;
     private ListView statisticsLV;
     private StatisticsAdapter statisticsAdapter;
 
     private RankedStatsResponse rankedStatsResponse;
     private ChampionStatsDto averageStats;
-
-    private ImageView parentBG;
 
     public static final String EXTRA_STATISTICS = "com.yrazlik.loltr.fragments.summonerstatisticsfragment.extrastatistics";
     public static final String EXTRA_AVERAGE_STATS = "com.yrazlik.loltr.fragments.summonerstatisticsfragment.extraaveragestats";
@@ -43,31 +43,28 @@ public class SummonerStatisticsFragment extends BaseFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_summoner_statistics, container, false);
 
-        parentBG = (ImageView) v.findViewById(R.id.parentBG);
-        parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.jinxx);
-
         Bundle extras = getArguments();
         if (extras != null) {
             rankedStatsResponse = (RankedStatsResponse) extras.getSerializable(EXTRA_STATISTICS);
-            averageStats = (ChampionStatsDto)extras.getSerializable(EXTRA_AVERAGE_STATS);
+            averageStats = (ChampionStatsDto) extras.getSerializable(EXTRA_AVERAGE_STATS);
         }
 
         noRankedRL = (RelativeLayout) v.findViewById(R.id.noRankedRL);
         rankedStatisticsRL = (RelativeLayout) v.findViewById(R.id.rankedStatisticsRL);
-        title = (TextView) v.findViewById(R.id.title);
+        title = (RobotoTextView) v.findViewById(R.id.title);
+        title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         statisticsLV = (ListView) v.findViewById(R.id.statisticsLV);
 
-        if(rankedStatsResponse != null){
+        if (rankedStatsResponse != null) {
             noRankedRL.setVisibility(View.GONE);
             rankedStatisticsRL.setVisibility(View.VISIBLE);
-            if(averageStats != null){
+            if (averageStats != null) {
                 populateStatistics();
-            }else{
+            } else {
                 rankedStatisticsRL.setVisibility(View.GONE);
                 noRankedRL.setVisibility(View.VISIBLE);
             }
-        }else{
+        } else {
             rankedStatisticsRL.setVisibility(View.GONE);
             noRankedRL.setVisibility(View.VISIBLE);
         }
@@ -76,11 +73,11 @@ public class SummonerStatisticsFragment extends BaseFragment{
     }
 
 
-    private void populateStatistics(){
-        if(averageStats != null){
+    private void populateStatistics() {
+        if (averageStats != null) {
             List<Statistics> statistics = new ArrayList<>();
             AggregatedStatsDto stats = averageStats.getStats();
-            if(stats != null){
+            if (stats != null) {
                 statistics.add(new Statistics(getResources().getString(R.string.games_played), stats.getTotalSessionsPlayed() + "", false));
                 statistics.add(new Statistics(getResources().getString(R.string.games_won), stats.getTotalSessionsWon() + "", false));
                 statistics.add(new Statistics(getResources().getString(R.string.kill_death), "" + "", true));

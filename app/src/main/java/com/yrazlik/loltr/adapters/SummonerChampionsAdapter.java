@@ -6,14 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.pkmmte.view.CircularImageView;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.AggregatedStatsDto;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.ChampionStatsDto;
+import com.yrazlik.loltr.data.Image;
 import com.yrazlik.loltr.data.Statistics;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
@@ -111,11 +116,11 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
         if (convertView == null) {
             holder = new HeaderViewHolder();
             convertView = inflater.inflate(R.layout.header_summoner_champions, parent, false);
-            holder.champIV = (FadeInNetworkImageView) convertView.findViewById(R.id.champIV);
-            holder.kdaTV = (TextView) convertView.findViewById(R.id.kdaTV);
-            holder.goldTV = (TextView) convertView.findViewById(R.id.goldTV);
-            holder.gamesPlayedTV = (TextView) convertView.findViewById(R.id.gamesPlayedTV);
-            holder.winCountTV = (TextView) convertView.findViewById(R.id.winCountTV);
+            holder.champIV = (CircularImageView) convertView.findViewById(R.id.champIV);
+            holder.kdaTV = (com.yrazlik.loltr.view.RobotoTextView) convertView.findViewById(R.id.kdaTV);
+            holder.goldTV = (com.yrazlik.loltr.view.RobotoTextView) convertView.findViewById(R.id.goldTV);
+            holder.gamesPlayedTV = (com.yrazlik.loltr.view.RobotoTextView) convertView.findViewById(R.id.gamesPlayedTV);
+            holder.winCountTV = (com.yrazlik.loltr.view.RobotoTextView) convertView.findViewById(R.id.winCountTV);
             convertView.setTag(holder);
         } else {
             holder = (HeaderViewHolder) convertView.getTag();
@@ -134,11 +139,7 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
                 }
             }
 
-            if (champImageUrl != null && champImageUrl.length() > 0) {
-                holder.champIV.setImageUrl(champImageUrl, ServiceRequest.getInstance(mContext).getImageLoader());
-            } else {
-                holder.champIV.setBackgroundResource(R.drawable.question_mark);
-            }
+            LolImageLoader.getInstance().loadImage(champImageUrl, holder.champIV);
 
             AggregatedStatsDto stats = champion.getStats();
             if(stats != null){
@@ -203,8 +204,8 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
     }
 
     class HeaderViewHolder {
-        FadeInNetworkImageView champIV;
-        TextView kdaTV, goldTV, gamesPlayedTV, winCountTV;
+        CircularImageView champIV;
+        com.yrazlik.loltr.view.RobotoTextView kdaTV, goldTV, gamesPlayedTV, winCountTV;
     }
 
 

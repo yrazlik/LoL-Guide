@@ -13,6 +13,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.SummonerChampionsAdapter;
 import com.yrazlik.loltr.data.ChampionStatsDto;
 import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,24 +26,20 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
  */
 public class SummonerChampionsFragment extends BaseFragment{
 
-    private TextView noWatchListTV;
+    private RobotoTextView noWatchListTV;
     private ExpandableStickyListHeadersListView champList;
     private SummonerChampionsAdapter adapter;
 
     private RankedStatsResponse rankedStatsResponse;
     private List<ChampionStatsDto> champions;
-    private ImageView parentBG;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_summoner_champions, container, false);
-        noWatchListTV = (TextView)v.findViewById(R.id.noWatchListTV);
+        noWatchListTV = (RobotoTextView) v.findViewById(R.id.noWatchListTV);
         champList = (ExpandableStickyListHeadersListView)v.findViewById(R.id.champList);
-        parentBG = (ImageView) v.findViewById(R.id.parentBG);
-        parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.mundo);
 
         Bundle extras = getArguments();
         if (extras != null) {
@@ -84,10 +81,10 @@ public class SummonerChampionsFragment extends BaseFragment{
                 public void onHeaderClick(StickyListHeadersListView l, View header, int itemPosition, long headerId, boolean currentlySticky) {
                     if (champList.isHeaderCollapsed(headerId)) {
                         champList.expand(headerId);
-                        header.findViewById(R.id.downArrow).setBackgroundResource(R.drawable.arrow_up);
+                        header.findViewById(R.id.downArrow).setBackgroundResource(R.drawable.arrow_up_black_thin);
                     } else {
                         champList.collapse(headerId);
-                        header.findViewById(R.id.downArrow).setBackgroundResource(R.drawable.arrow_down);
+                        header.findViewById(R.id.downArrow).setBackgroundResource(R.drawable.arrow_down_black_thin);
                     }
                 }
             });
