@@ -401,4 +401,8 @@ public class Commons {
             tv.setText(content);
         }
     }
+
+    public static boolean isValidString(String s) {
+        return s != null && s.length() > 0;
+    }
 }

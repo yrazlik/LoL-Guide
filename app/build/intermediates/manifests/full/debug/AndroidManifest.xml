@@ -149,6 +149,20 @@
             android:name="com.yrazlik.loltr.activities.FullScreenImageActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.yrazlik.loltr.activities.LolPushActivity"
+            android:launchMode="singleTop" />
+
+        <service android:name="com.yrazlik.loltr.LoLFirebaseMessagingService" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_launcher" />
+
+        <activity
             android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"
             android:theme="@style/Theme.IAPTheme" />
         <activity
@@ -190,7 +204,6 @@ Service handling Google Sign-In user revocation. For apps that do not integrate 
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
                 <category android:name="com.yrazlik.loltr" />
             </intent-filter>

@@ -146,6 +146,22 @@
         <activity
             android:name=".activities.FullScreenImageActivity"
             android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activities.LolPushActivity"
+            android:launchMode="singleTop"></activity>
+
+        <service
+            android:name=".LoLFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_launcher" />
+
     </application>
 
 </manifest>

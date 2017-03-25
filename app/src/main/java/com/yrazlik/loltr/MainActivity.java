@@ -32,6 +32,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.yrazlik.loltr.adapters.LeftMenuListAdapter;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
@@ -58,6 +59,7 @@ import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.yrazlik.loltr.LoLFirebaseMessagingService.FIREBASE_PUSH_TOPIC;
 import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_DISCOUNTS;
 import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_HOME;
 import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_LIVE_CHANNELS;
@@ -120,14 +122,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
         setDrawer();
-        Handler h = new Handler();
-        h.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mDrawerList.performItemClick(mDrawerList.getAdapter().getView(1, null, null), 2,
-                        mDrawerList.getAdapter().getItemId(2));
-            }
-        }, 250);
+        performDrawerMenuItemClick(1);
+
 
         String cat = leftMenuItems[1];
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -143,6 +139,15 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         setupInAppPurchases();
         continueSetup();
         deeplinkIntent = getIntent();
+        subscribeToTopic();
+    }
+
+    private void subscribeToTopic() {
+        try {
+            FirebaseMessaging.getInstance().subscribeToTopic(FIREBASE_PUSH_TOPIC);
+        } catch (Exception e) {
+            Log.d("LolApplication", "Cannot subscribe to topic.");
+        }
     }
 
     private void showInterstitial(){
@@ -719,6 +724,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     private void handleDeeplinkIntent(LolNotification notification) {
         if(notification != null) {
+            Log.d("LolApplication", "Will click deeplink now!!!");
+            Log.d("LolApplication", "Notification Action: " + notification.getNotificationAction());
+            Log.d("LolApplication", "Deeplink drawer menu position: " + getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
             performDrawerMenuItemClick(getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
         }
     }
@@ -799,6 +807,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Log.d("LolApplication", "Perform click position: " + position);
                 mDrawerList.performItemClick(mDrawerList.getAdapter().getView(position, null, null), position + 1,
                         mDrawerList.getAdapter().getItemId(position + 1));
                 highlightSelectedMenuRow();

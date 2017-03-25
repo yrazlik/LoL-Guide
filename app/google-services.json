@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "611585637865",
+    "firebase_url": "https://lol-guide.firebaseio.com",
+    "project_id": "lol-guide",
+    "storage_bucket": "lol-guide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611585637865:android:e1652808c7ff30e8",
+        "android_client_info": {
+          "package_name": "com.yrazlik.loltr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611585637865-r9k5q9d5kvlogqul6ivh91ujq5crp50h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwBLCGkKSqyq5dGH-a9O_T0QuTr9dA7yg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
