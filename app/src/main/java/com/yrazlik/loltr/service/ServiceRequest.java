@@ -173,6 +173,7 @@ public class ServiceRequest {
                         String json = new String(response.data);
                         json = trimMessage(json, "message");
                         onFailure(listener, json);
+                        onFailure(listener, requestID);
                     } else {
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             String json = new String(getContext().getResources().getString(R.string.networkError));
