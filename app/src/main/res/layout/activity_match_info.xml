@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_color">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardview_bg">
+
     <RelativeLayout
         android:id="@+id/toolbar"
-        android:layout_height="55dp"
-        android:layout_width="match_parent"
         style="@style/ToolBarStyle"
-        android:minHeight="?attr/actionBarSize" >
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:minHeight="?attr/actionBarSize">
 
         <ImageView
             android:id="@+id/backButton"
@@ -17,91 +18,100 @@
             android:layout_centerVertical="true"
             android:background="@drawable/back"/>
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/matchInfo"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/backButton"
             android:layout_marginLeft="10dp"
-            style="@style/whiteText18dp"/>
+            android:layout_toRightOf="@+id/backButton"
+            android:text="@string/matchInfo"
+            android:textAppearance="@style/whiteText18dp"/>
 
     </RelativeLayout>
+
     <ProgressBar
         android:id="@+id/loadingProgress"
+        style="@style/LolProgressBar"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerInParent="true"/>
 
     <ScrollView
         android:id="@+id/scrollContent"
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/adView"
+        android:layout_below="@+id/toolbar"
+        android:scrollbars="none"
+        android:fillViewport="true"
         android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/matchTimeTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:text="@string/matchTime"
                 android:gravity="center_horizontal"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"/>
-            <TextView
-                android:layout_below="@+id/matchTimeTV"
+                android:text="@string/matchTime"
+                android:textAppearance="@style/sp14BlackBold"/>
+
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/matchTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/matchTimeTV"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
-                style="@style/whiteText18dp"
+                android:textAppearance="@style/sp14BlackRegular"
                 />
 
-            <TextView
-                android:layout_below="@+id/matchTime"
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/team1TV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/matchTime"
                 android:layout_marginTop="10dp"
                 android:text="@string/team1"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"
+                android:textAppearance="@style/sp14BlackBold"
                 />
 
             <ListView
                 android:id="@+id/team1LV"
-                android:layout_below="@+id/team1TV"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></ListView>
+                android:layout_height="match_parent"
+                android:layout_below="@+id/team1TV"
+                android:scrollbars="none"
+                android:divider="@drawable/list_divider_gray_with_margin"
+                android:dividerHeight="0.5dp"
+                android:layout_marginTop="5dp"></ListView>
 
-            <TextView
+            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/team2TV"
-                android:layout_below="@+id/team1LV"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/team1LV"
+                android:layout_marginTop="5dp"
                 android:text="@string/team2"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"
+                android:textAppearance="@style/sp14BlackBold"
                 />
 
             <ListView
                 android:id="@+id/team2LV"
-                android:layout_below="@+id/team2TV"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></ListView>
-
+                android:layout_height="match_parent"
+                android:layout_below="@+id/team2TV"
+                android:scrollbars="none"
+                android:divider="@drawable/list_divider_gray_with_margin"
+                android:dividerHeight="0.5dp"
+                android:layout_marginTop="5dp"></ListView>
 
 
         </RelativeLayout>
@@ -115,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-3219973945608696/1016113966" />
+        ads:adUnitId="ca-app-pub-3219973945608696/1016113966"/>
 
 
 </RelativeLayout>

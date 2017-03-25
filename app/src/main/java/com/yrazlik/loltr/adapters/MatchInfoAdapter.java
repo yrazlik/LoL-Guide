@@ -7,13 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import com.androidquery.AQuery;
+import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Summoner;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.List;
 
@@ -24,7 +22,6 @@ public class MatchInfoAdapter extends ArrayAdapter<Summoner>{
 
 
     private Context mContext;
-    private AQuery aq;
 
     public MatchInfoAdapter(Context context, int resource, List<Summoner> objects) {
         super(context, resource, objects);
@@ -40,9 +37,8 @@ public class MatchInfoAdapter extends ArrayAdapter<Summoner>{
 
             holder = new ViewHolder();
             holder.champImage = (ImageView)convertView.findViewById(R.id.champImage);
-            holder.champName = (TextView)convertView.findViewById(R.id.champName);
-            holder.userName = (TextView)convertView.findViewById(R.id.userName);
-            holder.progress = (ProgressBar)convertView.findViewById(R.id.progress);
+            holder.champName = (RobotoTextView)convertView.findViewById(R.id.champName);
+            holder.userName = (RobotoTextView)convertView.findViewById(R.id.userName);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -50,8 +46,7 @@ public class MatchInfoAdapter extends ArrayAdapter<Summoner>{
 
         Summoner summoner = getItem(position);
 
-        aq = new AQuery(holder.champImage);
-        aq.progress(holder.progress).image("http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/champion/" + summoner.getKey() + ".png", true, true);
+        LolImageLoader.getInstance().loadImage("http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/champion/" + summoner.getKey() + ".png", holder.champImage);
         holder.champName.setText(mContext.getString(R.string.chosenChampion) + " " + summoner.getChampName());
         holder.userName.setText(mContext.getString(R.string.player) + " " + summoner.getSummonerName());
 
@@ -62,8 +57,7 @@ public class MatchInfoAdapter extends ArrayAdapter<Summoner>{
 
     static class ViewHolder {
         public ImageView champImage;
-        public TextView champName;
-        public TextView userName;
-        public ProgressBar progress;
+        public RobotoTextView champName;
+        public RobotoTextView userName;
     }
 }

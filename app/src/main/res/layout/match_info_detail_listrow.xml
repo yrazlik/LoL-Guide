@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="60dp">
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/selector_listview_material">
 
     <ImageView
         android:id="@+id/champImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_centerVertical="true"/>
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="20dp"
         android:layout_centerVertical="true"/>
 
     <RelativeLayout
         android:id="@+id/infoRightPartContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/champImage"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/champImage">
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/champName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/whiteText14dp"
-            android:text="Tristana"/>
+            android:text="Tristana"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/dp13BlackRegular"/>
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/champName"
             android:layout_alignLeft="@+id/champName"
+            android:layout_below="@+id/champName"
             android:layout_marginTop="5dp"
-            style="@style/whiteText14dp"
-            android:text="oh yeah baby"/>
+            android:text="oh yeah baby"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/dp13BlackRegular"/>
 
         <ImageView
             android:id="@+id/detailInfoArrow"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/arrow_right_blue_thin"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/detailInfoArrow"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            style="@style/whiteText14dp"
-            android:text="@string/detailInfo"/>
+            android:layout_marginRight="5dp"
+            android:background="@drawable/arrow_right_blue_thin"/>
+
+        <com.yrazlik.loltr.view.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/detailInfoArrow"
+            android:text="@string/detailInfo"
+            android:textAppearance="@style/dp12BlueRegular"/>
 
 
     </RelativeLayout>

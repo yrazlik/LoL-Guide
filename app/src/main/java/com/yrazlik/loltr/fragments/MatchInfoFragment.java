@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatSpinner;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -20,14 +17,18 @@ import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.activities.MatchInfoActivity;
+import com.yrazlik.loltr.adapters.SimpleSpinnerAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.SummonerDto;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoButton;
+import com.yrazlik.loltr.view.RobotoEditText;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,25 +37,21 @@ import java.util.Map;
  */
 public class MatchInfoFragment extends BaseFragment implements ResponseListener{
 
-    private Spinner regionSpinner;
-    private ArrayAdapter<String> spinnerAdapter;
-    private String[] regions = {"TR1", "EUW1", "NA1", "EUN1", "OC1",};// "BR1", "LA1", "LA2", "RU", "KR", "PBE1"};
-    private Button searchButton;
-    private EditText summonerNameET;
+    private AppCompatSpinner regionSpinner;
+    private SimpleSpinnerAdapter spinnerAdapter;
+    private String[] regions = Commons.regions;
+    private RobotoButton searchButton;
+    private RobotoEditText summonerNameET;
     private String selectedRegion = "tr";
-    private ImageView parentBG;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_match_info, container, false);
-        parentBG = (ImageView) v.findViewById(R.id.parentBG);
-        parentBG.setAlpha(0.3f);
-        parentBG.setBackgroundResource(R.drawable.amumu);
-        regionSpinner = (Spinner)v.findViewById(R.id.regionSpinner);
-        searchButton = (Button)v.findViewById(R.id.searchButton);
-        summonerNameET = (EditText)v.findViewById(R.id.summonerNameET);
-        spinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, regions);
+        regionSpinner = (AppCompatSpinner) v.findViewById(R.id.regionSpinner);
+        searchButton = (RobotoButton) v.findViewById(R.id.searchButton);
+        summonerNameET = (RobotoEditText) v.findViewById(R.id.summonerNameET);
+        spinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(regions)));
         regionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

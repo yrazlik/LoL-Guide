@@ -27,6 +27,7 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,13 +48,14 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
     private MatchInfoAdapter team1Adapter, team2Adapter;
     private ArrayList<Summoner> team1Summoners, team2Summoners;
     private ArrayList<Long> teamIds;
-    private TextView matchTime;
+    private RobotoTextView matchTime;
     private long counter;
     private ImageView backButton;
     private ProgressBar loadingProgress;
     private ScrollView scrollContent;
     private String selectedRegion;
     private AdView adView;
+    private RobotoTextView team1TV, team2TV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +77,16 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
                 finish();
             }
         });
-        matchTime = (TextView)findViewById(R.id.matchTime);
+        matchTime = (RobotoTextView)findViewById(R.id.matchTime);
         gson = new Gson();
         response = (MatchInfoResponse) getIntent().getSerializableExtra("MATCH_INFO_RESPONSE");
         selectedRegion = getIntent().getStringExtra("SELECTED_REGION");
         loadingProgress = (ProgressBar)findViewById(R.id.loadingProgress);
         scrollContent = (ScrollView)findViewById(R.id.scrollContent);
+        team1TV = (RobotoTextView) findViewById(R.id.team1TV);
+        team2TV = (RobotoTextView) findViewById(R.id.team2TV);
+        Commons.underline(team1TV);
+        Commons.underline(team2TV);
 
         if(response != null){
             team1LV = (ListView) findViewById(R.id.team1LV);
