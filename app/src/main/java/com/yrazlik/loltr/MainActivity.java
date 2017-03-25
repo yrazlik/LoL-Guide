@@ -58,8 +58,15 @@ import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_DISCOUNTS;
+import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_HOME;
+import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_LIVE_CHANNELS;
+import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_NEWS;
+import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_REMOVE_ADS;
+
 public class MainActivity extends ActionBarActivity implements ResponseListener {
 
+    private Intent deeplinkIntent;
     int mPosition = -1;
     String mTitle = "";
 
@@ -135,6 +142,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onCreate(savedInstanceState);
         setupInAppPurchases();
         continueSetup();
+        deeplinkIntent = getIntent();
     }
 
     private void showInterstitial(){
@@ -702,6 +710,17 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     @Override
     protected void onResume() {
         super.onResume();
+        if(deeplinkIntent != null) {
+            LolNotification notification = new LolNotification(deeplinkIntent);
+            handleDeeplinkIntent(notification);
+        }
+        deeplinkIntent = null;
+    }
+
+    private void handleDeeplinkIntent(LolNotification notification) {
+        if(notification != null) {
+            performDrawerMenuItemClick(getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
+        }
     }
 
     private void setupInAppPurchases() {
@@ -773,5 +792,44 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
                     }
                 }).show();
+    }
+
+    private void performDrawerMenuItemClick(final int position) {
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerList.performItemClick(mDrawerList.getAdapter().getView(position, null, null), position + 1,
+                        mDrawerList.getAdapter().getItemId(position + 1));
+                highlightSelectedMenuRow();
+            }
+        }, 1000);
+    }
+
+    private int getDeeplinkActionPositionOnDrawerMenu(LolNotification.NOTIFICATION_ACTION notificationAction) {
+        try {
+            if(notificationAction == ACTION_HOME) {
+               return 1;
+            } else if(notificationAction == ACTION_REMOVE_ADS) {
+                if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+                    return 11;
+                }
+            } else if(notificationAction == ACTION_DISCOUNTS) {
+                return 2;
+            } else if(notificationAction == ACTION_NEWS) {
+                return 3;
+            } else if(notificationAction == ACTION_LIVE_CHANNELS) {
+                return 9;
+            }
+        } catch (Exception e) {
+            return 1;
+        }
+        return 1;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        deeplinkIntent = intent;
     }
 }

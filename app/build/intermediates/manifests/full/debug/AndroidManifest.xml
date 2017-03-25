@@ -59,6 +59,7 @@
             android:theme="@android:style/Theme.Translucent" />
         <activity
             android:name="com.yrazlik.loltr.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -128,6 +129,18 @@
         <activity
             android:name="com.yrazlik.loltr.activities.MatchDetailActivity"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.yrazlik.loltr.DeeplinkingActivity"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:scheme="loltr" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.yrazlik.loltr.activities.CreditsActivity"

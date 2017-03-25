@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.DisplayMetrics;
@@ -21,6 +22,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.yrazlik.loltr.AppRater;
+import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
@@ -38,6 +40,7 @@ import java.util.TimerTask;
  */
 public class SplashActivity extends Activity{
 
+    private Intent deeplinkIntent;
     private TextView loadingDotsTV;
     private Timer timer;
     private int [] dots = {R.string.oneDot, R.string.twoDots, R.string.threeDots};
@@ -54,6 +57,10 @@ public class SplashActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        deeplinkIntent = getIntent();
+
+        LolApplication.appIsRunning = true;
         try {
             txtTypeWriter = (TypeWriter) findViewById(R.id.txtTypeWriter);
             txtTypeWriter.animateText(txtTypeWriter.getText().toString());
@@ -139,6 +146,7 @@ public class SplashActivity extends Activity{
                 if(!mainActivityStarted) {
                     mainActivityStarted = true;
                     Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    setDeeplinkIntentData(i);
                     finish();
                     startActivity(i);
                 }
@@ -149,11 +157,24 @@ public class SplashActivity extends Activity{
                 if(!mainActivityStarted) {
                     mainActivityStarted = true;
                     Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    setDeeplinkIntentData(i);
                     finish();
                     startActivity(i);
                 }
             }
         });
+    }
+
+    private void setDeeplinkIntentData(Intent mainActivityIntent) {
+        if (deeplinkIntent != null) {
+            Uri data = deeplinkIntent.getData();
+            if (data != null) {
+                mainActivityIntent.setData(data);
+            }
+            if(deeplinkIntent.getExtras() != null) {
+                mainActivityIntent.putExtras(deeplinkIntent.getExtras());
+            }
+        }
     }
 
     private void setRegionAuomatically(){

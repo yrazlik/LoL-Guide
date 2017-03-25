@@ -1,119 +1,151 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yrazlik.loltr"
-    android:versionCode="21"
-    android:versionName="2.5" >
+          package="com.yrazlik.loltr"
+          android:versionCode="21"
+          android:versionName="2.5">
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="21"/>
 
-    <uses-permission android:name="com.android.vending.BILLING" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <permission android:protectionLevel="signature"
-        android:name="com.yrazlik.loltr.permission.C2D_MESSAGE" />
-    <uses-permission android:name="com.yrazlik.loltr.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+
+    <permission
+        android:name="com.yrazlik.loltr.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="com.yrazlik.loltr.permission.C2D_MESSAGE"/>
     <application
         android:name=".LolApplication"
-        android:hardwareAccelerated="true"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version"/>
 
-        <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
-                  android:enabled="true">
+        <receiver
+            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true">
             <intent-filter>
-                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH"/>
             </intent-filter>
         </receiver>
-        <service android:name="com.google.android.gms.analytics.AnalyticsService"
-                 android:enabled="true"
-                 android:exported="false"/>
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false"/>
 
 
-        <activity android:name="com.google.android.gms.ads.AdActivity"
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"></activity>
-        
-        <activity android:name=".MainActivity"
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SplashActivity"
-                  android:screenOrientation="portrait">
-            <intent-filter >
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.FullScreenVideoActivity"
-                  android:screenOrientation="landscape">
+        <activity
+            android:name=".activities.FullScreenVideoActivity"
+            android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".activities.FullScreenSkinActivity"
+        <activity
+            android:name=".activities.FullScreenSkinActivity"
             android:screenOrientation="portrait">
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.default"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MatchInfoActivity"
+        <activity
+            android:name=".activities.MatchInfoActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
-            <intent-filter >
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.default"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PlayerMatchInfoDetailActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
-            <intent-filter >
+        <activity
+            android:name=".activities.PlayerMatchInfoDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.default"/>
             </intent-filter>
         </activity>
-        <activity android:name=".fragments.LiveChannelActivity"
+        <activity
+            android:name=".fragments.LiveChannelActivity"
             android:screenOrientation="landscape">
 
         </activity>
-        <activity android:name=".activities.ItemDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".activities.ItemDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light">
 
         </activity>
 
-        <activity android:name=".activities.FilterActivity"
-                  android:theme="@style/Theme.AppCompat.Light"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".activities.FilterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light">
 
         </activity>
         <activity android:name=".PlayerActivity">
 
         </activity>
-        <activity android:name=".activities.MatchDetailActivity"
+        <activity
+            android:name=".activities.MatchDetailActivity"
             android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".activities.CreditsActivity"
+        <activity
+            android:name="com.yrazlik.loltr.DeeplinkingActivity"
+            android:launchMode="singleTop">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data
+                    android:scheme="loltr"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".activities.CreditsActivity"
             android:screenOrientation="portrait"></activity>
 
-        <activity android:name=".activities.FullScreenImageActivity"
-                  android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activities.FullScreenImageActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

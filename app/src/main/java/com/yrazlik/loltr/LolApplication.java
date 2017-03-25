@@ -31,6 +31,7 @@ import java.util.Random;
  */
 public class LolApplication extends MultiDexApplication{
 
+    public static boolean appIsRunning = false;
     public static boolean firebaseInitialized;
     public static GoogleAnalytics analytics;
     public static Tracker tracker;
