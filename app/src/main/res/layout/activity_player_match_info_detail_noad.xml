@@ -5,10 +5,10 @@
 
     <RelativeLayout
         android:id="@+id/toolbar"
-        android:layout_height="55dp"
-        android:layout_width="match_parent"
         style="@style/ToolBarStyle"
-        android:minHeight="?attr/actionBarSize" >
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:minHeight="?attr/actionBarSize">
 
         <ImageView
             android:id="@+id/backButton"
@@ -17,228 +17,237 @@
             android:layout_centerVertical="true"
             android:background="@drawable/back"/>
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/playerDetail"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/backButton"
             android:layout_marginLeft="10dp"
-            style="@style/whiteText18dp"/>
+            android:layout_toRightOf="@+id/backButton"
+            android:text="@string/playerDetail"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="normal"/>
 
     </RelativeLayout>
 
     <ScrollView
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/adView"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/bg_gray">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray">
 
-            <RelativeLayout
+
+            <android.support.v7.widget.CardView
                 android:id="@+id/topPartContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp">
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/champImage"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_marginLeft="10dp"/>
-                <ProgressBar
-                    android:layout_centerVertical="true"
-                    android:id="@+id/progress"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="35dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/cardview_bg"
+                android:elevation="2dp"
+                app:cardCornerRadius="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
                 <RelativeLayout
-                    android:layout_toRightOf="@+id/champImage"
                     android:layout_width="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/userName"
-                        android:textStyle="bold"
-                        android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/champImage"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/whiteText18dp"
-                        android:textColor="@color/material_yellow"
-                        android:singleLine="true"
-                        android:layout_marginLeft="15dp"
-                        android:text="Best Riven NA"/>
-                    <TextView
-                        android:id="@+id/userLevel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/userName"
-                        style="@style/whiteText18dp"
-                        android:layout_marginTop="5dp"
-                        android:singleLine="true"
-                        android:layout_marginLeft="15dp"
-                        android:visibility="gone"/>
-                    <ProgressBar
-                        android:id="@+id/progressLevel"
-                        android:layout_below="@+id/userName"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp" />
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/champImage">
+
+                        <com.yrazlik.loltr.view.RobotoTextView
+                            android:id="@+id/userName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Best Riven NA"
+                            android:textAppearance="@style/sp14BlackBold"/>
+
+                        <com.yrazlik.loltr.view.RobotoTextView
+                            android:id="@+id/userLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/userName"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textAppearance="@style/sp13BlackRegular"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
                 </RelativeLayout>
-            </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-            <RelativeLayout
+
+            <android.support.v7.widget.CardView
                 android:id="@+id/leagueInfo"
-                android:layout_below="@+id/topPartContainer"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_height="120dp">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/topPartContainer"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/cardview_bg"
+                android:elevation="2dp"
+                app:cardCornerRadius="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-                <TextView
-                    android:id="@+id/leagueInfoTV"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/leagueInfo"
-                    style="@style/whiteText18dp"
-                    android:textColor="@color/material_yellow"
-                    />
+                    android:padding="10dp">
 
-                <ImageView
-                    android:id="@+id/leagueBadge"
-                    android:layout_below="@+id/leagueInfoTV"
-                    android:layout_centerVertical="true"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"/>
-                <ProgressBar
-                    android:id="@+id/progressLeagueBadge"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
-
-                <RelativeLayout
-                    android:id="@+id/leagueInfoTextContainer"
-                    android:layout_toRightOf="@+id/leagueBadge"
-                    android:layout_below="@+id/leagueInfoTV"
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:id="@+id/leagueTV"
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/leagueInfoTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/whiteText14dp"
-                        android:visibility="gone"/>
-                    <ProgressBar
-                        android:id="@+id/progressLeague"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp" />
+                        android:text="@string/leagueInfo"
+                        android:textAppearance="@style/sp14BlackBold"
+                        />
 
-                    <TextView
-                        android:id="@+id/leagueNameTV"
-                        android:layout_below="@+id/leagueTV"
+                    <ImageView
+                        android:id="@+id/leagueBadge"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_below="@+id/leagueInfoTV"
+                        android:layout_centerVertical="true"/>
+
+                    <RelativeLayout
+                        android:id="@+id/leagueInfoTextContainer"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/whiteText14dp"
-                        android:singleLine="true"
-                        android:layout_marginTop="5dp"
-                        android:visibility="gone"/>
-                    <ProgressBar
-                        android:id="@+id/progressLeagueName"
-                        android:layout_below="@+id/progressLeague"
-                        android:layout_marginTop="5dp"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp" />
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/leagueInfoTV"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/leagueBadge"
+                        android:layout_alignTop="@+id/leagueBadge"
+                        android:layout_alignBottom="@+id/leagueBadge"
+                        android:gravity="center_vertical">
+
+                        <com.yrazlik.loltr.view.RobotoTextView
+                            android:id="@+id/leagueTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="-2dp"
+                            android:text="@string/unranked"
+                            android:textAppearance="@style/sp12BlackRegular"
+                            android:visibility="visible"/>
+
+                        <com.yrazlik.loltr.view.RobotoTextView
+                            android:id="@+id/leagueNameTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/leagueTV"
+                            android:layout_marginTop="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textAppearance="@style/sp11BlackRegular"
+                            android:textStyle="italic"
+                            android:visibility="visible"/>
+
+                    </RelativeLayout>
+
 
                 </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-
-            </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/matchHistoryInfo"
-            android:layout_below="@+id/leagueInfo"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_height="120dp">
-
-            <TextView
-                android:id="@+id/matchHistoryTV"
+            <android.support.v7.widget.CardView
+                android:id="@+id/matchHistoryInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/matchHistory"
-                style="@style/whiteText18dp"
-                android:textColor="@color/material_yellow"
-                />
+                android:layout_below="@+id/leagueInfo"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/cardview_bg"
+                android:elevation="2dp"
+                app:cardCornerRadius="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/totalWonMatchCountTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="5dp"
-                style="@style/whiteText14dp"
-                android:layout_below="@+id/matchHistoryTV"
-                />
-            <ProgressBar
-                android:id="@+id/progressWonMatchCount"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/matchHistoryTV"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
-            <TextView
-                android:id="@+id/totalRankedWinLoseCountTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="5dp"
-                android:text="Dereceli Kazanma/Kaybetme:"
-                style="@style/whiteText14dp"
-                android:layout_below="@+id/totalWonMatchCountTV"
-                />
-            <TextView
-                android:id="@+id/totalRankedWinCountTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
-                android:layout_toRightOf="@+id/totalRankedWinLoseCountTV"
-                style="@style/whiteText14dp"
-                android:textColor="#36EB26"
-                />
-            <ProgressBar
-                android:id="@+id/progresstotalWinCount"
-                android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
-                android:layout_toRightOf="@+id/totalRankedWinLoseCountTV"
-                android:layout_marginLeft="7dp"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/matchHistoryTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/matchHistory"
+                        android:textAppearance="@style/sp14BlackBold"
+                        />
 
-            <TextView
-                android:id="@+id/slashTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
-                android:layout_toRightOf="@+id/totalRankedWinCountTV"
-                style="@style/whiteText14dp"
-                />
-            <TextView
-                android:id="@+id/totalRankedLoseCountTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
-                android:layout_toRightOf="@+id/slashTV"
-                android:textSize="14dp"
-                android:textColor="#EB452F"
-                />
-        </RelativeLayout>
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/totalWonMatchCountTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/matchHistoryTV"
+                        android:layout_marginTop="5dp"
+                        android:textAppearance="@style/sp12BlackRegular"
+                        />
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/totalRankedWinLoseCountTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/totalWonMatchCountTV"
+                        android:layout_marginTop="5dp"
+                        android:text="Dereceli Kazanma/Kaybetme:"
+                        android:textAppearance="@style/sp12BlackRegular"
+                        />
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/totalRankedWinCountTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
+                        android:layout_marginLeft="7dp"
+                        android:layout_toRightOf="@+id/totalRankedWinLoseCountTV"
+                        android:textColor="#36EB26"
+                        android:textSize="12sp"
+                        />
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/slashTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
+                        android:layout_toRightOf="@+id/totalRankedWinCountTV"
+                        android:textAppearance="@style/sp12BlackRegular"
+                        />
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:id="@+id/totalRankedLoseCountTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/totalRankedWinLoseCountTV"
+                        android:layout_toRightOf="@+id/slashTV"
+                        android:textColor="#EB452F"
+                        android:textSize="12sp"
+                        />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
         </RelativeLayout>
     </ScrollView>
