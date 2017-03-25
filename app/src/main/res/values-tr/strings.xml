@@ -282,7 +282,7 @@
     </string>
     <string name="loading_resources_nodot">Veriler alınıyor</string>
     <string name="summonerNameTitle">Sihirdar Adı:</string>
-    <string name="summoner_name_hint">Örnek: Naru</string>
+    <string name="summoner_name_hint">Örnek: Thaldrin</string>
     <string name="oneDot">.</string>
     <string name="twoDots">..</string>
     <string name="threeDots">...</string>

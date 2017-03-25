@@ -267,7 +267,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
                 RobotoTextView tab = (RobotoTextView) v;
                 tab.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
-                tab.setTypeface(tabTypeface, tabTypefaceStyle);
+                //tab.setTypeface(tabTypeface, tabTypefaceStyle);
                 tab.setTextColor(tabTextColor);
 
                 // setAllCaps() is only available from API 14, so the upper case is made manually if we are on a

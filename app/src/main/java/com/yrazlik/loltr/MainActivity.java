@@ -53,6 +53,7 @@ import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +123,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }, 250);
 
         String cat = leftMenuItems[1];
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(cat);
+        //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
         highlightSelectedMenuRow(2);
     }
 
@@ -189,7 +192,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             /** Called when a drawer is opened */
             public void onDrawerOpened(View drawerView) {
                 String selectCategory = getResources().getString(R.string.select_category);
-                getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + selectCategory + "</font>"));
+                Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+                ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(selectCategory);
+                //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + selectCategory + "</font>"));
                 supportInvalidateOptionsMenu();
             }
         };
@@ -242,7 +247,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         if (mPosition > -1) {
             String cat = leftMenuItems[mPosition];
-            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(cat);
+            //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
             mAdapter.setSelectedItem(mPosition);
             mAdapter.notifyDataSetChanged();
         }
@@ -255,7 +262,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         if (mPosition > -1) {
             String cat = leftMenuItems[mPosition];
-            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(cat);
+            //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
             mAdapter.setSelectedItem(mPosition);
             mAdapter.notifyDataSetChanged();
         }
@@ -317,7 +326,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 
         String cat = leftMenuItems[7];
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(cat);
+        //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
         mAdapter.notifyDataSetChanged();
     }
 
