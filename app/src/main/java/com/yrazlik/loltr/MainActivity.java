@@ -54,6 +54,7 @@ import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
+import com.yrazlik.loltr.view.PushNotificationDialog;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
@@ -716,10 +717,25 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     protected void onResume() {
         super.onResume();
         if(deeplinkIntent != null) {
-            LolNotification notification = new LolNotification(deeplinkIntent);
-            handleDeeplinkIntent(notification);
+            if(deeplinkIntent.getExtras() != null) {
+                if(Commons.isValidString(getIntentMessageBody())) {
+                    LolNotification notification = new LolNotification(deeplinkIntent);
+                    handleDeeplinkIntent(notification);
+                }
+            }
         }
         deeplinkIntent = null;
+    }
+
+    private String getIntentMessageBody() {
+        try {
+            if(Commons.getLanguage() == "tr") {
+                return (String) deeplinkIntent.getExtras().get(LolNotification.PUSH_NOTIFICATION_BODY);
+            }
+            return (String) deeplinkIntent.getExtras().get(LolNotification.PUSH_NOTIFICATION_BODY_ENGLISH);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private void handleDeeplinkIntent(LolNotification notification) {
@@ -728,6 +744,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             Log.d("LolApplication", "Notification Action: " + notification.getNotificationAction());
             Log.d("LolApplication", "Deeplink drawer menu position: " + getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
             performDrawerMenuItemClick(getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
+            new PushNotificationDialog(MainActivity.this, notification.getBody()).show();
         }
     }
 

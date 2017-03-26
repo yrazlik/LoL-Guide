@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="15dp">
+
+
+    <com.yrazlik.loltr.view.RobotoTextView
+        android:id="@+id/pushNoificationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_black"
+        android:textSize="13sp"/>
+
+    <com.yrazlik.loltr.view.RobotoButton
+        android:id="@+id/closeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pushNoificationText"
+        android:layout_marginTop="15dp"
+        android:background="@color/tab_color"
+        android:minHeight="35dp"
+        android:text="@string/close"
+        android:textAllCaps="false"
+        android:textColor="@color/white"/>
+
+
+</RelativeLayout>

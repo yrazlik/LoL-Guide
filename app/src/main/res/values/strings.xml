@@ -143,6 +143,7 @@
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
     <string name="filter">Filter</string>
+    <string name="close">Close</string>
     <string name="noTo">This item cannot be upgraded into another item.</string>
 
     <string name="no_video_found">No video found.</string>
