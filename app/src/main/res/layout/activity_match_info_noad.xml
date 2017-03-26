@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/app_color">
+                android:background="@color/cardview_bg">
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -42,8 +42,8 @@
         android:layout_height="match_parent"
         android:layout_above="@id/adView"
         android:layout_below="@+id/toolbar"
-        android:fillViewport="true"
         android:scrollbars="none"
+        android:fillViewport="true"
         android:visibility="gone">
 
         <RelativeLayout
@@ -88,10 +88,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/team1TV"
-                android:layout_marginTop="5dp"
+                android:scrollbars="none"
                 android:divider="@drawable/list_divider_gray_with_margin"
                 android:dividerHeight="0.5dp"
-                android:scrollbars="none"></ListView>
+                android:layout_marginTop="5dp"></ListView>
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/team2TV"
@@ -108,10 +108,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/team2TV"
-                android:layout_marginTop="5dp"
+                android:scrollbars="none"
                 android:divider="@drawable/list_divider_gray_with_margin"
                 android:dividerHeight="0.5dp"
-                android:scrollbars="none"></ListView>
+                android:layout_marginTop="5dp"></ListView>
 
 
         </RelativeLayout>
