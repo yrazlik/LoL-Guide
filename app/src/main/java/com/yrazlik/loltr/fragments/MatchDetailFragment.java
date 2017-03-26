@@ -160,14 +160,14 @@ public class MatchDetailFragment extends BaseFragment{
                         spell1.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     }else{
                         spell1.setImageUrl(null, ServiceRequest.getInstance(getActivity()).getImageLoader());
-                        spell1.setBackgroundResource(R.drawable.question_mark);
+                        spell1.setBackgroundResource(R.drawable.placeholder);
                     }
 
                     if (spell2Name != null) {
                         spell2.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, ServiceRequest.getInstance(getActivity()).getImageLoader());
                     }else{
                         spell2.setImageUrl(null, ServiceRequest.getInstance(getActivity()).getImageLoader());
-                        spell2.setBackgroundResource(R.drawable.question_mark);
+                        spell2.setBackgroundResource(R.drawable.placeholder);
                     }
                 }
 
@@ -193,7 +193,7 @@ public class MatchDetailFragment extends BaseFragment{
                     champIV.setImageUrl(champImageUrl, ServiceRequest.getInstance(getActivity()).getImageLoader());
                 }else{
                     champIV.setImageUrl(null, ServiceRequest.getInstance(getActivity()).getImageLoader());
-                    champIV.setBackgroundResource(R.drawable.question_mark);
+                    champIV.setBackgroundResource(R.drawable.placeholder);
                 }
 
                 Stats stats = game.getStats();

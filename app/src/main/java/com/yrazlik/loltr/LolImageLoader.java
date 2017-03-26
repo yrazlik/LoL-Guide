@@ -33,8 +33,8 @@ public class LolImageLoader {
 
     private void initImageLoader() {
         mImageLoader = ImageLoader.getInstance();
-        mOptions = new DisplayImageOptions.Builder().resetViewBeforeLoading(true).showImageOnLoading(R.drawable.question_mark).showImageForEmptyUri(R.drawable.question_mark)
-                .showImageOnFail(R.drawable.question_mark).cacheOnDisk(true).cacheInMemory(true)
+        mOptions = new DisplayImageOptions.Builder().resetViewBeforeLoading(true).showImageOnLoading(R.drawable.placeholder).showImageForEmptyUri(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.placeholder).cacheOnDisk(true).cacheInMemory(true)
                 .build();
 
         if(!mImageLoader.isInited()) {

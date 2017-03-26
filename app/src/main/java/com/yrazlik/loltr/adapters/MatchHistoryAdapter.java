@@ -127,14 +127,14 @@ public class MatchHistoryAdapter extends ArrayAdapter<Game>{
                     holder.spell1.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, ServiceRequest.getInstance(mContext).getImageLoader());
                 }else{
                     holder.spell1.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                    holder.spell1.setBackgroundResource(R.drawable.question_mark);
+                    holder.spell1.setBackgroundResource(R.drawable.placeholder);
                 }
 
                 if (spell2Name != null) {
                     holder.spell2.setImageUrl(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, ServiceRequest.getInstance(mContext).getImageLoader());
                 }else{
                     holder.spell2.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                    holder.spell2.setBackgroundResource(R.drawable.question_mark);
+                    holder.spell2.setBackgroundResource(R.drawable.placeholder);
                 }
             }
 
@@ -160,7 +160,7 @@ public class MatchHistoryAdapter extends ArrayAdapter<Game>{
                 holder.champIV.setImageUrl(champImageUrl, ServiceRequest.getInstance(mContext).getImageLoader());
             }else{
                 holder.champIV.setImageUrl(null, ServiceRequest.getInstance(mContext).getImageLoader());
-                holder.champIV.setBackgroundResource(R.drawable.question_mark);
+                holder.champIV.setBackgroundResource(R.drawable.placeholder);
             }
 
             Stats stats = game.getStats();

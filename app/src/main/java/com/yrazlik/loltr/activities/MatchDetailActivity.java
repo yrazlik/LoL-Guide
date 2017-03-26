@@ -113,8 +113,8 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_match_detail);
 
-        mOptions = new DisplayImageOptions.Builder().resetViewBeforeLoading(true).showImageOnLoading(R.drawable.question_mark).showImageForEmptyUri(R.drawable.block)
-                .showImageOnFail(R.drawable.question_mark).cacheOnDisk(true).cacheInMemory(true)
+        mOptions = new DisplayImageOptions.Builder().resetViewBeforeLoading(true).showImageOnLoading(R.drawable.placeholder).showImageForEmptyUri(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.placeholder).cacheOnDisk(true).cacheInMemory(true)
                 .build();
 
         if(getIntent() != null){

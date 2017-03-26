@@ -105,6 +105,8 @@ public class SplashActivity extends Activity{
         }else{
             getPurchaseEvent();
         }
+
+        startMainActivity();
     }
 
     private void animateThreeDots() {
