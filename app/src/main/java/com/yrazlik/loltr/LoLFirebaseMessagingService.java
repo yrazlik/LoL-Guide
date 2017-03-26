@@ -163,7 +163,7 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
 
             return notif;
         }else {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this).setSmallIcon(R.drawable.ic_launcher_monochrome)
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this).setSmallIcon(R.drawable.push_icon_lollipop)
                     .setTicker(ticker).setContentTitle(title).setContentText(contentText).setContentIntent(pIntent)
                     .setColor(getResources().getColor(R.color.button_blue)).setStyle(new NotificationCompat.BigTextStyle().bigText(contentText));;
 
