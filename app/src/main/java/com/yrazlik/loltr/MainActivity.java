@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -87,7 +88,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    private RelativeLayout mDrawer;
+    private NavigationView mDrawer;
     private List<LeftMenuItem> mList;
 
     private LeftMenuListAdapter mAdapter;
@@ -176,7 +177,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
         // Getting a reference to the sidebar drawer ( Title + ListView )
-        mDrawer = (RelativeLayout) findViewById(R.id.drawer);
+        mDrawer = (NavigationView) findViewById(R.id.drawer);
 
         // Each row in the list stores country name, count and flag
         mList = new ArrayList<>();

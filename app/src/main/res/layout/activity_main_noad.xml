@@ -15,9 +15,9 @@
             android:id="@+id/toolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="normal"
-            android:textColor="@color/white"/>
+            android:textStyle="normal"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -43,9 +43,9 @@
         </RelativeLayout>
         <!-- The navigation drawer -->
 
-        <RelativeLayout
+        <android.support.design.widget.NavigationView
             android:id="@+id/drawer"
-            style="@style/NavDrawer"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left">
 
@@ -54,12 +54,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/menuTV"
-                android:scrollbars="none"
                 android:background="@color/menu_color"
                 android:choiceMode="singleChoice"
                 android:divider="@drawable/list_divider_gray_with_margin"
-                android:dividerHeight="0.5dp"/>
-        </RelativeLayout>
+                android:dividerHeight="0.5dp"
+                android:scrollbars="none"/>
+        </android.support.design.widget.NavigationView>
 
     </android.support.v4.widget.DrawerLayout>
 
