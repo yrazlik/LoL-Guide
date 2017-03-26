@@ -33,7 +33,7 @@ import java.util.List;
 public class MatchHistoryFragment extends BaseFragment implements ResponseListener{
 
     private long summonerId;
-    private String region = Commons.SELECTED_REGION;
+    private String region;
     private RecyclerView matchHistoryRV;
     private MatchHistoryRVAdapter adapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -41,6 +41,7 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
     private RecentMatchesResponse recentMatchesResponse;
 
     public static final String EXTRA_SUMMONERID = "com.yrazlik.loltr.fragments.matchhistoryfragment.extrasummonerid";
+    public static final String EXTRA_REGION = "com.yrazlik.loltr.fragments.matchhistoryfragment.extraregion";
 
     @Nullable
     @Override
@@ -49,7 +50,8 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
         Bundle extras = getArguments();
         if (extras != null) {
             recentMatchesResponse = (RecentMatchesResponse) extras.getSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES);
-            summonerId = (long) extras.getLong(EXTRA_SUMMONERID);
+            summonerId = extras.getLong(EXTRA_SUMMONERID);
+            region = extras.getString(EXTRA_REGION);
         }
         if(recentMatchesResponse != null){
             games = recentMatchesResponse.getGames();

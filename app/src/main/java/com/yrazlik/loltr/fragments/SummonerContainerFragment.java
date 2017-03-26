@@ -122,6 +122,7 @@ public class SummonerContainerFragment extends BaseFragment{
                 Bundle args = new Bundle();
                 args.putSerializable(SummonerOverviewFragment.EXTRA_RECENTMATCHES, recentMatchesResponse);
                 args.putLong(MatchHistoryFragment.EXTRA_SUMMONERID, summonerInfo.getId());
+                args.putString(MatchHistoryFragment.EXTRA_REGION, region);
                 matchHistoryFragment.setArguments(args);
                 return matchHistoryFragment;
             }else if(position == 2){
