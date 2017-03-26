@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/cardview_bg">
-
-    <ImageView
-        android:id="@+id/imageViewSplashImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_black_transparent" />
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/bg_gray">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:background="@color/cardview_bg">
+        android:layout_margin="5dp"
+        android:background="@color/cardview_bg"
+        android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_bg">
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textviewLegend"
+                style="@style/sp13BlackRegular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="70dp"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="70dp"
-                style="@style/sp13BlackRegular"
-                android:gravity="center_vertical" />
+                android:paddingTop="15dp"/>
         </RelativeLayout>
     </ScrollView>
 

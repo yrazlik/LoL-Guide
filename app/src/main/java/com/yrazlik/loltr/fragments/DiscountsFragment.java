@@ -49,7 +49,7 @@ public class DiscountsFragment extends BaseFragment {
         DisplayMetrics metrics = getActivity().getResources().getDisplayMetrics();
         int textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 11, getActivity().getResources().getDisplayMetrics());
         tabs.setTextSize(textSize);
-        tabs.setIndicatorHeight(8);
+        tabs.setIndicatorHeight(12);
         tabs.setViewPager(pager);
     }
 

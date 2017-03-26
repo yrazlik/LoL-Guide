@@ -23,7 +23,7 @@
             android:id="@+id/textViewRuneName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/sp12GrayRegular"/>
+            android:textAppearance="@style/sp12BlackRegular"/>
 
         <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/textViewDateInterval"

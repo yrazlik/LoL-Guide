@@ -2,21 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@color/cardview_bg">
-
-    <ImageView
-        android:id="@+id/imageViewSplashImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/cardview_bg"/>
+                android:background="@color/bg_gray">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:fillViewport="true"
+        android:background="@color/cardview_bg">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_bg"
             android:paddingBottom="35dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
