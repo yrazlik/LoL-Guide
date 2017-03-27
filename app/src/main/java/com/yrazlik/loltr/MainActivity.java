@@ -730,7 +730,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     private String getIntentMessageBody() {
         try {
-            if(Commons.getLanguage() == "tr") {
+            if(Commons.getLanguage().equalsIgnoreCase("tr")) {
                 return (String) deeplinkIntent.getExtras().get(LolNotification.PUSH_NOTIFICATION_BODY);
             }
             return (String) deeplinkIntent.getExtras().get(LolNotification.PUSH_NOTIFICATION_BODY_ENGLISH);
