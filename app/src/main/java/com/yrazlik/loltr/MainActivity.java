@@ -745,8 +745,23 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             Log.d("LolApplication", "Notification Action: " + notification.getNotificationAction());
             Log.d("LolApplication", "Deeplink drawer menu position: " + getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
             performDrawerMenuItemClick(getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
-            new PushNotificationDialog(MainActivity.this, notification.getBody()).show();
+            new PushNotificationDialog(MainActivity.this, getBody(notification)).show();
         }
+    }
+
+    private String getBody(LolNotification notification) {
+        if (notification != null) {
+            if(Commons.getLanguage().equalsIgnoreCase("tr")) {
+                if (Commons.isValidString(notification.getBody())) {
+                    return notification.getBody();
+                }
+            } else {
+                if (Commons.isValidString(notification.getBodyEnglish())) {
+                    return notification.getBodyEnglish();
+                }
+            }
+        }
+        return getString(R.string.app_name);
     }
 
     private void setupInAppPurchases() {
