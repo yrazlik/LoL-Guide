@@ -68,6 +68,13 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
 
         if(name != null){
             holder.name.setText(name);
+            if(name.equalsIgnoreCase(mContext.getResources().getString(R.string.kill_death))
+                    || name.equalsIgnoreCase(mContext.getResources().getString(R.string.earnings))
+                    || name.equalsIgnoreCase(mContext.getResources().getString(R.string.damagePart))) {
+                holder.name.setTextColor(mContext.getResources().getColor(R.color.material_yellow));
+            } else {
+                holder.name.setTextColor(mContext.getResources().getColor(R.color.white));
+            }
         }else {
             holder.name.setText("?????");
         }

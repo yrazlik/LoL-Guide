@@ -202,7 +202,7 @@ public class SummonerOverviewFragment extends BaseFragment {
         if (summonerInfo != null) {
             LolImageLoader.getInstance().loadImage(Commons.PROFILE_ICON_BASE_URL + summonerInfo.getProfileIconId() + ".png", profileIconIV);
             summonerNameTV.setText(summonerInfo.getName());
-            regionLevelTV.setText(getResources().getString(R.string.region) + " " + region.toUpperCase() + ", Level:" + summonerInfo.getSummonerLevel());
+            regionLevelTV.setText(getResources().getString(R.string.region) + " " + region.toUpperCase() + ", " + getString(R.string.lvl) + ": " + summonerInfo.getSummonerLevel());
         }
 
         if (rankedStatsResponse == null) {

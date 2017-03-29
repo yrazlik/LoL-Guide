@@ -60,7 +60,7 @@
                         android:layout_marginTop="2dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="Level: ???"
+                        android:text="@string/lvl"
                         android:textAppearance="@style/sp12GrayRegular"/>
                 </RelativeLayout>
 
