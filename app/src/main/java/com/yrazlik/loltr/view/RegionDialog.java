@@ -32,7 +32,7 @@ public class RegionDialog extends Dialog{
 
     private ListView regionList;
     private ArrayAdapter<String> adapter;
-    private String[] regions = {"Turkey", "Europe West", "North America", "Europe North/East", "Oceania", "Brazil", "Latin America North", "Latin America South", "Russia", "Korea"};
+    private String[] regions = {"Turkey", "Europe West", "North America", "Europe North/East", "Japan", "Oceania", "Brazil", "Latin America North", "Latin America South", "Russia", "Korea"};
 
 
     @Override
@@ -66,7 +66,11 @@ public class RegionDialog extends Dialog{
                     Commons.SELECTED_REGION = "ru";
                 }else if(region.equalsIgnoreCase("Korea")){
                     Commons.SELECTED_REGION = "kr";
-                }else{
+                } else if(region.equalsIgnoreCase("Japan")){
+                    Commons.SELECTED_REGION = "jp";
+                } else if(region.equalsIgnoreCase("Japan")){
+                    Commons.SELECTED_REGION = "jp";
+                } else{
                     Commons.SELECTED_REGION = "tr";
                 }
 

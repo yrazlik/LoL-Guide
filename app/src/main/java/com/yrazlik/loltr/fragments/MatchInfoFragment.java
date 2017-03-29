@@ -39,7 +39,6 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
 
     private AppCompatSpinner regionSpinner;
     private SimpleSpinnerAdapter spinnerAdapter;
-    private String[] regions = Commons.regions;
     private RobotoButton searchButton;
     private RobotoEditText summonerNameET;
     private String selectedRegion = "tr";
@@ -51,37 +50,14 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
         regionSpinner = (AppCompatSpinner) v.findViewById(R.id.regionSpinner);
         searchButton = (RobotoButton) v.findViewById(R.id.searchButton);
         summonerNameET = (RobotoEditText) v.findViewById(R.id.summonerNameET);
-        spinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(regions)));
+        spinnerAdapter = new SimpleSpinnerAdapter(getContext(), Commons.getSortedRegions());
         regionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
-                    case 0:
-                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL;
-                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_TR;
-                        selectedRegion = "tr";
-                        break;
-                    case 1:
-                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_EUW;
-                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUW;
-                        selectedRegion = "euw";
-                        break;
-                    case 2:
-                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_NA;
-                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_NA;
-                        selectedRegion = "na";
-                        break;
-                    case 3:
-                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_EUNE;
-                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_EUNE;
-                        selectedRegion = "eune";
-                        break;
-                    case 4:
-                        Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.SERVICE_BASE_URL_OCE;
-                        Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.SPECTATOR_SERVICE_BASE_URL_OC;
-                        selectedRegion = "oce";
-                        break;
-                }
+                selectedRegion = ((String) parent.getAdapter().getItem(position)).toLowerCase();
+                Commons.SELECTED_REGION_FOR_MATCH_INFO_PATH_PARAM = selectedRegion;
+                Commons.SERVICE_BASE_URL_FOR_MATCH_INFO = Commons.getSpectatorServiceBaseUrl(selectedRegion);
+                Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = Commons.getSpectatorServiceBaseUrlCurrentSelected(selectedRegion);
             }
 
             @Override
@@ -98,7 +74,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                 }else{
                     String summonerName = summonerNameET.getText().toString();
                     ArrayList<String> pathParams = new ArrayList<String>();
-                    pathParams.add(selectedRegion);
+                    pathParams.add(Commons.getSpectatorServiceRegionPathParameter(Commons.SELECTED_REGION_FOR_MATCH_INFO_PATH_PARAM));
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");
