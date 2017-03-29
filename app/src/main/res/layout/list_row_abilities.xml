@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:elevation="3dp"
-    app:cardCornerRadius="0dp">
+    android:elevation="2dp"
+    app:cardCornerRadius="0dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,9 +19,9 @@
             android:id="@+id/relativeLayoutSpellTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="13dp"
+            android:background="@color/white"
             android:paddingBottom="13dp"
-            android:background="@color/white">
+            android:paddingTop="13dp">
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textViewSpellTitle"
@@ -49,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/titleSeparator"
             android:layout_marginTop="7dp"
-            android:gravity="center"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:gravity="center">
 
             <com.pkmmte.view.CircularImageView
                 android:id="@+id/imageViewSpellImage"
@@ -62,16 +64,16 @@
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/textViewSpellBody"
-                android:textAppearance="@style/sp12GrayRegular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="asdasdasdasdasdasdqweqweqweqwe"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
-                android:layout_toRightOf="@+id/imageViewSpellImage"/>
+                android:layout_toRightOf="@+id/imageViewSpellImage"
+                android:text="asdasdasdasdasdasdqweqweqweqwe"
+                android:textAppearance="@style/sp12GrayRegular"/>
 
         </RelativeLayout>
 
@@ -88,17 +90,17 @@
 
         <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/textViewVideo"
-            android:layout_below="@+id/specsSeparator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/specsSeparator"
             android:layout_centerHorizontal="true"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/arrow_right_blue_thin"
             android:gravity="center"
+            android:paddingBottom="13dp"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:paddingTop="13dp"
-            android:paddingBottom="13dp"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/arrow_right_blue_thin"
             android:text="@string/video"
             android:textAppearance="@style/sp13BlueRegular"/>
 

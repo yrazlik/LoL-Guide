@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@color/bg_gray">
@@ -8,52 +9,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:fillViewport="true"
-        android:background="@color/cardview_bg">
+        android:background="@color/cardview_bg"
+        android:fillViewport="true">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/cardview_bg"
-            android:paddingBottom="35dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="15dp">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/textviewAllyTipsTitle"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/sp14BlackBold"/>
+                android:background="@color/cardview_bg"
+                android:paddingBottom="35dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp">
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/textviewAllyTips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textviewAllyTipsTitle"
-                android:layout_marginTop="15dp"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/sp12BlackRegular"/>
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/textviewAllyTipsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/sp14BlackBold"/>
+
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/textviewAllyTips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textviewAllyTipsTitle"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/sp12BlackRegular"/>
 
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/textviewEnemyTipsTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textviewAllyTips"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/sp14BlackBold"/>
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/textviewEnemyTipsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textviewAllyTips"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/sp14BlackBold"/>
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/textviewEnemyTips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textviewEnemyTipsTitle"
-                android:layout_marginTop="15dp"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/sp12BlackRegular"/>
-        </RelativeLayout>
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/textviewEnemyTips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textviewEnemyTipsTitle"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/sp12BlackRegular"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </ScrollView>
 
 </RelativeLayout>

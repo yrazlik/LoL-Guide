@@ -237,23 +237,6 @@ public class Commons {
 			return start + " - " + end;
 		}
 	}
-	
-	public static String getTurkishTag(String tag){
-		if(tag.equals(mContext.getResources().getString(R.string.mage))){
-			return mContext.getResources().getString(R.string.buyucu);
-		}else if(tag.equals(mContext.getResources().getString(R.string.fighter))){
-			return mContext.getResources().getString(R.string.dovuscu);
-		}else if(tag.equals(mContext.getResources().getString(R.string.assasin))){
-			return mContext.getResources().getString(R.string.suikastci);
-		}else if(tag.equals(mContext.getResources().getString(R.string.tank))){
-			return mContext.getResources().getString(R.string.tank);
-		}else if(tag.equals(mContext.getResources().getString(R.string.marksman))){
-			return mContext.getResources().getString(R.string.nisanci);
-		}else if(tag.equals(mContext.getResources().getString(R.string.support))){
-			return mContext.getResources().getString(R.string.destek);
-		}
-		return "";
-	}
 
     public static void setAnimation(FragmentTransaction ft, int animationDirection) {
         switch (animationDirection) {

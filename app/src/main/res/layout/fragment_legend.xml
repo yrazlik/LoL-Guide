@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@color/bg_gray">
@@ -11,22 +12,32 @@
         android:background="@color/cardview_bg"
         android:fillViewport="true">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/cardview_bg">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/textviewLegend"
-                style="@style/sp13BlackRegular"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:paddingBottom="70dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="15dp"/>
-        </RelativeLayout>
+                android:background="@color/cardview_bg">
+
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/textviewLegend"
+                    style="@style/sp13BlackRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="70dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </ScrollView>
 
 </RelativeLayout>

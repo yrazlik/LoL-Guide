@@ -217,7 +217,7 @@ import java.util.ArrayList;
 		
 		ArrayList<String> tagsResponse = resp.getTags();
 		for(String tag : tagsResponse){
-			tagsString = tagsString+ "- " + Commons.getTurkishTag(tag) + "\n";
+			tagsString = tagsString+ "- " + tag + "\n";
 		}
 		tags.setText(tagsString);
 		
