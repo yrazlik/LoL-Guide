@@ -5,24 +5,19 @@
     <color name="text_gray">#919191</color>
     <color name="divider_gray">#CDCDCD</color>
     <color name="bg_gray">#EAEAEA</color>
+    <color name="border_gray">#CCCCCC</color>
     <color name="button_blue">#2260C0</color>
-    <color name="gray">#EBEBEB</color>
     <color name="selector_touch_gray">#F7F7F7</color>
     <color name="discount_green">#659C26</color>
     <color name="white">#FFFFFF</color>
-    <color name="sticky_text_color_transparent">#CC181825</color>
     <color name="transparent_gray">#808e8e8e</color>
-    <color name="touch_bg">#268e8e8e</color>
-    <color name="blue_border">#6B97D6</color>
     <color name="gg_red">#E61A37</color>
     <color name="transparent_black">#99000000</color>
     <color name="transparent_black_gray">#99292929</color>
     <color name="dark_gray">#292929</color>
     <color name="background_tab_pressed">#F6F6F6</color>
-    <color name="title_bg_gray">#F5F5F5</color>
     <color name="text_blue">#2260BF</color>
     <color name="cardview_bg">#FFFFFF</color>
-    <color name="circle_image_border_color">#FFFFFF</color>
 
     <color name="statistics_row_light_color">#4db6ac</color>
     <color name="statistics_row_dark_color">#00695c</color>
@@ -34,14 +29,11 @@
 
 
     <color name="material_green">#CC4F59C2</color>
-    <color name="material_dark_green">#CC0D1352</color>
     <color name="app_color">@color/new_app_color</color>
     <color name="tab_color">#248F46</color>
     <color name="material_yellow">#D9A368</color>
 
-    <color name="background_black_transparent">#F2262829</color>
     <color name="new_app_color">#CC040F34</color>
-    <color name="red_text_color">#a6B40617</color>
 
     <color name="menu_color">#FFFFFF</color>
     <color name="loading_bg_color">#33000000</color>

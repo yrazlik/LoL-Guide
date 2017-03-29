@@ -2,11 +2,9 @@
 <resources>
 
     <string name="app_name">LoL Guide</string>
-    <string name="hello">Hello</string>
 
     <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
 
-    <dimen name="count">10dp</dimen>
     <string name="enter_text_here">Enter text here...</string>
 
     <string name="drawer_open">Open navigation drawer</string>
@@ -66,17 +64,6 @@
     <string name="summonerNameTitle">Summoner Name:</string>
     <string name="pleaseSelectYourRegion">Please select your region.</string>
     <string name="video">Video</string>
-    <string name="mage">Mage</string>
-    <string name="fighter">Fighter</string>
-    <string name="assasin">Assassin</string>
-    <string name="tank">Tank</string>
-    <string name="marksman">Marksman</string>
-    <string name="support">Support</string>
-    <string name="buyucu">Mage</string>
-    <string name="dovuscu">Fighter</string>
-    <string name="suikastci">Assasin</string>
-    <string name="nisanci">Marksman</string>
-    <string name="destek">Support</string>
     <string name="tags">Properties</string>
     <string name="searchHint">Enter a champion name ...</string>
     <string name="searchItemHint">Enter an item name ...</string>
@@ -89,12 +76,9 @@
     <string name="deffensiveItems">Deffensive Items</string>
     <string name="offensiveItems">Offensive Items</string>
     <string name="gold">Gold</string>
-    <string name="searchC">SEARCH</string>
     <string name="search">Search</string>
     <string name="loading">Loading...</string>
     <string name="retry">Click to retry</string>
-    <string name="summonerName">Enter summoner name...</string>
-    <string name="selectRegion">Choose Region:</string>
     <string name="anErrorOccured">A connection error occured. Please try again.</string>
     <string name="team1">TEAM 1</string>
     <string name="team2">TEAM 2</string>
@@ -153,7 +137,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
-    <string name="select_language">Language:</string>
     <string name="select_region">Region:</string>
     <string name="select_your_region">Select your region:</string>
     <string name="english">English</string>
@@ -163,18 +146,9 @@
     <string name="preferences_saved">Preferences Saved.</string>
     <string name="networkError">Please check your Internet connection.</string>
 
-    <string name="createdAt">Published on</string>
-
-    <string name="watch_full_screen">Click to watch the video fullscreen.</string>
-
     <string name="champion_sale">Champion Sale</string>
     <string name="skin_sale">Skin Sale</string>
 
-    <string name="click_to_update">If you cannot see the video, please update the app to latest
-        version by clicking here.
-    </string>
-
-    <string name="enter_username">Enter summoner name ...</string>
     <string name="summoner_name_hint">e.g. Dyrus</string>
 
     <string name="cannot_find_username">Could not find the user, please make sure you entered
@@ -229,21 +203,9 @@
     <string name="no_team">No Team</string>
     <string name="no_league_pts">No league points</string>
 
-    <string name="languageTurkish">Dil</string>
-    <string name="languageEnglish">Language</string>
-    <string name="regionTurkish">Bölge</string>
-    <string name="regionEnglish">Region</string>
-
-    <string name="turkishTurkish">Türkçe</string>
-    <string name="turkishEnglish">Turkish</string>
-    <string name="englishTurkish">İngilizce</string>
-    <string name="englishEnglish">English</string>
-
     <string name="recentSearches">Recent Searches</string>
     <string name="searchSummoner">Summoner Search</string>
     <string name="region">Region:</string>
-
-    <string name="if_you_wanna_change_region">*Summoner will be searched within selected region. You can change region from settings page.</string>
 
 
     <string name="average">Averages</string>

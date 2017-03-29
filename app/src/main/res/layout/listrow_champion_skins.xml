@@ -41,6 +41,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Gotik Annie"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"/>

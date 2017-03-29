@@ -58,19 +58,8 @@
     <string name="summonerNameTitle">Nome do Invocador:</string>
     <string name="pleaseSelectYourRegion">Selecione sua região.</string>
     <string name="video">Vídeo</string>
-    <string name="mage">Mago</string>
-    <string name="fighter">Lutador</string>
-    <string name="assasin">Assassino</string>
-    <string name="tank">Tanque</string>
-    <string name="marksman">Marksman</string>
-    <string name="support">Suporte</string>
 
     <!-- TODO: BURAYA DIKKAT!!! -->
-    <string name="buyucu">Mage</string>
-    <string name="dovuscu">Fighter</string>
-    <string name="suikastci">Assasin</string>
-    <string name="nisanci">Marksman</string>
-    <string name="destek">Support</string>
     <!-- TODO: BURAYA DIKKAT!!! -->
 
     <string name="tags">Propriedades</string>
@@ -85,12 +74,9 @@
     <string name="deffensiveItems">Itens Defensivos</string>
     <string name="offensiveItems">Itens Ofensivos</string>
     <string name="gold">Ouro</string>
-    <string name="searchC">PESQUISA</string>
     <string name="search">Pesquisa</string>
     <string name="loading">Carregando...</string>
     <string name="retry">Repetir</string>
-    <string name="summonerName">Digite o nome do invocador...</string>
-    <string name="selectRegion">Escolha Região:</string>
     <string name="anErrorOccured">Erro de conexão. Por favor, tente novamente.</string>
     <string name="team1">EQUIPE 1</string>
     <string name="team2">EQUIPE 2</string>
@@ -148,8 +134,6 @@
     <string name="no">Não</string>
 
 
-
-    <string name="select_language">Língua:</string>
     <string name="select_region">Região:</string>
     <string name="select_your_region">Selecione sua região:</string>
     <string name="english">Inglês</string>
@@ -159,7 +143,6 @@
     <string name="networkError">Verifique a sua ligação à Internet.</string>
     <string name="champion_sale">Venda Campeão</string>
     <string name="skin_sale">Venda Skin</string>
-    <string name="enter_username">Digite o nome do invocador ...</string>
     <string name="summoner_name_hint">v.g. Revolta</string>
     <string name="cannot_find_username">Não foi possível localizar o usuário, certifique-se de que entrou o nome e a região do invocador corretamente.</string>
 
@@ -213,17 +196,9 @@
     <string name="no_league_pts">No league points</string><!-- TODO: BUNA BAK-->
 
     <!-- TODO: BUNA BAK-->
-    <string name="languageTurkish">Dil</string>
-    <string name="languageEnglish">Language</string>
-    <string name="regionTurkish">Bölge</string>
-    <string name="regionEnglish">Region</string>
     <!-- TODO: BUNA BAK-->
 
     <!-- TODO: BUNA BAK-->
-    <string name="turkishTurkish">Türkçe</string>
-    <string name="turkishEnglish">Turkish</string>
-    <string name="englishTurkish">İngilizce</string>
-    <string name="englishEnglish">English</string>
     <!-- TODO: BUNA BAK-->
 
 

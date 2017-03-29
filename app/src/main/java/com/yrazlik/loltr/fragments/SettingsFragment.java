@@ -47,10 +47,10 @@ public class SettingsFragment extends BaseFragment{
 
     private String[] regions = {"TR", "EUW", "NA", "EUNE", "OCE", "BR", "LAN", "LAS", "RU", "KR"};
     String[] languages;
-    private Spinner languageSpinner, regionSpinner;
-    private SimpleSpinnerAdapter languageSpinnerAdapter, regionSpinnerAdapter;
+    private Spinner regionSpinner;
+    private SimpleSpinnerAdapter regionSpinnerAdapter;
     private RobotoButton buttonSave;
-    private RobotoTextView selectLanguageText, selectRegionText;
+    private RobotoTextView selectRegionText;
     private RobotoButton removeAdsButton;
     private RobotoTextView removeAdsExplanation;
 
@@ -60,7 +60,6 @@ public class SettingsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
-        selectLanguageText = (RobotoTextView) v.findViewById(R.id.selectLanguageText);
         selectRegionText = (RobotoTextView) v.findViewById(R.id.selectRegionText);
 
         SharedPreferences prefs = getContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
@@ -98,43 +97,21 @@ public class SettingsFragment extends BaseFragment{
             }
         }
 
-        languageSpinner = (Spinner)v.findViewById(R.id.languageSpinner);
         regionSpinner = (Spinner)v.findViewById(R.id.regionSpinner);
         buttonSave = (RobotoButton) v.findViewById(R.id.buttonSave);
 
-
-        languageSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(languages)));
         regionSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(regions)));
 
-        languageSpinner.setAdapter(languageSpinnerAdapter);
-        languageSpinnerAdapter.notifyDataSetChanged();
         regionSpinner.setAdapter(regionSpinnerAdapter);
         regionSpinnerAdapter.notifyDataSetChanged();
 
         regionSpinner.setSelection(0);
-        languageSpinner.setSelection(0);
+
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String language = languageSpinner.getSelectedItem().toString();
                 String region = regionSpinner.getSelectedItem().toString();
-
-                if(language.equalsIgnoreCase(getResources().getString(R.string.turkish))){
-                    Locale myLocale = new Locale("tr");
-                    Resources res = getResources();
-                    DisplayMetrics dm = res.getDisplayMetrics();
-                    Configuration conf = res.getConfiguration();
-                    conf.locale = myLocale;
-                    res.updateConfiguration(conf, dm);
-                }else if(language.equalsIgnoreCase(getResources().getString(R.string.english))){
-                    Locale myLocale = new Locale("en_us");
-                    Resources res = getResources();
-                    DisplayMetrics dm = res.getDisplayMetrics();
-                    Configuration conf = res.getConfiguration();
-                    conf.locale = myLocale;
-                    res.updateConfiguration(conf, dm);
-                }
 
                 if(region.equalsIgnoreCase("TR")){
                     Commons.SELECTED_REGION = "tr";
@@ -165,22 +142,6 @@ public class SettingsFragment extends BaseFragment{
 
                 Toast.makeText(getContext().getApplicationContext(), getContext().getResources().getString(R.string.preferences_saved), Toast.LENGTH_SHORT).show();
                 ((MainActivity)getActivity()).updateDrawer();
-
-                if(Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")){
-                    selectLanguageText.setText(R.string.languageTurkish);
-                    selectRegionText.setText(R.string.regionTurkish);
-                    languages = new String[]{getContext().getResources().getString(R.string.turkishTurkish), getResources().getString(R.string.englishTurkish)};
-                    languageSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(languages)));
-                    languageSpinner.setAdapter(languageSpinnerAdapter);
-                    languageSpinnerAdapter.notifyDataSetChanged();
-                }else{
-                    selectLanguageText.setText(R.string.languageEnglish);
-                    selectRegionText.setText(R.string.regionEnglish);
-                    languages = new String[]{getContext().getResources().getString(R.string.englishEnglish), getResources().getString(R.string.turkishEnglish)};
-                    languageSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(languages)));
-                    languageSpinner.setAdapter(languageSpinnerAdapter);
-                    languageSpinnerAdapter.notifyDataSetChanged();
-                }
                 Commons.allItemsNew = null;
               /*  SettingsFragment frg = null;
                 frg = (SettingsFragment) getFragmentManager().findFragmentByTag(Commons.TAG_SETTINGS_FRAGMENT);

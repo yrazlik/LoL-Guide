@@ -2,11 +2,8 @@
 <resources>
 
     <string name="app_name">LoL TR</string>
-    <string name="hello">Hello</string>
 
     <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
-
-    <dimen name="count">10dp</dimen>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
@@ -55,17 +52,6 @@
     <string name="menu">Menü</string>
     <string name="pleaseEnterSummonerName">Lütfen bir oyuncu ismi giriniz.</string>
     <string name="video">Video</string>
-    <string name="mage">Mage</string>
-    <string name="fighter">Fighter</string>
-    <string name="assasin">Assassin</string>
-    <string name="tank">Tank</string>
-    <string name="marksman">Marksman</string>
-    <string name="support">Support</string>
-    <string name="buyucu">Büyücü</string>
-    <string name="dovuscu">Dövüscü</string>
-    <string name="suikastci">Suikastci</string>
-    <string name="nisanci">Nisancı</string>
-    <string name="destek">Destek</string>
     <string name="tags">Özellikler</string>
     <string name="searchHint">Şampiyon adı giriniz ...</string>
     <string name="searchItemHint">Eşya adı giriniz ...</string>
@@ -78,11 +64,8 @@
     <string name="deffensiveItems">Defansif Eşyalar</string>
     <string name="offensiveItems">Ofansif Eşyalar</string>
     <string name="gold">Altın</string>
-    <string name="searchC">ARAMA</string>
     <string name="search">Ara</string>
     <string name="loading">Yükleniyor...</string>
-    <string name="summonerName">Oyuncu ismi giriniz...</string>
-    <string name="selectRegion">Bölge Seçiniz: </string>
     <string name="anErrorOccured">Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyiniz. </string>
     <string name="team1">TAKIM 1</string>
     <string name="team2">TAKIM 2</string>
@@ -141,7 +124,6 @@
     <string name="no">Hayır</string>
     <string name="retry">Tekrar dene</string>
 
-    <string name="select_language">Dil:</string>
     <string name="select_region">Bölge:</string>
     <string name="english">İngilizce</string>
     <string name="turkish">Türkçe</string>
@@ -154,13 +136,6 @@
 
     <string name="preferences_saved">Ayarlar Kaydedildi.</string>
 
-    <string name="createdAt">tarihinde yayınlandı.</string>
-
-    <string name="watch_full_screen">Videoyu tam ekran izlemek için tıklayın.</string>
-
-    <string name="click_to_update">Videoyu göremiyorsanız lütfen buraya tıklayarak uygulamayı güncelleyin.</string>
-
-    <string name="enter_username">Sihirdar ismi girin ...</string>
     <string name="select_your_region">Bölgenizi seçin:</string>
     <string name="pleaseSelectYourRegion">Lütfen bölgenizi seçiniz.</string>
     <string name="cannot_find_username">Kullanıcı bulunamadı. Lütfen kullanıcı adını ve bölgeyi doğru girdiğinizden emin olun</string>
@@ -211,23 +186,13 @@
     <string name="wardKilled">Kesilen Totemler</string>
     <string name="ipEarned">Kazanılan Ip</string>
 
-    <string name="languageTurkish">Dil</string>
-    <string name="languageEnglish">Language</string>
-    <string name="regionTurkish">Bölge</string>
-    <string name="regionEnglish">Region</string>
     <string name="close">Kapat</string>
-    <string name="turkishTurkish">Türkçe</string>
-    <string name="turkishEnglish">Turkish</string>
-    <string name="englishTurkish">İngilizce</string>
-    <string name="englishEnglish">English</string>
 
     <string name="recentSearches">Son Aramalar</string>
     <string name="searchSummoner">Sihirdar Arama</string>
     <string name="region">Bölge:</string>
     <string name="no_team">Takım Bulunamadı.</string>
     <string name="no_league_pts">Lig puanı bulunamadı</string>
-
-    <string name="if_you_wanna_change_region">*Oyuncu, seçilen bölgede aranacaktır. Bölge seçimini ayarlar sayfasından değiştirebilirsiniz.</string>
 
     <string name="average">Ortalamalar</string>
     <string name="minions">Minyonlar</string>

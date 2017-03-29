@@ -27,34 +27,10 @@
             android:paddingTop="35dp">
 
             <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/selectLanguageText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/languageSpinner"
-                android:layout_alignTop="@+id/languageSpinner"
-                android:gravity="center_vertical"
-                android:minWidth="50dp"
-                android:text="@string/select_language"
-                android:textAppearance="@style/sp14BlackBold"
-                />
-
-            <Spinner
-                android:id="@+id/languageSpinner"
-                style="@style/spinner_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/selectLanguageText"
-                android:spinnerMode="dialog">
-            </Spinner>
-
-            <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/selectRegionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/regionSpinner"
-                android:layout_alignLeft="@+id/selectLanguageText"
-                android:layout_alignRight="@+id/selectLanguageText"
                 android:layout_alignTop="@+id/regionSpinner"
                 android:gravity="center_vertical"
                 android:minWidth="50dp"
@@ -65,12 +41,9 @@
             <Spinner
                 android:id="@+id/regionSpinner"
                 style="@style/spinner_style"
+                android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/languageSpinner"
-                android:layout_alignRight="@+id/languageSpinner"
-                android:layout_below="@+id/languageSpinner"
-                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/selectRegionText"
                 android:spinnerMode="dialog">
             </Spinner>
