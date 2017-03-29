@@ -133,8 +133,6 @@
 
     <string name="select_region">Região:</string>
     <string name="select_your_region">Selecione sua região:</string>
-    <string name="english">Inglês</string>
-    <string name="turkish">Turco</string>
     <string name="save">Salve</string>
     <string name="preferences_saved">Preferências salvas.</string>
     <string name="networkError">Verifique a sua ligação à Internet.</string>

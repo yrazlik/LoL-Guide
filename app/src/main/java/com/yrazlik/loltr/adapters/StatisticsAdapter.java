@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Statistics;
@@ -71,7 +70,7 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
             if(name.equalsIgnoreCase(mContext.getResources().getString(R.string.kill_death))
                     || name.equalsIgnoreCase(mContext.getResources().getString(R.string.earnings))
                     || name.equalsIgnoreCase(mContext.getResources().getString(R.string.damagePart))) {
-                holder.name.setTextColor(mContext.getResources().getColor(R.color.material_yellow));
+                holder.name.setTextColor(mContext.getResources().getColor(R.color.dark_dark_red));
             } else {
                 holder.name.setTextColor(mContext.getResources().getColor(R.color.white));
             }

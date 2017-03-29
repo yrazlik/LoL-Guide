@@ -139,8 +139,6 @@
 
     <string name="select_region">Region:</string>
     <string name="select_your_region">Select your region:</string>
-    <string name="english">English</string>
-    <string name="turkish">Turkish</string>
     <string name="save">Save</string>
 
     <string name="preferences_saved">Preferences Saved.</string>

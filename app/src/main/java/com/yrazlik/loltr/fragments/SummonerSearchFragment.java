@@ -100,7 +100,9 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             usernameET = (RobotoEditText) rootView.findViewById(R.id.usernameET);
             searchButton = (RobotoButton) rootView.findViewById(R.id.buttonSearch);
 
-            spinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(Commons.regions)));
+            ArrayList<String> sortedRegions = Commons.getSortedRegions();
+
+            spinnerAdapter = new SimpleSpinnerAdapter(getContext(), sortedRegions);
 
             regionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override

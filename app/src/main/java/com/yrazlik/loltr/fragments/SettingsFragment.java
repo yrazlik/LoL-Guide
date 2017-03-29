@@ -44,9 +44,6 @@ import java.util.Locale;
  */
 public class SettingsFragment extends BaseFragment{
 
-
-    private String[] regions = {"TR", "EUW", "NA", "EUNE", "OCE", "BR", "LAN", "LAS", "RU", "KR"};
-    String[] languages;
     private Spinner regionSpinner;
     private SimpleSpinnerAdapter regionSpinnerAdapter;
     private RobotoButton buttonSave;
@@ -63,44 +60,12 @@ public class SettingsFragment extends BaseFragment{
         selectRegionText = (RobotoTextView) v.findViewById(R.id.selectRegionText);
 
         SharedPreferences prefs = getContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
-        String region = prefs.getString(Commons.LOL_TR_SHARED_PREF_REGION, null);
-        String language = prefs.getString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, null);
-
-        if(region != null){
-            String[] newRegions = new String[10];
-            String[] restOfRegions = new String[9];
-            int i = 0;
-            for(String r : regions){
-                if(r.equalsIgnoreCase(region)){
-                    newRegions[0] = r;
-                }
-                else{
-                    restOfRegions[i] = r;
-                    i++;
-                }
-            }
-
-            int j = 1;
-            for(String r : restOfRegions){
-                newRegions[j] = r;
-                j++;
-            }
-            regions = newRegions;
-        }
-
-        languages = new String[]{getContext().getResources().getString(R.string.turkish), getResources().getString(R.string.english)};
-        if(language != null){
-            if(language.equalsIgnoreCase("tr")){
-                languages = new String[]{getContext().getResources().getString(R.string.turkish), getResources().getString(R.string.english)};
-            }else{
-                languages = new String[]{getContext().getResources().getString(R.string.english), getResources().getString(R.string.turkish)};
-            }
-        }
 
         regionSpinner = (Spinner)v.findViewById(R.id.regionSpinner);
         buttonSave = (RobotoButton) v.findViewById(R.id.buttonSave);
 
-        regionSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), new ArrayList<>(Arrays.asList(regions)));
+        ArrayList<String> sortedRegions = Commons.getSortedRegions();
+        regionSpinnerAdapter = new SimpleSpinnerAdapter(getContext(), sortedRegions);
 
         regionSpinner.setAdapter(regionSpinnerAdapter);
         regionSpinnerAdapter.notifyDataSetChanged();

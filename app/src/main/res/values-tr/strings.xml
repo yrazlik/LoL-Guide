@@ -125,8 +125,6 @@
     <string name="retry">Tekrar dene</string>
 
     <string name="select_region">Bölge:</string>
-    <string name="english">İngilizce</string>
-    <string name="turkish">Türkçe</string>
     <string name="save">Kaydet</string>
 
     <string name="networkError">Lütfen internet bağlantınızı kontrol ediniz.</string>

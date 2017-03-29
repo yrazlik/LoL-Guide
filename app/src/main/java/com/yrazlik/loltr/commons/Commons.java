@@ -26,6 +26,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -407,5 +408,21 @@ public class Commons {
             SharedPreferences prefs = mContext.getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
             prefs.edit().putString(key, value).commit();
         }catch (Exception ignored){}
+    }
+
+    public static ArrayList<String> getSortedRegions() {
+        try {
+            ArrayList<String> allRegions = new ArrayList<>(Arrays.asList(regions));
+            ArrayList<String> sortedRegions = new ArrayList<>();
+            sortedRegions.add(Commons.getRegion().toUpperCase());
+            for(int i = 0; i < allRegions.size(); i++) {
+                if(!Commons.getRegion().equalsIgnoreCase(allRegions.get(i))) {
+                    sortedRegions.add(allRegions.get(i).toUpperCase());
+                }
+            }
+            return sortedRegions;
+        } catch (Exception e) {
+            return new ArrayList<>(Arrays.asList(regions));
+        }
     }
 }
