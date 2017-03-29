@@ -296,4 +296,7 @@
     <string name="giveRating">Rate LoL Guide!</string>
     <string name="read_more">Read More</string>
 
+    <string name="playing_as">When you are playing as %1$s :</string>
+    <string name="playing_against">When you are playing against %1$s :</string>
+
 </resources>

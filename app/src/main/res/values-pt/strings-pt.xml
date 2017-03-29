@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LoL Guia</string>
+    <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
+    <string name="enter_text_here">Digite o texto aqui...</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="question_mark">\?\?\?</string>
+
+    <string-array name="titles">
+        <item>invocadores</item>
+        <item>Campeões Livres Semanais</item>
+        <item>Descontos</item>
+        <item>Notícia</item>
+        <item>Campeões</item>
+        <item>Item</item>
+        <item>Runas</item>
+        <item>Skins</item>
+        <item>Jogo ao Vivo</item>
+        <item>Transmissões ao Vivo</item>
+        <item>Configurações</item>
+        <item>Remover Propagandas</item>
+        <item>Contato</item>
+        <item>Sobre</item>
+    </string-array>
+
+
+
+    <string-array name="titles_noad">
+        <item>invocadores</item>
+        <item>Campeões Livres Semanais</item>
+        <item>Descontos</item>
+        <item>Notícia</item>
+        <item>Campeões</item>
+        <item>Item</item>
+        <item>Runas</item>
+        <item>Skins</item>
+        <item>Jogo ao Vivo</item>
+        <item>Transmissões ao Vivo</item>
+        <item>Configurações</item>
+        <item>Contato</item>
+        <item>Sobre</item>
+    </string-array>
+
+    <string name="errortwitch">Erro de conexão. Por favor, tente novamente.</string>
+    <string name="areyousure">Você tem certeza que quer sair?</string>
+    <string name="endorse">Clique nos anúncios para suportar futuros desenvolvimentos, por favor. Os anúncios só o redirecionam para a Google Play Store. \n\n\nThis application isn’t endorsed by Riot Games and
+        doesn’t reflect the views or opinions of Riot Games or anyone officially involved in
+        producing or managing League of Legends. League of Legends and Riot Games are trademarks or
+        registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+    </string>
+    <string name="send">Enviar</string>
+    <string name="contact_text">Você pode escrever suas queixas ou sugestões para a caixa de texto abaixo e envie-nos.</string>
+    <string name="select_category">Escolher Categoria</string>
+    <string name="menu">Menu</string>
+    <string name="pleaseEnterSummonerName">Introduza um nome de invocador.</string>
+    <string name="summonerNameTitle">Nome do Invocador:</string>
+    <string name="pleaseSelectYourRegion">Selecione sua região.</string>
+    <string name="video">Vídeo</string>
+    <string name="mage">Mago</string>
+    <string name="fighter">Lutador</string>
+    <string name="assasin">Assassino</string>
+    <string name="tank">Tanque</string>
+    <string name="marksman">Marksman</string>
+    <string name="support">Suporte</string>
+
+    <!-- TODO: BURAYA DIKKAT!!! -->
+    <string name="buyucu">Mage</string>
+    <string name="dovuscu">Fighter</string>
+    <string name="suikastci">Assasin</string>
+    <string name="nisanci">Marksman</string>
+    <string name="destek">Support</string>
+    <!-- TODO: BURAYA DIKKAT!!! -->
+
+    <string name="tags">Propriedades</string>
+    <string name="searchHint">Insira um nome de campeão ...</string>
+    <string name="searchItemHint">Insira um nome de item ...</string>
+    <string name="general">Visão geral</string>
+    <string name="abilities">Habilidades</string>
+    <string name="legend">Lenda</string>
+    <string name="strategy">Estratégia</string>
+    <string name="startingItems">Itens Iniciais</string>
+    <string name="essentialItems">Itens Essenciais</string>
+    <string name="deffensiveItems">Itens Defensivos</string>
+    <string name="offensiveItems">Itens Ofensivos</string>
+    <string name="gold">Ouro</string>
+    <string name="searchC">PESQUISA</string>
+    <string name="search">Pesquisa</string>
+    <string name="loading">Carregando...</string>
+    <string name="retry">Repetir</string>
+    <string name="summonerName">Digite o nome do invocador...</string>
+    <string name="selectRegion">Escolha Região:</string>
+    <string name="anErrorOccured">Erro de conexão. Por favor, tente novamente.</string>
+    <string name="team1">EQUIPE 1</string>
+    <string name="team2">EQUIPE 2</string>
+    <string name="matchTime">Tempo de Jogo</string>
+    <string name="playerNotCurrentlyPlaying">Este invocador não está atualmente em um jogo.</string>
+    <string name="matchInfo">Informações do Jogo</string>
+    <string name="player">Invocador:</string>
+    <string name="chosenChampion">Campeão:</string>
+    <string name="playerDetail">Invocador Detalhe</string>
+    <string name="detailInfo">Detalhe</string>
+    <string name="leagueInfo">Informação da Liga</string>
+    <string name="matchHistory">Histórico de Partidas</string>
+    <string name="lvl">nível</string>
+    <string name="league">Liga</string>
+    <string name="unranked">Não Classificado</string>
+    <string name="wonMatchCount">Número de Jogos Ganhos:</string>
+    <string name="noChampFound">Nenhum campeão correspondente à sua pesquisa.</string>
+    <string name="itemSearchHint">Insira um nome de item...</string>
+    <string name="itemFrom">Outros Itens Necessários Para Construir Esse Item</string>
+    <string name="itemTo">Outros Itens Que Este Item Pode Ser Atualizado Para</string>
+    <string name="noFrom">Não há itens para construir este item.</string>
+    <string name="itemDetail">Detalhe do Item</string>
+    <string name="defence">Defesa</string>
+    <string name="attack">Attack</string>
+    <string name="magic">Ataque</string>
+    <string name="health">Saúde</string>
+    <string name="magic_resistance">Resistência Mágica</string>
+    <string name="health_regeneration">Regeneração de Saúde</string>
+    <string name="damage">Dano Físico</string>
+    <string name="critical">Dano Crítico</string>
+    <string name="attack_speed">Velocidade de Ataque</string>
+    <string name="life_steal">Vida Rouba</string>
+    <string name="armor_penetration">Penetração de Armadura</string>
+    <string name="spell_damage">Dano Mágico</string>
+    <string name="cooldown_reduction">Redução de Cooldown</string>
+    <string name="mana">Mana</string>
+    <string name="mana_reg">Regeneração de Mana</string>
+    <string name="magic_penet">Penetração Mágica</string>
+    <string name="spell_vamp">Spell Vamp</string>
+    <string name="vision">Visão</string>
+    <string name="movement">Velocidade de Movimento</string>
+    <string name="Consumable">Consumível</string>
+    <string name="gold_give">Ouro</string>
+    <string name="others">Outras</string>
+    <string name="armor">Armaduras</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">Ok</string>
+    <string name="filter">Filtro</string>
+    <string name="close">Fechar</string>
+    <string name="noTo">Este item não pode ser atualizado para outro item.</string>
+    <string name="no_video_found">Nenhum vídeo encontrado.</string>
+    <string name="passive">Passiva</string>
+    <string name="explanation">Explicação</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+
+
+
+    <string name="select_language">Língua:</string>
+    <string name="select_region">Região:</string>
+    <string name="select_your_region">Selecione sua região:</string>
+    <string name="english">Inglês</string>
+    <string name="turkish">Turco</string>
+    <string name="save">Salve</string>
+    <string name="preferences_saved">Preferências salvas.</string>
+    <string name="networkError">Verifique a sua ligação à Internet.</string>
+    <string name="champion_sale">Venda Campeão</string>
+    <string name="skin_sale">Venda Skin</string>
+    <string name="enter_username">Digite o nome do invocador ...</string>
+    <string name="summoner_name_hint">v.g. Revolta</string>
+    <string name="cannot_find_username">Não foi possível localizar o usuário, certifique-se de que entrou o nome e a região do invocador corretamente.</string>
+
+
+    <!-- TODO: BURAYA DA BAKILACAK -->
+    <string name="custom_game">Custom Game</string>
+    <string name="tutorial">Tutorial</string>
+
+    <string name="summoners_rift">Summoner\'s Rift</string>
+    <string name="aram">Howling Abyss</string>
+    <string name="dominion">Crystal Scar</string>
+    <string name="oneforall">One For All</string>
+    <string name="kingporo">King Poro</string>
+    <string name="ascension">Ascension</string>
+    <string name="firstblood">First Blood</string>
+    <string name="none">Custom Game</string>
+    <string name="normal">Normal</string>
+    <string name="odin">Dominion</string>
+    <string name="aram_aram">ARAM</string>
+    <string name="ranked">Ranked Game</string>
+    <string name="sr6">6 vs. 6</string>
+    <string name="cap5">Team Builder</string>
+    <string name="urf">Ultra Rapid Fire</string>
+    <string name="nightmare">Nightmare Bot</string>
+    <string name="counter_pick">Counter Pick</string>
+    <string name="bilgewater">Bilgewater</string>
+    <string name="bot">Game Against AI</string>
+    <string name="unknown">Unknown</string>
+    <!-- TODO: BURAYA DA BAKILACAK -->
+
+    <string name="statistics">ESTATISTICAS</string>
+
+    <string name="totalDamageDealt">Total de Danos Causados</string>
+    <string name="totalDamageTaken">Total de Dano Tomado</string>
+    <string name="goldEarned">Ouro Ganho</string>
+    <string name="totalHeal">Cura Total</string>
+    <string name="lagestKillingSpree">Maior Matança</string>
+    <string name="largestMultiKill">Maior Multi Matar</string>
+    <string name="magicDamageDealtPlayer">Total de Dano Mágico Causados</string>
+    <string name="physicalDamageDealtPlayer">Total de Dano Físico Causados</string>
+    <string name="minionsKilled">Minions Mortos</string>
+    <string name="neutralMinionsKilled">Minions Neutros Mortos</string>
+    <string name="magicDamageTaken">Magic Damage Taken</string> <!-- TODO: BUNA BAK-->
+    <string name="physicalDamageTaken">Physical Damage Taken</string> <!-- TODO: BUNA BAK-->
+    <string name="totalTimeCrowdControlDealt">Total Time Crowd Control Dealt</string> <!-- TODO: BUNA BAK-->
+    <string name="turretsKilled">Turrets Killed</string><!-- TODO: BUNA BAK-->
+    <string name="wardPlaced">Ward Placed</string><!-- TODO: BUNA BAK-->
+    <string name="wardKilled">Ward Killed</string><!-- TODO: BUNA BAK-->
+    <string name="ipEarned">Ip Earned</string><!-- TODO: BUNA BAK-->
+    <string name="no_team">No Team</string><!-- TODO: BUNA BAK-->
+    <string name="no_league_pts">No league points</string><!-- TODO: BUNA BAK-->
+
+    <!-- TODO: BUNA BAK-->
+    <string name="languageTurkish">Dil</string>
+    <string name="languageEnglish">Language</string>
+    <string name="regionTurkish">Bölge</string>
+    <string name="regionEnglish">Region</string>
+    <!-- TODO: BUNA BAK-->
+
+    <!-- TODO: BUNA BAK-->
+    <string name="turkishTurkish">Türkçe</string>
+    <string name="turkishEnglish">Turkish</string>
+    <string name="englishTurkish">İngilizce</string>
+    <string name="englishEnglish">English</string>
+    <!-- TODO: BUNA BAK-->
+
+
+    <string name="recentSearches">Recentemente pesquisado</string>
+    <string name="searchSummoner">Summoner Pesquisar</string>
+    <string name="region">Região:</string>
+
+    <!-- TODO: BURADAN DEVAM ET -->
+    <string name="average">Averages</string>
+    <string name="minions">Minions</string>
+    <string name="winrate">Win Rate</string>
+    <string name="mostPlayed">Most Played</string>
+    <string name="team55">Team 5v5</string>
+    <string name="team33">Team 3v3</string>
+    <string name="kda">KDA</string>
+    <string name="solo_duo">Solo/Duo</string>
+    <string name="overview">OVERVIEW</string>
+    <string name="match_history">MATCH HISTORY</string>
+
+    <string name="rankedStats">Ranked Stats</string>
+
+    <string name="games_played">Games Played</string>
+    <string name="games_won">Games Won</string>
+
+    <string name="kill_death">Kills/Deaths</string>
+    <string name="kills">Kills</string>
+    <string name="deaths">Deaths</string>
+    <string name="assists">Assits</string>
+    <string name="penta_kills">Penta Kills</string>
+    <string name="quadra_kills">Quadra Kills</string>
+    <string name="triple_kills">Triple Kills</string>
+    <string name="double_kills">Double Kills</string>
+    <string name="killing_sprees">Killing Sprees</string>
+    <string name="most_kills_per_session">Most Kills</string>
+    <string name="most_deaths">Most Deaths</string>
+
+    <string name="earnings">Earnings</string>
+    <string name="gold_earned">Gold Earned</string>
+    <string name="minions_killed">Minions Killed</string>
+    <string name="neutral_minions_killed">Neutral Minions Killed</string>
+
+    <string name="damagePart">Damage</string>
+    <string name="damage_taken">Total Damage Taken</string>
+    <string name="damage_dealt">Damage Dealt</string>
+    <string name="physical_damage_dealt">Physical Damage Dealt</string>
+    <string name="magic_damage_dealt">Magic Damage Dealt</string>
+    <string name="healing_done">Healing Done</string>
+    <string name="largest_critical_strike">Largest Critical Strike</string>
+    <string name="no_ranked_info">No ranked game info found for the summoner.</string>
+    <string name="champions">CHAMPIONS</string>
+    <string name="read_more">Read More</string>
+    <string name="remove_ads">Remove Ads</string>
+    <string name="remove_ads_explanation">You can remove ads and use the ad-free version of LoL Guide by donating if you wish. If you get any trouble please contact us via loltrdestek@gmail.com.</string>
+    <string name="purchase_successful">You have succesfully removed ads. The app will restart now for the changes to take effect.</string>
+    <string name="credits">All images used in this app are suitable for commercial use.</string>
+    <string name="see_credits">Click here to see the credits for the images.</string>
+    <string name="creditsExplanation">You can see below the credits for images used in this app. Colors of some icons were changed to white. \n\nLeague of Legends related images were take from http://ddragon.leagueoflegends.com\n\n************************\n\nhttp://www.flaticon.com/free-icon/gamma_100510 \n\nhttps://www.iconfinder.com/yash11 \n\nhttps://www.iconfinder.com/Wahib \n\nhttps://www.iconfinder.com/icons/925909/arrow_direction_previous_right_icon#size=128 \n\nhttps://www.iconfinder.com/icons/925922/arrow_bottom_direction_down_icon#size=128 \n\nhttps://www.iconfinder.com/icons/925906/arrow_direction_top_up_icon#size=128 \n\n************************\n\nhttp://ionicons.com/ \n\nhttps://www.iconfinder.com/icons/211686/arrow_back_icon#size=128\n\n************************\n\nhttps://icons8.com/ \n\nhttps://www.iconfinder.com/icons/27836/approve_block_cancel_delete_reject_icon#size=128 \n\n************************\n\nhttp://www.graphicsfuel.com/ \n\nhttps://www.iconfinder.com/icons/143817/account_male_man_profile_user_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/aha-soft \n\nhttps://www.iconfinder.com/icons/128385/business_buy_cash_coin_credit_currency_dollar_ecommerce_finance_financial_money_payment_price_sale_shop_shopping_webshop_icon#size=64 \n\n************************\n\nhttps://www.iconfinder.com/kirik777 \n\nhttps://www.iconfinder.com/icons/461377/email_letter_mail_message_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/adianteapps \n\nhttps://www.iconfinder.com/adianteapps  \n\nhttps://www.iconfinder.com/icons/339929/clothes_clothing_fashion_shape_shirt_tshirt_wear_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/paomedia \n\nhttps://www.iconfinder.com/icons/299086/info_sign_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/Umar \n\nhttps://www.iconfinder.com/icons/290145/label_price_sale_shopping_tag_icon#size=128 \n\n************************\n\nhttps://icons8.com/ \n\nhttps://www.iconfinder.com/icons/175163/empty_filter_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/Field5 \n\nhttps://www.iconfinder.com/icons/811528/information_mark_question_sign_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/tahsintahil \n\nhttps://www.iconfinder.com/icons/381636/block_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/webalys \n\nhttps://www.iconfinder.com/icons/379393/settings_icon#size=128 \n\n************************\n\nhttps://smarticons.co/ \n\nhttps://www.iconfinder.com/icons/61447/button_next_play_icon#size=64 \n\n************************\n\nhttp://www.addictedtocoffee.de/ \n\nhttps://www.iconfinder.com/icons/50679/coin_icon#size=48 \n\n************************\n\nhttps://www.iconfinder.com/aha-soft \n\nhttps://www.iconfinder.com/icons/128449/antivirus_arms_guard_protect_protection_safe_secure_security_sword_swords_icon#size=64 \n\n************************\n\nhttps://www.iconfinder.com/bogdanrosu \n\nhttps://www.iconfinder.com/icons/353413/flask_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/paomedia \n\nhttps://www.iconfinder.com/icons/299070/shield_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/designmodo \n\nhttps://www.iconfinder.com/icons/115708/news_newspaper_subscribe_icon#size=128 \n\n************************\n\nhttp://pixelkit.com/ \n\nhttps://www.iconfinder.com/icons/169894/antivirus_shield_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/happyiconstudio \n\nhttps://www.iconfinder.com/icons/103115/swords_icon#size=64 \n\n************************\n\nhttps://www.iconfinder.com/DOTonPAPER \n\nhttps://www.iconfinder.com/icons/751112/cable_monitor_plug_screen_television_tv_icon#size=128 \n\n************************\n\nhttps://www.iconfinder.com/webalys  \n\nhttps://www.iconfinder.com/icons/185057/magic_magic_wand_streamline_icon#size=128  \n\nSynchronize icon from https://icons8.com/web-app/for/all/Retry
+    </string>
+    <string name="loading_resources_nodot">Loading resources</string>
+    <string name="oneDot">.</string>
+    <string name="twoDots">..</string>
+    <string name="threeDots">...</string>
+
+    <string name="rateUs">If you enjoy using LoL Guide, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="dontshowagain">Don\'t Show Again</string>
+    <string name="remindmelater">Remind Me Later</string>
+    <string name="giveRating">Rate LoL Guide!</string>
+
+    <string name="playing_as">Quando você estiver jogando como %1$s :</string>
+    <string name="playing_against">Quando o oponente é %1$s :</string>
+
+</resources>

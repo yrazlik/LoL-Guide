@@ -70,28 +70,18 @@ public class SplashActivity extends Activity{
         loadingDotsTV = (TextView) findViewById(R.id.loadingDotsTV);
         animateThreeDots();
 
-        if(Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0 || Commons.SELECTED_LANGUAGE == null || Commons.SELECTED_LANGUAGE.length() <= 0){
+        if(Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0){
             setContentView(R.layout.activity_splash);
             Dialog d  = new RegionDialog(this);
             if(d != null){
                 d.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
-                        if (Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0 || Commons.SELECTED_LANGUAGE == null || Commons.SELECTED_LANGUAGE.length() <= 0) {
+                        if (Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0) {
                             setRegionAuomatically();
-                            if(Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                                Toast.makeText(getApplicationContext(), "Region was set to " + Commons.SELECTED_REGION.toUpperCase(), Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(getApplicationContext(), "Bolge, " + Commons.SELECTED_REGION.toUpperCase() + " olarak secildi.", Toast.LENGTH_SHORT).show();
-                            }
                             getPurchaseEvent();
                         } else {
                             saveToSharedPrefs();
-                            if(Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                                Toast.makeText(getApplicationContext(), "Region was set to " + Commons.SELECTED_REGION.toUpperCase(), Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(getApplicationContext(), "Bolge, " + Commons.SELECTED_REGION.toUpperCase() + " olarak secildi.", Toast.LENGTH_SHORT).show();
-                            }
                             getPurchaseEvent();
                         }
                     }
@@ -180,7 +170,6 @@ public class SplashActivity extends Activity{
     private void setRegionAuomatically(){
         Locale locale = getApplicationContext().getResources().getConfiguration().locale;
         if(locale.getISO3Country().equalsIgnoreCase("tur") || locale.getISO3Language().equalsIgnoreCase("tur")){
-            Commons.SELECTED_LANGUAGE = "tr";
             Commons.SELECTED_REGION = "tr";
             Locale myLocale = new Locale("tr");
             Resources res = getResources();
@@ -189,7 +178,6 @@ public class SplashActivity extends Activity{
             conf.locale = myLocale;
             res.updateConfiguration(conf, dm);
         }else{
-            Commons.SELECTED_LANGUAGE = "en_us";
             Commons.SELECTED_REGION = "na";
             Locale myLocale = new Locale("en_us");
             Resources res = getResources();
@@ -205,7 +193,6 @@ public class SplashActivity extends Activity{
     private void saveToSharedPrefs(){
         try{
             SharedPreferences prefs = getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
-            prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, Commons.SELECTED_LANGUAGE).commit();
             prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_REGION, Commons.SELECTED_REGION).commit();
         }catch (Exception ignored){}
     }

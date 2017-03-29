@@ -70,43 +70,10 @@ public class RegionDialog extends Dialog{
                     Commons.SELECTED_REGION = "tr";
                 }
 
-                Locale locale = mContext.getApplicationContext().getResources().getConfiguration().locale;
-                if (locale.getISO3Country().equalsIgnoreCase("tur") || locale.getISO3Language().equalsIgnoreCase("tur")) {
-                    Commons.SELECTED_LANGUAGE = "tr";
-                    Locale myLocale = new Locale("tr");
-                    Resources res = mContext.getResources();
-                    DisplayMetrics dm = res.getDisplayMetrics();
-                    Configuration conf = res.getConfiguration();
-                    conf.locale = myLocale;
-                    res.updateConfiguration(conf, dm);
-                } else {
-                    Commons.SELECTED_LANGUAGE = "en_us";
-                    Locale myLocale = new Locale("en_us");
-                    Resources res = mContext.getResources();
-                    DisplayMetrics dm = res.getDisplayMetrics();
-                    Configuration conf = res.getConfiguration();
-                    conf.locale = myLocale;
-                    res.updateConfiguration(conf, dm);
-                }
-                saveToSharedPrefs();
-                try{
-                    if(Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                        Toast.makeText(mContext.getApplicationContext(), "Region was set to " + Commons.SELECTED_REGION.toUpperCase(), Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(mContext.getApplicationContext(), "Bolge, " + Commons.SELECTED_REGION.toUpperCase() + " olarak secildi.", Toast.LENGTH_SHORT).show();
-                    }
-                }catch (Exception ignored){}
+                Commons.saveToSharedPrefs(Commons.LOL_TR_SHARED_PREF_REGION, Commons.SELECTED_REGION);
                 dismiss();
             }
         });
         regionList.setAdapter(adapter);
-    }
-
-    private void saveToSharedPrefs(){
-        try{
-            SharedPreferences prefs = mContext.getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
-            prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, Commons.SELECTED_LANGUAGE).commit();
-            prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_REGION, Commons.SELECTED_REGION).commit();
-        }catch (Exception ignored){}
     }
 }

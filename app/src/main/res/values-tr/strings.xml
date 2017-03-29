@@ -292,4 +292,6 @@
     <string name="giveRating">Puan Ver!</string>
     <string name="read_more">Devamını Oku</string>
 
+    <string name="playing_as">%1$s olarak oynarken:</string>
+    <string name="playing_against">Rakip %1$s iken:</string>
 </resources>

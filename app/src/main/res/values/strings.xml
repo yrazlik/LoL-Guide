@@ -306,5 +306,7 @@
     <string name="remindmelater">Remind Me Later</string>
     <string name="giveRating">Rate LoL Guide!</string>
 
+    <string name="playing_as">When you are playing as %1$s :</string>
+    <string name="playing_against">When you are playing against %1$s :</string>
 
 </resources>

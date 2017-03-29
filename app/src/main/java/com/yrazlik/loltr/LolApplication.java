@@ -22,6 +22,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.yrazlik.loltr.commons.Commons;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
@@ -31,6 +32,7 @@ import java.util.Random;
  */
 public class LolApplication extends MultiDexApplication{
 
+    public static ArrayList<String> availableLanguages;
     public static boolean appIsRunning = false;
     public static boolean firebaseInitialized;
     public static GoogleAnalytics analytics;
@@ -52,10 +54,18 @@ public class LolApplication extends MultiDexApplication{
         return mAppContext;
     }
 
+    public static ArrayList<String> getAvailableLanguages() {
+        return availableLanguages;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         mAppContext = getApplicationContext();
+        availableLanguages = new ArrayList<>();
+        availableLanguages.add("tr");
+        availableLanguages.add("en_us");
+        availableLanguages.add("pt");
 
         try {
             mInterstitialAd = new InterstitialAd(getApplicationContext());
@@ -94,44 +104,16 @@ public class LolApplication extends MultiDexApplication{
 
         try {
             SharedPreferences prefs = getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
-            String language = prefs.getString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, null);
             String region = prefs.getString(Commons.LOL_TR_SHARED_PREF_REGION, null);
 
-            if(language == null || region == null){
-                Commons.SELECTED_LANGUAGE = null;
+            if(region == null){
                 Commons.SELECTED_REGION = null;
             }else{
-                Commons.SELECTED_LANGUAGE = language;
                 Commons.SELECTED_REGION = region;
-                if(language.equalsIgnoreCase("tr")){
-                    Locale myLocale = new Locale("tr");
-                    Resources res = getResources();
-                    DisplayMetrics dm = res.getDisplayMetrics();
-                    Configuration conf = res.getConfiguration();
-                    conf.locale = myLocale;
-                    res.updateConfiguration(conf, dm);
-                }else{
-                    Locale myLocale = new Locale("en_us");
-                    Resources res = getResources();
-                    DisplayMetrics dm = res.getDisplayMetrics();
-                    Configuration conf = res.getConfiguration();
-                    conf.locale = myLocale;
-                    res.updateConfiguration(conf, dm);
-                }
-
             }
 
 
-        }catch (Exception e){
-            Commons.SELECTED_LANGUAGE = "en_us";
-            Commons.SELECTED_REGION = "na";
-            Locale myLocale = new Locale("en_us");
-            Resources res = getResources();
-            DisplayMetrics dm = res.getDisplayMetrics();
-            Configuration conf = res.getConfiguration();
-            conf.locale = myLocale;
-            res.updateConfiguration(conf, dm);
-        }
+        }catch (Exception e){}
 
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));

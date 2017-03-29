@@ -217,21 +217,21 @@ public class Commons {
 		if(c.get(Calendar.DAY_OF_WEEK) < 3){
 			c.add(Calendar.DATE, -7);
 			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
+			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
 			Date d = c.getTime();
 			String start = sdf.format(d);
 			c.add(Calendar.DATE, 7);
-			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
 			Date d2 = c.getTime();
 			String end = sdf.format(d2);
 			return start + " - " + end;
 		}else{
 			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
+			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
 			Date d = c.getTime();
 			String start = sdf.format(d);
 			c.add(Calendar.DATE, 7);
-			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLanguage()));
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
 			Date d2 = c.getTime();
 			String end = sdf.format(d2);
 			return start + " - " + end;
@@ -292,17 +292,30 @@ public class Commons {
         }
     }
 
-    public static String getLanguage(){
-        return SELECTED_LANGUAGE;
-    }
-
     public static String getRegion(){
         return SELECTED_REGION;
     }
 
     public static String getLocale(){
-        if(SELECTED_LANGUAGE.equalsIgnoreCase("tr")){
+        String locale = mContext.getApplicationContext().getResources().getConfiguration().locale.toString();
+        if(locale.toLowerCase().startsWith("en")) {
+            return "en_US";
+        } else if(locale.toLowerCase().startsWith("tr")) {
             return "tr_TR";
+        } else if(locale.toLowerCase().startsWith("pt")) {
+            return "pt_BR";
+        }
+        return "en_US";
+    }
+
+    public static String getLocaleForMonthName(){
+        String locale = mContext.getApplicationContext().getResources().getConfiguration().locale.toString();
+        if(locale.toLowerCase().startsWith("en")) {
+            return "en";
+        } else if(locale.toLowerCase().startsWith("tr")) {
+            return "tr";
+        } else if(locale.toLowerCase().startsWith("pt")) {
+            return "prt";
         }
         return "en_US";
     }
@@ -404,5 +417,12 @@ public class Commons {
 
     public static boolean isValidString(String s) {
         return s != null && s.length() > 0;
+    }
+
+    public static void saveToSharedPrefs(String key, String value){
+        try{
+            SharedPreferences prefs = mContext.getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
+            prefs.edit().putString(key, value).commit();
+        }catch (Exception ignored){}
     }
 }

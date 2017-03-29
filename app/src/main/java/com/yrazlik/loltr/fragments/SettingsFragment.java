@@ -127,7 +127,6 @@ public class SettingsFragment extends BaseFragment{
                     Configuration conf = res.getConfiguration();
                     conf.locale = myLocale;
                     res.updateConfiguration(conf, dm);
-                    Commons.SELECTED_LANGUAGE = "tr";
                 }else if(language.equalsIgnoreCase(getResources().getString(R.string.english))){
                     Locale myLocale = new Locale("en_us");
                     Resources res = getResources();
@@ -135,7 +134,6 @@ public class SettingsFragment extends BaseFragment{
                     Configuration conf = res.getConfiguration();
                     conf.locale = myLocale;
                     res.updateConfiguration(conf, dm);
-                    Commons.SELECTED_LANGUAGE = "en_us";
                 }
 
                 if(region.equalsIgnoreCase("TR")){
@@ -162,7 +160,6 @@ public class SettingsFragment extends BaseFragment{
 
                 try{
                     SharedPreferences prefs = getContext().getApplicationContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
-                    prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_LANGUAGE, Commons.SELECTED_LANGUAGE).commit();
                     prefs.edit().putString(Commons.LOL_TR_SHARED_PREF_REGION, Commons.SELECTED_REGION).commit();
                 }catch (Exception ignored){}
 

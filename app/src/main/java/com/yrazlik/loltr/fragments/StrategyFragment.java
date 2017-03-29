@@ -84,14 +84,11 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
 			}
 			String key = resp.getKey();
 
-            String region = Commons.getLanguage();
-            if(region.equalsIgnoreCase("tr")) {
-                allyTipsTitle.setText(key + " Olarak Oynarken:");
-                enemyTipstitle.setText("Rakip " + key + " Iken:");
-            }else{
-                allyTipsTitle.setText("When you are playing as " + key + ":");
-                enemyTipstitle.setText("When the opponent is " + key + ":");
-            }
+
+
+            allyTipsTitle.setText(getString(R.string.playing_as, key));
+            enemyTipstitle.setText(getString(R.string.playing_against, key));
+
             Commons.underline(allyTipsTitle);
             Commons.underline(enemyTipstitle);
 			allyTips.setText(allyTipsString);

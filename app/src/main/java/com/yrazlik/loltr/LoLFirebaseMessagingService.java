@@ -53,7 +53,7 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
         String notificationLanguage = getNotificationLanguage(remoteMessage);
         if(Commons.isValidString(notificationLanguage)) {
             notificationLanguage = notificationLanguage.toLowerCase();
-            if(notificationLanguage.contains(Commons.getLanguage())) {
+            if(notificationLanguage.contains(Commons.getLocale())) {
                 mgr.notify(notificationId, createPushNotification(getTicker(remoteMessage), getString(R.string.app_name), getBody(remoteMessage), pIntent));
             }
         }
@@ -70,7 +70,7 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
 
     private String getTicker(RemoteMessage remoteMessage) {
         if (remoteMessage != null && remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
-            if(Commons.getLanguage().equalsIgnoreCase("tr")) {
+            if(Commons.getLocale().equalsIgnoreCase("tr")) {
                 if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER))) {
                     return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER);
                 }
@@ -85,7 +85,7 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
 
     private String getBody(RemoteMessage remoteMessage) {
         if (remoteMessage != null && remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
-            if(Commons.getLanguage().equalsIgnoreCase("tr")) {
+            if(Commons.getLocale().equalsIgnoreCase("tr")) {
                 if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY))) {
                     return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY);
                 }

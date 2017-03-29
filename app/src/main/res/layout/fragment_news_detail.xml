@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
                     android:paddingTop="5dp"
-                    android:text="@string/watch_full_screen"
+                    android:text="Full Screen"
                     android:textAppearance="@style/sp14BlueRegular"
                     android:textColor="@color/button_blue"/>
 
@@ -78,7 +78,7 @@
                     android:layout_below="@+id/watchFullScreenTV"
                     android:paddingBottom="10dp"
                     android:paddingTop="5dp"
-                    android:text="@string/click_to_update"
+                    android:text=""
                     android:textAppearance="@style/sp14BlueRegular"
                     android:textColor="@color/button_blue"
                     android:textStyle="bold"/>
