@@ -140,11 +140,11 @@ public class ServiceRequest {
             case Commons.MATCH_INFO_REQUEST:
                 return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
             case Commons.SUMMONER_INFO_REQUEST:
-                return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
+                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
             case Commons.LEAGUE_INFO_REQUEST:
-                return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
+                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
             case Commons.STATS_REQUEST:
-                return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
+                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
 			default:
 				return "";
 		}
@@ -431,7 +431,7 @@ public class ServiceRequest {
     }
 
     private String getSummonerApiUrlByRegion(String region){
-        return "https://" + region + ".api.pvp.net";
+        return "https://" + region + ".api.riotgames.com";
     }
 
     public String trimMessage(String json, String key){

@@ -119,17 +119,19 @@ public class Commons {
 
     public static String[] regions = {"TR", "EUW", "NA", "EUNE", "JP", "OCE", "BR", "LAN", "LAS", "RU", "KR"};
 
+    public static String BASE_URL_BODY = ".api.riotgames.com";
     public static String YAHO_RSS_FEED_URL = "https://esports.yahoo.com/league-of-legends/rss";
     public static String SELECTED_REGION = "tr";
     public static String SELECTED_REGION_FOR_MATCH_INFO_PATH_PARAM = "tr";
     public static String SELECTED_LANGUAGE = "tr";
-    public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://" + SELECTED_REGION + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
+    public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://" + SELECTED_REGION.toLowerCase() + BASE_URL_BODY + "/api/lol";
+    public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://" + SELECTED_REGION + BASE_URL_BODY + "/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
     public static String PROFILE_ICON_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/profileicon/";
 
 
 
 
-	public static final String STATIC_DATA_BASE_URL = "https://global.api.pvp.net/api/lol";
+	public static final String STATIC_DATA_BASE_URL = "https://global.api.riotgames.com/api/lol";
     public static String SUMMONER_SPELL_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/spell/";
 	public static String CHAMPION_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/champion/";
 	public static final String CHAMPION_SPLASH_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading";
@@ -190,35 +192,35 @@ public class Commons {
     public static SummonerInfo summonerInfo;
 
     public static String getSpectatorServiceBaseUrl(String selectedRegion) {
-        return "https://" + selectedRegion.toLowerCase() +".api.pvp.net/api/lol";
+        return "https://" + selectedRegion.toLowerCase() + BASE_URL_BODY + "/api/lol";
     }
 
     public static String getSpectatorServiceBaseUrlCurrentSelected(String selectedRegion) {
 
         if(selectedRegion.equalsIgnoreCase("tr")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
         } else if(selectedRegion.equalsIgnoreCase("ru")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/RU";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/RU";
         } else if(selectedRegion.equalsIgnoreCase("euw")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1";
         } else if(selectedRegion.equalsIgnoreCase("na")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/NA1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/NA1";
         } else if(selectedRegion.equalsIgnoreCase("eune")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/EUN1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/EUN1";
         } else if(selectedRegion.equalsIgnoreCase("oce")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/OC1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/OC1";
         } else if(selectedRegion.equalsIgnoreCase("br")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/BR1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/BR1";
         } else if(selectedRegion.equalsIgnoreCase("lan")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/LA1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/LA1";
         } else if(selectedRegion.equalsIgnoreCase("las")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/LA2";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/LA2";
         } else if(selectedRegion.equalsIgnoreCase("kr")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/KR";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/KR";
         } else if(selectedRegion.equalsIgnoreCase("jp")) {
-            return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/JP1";
+            return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/JP1";
         }
-        return "https://" + selectedRegion + ".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
+        return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
     }
 
     public static String getSpectatorServiceRegionPathParameter(String selectedRegion) {

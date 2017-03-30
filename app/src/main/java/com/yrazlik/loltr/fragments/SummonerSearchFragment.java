@@ -118,7 +118,12 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             });
 
             regionSpinner.setAdapter(spinnerAdapter);
-
+            regionSpinner.post(new Runnable() {
+                @Override
+                public void run() {
+                    regionSpinner.setSelection(0);
+                }
+            });
 
             usernameET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override

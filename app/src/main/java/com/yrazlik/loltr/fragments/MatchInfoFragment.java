@@ -66,6 +66,12 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
             }
         });
         regionSpinner.setAdapter(spinnerAdapter);
+        regionSpinner.post(new Runnable() {
+            @Override
+            public void run() {
+                regionSpinner.setSelection(0);
+            }
+        });
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
