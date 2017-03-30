@@ -12,18 +12,14 @@ public class News {
 
     private String url;
     private String title;
-    private String titleEnglish;
     private String shortDesc;
-    private String shortDescEnglish;
     private String img;
     private Date createdAt;
 
-    public News(String url, String title, String titleEnglish, String shortDesc, String shortDescEnglish, String img, Date createdAt){
+    public News(String url, String title, String shortDesc, String img, Date createdAt){
         this.url = url;
         this.title = title;
-        this.titleEnglish = titleEnglish;
         this.shortDesc = shortDesc;
-        this.shortDescEnglish = shortDescEnglish;
         this.img = img;
         this.createdAt = createdAt;
     }
@@ -66,21 +62,5 @@ public class News {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public String getShortDescEnglish() {
-        return shortDescEnglish;
-    }
-
-    public void setShortDescEnglish(String shortDescEnglish) {
-        this.shortDescEnglish = shortDescEnglish;
-    }
-
-    public String getTitleEnglish() {
-        return titleEnglish;
-    }
-
-    public void setTitleEnglish(String titleEnglish) {
-        this.titleEnglish = titleEnglish;
     }
 }

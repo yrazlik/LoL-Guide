@@ -269,5 +269,6 @@
     <string name="playing_as">When you are playing as %1$s :</string>
     <string name="playing_against">When you are playing against %1$s :</string>
     <string name="rankedWinLose">Ranked Win/Lose:</string>
+    <string name="noRecentNEws">There are no recent news to display.</string>
 
 </resources>

@@ -64,54 +64,19 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
     private void setTitle(ViewHolder holder, News news) {
         String title = news.getTitle();
-        String titleEnglish = news.getTitleEnglish();
-
-        if (Commons.SELECTED_LANGUAGE != null) {
-            if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
-                if (title != null && title.length() > 0) {
-                    holder.title.setText(title);
-                } else {
-                    holder.title.setText("???");
-                }
-            } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                if (titleEnglish != null && titleEnglish.length() > 0) {
-                    holder.title.setText(titleEnglish);
-                } else {
-                    holder.title.setText("???");
-                }
-            }
+        if (title != null && title.length() > 0) {
+            holder.title.setText(title);
         } else {
-            if (titleEnglish != null && titleEnglish.length() > 0) {
-                holder.title.setText(titleEnglish);
-            } else {
-                holder.title.setText("???");
-            }
+            holder.title.setText("???");
         }
     }
 
     private void setShortDesc(ViewHolder holder, News news) {
         String shortDesc = news.getShortDesc();
-        String shortDescEnglish = news.getShortDescEnglish();
-        if (Commons.SELECTED_LANGUAGE != null) {
-            if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
-                if (shortDesc != null && shortDesc.length() > 0) {
-                    holder.shortDescTV.setText(shortDesc);
-                } else {
-                    holder.shortDescTV.setText("...");
-                }
-            } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                if (shortDescEnglish != null && shortDescEnglish.length() > 0) {
-                    holder.shortDescTV.setText(shortDescEnglish);
-                } else {
-                    holder.shortDescTV.setText("...");
-                }
-            }
+        if (shortDesc != null && shortDesc.length() > 0) {
+            holder.shortDescTV.setText(shortDesc);
         } else {
-            if (shortDescEnglish != null && shortDescEnglish.length() > 0) {
-                holder.shortDescTV.setText(shortDescEnglish);
-            } else {
-                holder.shortDescTV.setText("...");
-            }
+            holder.shortDescTV.setText("...");
         }
     }
 

@@ -27,6 +27,7 @@ import com.yrazlik.loltr.data.Discount;
 import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,12 +45,14 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
     private ListView newsLV;
     private NewsAdapter adapter;
     private ArrayList<News> news;
+    private RobotoTextView noRecentNewsTV;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_news, container, false);
+            noRecentNewsTV = (RobotoTextView) rootView.findViewById(R.id.noRecentNewsTV);
             newsLV = (ListView) rootView.findViewById(R.id.newsLV);
             newsLV.setOnItemClickListener(this);
         }
@@ -67,7 +70,7 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
             if (LolApplication.firebaseInitialized) {
                 try {
                     Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-                    firebase.child("news").addListenerForSingleValueEvent(new ValueEventListener() {
+                    firebase.child(getLocalizedNews()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
@@ -75,9 +78,7 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                                 if (keyValues != null && keyValues.size() > 0) {
                                     String url = (String) keyValues.get("url");
                                     String title = (String) keyValues.get("newsTitle");
-                                    String titleEnglish = (String) keyValues.get("newsTitleEnglish");
                                     String message = (String) keyValues.get("shortDesc");
-                                    String messageEnglish = (String) keyValues.get("shortDescEnglish");
                                     String smallImage = (String) keyValues.get("img");
                                     String createdAt = (String) keyValues.get("createdAt");
 
@@ -90,24 +91,9 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                                             Calendar c = Calendar.getInstance();
                                             c.set(year, month - 1, day, 0, 0);
 
-                                            if (Commons.SELECTED_LANGUAGE != null) {
-                                                if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
-                                                    if (title != null && title.length() > 0) {
-                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, c.getTime()));
-
-                                                    }
-                                                } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                                                    if (titleEnglish != null && titleEnglish.length() > 0) {
-                                                        news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, c.getTime()));
-
-                                                    }
-                                                }
-                                            } else {
-                                                if (titleEnglish != null && titleEnglish.length() > 0) {
-                                                    news.add(new News(url, title, titleEnglish, message, messageEnglish, smallImage, c.getTime()));
-                                                }
+                                            if (title != null && title.length() > 0) {
+                                                news.add(new News(url, title, message, smallImage, c.getTime()));
                                             }
-
                                         } catch (Exception ignored) {
                                         }
                                     }
@@ -117,10 +103,13 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                             dismissProgress();
 
                             if (news != null && news.size() > 0) {
+                                noRecentNewsTV.setVisibility(View.GONE);
                                 news = sortByDateCreated(news);
                                 Collections.reverse(news);
                                 adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
                                 newsLV.setAdapter(adapter);
+                            } else {
+                                noRecentNewsTV.setVisibility(View.VISIBLE);
                             }
                         }
 
@@ -201,6 +190,10 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
 
         } catch (Exception ignored) {
         }
+    }
+
+    public String getLocalizedNews() {
+        return "news" + "-" +  Commons.getLocale().toLowerCase();
     }
 
     @Override

@@ -19,6 +19,16 @@
 
     </ListView>
 
+    <com.yrazlik.loltr.view.RobotoTextView
+        android:id="@+id/noRecentNewsTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textAppearance="@style/sp13BlackRegular"
+        android:text="@string/noRecentNEws"
+        android:visibility="gone"/>
+
     <include
         android:id="@+id/loadingView"
         layout="@layout/loading_view_fullscreen"

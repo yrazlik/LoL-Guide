@@ -12,7 +12,7 @@
         <item>Invocadores</item>
         <item>Campeões Livres Semanais</item>
         <item>Descontos</item>
-        <item>Notícia</item>
+        <item>Notícias</item>
         <item>Campeões</item>
         <item>Item</item>
         <item>Runas</item>
@@ -31,7 +31,7 @@
         <item>Invocadores</item>
         <item>Campeões Livres Semanais</item>
         <item>Descontos</item>
-        <item>Notícia</item>
+        <item>Notícias</item>
         <item>Campeões</item>
         <item>Item</item>
         <item>Runas</item>
@@ -256,5 +256,6 @@
     <string name="playing_as">Quando você estiver jogando como %1$s :</string>
     <string name="playing_against">Quando o oponente é %1$s :</string>
     <string name="rankedWinLose">Classificação ganha/perde:</string>
+    <string name="noRecentNEws">Não foi possível encontrar nenhuma notícias para ser exibida.</string>
 
 </resources>
