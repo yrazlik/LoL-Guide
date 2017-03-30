@@ -23,9 +23,7 @@ import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
 import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.data.Champion;
-import com.yrazlik.loltr.data.Discount;
-import com.yrazlik.loltr.data.News;
+import com.yrazlik.loltr.data.ChampionDiscount;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
 
@@ -33,9 +31,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by yrazlik on 12/25/15.
@@ -43,7 +39,7 @@ import java.util.List;
 public class ChampionDiscountsFragment extends BaseFragment implements ResponseListener, AdapterView.OnItemClickListener{
     private ListView discountsLV;
     private ChampionDiscountsAdapter adapter;
-    private ArrayList<Discount> discounts;
+    private ArrayList<ChampionDiscount> championDiscounts;
     private Dialog progress;
 
     @Nullable
@@ -53,7 +49,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_champion_discount, container, false);
             discountsLV = (ListView) rootView.findViewById(R.id.discountLV);
-            discounts = new ArrayList<>();
+            championDiscounts = new ArrayList<>();
             progress = ServiceRequest.showLoading(getContext());
             discountsLV.setOnItemClickListener(this);
             showProgress();
@@ -62,50 +58,47 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
             if (LolApplication.firebaseInitialized) {
                 try {
                     Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-                    firebase.child("discounts").addListenerForSingleValueEvent(new ValueEventListener() {
+                    firebase.child("champion-discounts").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                 HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
                                 if (keyValues != null && keyValues.size() > 0) {
-                                    String discountType = (String) keyValues.get("discountType");
 
-                                    if (discountType != null && discountType.equalsIgnoreCase("champion")) {
-                                        String startDate = (String) keyValues.get("startDate");
-                                        String endDate = (String) keyValues.get("endDate");
-                                        String priceBeforeDiscount = (String) keyValues.get("priceBeforeDiscount");
-                                        String priceAfterDiscount = (String) keyValues.get("priceAfterDiscount");
-                                        String name = (String) keyValues.get("name");
-                                        String nameEnglish = (String) keyValues.get("nameEnglish");
-                                        String imageUrl = (String) keyValues.get("imageUrl");
-                                        String createdAt = (String) keyValues.get("createdAt");
+                                    String startDate = (String) keyValues.get("startDate");
+                                    String endDate = (String) keyValues.get("endDate");
+                                    String priceBeforeDiscount = (String) keyValues.get("priceBeforeDiscount");
+                                    String priceAfterDiscount = (String) keyValues.get("priceAfterDiscount");
+                                    String name = (String) keyValues.get("name");
+                                    String imageUrl = (String) keyValues.get("imageUrl");
+                                    String createdAt = (String) keyValues.get("createdAt");
 
-                                        long championId = 0;
+                                    long championId = 0;
+                                    try {
+                                        championId = (long) keyValues.get("champId");
+                                    } catch (Exception ignored) {
+                                    }
+
+                                    if (createdAt != null) {
                                         try {
-                                            championId = (long) keyValues.get("champId");
-                                        } catch (Exception ignored) {}
-
-                                        if (createdAt != null) {
-                                            try {
-                                                String[] values = createdAt.split("\\.");
-                                                int day = Integer.parseInt(values[0]);
-                                                int month = Integer.parseInt(values[1]);
-                                                int year = Integer.parseInt(values[2]);
-                                                Calendar c = Calendar.getInstance();
-                                                c.set(year, month - 1, day, 0, 0);
-                                                Discount discount = new Discount(discountType, startDate, endDate, name, nameEnglish, priceBeforeDiscount, priceAfterDiscount, imageUrl, championId, c.getTime());
-                                                discounts.add(discount);
-                                            } catch (Exception ignored) {
-                                            }
+                                            String[] values = createdAt.split("\\.");
+                                            int day = Integer.parseInt(values[0]);
+                                            int month = Integer.parseInt(values[1]);
+                                            int year = Integer.parseInt(values[2]);
+                                            Calendar c = Calendar.getInstance();
+                                            c.set(year, month - 1, day, 0, 0);
+                                            ChampionDiscount championDiscount = new ChampionDiscount(startDate, endDate, name, priceBeforeDiscount, priceAfterDiscount, imageUrl, championId, c.getTime());
+                                            championDiscounts.add(championDiscount);
+                                        } catch (Exception ignored) {
                                         }
                                     }
                                 }
                             }
                             hideProgress();
-                            discounts = sortByDateCreated(discounts);
-                            if (discounts != null && discounts.size() > 0) {
-                                Collections.reverse(discounts);
-                                adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, discounts);
+                            championDiscounts = sortByDateCreated(championDiscounts);
+                            if (championDiscounts != null && championDiscounts.size() > 0) {
+                                Collections.reverse(championDiscounts);
+                                adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, championDiscounts);
                                 discountsLV.setAdapter(adapter);
                             }
                         }
@@ -143,18 +136,18 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         t.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
-    private ArrayList<Discount> sortByDateCreated(ArrayList<Discount> discounts){
+    private ArrayList<ChampionDiscount> sortByDateCreated(ArrayList<ChampionDiscount> championDiscounts){
         try{
-            Collections.sort(discounts, new Comparator<Discount>() {
+            Collections.sort(championDiscounts, new Comparator<ChampionDiscount>() {
                 @Override
-                public int compare(Discount d1, Discount d2) {
+                public int compare(ChampionDiscount d1, ChampionDiscount d2) {
                      return d1.getCreatedAt().compareTo(d2.getCreatedAt());
                 }
             });
         }catch (Exception e){
             return null;
         }
-        return discounts;
+        return championDiscounts;
     }
 
     private void showProgress(){
@@ -166,7 +159,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         try {
-            Discount d = (Discount) discountsLV.getItemAtPosition(position);
+            ChampionDiscount d = (ChampionDiscount) discountsLV.getItemAtPosition(position);
             int champId = (int) d.getChampionId();
             if (champId != 0) {
                 ChampionDetailFragment fragment = new ChampionDetailFragment();

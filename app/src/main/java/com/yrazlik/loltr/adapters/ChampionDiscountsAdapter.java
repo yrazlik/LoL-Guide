@@ -12,7 +12,7 @@ import com.pkmmte.view.CircularImageView;
 import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.data.Discount;
+import com.yrazlik.loltr.data.ChampionDiscount;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
@@ -20,16 +20,16 @@ import java.util.ArrayList;
 /**
  * Created by yrazlik on 12/25/15.
  */
-public class ChampionDiscountsAdapter extends ArrayAdapter<Discount>{
+public class ChampionDiscountsAdapter extends ArrayAdapter<ChampionDiscount>{
 
     private Context mContext;
-    private ArrayList<Discount> discounts;
+    private ArrayList<ChampionDiscount> championDiscounts;
     private int resourceId;
 
-    public ChampionDiscountsAdapter(Context context, int resource, ArrayList<Discount> objects) {
+    public ChampionDiscountsAdapter(Context context, int resource, ArrayList<ChampionDiscount> objects) {
         super(context, resource, objects);
         this.mContext = context;
-        this.discounts = objects;
+        this.championDiscounts = objects;
         this.resourceId = resource;
     }
 
@@ -52,38 +52,26 @@ public class ChampionDiscountsAdapter extends ArrayAdapter<Discount>{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Discount discount = getItem(position);
+        ChampionDiscount championDiscount = getItem(position);
 
-        if (discount != null){
-            if(discount.getImageUrl() != null){
-                LolImageLoader.getInstance().loadImage(discount.getImageUrl(), holder.discountImage);
+        if (championDiscount != null){
+            if(championDiscount.getImageUrl() != null){
+                LolImageLoader.getInstance().loadImage(championDiscount.getImageUrl(), holder.discountImage);
             }
 
-            if(Commons.SELECTED_LANGUAGE != null) {
-                if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
-                    if(discount.getName() != null){
-                        holder.discountName.setText(discount.getName());
-                    }
-                } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                    if(discount.getNameEnglish() != null){
-                        holder.discountName.setText(discount.getNameEnglish());
-                    }
-                }
-            }else {
-                if(discount.getNameEnglish() != null){
-                    holder.discountName.setText(discount.getNameEnglish());
-                }
+            if(championDiscount.getName() != null){
+                holder.discountName.setText(championDiscount.getName());
             }
 
-            if (discount.getStartDate() != null && discount.getEndDate() != null){
-                holder.date.setText(discount.getStartDate() + " - " + discount.getEndDate());
+            if (championDiscount.getStartDate() != null && championDiscount.getEndDate() != null){
+                holder.date.setText(championDiscount.getStartDate() + " - " + championDiscount.getEndDate());
             }
 
-            if(discount.getPriceBeforeDiscount() != null && discount.getPriceAfterDiscount() != null){
+            if(championDiscount.getPriceBeforeDiscount() != null && championDiscount.getPriceAfterDiscount() != null){
                 holder.priceBeforeDiscount.setPaintFlags(holder.priceBeforeDiscount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 holder.rpImage.setVisibility(View.VISIBLE);
-                holder.priceBeforeDiscount.setText(discount.getPriceBeforeDiscount());
-                holder.priceAfterDiscount.setText(discount.getPriceAfterDiscount());
+                holder.priceBeforeDiscount.setText(championDiscount.getPriceBeforeDiscount());
+                holder.priceAfterDiscount.setText(championDiscount.getPriceAfterDiscount());
             }else{
                 holder.rpImage.setVisibility(View.GONE);
             }

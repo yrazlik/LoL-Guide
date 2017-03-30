@@ -1,11 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,22 +16,17 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
 import com.yrazlik.loltr.adapters.NewsAdapter;
 import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.data.Discount;
 import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by yrazlik on 12/28/15.

@@ -8,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
 import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.data.Discount;
-import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.data.ChampionDiscount;
+import com.yrazlik.loltr.data.CostumeDiscount;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
@@ -23,16 +21,16 @@ import java.util.ArrayList;
 /**
  * Created by yrazlik on 12/25/15.
  */
-public class CostumeDiscountsAdapter extends ArrayAdapter<Discount>{
+public class CostumeDiscountsAdapter extends ArrayAdapter<CostumeDiscount>{
 
     private Context mContext;
-    private ArrayList<Discount> discounts;
+    private ArrayList<CostumeDiscount> costumeDiscounts;
     private int resourceId;
 
-    public CostumeDiscountsAdapter(Context context, int resource, ArrayList<Discount> objects) {
+    public CostumeDiscountsAdapter(Context context, int resource, ArrayList<CostumeDiscount> objects) {
         super(context, resource, objects);
         this.mContext = context;
-        this.discounts = objects;
+        this.costumeDiscounts = objects;
         this.resourceId = resource;
     }
 
@@ -55,38 +53,26 @@ public class CostumeDiscountsAdapter extends ArrayAdapter<Discount>{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Discount discount = getItem(position);
+        CostumeDiscount costumeDiscount = getItem(position);
 
-        if (discount != null){
-            if(discount.getImageUrl() != null){
-                LolImageLoader.getInstance().loadImage(discount.getImageUrl(),  holder.discountImage);
+        if (costumeDiscount != null){
+            if(costumeDiscount.getImageUrl() != null){
+                LolImageLoader.getInstance().loadImage(costumeDiscount.getImageUrl(),  holder.discountImage);
             }
 
-            if(Commons.SELECTED_LANGUAGE != null) {
-                if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("tr")) {
-                    if(discount.getName() != null){
-                        holder.discountName.setText(discount.getName());
-                    }
-                } else if (Commons.SELECTED_LANGUAGE.equalsIgnoreCase("en_us")) {
-                    if(discount.getNameEnglish() != null){
-                        holder.discountName.setText(discount.getNameEnglish());
-                    }
-                }
-            }else {
-                if(discount.getNameEnglish() != null){
-                    holder.discountName.setText(discount.getNameEnglish());
-                }
+            if(costumeDiscount.getName() != null){
+                holder.discountName.setText(costumeDiscount.getName());
             }
 
-            if (discount.getStartDate() != null && discount.getEndDate() != null){
-                holder.date.setText(discount.getStartDate() + " - " + discount.getEndDate());
+            if (costumeDiscount.getStartDate() != null && costumeDiscount.getEndDate() != null){
+                holder.date.setText(costumeDiscount.getStartDate() + " - " + costumeDiscount.getEndDate());
             }
 
-            if(discount.getPriceBeforeDiscount() != null && discount.getPriceAfterDiscount() != null){
+            if(costumeDiscount.getPriceBeforeDiscount() != null && costumeDiscount.getPriceAfterDiscount() != null){
                 holder.priceBeforeDiscount.setPaintFlags(holder.priceBeforeDiscount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 holder.rpImage.setVisibility(View.VISIBLE);
-                holder.priceBeforeDiscount.setText(discount.getPriceBeforeDiscount());
-                holder.priceAfterDiscount.setText(discount.getPriceAfterDiscount());
+                holder.priceBeforeDiscount.setText(costumeDiscount.getPriceBeforeDiscount());
+                holder.priceAfterDiscount.setText(costumeDiscount.getPriceAfterDiscount());
             }else{
                 holder.rpImage.setVisibility(View.GONE);
             }
