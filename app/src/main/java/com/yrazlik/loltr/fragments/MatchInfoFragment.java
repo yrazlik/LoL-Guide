@@ -74,7 +74,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                 }else{
                     String summonerName = summonerNameET.getText().toString();
                     ArrayList<String> pathParams = new ArrayList<String>();
-                    pathParams.add(Commons.getSpectatorServiceRegionPathParameter(Commons.SELECTED_REGION_FOR_MATCH_INFO_PATH_PARAM));
+                    pathParams.add(Commons.SELECTED_REGION_FOR_MATCH_INFO_PATH_PARAM);
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");

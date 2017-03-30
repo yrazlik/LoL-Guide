@@ -255,5 +255,6 @@
 
     <string name="playing_as">Quando você estiver jogando como %1$s :</string>
     <string name="playing_against">Quando o oponente é %1$s :</string>
+    <string name="rankedWinLose">Classificação ganha/perde:</string>
 
 </resources>

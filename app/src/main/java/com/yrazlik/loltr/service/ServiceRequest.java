@@ -140,11 +140,11 @@ public class ServiceRequest {
             case Commons.MATCH_INFO_REQUEST:
                 return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
             case Commons.SUMMONER_INFO_REQUEST:
-                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
+                return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
             case Commons.LEAGUE_INFO_REQUEST:
-                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
+                return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
             case Commons.STATS_REQUEST:
-                return Commons.SERVICE_BASE_URL_FOR_MATCH_INFO;
+                return Commons.SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED;
 			default:
 				return "";
 		}

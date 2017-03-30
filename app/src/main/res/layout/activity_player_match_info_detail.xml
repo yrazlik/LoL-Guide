@@ -215,7 +215,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/totalWonMatchCountTV"
                         android:layout_marginTop="5dp"
-                        android:text="Dereceli Kazanma/Kaybetme:"
+                        android:text="@string/rankedWinLose"
                         android:textAppearance="@style/sp12BlackRegular"
                         />
 
