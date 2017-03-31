@@ -58,10 +58,10 @@ public class StatisticsAdapter extends ArrayAdapter<Statistics>{
         boolean isHeader = statistics.isHeader();
 
         if(isHeader){
-            holder.name.setTypeface(null, Typeface.BOLD);
+            holder.name.setTypeface(Typeface.create(holder.name.getTypeface(), Typeface.BOLD));
             holder.name.setPadding(0, 5, 0, 5);
         }else{
-            holder.name.setTypeface(null, Typeface.NORMAL);
+            holder.name.setTypeface(Typeface.create(holder.name.getTypeface(), Typeface.NORMAL));
             holder.name.setPadding(0, 0, 0, 0);
         }
 
