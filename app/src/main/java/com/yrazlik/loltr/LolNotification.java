@@ -22,15 +22,11 @@ public class LolNotification {
 
     //push notification variables
     public static final String DEEPLINK_EXTRA = "dl";  //***
-    public static final String MESSAGE_EXTRA = "msg";
-    public static final String PUSH_NOTIFICATION_LANGUAGE = "language"; //***
-    public static final String MESSAGE_EXTRA_ENGLISH = "msgEnglish";
+    public static final String PUSH_NOTIFICATION_LOCALE = "locale"; //***
     public static final String PUSH_NOTIFICATION_TICKER = "ticker"; //***
-    public static final String PUSH_NOTIFICATION_TICKER_ENGLISH = "tickerEnglish"; //***
     public static final String PUSH_NOTIFICATION_BODY = "body"; //***
-    public static final String PUSH_NOTIFICATION_BODY_ENGLISH = "bodyEnglish"; //***
 
-    private String language;
+    private String locale;
     private String deeplink;
     private String msg;
     private String msgEnglish;
@@ -82,15 +78,7 @@ public class LolNotification {
             }catch (Exception ignored) {}
 
             try {
-                this.language = (String) extras.get(LolNotification.PUSH_NOTIFICATION_LANGUAGE);
-            }catch (Exception ignored) {}
-
-            try {
-                this.msg = (String) extras.get(LolNotification.MESSAGE_EXTRA);
-            }catch (Exception ignored) {}
-
-            try {
-                this.msgEnglish = (String) extras.get(LolNotification.MESSAGE_EXTRA_ENGLISH);
+                this.locale = (String) extras.get(LolNotification.PUSH_NOTIFICATION_LOCALE);
             }catch (Exception ignored) {}
 
             try {
@@ -98,15 +86,7 @@ public class LolNotification {
             }catch (Exception ignored) {}
 
             try {
-                this.tickerEnglish = (String) extras.get(LolNotification.PUSH_NOTIFICATION_TICKER_ENGLISH);
-            }catch (Exception ignored) {}
-
-            try {
                 this.body = (String) extras.get(LolNotification.PUSH_NOTIFICATION_BODY);
-            }catch (Exception ignored) {}
-
-            try {
-                this.bodyEnglish = (String) extras.get(LolNotification.PUSH_NOTIFICATION_BODY_ENGLISH);
             }catch (Exception ignored) {}
         }
     }

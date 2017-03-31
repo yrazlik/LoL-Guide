@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.yrazlik.loltr.activities.LolPushActivity;
@@ -50,19 +49,19 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
         final NotificationManager mgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         PendingIntent pIntent = PendingIntent.getActivity(this, generateRandomUniqueInt(), notificationIntent, 0);
 
-        String notificationLanguage = getNotificationLanguage(remoteMessage);
-        if(Commons.isValidString(notificationLanguage)) {
-            notificationLanguage = notificationLanguage.toLowerCase();
-            if(notificationLanguage.contains(Commons.getLocale())) {
+        String notificationLocale = getNotificationLocale(remoteMessage);
+        if(Commons.isValidString(notificationLocale)) {
+            notificationLocale = notificationLocale.toLowerCase();
+            if(notificationLocale.equalsIgnoreCase(Commons.getLocale())) {
                 mgr.notify(notificationId, createPushNotification(getTicker(remoteMessage), getString(R.string.app_name), getBody(remoteMessage), pIntent));
             }
         }
     }
 
-    private String getNotificationLanguage(RemoteMessage remoteMessage) {
+    private String getNotificationLocale(RemoteMessage remoteMessage) {
         if(remoteMessage != null &&  remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
             try {
-                return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_LANGUAGE);
+                return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_LOCALE);
             }catch (Exception ignored) {}
         }
         return "";
@@ -70,14 +69,8 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
 
     private String getTicker(RemoteMessage remoteMessage) {
         if (remoteMessage != null && remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
-            if(Commons.getLocale().equalsIgnoreCase("tr")) {
-                if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER))) {
-                    return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER);
-                }
-            } else {
-                if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER_ENGLISH))) {
-                    return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER_ENGLISH);
-                }
+            if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER))) {
+                return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER);
             }
         }
         return getString(R.string.app_name);
@@ -85,14 +78,8 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
 
     private String getBody(RemoteMessage remoteMessage) {
         if (remoteMessage != null && remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
-            if(Commons.getLocale().equalsIgnoreCase("tr")) {
-                if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY))) {
-                    return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY);
-                }
-            } else {
-                if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY_ENGLISH))) {
-                    return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY_ENGLISH);
-                }
+            if (Commons.isValidString(remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY))) {
+                return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY);
             }
         }
         return getString(R.string.app_name);
@@ -107,7 +94,7 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
         if (remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
 
             try {
-                notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_LANGUAGE, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_LANGUAGE));
+                notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_LOCALE, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_LOCALE));
             } catch (Exception ignored) {}
 
             try {
@@ -115,27 +102,11 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
             } catch (Exception ignored) {}
 
             try {
-                notificationIntent.putExtra(LolNotification.MESSAGE_EXTRA, remoteMessage.getData().get(LolNotification.MESSAGE_EXTRA));
-            } catch (Exception ignored) {}
-
-            try {
-                notificationIntent.putExtra(LolNotification.MESSAGE_EXTRA_ENGLISH, remoteMessage.getData().get(LolNotification.MESSAGE_EXTRA_ENGLISH));
-            } catch (Exception ignored) {}
-
-            try {
                 notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_TICKER, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER));
             } catch (Exception ignored) {}
 
             try {
-                notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_TICKER_ENGLISH, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TICKER_ENGLISH));
-            } catch (Exception ignored) {}
-
-            try {
                 notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_BODY, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY));
-            } catch (Exception ignored) {}
-
-            try {
-                notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_BODY_ENGLISH, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_BODY_ENGLISH));
             } catch (Exception ignored) {}
         }
 

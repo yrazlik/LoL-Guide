@@ -123,7 +123,6 @@ public class Commons {
     public static String YAHO_RSS_FEED_URL = "https://esports.yahoo.com/league-of-legends/rss";
     public static String SELECTED_REGION = "tr";
     public static String SELECTED_REGION_FOR_MATCH_INFO_PATH_PARAM = "tr";
-    public static String SELECTED_LANGUAGE = "tr";
     public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://" + SELECTED_REGION.toLowerCase() + BASE_URL_BODY + "/api/lol";
     public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://" + SELECTED_REGION + BASE_URL_BODY + "/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
     public static String PROFILE_ICON_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/profileicon/";
