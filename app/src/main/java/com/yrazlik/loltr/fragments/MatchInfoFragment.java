@@ -27,6 +27,7 @@ import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.RobotoButton;
 import com.yrazlik.loltr.view.RobotoEditText;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -84,7 +85,10 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                     pathParams.add("v1.4");
                     pathParams.add("summoner");
                     pathParams.add("by-name");
-                    summonerName = summonerName.replaceAll("\\s","");
+                    summonerName = summonerName.trim().replaceAll("\\s","");
+                    try {
+                        summonerName = URLEncoder.encode(summonerName, "UTF-8");
+                    } catch (Exception e) {}
                     pathParams.add(summonerName);
                     HashMap<String, String> queryParams = new HashMap<String, String>();
                     queryParams.put("api_key", Commons.API_KEY);
