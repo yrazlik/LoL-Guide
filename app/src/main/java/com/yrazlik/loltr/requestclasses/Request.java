@@ -59,7 +59,11 @@ public class Request {
 			if (i != 0) {
 				sb.append(separator);
 			}
-			sb.append(strings.get(i));
+            String pathParam = strings.get(i);
+            try {
+                pathParam = URLEncoder.encode(pathParam, "UTF-8");
+            } catch (Exception e) {}
+			sb.append(pathParam);
 		}
 		return sb.toString();
 	}

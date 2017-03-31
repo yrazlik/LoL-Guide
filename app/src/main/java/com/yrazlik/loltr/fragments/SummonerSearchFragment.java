@@ -214,11 +214,8 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         pathParams.add("summoner");
         pathParams.add("by-name");
         itemName = itemName.trim().replaceAll("\\s","");
-        try {
-            pathParams.add(URLEncoder.encode(itemName, "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            pathParams.add(itemName);
-        }
+        pathParams.add(itemName);
+
         HashMap<String, String> queryParams = new HashMap<String, String>();
         queryParams.put("api_key", Commons.API_KEY);
         ServiceRequest.getInstance(getActivity()).makeSummonerByNameRequest(

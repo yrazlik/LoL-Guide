@@ -86,9 +86,6 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                     pathParams.add("summoner");
                     pathParams.add("by-name");
                     summonerName = summonerName.trim().replaceAll("\\s","");
-                    try {
-                        summonerName = URLEncoder.encode(summonerName, "UTF-8");
-                    } catch (Exception e) {}
                     pathParams.add(summonerName);
                     HashMap<String, String> queryParams = new HashMap<String, String>();
                     queryParams.put("api_key", Commons.API_KEY);
