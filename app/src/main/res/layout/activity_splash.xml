@@ -29,7 +29,7 @@
         android:layout_marginBottom="40dp"
         >
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/loadingTV"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -40,7 +40,7 @@
             android:textColor="@color/white"
             android:textSize="18dp" />
 
-        <TextView
+        <com.yrazlik.loltr.view.RobotoTextView
             android:id="@+id/loadingDotsTV"
             android:layout_width="wrap_content"
             android:layout_height="30dp"

@@ -28,6 +28,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.view.RegionDialog;
+import com.yrazlik.loltr.view.RobotoTextView;
 import com.yrazlik.loltr.view.TypeWriter;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ import java.util.TimerTask;
 public class SplashActivity extends Activity{
 
     private Intent deeplinkIntent;
-    private TextView loadingDotsTV;
+    private RobotoTextView loadingDotsTV;
     private Timer timer;
     private int [] dots = {R.string.oneDot, R.string.twoDots, R.string.threeDots};
     int timerTick = 0;
@@ -67,7 +68,7 @@ public class SplashActivity extends Activity{
         } catch (Exception ignored) {}
 
         AppRater.app_launched(getApplicationContext());
-        loadingDotsTV = (TextView) findViewById(R.id.loadingDotsTV);
+        loadingDotsTV = (RobotoTextView) findViewById(R.id.loadingDotsTV);
         animateThreeDots();
 
         if(Commons.SELECTED_REGION == null || Commons.SELECTED_REGION.length() <= 0){

@@ -3,22 +3,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-    <TextView
+    <com.yrazlik.loltr.view.RobotoTextView
         android:id="@+id/title"
-        android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:gravity="center_horizontal" android:text="@string/select_your_region"
-        android:textSize="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:textColor="@color/black"/>
+        android:gravity="center"
+        android:text="@string/select_your_region"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
 
     <ListView
         android:id="@+id/regionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="0.5dp"
         android:layout_below="@+id/title"
         android:layout_marginTop="10dp"
-        android:divider="@color/black">
+        android:divider="@color/divider_gray"
+        android:dividerHeight="0.5dp">
 
 
     </ListView>

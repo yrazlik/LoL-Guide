@@ -8,12 +8,14 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.adapters.RegionListAdapter;
 import com.yrazlik.loltr.commons.Commons;
 
 import java.util.Locale;
@@ -31,16 +33,20 @@ public class RegionDialog extends Dialog{
     }
 
     private ListView regionList;
-    private ArrayAdapter<String> adapter;
+    private RobotoTextView title;
+    private RegionListAdapter adapter;
     private String[] regions = {"Turkey", "Europe West", "North America", "Europe North/East", "Japan", "Oceania", "Brazil", "Latin America North", "Latin America South", "Russia", "Korea"};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_region);
         regionList = (ListView) findViewById(R.id.regionList);
-        adapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, regions);
+        title = (RobotoTextView) findViewById(R.id.title);
+        Commons.underline(title);
+        adapter = new RegionListAdapter(mContext, R.layout.list_row_text, regions);
         regionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
