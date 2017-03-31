@@ -18,6 +18,10 @@ public class LolNotification {
     public static final String DEEPLINK_DISCOUNTS = "discounts";
     public static final String DEEPLINK_NEWS = "news";
     public static final String DEEPLINK_LIVE_CHANNELS = "live_channels";
+    public static final String DEEPLINK_PLAY_STORE = "market";
+    public static final String DEEPLINK_LOLTR = "loltr";
+    public static final String DEEPLINK_HTTP = "http";
+    public static final String DEEPLINK_HTTPS = "https";
 
 
     //push notification variables
@@ -41,7 +45,9 @@ public class LolNotification {
         ACTION_REMOVE_ADS,
         ACTION_DISCOUNTS,
         ACTION_NEWS,
-        ACTION_LIVE_CHANNELS
+        ACTION_LIVE_CHANNELS,
+        ACTION_PLAY_STORE,
+        ACTION_WEB_URL
     }
 
     private NOTIFICATION_ACTION notificationAction = NOTIFICATION_ACTION.ACTION_HOME;
@@ -74,7 +80,7 @@ public class LolNotification {
                 this.deeplink = (String) extras.get(LolNotification.DEEPLINK_EXTRA);
                 Log.d("LolApplication", "Deeplink extra is: " + this.deeplink);
                 Uri deeplinkUri = Uri.parse(deeplink);
-                this.notificationAction = getNotificationAction(deeplinkUri.getHost());
+                this.notificationAction = getNotificationAction(deeplinkUri.getScheme(), deeplinkUri.getHost());
             }catch (Exception ignored) {}
 
             try {
@@ -91,26 +97,38 @@ public class LolNotification {
         }
     }
 
+    public String getDeeplink() {
+        return deeplink;
+    }
+
     private void handleDeeplinkData(Intent i) {
         isPush = false;
         Uri data = i.getData();
         if(data != null) {
-            this.notificationAction = getNotificationAction(data.getHost());
+            this.notificationAction = getNotificationAction(data.getScheme(), data.getHost());
         }
     }
 
-    private NOTIFICATION_ACTION getNotificationAction(String deeplinkHost) {
-        if(deeplinkHost != null) {
-            if(deeplinkHost.equalsIgnoreCase(DEEPLINK_HOME_PAGE)) {
-                return NOTIFICATION_ACTION.ACTION_HOME;
-            } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_REMOVE_ADS)) {
-                return NOTIFICATION_ACTION.ACTION_REMOVE_ADS;
-            } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_DISCOUNTS)) {
-                return NOTIFICATION_ACTION.ACTION_DISCOUNTS;
-            } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_NEWS)) {
-                return NOTIFICATION_ACTION.ACTION_NEWS;
-            } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_LIVE_CHANNELS)) {
-                return NOTIFICATION_ACTION.ACTION_LIVE_CHANNELS;
+    private NOTIFICATION_ACTION getNotificationAction(String deeplinkScheme, String deeplinkHost) {
+        if(deeplinkScheme != null) {
+            if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_PLAY_STORE)) {
+                return NOTIFICATION_ACTION.ACTION_PLAY_STORE;
+            } else if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_HTTP) || deeplinkScheme.equalsIgnoreCase(DEEPLINK_HTTPS)) {
+                return NOTIFICATION_ACTION.ACTION_WEB_URL;
+            } else if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_LOLTR)) {
+                if(deeplinkHost != null) {
+                    if(deeplinkHost.equalsIgnoreCase(DEEPLINK_HOME_PAGE)) {
+                        return NOTIFICATION_ACTION.ACTION_HOME;
+                    } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_REMOVE_ADS)) {
+                        return NOTIFICATION_ACTION.ACTION_REMOVE_ADS;
+                    } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_DISCOUNTS)) {
+                        return NOTIFICATION_ACTION.ACTION_DISCOUNTS;
+                    } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_NEWS)) {
+                        return NOTIFICATION_ACTION.ACTION_NEWS;
+                    } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_LIVE_CHANNELS)) {
+                        return NOTIFICATION_ACTION.ACTION_LIVE_CHANNELS;
+                    }
+                }
             }
         }
         return NOTIFICATION_ACTION.ACTION_HOME;

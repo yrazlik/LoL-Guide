@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
@@ -738,11 +739,18 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     private void handleDeeplinkIntent(LolNotification notification) {
         if(notification != null) {
-            Log.d("LolApplication", "Will click deeplink now!!!");
-            Log.d("LolApplication", "Notification Action: " + notification.getNotificationAction());
-            Log.d("LolApplication", "Deeplink drawer menu position: " + getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
-            performDrawerMenuItemClick(getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
-            new PushNotificationDialog(MainActivity.this, getBody(notification)).show();
+           if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_PLAY_STORE) {
+               try {
+                   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
+               } catch (Exception ignored) {}
+           } else if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_WEB_URL) {
+               try {
+                   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
+               } catch (Exception ignored) {}
+           } else {
+               performDrawerMenuItemClick(getDeeplinkActionPositionOnDrawerMenu(notification.getNotificationAction()));
+               new PushNotificationDialog(MainActivity.this, getBody(notification)).show();
+           }
         }
     }
 
