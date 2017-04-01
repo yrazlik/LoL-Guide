@@ -8,7 +8,7 @@ import android.widget.TextView;
 /**
  * Created by yrazlik on 06/08/16.
  */
-public class TypeWriter extends TextView {
+public class TypeWriter extends RobotoTextView {
 
     private CharSequence mText;
     private int mIndex;
