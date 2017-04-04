@@ -94,8 +94,6 @@
                     android:id="@+id/regionSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/languageSpinner"
-                    android:layout_alignRight="@+id/languageSpinner"
                     style="@style/spinner_style"
                     android:layout_below="@+id/regionTV"
                     android:layout_marginTop="5dp"

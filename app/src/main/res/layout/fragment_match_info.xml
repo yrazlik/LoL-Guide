@@ -79,8 +79,6 @@
                     style="@style/spinner_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/languageSpinner"
-                    android:layout_alignRight="@+id/languageSpinner"
                     android:layout_below="@+id/selectRegionTV"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/selectRegionText"

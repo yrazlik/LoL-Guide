@@ -272,7 +272,6 @@ public class Commons {
 			Date d = c.getTime();
 			String start = sdf.format(d);
 			c.add(Calendar.DATE, 7);
-			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
 			Date d2 = c.getTime();
 			String end = sdf.format(d2);
 			return start + " - " + end;
@@ -282,7 +281,6 @@ public class Commons {
 			Date d = c.getTime();
 			String start = sdf.format(d);
 			c.add(Calendar.DATE, 7);
-			SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
 			Date d2 = c.getTime();
 			String end = sdf.format(d2);
 			return start + " - " + end;
@@ -343,15 +341,15 @@ public class Commons {
     }
 
     public static String getLocaleForMonthName(){
-        String locale = mContext.getApplicationContext().getResources().getConfiguration().locale.toString();
+        String locale = getLocale();
         if(locale.toLowerCase().startsWith("en")) {
             return "en";
         } else if(locale.toLowerCase().startsWith("tr")) {
             return "tr";
         } else if(locale.toLowerCase().startsWith("pt")) {
-            return "prt";
+            return "pt";
         }
-        return "en_US";
+        return "en";
     }
 
     public static void saveRecentSearchesArray(ArrayList<RecentSearchItem> obj, Context context) {
