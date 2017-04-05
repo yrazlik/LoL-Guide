@@ -53,9 +53,18 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
         if(Commons.isValidString(notificationLocale)) {
             notificationLocale = notificationLocale.toLowerCase();
             if(notificationLocale.equalsIgnoreCase(Commons.getLocale())) {
-                mgr.notify(notificationId, createPushNotification(getTicker(remoteMessage), getString(R.string.app_name), getBody(remoteMessage), pIntent));
+                mgr.notify(notificationId, createPushNotification(getTicker(remoteMessage), getNotificationTitle(remoteMessage), getBody(remoteMessage), pIntent));
             }
         }
+    }
+
+    private String getNotificationTitle(RemoteMessage remoteMessage) {
+        if(remoteMessage != null &&  remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
+            try {
+                return remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TITLE);
+            }catch (Exception ignored) {}
+        }
+        return getString(R.string.app_name);
     }
 
     private String getNotificationLocale(RemoteMessage remoteMessage) {
@@ -92,6 +101,10 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
         } catch (Exception ignored) {}
 
         if (remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
+
+            try {
+                notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_TITLE, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_TITLE));
+            } catch (Exception ignored) {}
 
             try {
                 notificationIntent.putExtra(LolNotification.PUSH_NOTIFICATION_LOCALE, remoteMessage.getData().get(LolNotification.PUSH_NOTIFICATION_LOCALE));

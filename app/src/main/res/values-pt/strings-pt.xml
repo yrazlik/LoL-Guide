@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">LoL Guia</string>
+    <string name="app_name">Guia para LoL</string>
     <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
     <string name="enter_text_here">Digite o texto aqui...</string>
     <string name="drawer_open">Open navigation drawer</string>

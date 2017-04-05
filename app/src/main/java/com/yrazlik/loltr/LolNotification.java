@@ -25,19 +25,17 @@ public class LolNotification {
 
 
     //push notification variables
+    public static final String PUSH_NOTIFICATION_TITLE = "title";  //***
     public static final String DEEPLINK_EXTRA = "dl";  //***
     public static final String PUSH_NOTIFICATION_LOCALE = "locale"; //***
     public static final String PUSH_NOTIFICATION_TICKER = "ticker"; //***
     public static final String PUSH_NOTIFICATION_BODY = "body"; //***
 
+    private String title;
     private String locale;
     private String deeplink;
-    private String msg;
-    private String msgEnglish;
     private String ticker;
-    private String tickerEnglish;
     private String body;
-    private String bodyEnglish;
 
 
     public enum NOTIFICATION_ACTION {
@@ -76,6 +74,13 @@ public class LolNotification {
         Bundle extras = i.getExtras();
 
         if(extras != null) {
+
+            try {
+                this.title = (String) extras.get(LolNotification.PUSH_NOTIFICATION_TITLE);
+            } catch (Exception e) {
+                this.title = LolApplication.getAppContext().getResources().getString(R.string.app_name);
+            }
+
             try {
                 this.deeplink = (String) extras.get(LolNotification.DEEPLINK_EXTRA);
                 Log.d("LolApplication", "Deeplink extra is: " + this.deeplink);
@@ -134,28 +139,8 @@ public class LolNotification {
         return NOTIFICATION_ACTION.ACTION_HOME;
     }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public String getMsgEnglish() {
-        return msgEnglish;
-    }
-
-    public String getTicker() {
-        return ticker;
-    }
-
-    public String getTickerEnglish() {
-        return tickerEnglish;
-    }
-
     public String getBody() {
         return body;
-    }
-
-    public String getBodyEnglish() {
-        return bodyEnglish;
     }
 
     public boolean isPush() {

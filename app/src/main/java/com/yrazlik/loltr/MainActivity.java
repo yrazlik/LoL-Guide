@@ -755,16 +755,8 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     }
 
     private String getBody(LolNotification notification) {
-        if (notification != null) {
-            if(Commons.getLocale().equalsIgnoreCase("tr")) {
-                if (Commons.isValidString(notification.getBody())) {
-                    return notification.getBody();
-                }
-            } else {
-                if (Commons.isValidString(notification.getBodyEnglish())) {
-                    return notification.getBodyEnglish();
-                }
-            }
+        if (Commons.isValidString(notification.getBody())) {
+            return notification.getBody();
         }
         return getString(R.string.app_name);
     }

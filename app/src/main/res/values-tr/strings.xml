@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">LoL TR</string>
+    <string name="app_name">LoL TR Rehber</string>
 
     <string name="lol_firebase">https://lol-guide.firebaseio.com/</string>
 
