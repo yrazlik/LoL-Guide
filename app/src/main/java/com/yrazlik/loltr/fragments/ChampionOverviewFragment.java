@@ -325,25 +325,30 @@ import java.util.ArrayList;
 
 	@Override
 	public void onSuccess(Object response) {
-		if(response instanceof ChampionOverviewResponse){
-			championOverviewResponse = (ChampionOverviewResponse)response;
-            handleChampionOverviewResponse();
-		}else if(response instanceof RecommendedItemsResponse){;
-            try {
-                dismissProgress();
-                recommendedItemsResponse = (RecommendedItemsResponse) response;
-                handleRecommendedItemsResponse();
-            }catch (Exception e){
-                dismissProgress();
+        if(isAttached) {
+            if (response instanceof ChampionOverviewResponse) {
+                championOverviewResponse = (ChampionOverviewResponse) response;
+                handleChampionOverviewResponse();
+            } else if (response instanceof RecommendedItemsResponse) {
+                ;
+                try {
+                    dismissProgress();
+                    recommendedItemsResponse = (RecommendedItemsResponse) response;
+                    handleRecommendedItemsResponse();
+                } catch (Exception e) {
+                    dismissProgress();
+                }
             }
-		}
+        }
 	}
 
 	@Override
 	public void onFailure(Object response) {
-        dismissProgress();
-		String errorMessage = (String)response;
-		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        if(isAttached) {
+            dismissProgress();
+            String errorMessage = (String) response;
+            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        }
 	}
 
 	@Override

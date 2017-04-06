@@ -71,19 +71,22 @@ public class LegendFragment extends BaseFragment implements ResponseListener{
 	
 	@Override
 	public void onSuccess(Object response) {
-		if(response instanceof ChampionLegendResponse){
-			ChampionLegendResponse resp = (ChampionLegendResponse) response;
-			String lore = resp.getLore();
-			lore = formatLoreString(lore);
-			legend.setText(lore);
-		}
-		
+        if(isAttached) {
+            if (response instanceof ChampionLegendResponse) {
+                ChampionLegendResponse resp = (ChampionLegendResponse) response;
+                String lore = resp.getLore();
+                lore = formatLoreString(lore);
+                legend.setText(lore);
+            }
+        }
 	}
 
 	@Override
 	public void onFailure(Object response) {
-		String errorMessage = (String)response;
-		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        if(isAttached) {
+            String errorMessage = (String) response;
+            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        }
 	}
 
 	@Override

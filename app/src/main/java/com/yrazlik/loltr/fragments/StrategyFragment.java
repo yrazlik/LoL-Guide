@@ -70,37 +70,39 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
 	
 	@Override
 	public void onSuccess(Object response) {
-		if(response instanceof ChampionStrategyResponse){
-			ChampionStrategyResponse resp = (ChampionStrategyResponse)response;
-			ArrayList<String> allyTipsArray = resp.getAllytips();
-			ArrayList<String>enemyTipsArray = resp.getEnemytips();
-			String allyTipsString = "";
-			String enemyTipsString = "";
-			for(String s : allyTipsArray){
-				allyTipsString = allyTipsString + "-  " + s + "\n\n";
-			}
-			for(String s : enemyTipsArray){
-				enemyTipsString = enemyTipsString + "-  " + s + "\n\n";
-			}
-			String key = resp.getKey();
+        if(isAttached) {
+            if (response instanceof ChampionStrategyResponse) {
+                ChampionStrategyResponse resp = (ChampionStrategyResponse) response;
+                ArrayList<String> allyTipsArray = resp.getAllytips();
+                ArrayList<String> enemyTipsArray = resp.getEnemytips();
+                String allyTipsString = "";
+                String enemyTipsString = "";
+                for (String s : allyTipsArray) {
+                    allyTipsString = allyTipsString + "-  " + s + "\n\n";
+                }
+                for (String s : enemyTipsArray) {
+                    enemyTipsString = enemyTipsString + "-  " + s + "\n\n";
+                }
+                String key = resp.getKey();
 
 
+                allyTipsTitle.setText(getString(R.string.playing_as, key));
+                enemyTipstitle.setText(getString(R.string.playing_against, key));
 
-            allyTipsTitle.setText(getString(R.string.playing_as, key));
-            enemyTipstitle.setText(getString(R.string.playing_against, key));
-
-            Commons.underline(allyTipsTitle);
-            Commons.underline(enemyTipstitle);
-			allyTips.setText(allyTipsString);
-			enemyTips.setText(enemyTipsString);
-		}
-		
+                Commons.underline(allyTipsTitle);
+                Commons.underline(enemyTipstitle);
+                allyTips.setText(allyTipsString);
+                enemyTips.setText(enemyTipsString);
+            }
+        }
 	}
 
 	@Override
 	public void onFailure(Object response) {
-		String errorMessage = (String)response;
-		Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        if(isAttached) {
+            String errorMessage = (String) response;
+            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        }
 	}
 
 	@Override

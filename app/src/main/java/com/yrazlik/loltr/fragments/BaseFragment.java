@@ -1,5 +1,6 @@
 package com.yrazlik.loltr.fragments;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -18,6 +19,7 @@ public abstract class BaseFragment extends Fragment{
  //   private ConnectionProgressController connectionProgressController;
 
     protected View rootView;
+    protected boolean isAttached;
 
     public abstract void reportGoogleAnalytics();
 
@@ -83,5 +85,17 @@ public abstract class BaseFragment extends Fragment{
                 }
             });
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        isAttached = true;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        isAttached = false;
     }
 }
