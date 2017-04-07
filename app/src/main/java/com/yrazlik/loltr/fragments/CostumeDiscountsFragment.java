@@ -48,15 +48,11 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if(rootView == null) {
+            showProgressWithWhiteBG();
             rootView = inflater.inflate(R.layout.fragment_discount_costumes, container, false);
             discountsLV = (ListView) rootView.findViewById(R.id.discountLV);
             discountsLV.setOnItemClickListener(this);
             costumeDiscounts = new ArrayList<>();
-
-            final Dialog progress = ServiceRequest.showLoading(getContext());
-            if (progress != null) {
-                progress.show();
-            }
 
             if (LolApplication.firebaseInitialized) {
                 try {
@@ -90,7 +86,7 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
                                     }
                                 }
                             }
-                            hideProgress();
+                            dismissProgress();
                             costumeDiscounts = sortCostumeDiscountsByDateCreated(costumeDiscounts);
                             if (costumeDiscounts != null && costumeDiscounts.size() > 0) {
                                 Collections.reverse(costumeDiscounts);
@@ -101,27 +97,18 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
 
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
-                            hideProgress();
+                            dismissProgress();
                         }
                     });
 
                 } catch (Exception e) {
-                    hideProgress();
+                    dismissProgress();
                 }
             } else {
-                hideProgress();
+                dismissProgress();
             }
         }
         return rootView;
-    }
-
-    private void hideProgress(){
-        ((ActionBarActivity)getContext()).runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ServiceRequest.hideLoading();
-            }
-        });
     }
 
     @Override

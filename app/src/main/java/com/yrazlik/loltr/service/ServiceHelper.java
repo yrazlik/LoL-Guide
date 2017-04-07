@@ -41,7 +41,7 @@ public class ServiceHelper {
         queryParams.put("freeToPlay", "true");
         ServiceRequest.getInstance(mContext).makeGetRequest(
                 Commons.WEEKLY_FREE_CHAMPIONS_REQUEST, pathParams,
-                queryParams, null, false, responseListener);
+                queryParams, null, responseListener);
     }
 
     public void makeGetAllChampionsRequest(ResponseListener responseListener) {
@@ -56,7 +56,7 @@ public class ServiceHelper {
         queryParams.put("api_key", Commons.API_KEY);
         ServiceRequest.getInstance(mContext).makeGetRequest(
                 Commons.ALL_CHAMPIONS_REQUEST,
-                pathParams, queryParams, null, false, responseListener);
+                pathParams, queryParams, null, responseListener);
     }
 
     public void makeChampionOverviewRequest(int champId, ResponseListener responseListener) {
@@ -71,7 +71,7 @@ public class ServiceHelper {
         queryParams.put("version", Commons.LATEST_VERSION);
         queryParams.put("champData", "info,tags");
         queryParams.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, false, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, responseListener);
     }
 
     public void makeRecommendedItemsRequest(int champId, ResponseListener responseListener) {
@@ -86,7 +86,7 @@ public class ServiceHelper {
         queryParams2.put("version", Commons.RECOMMENDED_ITEMS_VERSION);
         queryParams2.put("champData", "recommended");
         queryParams2.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, false, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.RECOMMENDED_ITEMS_REQUEST, pathParams2, queryParams2, null, responseListener);
     }
 
     public void makeChampionSpellsRequest(int champId, ResponseListener responseListener) {
@@ -101,7 +101,7 @@ public class ServiceHelper {
         queryParams.put("version", Commons.LATEST_VERSION);
         queryParams.put("champData", "passive,spells");
         queryParams.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, false, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SPELLS_REQUEST, pathParams, queryParams, null, responseListener);
     }
 
     public void makeGetAllItemsRequest(ResponseListener responseListener) {
@@ -116,7 +116,7 @@ public class ServiceHelper {
         queryParams.put("itemListData", "all");
         queryParams.put("api_key", Commons.API_KEY);
 
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, false, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, responseListener);
     }
 
     public void makeGetAllRunesRequest(ResponseListener responseListener) {
@@ -130,7 +130,7 @@ public class ServiceHelper {
         queryParams.put("version", Commons.LATEST_VERSION);
         queryParams.put("runeListData", "image,sanitizedDescription");
         queryParams.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.ALL_RUNES_REQUEST, pathParams, queryParams, null, false, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.ALL_RUNES_REQUEST, pathParams, queryParams, null, responseListener);
 
     }
 
@@ -146,7 +146,7 @@ public class ServiceHelper {
         queryParams.put("version", Commons.LATEST_VERSION);
         queryParams.put("champData", "skins");
         queryParams.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, false, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_SKINS_REQUEST, pathParams, queryParams, null, responseListener);
 
     }
 
@@ -159,7 +159,7 @@ public class ServiceHelper {
         HashMap<String, String> queryParams2 = new HashMap<String, String>();
         queryParams2.put("spellData", "image");
         queryParams2.put("api_key", Commons.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.SUMMONER_SPELLS_REQUEST, pathParams2, queryParams2, null, false, responseListener);
+        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.SUMMONER_SPELLS_REQUEST, pathParams2, queryParams2, null, responseListener);
 
     }
 }

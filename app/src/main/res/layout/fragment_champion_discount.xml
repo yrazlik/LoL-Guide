@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/discountLV"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@drawable/list_divider_gray_with_margin"
-    android:scrollbars="none"
-    android:dividerHeight="0.5dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</ListView>
+    <ListView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/discountLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/list_divider_gray_with_margin"
+        android:dividerHeight="0.5dp"
+        android:scrollbars="none">
+    </ListView>
 
+    <include
+        android:id="@+id/loadingView"
+        layout="@layout/loading_view_fullscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></include>
+
+</RelativeLayout>

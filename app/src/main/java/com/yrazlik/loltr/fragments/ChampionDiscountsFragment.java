@@ -40,19 +40,17 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
     private ListView discountsLV;
     private ChampionDiscountsAdapter adapter;
     private ArrayList<ChampionDiscount> championDiscounts;
-    private Dialog progress;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if(rootView == null) {
+            showProgressWithWhiteBG();
             rootView = inflater.inflate(R.layout.fragment_champion_discount, container, false);
             discountsLV = (ListView) rootView.findViewById(R.id.discountLV);
             championDiscounts = new ArrayList<>();
-            progress = ServiceRequest.showLoading(getContext());
             discountsLV.setOnItemClickListener(this);
-            showProgress();
 
 
             if (LolApplication.firebaseInitialized) {
@@ -61,6 +59,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
                     firebase.child("champion-discounts").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+                            dismissProgress();
                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                 HashMap<String, Object> keyValues = (HashMap<String, Object>) postSnapshot.getValue();
                                 if (keyValues != null && keyValues.size() > 0) {
@@ -94,7 +93,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
                                     }
                                 }
                             }
-                            hideProgress();
+                            dismissProgress();
                             championDiscounts = sortByDateCreated(championDiscounts);
                             if (championDiscounts != null && championDiscounts.size() > 0) {
                                 Collections.reverse(championDiscounts);
@@ -105,28 +104,19 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
 
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
-                            hideProgress();
+                            dismissProgress();
                         }
                     });
 
                 } catch (Exception e) {
-                    hideProgress();
+                    dismissProgress();
                 }
             } else {
-                hideProgress();
+                dismissProgress();
             }
         }
 
         return rootView;
-    }
-
-    private void hideProgress(){
-        ((ActionBarActivity)getContext()).runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ServiceRequest.hideLoading();
-            }
-        });
     }
 
     @Override
@@ -148,12 +138,6 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
             return null;
         }
         return championDiscounts;
-    }
-
-    private void showProgress(){
-        if(progress != null){
-            progress.show();
-        }
     }
 
     @Override

@@ -308,26 +308,33 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
     }
 
     @Override
-    public void onFailure(Object response) {
-        ServiceRequest.hideLoading();
-        if(response instanceof Integer){
-            Integer requestId = (Integer) response;
-            if(requestId == Commons.SUMMONER_BY_NAME_REQUEST) {
-                Toast.makeText(getContext(), R.string.cannot_find_username, Toast.LENGTH_SHORT).show();
-            } else if(requestId == Commons.RECENT_MATCHES_REQUEST){
-                recentMatchesResponse = null;
-                ServiceRequest.getInstance(getActivity()).makeGetRankedStatsRequest(
-                        Commons.RANKED_STATS_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+    public void onFailure(final Object response) {
+        if(getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ServiceRequest.hideLoading();
+                    if(response instanceof Integer){
+                        Integer requestId = (Integer) response;
+                        if(requestId == Commons.SUMMONER_BY_NAME_REQUEST) {
+                            Toast.makeText(getContext(), R.string.cannot_find_username, Toast.LENGTH_SHORT).show();
+                        } else if(requestId == Commons.RECENT_MATCHES_REQUEST){
+                            recentMatchesResponse = null;
+                            ServiceRequest.getInstance(getActivity()).makeGetRankedStatsRequest(
+                                    Commons.RANKED_STATS_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
 
-            } else if(requestId == Commons.RANKED_STATS_REQUEST) {
-                rankedStatsResponse = null;
-                ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
-                        Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
+                        } else if(requestId == Commons.RANKED_STATS_REQUEST) {
+                            rankedStatsResponse = null;
+                            ServiceRequest.getInstance(getActivity()).makeGetLeagueInfoRequest(
+                                    Commons.LEAGUE_INFO_REQUEST, region, summonerByNameResponse.getId() + "", null, SummonerSearchFragment.this);
 
-            }else if(requestId == Commons.LEAGUE_INFO_REQUEST) {
-                leagueInfoResponse = null;
-                openSummonerContainerFragment();
-            }
+                        }else if(requestId == Commons.LEAGUE_INFO_REQUEST) {
+                            leagueInfoResponse = null;
+                            openSummonerContainerFragment();
+                        }
+                    }
+                }
+            });
         }
     }
 
