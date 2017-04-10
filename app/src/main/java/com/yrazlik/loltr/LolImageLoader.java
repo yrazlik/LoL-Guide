@@ -8,12 +8,13 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.yrazlik.loltr.utils.IImageLoader;
 
 /**
  * Created by yrazlik on 31/01/17.
  */
 
-public class LolImageLoader {
+public class LolImageLoader implements IImageLoader{
 
     public static LolImageLoader mInstance;
     private ImageLoader mImageLoader;
@@ -42,6 +43,7 @@ public class LolImageLoader {
         }
     }
 
+    @Override
     public void loadImage(final String imageUrl, final ImageView iv) {
         load(imageUrl, iv, mOptions);
     }
