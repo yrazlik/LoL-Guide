@@ -1,7 +1,8 @@
 package com.yrazlik.loltr.api;
 
-import com.yrazlik.lolquiz.BuildConfig;
-import com.yrazlik.lolquiz.utils.LocalizationUtils;
+import com.yrazlik.loltr.BuildConfig;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -20,13 +21,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LolApiClient {
 
-    private static final String LOL_API_BASE_URL = "https://global.api.riotgames.com";
+    public enum BASE_URL_TYPE {WEEKLY_FREE_CHAMPIONS, STATIC_DATA}
+
     public static final String CHAMP_DATA_ALL = "all";
 
     private static Retrofit retrofit = null;
     private static LolApiInterface mApiInterface = null;
 
-    public static Retrofit getClient() {
+    public static Retrofit getClient(BASE_URL_TYPE baseUrlType) {
         if (retrofit == null) {
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -36,7 +38,7 @@ public class LolApiClient {
             OkHttpClient httpClient = builder.build();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(LOL_API_BASE_URL)
+                    .baseUrl(getBaseUrl(baseUrlType))
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient)
                     //.addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())
@@ -61,14 +63,25 @@ public class LolApiClient {
         }
     };
 
-    public static LolApiInterface getApiInterface() {
+    public static LolApiInterface getApiInterface(BASE_URL_TYPE baseUrlType) {
         if (mApiInterface == null) {
-            mApiInterface = LolApiClient.getClient().create(LolApiInterface.class);
+            mApiInterface = LolApiClient.getClient(baseUrlType).create(LolApiInterface.class);
         }
         return mApiInterface;
     }
 
     public static String getApiKey() {
         return BuildConfig.API_KEY;
+    }
+
+    private static String getBaseUrl(BASE_URL_TYPE baseUrlType) {
+        switch (baseUrlType) {
+            case WEEKLY_FREE_CHAMPIONS:
+                return "https://" + Commons.SELECTED_REGION + ".api.riotgames.com";
+            case STATIC_DATA:
+                return "https://global.api.riotgames.com";
+            default:
+                return "https://global.api.riotgames.com";
+        }
     }
 }

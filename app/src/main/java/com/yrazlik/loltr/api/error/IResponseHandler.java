@@ -8,6 +8,7 @@ import retrofit2.Response;
  */
 
 public interface IResponseHandler {
+    void onResponseFromCache(Object response);
     void handleSuccess(Call call, Response response);
     void handleFailure(Call call, Throwable t, RetryHelper retryHelper);
 }

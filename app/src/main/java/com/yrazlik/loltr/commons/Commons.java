@@ -182,8 +182,6 @@ public class Commons {
     public static final int ANIM_SLIDE_TOP_OUT_FADE_OUT = 11;
     public static final int ANIM_FLIP_WITH_POPSTACK = 12;
 
-
-	public static ArrayList<Champion> weeklyFreeChampions;
 	public static ArrayList<Champion> allChampions;
     public static ArrayList<SummonerSpell> allSpells;
 	public static ArrayList<Items> allItems;

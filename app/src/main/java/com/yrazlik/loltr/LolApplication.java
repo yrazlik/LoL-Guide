@@ -21,6 +21,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,6 +63,7 @@ public class LolApplication extends MultiDexApplication{
     public void onCreate() {
         super.onCreate();
         mAppContext = getApplicationContext();
+        LocalizationUtils.init(getApplicationContext());
         availableLanguages = new ArrayList<>();
         availableLanguages.add("tr");
         availableLanguages.add("en_us");

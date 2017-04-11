@@ -2,15 +2,15 @@ package com.yrazlik.loltr.utils;
 
 import android.content.Context;
 
+import com.yrazlik.loltr.commons.Commons;
+
 /**
  * Created by yrazlik on 07/04/17.
  */
 
 public class LocalizationUtils {
 
-    public static final String REGION_TR = "TR";
-    public static final String REGION_NA = "NA";
-    public static final String REGION_BR = "BR";
+
 
     private static LocalizationUtils mInstance;
     private Context mContext;
@@ -40,8 +40,7 @@ public class LocalizationUtils {
     private LocalizationUtils() {}
 
     public String getLocale(){
-        String locale = mContext.getResources().getConfiguration().locale.toString();
-
+        String locale = mContext.getApplicationContext().getResources().getConfiguration().locale.toString();
         if(locale.toLowerCase().startsWith("en")) {
             return "en_US";
         } else if(locale.toLowerCase().startsWith("tr")) {
@@ -53,14 +52,7 @@ public class LocalizationUtils {
     }
 
     public String getRegion() {
-        if(getLocale().startsWith("en")) {
-            return REGION_NA;
-        } else if(getLocale().startsWith("tr")) {
-            return REGION_TR;
-        } else if(getLocale().startsWith("pt")) {
-            return REGION_BR;
-        }
-        return REGION_NA;
+       return Commons.SELECTED_REGION;
     }
 
 }

@@ -8,6 +8,7 @@ import retrofit2.Response;
  */
 
 public interface ApiResponseListener {
+    void onResponseFromCache(Object response);
     void onResponse(Call call, Response response);
     void onUnknownError();
     void onFailure(Call call, Throwable t);

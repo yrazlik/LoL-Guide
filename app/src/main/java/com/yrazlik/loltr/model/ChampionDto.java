@@ -44,6 +44,20 @@ public class ChampionDto {
     private String blurb;
     @SerializedName("spells")
     private List<ChampionSpellDto> spells;
+    @SerializedName("freeToPlay")
+    private boolean freeToPlay;
+    @SerializedName("active")
+    private boolean active;
+    @SerializedName("botEnabled")
+    private boolean botEnabled;
+    @SerializedName("botMmEnabled")
+    private boolean botMmEnabled;
+    @SerializedName("rankedPlayEnabled")
+    private boolean rankedPlayEnabled;
+
+    private String dateInterval;
+    private String championRp;
+    private String championIp;
 
     public InfoDto getInfo() {
         return info;
@@ -179,5 +193,69 @@ public class ChampionDto {
 
     public void setSpells(List<ChampionSpellDto> spells) {
         this.spells = spells;
+    }
+
+    public boolean isFreeToPlay() {
+        return freeToPlay;
+    }
+
+    public void setFreeToPlay(boolean freeToPlay) {
+        this.freeToPlay = freeToPlay;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isBotEnabled() {
+        return botEnabled;
+    }
+
+    public void setBotEnabled(boolean botEnabled) {
+        this.botEnabled = botEnabled;
+    }
+
+    public boolean isBotMmEnabled() {
+        return botMmEnabled;
+    }
+
+    public void setBotMmEnabled(boolean botMmEnabled) {
+        this.botMmEnabled = botMmEnabled;
+    }
+
+    public boolean isRankedPlayEnabled() {
+        return rankedPlayEnabled;
+    }
+
+    public void setRankedPlayEnabled(boolean rankedPlayEnabled) {
+        this.rankedPlayEnabled = rankedPlayEnabled;
+    }
+
+    public String getDateInterval() {
+        return dateInterval;
+    }
+
+    public void setDateInterval(String dateInterval) {
+        this.dateInterval = dateInterval;
+    }
+
+    public String getChampionRp() {
+        return championRp;
+    }
+
+    public void setChampionRp(String championRp) {
+        this.championRp = championRp;
+    }
+
+    public String getChampionIp() {
+        return championIp;
+    }
+
+    public void setChampionIp(String championIp) {
+        this.championIp = championIp;
     }
 }

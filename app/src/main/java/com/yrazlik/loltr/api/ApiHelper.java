@@ -3,12 +3,11 @@ package com.yrazlik.loltr.api;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
-import com.yrazlik.lolquiz.api.error.IResponseHandler;
-import com.yrazlik.lolquiz.api.error.RetryHelper;
-import com.yrazlik.lolquiz.model.ChampionListDto;
-import com.yrazlik.lolquiz.utils.LocalizationUtils;
-
+import com.yrazlik.loltr.api.error.IResponseHandler;
+import com.yrazlik.loltr.api.error.RetryHelper;
+import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
+import com.yrazlik.loltr.utils.CacheObject;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,6 +17,9 @@ import retrofit2.Response;
  */
 
 public class ApiHelper {
+
+    public enum REQUEST_TYPE {WEEKLY_FREE_CHAMPIONS_REQUEST,
+        STATIC_DATA_WITH_ALT_IMAGES_REQUEST, CHAMPION_OVERVIEW_REQUEST, }
 
     private Context mContext;
 
@@ -78,7 +80,27 @@ public class ApiHelper {
         }
     }
 
-    public void getAllChampions(final IResponseHandler retrofitResponseHandler) {
+    public void getWeeklyFreeChampions(final IResponseHandler retrofitResponseHandler) {
+
+        if(CacheObject.getInstance().getWeeklyFreeChampions() != null && CacheObject.getInstance().getWeeklyFreeChampions().size() > 0) {
+            retrofitResponseHandler.onResponseFromCache(CacheObject.getInstance().getWeeklyFreeChampions());
+        } else {
+            Call<WeeklyFreeResponseDto> call = LolApiClient.getApiInterface(LolApiClient.BASE_URL_TYPE.WEEKLY_FREE_CHAMPIONS).getWeeklyFreeChampions(LocalizationUtils.getInstance().getRegion(), true);
+            call.enqueue(new Callback<WeeklyFreeResponseDto>() {
+                @Override
+                public void onResponse(Call<WeeklyFreeResponseDto> call, Response<WeeklyFreeResponseDto> response) {
+                    onSuccessResponse(retrofitResponseHandler, call, response);
+                }
+
+                @Override
+                public void onFailure(Call<WeeklyFreeResponseDto> call, Throwable t) {
+                    onFailResponse(retrofitResponseHandler, call, t);
+                }
+            });
+        }
+    }
+
+ /*   public void getAllChampions(final IResponseHandler retrofitResponseHandler) {
         Call<ChampionListDto> call = LolApiClient.getApiInterface().getAllChampions(LocalizationUtils.getInstance().getRegion(), LolApiClient.CHAMP_DATA_ALL);
         call.enqueue(new Callback<ChampionListDto>() {
             @Override
@@ -91,5 +113,5 @@ public class ApiHelper {
                 onFailResponse(retrofitResponseHandler, call, t);
             }
         });
-    }
+    }*/
 }

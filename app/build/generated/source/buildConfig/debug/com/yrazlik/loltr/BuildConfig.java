@@ -10,4 +10,6 @@ public final class BuildConfig {
   public static final String FLAVOR = "";
   public static final int VERSION_CODE = 26;
   public static final String VERSION_NAME = "2.8";
+  // Fields from default config.
+  public static final String API_KEY = "adcd5cd2-a699-4e04-90e0-2e7b9e5d990a";
 }

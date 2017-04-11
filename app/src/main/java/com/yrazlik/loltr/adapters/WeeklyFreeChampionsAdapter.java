@@ -9,15 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.List;
 
-public class WeeklyFreeChampionsAdapter extends ArrayAdapter<Champion> {
+public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
 	
 	private Context mContext;
 
-	public WeeklyFreeChampionsAdapter(Context context, int resource, List<Champion> objects) {
+	public WeeklyFreeChampionsAdapter(Context context, int resource, List<ChampionDto> objects) {
 		super(context, resource, objects);
 		this.mContext = context;
 	}
@@ -41,11 +41,11 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<Champion> {
 		}else{
 			holder = (ViewHolder) convertView.getTag();
 		}
-		
-		Champion champion = getItem(position);
+
+        ChampionDto champion = getItem(position);
 
         setChampionName(champion, holder);
-        LolImageLoader.getInstance().loadImage(champion.getChampionImageUrl(), holder.championImage);
+        LolImageLoader.getInstance().loadImage(champion.getImage().getFull(), holder.championImage);
         setFreeDateInterval(champion, holder);
         setIpPrices(champion, holder);
         setRpPrices(champion, holder);
@@ -53,15 +53,15 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<Champion> {
 		return convertView;
 	}
 
-    private void setChampionName(Champion champion, ViewHolder holder) {
-        holder.championName.setText(champion.getChampionName());
+    private void setChampionName(ChampionDto champion, ViewHolder holder) {
+        holder.championName.setText(champion.getName());
     }
 
-    private void setFreeDateInterval(Champion champion, ViewHolder holder) {
+    private void setFreeDateInterval(ChampionDto champion, ViewHolder holder) {
         holder.dateInterval.setText(champion.getDateInterval());
     }
 
-    private void setIpPrices(Champion champion, ViewHolder holder) {
+    private void setIpPrices(ChampionDto champion, ViewHolder holder) {
         if(champion.getChampionRp() != null && champion.getChampionRp().length() > 0){
             holder.rpPrice.setText(champion.getChampionRp());
         } else {
@@ -69,7 +69,7 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<Champion> {
         }
     }
 
-    private void setRpPrices(Champion champion, ViewHolder holder) {
+    private void setRpPrices(ChampionDto champion, ViewHolder holder) {
         if(champion.getChampionIp() != null && champion.getChampionIp().length() > 0){
             holder.ipPrice.setText(champion.getChampionIp());
         } else {

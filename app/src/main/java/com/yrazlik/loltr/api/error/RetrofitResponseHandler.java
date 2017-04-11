@@ -24,6 +24,13 @@ public class RetrofitResponseHandler implements IResponseHandler{
     private RetrofitResponseHandler() {}
 
     @Override
+    public void onResponseFromCache(Object response) {
+        if(apiResponseListener != null) {
+            apiResponseListener.onResponseFromCache(response);
+        }
+    }
+
+    @Override
     public void handleSuccess(Call call, Response response) {
         if (apiResponseListener != null) {
             if(response != null) {
