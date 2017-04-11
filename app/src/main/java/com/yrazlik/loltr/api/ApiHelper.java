@@ -5,11 +5,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.yrazlik.loltr.api.error.IResponseHandler;
 import com.yrazlik.loltr.api.error.RetryHelper;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
 import com.yrazlik.loltr.utils.CacheObject;
 import com.yrazlik.loltr.utils.CacheUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -83,9 +87,9 @@ public class ApiHelper {
     }
 
     public void getWeeklyFreeChampions(final IResponseHandler retrofitResponseHandler) {
-
-        if(CacheObject.getInstance().getWeeklyFreeChampions() != null && CacheObject.getInstance().getWeeklyFreeChampions().size() > 0) {
-            retrofitResponseHandler.onResponseFromCache(CacheObject.getInstance().getWeeklyFreeChampions());
+        List<ChampionDto> weeklyFreeChampionsData = CacheUtils.getInstance().retrieveWeeklyFreeChampionsData();
+        if(weeklyFreeChampionsData != null && weeklyFreeChampionsData.size() > 0) {
+            retrofitResponseHandler.onResponseFromCache(weeklyFreeChampionsData);
         } else {
             Call<WeeklyFreeResponseDto> call = LolApiClient.getApiInterface(LolApiClient.BASE_URL_TYPE.WEEKLY_FREE_CHAMPIONS).getWeeklyFreeChampions(LocalizationUtils.getInstance().getRegion(), true);
             call.enqueue(new Callback<WeeklyFreeResponseDto>() {
