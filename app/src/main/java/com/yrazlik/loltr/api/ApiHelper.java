@@ -5,8 +5,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.yrazlik.loltr.api.error.IResponseHandler;
 import com.yrazlik.loltr.api.error.RetryHelper;
+import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
 import com.yrazlik.loltr.utils.CacheObject;
+import com.yrazlik.loltr.utils.CacheUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,18 +102,23 @@ public class ApiHelper {
         }
     }
 
- /*   public void getAllChampions(final IResponseHandler retrofitResponseHandler) {
-        Call<ChampionListDto> call = LolApiClient.getApiInterface().getAllChampions(LocalizationUtils.getInstance().getRegion(), LolApiClient.CHAMP_DATA_ALL);
-        call.enqueue(new Callback<ChampionListDto>() {
-            @Override
-            public void onResponse(Call<ChampionListDto> call, Response<ChampionListDto> response) {
-                onSuccessResponse(retrofitResponseHandler, call, response);
-            }
+    public void getAllChampions(final IResponseHandler retrofitResponseHandler) {
+        ChampionListDto championListDto = CacheUtils.getInstance().retrieveAllChampionsData();
+        if(championListDto != null) {
+            retrofitResponseHandler.onResponseFromCache(championListDto);
+        } else {
+            Call<ChampionListDto> call = LolApiClient.getApiInterface(LolApiClient.BASE_URL_TYPE.STATIC_DATA).getAllChampions(LocalizationUtils.getInstance().getRegion(), LolApiClient.CHAMP_DATA_ALL);
+            call.enqueue(new Callback<ChampionListDto>() {
+                @Override
+                public void onResponse(Call<ChampionListDto> call, Response<ChampionListDto> response) {
+                    onSuccessResponse(retrofitResponseHandler, call, response);
+                }
 
-            @Override
-            public void onFailure(Call<ChampionListDto> call, Throwable t) {
-                onFailResponse(retrofitResponseHandler, call, t);
-            }
-        });
-    }*/
+                @Override
+                public void onFailure(Call<ChampionListDto> call, Throwable t) {
+                    onFailResponse(retrofitResponseHandler, call, t);
+                }
+            });
+        }
+    }
 }

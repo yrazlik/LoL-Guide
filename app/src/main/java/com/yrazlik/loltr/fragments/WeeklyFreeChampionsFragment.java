@@ -27,6 +27,7 @@ import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.model.ChampionDto;
+import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.ImageDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
@@ -42,7 +43,7 @@ import java.util.Map.Entry;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class WeeklyFreeChampionsFragment extends BaseFragment implements ResponseListener, OnItemClickListener {
+public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemClickListener {
 
 	private ListView weeklyFreeChampionsList;
 
@@ -132,7 +133,111 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements Respons
     }
 
     private void getAllChampions() {
+        ApiHelper.getInstance(getContext()).getAllChampions(new RetrofitResponseHandler(new ApiResponseListener() {
+            @Override
+            public void onResponseFromCache(Object response) {
+                dismissProgress();
+                ChampionListDto championListDto = (ChampionListDto) response;
+                //TODO: handle rest...
+            }
 
+            @Override
+            public void onResponse(Call call, Response response) {
+                dismissProgress();
+                ChampionListDto resp = (ChampionListDto) response.body();
+
+         /*       Map<String, Map<String, String>> data = resp.getData();
+
+                if (CacheObject.getInstance().getWeeklyFreeChampions() != null) {
+                    CacheObject.getInstance().getWeeklyFreeChampions().clear();
+                } else {
+                    CacheObject.getInstance().setWeeklyFreeChampions(new ArrayList<ChampionDto>());
+                }
+
+                notifyDataSetChanged();
+
+                for (Entry<String, Map<String, String>> entry : data.entrySet()) {
+                    String key = entry.getKey();
+                    String id = entry.getValue().get("id");
+                    for (String weeklyFreeChampId : weeklyFreeChampIds) {
+                        if (weeklyFreeChampId.equals(id)) {
+                            String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
+                            ChampionDto c = new ChampionDto();
+                            ImageDto imageDto = new ImageDto();
+                            imageDto.setFull(imageUrl);
+                            c.setImage(imageDto);
+                            c.setName(entry.getValue().get("name"));
+                            c.setId(Integer.parseInt(entry.getValue().get("id")));
+                            c.setKey(entry.getValue().get("key"));
+                            c.setDateInterval(Commons.getTuesday());
+                            weeklyFreeChampions.add(c);
+                            notifyDataSetChanged();
+                        }
+                    }
+                }
+
+                if (LolApplication.firebaseInitialized) {
+                    if (weeklyFreeChampions.size() == freeToPlayChampsSize) {
+                        try {
+                            Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+                            firebase.child("championCosts").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    try {
+                                        HashMap<String, HashMap> championCosts = (HashMap<String, HashMap>) dataSnapshot.getValue();
+                                        HashMap<String, String> costs = championCosts.get("costs");
+                                        Iterator it = costs.entrySet().iterator();
+                                        while (it.hasNext()) {
+                                            Map.Entry pairs = (Map.Entry) it.next();
+                                            String key = (String) pairs.getKey();
+                                            for (ChampionDto c : weeklyFreeChampions) {
+                                                if (String.valueOf(c.getId()).equals(key)) {
+                                                    Map<String, String> keyValues = (Map<String, String>) pairs.getValue();
+                                                    c.setChampionRp(String.valueOf(keyValues.get("rp_cost")));
+                                                    c.setChampionIp(String.valueOf(keyValues.get("ip_cost")));
+                                                }
+                                            }
+                                        }
+                                        CacheObject.getInstance().setWeeklyFreeChampions(weeklyFreeChampions);
+                                        setWeeklyFreeChampionsAdapter();
+                                    } catch (Exception ignored) {
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(FirebaseError firebaseError) {
+                                    setWeeklyFreeChampionsAdapter();
+                                }
+                            });
+
+                        } catch (Exception ignored) {
+                        }
+                    }
+                } else {
+                    setWeeklyFreeChampionsAdapter();
+                }*/
+            }
+
+            @Override
+            public void onUnknownError() {
+                handleWeeklyFreeRequestFailure(null);
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                handleWeeklyFreeRequestFailure(null);
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                handleWeeklyFreeRequestFailure(errorMessage);
+            }
+
+            @Override
+            public void onNetworkError() {
+                handleWeeklyFreeRequestFailure(null);
+            }
+        }));
     }
 
     private void setWeeklyFreeChampionsAdapter() {
@@ -151,83 +256,6 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements Respons
         }
     }
 
-	@Override
-	public void onSuccess(Object response) {
-		if (response instanceof AllChampionsResponse) {
-            dismissProgress();
-			AllChampionsResponse resp = (AllChampionsResponse) response;
-            Commons.setAllChampions(resp);
-			Map<String, Map<String, String>> data = resp.getData();
-
-            if(CacheObject.getInstance().getWeeklyFreeChampions() != null){
-				CacheObject.getInstance().getWeeklyFreeChampions().clear();
-			}else{
-                CacheObject.getInstance().setWeeklyFreeChampions(new ArrayList<ChampionDto>());
-			}
-
-            notifyDataSetChanged();
-
-			for(Entry<String, Map<String, String>> entry : data.entrySet()){
-				String key = entry.getKey();
-				String id = entry.getValue().get("id");
-				for(String weeklyFreeChampId : weeklyFreeChampIds){
-					if(weeklyFreeChampId.equals(id)){
-						String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
-						ChampionDto c = new ChampionDto();
-                        ImageDto imageDto = new ImageDto();
-                        imageDto.setFull(imageUrl);
-                        c.setImage(imageDto);
-						c.setName(entry.getValue().get("name"));
-						c.setId(Integer.parseInt(entry.getValue().get("id")));
-						c.setKey(entry.getValue().get("key"));
-						c.setDateInterval(Commons.getTuesday());
-						weeklyFreeChampions.add(c);
-                        notifyDataSetChanged();
-					}
-				}
-			}
-
-			if(LolApplication.firebaseInitialized){
-				if (weeklyFreeChampions.size() == freeToPlayChampsSize) {
-					try{
-						Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
-						firebase.child("championCosts").addListenerForSingleValueEvent(new ValueEventListener() {
-							@Override
-							public void onDataChange(DataSnapshot dataSnapshot) {
-								try {
-									HashMap<String, HashMap> championCosts = (HashMap<String, HashMap>) dataSnapshot.getValue();
-									HashMap<String, String> costs = championCosts.get("costs");
-									Iterator it = costs.entrySet().iterator();
-									while (it.hasNext()) {
-										Map.Entry pairs = (Map.Entry) it.next();
-										String key = (String) pairs.getKey();
-										for (ChampionDto c : weeklyFreeChampions) {
-											if (String.valueOf(c.getId()).equals(key)) {
-												Map<String, String> keyValues = (Map<String, String>) pairs.getValue();
-												c.setChampionRp(String.valueOf(keyValues.get("rp_cost")));
-												c.setChampionIp(String.valueOf(keyValues.get("ip_cost")));
-											}
-										}
-									}
-									CacheObject.getInstance().setWeeklyFreeChampions(weeklyFreeChampions);
-                                    setWeeklyFreeChampionsAdapter();
-								}catch (Exception ignored){}
-							}
-
-							@Override
-							public void onCancelled(FirebaseError firebaseError) {
-                                setWeeklyFreeChampionsAdapter();
-							}
-						});
-
-					}catch (Exception ignored){}
-				}
-			}else {
-                setWeeklyFreeChampionsAdapter();
-			}
-		}
-	}
-	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		switch (parent.getId()) {
@@ -250,11 +278,6 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements Respons
 		default:
 			break;
 		}
-	}
-
-	@Override
-	public void onFailure(final Object response) {
-
 	}
 
 	private void handleWeeklyFreeRequestFailure(String errorMessage) {
