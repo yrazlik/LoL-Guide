@@ -65,7 +65,7 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
         if(champion.getChampionRp() != null && champion.getChampionRp().length() > 0){
             holder.rpPrice.setText(champion.getChampionRp());
         } else {
-            holder.rpPrice.setText("");
+            holder.rpPrice.setText("???");
         }
     }
 
@@ -73,7 +73,7 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
         if(champion.getChampionIp() != null && champion.getChampionIp().length() > 0){
             holder.ipPrice.setText(champion.getChampionIp());
         } else {
-            holder.ipPrice.setText("");
+            holder.ipPrice.setText("???");
         }
     }
 

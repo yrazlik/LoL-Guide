@@ -17,6 +17,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.firebase.client.annotations.NotNull;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -44,6 +45,10 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemClickListener {
+
+    private interface IpRpPricesListener {
+        void onIpRpPricesReceived();
+    }
 
     private ListView weeklyFreeChampionsList;
 
@@ -82,7 +87,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
 
                 @Override
                 public void onResponseFromCache(Object response) {
-                    dismissProgress();
+                    dismissProgress(); //TODO: 1
                     List<ChampionDto> resp = (List<ChampionDto>) response;
                     weeklyFreeChampions.clear();
 
@@ -93,7 +98,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                 }
 
                 @Override
-                public void onResponse(Call call, Response response) {
+                public void onResponse(Call call, Response response) {//TODO: 2
                     WeeklyFreeResponseDto resp = (WeeklyFreeResponseDto) response.body();
 
                     if (resp != null && resp.getChampions() != null && resp.getChampions().size() > 0) {
@@ -133,21 +138,29 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
         ApiHelper.getInstance(getContext()).getAllChampions(new RetrofitResponseHandler(new ApiResponseListener() {
             @Override
             public void onResponseFromCache(Object response) {
-                dismissProgress();
+                dismissProgress();//TODO: 3
                 ChampionListDto championListDto = (ChampionListDto) response;
                 updateWeeklyFreeArray(championListDto);
-                setIpRpPrices();
-                setWeeklyFreeChampionsAdapter();
+                setIpRpPrices(new IpRpPricesListener() {
+                    @Override
+                    public void onIpRpPricesReceived() {
+                        setWeeklyFreeChampionsAdapter();
+                    }
+                });
             }
 
             @Override
             public void onResponse(Call call, Response response) {
-                dismissProgress();
+                dismissProgress();//TODO: 4
                 ChampionListDto resp = (ChampionListDto) response.body();
                 CacheUtils.getInstance().saveAllChampionsData(resp);
                 updateWeeklyFreeArray(resp);
-                setIpRpPrices();
-                setWeeklyFreeChampionsAdapter();
+                setIpRpPrices(new IpRpPricesListener() {
+                    @Override
+                    public void onIpRpPricesReceived() {
+                        setWeeklyFreeChampionsAdapter();
+                    }
+                });
             }
 
             @Override
@@ -172,10 +185,11 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
         }));
     }
 
-    private void setIpRpPrices() {
+    private void setIpRpPrices(@NotNull final IpRpPricesListener ipRpPricesListener) {
         Map<String, HashMap> championCosts = CacheUtils.getInstance().retrieveRpIpCostsData();
         if (championCosts != null) {
-            populateChampionCosts(championCosts);
+            populateChampionCosts(championCosts);//TODO: 5
+            ipRpPricesListener.onIpRpPricesReceived();
         } else {
             if (LolApplication.firebaseInitialized) {
                 try {
@@ -183,10 +197,11 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                     firebase.child("championCosts").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            try {
+                            try {//TODO: 6
                                 Map<String, HashMap> championCosts = (HashMap<String, HashMap>) dataSnapshot.getValue();
                                 CacheUtils.getInstance().saveRpIpCostsData(championCosts);
                                 populateChampionCosts(championCosts);
+                                ipRpPricesListener.onIpRpPricesReceived();
                             } catch (Exception ignored) {
                             }
                         }
@@ -213,6 +228,15 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                     c.setChampionRp(String.valueOf(keyValues.get("rp_cost")));
                     c.setChampionIp(String.valueOf(keyValues.get("ip_cost")));
                 }
+            }
+        }
+
+        for(int i = 0; i < weeklyFreeChampions.size(); i++) {
+            if(!Utils.isValidString(weeklyFreeChampions.get(i).getChampionIp())) {
+                weeklyFreeChampions.get(i).setChampionIp("???");
+            }
+            if(!Utils.isValidString(weeklyFreeChampions.get(i).getChampionRp())) {
+                weeklyFreeChampions.get(i).setChampionRp("???");
             }
         }
         CacheUtils.getInstance().saveWeeklyFreeChampionsData(weeklyFreeChampions);
