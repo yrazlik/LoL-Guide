@@ -12,18 +12,19 @@ import com.pkmmte.view.CircularImageView;
 import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridViewAdapter extends ArrayAdapter<Champion> {
+public class AllChampionsGridAdapter extends ArrayAdapter<ChampionDto> {
 
     private Context context;
 	private int layoutResourceId;
-	private List<Champion> data = new ArrayList<Champion>();
+	private List<ChampionDto> data = new ArrayList<ChampionDto>();
 	private ViewHolder holder = null;
 
-	public GridViewAdapter(Context context, int layoutResourceId, ArrayList<Champion> data) {
+	public AllChampionsGridAdapter(Context context, int layoutResourceId, List<ChampionDto> data) {
 		super(context, layoutResourceId, data);
 		this.layoutResourceId = layoutResourceId;
 		this.context = context;
@@ -48,9 +49,9 @@ public class GridViewAdapter extends ArrayAdapter<Champion> {
 			holder = (ViewHolder) row.getTag();
 		}
 
-		Champion champion = data.get(position);
-		holder.championName.setText(champion.getChampionName());
-        LolImageLoader.getInstance().loadImage(champion.getChampionImageUrl(), holder.championImage);
+        ChampionDto champion = data.get(position);
+		holder.championName.setText(champion.getName());
+        LolImageLoader.getInstance().loadImage(champion.getImage().getFull(), holder.championImage);
 
 		return row;
 	}

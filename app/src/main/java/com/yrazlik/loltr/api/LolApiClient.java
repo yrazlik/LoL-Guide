@@ -14,6 +14,7 @@ public class LolApiClient {
     public enum BASE_URL_TYPE {WEEKLY_FREE_CHAMPIONS, STATIC_DATA}
 
     public static final String CHAMP_DATA_ALL = "all";
+    public static final String CHAMP_DATA_ALTIMAGES = "altimages";
 
     private static String apiBaseUrl = "https://tr.api.pvp.net";
     private static Retrofit retrofit = null;

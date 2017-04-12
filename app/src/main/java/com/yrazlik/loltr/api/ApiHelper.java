@@ -8,7 +8,6 @@ import com.yrazlik.loltr.api.error.RetryHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
-import com.yrazlik.loltr.utils.CacheObject;
 import com.yrazlik.loltr.utils.CacheUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
 
@@ -87,7 +86,7 @@ public class ApiHelper {
     }
 
     public void getWeeklyFreeChampions(final IResponseHandler retrofitResponseHandler) {
-        List<ChampionDto> weeklyFreeChampionsData = CacheUtils.getInstance().retrieveWeeklyFreeChampionsData();
+        List<ChampionDto> weeklyFreeChampionsData = CacheUtils.getInstance().getWeeklyFreeChampionsData();
         if(weeklyFreeChampionsData != null && weeklyFreeChampionsData.size() > 0) {
             retrofitResponseHandler.onResponseFromCache(weeklyFreeChampionsData);
         } else {
@@ -107,11 +106,11 @@ public class ApiHelper {
     }
 
     public void getAllChampions(final IResponseHandler retrofitResponseHandler) {
-        ChampionListDto championListDto = CacheUtils.getInstance().retrieveAllChampionsData();
+        ChampionListDto championListDto = CacheUtils.getInstance().getAllChampionsData();
         if(championListDto != null) {
             retrofitResponseHandler.onResponseFromCache(championListDto);
         } else {
-            Call<ChampionListDto> call = LolApiClient.getApiInterface(LolApiClient.BASE_URL_TYPE.STATIC_DATA).getAllChampions(LocalizationUtils.getInstance().getRegion(), LolApiClient.CHAMP_DATA_ALL);
+            Call<ChampionListDto> call = LolApiClient.getApiInterface(LolApiClient.BASE_URL_TYPE.STATIC_DATA).getAllChampions(LocalizationUtils.getInstance().getRegion(), LolApiClient.CHAMP_DATA_ALTIMAGES);
             call.enqueue(new Callback<ChampionListDto>() {
                 @Override
                 public void onResponse(Call<ChampionListDto> call, Response<ChampionListDto> response) {

@@ -16,182 +16,197 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
+
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
-import com.yrazlik.loltr.adapters.GridViewAdapter;
+import com.yrazlik.loltr.adapters.AllChampionsGridAdapter;
+import com.yrazlik.loltr.api.ApiHelper;
+import com.yrazlik.loltr.api.error.ApiResponseListener;
+import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.model.ChampionDto;
+import com.yrazlik.loltr.model.ChampionListDto;
+import com.yrazlik.loltr.model.ImageDto;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
-import com.yrazlik.loltr.service.ServiceHelper;
+import com.yrazlik.loltr.utils.CacheUtils;
+import com.yrazlik.loltr.utils.Utils;
+import com.yrazlik.loltr.view.RobotoEditText;
 import com.yrazlik.loltr.view.RobotoTextView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
-public class AllChampionsFragment extends BaseFragment implements ResponseListener, OnItemClickListener, TextWatcher{
-	
-	private GridView gridView;
-	private GridViewAdapter adapter;
-	private EditText searchBar;
+import retrofit2.Call;
+import retrofit2.Response;
+
+public class AllChampionsFragment extends BaseFragment implements OnItemClickListener, TextWatcher {
+
+    private GridView championsGrid;
+    private RobotoEditText searchBar;
     private RobotoTextView noChampsFoundTV;
-    private ArrayList<Champion> searchResultChampions;
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater,
-			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        if(rootView == null) {
+    private AllChampionsGridAdapter allChampionsGridAdapter;
+    private List<ChampionDto> gridChampions; //current champions being shown on gridview
+    private List<ChampionDto> allChampions; // all champions
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        allChampions = getAllChampionsList();
+        gridChampions = new ArrayList<>(allChampions);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_champions, container, false);
             showProgressWithWhiteBG();
             initUI(rootView);
+        } else {
+            dismissProgress();
         }
 
-        if (Commons.allChampions == null || Commons.allChampions.size() == 0) {
-            ServiceHelper.getInstance(getContext()).makeGetAllChampionsRequest(this);
+        if (gridChampions == null || gridChampions.size() == 0) {
+            requestAllChampions();
         } else {
             setAdapter();
         }
-		
-		return rootView;
-	}
+        return rootView;
+    }
 
-    private void setAdapter() {
-        dismissProgress();
-        if (adapter == null || adapter.getCount() == 0) {
-            adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
-            gridView.setAdapter(adapter);
-        } else {
-            adapter.notifyDataSetChanged();
+    private void initUI(View v) {
+        noChampsFoundTV = (RobotoTextView) v.findViewById(R.id.noChampsFoundTV);
+        championsGrid = (GridView) v.findViewById(R.id.gridview_champions);
+        searchBar = (RobotoEditText) v.findViewById(R.id.edittextSearchBar);
+        searchBar.addTextChangedListener(this);
+        championsGrid.setOnItemClickListener(this);
+    }
+
+    private void requestAllChampions() {
+        ApiHelper.getInstance(getContext()).getAllChampions(new RetrofitResponseHandler(new ApiResponseListener() {
+            @Override
+            public void onResponseFromCache(Object response) {
+                dismissProgress();
+                copyAllChampionsToGridArray();
+                setAdapter();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                dismissProgress();
+                ChampionListDto resp = (ChampionListDto) response.body();
+                CacheUtils.getInstance().saveAllChampionsData(resp);
+                updateGridChampions(resp);
+                setAdapter();
+            }
+
+            @Override
+            public void onUnknownError() {
+                handleAllChampionsFailure(null);
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                handleAllChampionsFailure(null);
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                handleAllChampionsFailure(errorMessage);
+            }
+
+            @Override
+            public void onNetworkError() {
+                handleAllChampionsFailure(null);
+            }
+        }));
+    }
+
+    private void copyAllChampionsToGridArray() {
+        gridChampions.clear();
+        if(allChampions != null) {
+            for (int i = 0; i < allChampions.size(); i++) {
+                gridChampions.add(allChampions.get(i));
+            }
         }
     }
-	
-	private void initUI(View v){
-        noChampsFoundTV = (RobotoTextView) v.findViewById(R.id.noChampsFoundTV);
-		gridView = (GridView)v.findViewById(R.id.gridview_champions);
-		searchBar = (EditText)v.findViewById(R.id.edittextSearchBar);
-		searchBar.addTextChangedListener(this);
-		gridView.setOnItemClickListener(this);
-	}
-	
-	@Override
-	public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    private void setAdapter() {
+        if (allChampionsGridAdapter == null) {
+            allChampionsGridAdapter = new AllChampionsGridAdapter(getContext(), R.layout.row_grid, gridChampions);
+            championsGrid.setAdapter(allChampionsGridAdapter);
+        } else {
+            allChampionsGridAdapter.notifyDataSetChanged();
+        }
+        dismissProgress();
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
         noChampsFoundTV.setVisibility(View.GONE);
-		if(s.length() >= 2){
-			searchResultChampions = new ArrayList<Champion>();
-			for(Champion c : Commons.allChampions){
-				if(containsIgnoreCase(c.getChampionName(), String.valueOf(s))){
-					searchResultChampions.add(c);
-				}
-			}
-			adapter = new GridViewAdapter(getContext(), R.layout.row_grid, searchResultChampions);
-			gridView.setAdapter(adapter);
-			adapter.notifyDataSetChanged();
-            if(searchResultChampions != null && searchResultChampions.size() <= 0){
-                noChampsFoundTV.setVisibility(View.VISIBLE);
-            }else if(searchResultChampions != null && searchResultChampions.size() > 0){
-                noChampsFoundTV.setVisibility(View.GONE);
-            }
-		}else{
-            if(Commons.allChampions != null && Commons.allChampions.size() > 0) {
-                adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
-                if(adapter != null && gridView != null) {
-                    try {
-                        gridView.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
-                    }catch (Exception e){}
+        if (s.length() >= 2) {
+            gridChampions.clear();
+            for (ChampionDto c : allChampions) {
+                if (Utils.containsIgnoreCase(c.getName(), String.valueOf(s))) {
+                    gridChampions.add(c);
                 }
             }
-		}
-	}
-	
-	private void hideKeyboard() {   
-		try{
-		    View view = getActivity().getCurrentFocus();
-		    if (view != null) {
-		        InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-		        inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-		    }
-		}catch(Exception e){
-			
-		}
-	}
-	
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		hideKeyboard();
-		Champion c = (Champion)gridView.getItemAtPosition(position);
-		int champId = c.getId();
-		ChampionDetailFragment fragment = new ChampionDetailFragment();
-		Bundle args = new Bundle();
-		args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
-		args.putString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL, c.getChampionImageUrl());
-		args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, c.getKey());
-		fragment.setArguments(args);
-		FragmentManager fm = getFragmentManager();
+            setAdapter();
+            if (gridChampions.size() <= 0) {
+                noChampsFoundTV.setVisibility(View.VISIBLE);
+            } else {
+                noChampsFoundTV.setVisibility(View.GONE);
+            }
+        } else {
+            copyAllChampionsToGridArray();
+            setAdapter();
+        }
+    }
+
+    private void hideKeyboard() {
+        try {
+            View view = getActivity().getCurrentFocus();
+            if (view != null) {
+                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        hideKeyboard();
+        ChampionDto c = (ChampionDto) championsGrid.getItemAtPosition(position);
+        int champId = c.getId();
+        ChampionDetailFragment fragment = new ChampionDetailFragment();
+        Bundle args = new Bundle();
+        args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
+        args.putString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL, c.getImage().getFull());
+        args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, c.getKey());
+        fragment.setArguments(args);
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-		ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
-	}
-	
-	public static boolean containsIgnoreCase(String src, String what) {
-	    final int length = what.length();
-	    if (length == 0)
-	        return true; // Empty string is contained
+        ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
+    }
 
-	    final char firstLo = Character.toLowerCase(what.charAt(0));
-	    final char firstUp = Character.toUpperCase(what.charAt(0));
-
-	    for (int i = src.length() - length; i >= 0; i--) {
-	        // Quick check before calling the more expensive regionMatches() method:
-	        final char ch = src.charAt(i);
-	        if (ch != firstLo && ch != firstUp)
-	            continue;
-
-	        if (src.regionMatches(true, i, what, 0, length))
-	            return true;
-	    }
-
-	    return false;
-	}
-
-	@Override
-	public void onSuccess(Object response) {
-		try{
-            dismissProgress();
-			if(response instanceof AllChampionsResponse){
-				AllChampionsResponse resp = (AllChampionsResponse) response;
-				Map<String, Map<String, String>> data = resp.getData();
-                Commons.setAllChampions(resp);
-				adapter = new GridViewAdapter(getContext(), R.layout.row_grid, Commons.allChampions);
-				gridView.setAdapter(adapter);
-				adapter.notifyDataSetChanged();
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-	}
-
-	@Override
-	public void onFailure(final Object response) {
-		try {
-            if(getActivity() != null) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String errorMessage = String.valueOf(response);
-                        Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
-                        showRetryView();
-                    }
-                });
-            }
-		}catch (Exception ignored){}
-	}
+    private void handleAllChampionsFailure(String errorMessage) {
+        if (Utils.isValidString(errorMessage)) {
+            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        }
+        showRetryView();
+    }
 
     @Override
     protected void retry() {
@@ -199,23 +214,60 @@ public class AllChampionsFragment extends BaseFragment implements ResponseListen
         setAdapter();
     }
 
+    public void updateGridChampions(ChampionListDto championListDto) {
+        if (championListDto != null && championListDto.getData() != null && championListDto.getData().size() > 0) {
+            try {
+                gridChampions.clear();
+                Map<String, ChampionDto> data = championListDto.getData();
+
+                for (Map.Entry<String, ChampionDto> entry : data.entrySet()) {
+                    String key = entry.getKey();
+                    String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
+                    ChampionDto c = new ChampionDto();
+                    ImageDto imageDto = new ImageDto();
+                    imageDto.setFull(imageUrl);
+                    c.setImage(imageDto);
+                    c.setName(entry.getValue().getName());
+                    c.setId(entry.getValue().getId());
+                    c.setKey(entry.getValue().getKey());
+                    c.setTitle("\"" + entry.getValue().getTitle() + "\"");
+                    gridChampions.add(c);
+                }
+                if (gridChampions != null) {
+                    Collections.sort(gridChampions, new Comparator<ChampionDto>() {
+                        @Override
+                        public int compare(ChampionDto c1, ChampionDto c2) {
+                            return c1.getName().compareTo(c2.getName());
+                        }
+                    });
+                }
+            } catch (Exception ignored) {
+            }
+        }
+    }
+
+    private List<ChampionDto> getAllChampionsList() {
+        if(allChampions == null || allChampions.size() == 0) {
+            allChampions = CacheUtils.getInstance().getAllChampionsList();
+            if(allChampions == null) {
+                allChampions = new ArrayList<>();
+            }
+        }
+        return allChampions;
+    }
+
     @Override
-	public Context getContext() {
-		return getActivity();
-	}
+    public Context getContext() {
+        return getActivity();
+    }
 
-	@Override
-	public void afterTextChanged(Editable s) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void afterTextChanged(Editable s) {
+    }
 
-	@Override
-	public void beforeTextChanged(CharSequence s, int start, int count,
-			int after) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
 
     @Override
     public void onResume() {

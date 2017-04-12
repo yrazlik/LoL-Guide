@@ -21,7 +21,7 @@ public class ChampionDto {
     @SerializedName("tags")
     private List<String> tags;
     @SerializedName("image")
-    private ImageDto image;
+    private ImageDto image = new ImageDto();
     @SerializedName("title")
     private String title;
     @SerializedName("partype")

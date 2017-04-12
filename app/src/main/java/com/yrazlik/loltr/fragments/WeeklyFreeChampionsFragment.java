@@ -186,7 +186,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
     }
 
     private void setIpRpPrices(@NotNull final IpRpPricesListener ipRpPricesListener) {
-        Map<String, HashMap> championCosts = CacheUtils.getInstance().retrieveRpIpCostsData();
+        Map<String, HashMap> championCosts = CacheUtils.getInstance().getRpIpCostsData();
         if (championCosts != null) {
             populateChampionCosts(championCosts);//TODO: 5
             ipRpPricesListener.onIpRpPricesReceived();
