@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import com.yrazlik.loltr.api.ApiHelper;
 import com.yrazlik.loltr.api.error.ApiResponseListener;
 import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.ImageDto;
@@ -139,8 +141,8 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
             @Override
             public void onResponseFromCache(Object response) {
                 dismissProgress();//TODO: 3
-                ChampionListDto championListDto = (ChampionListDto) response;
-                updateWeeklyFreeArray(championListDto);
+                List<ChampionDto> allChampionsData = (List<ChampionDto>) response;
+                updateWeeklyFreeArray(allChampionsData);
                 setIpRpPrices(new IpRpPricesListener() {
                     @Override
                     public void onIpRpPricesReceived() {
@@ -152,9 +154,10 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
             @Override
             public void onResponse(Call call, Response response) {
                 dismissProgress();//TODO: 4
-                ChampionListDto resp = (ChampionListDto) response.body();
-                CacheUtils.getInstance().saveAllChampionsData(resp);
-                updateWeeklyFreeArray(resp);
+                ChampionListDto championListDto = (ChampionListDto) response.body();
+                List<ChampionDto> allChampsArr = convertAllChampionsDataIntoList(championListDto);
+                CacheUtils.getInstance().saveAllChampionsData(championListDto);
+                updateWeeklyFreeArray(allChampsArr);
                 setIpRpPrices(new IpRpPricesListener() {
                     @Override
                     public void onIpRpPricesReceived() {
@@ -183,6 +186,29 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                 handleWeeklyFreeRequestFailure(null);
             }
         }));
+    }
+
+    private List<ChampionDto> convertAllChampionsDataIntoList (ChampionListDto championListDto){
+        Map<String, ChampionDto> champsData = championListDto.getData();
+        if(champsData != null && champsData.size() > 0) {
+            try {
+                List<ChampionDto> allChampions = new ArrayList<>();
+
+                for (Map.Entry<String, ChampionDto> entry : champsData.entrySet()) {
+                    ChampionDto c = new ChampionDto(entry.getValue().getId(),
+                            entry.getValue().getKey(),
+                            entry.getValue().getName(),
+                            Commons.CHAMPION_IMAGE_BASE_URL + entry.getKey() + ".png",
+                            "\"" + entry.getValue().getTitle());
+                    allChampions.add(c);
+                }
+
+                return allChampions;
+            } catch (Exception e) {
+                Log.d("DB", "Error parsing all champions list");
+            }
+        }
+        return null;
     }
 
     private void setIpRpPrices(@NotNull final IpRpPricesListener ipRpPricesListener) {
@@ -242,8 +268,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
         CacheUtils.getInstance().saveWeeklyFreeChampionsData(weeklyFreeChampions);
     }
 
-    private void updateWeeklyFreeArray(ChampionListDto championListDto) {
-        Map<String, ChampionDto> data = championListDto.getData();
+    private void updateWeeklyFreeArray(List<ChampionDto> allChampionsData) {
 
         List<Integer> weeklyFreeChampIds = new ArrayList<>();
         for (int i = 0; i < weeklyFreeChampions.size(); i++) {
@@ -251,20 +276,11 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
         }
 
         weeklyFreeChampions.clear();
-        for (Entry<String, ChampionDto> entry : data.entrySet()) {
-            String key = entry.getKey();
-            int id = entry.getValue().getId();
+        for (int i = 0; i < allChampionsData.size(); i++) {
+            ChampionDto c = allChampionsData.get(i);
+            int id = c.getId();
             for (int weeklyFreeChampId : weeklyFreeChampIds) {
                 if (id == weeklyFreeChampId) {
-                    String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
-                    ChampionDto c = new ChampionDto();
-                    ImageDto imageDto = new ImageDto();
-                    imageDto.setFull(imageUrl);
-                    c.setImage(imageDto);
-                    c.setName(entry.getValue().getName());
-                    c.setId(entry.getValue().getId());
-                    c.setKey(entry.getValue().getKey());
-                    c.setDateInterval(Commons.getTuesday());
                     weeklyFreeChampions.add(c);
                 }
             }

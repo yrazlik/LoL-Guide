@@ -106,9 +106,9 @@ public class ApiHelper {
     }
 
     public void getAllChampions(final IResponseHandler retrofitResponseHandler) {
-        ChampionListDto championListDto = CacheUtils.getInstance().getAllChampionsData();
-        if(championListDto != null) {
-            retrofitResponseHandler.onResponseFromCache(championListDto);
+        List<ChampionDto> allChampions = CacheUtils.getInstance().getAllChampionsData();
+        if(allChampions != null) {
+            retrofitResponseHandler.onResponseFromCache(allChampions);
         } else {
             Call<ChampionListDto> call = LolApiClient.getApiInterface(LolApiClient.BASE_URL_TYPE.STATIC_DATA).getAllChampions(LocalizationUtils.getInstance().getRegion(), LolApiClient.CHAMP_DATA_ALTIMAGES);
             call.enqueue(new Callback<ChampionListDto>() {

@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
+import com.activeandroid.ActiveAndroid;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -33,6 +34,7 @@ import java.util.Random;
  */
 public class LolApplication extends MultiDexApplication{
 
+    public static boolean activeAndroidInited = false;
     public static ArrayList<String> availableLanguages;
     public static boolean appIsRunning = false;
     public static boolean firebaseInitialized;
@@ -62,6 +64,12 @@ public class LolApplication extends MultiDexApplication{
     @Override
     public void onCreate() {
         super.onCreate();
+        try {
+            ActiveAndroid.initialize(this);
+            activeAndroidInited = true;
+        } catch (Exception e) {
+            activeAndroidInited = false;
+        }
         mAppContext = getApplicationContext();
         LocalizationUtils.init(getApplicationContext());
         availableLanguages = new ArrayList<>();

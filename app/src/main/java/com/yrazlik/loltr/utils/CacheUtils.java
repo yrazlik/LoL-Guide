@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.ImageDto;
@@ -53,17 +54,18 @@ public class CacheUtils {
     }
 
     public void saveAllChampionsData(ChampionListDto championListDto) {
-        try {
+     /*   try {
             getSharedPrefs().edit().putString(ALL_CHAMPS_DATA, new Gson().toJson(championListDto)).commit();
             getSharedPrefs().edit().putLong(ALL_CHAMPS_LAST_SAVED, Calendar.getInstance().getTimeInMillis()).commit();
         } catch (Exception e) {
             getSharedPrefs().edit().putString(ALL_CHAMPS_DATA, null).commit();
             getSharedPrefs().edit().putLong(ALL_CHAMPS_LAST_SAVED, Calendar.getInstance().getTimeInMillis()).commit();
-        }
+        }*/
+        DbHelper.getInstance().saveAllChampionsData(championListDto);
     }
 
-    public ChampionListDto getAllChampionsData() {
-        long lastSaveDate = getSharedPrefs().getLong(ALL_CHAMPS_LAST_SAVED, 0);
+    public List<ChampionDto> getAllChampionsData() {
+     /*   long lastSaveDate = getSharedPrefs().getLong(ALL_CHAMPS_LAST_SAVED, 0);
         long now = Calendar.getInstance().getTimeInMillis();
 
         if (now - lastSaveDate > ALL_CHAMPIONS_MAX_CACHE_TIME) {
@@ -74,7 +76,8 @@ public class CacheUtils {
             return new Gson().fromJson(getSharedPrefs().getString(ALL_CHAMPS_DATA, null), ChampionListDto.class);
         } catch (Exception e) {
             return null;
-        }
+        }*/
+        return DbHelper.getInstance().getAllChampionsData();
     }
 
     public void saveWeeklyFreeChampionsData(List<ChampionDto> weeklyFreeChampions) {
@@ -127,41 +130,5 @@ public class CacheUtils {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    public List<ChampionDto> getAllChampionsList() {
-        ChampionListDto allchampionsData = getAllChampionsData();
-        if(allchampionsData != null && allchampionsData.getData() != null && allchampionsData.getData().size() > 0) {
-            try {
-                List<ChampionDto> allChampions = new ArrayList<>();
-                Map<String, ChampionDto> data = getAllChampionsData().getData();
-
-                for (Map.Entry<String, ChampionDto> entry : data.entrySet()) {
-                    String key = entry.getKey();
-                    String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
-                    ChampionDto c = new ChampionDto();
-                    ImageDto imageDto = new ImageDto();
-                    imageDto.setFull(imageUrl);
-                    c.setImage(imageDto);
-                    c.setName(entry.getValue().getName());
-                    c.setId(entry.getValue().getId());
-                    c.setKey(entry.getValue().getKey());
-                    c.setTitle("\"" + entry.getValue().getTitle() + "\"");
-                    allChampions.add(c);
-                }
-                if (allChampions != null) {
-                    Collections.sort(allChampions, new Comparator<ChampionDto>() {
-                        @Override
-                        public int compare(ChampionDto c1, ChampionDto c2) {
-                            return c1.getName().compareTo(c2.getName());
-                        }
-                    });
-                }
-                return allChampions;
-            } catch (Exception e) {
-                Log.d("", "");
-            }
-        }
-        return null;
     }
 }

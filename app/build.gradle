@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
@@ -61,6 +66,7 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-messaging:10.2.0'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 }
 
 apply plugin: 'com.google.gms.google-services'

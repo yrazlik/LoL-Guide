@@ -30,6 +30,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/10/activeandroid-3.1.0-SNAPSHOT_80a78bfe6409a19fd605e0003aa593996890a842/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/yrazlik/.android/build-cache/90bf7e299ac7467e11664398c1319355b4b89a09/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -147,6 +156,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/libs/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/2/bolts-android-1.1.4_a1283a19f1a9a5c39f39126ab4ded630cf1417ec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/yrazlik/.android/build-cache/a386086ac4af94f1730931cf9d73d30a8aca7c2a/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -162,15 +180,6 @@
         revision="25.0.0"
         sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
         <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.6.0_3ccfa290e7c8ce80d33fd35a0b954e1c4774d814/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/libs/bolts-android-1.1.4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/2/bolts-android-1.1.4_a1283a19f1a9a5c39f39126ab4ded630cf1417ec/classes.dex" />
     </item>
     <item
         is-multidex="true"

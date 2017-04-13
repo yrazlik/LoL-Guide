@@ -59,6 +59,19 @@ public class ChampionDto {
     private String championRp;
     private String championIp;
 
+    public ChampionDto() {
+    }
+
+    public ChampionDto(int champId, String key, String name, String imageUrl, String title) {
+        this.id = champId;
+        this.key = key;
+        this.name = name;
+        ImageDto imageDto = new ImageDto();
+        imageDto.setFull(imageUrl);
+        this.image = imageDto;
+        this.title = title;
+    }
+
     public InfoDto getInfo() {
         return info;
     }

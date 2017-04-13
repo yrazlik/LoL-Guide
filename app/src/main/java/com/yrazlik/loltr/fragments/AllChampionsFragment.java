@@ -248,7 +248,7 @@ public class AllChampionsFragment extends BaseFragment implements OnItemClickLis
 
     private List<ChampionDto> getAllChampionsList() {
         if(allChampions == null || allChampions.size() == 0) {
-            allChampions = CacheUtils.getInstance().getAllChampionsList();
+            allChampions = CacheUtils.getInstance().getAllChampionsData();
             if(allChampions == null) {
                 allChampions = new ArrayList<>();
             }

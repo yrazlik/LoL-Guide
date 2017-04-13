@@ -163,6 +163,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_launcher" />
+        <meta-data
+            android:name="LOLDB"
+            android:value="com.yrazlik.loltr.db.AllChampionsDbItem, com.yrazlik.loltr.db.WeeklyFreeChampionDbItem" />
 
         <activity
             android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"
