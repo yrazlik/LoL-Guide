@@ -3,6 +3,7 @@ package com.yrazlik.loltr.db;
 import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.model.ChampionDto;
@@ -35,6 +36,7 @@ public class DbHelper {
     }
 
     public void saveAllChampionsData(ChampionListDto championListDto) {
+        new Delete().from(AllChampionsDbItem.class).execute();
         List<AllChampionsDbItem> allChampions = getAllChampionsList(championListDto);
         ActiveAndroid.beginTransaction();
         try {
