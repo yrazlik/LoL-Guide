@@ -72,6 +72,17 @@ public class ChampionDto {
         this.title = title;
     }
 
+    public ChampionDto(int champId, String name, String dateInterval, String imageUrl, String ipPrice, String rpPrice) {
+        this.id = champId;
+        this.name = name;
+        this.dateInterval = dateInterval;
+        this.championIp = ipPrice;
+        this.championRp = rpPrice;
+        this.image = new ImageDto();
+        this.image.setFull(imageUrl);
+    }
+
+
     public InfoDto getInfo() {
         return info;
     }

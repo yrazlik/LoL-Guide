@@ -9,7 +9,7 @@ import com.activeandroid.annotation.Table;
  */
 
 @Table(name = "AllChampions")
-public class AllChampionsDbItem extends Model{
+public class AllChampionsTable extends Model{
 
     @Column(name = "imageUrl")
     public String imageUrl;
@@ -24,10 +24,10 @@ public class AllChampionsDbItem extends Model{
     @Column(name = "lastSaved")
     public long lastSaved;
 
-    public AllChampionsDbItem() {
+    public AllChampionsTable() {
     }
 
-    public AllChampionsDbItem(String imageUrl, String name, int champId, String key, String title, long lastSaved) {
+    public AllChampionsTable(String imageUrl, String name, int champId, String key, String title, long lastSaved) {
         this.imageUrl = imageUrl;
         this.name = name;
         this.champId = champId;

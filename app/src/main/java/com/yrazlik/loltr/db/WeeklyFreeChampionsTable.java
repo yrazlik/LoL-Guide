@@ -9,27 +9,33 @@ import com.activeandroid.annotation.Table;
  */
 
 @Table(name = "WeeklyFreeChampions")
-public class WeeklyFreeChampionDbItem extends Model{
+public class WeeklyFreeChampionsTable extends Model{
 
     @Column(name = "imageUrl")
     public String imageUrl;
     @Column(name = "name")
     public String name;
     @Column(name = "dateInterval")
-    public int dateInterval;
+    public String dateInterval;
     @Column(name = "rpPrice")
     public String rpPrice;
     @Column(name = "ipPrice")
     public String ipPrice;
+    @Column(name = "lastSaved")
+    public long lastSaved;
+    @Column(name = "champId")
+    public int champId;
 
-    public WeeklyFreeChampionDbItem() {
+    public WeeklyFreeChampionsTable() {
     }
 
-    public WeeklyFreeChampionDbItem(String imageUrl, String name, int dateInterval, String rpPrice, String ipPrice) {
+    public WeeklyFreeChampionsTable(int champId, String imageUrl, String name, String dateInterval, String rpPrice, String ipPrice, long lastSaved) {
+        this.champId = champId;
         this.imageUrl = imageUrl;
         this.name = name;
         this.dateInterval = dateInterval;
         this.rpPrice = rpPrice;
         this.ipPrice = ipPrice;
+        this.lastSaved = lastSaved;
     }
 }

@@ -81,17 +81,18 @@ public class CacheUtils {
     }
 
     public void saveWeeklyFreeChampionsData(List<ChampionDto> weeklyFreeChampions) {
-        try {
+       /* try {
             getSharedPrefs().edit().putString(WEEKLY_FREE_CHAMPS_DATA, new Gson().toJson(weeklyFreeChampions)).commit();
             getSharedPrefs().edit().putLong(WEEKLY_FREE_CHAMPS_LAST_SAVED, Calendar.getInstance().getTimeInMillis()).commit();
         } catch (Exception e) {
             getSharedPrefs().edit().putString(WEEKLY_FREE_CHAMPS_DATA, null).commit();
             getSharedPrefs().edit().putLong(WEEKLY_FREE_CHAMPS_LAST_SAVED, Calendar.getInstance().getTimeInMillis()).commit();
-        }
+        }*/
+       DbHelper.getInstance().saveWeeklyFreeChampionsData(weeklyFreeChampions);
     }
 
     public List<ChampionDto> getWeeklyFreeChampionsData() {
-        long lastSaveDate = getSharedPrefs().getLong(WEEKLY_FREE_CHAMPS_LAST_SAVED, 0);
+      /*  long lastSaveDate = getSharedPrefs().getLong(WEEKLY_FREE_CHAMPS_LAST_SAVED, 0);
         long now = Calendar.getInstance().getTimeInMillis();
 
         if (now - lastSaveDate > WEEKLY_FREE_MAX_CACHE_TIME) {
@@ -103,7 +104,8 @@ public class CacheUtils {
             }.getType());
         } catch (Exception e) {
             return null;
-        }
+        }*/
+       return DbHelper.getInstance().getWeeklyFreeChampionsData();
     }
 
     public void saveRpIpCostsData(Map<String, HashMap> championCosts) {

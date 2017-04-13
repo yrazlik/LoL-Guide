@@ -281,6 +281,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
             int id = c.getId();
             for (int weeklyFreeChampId : weeklyFreeChampIds) {
                 if (id == weeklyFreeChampId) {
+                    c.setDateInterval(Commons.getTuesday());
                     weeklyFreeChampions.add(c);
                 }
             }

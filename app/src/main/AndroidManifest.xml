@@ -170,7 +170,7 @@
 
         <meta-data
             android:name="LOLDB"
-            android:value="com.yrazlik.loltr.db.AllChampionsDbItem, com.yrazlik.loltr.db.WeeklyFreeChampionDbItem" />
+            android:value="com.yrazlik.loltr.db.AllChampionsTable, com.yrazlik.loltr.db.WeeklyFreeChampionsTable" />
 
     </application>
 

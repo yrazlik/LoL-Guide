@@ -20,6 +20,7 @@ import java.util.Map;
 
 public class DbHelper {
 
+    private static final long WEEKLY_FREE_MAX_CACHE_TIME = 1 * 60 * 60 * 1000; // 1 hr
     private static final long ALL_CHAMPIONS_MAX_CACHE_TIME = 1 * 24 * 60 * 60 * 1000; // 1 day
 
     private static DbHelper mInstance;
@@ -35,13 +36,29 @@ public class DbHelper {
 
     }
 
+    public void saveWeeklyFreeChampionsData(List<ChampionDto> weeklyFreeChampions) {
+        new Delete().from(WeeklyFreeChampionsTable.class).execute();
+        ActiveAndroid.beginTransaction();
+        try {
+            for (int i = 0; i < weeklyFreeChampions.size(); i++) {
+                ChampionDto c = weeklyFreeChampions.get(i);
+                WeeklyFreeChampionsTable item = new WeeklyFreeChampionsTable(c.getId(), c.getImage().getFull(), c.getName(), c.getDateInterval(),
+                        c.getChampionRp(), c.getChampionIp(), Calendar.getInstance().getTimeInMillis());
+                item.save();
+            }
+            ActiveAndroid.setTransactionSuccessful();
+        } finally {
+            ActiveAndroid.endTransaction();
+        }
+    }
+
     public void saveAllChampionsData(ChampionListDto championListDto) {
-        new Delete().from(AllChampionsDbItem.class).execute();
-        List<AllChampionsDbItem> allChampions = getAllChampionsList(championListDto);
+        new Delete().from(AllChampionsTable.class).execute();
+        List<AllChampionsTable> allChampions = getAllChampionsList(championListDto);
         ActiveAndroid.beginTransaction();
         try {
             for (int i = 0; i < allChampions.size(); i++) {
-                AllChampionsDbItem item = allChampions.get(i);
+                AllChampionsTable item = allChampions.get(i);
                 item.save();
             }
             ActiveAndroid.setTransactionSuccessful();
@@ -51,7 +68,7 @@ public class DbHelper {
     }
 
     public List<ChampionDto> getAllChampionsData() {
-        List<AllChampionsDbItem> allChampsData = new Select("*").from(AllChampionsDbItem.class).orderBy("name ASC").execute();
+        List<AllChampionsTable> allChampsData = new Select("*").from(AllChampionsTable.class).orderBy("name ASC").execute();
         List<ChampionDto> allChampions = new ArrayList<>();
         if(allChampsData != null && allChampsData.size() > 0) {
             long lastSaved = allChampsData.get(0).lastSaved;
@@ -59,7 +76,7 @@ public class DbHelper {
                 return null;
             } else {
                 for (int i = 0; i < allChampsData.size(); i++) {
-                    AllChampionsDbItem dbItem = allChampsData.get(i);
+                    AllChampionsTable dbItem = allChampsData.get(i);
                     allChampions.add(new ChampionDto(dbItem.champId, dbItem.key, dbItem.name, dbItem.imageUrl, dbItem.title));
                 }
                 return allChampions;
@@ -68,15 +85,33 @@ public class DbHelper {
         return null;
     }
 
+    public List<ChampionDto> getWeeklyFreeChampionsData() {
+        List<WeeklyFreeChampionsTable> weeklyFreeChampionsData = new Select("*").from(WeeklyFreeChampionsTable.class).orderBy("name ASC").execute();
+        List<ChampionDto> weeklyFreeChampions = new ArrayList<>();
+        if(weeklyFreeChampionsData != null && weeklyFreeChampionsData.size() > 0) {
+            long lastSaved = weeklyFreeChampionsData.get(0).lastSaved;
+            if(cacheExpired(lastSaved, WEEKLY_FREE_MAX_CACHE_TIME)) {
+                return null;
+            } else {
+                for (int i = 0; i < weeklyFreeChampionsData.size(); i++) {
+                    WeeklyFreeChampionsTable dbItem = weeklyFreeChampionsData.get(i);
+                    weeklyFreeChampions.add(new ChampionDto(dbItem.champId, dbItem.name, dbItem.dateInterval, dbItem.imageUrl, dbItem.ipPrice, dbItem.rpPrice));
+                }
+                return weeklyFreeChampions;
+            }
+        }
+        return null;
+    }
 
-    private List<AllChampionsDbItem> getAllChampionsList (ChampionListDto championListDto){
+
+    private List<AllChampionsTable> getAllChampionsList (ChampionListDto championListDto){
         Map<String, ChampionDto> champsData = championListDto.getData();
         if(champsData != null && champsData.size() > 0) {
             try {
-                List<AllChampionsDbItem> allChampions = new ArrayList<>();
+                List<AllChampionsTable> allChampions = new ArrayList<>();
 
                 for (Map.Entry<String, ChampionDto> entry : champsData.entrySet()) {
-                    AllChampionsDbItem c = new AllChampionsDbItem(Commons.CHAMPION_IMAGE_BASE_URL + entry.getKey() + ".png",
+                    AllChampionsTable c = new AllChampionsTable(Commons.CHAMPION_IMAGE_BASE_URL + entry.getKey() + ".png",
                             entry.getValue().getName(), entry.getValue().getId(),
                             entry.getValue().getKey(), "\"" + entry.getValue().getTitle() + "\"", Calendar.getInstance().getTimeInMillis());
                     allChampions.add(c);
