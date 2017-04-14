@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.activeandroid.ActiveAndroid;
+import com.activeandroid.Model;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.yrazlik.loltr.LolApplication;
@@ -73,7 +74,7 @@ public class DbHelper {
     public void saveWeeklyFreeChampionsData(List<ChampionDto> weeklyFreeChampions) {
         if (cacheEnabled) {
             try {
-                new Delete().from(WeeklyFreeChampionsTable.class).execute();
+                removeTable(WeeklyFreeChampionsTable.class);
                 ActiveAndroid.beginTransaction();
                 try {
                     for (int i = 0; i < weeklyFreeChampions.size(); i++) {
@@ -89,7 +90,7 @@ public class DbHelper {
                     ActiveAndroid.endTransaction();
                 }
             } catch (Exception e) {
-                new Delete().from(WeeklyFreeChampionsTable.class).execute();
+                removeTable(WeeklyFreeChampionsTable.class);
                 Logger.log("Error saving weekly free champions data to db.");
             }
         }
@@ -98,7 +99,7 @@ public class DbHelper {
     public void saveAllChampionsData(ChampionListDto championListDto) {
         if (cacheEnabled) {
             try {
-                new Delete().from(AllChampionsTable.class).execute();
+                removeTable(AllChampionsTable.class);
                 List<AllChampionsTable> allChampions = getAllChampionsList(championListDto);
                 ActiveAndroid.beginTransaction();
                 try {
@@ -113,7 +114,7 @@ public class DbHelper {
                     ActiveAndroid.endTransaction();
                 }
             } catch (Exception e) {
-                new Delete().from(AllChampionsTable.class).execute();
+                removeTable(AllChampionsTable.class);
                 Logger.log("Error saving all champions data to db.");
             }
         }
@@ -122,7 +123,7 @@ public class DbHelper {
     public void saveRpIpCostsData(Map<String, HashMap> championCosts) {
         if (cacheEnabled) {
             try {
-                new Delete().from(ChampionCostsTable.class).execute();
+                removeTable(ChampionCostsTable.class);
                 List<ChampionCostsTable> costs = convertCostsMapToList(championCosts);
                 ActiveAndroid.beginTransaction();
                 try {
@@ -137,7 +138,7 @@ public class DbHelper {
                     ActiveAndroid.endTransaction();
                 }
             } catch (Exception e) {
-                new Delete().from(ChampionCostsTable.class).execute();
+                removeTable(ChampionCostsTable.class);
                 Logger.log("Error saving ip rp costs to db.");
             }
         }
@@ -267,11 +268,19 @@ public class DbHelper {
         return false;
     }
 
+    private void removeTable(Class<?> className) {
+        try {
+            new Delete().from((Class<? extends Model>) className).execute();
+        } catch (Exception e) {
+            Logger.log("Unexpected error while removing table");
+        }
+    }
+
     public void removeAllCaches() {
         try {
-            new Delete().from(WeeklyFreeChampionsTable.class).execute();
-            new Delete().from(AllChampionsTable.class).execute();
-            new Delete().from(ChampionCostsTable.class).execute();
+            removeTable(WeeklyFreeChampionsTable.class);
+            removeTable(AllChampionsTable.class);
+            removeTable(ChampionCostsTable.class);
             saveLastSaved(WEEKLY_FREE_DATA_LAST_SAVED, 0);
             saveLastSaved(ALL_CHAMPIONS_DATA_LAST_SAVED, 0);
             saveLastSaved(IP_RP_PRICES_DATA_LAST_SAVED, 0);

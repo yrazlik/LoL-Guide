@@ -16,9 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb6fdb4c-7f71-4507-b204-3f542b43b93c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewsFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/db/DbHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/db/DbHelper.java" />
     </list>
     <ignored path="LoL-Guide.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,43 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewsFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewsFragment.java">
+      <file leaf-file-name="DbHelper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/db/DbHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="187" column="44" selection-start-line="187" selection-start-column="44" selection-end-line="187" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SummonerSearchFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SummonerSearchFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="169" column="54" selection-start-line="169" selection-start-column="54" selection-end-line="169" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SharedPrefsUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/SharedPrefsUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
-              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WeeklyFreeChampionsFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="279" column="43" selection-start-line="279" selection-start-column="43" selection-end-line="279" selection-end-column="43" />
+            <state relative-caret-position="237">
+              <caret line="282" column="50" selection-start-line="282" selection-start-column="50" selection-end-line="282" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2512,7 +2478,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/LolApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/Logger.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/api/ApiHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/db/DbHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/MatchInfoFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/service/ServiceRequest.java" />
@@ -2531,6 +2496,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/commons/Commons.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/db/DbHelper.java" />
       </list>
     </option>
   </component>
@@ -3557,16 +3523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/db/DbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="144" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/activities/PlayerMatchInfoDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -3707,6 +3663,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="187" column="44" selection-start-line="187" selection-start-column="44" selection-end-line="187" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="274" column="41" selection-start-line="274" selection-start-column="41" selection-end-line="274" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SummonerSearchFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -3725,18 +3699,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewsFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/db/DbHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="187" column="44" selection-start-line="187" selection-start-column="44" selection-end-line="187" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="279" column="43" selection-start-line="279" selection-start-column="43" selection-end-line="279" selection-end-column="43" />
+        <state relative-caret-position="237">
+          <caret line="282" column="50" selection-start-line="282" selection-start-column="50" selection-end-line="282" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
