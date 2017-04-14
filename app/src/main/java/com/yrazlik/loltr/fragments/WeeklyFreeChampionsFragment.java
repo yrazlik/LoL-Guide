@@ -32,17 +32,13 @@ import com.yrazlik.loltr.db.ChampionCostsTable;
 import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
-import com.yrazlik.loltr.model.ImageDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
-import com.yrazlik.loltr.utils.CacheUtils;
 import com.yrazlik.loltr.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import retrofit2.Call;
 import retrofit2.Response;

@@ -21,21 +21,18 @@ public class WeeklyFreeChampionsTable extends Model{
     public String rpPrice;
     @Column(name = "ipPrice")
     public String ipPrice;
-    @Column(name = "lastSaved")
-    public long lastSaved;
     @Column(name = "champId")
     public int champId;
 
     public WeeklyFreeChampionsTable() {
     }
 
-    public WeeklyFreeChampionsTable(int champId, String imageUrl, String name, String dateInterval, String rpPrice, String ipPrice, long lastSaved) {
+    public WeeklyFreeChampionsTable(int champId, String imageUrl, String name, String dateInterval, String rpPrice, String ipPrice) {
         this.champId = champId;
         this.imageUrl = imageUrl;
         this.name = name;
         this.dateInterval = dateInterval;
         this.rpPrice = rpPrice;
         this.ipPrice = ipPrice;
-        this.lastSaved = lastSaved;
     }
 }

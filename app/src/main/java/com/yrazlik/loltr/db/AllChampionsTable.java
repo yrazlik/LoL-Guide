@@ -21,18 +21,15 @@ public class AllChampionsTable extends Model{
     public String key;
     @Column(name = "title")
     public String title;
-    @Column(name = "lastSaved")
-    public long lastSaved;
 
     public AllChampionsTable() {
     }
 
-    public AllChampionsTable(String imageUrl, String name, int champId, String key, String title, long lastSaved) {
+    public AllChampionsTable(String imageUrl, String name, int champId, String key, String title) {
         this.imageUrl = imageUrl;
         this.name = name;
         this.champId = champId;
         this.key = key;
         this.title = title;
-        this.lastSaved = lastSaved;
     }
 }

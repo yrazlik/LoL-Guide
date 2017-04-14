@@ -9,7 +9,6 @@ import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
-import com.yrazlik.loltr.utils.CacheUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.List;

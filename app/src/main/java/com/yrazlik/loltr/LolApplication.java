@@ -2,6 +2,7 @@ package com.yrazlik.loltr;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -21,12 +22,15 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.yrazlik.loltr.activities.SplashActivity;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -94,6 +98,7 @@ public class LolApplication extends MultiDexApplication{
         try {
             Firebase.setAndroidContext(this);
             firebaseInitialized = true;
+            checkCacheStatus();
 
         }catch (Exception e){
             firebaseInitialized = false;
@@ -166,6 +171,56 @@ public class LolApplication extends MultiDexApplication{
             return true;
         }
         return false;
+    }
+
+    private void checkCacheStatus() {
+        Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+        firebase.child("cache-utils").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    String key;
+                    String value;
+
+                    try {
+                        key = postSnapshot.getKey();
+                        value = (String) postSnapshot.getValue();
+                    } catch (Exception e) {
+                        key = "";
+                        value = "";
+                    }
+
+                    if(key.equalsIgnoreCase("acTimeout")) {
+                        try {
+                            DbHelper.getInstance().acTimeout = Integer.parseInt(value);
+                        } catch (Exception ignored) {}
+                    } else if(key.equalsIgnoreCase("cacheEnabled")) {
+                        try {
+                            DbHelper.getInstance().cacheEnabled = Boolean.parseBoolean(value);
+                        } catch (Exception ignored) {}
+                    } else if(key.equalsIgnoreCase("iprpTimeout")) {
+                        try {
+                            DbHelper.getInstance().ipRpTimeout = Integer.parseInt(value);
+                        } catch (Exception ignored) {}
+                    } else if(key.equalsIgnoreCase("removeAllCaches")) {
+                        try {
+                            boolean removeAllCaches = Boolean.parseBoolean(value);
+                            if(removeAllCaches) {
+                                DbHelper.getInstance().removeAllCaches();
+                            }
+                        } catch (Exception ignored) {}
+                    } else if(key.equalsIgnoreCase("wfTimeout")) {
+                        try {
+                            DbHelper.getInstance().wfTimeout = Integer.parseInt(value);
+                        } catch (Exception ignored) {}
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });
     }
 
 
