@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
+import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.MatchInfoAdapter;
 import com.yrazlik.loltr.commons.Commons;
@@ -27,6 +28,7 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
@@ -121,10 +123,10 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
                 pathParams.add("v1.2");
                 pathParams.add("champion");
                 HashMap<String, String> queryParams = new HashMap<String, String>();
-                queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+                queryParams.put("locale", LocalizationUtils.getInstance().getLocale());
                 queryParams.put("version", Commons.LATEST_VERSION);
                 queryParams.put("champData", "altimages");
-                queryParams.put("api_key", Commons.API_KEY);
+                queryParams.put("api_key", BuildConfig.API_KEY);
 
                 if(Commons.allChampions == null || Commons.allChampions.size() <= 0) {
                     ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);

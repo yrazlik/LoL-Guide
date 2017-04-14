@@ -1,5 +1,10 @@
 package com.yrazlik.loltr.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created by yrazlik on 27/03/17.
  */
@@ -29,6 +34,43 @@ public class Utils {
         }
 
         return false;
+    }
+
+    public static String getTuesday(){
+        Calendar c = Calendar.getInstance();
+
+        if(c.get(Calendar.DAY_OF_WEEK) < 3){
+            c.add(Calendar.DATE, -7);
+            c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
+            Date d = c.getTime();
+            String start = sdf.format(d);
+            c.add(Calendar.DATE, 7);
+            Date d2 = c.getTime();
+            String end = sdf.format(d2);
+            return start + " - " + end;
+        }else{
+            c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
+            Date d = c.getTime();
+            String start = sdf.format(d);
+            c.add(Calendar.DATE, 7);
+            Date d2 = c.getTime();
+            String end = sdf.format(d2);
+            return start + " - " + end;
+        }
+    }
+
+    public static String getLocaleForMonthName(){
+        String locale = LocalizationUtils.getInstance().getLocale();
+        if(locale.toLowerCase().startsWith("en")) {
+            return "en";
+        } else if(locale.toLowerCase().startsWith("tr")) {
+            return "tr";
+        } else if(locale.toLowerCase().startsWith("pt")) {
+            return "pt";
+        }
+        return "en";
     }
 
 }

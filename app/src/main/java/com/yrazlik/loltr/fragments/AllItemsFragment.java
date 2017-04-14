@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.GridViewItemsAdapter;
@@ -27,6 +28,7 @@ import com.yrazlik.loltr.data.Items;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllItemsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,10 +53,10 @@ public class AllItemsFragment extends BaseFragment implements ResponseListener, 
 		pathParams.add("v1.2");
 		pathParams.add("item");
 		HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+        queryParams.put("locale", LocalizationUtils.getInstance().getLocale());
         queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("itemListData", "groups");
-		queryParams.put("api_key", Commons.API_KEY);
+		queryParams.put("api_key", BuildConfig.API_KEY);
 		
 		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_ITEMS_REQUEST, pathParams, queryParams, null, this);
 		

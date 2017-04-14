@@ -8,30 +8,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
-import android.widget.TextView;
-
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Items;
-import com.yrazlik.loltr.data.RecentSearchItem;
 import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.view.RobotoTextView;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Map;
 
 public class Commons {
@@ -48,32 +36,19 @@ public class Commons {
 		}
 		return mCommons;
 	}
-	
-	public enum FontType{
-		default_font,
-		bold,
-		light,
-		medium,
-		regular
-	}
 
     public static final String FONT_NORMAL = "fonts/Roboto.ttf";
-    public static final String FONT_MEDIUM = "fonts/Roboto-Medium.ttf";
     public static final String FONT_BOLD = "fonts/Roboto-Medium.ttf";
     public static final String FONT_ITALIC = "fonts/Roboto-Italic.ttf";
 
-    public static String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnZHsXqXjxssy8qMs7Ekl/PjTQDSlT9AcjyFOpauiVnBCOVv81zvJODMOsgLY1A+kMRvbjkrD2I3Ey6FVFfpE5Rl6gLSs6fDv9iEm22iDASU/pKMsMG4keaNgKxw9+GP0anyzvSbhuYar6MZHefcr/3WuElakkxN4z/wOGXcaIRx8ZNqk4Fh4CL06xERnD+ZT6jBFztUM8Jpdf+DdVoxqFamh8Cu74H+/2x4OGgp4JAU+HKJXDHE51x15ezDBHGpSGNeuH57Ew4xvq27Ixvx+GbfJYioiJmAYpZk5OuvK6Zx6YzS8jPy7kCXZJJRFswcKjuGL286dDhE2J6zPL3pRQwIDAQAB";
     public static final int REMOVE_ADS_REQUEST_CODE = 1111;
     public static final String REMOVE_ADS_ID = "remove_ads";
-
-    public static String TEXT = "AAA";
 
     public static final String PURCHASE_CLICK = "PURCHASE_CLICK";
     public static final String PURCHASE_SUCCESSFUL = "PURCHASE_SUCCESSFUL";
     public static final String PURCHASE_FAIL = "PURCHASE_FAIL";
 
     public static final String LOL_TR_SHARED_PREFS = "LOL_TR_SHARED_PREFS";
-    public static final String LOL_TR_SHARED_PREF_LANGUAGE = "LOL_TR_SHARED_PREF_LANGUAGE";
     public static final String LOL_TR_SHARED_PREF_REGION = "LOL_TR_SHARED_PREF_REGION";
     public static final String LOL_TR_PURCHASED_AD_FREE = "LOL_TR_PURCHASED_AD_FREE";
 
@@ -84,12 +59,8 @@ public class Commons {
 
     public static final String GOOGLE_ANALYTICS_TRACKING_ID = "UA-52774268-8";
 	
-	public static String LATEST_VERSION = "6.16.1";
-    public static String RECOMMENDED_ITEMS_VERSION = "6.16.1";
-	
-	public static final String API_KEY = "adcd5cd2-a699-4e04-90e0-2e7b9e5d990a";
-	
-	public static final String TAG = "com.yrazlik.loltr";
+	public static String LATEST_VERSION = "7.7.1";
+    public static String RECOMMENDED_ITEMS_VERSION = "7.7.1";
 	
 	public static final int WEEKLY_FREE_CHAMPIONS_REQUEST = 1;
 	public static final int STATIC_DATA_WITH_ALT_IMAGES_REQUEST = 2;
@@ -115,20 +86,15 @@ public class Commons {
     public static final int SUMMONER_SPELLS_REQUEST = 22;
     public static final int SUMMONER_NAMES_REQUEST = 23;
     public static final int RANKED_STATS_REQUEST = 24;
-    public static final int RSS_NEWS_REQUEST = 25;
 
     public static String[] regions = {"TR", "EUW", "NA", "EUNE", "JP", "OCE", "BR", "LAN", "LAS", "RU", "KR"};
 
     public static String BASE_URL_BODY = ".api.riotgames.com";
-    public static String YAHO_RSS_FEED_URL = "https://esports.yahoo.com/league-of-legends/rss";
     public static String SELECTED_REGION = "";
     public static String SELECTED_REGION_FOR_MATCH_INFO_PATH_PARAM = "tr";
     public static String SERVICE_BASE_URL_FOR_MATCH_INFO = "https://" + SELECTED_REGION.toLowerCase() + BASE_URL_BODY + "/api/lol";
     public static String SPECTATOR_SERVICE_BASE_URL_CURRENT_SELECTED = "https://" + SELECTED_REGION + BASE_URL_BODY + "/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
     public static String PROFILE_ICON_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + Commons.LATEST_VERSION + "/img/profileicon/";
-
-
-
 
 	public static final String STATIC_DATA_BASE_URL = "https://global.api.riotgames.com/api/lol";
     public static String SUMMONER_SPELL_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/spell/";
@@ -147,9 +113,7 @@ public class Commons {
     public static final String WEEKLY_FREE_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.weeklyfreechampionsfragment";
     public static final String ALL_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsfragment";
     public static final String DISCOUNTS_FRAGMENT = "com.yrazlik.loltr.fragments.discountsfragment";
-    public static final String DISCOUNT_COSTUMES_FRAGMENT = "com.yrazlik.loltr.fragments.discountcostumesfragment";
     public static final String NEWS_FRAGMENT = "com.yrazlik.loltr.fragments.newsfragment";
-    public static final String NEWS_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.newsdetailfragment";
     public static final String ALL_ITEMS_FRAGMENT = "com.yrazlik.loltr.fragments.allitemsfragment";
     public static final String RUNES_FRAGMENT = "com.yrazlik.loltr.fragments.runesfragment";
     public static final String ALL_CHAMPIONS_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsskinsfragment";
@@ -162,8 +126,6 @@ public class Commons {
     public static final String CHAMPION_DETAILS_FRAGMENT = "com.yrazlik.loltr.fragments.championdetailsfragment";
     public static final String ITEM_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.itemdetailfragment";
     public static final String CHAMPION_SKINS_FRAGMENT = "com.yrazlik.loltr.fragments.championskinsfragment";
-    public static final String MATCH_DETAIL_FRAGMENT = "com.yrazlik.loltr.fragments.matchdetailfragment";
-    public static final String MATCH_HISTORY_FRAGMENT = "com.yrazlik.loltr.fragments.matchhistoryfragment";
     public static final String SUMMONER_CONTAINER_FRAGMENT = "com.yrazlik.loltr.fragments.summonercontainerfragment";
 
     public static final String TAG_SETTINGS_FRAGMENT = "com.yrazlik.loltr.fragments.settingsfragmenttag";
@@ -220,34 +182,6 @@ public class Commons {
         return "https://" + selectedRegion + BASE_URL_BODY +"/observer-mode/rest/consumer/getSpectatorGameInfo/TR1";
     }
 
-    public static String getSpectatorServiceRegionPathParameter(String selectedRegion) {
-
-        if(selectedRegion.equalsIgnoreCase("tr")) {
-            return "TR1";
-        } else if(selectedRegion.equalsIgnoreCase("ru")) {
-            return "RU";
-        } else if(selectedRegion.equalsIgnoreCase("euw")) {
-            return "EUW1";
-        } else if(selectedRegion.equalsIgnoreCase("na")) {
-            return "NA1";
-        } else if(selectedRegion.equalsIgnoreCase("eune")) {
-            return "EUN1";
-        } else if(selectedRegion.equalsIgnoreCase("oce")) {
-            return "OC1";
-        } else if(selectedRegion.equalsIgnoreCase("br")) {
-            return "BR1";
-        } else if(selectedRegion.equalsIgnoreCase("lan")) {
-            return "LA1";
-        } else if(selectedRegion.equalsIgnoreCase("las")) {
-            return "LA2";
-        } else if(selectedRegion.equalsIgnoreCase("kr")) {
-            return "KR";
-        } else if(selectedRegion.equalsIgnoreCase("jp")) {
-            return "JP1";
-        }
-        return "TR1";
-    }
-
     public static void updateLatestVersionVariables(){
         PROFILE_ICON_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/profileicon/";
         SUMMONER_SPELL_IMAGE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/spell/";
@@ -258,32 +192,6 @@ public class Commons {
         RUNES_IMAGES_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/" + LATEST_VERSION + "/img/rune/";
 
     }
-	
-	
-	public static String getTuesday(){
-		Calendar c = Calendar.getInstance();
-		
-		if(c.get(Calendar.DAY_OF_WEEK) < 3){
-			c.add(Calendar.DATE, -7);
-			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
-			Date d = c.getTime();
-			String start = sdf.format(d);
-			c.add(Calendar.DATE, 7);
-			Date d2 = c.getTime();
-			String end = sdf.format(d2);
-			return start + " - " + end;
-		}else{
-			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM", new Locale(getLocaleForMonthName()));
-			Date d = c.getTime();
-			String start = sdf.format(d);
-			c.add(Calendar.DATE, 7);
-			Date d2 = c.getTime();
-			String end = sdf.format(d2);
-			return start + " - " + end;
-		}
-	}
 
     public static void setAnimation(FragmentTransaction ft, int animationDirection) {
         switch (animationDirection) {
@@ -324,66 +232,6 @@ public class Commons {
 
     public static String getRegion(){
         return SELECTED_REGION;
-    }
-
-    public static String getLocale(){
-        String locale = mContext.getApplicationContext().getResources().getConfiguration().locale.toString();
-        if(locale.toLowerCase().startsWith("en")) {
-            return "en_US";
-        } else if(locale.toLowerCase().startsWith("tr")) {
-            return "tr_TR";
-        } else if(locale.toLowerCase().startsWith("pt")) {
-            return "pt_BR";
-        }
-        return "en_US";
-    }
-
-    public static String getLocaleForMonthName(){
-        String locale = getLocale();
-        if(locale.toLowerCase().startsWith("en")) {
-            return "en";
-        } else if(locale.toLowerCase().startsWith("tr")) {
-            return "tr";
-        } else if(locale.toLowerCase().startsWith("pt")) {
-            return "pt";
-        }
-        return "en";
-    }
-
-    public static void saveRecentSearchesArray(ArrayList<RecentSearchItem> obj, Context context) {
-
-        String fileName = "com.yrazlik.loltr.recentsearches";
-        FileOutputStream fos;
-        try {
-            fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-
-            ObjectOutputStream out = new ObjectOutputStream(fos);
-
-            out.writeObject(obj);
-
-            out.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList<RecentSearchItem> loadRecentSearchesArrayList(Context context) {
-        try {
-            String fileName = "com.yrazlik.loltr.recentsearches";
-            FileInputStream fis = context.openFileInput(fileName);
-            ObjectInputStream in = new ObjectInputStream(fis);
-
-            ArrayList<RecentSearchItem> obj = (ArrayList<RecentSearchItem>) in.readObject();
-
-            in.close();
-            return obj;
-
-        }  catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-
     }
 
     public void savePurchaseData() {

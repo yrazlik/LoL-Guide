@@ -184,7 +184,7 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
     }
 
     public String getLocalizedNews() {
-        return "news" + "-" +  Commons.getLocale().toLowerCase();
+        return "news" + "-" +  LocalizationUtils.getInstance().getLocale().toLowerCase();
     }
 
     @Override

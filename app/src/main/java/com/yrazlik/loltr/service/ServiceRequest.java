@@ -20,6 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.SummonerNames;
@@ -261,7 +262,7 @@ public class ServiceRequest {
         pathParams.add("recent");
 
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("api_key", Commons.API_KEY);
+        queryParams.put("api_key", BuildConfig.API_KEY);
 
         final Request request = new Request(requestID, pathParams, queryParams);
         String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
@@ -317,7 +318,7 @@ public class ServiceRequest {
         pathParams.add(summonerIds);
 
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("api_key", Commons.API_KEY);
+        queryParams.put("api_key", BuildConfig.API_KEY);
 
         final Request request = new Request(requestID, pathParams, queryParams);
         String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
@@ -560,7 +561,7 @@ public class ServiceRequest {
         pathParams.add("ranked");
 
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("api_key", Commons.API_KEY);
+        queryParams.put("api_key", BuildConfig.API_KEY);
 
         final Request request = new Request(requestID, pathParams, queryParams);
         String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();
@@ -608,7 +609,7 @@ public class ServiceRequest {
         pathParams.add("entry");
 
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("api_key", Commons.API_KEY);
+        queryParams.put("api_key", BuildConfig.API_KEY);
 
         final Request request = new Request(requestID, pathParams, queryParams);
         String urlString = getSummonerApiUrlByRegion(region) + request.getPathParametersString() + request.getQueryParametersString();

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.activities.MatchInfoActivity;
@@ -88,7 +89,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                     summonerName = summonerName.trim().replaceAll("\\s","");
                     pathParams.add(summonerName);
                     HashMap<String, String> queryParams = new HashMap<String, String>();
-                    queryParams.put("api_key", Commons.API_KEY);
+                    queryParams.put("api_key", BuildConfig.API_KEY);
 
                     ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.SUMMONER_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
                 }
@@ -125,7 +126,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                 ArrayList<String> pathParams = new ArrayList<String>();
                 pathParams.add(String.valueOf(summonerId));
                 HashMap<String, String> queryParams = new HashMap<String, String>();
-                queryParams.put("api_key", Commons.API_KEY);
+                queryParams.put("api_key", BuildConfig.API_KEY);
 
                 ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.MATCH_INFO_REQUEST, pathParams, queryParams, null, MatchInfoFragment.this);
             }else {

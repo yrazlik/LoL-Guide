@@ -27,6 +27,7 @@ import com.yrazlik.loltr.data.ChampionDiscount;
 import com.yrazlik.loltr.data.CostumeDiscount;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -143,7 +144,7 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
     }
 
     public String getLocalizedCostumeDiscounts() {
-        return "costume-discounts" + "-" +  Commons.getLocale().toLowerCase();
+        return "costume-discounts" + "-" +  LocalizationUtils.getInstance().getLocale().toLowerCase();
     }
 
     @Override

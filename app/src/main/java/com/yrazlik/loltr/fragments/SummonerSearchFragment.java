@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.RecentSearchesAdapter;
@@ -41,6 +42,7 @@ import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.SharedPrefsUtils;
 import com.yrazlik.loltr.view.RobotoButton;
 import com.yrazlik.loltr.view.RobotoEditText;
 import com.yrazlik.loltr.view.RobotoTextView;
@@ -165,7 +167,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
                 }
             });
 
-            recentSearchesArrayList = Commons.loadRecentSearchesArrayList(getContext());
+            recentSearchesArrayList = SharedPrefsUtils.loadRecentSearchesArrayList(getContext());
             if (recentSearchesArrayList == null) {
                 recentSearchesArrayList = new ArrayList<>();
             }
@@ -217,7 +219,7 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
         pathParams.add(itemName);
 
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("api_key", Commons.API_KEY);
+        queryParams.put("api_key", BuildConfig.API_KEY);
         ServiceRequest.getInstance(getActivity()).makeSummonerByNameRequest(
                 Commons.SUMMONER_BY_NAME_REQUEST, selectedRegion,
                 pathParams, queryParams, null, SummonerSearchFragment.this);
@@ -280,11 +282,11 @@ public class SummonerSearchFragment extends BaseFragment implements ResponseList
             }
             if(!contains) {
                 recentSearchesArrayList.add(0, recentSearchItem);
-                Commons.saveRecentSearchesArray(recentSearchesArrayList, getContext());
+                SharedPrefsUtils.saveRecentSearchesArray(recentSearchesArrayList, getContext());
             }else{
                 recentSearchesArrayList.remove(itemToRemove);
                 recentSearchesArrayList.add(0, recentSearchItem);
-                Commons.saveRecentSearchesArray(recentSearchesArrayList, getContext());
+                SharedPrefsUtils.saveRecentSearchesArray(recentSearchesArrayList, getContext());
             }
 
 

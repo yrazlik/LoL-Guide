@@ -12,6 +12,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.yrazlik.loltr.activities.LolPushActivity;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.Date;
 
@@ -52,7 +53,7 @@ public class LoLFirebaseMessagingService extends FirebaseMessagingService{
         String notificationLocale = getNotificationLocale(remoteMessage);
         if(Commons.isValidString(notificationLocale)) {
             notificationLocale = notificationLocale.toLowerCase();
-            if(notificationLocale.equalsIgnoreCase(Commons.getLocale().toLowerCase())) {
+            if(notificationLocale.equalsIgnoreCase(LocalizationUtils.getInstance().getLocale().toLowerCase())) {
                 mgr.notify(notificationId, createPushNotification(getTicker(remoteMessage), getNotificationTitle(remoteMessage), getBody(remoteMessage), pIntent));
             }
         }

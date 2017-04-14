@@ -89,6 +89,7 @@ public class DbHelper {
                     ActiveAndroid.endTransaction();
                 }
             } catch (Exception e) {
+                new Delete().from(WeeklyFreeChampionsTable.class).execute();
                 Logger.log("Error saving weekly free champions data to db.");
             }
         }
@@ -112,6 +113,7 @@ public class DbHelper {
                     ActiveAndroid.endTransaction();
                 }
             } catch (Exception e) {
+                new Delete().from(AllChampionsTable.class).execute();
                 Logger.log("Error saving all champions data to db.");
             }
         }
@@ -135,6 +137,7 @@ public class DbHelper {
                     ActiveAndroid.endTransaction();
                 }
             } catch (Exception e) {
+                new Delete().from(ChampionCostsTable.class).execute();
                 Logger.log("Error saving ip rp costs to db.");
             }
         }

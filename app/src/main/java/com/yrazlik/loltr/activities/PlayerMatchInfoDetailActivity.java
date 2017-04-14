@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.androidquery.AQuery;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
@@ -91,7 +92,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
         pathParams.add("by-name");
         pathParams.add(userName);
         HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("api_key", Commons.API_KEY);
+        queryParams.put("api_key", BuildConfig.API_KEY);
 
         ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.SUMMONER_INFO_REQUEST, pathParams, queryParams, null, PlayerMatchInfoDetailActivity.this);
 
@@ -102,7 +103,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
         pathParams2.add("by-summoner");
         pathParams2.add(String.valueOf(userId));
         HashMap<String, String> queryParams2 = new HashMap<String, String>();
-        queryParams2.put("api_key", Commons.API_KEY);
+        queryParams2.put("api_key", BuildConfig.API_KEY);
 
         ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.LEAGUE_INFO_REQUEST, pathParams2, queryParams2, null, PlayerMatchInfoDetailActivity.this);
 
@@ -114,7 +115,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
         pathParams3.add(String.valueOf(userId));
         pathParams3.add("summary");
         HashMap<String, String> queryParams3 = new HashMap<String, String>();
-        queryParams3.put("api_key", Commons.API_KEY);
+        queryParams3.put("api_key", BuildConfig.API_KEY);
 
         ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.STATS_REQUEST, pathParams3, queryParams3, null, PlayerMatchInfoDetailActivity.this);
 

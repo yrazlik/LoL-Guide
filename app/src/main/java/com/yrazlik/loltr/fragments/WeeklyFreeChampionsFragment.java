@@ -86,7 +86,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
 
                 @Override
                 public void onResponseFromCache(Object response) {
-                    dismissProgress(); //TODO: 1
+                    dismissProgress();
                     List<ChampionDto> resp = (List<ChampionDto>) response;
                     weeklyFreeChampions.clear();
 
@@ -97,7 +97,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                 }
 
                 @Override
-                public void onResponse(Call call, Response response) {//TODO: 2
+                public void onResponse(Call call, Response response) {
                     WeeklyFreeResponseDto resp = (WeeklyFreeResponseDto) response.body();
 
                     if (resp != null && resp.getChampions() != null && resp.getChampions().size() > 0) {
@@ -137,7 +137,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
         ApiHelper.getInstance(getContext()).getAllChampions(new RetrofitResponseHandler(new ApiResponseListener() {
             @Override
             public void onResponseFromCache(Object response) {
-                dismissProgress();//TODO: 3
+                dismissProgress();
                 List<ChampionDto> allChampionsData = (List<ChampionDto>) response;
                 updateWeeklyFreeArray(allChampionsData);
                 setIpRpPrices(new IpRpPricesListener() {
@@ -150,7 +150,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
 
             @Override
             public void onResponse(Call call, Response response) {
-                dismissProgress();//TODO: 4
+                dismissProgress();
                 ChampionListDto championListDto = (ChampionListDto) response.body();
                 List<ChampionDto> allChampsArr = convertAllChampionsDataIntoList(championListDto);
                 DbHelper.getInstance().saveAllChampionsData(championListDto);
@@ -186,32 +186,34 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
     }
 
     private List<ChampionDto> convertAllChampionsDataIntoList (ChampionListDto championListDto){
-        Map<String, ChampionDto> champsData = championListDto.getData();
-        if(champsData != null && champsData.size() > 0) {
-            try {
-                List<ChampionDto> allChampions = new ArrayList<>();
+        try {
+            Map<String, ChampionDto> champsData = championListDto.getData();
+            if (champsData != null && champsData.size() > 0) {
+                try {
+                    List<ChampionDto> allChampions = new ArrayList<>();
 
-                for (Map.Entry<String, ChampionDto> entry : champsData.entrySet()) {
-                    ChampionDto c = new ChampionDto(entry.getValue().getId(),
-                            entry.getValue().getKey(),
-                            entry.getValue().getName(),
-                            Commons.CHAMPION_IMAGE_BASE_URL + entry.getKey() + ".png",
-                            "\"" + entry.getValue().getTitle());
-                    allChampions.add(c);
+                    for (Map.Entry<String, ChampionDto> entry : champsData.entrySet()) {
+                        ChampionDto c = new ChampionDto(entry.getValue().getId(),
+                                entry.getValue().getKey(),
+                                entry.getValue().getName(),
+                                Commons.CHAMPION_IMAGE_BASE_URL + entry.getKey() + ".png",
+                                "\"" + entry.getValue().getTitle());
+                        allChampions.add(c);
+                    }
+
+                    return allChampions;
+                } catch (Exception e) {
+                    Log.d("DB", "Error parsing all champions list");
                 }
-
-                return allChampions;
-            } catch (Exception e) {
-                Log.d("DB", "Error parsing all champions list");
             }
-        }
+        } catch (Exception e) {}
         return null;
     }
 
     private void setIpRpPrices(@NotNull final IpRpPricesListener ipRpPricesListener) {
         List<ChampionCostsTable> championCosts = DbHelper.getInstance().getRpIpCostsData();
         if (championCosts != null && championCosts.size() > 0) {
-            populateChampionCosts(championCosts);//TODO: 5
+            populateChampionCosts(championCosts);
             ipRpPricesListener.onIpRpPricesReceived();
         } else {
             if (LolApplication.firebaseInitialized) {
@@ -220,7 +222,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                     firebase.child("championCosts").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            try {//TODO: 6
+                            try {
                                 Map<String, HashMap> championCostsData = (Map<String, HashMap>) dataSnapshot.getValue();
                                 List<ChampionCostsTable> championCosts = DbHelper.getInstance().convertCostsMapToList(championCostsData);
                                 DbHelper.getInstance().saveRpIpCostsData(championCostsData);
@@ -258,6 +260,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                 weeklyFreeChampions.get(i).setChampionRp("???");
             }
         }
+        notifyDataSetChanged();
         DbHelper.getInstance().saveWeeklyFreeChampionsData(weeklyFreeChampions);
     }
 

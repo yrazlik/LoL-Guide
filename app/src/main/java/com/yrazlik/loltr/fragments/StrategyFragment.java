@@ -13,12 +13,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionStrategyResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
@@ -44,10 +46,10 @@ public class StrategyFragment extends BaseFragment implements ResponseListener{
 		pathParams.add("champion");
 		pathParams.add(String.valueOf(champId));
 		HashMap<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("locale", Commons.getInstance(getContext().getApplicationContext()).getLocale());
+        queryParams.put("locale", LocalizationUtils.getInstance().getLocale());
 		queryParams.put("version", Commons.LATEST_VERSION);
 		queryParams.put("champData", "allytips,enemytips");
-		queryParams.put("api_key", Commons.API_KEY);
+		queryParams.put("api_key", BuildConfig.API_KEY);
 		
 		ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.CHAMPION_STRATEGY_REQUEST, pathParams, queryParams, null, this);
 		
