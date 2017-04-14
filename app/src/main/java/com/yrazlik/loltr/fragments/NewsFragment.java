@@ -20,6 +20,7 @@ import com.yrazlik.loltr.adapters.NewsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.utils.LocalizationUtils;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
