@@ -11,6 +11,7 @@ import com.yrazlik.loltr.model.ChampionListDto;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +68,21 @@ public class DbHelper {
         }
     }
 
+    public void saveRpIpCostsData(Map<String, HashMap> championCosts) {
+        new Delete().from(ChampionCostsTable.class).execute();
+        List<ChampionCostsTable> costs = convertCostsMapToList(championCosts);
+        ActiveAndroid.beginTransaction();
+        try {
+            for (int i = 0; i < costs.size(); i++) {
+                ChampionCostsTable item = costs.get(i);
+                item.save();
+            }
+            ActiveAndroid.setTransactionSuccessful();
+        } finally {
+            ActiveAndroid.endTransaction();
+        }
+    }
+
     public List<ChampionDto> getAllChampionsData() {
         List<AllChampionsTable> allChampsData = new Select("*").from(AllChampionsTable.class).orderBy("name ASC").execute();
         List<ChampionDto> allChampions = new ArrayList<>();
@@ -103,6 +119,11 @@ public class DbHelper {
         return null;
     }
 
+    public List<ChampionCostsTable> getRpIpCostsData() {
+        List<ChampionCostsTable> costs = new Select("*").from(ChampionCostsTable.class).execute();
+        return costs;
+    }
+
 
     private List<AllChampionsTable> getAllChampionsList (ChampionListDto championListDto){
         Map<String, ChampionDto> champsData = championListDto.getData();
@@ -121,6 +142,20 @@ public class DbHelper {
             } catch (Exception e) {
                 Log.d("DB", "Error parsing all champions list");
             }
+        }
+        return null;
+    }
+
+    public List<ChampionCostsTable> convertCostsMapToList(Map<String, HashMap> championCostsData) {
+        if(championCostsData != null) {
+            List<ChampionCostsTable> costs = new ArrayList<>();
+            Map<String, HashMap> championCosts = championCostsData.get("costs");
+            for(Map.Entry<String, HashMap> entry : championCosts.entrySet()) {
+                String champId = entry.getKey();
+                Map<String, String> values = entry.getValue();
+                costs.add(new ChampionCostsTable(champId, String.valueOf(values.get("ip_cost")), String.valueOf(values.get("rp_cost"))));
+            }
+            return costs;
         }
         return null;
     }

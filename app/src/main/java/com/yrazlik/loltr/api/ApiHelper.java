@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.yrazlik.loltr.api.error.IResponseHandler;
 import com.yrazlik.loltr.api.error.RetryHelper;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
@@ -86,7 +87,7 @@ public class ApiHelper {
     }
 
     public void getWeeklyFreeChampions(final IResponseHandler retrofitResponseHandler) {
-        List<ChampionDto> weeklyFreeChampionsData = CacheUtils.getInstance().getWeeklyFreeChampionsData();
+        List<ChampionDto> weeklyFreeChampionsData = DbHelper.getInstance().getWeeklyFreeChampionsData();
         if(weeklyFreeChampionsData != null && weeklyFreeChampionsData.size() > 0) {
             retrofitResponseHandler.onResponseFromCache(weeklyFreeChampionsData);
         } else {
@@ -106,7 +107,7 @@ public class ApiHelper {
     }
 
     public void getAllChampions(final IResponseHandler retrofitResponseHandler) {
-        List<ChampionDto> allChampions = CacheUtils.getInstance().getAllChampionsData();
+        List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
         if(allChampions != null) {
             retrofitResponseHandler.onResponseFromCache(allChampions);
         } else {

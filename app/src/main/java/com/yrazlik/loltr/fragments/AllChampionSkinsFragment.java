@@ -27,6 +27,7 @@ import com.yrazlik.loltr.api.error.ApiResponseListener;
 import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
@@ -59,7 +60,7 @@ public class AllChampionSkinsFragment extends BaseFragment implements OnItemClic
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List<ChampionDto> allChampions = CacheUtils.getInstance().getAllChampionsData();
+        List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
         if (allChampions == null) {
             allChampions = new ArrayList<>();
         }
@@ -105,7 +106,7 @@ public class AllChampionSkinsFragment extends BaseFragment implements OnItemClic
             public void onResponse(Call call, Response response) {
                 dismissProgress();
                 ChampionListDto resp = (ChampionListDto) response.body();
-                CacheUtils.getInstance().saveAllChampionsData(resp);
+                DbHelper.getInstance().saveAllChampionsData(resp);
                 updateGridChampions(resp);
                 setAdapter();
             }
@@ -133,7 +134,7 @@ public class AllChampionSkinsFragment extends BaseFragment implements OnItemClic
     }
 
     private void copyAllChampionsToGridArray() {
-        List<ChampionDto> allChampions = CacheUtils.getInstance().getAllChampionsData();
+        List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
         gridChampions.clear();
         for (int i = 0; i < allChampions.size(); i++) {
             gridChampions.add(allChampions.get(i));
@@ -155,7 +156,7 @@ public class AllChampionSkinsFragment extends BaseFragment implements OnItemClic
         noChampsFoundTV.setVisibility(View.GONE);
         if (s.length() >= 2) {
             gridChampions.clear();
-            for (ChampionDto c : CacheUtils.getInstance().getAllChampionsData()) {
+            for (ChampionDto c : DbHelper.getInstance().getAllChampionsData()) {
                 if (Utils.containsIgnoreCase(c.getName(), String.valueOf(s))) {
                     gridChampions.add(c);
                 }

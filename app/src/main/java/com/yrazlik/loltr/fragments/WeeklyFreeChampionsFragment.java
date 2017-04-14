@@ -28,6 +28,7 @@ import com.yrazlik.loltr.api.ApiHelper;
 import com.yrazlik.loltr.api.error.ApiResponseListener;
 import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.db.ChampionCostsTable;
 import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
@@ -156,7 +157,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                 dismissProgress();//TODO: 4
                 ChampionListDto championListDto = (ChampionListDto) response.body();
                 List<ChampionDto> allChampsArr = convertAllChampionsDataIntoList(championListDto);
-                CacheUtils.getInstance().saveAllChampionsData(championListDto);
+                DbHelper.getInstance().saveAllChampionsData(championListDto);
                 updateWeeklyFreeArray(allChampsArr);
                 setIpRpPrices(new IpRpPricesListener() {
                     @Override
@@ -212,8 +213,8 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
     }
 
     private void setIpRpPrices(@NotNull final IpRpPricesListener ipRpPricesListener) {
-        Map<String, HashMap> championCosts = CacheUtils.getInstance().getRpIpCostsData();
-        if (championCosts != null) {
+        List<ChampionCostsTable> championCosts = DbHelper.getInstance().getRpIpCostsData();
+        if (championCosts != null && championCosts.size() > 0) {
             populateChampionCosts(championCosts);//TODO: 5
             ipRpPricesListener.onIpRpPricesReceived();
         } else {
@@ -224,8 +225,9 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             try {//TODO: 6
-                                Map<String, HashMap> championCosts = (HashMap<String, HashMap>) dataSnapshot.getValue();
-                                CacheUtils.getInstance().saveRpIpCostsData(championCosts);
+                                Map<String, HashMap> championCostsData = (Map<String, HashMap>) dataSnapshot.getValue();
+                                List<ChampionCostsTable> championCosts = DbHelper.getInstance().convertCostsMapToList(championCostsData);
+                                DbHelper.getInstance().saveRpIpCostsData(championCostsData);
                                 populateChampionCosts(championCosts);
                                 ipRpPricesListener.onIpRpPricesReceived();
                             } catch (Exception ignored) {
@@ -242,17 +244,12 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
         }
     }
 
-    private void populateChampionCosts(Map<String, HashMap> championCosts) {
-        HashMap<String, String> costs = championCosts.get("costs");
-        Iterator it = costs.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pairs = (Map.Entry) it.next();
-            String key = (String) pairs.getKey();
+    private void populateChampionCosts(List<ChampionCostsTable> championCosts) {
+        for(ChampionCostsTable cost : championCosts) {
             for (ChampionDto c : weeklyFreeChampions) {
-                if (String.valueOf(c.getId()).equals(key)) {
-                    Map<String, String> keyValues = (Map<String, String>) pairs.getValue();
-                    c.setChampionRp(String.valueOf(keyValues.get("rp_cost")));
-                    c.setChampionIp(String.valueOf(keyValues.get("ip_cost")));
+                if (String.valueOf(c.getId()).equals(cost.champId)) {
+                    c.setChampionRp(String.valueOf(cost.rp));
+                    c.setChampionIp(String.valueOf(cost.ip));
                 }
             }
         }
@@ -265,7 +262,7 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                 weeklyFreeChampions.get(i).setChampionRp("???");
             }
         }
-        CacheUtils.getInstance().saveWeeklyFreeChampionsData(weeklyFreeChampions);
+        DbHelper.getInstance().saveWeeklyFreeChampionsData(weeklyFreeChampions);
     }
 
     private void updateWeeklyFreeArray(List<ChampionDto> allChampionsData) {

@@ -27,6 +27,7 @@ import com.yrazlik.loltr.api.error.ApiResponseListener;
 import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
@@ -104,7 +105,7 @@ public class AllChampionsFragment extends BaseFragment implements OnItemClickLis
             public void onResponse(Call call, Response response) {
                 dismissProgress();
                 ChampionListDto resp = (ChampionListDto) response.body();
-                CacheUtils.getInstance().saveAllChampionsData(resp);
+                DbHelper.getInstance().saveAllChampionsData(resp);
                 updateGridChampions(resp);
                 setAdapter();
             }
@@ -248,7 +249,7 @@ public class AllChampionsFragment extends BaseFragment implements OnItemClickLis
 
     private List<ChampionDto> getAllChampionsList() {
         if(allChampions == null || allChampions.size() == 0) {
-            allChampions = CacheUtils.getInstance().getAllChampionsData();
+            allChampions = DbHelper.getInstance().getAllChampionsData();
             if(allChampions == null) {
                 allChampions = new ArrayList<>();
             }
