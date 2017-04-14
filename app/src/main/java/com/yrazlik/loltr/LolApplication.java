@@ -193,7 +193,7 @@ public class LolApplication extends MultiDexApplication{
 
                     if(key.equalsIgnoreCase("acTimeout")) {
                         try {
-                            DbHelper.getInstance().acTimeout = Integer.parseInt(value);
+                            DbHelper.getInstance().acTimeout = Long.parseLong(value);
                         } catch (Exception ignored) {}
                     } else if(key.equalsIgnoreCase("cacheEnabled")) {
                         try {
@@ -201,7 +201,7 @@ public class LolApplication extends MultiDexApplication{
                         } catch (Exception ignored) {}
                     } else if(key.equalsIgnoreCase("iprpTimeout")) {
                         try {
-                            DbHelper.getInstance().ipRpTimeout = Integer.parseInt(value);
+                            DbHelper.getInstance().ipRpTimeout = Long.parseLong(value);
                         } catch (Exception ignored) {}
                     } else if(key.equalsIgnoreCase("removeAllCaches")) {
                         try {
@@ -212,7 +212,7 @@ public class LolApplication extends MultiDexApplication{
                         } catch (Exception ignored) {}
                     } else if(key.equalsIgnoreCase("wfTimeout")) {
                         try {
-                            DbHelper.getInstance().wfTimeout = Integer.parseInt(value);
+                            DbHelper.getInstance().wfTimeout = Long.parseLong(value);
                         } catch (Exception ignored) {}
                     }
                 }
