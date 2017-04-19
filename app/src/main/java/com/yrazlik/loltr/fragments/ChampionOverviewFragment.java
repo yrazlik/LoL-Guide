@@ -167,7 +167,6 @@ import retrofit2.Response;
 
                 }
             }));
-            //ServiceHelper.getInstance(getContext()).makeChampionOverviewRequest(champId, this);
         } else {
             handleChampionOverviewResponse();
         }
