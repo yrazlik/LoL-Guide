@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.yrazlik.loltr.api.error.IResponseHandler;
 import com.yrazlik.loltr.api.error.RetryHelper;
+import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.db.table.ChampionOverviewTable;
 import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
@@ -119,6 +121,27 @@ public class ApiHelper {
 
                 @Override
                 public void onFailure(Call<ChampionListDto> call, Throwable t) {
+                    onFailResponse(retrofitResponseHandler, call, t);
+                }
+            });
+        }
+    }
+
+    public void getChampionOverview(final int champId, final IResponseHandler retrofitResponseHandler) {
+        String version = Commons.LATEST_VERSION;
+        ChampionOverviewTable champ = DbHelper.getInstance().getChampionOverview(champId, version);
+        if(champ != null) {
+            retrofitResponseHandler.onResponseFromCache(champ);
+        } else {
+            Call<ChampionDto> call = LolApiClient.getApiInterface(LolApiClient.BASE_URL_TYPE.STATIC_DATA).getChampionOverview(LocalizationUtils.getInstance().getRegion(), champId, LolApiClient.CHAMP_DATA_INFO_TAGS, version);
+            call.enqueue(new Callback<ChampionDto>() {
+                @Override
+                public void onResponse(Call<ChampionDto> call, Response<ChampionDto> response) {
+                    onSuccessResponse(retrofitResponseHandler, call, response);
+                }
+
+                @Override
+                public void onFailure(Call<ChampionDto> call, Throwable t) {
                     onFailResponse(retrofitResponseHandler, call, t);
                 }
             });

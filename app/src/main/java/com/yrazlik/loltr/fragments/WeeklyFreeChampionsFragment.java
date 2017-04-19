@@ -28,7 +28,7 @@ import com.yrazlik.loltr.api.ApiHelper;
 import com.yrazlik.loltr.api.error.ApiResponseListener;
 import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
-import com.yrazlik.loltr.db.ChampionCostsTable;
+import com.yrazlik.loltr.db.table.ChampionCostsTable;
 import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;

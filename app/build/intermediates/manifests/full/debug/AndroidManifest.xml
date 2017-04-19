@@ -164,8 +164,14 @@
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_launcher" />
         <meta-data
-            android:name="LOLDB"
-            android:value="com.yrazlik.loltr.db.AllChampionsTable, com.yrazlik.loltr.db.WeeklyFreeChampionsTable, com.yrazlik.loltr.db.ChampionCostsTable" />
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="com.yrazlik.loltr.db.table.AllChampionsTable, com.yrazlik.loltr.db.table.WeeklyFreeChampionsTable,                 com.yrazlik.loltr.db.table.ChampionCostsTable, com.yrazlik.loltr.db.table.ChampionOverviewTable" />
+        <meta-data
+            android:name="AA_SERIALIZERS"
+            android:value="com.yrazlik.loltr.db.serializer.InfoDtoSerializer, com.yrazlik.loltr.db.serializer.TagsSerializer" />
 
         <activity
             android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"

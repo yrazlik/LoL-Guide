@@ -61,21 +61,6 @@ public class ServiceHelper {
                 pathParams, queryParams, null, responseListener);
     }
 
-    public void makeChampionOverviewRequest(int champId, ResponseListener responseListener) {
-        ArrayList<String> pathParams = new ArrayList<>();
-        pathParams.add("static-data");
-        pathParams.add(Commons.getInstance(mContext.getApplicationContext()).getRegion());
-        pathParams.add("v1.2");
-        pathParams.add("champion");
-        pathParams.add(String.valueOf(champId));
-        HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("locale", LocalizationUtils.getInstance().getLocale());
-        queryParams.put("version", Commons.LATEST_VERSION);
-        queryParams.put("champData", "info,tags");
-        queryParams.put("api_key", BuildConfig.API_KEY);
-        ServiceRequest.getInstance(mContext).makeGetRequest(Commons.CHAMPION_OVERVIEW_REQUEST, pathParams, queryParams, null, responseListener);
-    }
-
     public void makeRecommendedItemsRequest(int champId, ResponseListener responseListener) {
         ArrayList<String> pathParams2 = new ArrayList<>();
         pathParams2.add("static-data");

@@ -15,6 +15,7 @@ public class LolApiClient {
 
     public static final String CHAMP_DATA_ALL = "all";
     public static final String CHAMP_DATA_ALTIMAGES = "altimages";
+    public static final String CHAMP_DATA_INFO_TAGS = "info,tags";
 
     private static String apiBaseUrl = "https://tr.api.pvp.net";
     private static Retrofit retrofit = null;

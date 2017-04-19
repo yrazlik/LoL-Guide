@@ -9,6 +9,10 @@ import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.db.table.AllChampionsTable;
+import com.yrazlik.loltr.db.table.ChampionCostsTable;
+import com.yrazlik.loltr.db.table.ChampionOverviewTable;
+import com.yrazlik.loltr.db.table.WeeklyFreeChampionsTable;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.utils.Logger;
@@ -93,6 +97,8 @@ public class DbHelper {
                 removeTable(WeeklyFreeChampionsTable.class);
                 Logger.log("Error saving weekly free champions data to db.");
             }
+        } else {
+            Logger.log("Caching is disabled. Not going to save weekly free champions data to db.");
         }
     }
 
@@ -117,6 +123,8 @@ public class DbHelper {
                 removeTable(AllChampionsTable.class);
                 Logger.log("Error saving all champions data to db.");
             }
+        } else {
+            Logger.log("Caching is disabled. Not going to save all champions data to db.");
         }
     }
 
@@ -141,6 +149,27 @@ public class DbHelper {
                 removeTable(ChampionCostsTable.class);
                 Logger.log("Error saving ip rp costs to db.");
             }
+        } else {
+            Logger.log("Caching is disabled. Not going to save ip rp costs to db.");
+        }
+    }
+
+    public void saveChampionOverview(ChampionOverviewTable champion) {
+        if(champion != null) {
+            if(cacheEnabled) {
+                try {
+                    new Delete().from(ChampionOverviewTable.class).where("champId = ?", champion.getChampId()).execute();
+                    champion.setVersion(Commons.LATEST_VERSION);
+                    champion.save();
+                    Logger.log("Saved champion overview to db.");
+                } catch (Exception e) {
+                    Logger.log("Unexpected error while trying to save champion overview to db.");
+                }
+            } else {
+                Logger.log("Caching is disabled. Not going to save champion overview to db.");
+            }
+        } else {
+            Logger.log("Champion is null, not saving");
         }
     }
 
@@ -217,6 +246,17 @@ public class DbHelper {
         }
     }
 
+    public ChampionOverviewTable getChampionOverview(int champId, String version) {
+        try {
+            List<ChampionOverviewTable> champions = new Select("*").from(ChampionOverviewTable.class).where("champId = ? AND version = ?", champId, version).execute();
+            if (champions != null && champions.size() > 0) {
+                return champions.get(0);
+            }
+        } catch (Exception e) {
+            Logger.log("Unexpected DB error retrieving champion overview.");
+        }
+        return null;
+    }
 
     private List<AllChampionsTable> getAllChampionsList(ChampionListDto championListDto) {
         try {

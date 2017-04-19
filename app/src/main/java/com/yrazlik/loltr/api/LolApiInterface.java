@@ -25,6 +25,12 @@ public interface LolApiInterface {
     Call<ChampionListDto> getAllChampions(@Path("region") String region,
                                           @Query("champData") String champData);
 
+    @GET("/api/lol/static-data/{region}/v1.2/champion/{id}")
+    Call<ChampionDto> getChampionOverview(@Path("region") String region,
+                                          @Path("id") int id,
+                                          @Query("champData") String champData,
+                                              @Query("version") String version);
+
     @GET("/api/lol/static-data/{region}/v1.2/summoner-spell")
     Call<ChampionListDto> getSummonerSpells(@Path("region") String region,
                                             @Query("champData") String champData);

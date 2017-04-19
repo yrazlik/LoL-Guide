@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,16 +29,26 @@ import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.GridViewItemsAdapter;
+import com.yrazlik.loltr.api.ApiHelper;
+import com.yrazlik.loltr.api.error.ApiResponseListener;
+import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Blocks;
 import com.yrazlik.loltr.data.Items;
 import com.yrazlik.loltr.data.Recommended;
+import com.yrazlik.loltr.db.table.ChampionOverviewTable;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 @SuppressLint("NewApi") public class ChampionOverviewFragment extends BaseFragment implements ResponseListener, OnItemClickListener{
 	
@@ -63,7 +72,7 @@ import java.util.ArrayList;
 	private GridViewItemsAdapter startingItemsAdapter, essentialItemsAdapter, offensiveItemsAdapter, deffensiveItemsAdapter;
     private RobotoTextView textViewStartingItems, textViewEssentialItems, textViewOffensiveItems, textViewDeffensiveItems;
 
-    private ChampionOverviewResponse championOverviewResponse;
+    private ChampionOverviewTable championOverviewResponse;
     private RecommendedItemsResponse recommendedItemsResponse;
 
 	@Override
@@ -124,7 +133,43 @@ import java.util.ArrayList;
 
     private void getFragmentData() {
         if(championOverviewResponse == null) {
-            ServiceHelper.getInstance(getContext()).makeChampionOverviewRequest(champId, this);
+            ApiHelper.getInstance(getContext()).getChampionOverview(champId, new RetrofitResponseHandler(new ApiResponseListener() {
+                @Override
+                public void onResponseFromCache(Object response) {
+                    championOverviewResponse = (ChampionOverviewTable) response;
+                    handleChampionOverviewResponse();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) {
+                    ChampionDto championDto = (ChampionDto) response.body();
+                    championOverviewResponse = new ChampionOverviewTable(championDto.getId(), championDto.getTitle(),
+                            championDto.getName(), championDto.getKey(), championDto.getInfo(), championDto.getTags(), Commons.LATEST_VERSION);
+                    DbHelper.getInstance().saveChampionOverview(championOverviewResponse);
+                    handleChampionOverviewResponse();
+                }
+
+                @Override
+                public void onUnknownError() {
+
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+
+                }
+
+                @Override
+                public void onNetworkError() {
+
+                }
+            }));
+            //ServiceHelper.getInstance(getContext()).makeChampionOverviewRequest(champId, this);
         } else {
             handleChampionOverviewResponse();
         }
@@ -137,7 +182,25 @@ import java.util.ArrayList;
 			}
 		}catch (Exception ignored){}
     }
-	
+
+    private void handleChampionOverviewResponse() {
+        if(isAttached) {
+            if(championOverviewResponse != null) {
+                champName.setText(championOverviewResponse.getName());
+                champTitle.setText(championOverviewResponse.getTitle());
+                setAbilityBars(championOverviewResponse);
+                setTags(championOverviewResponse);
+            }
+
+            if(recommendedItemsResponse == null) {
+                ServiceHelper.getInstance(getContext()).makeRecommendedItemsRequest(champId, this);
+            } else {
+                handleRecommendedItemsResponse();
+            }
+
+        }
+    }
+
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		hideKeyboard();
@@ -194,7 +257,7 @@ import java.util.ArrayList;
         }catch (Exception e){}
 	}
 	
-	private void setAbilityBars(final ChampionOverviewResponse resp) {
+	private void setAbilityBars(final ChampionOverviewTable resp) {
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -212,10 +275,10 @@ import java.util.ArrayList;
 		
 	}
 	
-	private void setTags(ChampionOverviewResponse resp) {
+	private void setTags(ChampionOverviewTable resp) {
 		String tagsString="";
 		
-		ArrayList<String> tagsResponse = resp.getTags();
+		List<String> tagsResponse = resp.getTags();
 		for(String tag : tagsResponse){
 			tagsString = tagsString+ "- " + tag + "\n";
 		}
@@ -241,21 +304,6 @@ import java.util.ArrayList;
 			set.start();
 		}
 	}
-
-    private void handleChampionOverviewResponse() {
-        if(championOverviewResponse != null) {
-            champName.setText(championOverviewResponse.getName());
-            champTitle.setText(championOverviewResponse.getTitle());
-            setAbilityBars(championOverviewResponse);
-            setTags(championOverviewResponse);
-        }
-
-        if(recommendedItemsResponse == null) {
-            ServiceHelper.getInstance(getContext()).makeRecommendedItemsRequest(champId, this);
-        } else {
-            handleRecommendedItemsResponse();
-        }
-    }
 
     private void handleRecommendedItemsResponse() {
         if(recommendedItemsResponse != null) {
@@ -327,8 +375,7 @@ import java.util.ArrayList;
 	public void onSuccess(Object response) {
         if(isAttached) {
             if (response instanceof ChampionOverviewResponse) {
-                championOverviewResponse = (ChampionOverviewResponse) response;
-                handleChampionOverviewResponse();
+
             } else if (response instanceof RecommendedItemsResponse) {
                 ;
                 try {
