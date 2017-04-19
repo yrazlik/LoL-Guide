@@ -29,8 +29,10 @@ import com.yrazlik.loltr.service.ServiceRequest;
 
 public class ChampionAbilitiesVideosFragment extends DialogFragment {
 
-    public static String EXTRA_PRESSED_KEY_POSITION = "com.yrazlik.leagueoflegends.fragments.extrapressedkeyposition";
-    int abilityNumber;
+    public static String EXTRA_KEY_POSITION = "position";
+    public static String EXTRA_CHAMP_ID = "champId";
+    private int champId;
+    private int abilityNumber;
 
     private VideoView videoView;
     private Button closeDialogButton;
@@ -77,7 +79,8 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
         videoView = (VideoView) d.findViewById(R.id.videoView);
         closeDialogButton = (Button) d.findViewById(R.id.closeDialogButton);
         Bundle args = getArguments();
-        abilityNumber = args.getInt(EXTRA_PRESSED_KEY_POSITION);
+        champId = args.getInt(EXTRA_CHAMP_ID);
+        abilityNumber = args.getInt(EXTRA_KEY_POSITION);
         String sAbilityNumber = String.valueOf(abilityNumber + 1);
         sAbilityNumber = makeTwoDigit(sAbilityNumber);
 
@@ -118,9 +121,7 @@ public class ChampionAbilitiesVideosFragment extends DialogFragment {
             }
         });
         videoView.setVideoURI(Uri.parse(Commons.CHAMPION_ABILITIES_VIDEOS_BASE_URL
-                + makeFourDigit(String
-                .valueOf(ChampionOverviewFragment.lastSelectedChampionId))
-                + "_" + sAbilityNumber + ".mp4"));
+                + makeFourDigit(String.valueOf(champId)) + "_" + sAbilityNumber + ".mp4"));
     }
 
     private String makeTwoDigit(String s) {

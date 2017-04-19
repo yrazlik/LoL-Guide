@@ -66,7 +66,6 @@ import retrofit2.Response;
 	private RelativeLayout barDifficulty;
 	private RobotoTextView tags;
 	private RobotoTextView tagsTitle;
-	public static int lastSelectedChampionId;
 
 	private GridView gridviewStartingItems, gridviewEssentialItems, gridviewOffensiveItems, gridviewDeffensiveItems;
 	private GridViewItemsAdapter startingItemsAdapter, essentialItemsAdapter, offensiveItemsAdapter, deffensiveItemsAdapter;
@@ -94,7 +93,6 @@ import retrofit2.Response;
         Bundle args = getArguments();
         if(args != null){
             champId = args.getInt(ChampionDetailFragment.EXTRA_CHAMPION_ID);
-            lastSelectedChampionId = champId;
             champLogoImageUrl = args.getString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL);
         }
     }
@@ -292,13 +290,11 @@ import retrofit2.Response;
 			view.setPivotX(view.getWidth());
 			
 			PropertyValuesHolder pvhSX = PropertyValuesHolder.ofFloat(View.SCALE_X, .1f, 1f);
-			pvhSX = PropertyValuesHolder.ofFloat(View.SCALE_X, .1f, 1f);
 			ObjectAnimator stretchAnim =
 			ObjectAnimator.ofPropertyValuesHolder(view, pvhSX);
 			stretchAnim.setInterpolator(sDecelerator);
 			stretchAnim.setDuration(animationDuration);
-			
-	
+
 			AnimatorSet set = new AnimatorSet();
 			set.playSequentially(stretchAnim);
 			set.start();

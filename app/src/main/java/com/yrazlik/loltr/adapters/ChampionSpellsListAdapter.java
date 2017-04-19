@@ -30,11 +30,12 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 		OnClickListener {
 
 	private Context mContext;
+    private int champId;
 
-	public ChampionSpellsListAdapter(Context context, int resource,
-			List<Spell> objects) {
+	public ChampionSpellsListAdapter(Context context, int resource, List<Spell> objects, int champId) {
 		super(context, resource, objects);
 		this.mContext = context;
+        this.champId = champId;
 	}
 
 	@Override
@@ -100,7 +101,8 @@ public class ChampionSpellsListAdapter extends ArrayAdapter<Spell> implements
 			int key = (Integer) v.getTag();
 			ChampionAbilitiesVideosFragment fragment = new ChampionAbilitiesVideosFragment();
 			Bundle args = new Bundle();
-			args.putInt(ChampionAbilitiesVideosFragment.EXTRA_PRESSED_KEY_POSITION, key);
+            args.putInt(ChampionAbilitiesVideosFragment.EXTRA_CHAMP_ID, champId);
+			args.putInt(ChampionAbilitiesVideosFragment.EXTRA_KEY_POSITION, key);
 			fragment.setArguments(args);
 			fragment.show(((FragmentActivity)getContext()).getSupportFragmentManager(), "");
 		}

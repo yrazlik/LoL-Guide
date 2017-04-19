@@ -24,21 +24,22 @@ import com.yrazlik.loltr.service.ServiceRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ChampionSpellsFragment extends BaseFragment implements ResponseListener{
 	
 	private int champId;
 	private ListView list;
 	private ChampionSpellsListAdapter adapter;
-	private ArrayList<Spell> championSpells;
+	private List<Spell> championSpells;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_champion_spells, container, false);
-            initUI(rootView);
             getExtras();
+            initUI(rootView);
             ServiceHelper.getInstance(getContext()).makeChampionSpellsRequest(champId, this);
         }
         return rootView;
@@ -53,8 +54,8 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 	
 	private void initUI(View v){
 		list = (ListView) v.findViewById(R.id.listviewChampionSpells);
-		championSpells = new ArrayList<Spell>();
-		adapter = new ChampionSpellsListAdapter(getContext(), R.layout.list_row_abilities, championSpells);
+		championSpells = new ArrayList<>();
+		adapter = new ChampionSpellsListAdapter(getContext(), R.layout.list_row_abilities, championSpells, champId);
 		list.setAdapter(adapter);
 	}
 	
