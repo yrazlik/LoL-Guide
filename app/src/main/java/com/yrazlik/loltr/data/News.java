@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.android.gms.ads.formats.NativeAd;
 
 import java.util.Date;
 
@@ -15,6 +16,8 @@ public class News {
     private String shortDesc;
     private String img;
     private Date createdAt;
+    private boolean isAd;
+    private NativeAd nativeAd;
 
     public News(String url, String title, String shortDesc, String img, Date createdAt){
         this.url = url;
@@ -22,6 +25,10 @@ public class News {
         this.shortDesc = shortDesc;
         this.img = img;
         this.createdAt = createdAt;
+    }
+
+    public News() {
+
     }
 
     public String getUrl() {
@@ -62,5 +69,21 @@ public class News {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
+    }
+
+    public NativeAd getNativeAd() {
+        return nativeAd;
+    }
+
+    public void setNativeAd(NativeAd nativeAd) {
+        this.nativeAd = nativeAd;
     }
 }

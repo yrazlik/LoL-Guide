@@ -27,7 +27,7 @@ public class NativeAdLoader {
     private AdLoader adLoader;
     private NativeAdLoadedListener nativeAdLoadedListener;
 
-    public void loadAd(Context context, String adUnitId, final NativeAdLoadedListener nativeAdLoadedListener) {
+    public void loadAd(final Context context, final String adUnitId, final NativeAdLoadedListener nativeAdLoadedListener) {
 
         if ((adLoader != null) && adLoader.isLoading()) {
             return;

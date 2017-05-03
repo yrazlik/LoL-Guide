@@ -2,6 +2,11 @@ package com.yrazlik.loltr.utils;
 
 import android.content.Context;
 
+import com.google.android.gms.ads.formats.NativeAd;
+import com.google.android.gms.ads.formats.NativeAppInstallAd;
+import com.google.android.gms.ads.formats.NativeContentAd;
+import com.yrazlik.loltr.LolApplication;
+
 /**
  * Created by yrazlik on 03/05/17.
  */
@@ -12,6 +17,9 @@ public class AdUtils {
 
     private NativeAdLoader nativeAdLoader;
     private boolean adsEnabled = true;
+
+    private NativeAppInstallAd newsInstallAd;
+    private NativeContentAd newsContentAd;
 
     private AdUtils() {}
 
@@ -44,4 +52,17 @@ public class AdUtils {
             }
         }
     }
+
+  /*  public NativeAd getCachedAd(String adUnitId) {
+        NativeAd adToReturn = null;
+        if(newsInstallAd != null) {
+            adToReturn = newsInstallAd;
+        } else if(newsContentAd != null) {
+            adToReturn = newsContentAd;
+        }
+
+        loadNativeAd(LolApplication.getAppContext(), adUnitId);
+
+        return adToReturn;
+    }*/
 }

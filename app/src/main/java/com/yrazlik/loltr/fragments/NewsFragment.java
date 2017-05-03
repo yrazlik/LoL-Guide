@@ -12,6 +12,8 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.ads.formats.NativeAppInstallAd;
+import com.google.android.gms.ads.formats.NativeContentAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -20,7 +22,9 @@ import com.yrazlik.loltr.adapters.NewsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
+import com.yrazlik.loltr.utils.NativeAdLoader;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by yrazlik on 12/28/15.
@@ -100,6 +105,39 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                                 Collections.reverse(news);
                                 adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
                                 newsLV.setAdapter(adapter);
+
+                                AdUtils.getInstance().loadNativeAd(getContext(), getResources().getString(R.string.news_ad_unit_id), new NativeAdLoader.NativeAdLoadedListener() {
+                                    @Override
+                                    public void onAppInstallAdLoaded(NativeAppInstallAd nativeAppInstallAd) {
+                                        if(nativeAppInstallAd != null) {
+                                            News ad = new News();
+                                            ad.setAd(true);
+                                            ad.setNativeAd(nativeAppInstallAd);
+                                            try {
+                                                news.add(0, ad);
+                                            } catch (Exception ignored) {}
+                                            notifyDataSetChanged();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onContentAdLoaded(NativeContentAd nativeContentAd) {
+                                        if(nativeContentAd != null) {
+                                            News ad = new News();
+                                            ad.setAd(true);
+                                            ad.setNativeAd(nativeContentAd);
+                                            try {
+                                                news.add(0, ad);
+                                            } catch (Exception ignored) {}
+                                            notifyDataSetChanged();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToLoad() {
+                                        //do nothing
+                                    }
+                                });
                             } else {
                                 noRecentNewsTV.setVisibility(View.VISIBLE);
                             }
@@ -127,12 +165,10 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
         }
     }
 
-    private void showInterstitial(){
-        try {
-            if (((LolApplication) (getActivity().getApplication())).shouldShowInterstitial()) {
-                ((LolApplication) (getActivity().getApplication())).showInterstitial();
-            }
-        }catch (Exception ignored){}
+    private void notifyDataSetChanged() {
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private ArrayList<News> sortByDateCreated(ArrayList<News> news){
@@ -153,33 +189,9 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         try {
             News selectedNews = news.get(position);
-
-
-
-         /*   FragmentManager fm = getFragmentManager();
-            Bundle args = new Bundle();
-            if (selectedNews.getTitle() != null && selectedNews.getTitle().length() > 0) {
-                args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitle());
-            } else if (selectedNews.getTitleEnglish() != null && selectedNews.getTitleEnglish().length() > 0) {
-                args.putString(NewsDetailFragment.EXTRA_TITLE, selectedNews.getTitleEnglish());
+            if(!selectedNews.isAd()) {
+                Commons.openInBrowser(getContext(), selectedNews.getUrl());
             }
-
-            if (selectedNews.getShortDesc() != null && selectedNews.getShortDesc().length() > 0) {
-                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getShortDesc());
-            } else if (selectedNews.getShortDescEnglish() != null && selectedNews.getShortDescEnglish().length() > 0) {
-                args.putString(NewsDetailFragment.EXTRA_MESSAGE, selectedNews.getShortDescEnglish());
-            }
-            args.putString(NewsDetailFragment.EXTRA_IMAGE_URL, selectedNews.getLargeImage());
-            args.putString(NewsDetailFragment.EXTRA_WV_URL, selectedNews.getVideoUrl());
-            NewsDetailFragment fragment = new NewsDetailFragment();
-            fragment.setArguments(args);
-            FragmentTransaction ft = fm.beginTransaction();
-            Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-            ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.NEWS_DETAIL_FRAGMENT).commit();
-            showInterstitial();*/
-
-            Commons.openInBrowser(getContext(), selectedNews.getUrl());
-
         } catch (Exception ignored) {
         }
     }

@@ -94,7 +94,7 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
                 handleAppInstallNativeAdView(champion, holder);
                 break;
             case ROW_CONTENT_AD:
-                handleAContentNativeAdView(champion, holder);
+                handleContentNativeAdView(champion, holder);
                 break;
             default:
                 break;
@@ -151,7 +151,7 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
         }
     }
 
-    private void handleAContentNativeAdView(ChampionDto champion, ViewHolder holder) {
+    private void handleContentNativeAdView(ChampionDto champion, ViewHolder holder) {
         if(champion.getNativeAd() != null) {
             NativeContentAd nativeContentAd = (NativeContentAd) champion.getNativeAd();
             NativeContentAdView adView = (NativeContentAdView) holder.nativeAdView;

@@ -272,5 +272,6 @@
     <string name="noRecentNEws">There are no recent news to display.</string>
 
     <string name="weekly_free_ad_unit_id">ca-app-pub-3219973945608696/7934014360</string>
+    <string name="news_ad_unit_id">ca-app-pub-3940256099942544/2247696110</string>
 
 </resources>
