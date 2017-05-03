@@ -29,6 +29,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.SimpleSpinnerAdapter;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.view.RobotoButton;
 import com.yrazlik.loltr.view.RobotoTextView;
 
@@ -120,7 +121,7 @@ public class SettingsFragment extends BaseFragment{
 
         removeAdsButton = (RobotoButton) v.findViewById(R.id.removeAdsButton);
         removeAdsExplanation = (RobotoTextView) v.findViewById(R.id.removeAdsExplanation);
-        if(Commons.getInstance(getContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             removeAdsButton.setVisibility(View.VISIBLE);
             removeAdsExplanation.setVisibility(View.VISIBLE);
             removeAdsButton.setOnClickListener(new View.OnClickListener() {

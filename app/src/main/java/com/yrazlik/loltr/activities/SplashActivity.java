@@ -27,6 +27,7 @@ import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.view.RegionDialog;
 import com.yrazlik.loltr.view.RobotoTextView;
 import com.yrazlik.loltr.view.TypeWriter;
@@ -201,7 +202,7 @@ public class SplashActivity extends Activity{
     private void getPurchaseEvent() {
         boolean isPurchased = Commons.getInstance(getApplicationContext()).loadPurchaseData();
         if(isPurchased) {
-            Commons.getInstance(getApplicationContext()).disableAds();
+            AdUtils.getInstance().disableAds();
             setupInAppPurchases(null);
             startMainActivity();
         } else {
@@ -231,7 +232,7 @@ public class SplashActivity extends Activity{
                                 for (int i = 0; i < ownedSkus.size(); ++i) {
                                     String sku = ownedSkus.get(i);
                                     if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)) {
-                                        Commons.getInstance(getApplicationContext()).disableAds();
+                                        AdUtils.getInstance().disableAds();
                                         Commons.getInstance(getApplicationContext()).savePurchaseData();
                                     }
                                 }
@@ -239,10 +240,10 @@ public class SplashActivity extends Activity{
                         }
                     }
                 } catch (RemoteException e) {
-                    Commons.getInstance(getApplicationContext()).disableAds();
+                    AdUtils.getInstance().disableAds();
                 }
             } else {
-                Commons.getInstance(getApplicationContext()).disableAds();
+                AdUtils.getInstance().disableAds();
             }
             startMainActivity();
         }

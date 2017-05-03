@@ -23,8 +23,6 @@ import java.util.Comparator;
 import java.util.Map;
 
 public class Commons {
-
-    public boolean ADS_ENABLED = true;
 	
 	private static Context mContext;
 	private static Commons mCommons;
@@ -318,13 +316,5 @@ public class Commons {
         } catch (Exception e) {
             return new ArrayList<>(Arrays.asList(regions));
         }
-    }
-
-    public void enableAds() {
-        this.ADS_ENABLED = true;
-    }
-
-    public void disableAds() { //TODO: change it to return false
-        this.ADS_ENABLED = true;
     }
 }

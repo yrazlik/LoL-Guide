@@ -13,6 +13,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.view.VideoEnabledWebChromeClient;
 import com.yrazlik.loltr.view.VideoEnabledWebView;
 
@@ -34,7 +35,7 @@ public class LiveChannelActivity extends Activity{
 
         streamUrl = getIntent().getStringExtra(EXTRA_STREAM_URL);
         // Set layout
-        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             setContentView(R.layout.fragment_live_video);
         } else {
             setContentView(R.layout.fragment_live_video_noad);

@@ -28,6 +28,7 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
 import com.yrazlik.loltr.view.RobotoTextView;
 
@@ -62,7 +63,7 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             setContentView(R.layout.activity_match_info);
         } else {
             setContentView(R.layout.activity_match_info_noad);

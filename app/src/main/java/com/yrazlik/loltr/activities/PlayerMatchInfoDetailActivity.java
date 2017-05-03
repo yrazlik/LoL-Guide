@@ -24,6 +24,7 @@ import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.StatsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.view.RobotoTextView;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class PlayerMatchInfoDetailActivity extends ActionBarActivity implements 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if (AdUtils.getInstance().isAdsEnabled()) {
             setContentView(R.layout.activity_player_match_info_detail);
         } else {
             setContentView(R.layout.activity_player_match_info_detail_noad);

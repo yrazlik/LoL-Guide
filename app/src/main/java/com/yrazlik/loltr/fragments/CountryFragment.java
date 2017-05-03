@@ -4,6 +4,7 @@ package com.yrazlik.loltr.fragments;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.AdUtils;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +25,7 @@ public class CountryFragment extends Fragment{
 
 		String[] countries;
 
-		if(Commons.getInstance(getActivity().getApplicationContext()).ADS_ENABLED) {
+		if(AdUtils.getInstance().isAdsEnabled()) {
 			countries = getResources().getStringArray(R.array.titles);
 		} else {
 			countries = getResources().getStringArray(R.array.titles_noad);

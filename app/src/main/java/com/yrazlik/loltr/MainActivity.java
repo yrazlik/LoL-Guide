@@ -56,6 +56,7 @@ import com.yrazlik.loltr.fragments.WeeklyFreeChampionsFragment;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.view.PushNotificationDialog;
 import com.yrazlik.loltr.view.RobotoTextView;
 
@@ -93,11 +94,10 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private List<LeftMenuItem> mList;
 
     private LeftMenuListAdapter mAdapter;
-    private AdView adView;
     private Toolbar mToolBar;
 
     private void continueSetup() {
-        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             setContentView(R.layout.activity_main);
             mFlags = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
                     R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_block, R.drawable.ic_mail,
@@ -116,12 +116,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolBar != null) {
             setSupportActionBar(mToolBar);
-        }
-
-        adView = (AdView) findViewById(R.id.adView);
-        if(adView != null) {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
         }
 
         setDrawer();
@@ -161,7 +155,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
 
     private void setDrawer() {
-        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             leftMenuItems = getResources().getStringArray(R.array.titles);
         } else {
             leftMenuItems = getResources().getStringArray(R.array.titles_noad);
@@ -222,7 +216,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
         // ItemClick event handler for the drawer items
-        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             mDrawerList.setOnItemClickListener(leftMenuWithAdsClickListener);
         } else {
             mDrawerList.setOnItemClickListener(leftMenuNoAdsClickListener);
@@ -332,7 +326,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
     public void updateDrawer() {
-        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             leftMenuItems = getResources().getStringArray(R.array.titles);
         } else {
             leftMenuItems = getResources().getStringArray(R.array.titles_noad);
@@ -785,7 +779,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==  Commons.REMOVE_ADS_REQUEST_CODE) {
             if(resultCode == RESULT_OK) {
-                Commons.getInstance(getApplicationContext()).disableAds();
+                AdUtils.getInstance().disableAds();
                 Commons.getInstance(getApplicationContext()).savePurchaseData();
                 sendPurchaseSuccessEvent();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -850,7 +844,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
             if(notificationAction == ACTION_HOME) {
                return 1;
             } else if(notificationAction == ACTION_REMOVE_ADS) {
-                if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+                if(AdUtils.getInstance().isAdsEnabled()) {
                     return 11;
                 }
             } else if(notificationAction == ACTION_DISCOUNTS) {

@@ -25,6 +25,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.yrazlik.loltr.activities.SplashActivity;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.db.DbHelper;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.ArrayList;
@@ -136,7 +137,7 @@ public class LolApplication extends MultiDexApplication{
 
     public void requestNewInterstitial() {
         try {
-            if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+            if(AdUtils.getInstance().isAdsEnabled()) {
                 AdRequest adRequest = new AdRequest.Builder().build();
                 mInterstitialAd.loadAd(adRequest);
             }
@@ -144,7 +145,7 @@ public class LolApplication extends MultiDexApplication{
     }
 
     public void showInterstitial(){
-        if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
+        if(AdUtils.getInstance().isAdsEnabled()) {
             if (mInterstitialAd.isLoaded()) {
                 try {
                     Handler h = new Handler();

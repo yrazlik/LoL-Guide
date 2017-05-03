@@ -30,27 +30,14 @@
 
         <!-- The main content view -->
 
-        <RelativeLayout
-            android:id="@+id/content_container"
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_above="@+id/adView">
+        </FrameLayout>
 
-            <FrameLayout
-                android:id="@+id/content_frame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/adView">
-            </FrameLayout>
 
-            <com.google.android.gms.ads.AdView
-                xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                ads:adSize="SMART_BANNER"
-                ads:adUnitId="ca-app-pub-3219973945608696/1016113966"/>
-        </RelativeLayout>
         <!-- The navigation drawer -->
 
         <android.support.design.widget.NavigationView
