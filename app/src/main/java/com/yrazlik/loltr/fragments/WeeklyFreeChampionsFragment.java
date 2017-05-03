@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -300,7 +301,9 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                         ChampionDto championDto = new ChampionDto();
                         championDto.setAd(true);
                         championDto.setNativeAd(nativeAppInstallAd);
-                        weeklyFreeChampions.add(2, championDto);
+                        try {
+                            weeklyFreeChampions.add(new Random().nextInt(weeklyFreeChampions.size()), championDto);
+                        } catch (Exception ignored) {}
                         notifyDataSetChanged();
                     }
                 }
@@ -311,7 +314,9 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                         ChampionDto championDto = new ChampionDto();
                         championDto.setAd(true);
                         championDto.setNativeAd(nativeContentAd);
-                        weeklyFreeChampions.add(2, championDto);
+                        try {
+                            weeklyFreeChampions.add(new Random().nextInt(weeklyFreeChampions.size()), championDto);
+                        } catch (Exception ignored) {}
                         notifyDataSetChanged();
                     }
                 }
