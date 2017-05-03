@@ -1,5 +1,10 @@
 package com.yrazlik.loltr.model;
 
+import android.graphics.drawable.Drawable;
+
+import com.google.android.gms.ads.formats.NativeAd;
+import com.google.android.gms.ads.formats.NativeAppInstallAd;
+import com.google.android.gms.ads.formats.NativeContentAd;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -54,6 +59,11 @@ public class ChampionDto {
     private boolean botMmEnabled;
     @SerializedName("rankedPlayEnabled")
     private boolean rankedPlayEnabled;
+
+    private NativeAd nativeAd;
+    private boolean isAd;
+   /* private String adBody;
+    private Drawable adImage;*/
 
     private String dateInterval;
     private String championRp;
@@ -282,4 +292,36 @@ public class ChampionDto {
     public void setChampionIp(String championIp) {
         this.championIp = championIp;
     }
+
+    public NativeAd getNativeAd() {
+        return nativeAd;
+    }
+
+    public void setNativeAd(NativeAd nativeAd) {
+        this.nativeAd = nativeAd;
+    }
+
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
+    }
+
+   /* public String getAdBody() {
+        return adBody;
+    }
+
+    public void setAdBody(String adBody) {
+        this.adBody = adBody;
+    }
+
+    public Drawable getAdImage() {
+        return adImage;
+    }
+
+    public void setAdImage(Drawable adImage) {
+        this.adImage = adImage;
+    }*/
 }

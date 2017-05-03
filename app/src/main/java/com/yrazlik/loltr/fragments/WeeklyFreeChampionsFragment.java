@@ -19,6 +19,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.firebase.client.annotations.NotNull;
+import com.google.android.gms.ads.formats.NativeAppInstallAd;
+import com.google.android.gms.ads.formats.NativeContentAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -33,6 +35,8 @@ import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.model.WeeklyFreeResponseDto;
+import com.yrazlik.loltr.utils.AdUtils;
+import com.yrazlik.loltr.utils.NativeAdLoader;
 import com.yrazlik.loltr.utils.Utils;
 
 import java.util.ArrayList;
@@ -288,11 +292,43 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
     private void setWeeklyFreeChampionsAdapter() {
         dismissProgress();
         if (weeklyFreeChampionsAdapter == null) {
-            weeklyFreeChampionsAdapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions, weeklyFreeChampions);
-            weeklyFreeChampionsList.setAdapter(weeklyFreeChampionsAdapter);
+            createAdapter();
+            AdUtils.getInstance().loadNativeAd(getContext(), getResources().getString(R.string.weekly_free_ad_unit_id), new NativeAdLoader.NativeAdLoadedListener() {
+                @Override
+                public void onAppInstallAdLoaded(NativeAppInstallAd nativeAppInstallAd) {
+                    if(nativeAppInstallAd != null) {
+                        ChampionDto championDto = new ChampionDto();
+                        championDto.setAd(true);
+                        championDto.setNativeAd(nativeAppInstallAd);
+                        weeklyFreeChampions.add(2, championDto);
+                    }
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onContentAdLoaded(NativeContentAd nativeContentAd) {
+                    if(nativeContentAd != null) {
+                        ChampionDto championDto = new ChampionDto();
+                        championDto.setAd(true);
+                        championDto.setNativeAd(nativeContentAd);
+                        weeklyFreeChampions.add(2, championDto);
+                    }
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onAdFailedToLoad() {
+                    notifyDataSetChanged();
+                }
+            });
         } else {
             weeklyFreeChampionsAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void createAdapter() {
+        weeklyFreeChampionsAdapter = new WeeklyFreeChampionsAdapter(getActivity(), R.layout.list_row_weeklyfreechampions, weeklyFreeChampions);
+        weeklyFreeChampionsList.setAdapter(weeklyFreeChampionsAdapter);
     }
 
     private void notifyDataSetChanged() {
@@ -306,17 +342,19 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
         switch (parent.getId()) {
             case R.id.listViewWeeklyFreeChampions:
                 ChampionDto c = (ChampionDto) weeklyFreeChampionsList.getItemAtPosition(position);
-                int champId = c.getId();
-                ChampionDetailFragment fragment = new ChampionDetailFragment();
-                Bundle args = new Bundle();
-                args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
-                args.putString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL, c.getImage().getFull());
-                args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, c.getKey());
-                fragment.setArguments(args);
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out, R.anim.slide_right_in, R.anim.slide_right_out);
-                ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
+                if(!c.isAd()) {
+                    int champId = c.getId();
+                    ChampionDetailFragment fragment = new ChampionDetailFragment();
+                    Bundle args = new Bundle();
+                    args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
+                    args.putString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL, c.getImage().getFull());
+                    args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, c.getKey());
+                    fragment.setArguments(args);
+                    FragmentManager fm = getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out, R.anim.slide_right_in, R.anim.slide_right_out);
+                    ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
+                }
 
                 break;
 

@@ -271,4 +271,6 @@
     <string name="rankedWinLose">Ranked Win/Lose:</string>
     <string name="noRecentNEws">There are no recent news to display.</string>
 
+    <string name="weekly_free_ad_unit_id">ca-app-pub-3940256099942544/2247696110</string>
+
 </resources>
