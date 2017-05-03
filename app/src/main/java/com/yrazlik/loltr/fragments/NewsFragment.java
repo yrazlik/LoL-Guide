@@ -12,6 +12,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.NativeAppInstallAd;
 import com.google.android.gms.ads.formats.NativeContentAd;
 import com.google.android.gms.analytics.HitBuilders;
@@ -32,7 +33,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Random;
 
 /**
  * Created by yrazlik on 12/28/15.
@@ -103,41 +103,9 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                                 noRecentNewsTV.setVisibility(View.GONE);
                                 news = sortByDateCreated(news);
                                 Collections.reverse(news);
+                                addAdsToNewsArray();
                                 adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
                                 newsLV.setAdapter(adapter);
-
-                                AdUtils.getInstance().loadNativeAd(getContext(), getResources().getString(R.string.news_ad_unit_id), new NativeAdLoader.NativeAdLoadedListener() {
-                                    @Override
-                                    public void onAppInstallAdLoaded(NativeAppInstallAd nativeAppInstallAd) {
-                                        if(nativeAppInstallAd != null) {
-                                            News ad = new News();
-                                            ad.setAd(true);
-                                            ad.setNativeAd(nativeAppInstallAd);
-                                            try {
-                                                news.add(0, ad);
-                                            } catch (Exception ignored) {}
-                                            notifyDataSetChanged();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onContentAdLoaded(NativeContentAd nativeContentAd) {
-                                        if(nativeContentAd != null) {
-                                            News ad = new News();
-                                            ad.setAd(true);
-                                            ad.setNativeAd(nativeContentAd);
-                                            try {
-                                                news.add(0, ad);
-                                            } catch (Exception ignored) {}
-                                            notifyDataSetChanged();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onAdFailedToLoad() {
-                                        //do nothing
-                                    }
-                                });
                             } else {
                                 noRecentNewsTV.setVisibility(View.VISIBLE);
                             }
@@ -162,6 +130,19 @@ public class NewsFragment extends BaseFragment implements ResponseListener, Adap
                 adapter = new NewsAdapter(getActivity(), R.layout.list_row_news, news);
                 newsLV.setAdapter(adapter);
             }
+        }
+    }
+
+    private void addAdsToNewsArray() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            News ad = new News();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+            try {
+                news.add(0, ad);
+            } catch (Exception ignored) {}
+            notifyDataSetChanged();
         }
     }
 

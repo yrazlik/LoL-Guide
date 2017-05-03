@@ -1,11 +1,13 @@
 package com.yrazlik.loltr.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.NativeAppInstallAd;
 import com.google.android.gms.ads.formats.NativeContentAd;
 import com.yrazlik.loltr.LolApplication;
+import com.yrazlik.loltr.R;
 
 /**
  * Created by yrazlik on 03/05/17.
@@ -15,11 +17,9 @@ public class AdUtils {
 
     private static AdUtils mInstance;
 
-    private NativeAdLoader nativeAdLoader;
     private boolean adsEnabled = true;
 
-    private NativeAppInstallAd newsInstallAd;
-    private NativeContentAd newsContentAd;
+    private NativeAd nativeAd;
 
     private AdUtils() {}
 
@@ -43,26 +43,43 @@ public class AdUtils {
         return adsEnabled;
     }
 
-    public void loadNativeAd(Context context, String adUnitId, NativeAdLoader.NativeAdLoadedListener nativeAdLoadedListener) {
+    public void loadNativeAd(Context context, final String adUnitId) {
         if(adsEnabled) {
-            new NativeAdLoader().loadAd(context, adUnitId, nativeAdLoadedListener);
+            new NativeAdLoader().loadAd(context, adUnitId, new NativeAdLoader.NativeAdLoadedListener() {
+                @Override
+                public void onAppInstallAdLoaded(NativeAppInstallAd nativeAppInstallAd) {
+                    updateAds(nativeAppInstallAd);
+                }
+
+                @Override
+                public void onContentAdLoaded(NativeContentAd nativeContentAd) {
+                    updateAds(nativeContentAd);
+                }
+
+                @Override
+                public void onAdFailedToLoad() {
+                    Log.d("", "");
+                }
+            });
         } else {
-            if(nativeAdLoadedListener != null) {
-                nativeAdLoadedListener.onAdFailedToLoad();
-            }
+            makeAllAdsNull();
         }
     }
 
-  /*  public NativeAd getCachedAd(String adUnitId) {
-        NativeAd adToReturn = null;
-        if(newsInstallAd != null) {
-            adToReturn = newsInstallAd;
-        } else if(newsContentAd != null) {
-            adToReturn = newsContentAd;
+    private void updateAds(NativeAd nativeAd) {
+        synchronized (nativeAd) {
+            this.nativeAd = nativeAd;
         }
+    }
 
-        loadNativeAd(LolApplication.getAppContext(), adUnitId);
+    private void makeAllAdsNull() {
+        synchronized (nativeAd) {
+            nativeAd = null;
+        }
+    }
 
-        return adToReturn;
-    }*/
+    public NativeAd getCachedAd() {
+        loadNativeAd(LolApplication.getAppContext(), LolApplication.getAppContext().getString(R.string.native_ad_unit_id));
+        return nativeAd;
+    }
 }

@@ -19,6 +19,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.firebase.client.annotations.NotNull;
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.NativeAppInstallAd;
 import com.google.android.gms.ads.formats.NativeContentAd;
 import com.google.android.gms.analytics.HitBuilders;
@@ -293,42 +294,23 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
     private void setWeeklyFreeChampionsAdapter() {
         dismissProgress();
         if (weeklyFreeChampionsAdapter == null) {
+            addAdsToChampionsArray();
             createAdapter();
-            AdUtils.getInstance().loadNativeAd(getContext(), getResources().getString(R.string.weekly_free_ad_unit_id), new NativeAdLoader.NativeAdLoadedListener() {
-                @Override
-                public void onAppInstallAdLoaded(NativeAppInstallAd nativeAppInstallAd) {
-                    if(nativeAppInstallAd != null) {
-                        ChampionDto championDto = new ChampionDto();
-                        championDto.setAd(true);
-                        championDto.setNativeAd(nativeAppInstallAd);
-                        try {
-                            weeklyFreeChampions.add(new Random().nextInt(weeklyFreeChampions.size()), championDto);
-                        } catch (Exception ignored) {}
-                        notifyDataSetChanged();
-                    }
-                }
-
-                @Override
-                public void onContentAdLoaded(NativeContentAd nativeContentAd) {
-                    if(nativeContentAd != null) {
-                        ChampionDto championDto = new ChampionDto();
-                        championDto.setAd(true);
-                        championDto.setNativeAd(nativeContentAd);
-                        try {
-                            weeklyFreeChampions.add(new Random().nextInt(weeklyFreeChampions.size()), championDto);
-                        } catch (Exception ignored) {}
-                        notifyDataSetChanged();
-                    }
-                }
-
-                @Override
-                public void onAdFailedToLoad() {
-                    //do nothing...
-                   // notifyDataSetChanged();
-                }
-            });
         } else {
             weeklyFreeChampionsAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void addAdsToChampionsArray() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            ChampionDto championDto = new ChampionDto();
+            championDto.setAd(true);
+            championDto.setNativeAd(nativeAd);
+            try {
+                weeklyFreeChampions.add(new Random().nextInt(weeklyFreeChampions.size()), championDto);
+            } catch (Exception ignored) {}
+            notifyDataSetChanged();
         }
     }
 

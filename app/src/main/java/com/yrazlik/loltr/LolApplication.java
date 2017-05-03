@@ -77,6 +77,7 @@ public class LolApplication extends MultiDexApplication{
         }
         mAppContext = getApplicationContext();
         LocalizationUtils.init(getApplicationContext());
+        AdUtils.getInstance().getCachedAd();
         availableLanguages = new ArrayList<>();
         availableLanguages.add("tr");
         availableLanguages.add("en_us");

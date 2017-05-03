@@ -2293,10 +2293,10 @@ int string mr_controller_play 0x7f06005f
 int string mr_controller_stop 0x7f060060
 int string mr_system_route_name 0x7f060061
 int string mr_user_route_category_name 0x7f060062
+int string native_ad_unit_id 0x7f060145
 int string networkError 0x7f0600d0
 int string neutralMinionsKilled 0x7f0600d1
 int string neutral_minions_killed 0x7f0600d2
-int string news_ad_unit_id 0x7f060145
 int string nightmare 0x7f0600d3
 int string no 0x7f0600d4
 int string noChampFound 0x7f0600d5
@@ -2394,7 +2394,6 @@ int string vision 0x7f060128
 int string wallet_buy_button_place_holder 0x7f060068
 int string wardKilled 0x7f060129
 int string wardPlaced 0x7f06012a
-int string weekly_free_ad_unit_id 0x7f060149
 int string winrate 0x7f06012b
 int string wonMatchCount 0x7f06012c
 int string yes 0x7f06012d

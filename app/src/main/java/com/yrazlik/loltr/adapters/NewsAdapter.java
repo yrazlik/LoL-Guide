@@ -21,6 +21,7 @@ import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.News;
 import com.yrazlik.loltr.model.ChampionDto;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.List;
 
@@ -144,7 +145,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             }
             adView.setIconView(holder.smallImage);
 
-            holder.txtSeeMore.setText(nativeAppInstallAd.getCallToAction());
+            holder.txtSeeMore.setText(Utils.makeCamelCase(nativeAppInstallAd.getCallToAction().toString()));
             adView.setCallToActionView(holder.adContainerView);
 
             adView.setNativeAd(nativeAppInstallAd);
@@ -169,7 +170,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             }
             adView.setImageView(holder.smallImage);
 
-            holder.txtSeeMore.setText(nativeContentAd.getCallToAction());
+            holder.txtSeeMore.setText(Utils.makeCamelCase(nativeContentAd.getCallToAction().toString()));
             adView.setCallToActionView(holder.adContainerView);
 
             adView.setNativeAd(nativeContentAd);
