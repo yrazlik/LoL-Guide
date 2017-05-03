@@ -301,8 +301,8 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                         championDto.setAd(true);
                         championDto.setNativeAd(nativeAppInstallAd);
                         weeklyFreeChampions.add(2, championDto);
+                        notifyDataSetChanged();
                     }
-                    notifyDataSetChanged();
                 }
 
                 @Override
@@ -312,13 +312,14 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                         championDto.setAd(true);
                         championDto.setNativeAd(nativeContentAd);
                         weeklyFreeChampions.add(2, championDto);
+                        notifyDataSetChanged();
                     }
-                    notifyDataSetChanged();
                 }
 
                 @Override
                 public void onAdFailedToLoad() {
-                    notifyDataSetChanged();
+                    //do nothing...
+                   // notifyDataSetChanged();
                 }
             });
         } else {

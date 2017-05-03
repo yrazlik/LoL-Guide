@@ -162,8 +162,12 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
             holder.adBody.setText(nativeContentAd.getBody());
             adView.setBodyView(holder.adBody);
 
-        //    holder.adImage.setImageDrawable(nativeContentAd.getIcon().getDrawable());
-        //    adView.setIconView(holder.adImage);
+            if(nativeContentAd.getImages() != null && nativeContentAd.getImages().size() > 0) {
+                holder.adImage.setImageDrawable(nativeContentAd.getImages().get(0).getDrawable());
+            } else {
+                holder.adImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.placeholder));
+            }
+            adView.setImageView(holder.adImage);
 
             adView.setCallToActionView(holder.adContainerView);
 

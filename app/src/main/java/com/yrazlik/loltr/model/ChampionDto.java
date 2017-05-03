@@ -62,8 +62,6 @@ public class ChampionDto {
 
     private NativeAd nativeAd;
     private boolean isAd;
-   /* private String adBody;
-    private Drawable adImage;*/
 
     private String dateInterval;
     private String championRp;
@@ -308,20 +306,4 @@ public class ChampionDto {
     public void setAd(boolean ad) {
         isAd = ad;
     }
-
-   /* public String getAdBody() {
-        return adBody;
-    }
-
-    public void setAdBody(String adBody) {
-        this.adBody = adBody;
-    }
-
-    public Drawable getAdImage() {
-        return adImage;
-    }
-
-    public void setAdImage(Drawable adImage) {
-        this.adImage = adImage;
-    }*/
 }
