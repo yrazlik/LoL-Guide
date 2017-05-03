@@ -129,7 +129,7 @@ public class ApiHelper {
 
     public void getChampionOverview(final int champId, final IResponseHandler retrofitResponseHandler) {
         String version = Commons.LATEST_VERSION;
-        ChampionOverviewTable champ = DbHelper.getInstance().getChampionOverview(champId, version);
+        ChampionOverviewTable champ = null; // DbHelper.getInstance().getChampionOverview(champId, version);
         if(champ != null) {
             retrofitResponseHandler.onResponseFromCache(champ);
         } else {
