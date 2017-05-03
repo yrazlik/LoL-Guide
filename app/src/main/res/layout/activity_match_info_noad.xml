@@ -40,7 +40,6 @@
         android:id="@+id/scrollContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/adView"
         android:layout_below="@+id/toolbar"
         android:scrollbars="none"
         android:fillViewport="true"

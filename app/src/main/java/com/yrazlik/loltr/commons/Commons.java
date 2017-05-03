@@ -325,6 +325,6 @@ public class Commons {
     }
 
     public void disableAds() { //TODO: change it to return false
-        this.ADS_ENABLED = false;
+        this.ADS_ENABLED = true;
     }
 }
