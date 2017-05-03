@@ -319,4 +319,12 @@ public class Commons {
             return new ArrayList<>(Arrays.asList(regions));
         }
     }
+
+    public void enableAds() {
+        this.ADS_ENABLED = true;
+    }
+
+    public void disableAds() { //TODO: change it to return false
+        this.ADS_ENABLED = false;
+    }
 }

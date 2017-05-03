@@ -785,7 +785,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==  Commons.REMOVE_ADS_REQUEST_CODE) {
             if(resultCode == RESULT_OK) {
-                Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+                Commons.getInstance(getApplicationContext()).disableAds();
                 Commons.getInstance(getApplicationContext()).savePurchaseData();
                 sendPurchaseSuccessEvent();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

@@ -201,7 +201,7 @@ public class SplashActivity extends Activity{
     private void getPurchaseEvent() {
         boolean isPurchased = Commons.getInstance(getApplicationContext()).loadPurchaseData();
         if(isPurchased) {
-            Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+            Commons.getInstance(getApplicationContext()).disableAds();
             setupInAppPurchases(null);
             startMainActivity();
         } else {
@@ -231,7 +231,7 @@ public class SplashActivity extends Activity{
                                 for (int i = 0; i < ownedSkus.size(); ++i) {
                                     String sku = ownedSkus.get(i);
                                     if(sku.equalsIgnoreCase(Commons.REMOVE_ADS_ID)) {
-                                        Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+                                        Commons.getInstance(getApplicationContext()).disableAds();
                                         Commons.getInstance(getApplicationContext()).savePurchaseData();
                                     }
                                 }
@@ -239,10 +239,10 @@ public class SplashActivity extends Activity{
                         }
                     }
                 } catch (RemoteException e) {
-                    Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+                    Commons.getInstance(getApplicationContext()).disableAds();
                 }
             } else {
-                Commons.getInstance(getApplicationContext()).ADS_ENABLED = false;
+                Commons.getInstance(getApplicationContext()).disableAds();
             }
             startMainActivity();
         }
