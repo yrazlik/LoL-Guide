@@ -63,9 +63,7 @@ public class AdUtils {
                 }
 
                 @Override
-                public void onAdFailedToLoad() {
-                    lastAdRequestTime = new Date().getTime();
-                }
+                public void onAdFailedToLoad() {}
             });
         } else {
             makeAllAdsNull();
