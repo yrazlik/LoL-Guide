@@ -113,7 +113,7 @@ public class LolApplication extends MultiDexApplication{
             tracker = analytics.newTracker(Commons.GOOGLE_ANALYTICS_TRACKING_ID);
             tracker.enableExceptionReporting(true);
             tracker.enableAdvertisingIdCollection(false);
-            tracker.enableAutoActivityTracking(true);
+            tracker.enableAutoActivityTracking(false);
 
         }catch (Exception e){
             e.printStackTrace();
