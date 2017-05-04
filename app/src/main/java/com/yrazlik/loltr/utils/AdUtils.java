@@ -1,14 +1,18 @@
 package com.yrazlik.loltr.utils;
 
 import android.content.Context;
-import android.util.Log;
-
+import android.view.LayoutInflater;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import com.google.android.gms.ads.formats.NativeAd;
+import com.google.android.gms.ads.formats.NativeAdView;
 import com.google.android.gms.ads.formats.NativeAppInstallAd;
+import com.google.android.gms.ads.formats.NativeAppInstallAdView;
 import com.google.android.gms.ads.formats.NativeContentAd;
+import com.google.android.gms.ads.formats.NativeContentAdView;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
-
+import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.Date;
 
 /**
@@ -22,10 +26,13 @@ public class AdUtils {
 
     private long lastAdRequestTime;
     private boolean adsEnabled = true;
+    private LayoutInflater mLayoutInflater;
 
     private NativeAd nativeAd;
 
-    private AdUtils() {}
+    private AdUtils() {
+        mLayoutInflater = LayoutInflater.from(LolApplication.getAppContext());
+    }
 
     public static AdUtils getInstance() {
         if(mInstance == null) {
@@ -95,5 +102,80 @@ public class AdUtils {
             return true;
         }
         return false;
+    }
+
+    public NativeAdView createLargeAdView() {
+        if(nativeAd instanceof NativeAppInstallAd) {
+            return createLargeNativeAppInstallAdView(getCachedAd());
+        } else if(nativeAd instanceof NativeContentAd) {
+            return createLargeNativeContentAdView(getCachedAd());
+        }
+        return null;
+    }
+
+    private NativeAppInstallAdView createLargeNativeAppInstallAdView(NativeAd ad) {
+        try {
+            NativeAppInstallAd nativeAppInstallAd = (NativeAppInstallAd) ad;
+            NativeAppInstallAdView adView = (NativeAppInstallAdView) mLayoutInflater.inflate(R.layout.large_nativeinstalladview, null, false);
+            RelativeLayout adContainerView = (RelativeLayout) adView.findViewById(R.id.adContainerView);
+            ImageView adIV = (ImageView) adView.findViewById(R.id.adIV);
+            RobotoTextView headlineTV = (RobotoTextView) adView.findViewById(R.id.headlineTV);
+            RobotoTextView bodyTV = (RobotoTextView) adView.findViewById(R.id.bodyTV);
+            RobotoTextView callToActionTV = (RobotoTextView) adView.findViewById(R.id.callToActionTV);
+
+            headlineTV.setText(nativeAppInstallAd.getHeadline());
+            adView.setHeadlineView(headlineTV);
+
+            bodyTV.setText(nativeAppInstallAd.getBody());
+            adView.setBodyView(bodyTV);
+
+            if(nativeAppInstallAd.getImages() != null && nativeAppInstallAd.getImages().size() > 0) {
+                adIV.setImageDrawable(nativeAppInstallAd.getImages().get(0).getDrawable());
+            } else {
+                adIV.setImageDrawable(LolApplication.getAppContext().getResources().getDrawable(R.drawable.white_bg));
+            }
+            adView.setIconView(adIV);
+
+            callToActionTV.setText(Utils.makeCamelCase(nativeAppInstallAd.getCallToAction().toString()));
+            adView.setCallToActionView(adContainerView);
+            adView.setNativeAd(nativeAppInstallAd);
+
+            return adView;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private NativeContentAdView createLargeNativeContentAdView(NativeAd ad) {
+        try {
+            NativeContentAd nativeContentAd = (NativeContentAd) ad;
+            NativeContentAdView adView = (NativeContentAdView) mLayoutInflater.inflate(R.layout.large_contentadview, null, false);
+            RelativeLayout adContainerView = (RelativeLayout) adView.findViewById(R.id.adContainerView);
+            ImageView adIV = (ImageView) adView.findViewById(R.id.adIV);
+            RobotoTextView headlineTV = (RobotoTextView) adView.findViewById(R.id.headlineTV);
+            RobotoTextView bodyTV = (RobotoTextView) adView.findViewById(R.id.bodyTV);
+            RobotoTextView callToActionTV = (RobotoTextView) adView.findViewById(R.id.callToActionTV);
+
+            headlineTV.setText(nativeContentAd.getHeadline());
+            adView.setHeadlineView(headlineTV);
+
+            bodyTV.setText(nativeContentAd.getBody());
+            adView.setBodyView(bodyTV);
+
+            if(nativeContentAd.getImages() != null && nativeContentAd.getImages().size() > 0) {
+                adIV.setImageDrawable(nativeContentAd.getImages().get(0).getDrawable());
+            } else {
+                adIV.setImageDrawable(LolApplication.getAppContext().getResources().getDrawable(R.drawable.white_bg));
+            }
+            adView.setImageView(adIV);
+
+            callToActionTV.setText(Utils.makeCamelCase(nativeContentAd.getCallToAction().toString()));
+            adView.setCallToActionView(adContainerView);
+            adView.setNativeAd(nativeContentAd);
+
+            return adView;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

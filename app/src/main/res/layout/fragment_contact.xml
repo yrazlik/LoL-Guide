@@ -1,73 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@color/cardview_bg"
-                                    android:elevation="2dp"
-                                    app:cardPreventCornerOverlap="false"
-                                    app:cardUseCompatPadding="true">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardview_bg">
+            android:fillViewport="true">
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/textviewContactText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/contact_text"
-                android:textAppearance="@style/sp13BlackRegular"/>
+    <LinearLayout
+        android:id="@+id/parentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="3dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/edittextContactBoxContainer"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/cardview_bg"
+            android:elevation="2dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textviewContactText"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="match_parent"
                 android:background="@color/cardview_bg"
-                android:elevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true">
+                android:padding="10dp">
 
-                <com.yrazlik.loltr.view.RobotoEditText
-                    android:id="@+id/edittextContactBox"
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/textviewContactText"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="@color/cardview_bg"
-                    android:gravity="top"
-                    android:hint="@string/enter_text_here"
-                    android:padding="10dp"
-                    android:textColor="@color/text_black"
-                    android:textColorHint="@color/text_gray"
-                    android:textSize="12sp"
-                    />
-            </android.support.v7.widget.CardView>
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_text"
+                    android:textAppearance="@style/sp13BlackRegular"/>
 
-            <com.yrazlik.loltr.view.RobotoButton
-                android:id="@+id/buttonContact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/edittextContactBoxContainer"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:text="@string/send"
-                android:minHeight="35dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/tab_color"
-                android:textColor="@color/white"
-                android:textSize="13sp"/>
-        </RelativeLayout>
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/edittextContactBoxContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textviewContactText"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/cardview_bg"
+                    android:elevation="0dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
+
+                    <com.yrazlik.loltr.view.RobotoEditText
+                        android:id="@+id/edittextContactBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@color/cardview_bg"
+                        android:gravity="top"
+                        android:hint="@string/enter_text_here"
+                        android:padding="10dp"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_gray"
+                        android:textSize="12sp"
+                        />
+                </android.support.v7.widget.CardView>
+
+                <com.yrazlik.loltr.view.RobotoButton
+                    android:id="@+id/buttonContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edittextContactBoxContainer"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/tab_color"
+                    android:minHeight="35dp"
+                    android:text="@string/send"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

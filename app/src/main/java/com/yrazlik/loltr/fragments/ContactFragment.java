@@ -2,6 +2,7 @@ package com.yrazlik.loltr.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,11 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
+import com.yrazlik.loltr.utils.AdUtils;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.RobotoButton;
 import com.yrazlik.loltr.view.RobotoEditText;
 
@@ -23,6 +27,7 @@ import com.yrazlik.loltr.view.RobotoEditText;
  */
 public class ContactFragment extends BaseFragment{
 
+    private LinearLayout parentView;
     private RobotoButton send;
     private RobotoEditText message;
 
@@ -30,6 +35,8 @@ public class ContactFragment extends BaseFragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d("TAGGG", "ContactFragmentOnCreateView");
         View v = inflater.inflate(R.layout.fragment_contact, container, false);
+
+        parentView = (LinearLayout) v.findViewById(R.id.parentView);
         send = (RobotoButton) v.findViewById(R.id.buttonContact);
         message = (RobotoEditText) v.findViewById(R.id.edittextContactBox);
 
@@ -44,6 +51,8 @@ public class ContactFragment extends BaseFragment{
                 startActivity(i);
             }
         });
+
+        Utils.addView(parentView, AdUtils.getInstance().createLargeAdView());
 
         return v;
     }

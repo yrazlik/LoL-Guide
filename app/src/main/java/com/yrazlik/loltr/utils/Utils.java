@@ -1,5 +1,8 @@
 package com.yrazlik.loltr.utils;
 
+import android.view.View;
+import android.view.ViewGroup;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -90,4 +93,14 @@ public class Utils {
         }
     }
 
+    public static void addView(ViewGroup parent, View child) {
+        try {
+            if(parent != null && child != null) {
+                View childView = parent.findViewById(child.getId());
+                if(childView == null) {
+                    parent.addView(child);
+                }
+            }
+        } catch (Exception ignored) {}
+    }
 }
