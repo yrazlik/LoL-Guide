@@ -1,22 +1,20 @@
 package com.yrazlik.loltr.fragments;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -25,7 +23,7 @@ import com.yrazlik.loltr.adapters.ChampionDiscountsAdapter;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.ChampionDiscount;
 import com.yrazlik.loltr.listener.ResponseListener;
-import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -97,6 +95,7 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
                             championDiscounts = sortByDateCreated(championDiscounts);
                             if (championDiscounts != null && championDiscounts.size() > 0) {
                                 Collections.reverse(championDiscounts);
+                                addAdsViewToDiscounts();
                                 adapter = new ChampionDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, championDiscounts);
                                 discountsLV.setAdapter(adapter);
                             }
@@ -117,6 +116,19 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
         }
 
         return rootView;
+    }
+
+    private void addAdsViewToDiscounts() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            ChampionDiscount ad = new ChampionDiscount();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+
+            try {
+                championDiscounts.add(3, ad);
+            } catch (Exception ignored) {}
+        }
     }
 
     @Override
@@ -144,18 +156,20 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         try {
             ChampionDiscount d = (ChampionDiscount) discountsLV.getItemAtPosition(position);
-            int champId = (int) d.getChampionId();
-            if (champId != 0) {
-                ChampionDetailFragment fragment = new ChampionDetailFragment();
-                Bundle args = new Bundle();
-                args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
-                args.putString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL, d.getImageUrl());
-                args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, d.getName());
-                fragment.setArguments(args);
-                FragmentManager fm = getParentFragment().getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out, R.anim.slide_right_in, R.anim.slide_right_out);
-                ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
+            if(!d.isAd()) {
+                int champId = (int) d.getChampionId();
+                if (champId != 0) {
+                    ChampionDetailFragment fragment = new ChampionDetailFragment();
+                    Bundle args = new Bundle();
+                    args.putInt(ChampionDetailFragment.EXTRA_CHAMPION_ID, champId);
+                    args.putString(ChampionDetailFragment.EXTRA_CHAMPION_IMAGE_URL, d.getImageUrl());
+                    args.putString(ChampionDetailFragment.EXTRA_CHAMPION_NAME, d.getName());
+                    fragment.setArguments(args);
+                    FragmentManager fm = getParentFragment().getFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out, R.anim.slide_right_in, R.anim.slide_right_out);
+                    ft.replace(R.id.content_frame, fragment).addToBackStack(Commons.CHAMPION_DETAILS_FRAGMENT).commit();
+                }
             }
         } catch (Exception ignored) {}
     }

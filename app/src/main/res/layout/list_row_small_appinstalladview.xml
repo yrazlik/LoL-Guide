@@ -37,8 +37,9 @@
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/adHeadline"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="left"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textAppearance="@style/sp14BlackBold"
@@ -46,10 +47,11 @@
 
             <com.yrazlik.loltr.view.RobotoTextView
                 android:id="@+id/adBody"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/adHeadline"
                 android:layout_marginTop="5dp"
+                android:gravity="left"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textAppearance="@style/sp12GrayRegular"/>

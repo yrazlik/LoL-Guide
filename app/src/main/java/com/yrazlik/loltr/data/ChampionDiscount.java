@@ -1,5 +1,7 @@
 package com.yrazlik.loltr.data;
 
+import com.google.android.gms.ads.formats.NativeAd;
+
 import java.util.Date;
 
 /**
@@ -16,6 +18,9 @@ public class ChampionDiscount {
     private long championId;
     private Date createdAt;
 
+    private boolean isAd;
+    private NativeAd nativeAd;
+
     public ChampionDiscount(String startDate, String endDate, String name, String priceBeforeDiscount, String priceAfterDiscount, String imageUrl, long champId, Date createdAt){
         this.startDate = startDate;
         this.endDate = endDate;
@@ -25,6 +30,10 @@ public class ChampionDiscount {
         this.imageUrl = imageUrl;
         this.championId = champId;
         this.createdAt = createdAt;
+    }
+
+    public ChampionDiscount() {
+
     }
 
     public String getEndDate() {
@@ -89,5 +98,21 @@ public class ChampionDiscount {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
+    }
+
+    public NativeAd getNativeAd() {
+        return nativeAd;
+    }
+
+    public void setNativeAd(NativeAd nativeAd) {
+        this.nativeAd = nativeAd;
     }
 }

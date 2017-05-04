@@ -55,7 +55,7 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
                     holder.ipPrice = (RobotoTextView)convertView.findViewById(R.id.textViewIp);
                     break;
                 case ROW_APP_INSTALL_AD:
-                    holder.nativeAdView = (NativeAppInstallAdView) inflater.inflate(R.layout.list_row_weekly_free_appinstalladview, parent, false);
+                    holder.nativeAdView = (NativeAppInstallAdView) inflater.inflate(R.layout.list_row_small_appinstalladview, parent, false);
                     convertView = holder.nativeAdView;
                     holder.adContainerView = (RelativeLayout) holder.nativeAdView.findViewById(R.id.adContainerView);
                     holder.adHeadline = (RobotoTextView) holder.nativeAdView.findViewById(R.id.adHeadline);
@@ -63,7 +63,7 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
                     holder.adImage = (CircularImageView) holder.nativeAdView.findViewById(R.id.adImage);
                     break;
                 case ROW_CONTENT_AD:
-                    holder.nativeAdView = (NativeContentAdView) inflater.inflate(R.layout.list_row_weekly_free_contentadview, parent, false);
+                    holder.nativeAdView = (NativeContentAdView) inflater.inflate(R.layout.list_row_small_contentadview, parent, false);
                     convertView = holder.nativeAdView;
                     holder.adContainerView = (RelativeLayout) holder.nativeAdView.findViewById(R.id.adContainerView);
                     holder.adHeadline = (RobotoTextView) holder.nativeAdView.findViewById(R.id.adHeadline);
@@ -142,7 +142,11 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
             holder.adBody.setText(nativeAppInstallAd.getBody());
             adView.setBodyView(holder.adBody);
 
-            holder.adImage.setImageDrawable(nativeAppInstallAd.getIcon().getDrawable());
+            if(nativeAppInstallAd.getIcon() != null && nativeAppInstallAd.getIcon().getDrawable() != null) {
+                holder.adImage.setImageDrawable(nativeAppInstallAd.getIcon().getDrawable());
+            } else {
+                holder.adImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.white_bg));
+            }
             adView.setIconView(holder.adImage);
 
             adView.setCallToActionView(holder.adContainerView);
@@ -162,10 +166,10 @@ public class WeeklyFreeChampionsAdapter extends ArrayAdapter<ChampionDto> {
             holder.adBody.setText(nativeContentAd.getBody());
             adView.setBodyView(holder.adBody);
 
-            if(nativeContentAd.getImages() != null && nativeContentAd.getImages().size() > 0) {
-                holder.adImage.setImageDrawable(nativeContentAd.getImages().get(0).getDrawable());
+            if(nativeContentAd.getLogo() != null && nativeContentAd.getLogo().getDrawable() != null) {
+                holder.adImage.setImageDrawable(nativeContentAd.getLogo().getDrawable());
             } else {
-                holder.adImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.placeholder));
+                holder.adImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.white_bg));
             }
             adView.setImageView(holder.adImage);
 
