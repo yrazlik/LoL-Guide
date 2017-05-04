@@ -21,7 +21,7 @@ import java.util.Date;
 
 public class AdUtils {
 
-    private static final long AD_CACHE_TIMEOUT = 60 * 1000;
+    private static final long AD_CACHE_TIMEOUT = 90 * 1000;
     private static AdUtils mInstance;
 
     private long lastAdRequestTime;
@@ -90,10 +90,13 @@ public class AdUtils {
     }
 
     public NativeAd getCachedAd() {
-        if(shouldRequestNewAd()) {
-            loadNativeAd(LolApplication.getAppContext(), LolApplication.getAppContext().getString(R.string.native_ad_unit_id));
+        if(adsEnabled) {
+            if (shouldRequestNewAd()) {
+                loadNativeAd(LolApplication.getAppContext(), LolApplication.getAppContext().getString(R.string.native_ad_unit_id));
+            }
+            return nativeAd;
         }
-        return nativeAd;
+        return null;
     }
 
     private boolean shouldRequestNewAd() {

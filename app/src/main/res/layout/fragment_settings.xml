@@ -8,82 +8,93 @@
     android:background="@color/bg_gray"
     android:fillViewport="true">
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
+        android:id="@+id/parentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cardview_bg"
-        android:elevation="0dp"
-        app:cardCornerRadius="0dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:background="@color/cardview_bg"
-            android:paddingBottom="35dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="35dp">
+            android:elevation="0dp"
+            app:cardCornerRadius="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/selectRegionText"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/regionSpinner"
-                android:layout_alignTop="@+id/regionSpinner"
-                android:gravity="center_vertical"
-                android:minWidth="50dp"
-                android:text="@string/select_region"
-                android:textAppearance="@style/sp14BlackBold"
-                />
+                android:background="@color/cardview_bg"
+                android:paddingBottom="35dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="35dp">
 
-            <Spinner
-                android:id="@+id/regionSpinner"
-                style="@style/spinner_style"
-                android:layout_marginLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/selectRegionText"
-                android:spinnerMode="dialog">
-            </Spinner>
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/selectRegionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/regionSpinner"
+                    android:layout_alignTop="@+id/regionSpinner"
+                    android:gravity="center_vertical"
+                    android:minWidth="50dp"
+                    android:text="@string/select_region"
+                    android:textAppearance="@style/sp14BlackBold"
+                    />
 
-            <com.yrazlik.loltr.view.RobotoButton
-                android:id="@+id/buttonSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/regionSpinner"
-                android:layout_marginTop="20dp"
-                android:background="@color/tab_color"
-                android:minHeight="35dp"
-                android:text="@string/save"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="13sp"/>
+                <Spinner
+                    android:id="@+id/regionSpinner"
+                    style="@style/spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/selectRegionText"
+                    android:spinnerMode="dialog">
+                </Spinner>
 
-            <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/removeAdsExplanation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/buttonSave"
-                android:layout_marginTop="20dp"
-                android:text="@string/remove_ads_explanation"
-                android:textAppearance="@style/sp12BlackRegular"/>
+                <com.yrazlik.loltr.view.RobotoButton
+                    android:id="@+id/buttonSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/regionSpinner"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/tab_color"
+                    android:minHeight="35dp"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"/>
 
-            <com.yrazlik.loltr.view.RobotoButton
-                android:id="@+id/removeAdsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/removeAdsExplanation"
-                android:layout_marginTop="15dp"
-                android:background="@color/tab_color"
-                android:minHeight="35dp"
-                android:text="@string/remove_ads"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="13sp"/>
+                <com.yrazlik.loltr.view.RobotoTextView
+                    android:id="@+id/removeAdsExplanation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonSave"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/remove_ads_explanation"
+                    android:textAppearance="@style/sp12BlackRegular"/>
+
+                <com.yrazlik.loltr.view.RobotoButton
+                    android:id="@+id/removeAdsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/removeAdsExplanation"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/tab_color"
+                    android:minHeight="35dp"
+                    android:text="@string/remove_ads"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"/>
 
 
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 </ScrollView>

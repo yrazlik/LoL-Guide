@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ import com.yrazlik.loltr.adapters.SimpleSpinnerAdapter;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.utils.AdUtils;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.RobotoButton;
 import com.yrazlik.loltr.view.RobotoTextView;
 
@@ -48,9 +51,9 @@ public class SettingsFragment extends BaseFragment{
     private Spinner regionSpinner;
     private SimpleSpinnerAdapter regionSpinnerAdapter;
     private RobotoButton buttonSave;
-    private RobotoTextView selectRegionText;
     private RobotoButton removeAdsButton;
     private RobotoTextView removeAdsExplanation;
+    private LinearLayout parentView;
 
 
 
@@ -58,7 +61,7 @@ public class SettingsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
-        selectRegionText = (RobotoTextView) v.findViewById(R.id.selectRegionText);
+        parentView = (LinearLayout) v.findViewById(R.id.parentView);
 
         SharedPreferences prefs = getContext().getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
 
@@ -176,6 +179,8 @@ public class SettingsFragment extends BaseFragment{
             removeAdsButton.setVisibility(View.GONE);
             removeAdsExplanation.setVisibility(View.GONE);
         }
+
+        Utils.addView(parentView, AdUtils.getInstance().createLargeAdView());
 
         return v;
     }
