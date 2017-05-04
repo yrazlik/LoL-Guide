@@ -19,6 +19,7 @@ import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.LiveChannelsAdapter;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.data.Channel;
 import com.yrazlik.loltr.data.Streams;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.LiveChannelsResponse;
@@ -67,6 +68,12 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
             errorText.setVisibility(View.GONE);
             LiveChannelsResponse resp = (LiveChannelsResponse) response;
             channels = resp.getStreams();
+            for(int i = 0; i < channels.size(); i++) {
+                Streams ch = channels.get(i);
+                if(ch != null && ch.getChannel() != null) {
+                    ch.getChannel().setUrl("https://player.twitch.tv/?channel=" + ch.getChannel().getName());
+                }
+            }
             addAdsToNewsArray();
             adapter = new LiveChannelsAdapter(getContext(), R.layout.list_row_livechannel, channels);
             liveChannelsList.setAdapter(adapter);

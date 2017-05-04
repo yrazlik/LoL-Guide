@@ -95,8 +95,7 @@ public class LiveChannelActivity extends Activity{
     protected void onResume() {
         super.onResume();
         if(streamUrl != null) {
-            String html = "<iframe width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" src=\""+ streamUrl + "/embed" +"\"></iframe>";
-            webView.loadDataWithBaseURL("", html, "text/html", "UTF-8", null);
+            webView.loadUrl(streamUrl);
         }
     }
 
