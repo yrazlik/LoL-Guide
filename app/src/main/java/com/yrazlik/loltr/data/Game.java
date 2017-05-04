@@ -1,6 +1,8 @@
 package com.yrazlik.loltr.data;
 
 
+import com.google.android.gms.ads.formats.NativeAd;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,6 +12,9 @@ import java.util.List;
 public class Game implements Serializable{
 
     private static final long serialVersionUID = 1L;
+
+    private boolean isAd;
+    private transient NativeAd nativeAd;
 
     private int championId;
     private long createDate;
@@ -145,5 +150,21 @@ public class Game implements Serializable{
 
     public void setTeamId(int teamId) {
         this.teamId = teamId;
+    }
+
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
+    }
+
+    public NativeAd getNativeAd() {
+        return nativeAd;
+    }
+
+    public void setNativeAd(NativeAd nativeAd) {
+        this.nativeAd = nativeAd;
     }
 }

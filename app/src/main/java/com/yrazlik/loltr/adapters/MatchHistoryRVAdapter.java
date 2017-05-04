@@ -1,5 +1,6 @@
 package com.yrazlik.loltr.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.formats.NativeAdView;
+import com.google.android.gms.ads.formats.NativeAppInstallAd;
+import com.google.android.gms.ads.formats.NativeAppInstallAdView;
+import com.google.android.gms.ads.formats.NativeContentAd;
+import com.google.android.gms.ads.formats.NativeContentAdView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.yrazlik.loltr.LolImageLoader;
 import com.yrazlik.loltr.R;
@@ -20,6 +26,7 @@ import com.yrazlik.loltr.data.SummonerSpell;
 import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
 import com.yrazlik.loltr.view.RobotoTextView;
 
@@ -35,7 +42,10 @@ import java.util.TreeMap;
 /**
  * Created by yrazlik on 22/04/16.
  */
-public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAdapter.ViewHolder>{
+public class MatchHistoryRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+    private static final int TYPE_MAX_COUNT = 4;
+    private static final int ROW_UNKNOWN = -1, ROW_MATCH = 0, ROW_APP_INSTALL_AD = 1, ROW_CONTENT_AD = 2;
 
     private long summonerId;
     private List<Game> games;
@@ -59,143 +69,233 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(rowLayoutId, parent, false);
-        ViewHolder holder = new ViewHolder(v, new ViewHolder.ViewHolderClickListener() {
-            @Override
-            public void onItemClick(View caller, int position) {
-                if(position >= 0 && position < games.size()) {
-                    recyclerViewClickListener.onRecyclerViewItemClicked(games.get(position), position);
-                }
-            }
-        });
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v;
+        RecyclerView.ViewHolder holder = null;
+
+        switch (viewType) {
+            case ROW_UNKNOWN:
+            case ROW_MATCH:
+                v = LayoutInflater.from(parent.getContext()).inflate(rowLayoutId, parent, false);
+                holder = new ViewHolder(v, new ViewHolder.ViewHolderClickListener() {
+                    @Override
+                    public void onItemClick(View caller, int position) {
+                        if(position >= 0 && position < games.size()) {
+                            recyclerViewClickListener.onRecyclerViewItemClicked(games.get(position), position);
+                        }
+                    }
+                });
+                break;
+            case ROW_APP_INSTALL_AD:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row_ad_matchinfo_appinstall, parent, false);
+                holder = new AdViewHolder(v, AdViewHolder.AD_TYPE.AD_TYPE_APPINSTALL);
+                break;
+            case ROW_CONTENT_AD:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row_ad_matchinfo_adcontent, parent, false);
+                holder = new AdViewHolder(v, AdViewHolder.AD_TYPE.AD_TYPE_CONTENT);
+                break;
+            default:
+                break;
+        }
+
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(position < games.size()) {
+            final int itemType = getItemViewType(position);
             Game game = games.get(position);
-            if (game != null) {
 
-                String gameMode = game.getGameMode();
-                String gameType = game.getGameType();
-                String subType = game.getSubType();
+            switch (itemType) {
+                case ROW_UNKNOWN:
+                case ROW_MATCH:
+                    if (game != null) {
+                        ViewHolder viewHolder = (MatchHistoryRVAdapter.ViewHolder) holder;
+                        String gameMode = game.getGameMode();
+                        String gameType = game.getGameType();
+                        String subType = game.getSubType();
 
-                String gameModeText = getGameModeText(gameMode);
-                String gameTypeText = getGameTypeText(gameType, subType);
+                        String gameModeText = getGameModeText(gameMode);
+                        String gameTypeText = getGameTypeText(gameType, subType);
 
-                holder.matchModeTV.setText(gameModeText);
-                holder.matchTypeTV.setText(gameTypeText);
+                        viewHolder.matchModeTV.setText(gameModeText);
+                        viewHolder.matchTypeTV.setText(gameTypeText);
 
-                int spell1 = game.getSpell1();
-                int spell2 = game.getSpell2();
+                        int spell1 = game.getSpell1();
+                        int spell2 = game.getSpell2();
 
-                if (Commons.allSpells != null) {
-                    String spell1Name = null, spell2Name = null;
-                    for (SummonerSpell sp : Commons.allSpells) {
-                        if (sp.getId() == spell1) {
-                            if (sp.getImage() != null) {
-                                spell1Name = sp.getImage().getFull();
+                        if (Commons.allSpells != null) {
+                            String spell1Name = null, spell2Name = null;
+                            for (SummonerSpell sp : Commons.allSpells) {
+                                if (sp.getId() == spell1) {
+                                    if (sp.getImage() != null) {
+                                        spell1Name = sp.getImage().getFull();
+                                    }
+                                }
+
+                                if (sp.getId() == spell2) {
+                                    if (sp.getImage() != null) {
+                                        spell2Name = sp.getImage().getFull();
+                                    }
+                                }
+                            }
+
+                            LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, viewHolder.spell1);
+                            LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, viewHolder.spell2);
+
+                        }
+
+                        long createDate = game.getCreateDate();
+
+                        Calendar c = Calendar.getInstance();
+                        c.setTime(new Date(createDate));
+                        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        viewHolder.matchDateTV.setText(dateFormat.format(c.getTime()));
+
+                        int championID = game.getChampionId();
+                        String champImageUrl = null;
+                        List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
+                        if (allChampions != null && allChampions.size() > 0) {
+                            for (ChampionDto champ : allChampions) {
+                                if (champ.getId() == championID) {
+                                    champImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
+                                    break;
+                                }
                             }
                         }
 
-                        if (sp.getId() == spell2) {
-                            if (sp.getImage() != null) {
-                                spell2Name = sp.getImage().getFull();
+                        LolImageLoader.getInstance().loadImage(champImageUrl, viewHolder.champIV);
+
+                        Stats stats = game.getStats();
+                        if (stats != null) {
+                            if (stats.isWin()) {
+                                viewHolder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.discount_green));
+                            } else {
+                                viewHolder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_red));
+                            }
+
+                            viewHolder.levelTV.setText(stats.getLevel() + "");
+                            viewHolder.kdaTV.setText(stats.getChampionsKilled() + " / " + stats.getNumDeaths() + " / " + stats.getAssists());
+                            viewHolder.goldTV.setText(format(stats.getGoldEarned()));
+                            String timeString = convertSecondsToHoursMinutes(stats.getTimePlayed());
+                            if (timeString != null) {
+                                viewHolder.matchTimeTV.setText(timeString);
+                            }
+
+                            int item0 = stats.getItem0();
+                            int item1 = stats.getItem1();
+                            int item2 = stats.getItem2();
+                            int item3 = stats.getItem3();
+                            int item4 = stats.getItem4();
+                            int item5 = stats.getItem5();
+                            int item6 = stats.getItem6();
+
+                            if(item0 != 0) {
+                                LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item0 + ".png", viewHolder.item0, mOptions);
+                            } else {
+                                LolImageLoader.getInstance().loadImage("", viewHolder.item0, mOptions);
+                            }
+
+                            if (item1 != 0) {
+                                LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item1 + ".png", viewHolder.item1, mOptions);
+                            } else {
+                                LolImageLoader.getInstance().loadImage("", viewHolder.item1, mOptions);
+                            }
+
+                            if (item2 != 0) {
+                                LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item2 + ".png", viewHolder.item2, mOptions);
+                            } else {
+                                LolImageLoader.getInstance().loadImage("", viewHolder.item2, mOptions);
+                            }
+                            if (item3 != 0) {
+                                LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item3 + ".png", viewHolder.item3, mOptions);
+                            } else {
+                                LolImageLoader.getInstance().loadImage("", viewHolder.item3, mOptions);
+                            }
+                            if (item4 != 0) {
+                                LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item4 + ".png", viewHolder.item4, mOptions);
+                            } else {
+                                LolImageLoader.getInstance().loadImage("", viewHolder.item4, mOptions);
+                            }
+                            if (item5 != 0) {
+                                LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item5 + ".png", viewHolder.item5, mOptions);
+                            } else {
+                                LolImageLoader.getInstance().loadImage("", viewHolder.item5, mOptions);
+                            }
+                            if (item6 != 0) {
+                                LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item6 + ".png", viewHolder.item6, mOptions);
+                            } else {
+                                LolImageLoader.getInstance().loadImage("", viewHolder.item6, mOptions);
                             }
                         }
                     }
-
-                    LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell1Name, holder.spell1);
-                    LolImageLoader.getInstance().loadImage(Commons.SUMMONER_SPELL_IMAGE_BASE_URL + spell2Name, holder.spell2);
-
-                }
-
-                long createDate = game.getCreateDate();
-
-                Calendar c = Calendar.getInstance();
-                c.setTime(new Date(createDate));
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                holder.matchDateTV.setText(dateFormat.format(c.getTime()));
-
-                int championID = game.getChampionId();
-                String champImageUrl = null;
-                List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
-                if (allChampions != null && allChampions.size() > 0) {
-                    for (ChampionDto champ : allChampions) {
-                        if (champ.getId() == championID) {
-                            champImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
-                            break;
-                        }
-                    }
-                }
-
-                LolImageLoader.getInstance().loadImage(champImageUrl, holder.champIV);
-
-                Stats stats = game.getStats();
-                if (stats != null) {
-                    if (stats.isWin()) {
-                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.discount_green));
-                    } else {
-                        holder.winLoseLabel.setBackgroundColor(mContext.getResources().getColor(R.color.material_dark_red));
-                    }
-
-                    holder.levelTV.setText(stats.getLevel() + "");
-                    holder.kdaTV.setText(stats.getChampionsKilled() + " / " + stats.getNumDeaths() + " / " + stats.getAssists());
-                    holder.goldTV.setText(format(stats.getGoldEarned()));
-                    String timeString = convertSecondsToHoursMinutes(stats.getTimePlayed());
-                    if (timeString != null) {
-                        holder.matchTimeTV.setText(timeString);
-                    }
-
-                    int item0 = stats.getItem0();
-                    int item1 = stats.getItem1();
-                    int item2 = stats.getItem2();
-                    int item3 = stats.getItem3();
-                    int item4 = stats.getItem4();
-                    int item5 = stats.getItem5();
-                    int item6 = stats.getItem6();
-
-                    if(item0 != 0) {
-                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item0 + ".png", holder.item0, mOptions);
-                    } else {
-                        LolImageLoader.getInstance().loadImage("", holder.item0, mOptions);
-                    }
-
-                    if (item1 != 0) {
-                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item1 + ".png", holder.item1, mOptions);
-                    } else {
-                        LolImageLoader.getInstance().loadImage("", holder.item1, mOptions);
-                    }
-
-                    if (item2 != 0) {
-                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item2 + ".png", holder.item2, mOptions);
-                    } else {
-                        LolImageLoader.getInstance().loadImage("", holder.item2, mOptions);
-                    }
-                    if (item3 != 0) {
-                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item3 + ".png", holder.item3, mOptions);
-                    } else {
-                        LolImageLoader.getInstance().loadImage("", holder.item3, mOptions);
-                    }
-                    if (item4 != 0) {
-                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item4 + ".png", holder.item4, mOptions);
-                    } else {
-                        LolImageLoader.getInstance().loadImage("", holder.item4, mOptions);
-                    }
-                    if (item5 != 0) {
-                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item5 + ".png", holder.item5, mOptions);
-                    } else {
-                        LolImageLoader.getInstance().loadImage("", holder.item5, mOptions);
-                    }
-                    if (item6 != 0) {
-                        LolImageLoader.getInstance().loadImage(Commons.ITEM_IMAGES_BASE_URL + item6 + ".png", holder.item6, mOptions);
-                    } else {
-                        LolImageLoader.getInstance().loadImage("", holder.item6, mOptions);
-                    }
-                }
+                    break;
+                case ROW_APP_INSTALL_AD:
+                    AdViewHolder viewHolder = (AdViewHolder) holder;
+                    handleAppInstallNativeAdView(game, viewHolder);
+                    break;
+                case ROW_CONTENT_AD:
+                    AdViewHolder adViewHolder = (AdViewHolder) holder;
+                    handleContentNativeAdView(game, adViewHolder);
+                    break;
+                default:
+                    break;
             }
+        }
+    }
+
+    private void handleAppInstallNativeAdView(Game game, AdViewHolder holder) {
+        if(game.getNativeAd() != null) {
+            NativeAppInstallAd nativeAppInstallAd = (NativeAppInstallAd) game.getNativeAd();
+            NativeAppInstallAdView adView = (NativeAppInstallAdView) holder.nativeAdView;
+
+            holder.adHeadline.setText(nativeAppInstallAd.getHeadline());
+            adView.setHeadlineView(holder.adHeadline);
+
+            holder.adBody.setText(nativeAppInstallAd.getBody());
+            adView.setBodyView(holder.adBody);
+
+            if(nativeAppInstallAd.getIcon() != null && nativeAppInstallAd.getIcon().getDrawable() != null) {
+                holder.adImage.setImageDrawable(nativeAppInstallAd.getIcon().getDrawable());
+            } else {
+                holder.adImage.setImageDrawable(mContext.getResources().getDrawable(R.drawable.white_bg));
+            }
+            adView.setImageView(holder.adImage);
+
+            if(nativeAppInstallAd.getCallToAction() != null) {
+                holder.callToActionTV.setText(Utils.makeCamelCase(nativeAppInstallAd.getCallToAction().toString()));
+            }
+            adView.setCallToActionView(holder.adContainerView);
+
+            adView.setNativeAd(nativeAppInstallAd);
+        }
+    }
+
+    private void handleContentNativeAdView(Game game, AdViewHolder holder) {
+        if(game.getNativeAd() != null) {
+            NativeContentAd nativeContentAd = (NativeContentAd) game.getNativeAd();
+            NativeContentAdView adView = (NativeContentAdView) holder.nativeAdView;
+
+            holder.adHeadline.setText(nativeContentAd.getHeadline());
+            adView.setHeadlineView(holder.adHeadline);
+
+            holder.adBody.setText(nativeContentAd.getBody());
+            adView.setBodyView(holder.adBody);
+
+            if(nativeContentAd.getLogo() != null && nativeContentAd.getLogo().getDrawable() != null) {
+                holder.adImage.setImageDrawable(nativeContentAd.getLogo().getDrawable());
+            } else {
+                holder.adImage.setImageDrawable(mContext.getResources().getDrawable(R.drawable.white_bg));
+            }
+            adView.setImageView(holder.adImage);
+
+            if(nativeContentAd.getCallToAction() != null) {
+                holder.callToActionTV.setText(Utils.makeCamelCase(nativeContentAd.getCallToAction().toString()));
+            }
+            adView.setCallToActionView(holder.adContainerView);
+
+            adView.setNativeAd(nativeContentAd);
         }
     }
 
@@ -246,7 +346,10 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
             this.item5 = (ImageView) itemView.findViewById(R.id.item5);
             this.item6 = (ImageView) itemView.findViewById(R.id.item6);
             this.mItemClickListener = clickListener;
-            this.itemView.setOnClickListener(this);
+            if(this.itemView != null) {
+                this.itemView.setOnClickListener(this);
+            }
+
         }
 
         @Override
@@ -256,6 +359,44 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
 
         public interface ViewHolderClickListener {
             public void onItemClick(View caller, int position);
+        }
+    }
+
+    public static class AdViewHolder extends RecyclerView.ViewHolder {
+
+        public enum AD_TYPE {
+            AD_TYPE_APPINSTALL,
+            AD_TYPE_CONTENT
+        }
+
+        private AD_TYPE adType;
+
+        public NativeAdView nativeAdView;
+        public RelativeLayout adContainerView;
+        private RobotoTextView adHeadline;
+        private ImageView adImage;
+        private RobotoTextView adBody;
+        private RobotoTextView callToActionTV;
+
+        public AdViewHolder(View itemView, AD_TYPE adType) {
+            super(itemView);
+
+            this.adType = adType;
+            if(adType == AD_TYPE.AD_TYPE_APPINSTALL) {
+                this.nativeAdView = (NativeAppInstallAdView) LayoutInflater.from(itemView.getContext()).inflate(R.layout.large_nativeinstalladview, null);
+                this.adContainerView = (RelativeLayout) itemView.findViewById(R.id.adContainerView);
+                this.adHeadline = (RobotoTextView) itemView.findViewById(R.id.adHeadline);
+                this.adBody = (RobotoTextView) itemView.findViewById(R.id.adBody);
+                this.callToActionTV = (RobotoTextView) itemView.findViewById(R.id.callToActionTV);
+                this.adImage = (ImageView) itemView.findViewById(R.id.adImage);
+            } else if(adType == AD_TYPE.AD_TYPE_CONTENT) {
+                this.nativeAdView = (NativeContentAdView) LayoutInflater.from(itemView.getContext()).inflate(R.layout.large_contentadview, null);
+                this.adContainerView = (RelativeLayout) itemView.findViewById(R.id.adContainerView);
+                this.adHeadline = (RobotoTextView) itemView.findViewById(R.id.adHeadline);
+                this.adBody = (RobotoTextView) itemView.findViewById(R.id.adBody);
+                this.callToActionTV = (RobotoTextView) itemView.findViewById(R.id.callToActionTV);
+                this.adImage = (ImageView) itemView.findViewById(R.id.adImage);
+            }
         }
     }
 
@@ -376,5 +517,20 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
             }
         }
         return gameTypeText;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        Game game = games.get(position);
+        if(game.getNativeAd() != null) {
+            if(game.getNativeAd() instanceof NativeAppInstallAd) {
+                return ROW_APP_INSTALL_AD;
+            } else if(game.getNativeAd() instanceof NativeContentAd) {
+                return ROW_CONTENT_AD;
+            }
+        } else {
+            return ROW_MATCH;
+        }
+        return ROW_UNKNOWN;
     }
 }

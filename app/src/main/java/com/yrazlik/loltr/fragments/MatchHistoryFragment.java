@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -23,6 +24,7 @@ import com.yrazlik.loltr.data.Game;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,12 +67,27 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
             ServiceRequest.getInstance(getActivity()).makeGetRecentMatchesRequest(
                     Commons.RECENT_MATCHES_REQUEST, region, summonerId + "", null, MatchHistoryFragment.this);
         }else{
-            adapter = new MatchHistoryRVAdapter(getContext(), games, R.layout.list_row_match_history_rv, recyclerViewClickListener);
-            matchHistoryRV.setAdapter(adapter);
+            setAdapter();
         }
 
         reportGoogleAnalytics();
         return  v;
+    }
+
+    private void setAdapter() {
+        if(adapter == null) {
+            addAdsToNewsArray();
+            adapter = new MatchHistoryRVAdapter(getContext(), games, R.layout.list_row_match_history_rv, recyclerViewClickListener);
+            matchHistoryRV.setAdapter(adapter);
+        } else {
+            notifyDataSetChanged();
+        }
+    }
+
+    private void notifyDataSetChanged() {
+        if(adapter != null) {
+            adapter.notifyDataSetChanged();;
+        }
     }
 
     private MatchHistoryRVAdapter.RecyclerViewClickListener recyclerViewClickListener = new MatchHistoryRVAdapter.RecyclerViewClickListener() {
@@ -86,6 +103,19 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
         }
     };
 
+    private void addAdsToNewsArray() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            Game ad = new Game();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+            try {
+                games.add(3, ad);
+            } catch (Exception ignored) {}
+            notifyDataSetChanged();
+        }
+    }
+
     @Override
     public void reportGoogleAnalytics() {
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
@@ -99,8 +129,7 @@ public class MatchHistoryFragment extends BaseFragment implements ResponseListen
             if(response != null) {
                 RecentMatchesResponse recentMatchesResponse = (RecentMatchesResponse) response;
                 games = recentMatchesResponse.getGames();
-                adapter = new MatchHistoryRVAdapter(getContext(), games, R.layout.list_row_match_history_rv, recyclerViewClickListener);
-                matchHistoryRV.setAdapter(adapter);
+                setAdapter();
             }
         }
     }
