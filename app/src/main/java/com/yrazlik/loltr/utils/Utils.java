@@ -96,6 +96,7 @@ public class Utils {
     public static void addView(ViewGroup parent, View child) {
         try {
             if(parent != null && child != null) {
+                parent.setVisibility(View.VISIBLE);
                 View childView = parent.findViewById(child.getId());
                 if(childView == null) {
                     parent.addView(child);

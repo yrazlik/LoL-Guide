@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,6 +36,8 @@ import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
 import com.yrazlik.loltr.view.RobotoTextView;
 
@@ -100,6 +103,8 @@ public class SummonerOverviewFragment extends BaseFragment {
     private RobotoTextView team3v3rankTV;
     private RobotoTextView team3v3lpTV;
     private RobotoTextView team3v3nameTV;
+
+    private FrameLayout adLayout;
 
     public static final String EXTRA_RECENTMATCHES = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_RECENTMATCHES";
     public static final String EXTRA_SUMMONER_INFO = "com.yrazlik.loltr.fragments.SummonerOverviewFragment.EXTRA_SUMMONER_INFO";
@@ -206,6 +211,8 @@ public class SummonerOverviewFragment extends BaseFragment {
         team3v3lpTV = (RobotoTextView) v.findViewById(R.id.team3v3lpTV);
         team3v3nameTV = (RobotoTextView) v.findViewById(R.id.team3v3nameTV);
 
+        adLayout = (FrameLayout) v.findViewById(R.id.adLayout);
+
         Commons.underline(rankedTV);
 
         //populate header part
@@ -237,6 +244,9 @@ public class SummonerOverviewFragment extends BaseFragment {
             populateRankedPart();
 
         }
+
+        adLayout.removeAllViews();
+        Utils.addView(adLayout, AdUtils.getInstance().createSmallAdView());
     }
 
     private int getLeagueBadgeImage(String league) {

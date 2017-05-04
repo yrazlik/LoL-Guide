@@ -99,6 +99,11 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
                     for (int i = 0; i < resp.size(); i++) {
                         weeklyFreeChampions.add(resp.get(i));
                     }
+
+                    for(int i = 0; i < weeklyFreeChampions.size(); i++) {
+                        weeklyFreeChampions.get(i).setDateInterval(Utils.getTuesday());
+                    }
+
                     setWeeklyFreeChampionsAdapter();
                 }
 

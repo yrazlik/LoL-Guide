@@ -182,6 +182,15 @@ public class AdUtils {
         }
     }
 
+    public NativeAdView createSmallAdView() {
+        if(nativeAd instanceof NativeAppInstallAd) {
+            return createSmallNativeAppInstallAdView(getCachedAd());
+        } else if(nativeAd instanceof NativeContentAd) {
+            return createSmallNativeContentAdView(getCachedAd());
+        }
+        return null;
+    }
+
     private NativeAppInstallAdView createSmallNativeAppInstallAdView(NativeAd ad) {
         try {
             NativeAppInstallAd nativeAppInstallAd = (NativeAppInstallAd) ad;
