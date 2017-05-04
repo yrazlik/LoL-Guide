@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -18,6 +19,8 @@ import com.yrazlik.loltr.MainActivity;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.billing.PaymentSevice;
 import com.yrazlik.loltr.commons.Commons;
+import com.yrazlik.loltr.utils.AdUtils;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.RobotoButton;
 
 import org.json.JSONException;
@@ -30,12 +33,14 @@ import java.util.ArrayList;
  */
 public class RemoveAdsFragment extends BaseFragment {
 
+    private LinearLayout parentView;
     private RobotoButton removeAdsButton;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_remove_ads, container, false);
+        parentView = (LinearLayout) v.findViewById(R.id.parentView);
         removeAdsButton = (RobotoButton) v.findViewById(R.id.removeAdsButton);
         removeAdsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +90,7 @@ public class RemoveAdsFragment extends BaseFragment {
                 t.start();
             }
         });
+        Utils.addView(parentView, AdUtils.getInstance().createLargeAdView());
         reportGoogleAnalytics();
         return v;
     }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -25,6 +26,8 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.RobotoButton;
 import com.yrazlik.loltr.view.RobotoEditText;
 
@@ -39,6 +42,7 @@ import java.util.Map;
  */
 public class MatchInfoFragment extends BaseFragment implements ResponseListener{
 
+    private LinearLayout parentView;
     private AppCompatSpinner regionSpinner;
     private SimpleSpinnerAdapter spinnerAdapter;
     private RobotoButton searchButton;
@@ -49,6 +53,7 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_match_info, container, false);
+        parentView = (LinearLayout) v.findViewById(R.id.parentView);
         regionSpinner = (AppCompatSpinner) v.findViewById(R.id.regionSpinner);
         searchButton = (RobotoButton) v.findViewById(R.id.searchButton);
         summonerNameET = (RobotoEditText) v.findViewById(R.id.summonerNameET);
@@ -95,6 +100,8 @@ public class MatchInfoFragment extends BaseFragment implements ResponseListener{
                 }
             }
         });
+
+        Utils.addView(parentView, AdUtils.getInstance().createLargeAdView());
 
         return v;
     }
