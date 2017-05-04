@@ -16,6 +16,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -27,6 +28,7 @@ import com.yrazlik.loltr.data.ChampionDiscount;
 import com.yrazlik.loltr.data.CostumeDiscount;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.utils.LocalizationUtils;
 
 import java.util.ArrayList;
@@ -91,6 +93,7 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
                             costumeDiscounts = sortCostumeDiscountsByDateCreated(costumeDiscounts);
                             if (costumeDiscounts != null && costumeDiscounts.size() > 0) {
                                 Collections.reverse(costumeDiscounts);
+                                addAdsViewToDiscounts();
                                 adapter = new CostumeDiscountsAdapter(getContext(), R.layout.list_row_discount_champions, costumeDiscounts);
                                 discountsLV.setAdapter(adapter);
                             }
@@ -110,6 +113,19 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
             }
         }
         return rootView;
+    }
+
+    private void addAdsViewToDiscounts() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            CostumeDiscount ad = new CostumeDiscount();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+
+            try {
+                costumeDiscounts.add(3, ad);
+            } catch (Exception ignored) {}
+        }
     }
 
     @Override
@@ -137,9 +153,11 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         try {
             CostumeDiscount d = (CostumeDiscount) parent.getAdapter().getItem(position);
-            Intent i = new Intent(getActivity(), FullScreenImageActivity.class);
-            i.putExtra(FullScreenImageActivity.EXTRA_IMAGE_URL, d.getImageUrl());
-            startActivity(i);
+            if(!d.isAd()) {
+                Intent i = new Intent(getActivity(), FullScreenImageActivity.class);
+                i.putExtra(FullScreenImageActivity.EXTRA_IMAGE_URL, d.getImageUrl());
+                startActivity(i);
+            }
         } catch (Exception ignored) {}
     }
 

@@ -31,6 +31,10 @@ public class CostumeDiscount {
         this.createdAt = createdAt;
     }
 
+    public CostumeDiscount() {
+
+    }
+
     public String getEndDate() {
         return endDate;
     }
