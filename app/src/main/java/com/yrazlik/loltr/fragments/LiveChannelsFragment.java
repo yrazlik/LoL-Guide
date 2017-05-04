@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -22,6 +23,7 @@ import com.yrazlik.loltr.data.Streams;
 import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.LiveChannelsResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,6 +36,7 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
     private LiveChannelsAdapter adapter;
     private ListView liveChannelsList;
     private TextView errorText;
+    private ArrayList<Streams> channels;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,9 +66,24 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
         if(response instanceof LiveChannelsResponse){
             errorText.setVisibility(View.GONE);
             LiveChannelsResponse resp = (LiveChannelsResponse) response;
-            ArrayList<Streams> channels = resp.getStreams();
+            channels = resp.getStreams();
+            addAdsToNewsArray();
             adapter = new LiveChannelsAdapter(getContext(), R.layout.list_row_livechannel, channels);
             liveChannelsList.setAdapter(adapter);
+        }
+    }
+
+    private void addAdsToNewsArray() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            Streams ad = new Streams();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+            try {
+                channels.add(3, ad);
+                channels.add(11, ad);
+                channels.add(19, ad);
+            } catch (Exception ignored) {}
         }
     }
 
@@ -104,11 +122,12 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
             case R.id.listViewLiveChannels:
 
                 Streams s = (Streams) liveChannelsList.getItemAtPosition(position);
-                Intent i = new Intent(getContext(), LiveChannelActivity.class);
-                i.putExtra(LiveChannelActivity.EXTRA_STREAM_URL, s.getChannel().getUrl());
-                showInterstitial();
-                startActivity(i);
-
+                if(!s.isAd()) {
+                    Intent i = new Intent(getContext(), LiveChannelActivity.class);
+                    i.putExtra(LiveChannelActivity.EXTRA_STREAM_URL, s.getChannel().getUrl());
+                    showInterstitial();
+                    startActivity(i);
+                }
                 break;
             default:
                 break;

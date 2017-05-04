@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toLeftOf="@+id/relativeLayoutPriceContainer"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/rightArrow"
             android:layout_toRightOf="@+id/adImage">
 
             <com.yrazlik.loltr.view.RobotoTextView
@@ -56,5 +57,15 @@
                 android:maxLines="2"
                 android:textAppearance="@style/sp12GrayRegular"/>
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/rightArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:src="@drawable/arrow_right_blue_thin"/>
+
     </RelativeLayout>
 </com.google.android.gms.ads.formats.NativeAppInstallAdView>

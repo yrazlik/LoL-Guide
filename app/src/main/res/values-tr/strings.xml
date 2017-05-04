@@ -45,7 +45,7 @@
 
     <string name="errortwitch">Bağlantıda bir hata oluştu. Lütfen tekrar deneyiniz.</string>
     <string name="areyousure">Uygulamadan çıkmak istiyor musunuz?</string>
-    <string name="endorse">Geliştirmeye destek olabilmek için aşağıdaki reklamlara tıklayabilrseniz seviniriz. Reklamlar sizi sadece google play store\'a yönlendirecektir. \n\n\nThis application isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="endorse">Geliştirmeye destek olabilmek için reklamlara tıklayabilrseniz seviniriz. Reklamlar sizi sadece google play store\'a yönlendirecektir. \n\n\nThis application isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
     <string name="send">Gönder</string>
     <string name="contact_text">Şikayetlerinizi ve önerilerinizi aşağıdaki kutucuğa yazıp bize bildirebilirsiniz.</string>
     <string name="select_category">Kategori Seçiniz</string>

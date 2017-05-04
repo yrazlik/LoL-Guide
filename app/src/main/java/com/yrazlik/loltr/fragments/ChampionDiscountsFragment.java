@@ -125,8 +125,13 @@ public class ChampionDiscountsFragment extends BaseFragment implements ResponseL
             ad.setAd(true);
             ad.setNativeAd(nativeAd);
 
+           /* ChampionDiscount ad2 = new ChampionDiscount();
+            ad2.setAd(true);
+            ad2.setNativeAd(nativeAd);*/
+
             try {
-                championDiscounts.add(3, ad);
+                championDiscounts.add(4, ad);
+               // championDiscounts.add(ad2);
             } catch (Exception ignored) {}
         }
     }

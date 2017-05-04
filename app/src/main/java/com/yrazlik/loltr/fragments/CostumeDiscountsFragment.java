@@ -122,8 +122,13 @@ public class CostumeDiscountsFragment extends BaseFragment implements ResponseLi
             ad.setAd(true);
             ad.setNativeAd(nativeAd);
 
+         /*   CostumeDiscount ad2 = new CostumeDiscount();
+            ad2.setAd(true);
+            ad2.setNativeAd(nativeAd);*/
+
             try {
-                costumeDiscounts.add(3, ad);
+                costumeDiscounts.add(4, ad);
+              //  costumeDiscounts.add(ad2);
             } catch (Exception ignored) {}
         }
     }

@@ -181,4 +181,67 @@ public class AdUtils {
             return null;
         }
     }
+
+    private NativeAppInstallAdView createSmallNativeAppInstallAdView(NativeAd ad) {
+        try {
+            NativeAppInstallAd nativeAppInstallAd = (NativeAppInstallAd) ad;
+            NativeAppInstallAdView adView = (NativeAppInstallAdView) mLayoutInflater.inflate(R.layout.list_row_small_appinstalladview, null, false);
+            RelativeLayout adContainerView = (RelativeLayout) adView.findViewById(R.id.adContainerView);
+            ImageView adIV = (ImageView) adView.findViewById(R.id.adImage);
+            RobotoTextView headlineTV = (RobotoTextView) adView.findViewById(R.id.adHeadline);
+            RobotoTextView bodyTV = (RobotoTextView) adView.findViewById(R.id.adBody);
+
+            headlineTV.setText(nativeAppInstallAd.getHeadline());
+            adView.setHeadlineView(headlineTV);
+
+            bodyTV.setText(nativeAppInstallAd.getBody());
+            adView.setBodyView(bodyTV);
+
+            if(nativeAppInstallAd.getIcon() != null && nativeAppInstallAd.getIcon().getDrawable() != null) {
+                adIV.setImageDrawable(nativeAppInstallAd.getIcon().getDrawable());
+            } else {
+                adIV.setImageDrawable(LolApplication.getAppContext().getResources().getDrawable(R.drawable.white_bg));
+            }
+            adView.setIconView(adIV);
+
+            adView.setCallToActionView(adContainerView);
+            adView.setNativeAd(nativeAppInstallAd);
+
+            return adView;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private NativeContentAdView createSmallNativeContentAdView(NativeAd ad) {
+        try {
+            NativeContentAd nativeContentAd = (NativeContentAd) ad;
+            NativeContentAdView adView = (NativeContentAdView) mLayoutInflater.inflate(R.layout.list_row_small_contentadview, null, false);
+            RelativeLayout adContainerView = (RelativeLayout) adView.findViewById(R.id.adContainerView);
+            ImageView adIV = (ImageView) adView.findViewById(R.id.adImage);
+            RobotoTextView headlineTV = (RobotoTextView) adView.findViewById(R.id.adHeadline);
+            RobotoTextView bodyTV = (RobotoTextView) adView.findViewById(R.id.adBody);
+
+            headlineTV.setText(nativeContentAd.getHeadline());
+            adView.setHeadlineView(headlineTV);
+
+            bodyTV.setText(nativeContentAd.getBody());
+            adView.setBodyView(bodyTV);
+
+            if(nativeContentAd.getLogo() != null && nativeContentAd.getLogo().getDrawable() != null) {
+                adIV.setImageDrawable(nativeContentAd.getLogo().getDrawable());
+            } else {
+                adIV.setImageDrawable(LolApplication.getAppContext().getResources().getDrawable(R.drawable.white_bg));
+            }
+            adView.setLogoView(adIV);
+
+            adView.setCallToActionView(adContainerView);
+            adView.setNativeAd(nativeContentAd);
+
+            return adView;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

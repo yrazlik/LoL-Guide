@@ -12,7 +12,7 @@
         android:layout_marginRight="5dp"
         android:scrollbars="none"
         android:divider="@android:color/transparent"
-        android:dividerHeight="3dp">
+        android:dividerHeight="5dp">
 
     </ListView>
 

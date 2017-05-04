@@ -304,11 +304,15 @@ public class WeeklyFreeChampionsFragment extends BaseFragment implements OnItemC
     private void addAdsToChampionsArray() {
         NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
         if(nativeAd != null) {
-            ChampionDto championDto = new ChampionDto();
-            championDto.setAd(true);
-            championDto.setNativeAd(nativeAd);
+            ChampionDto ad1 = new ChampionDto();
+            ad1.setAd(true);
+            ad1.setNativeAd(nativeAd);
+            ChampionDto ad2 = new ChampionDto();
+            ad2.setAd(true);
+            ad2.setNativeAd(nativeAd);
             try {
-                weeklyFreeChampions.add(new Random().nextInt(weeklyFreeChampions.size()), championDto);
+                weeklyFreeChampions.add(3, ad1);
+                weeklyFreeChampions.add(ad2);
             } catch (Exception ignored) {}
             notifyDataSetChanged();
         }
