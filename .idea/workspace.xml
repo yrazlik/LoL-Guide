@@ -16,33 +16,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb6fdb4c-7f71-4507-b204-3f542b43b93c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_row_ad_matchinfo_adcontent.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_row_ad_matchinfo_appinstall.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchDetailActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchDetailActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/activities/MatchInfoActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/AllChampionsListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/AllChampionsListAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionDiscountsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionDiscountsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSkinsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ChampionSkinsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/CostumeDiscountsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/CostumeDiscountsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ItemsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/ItemsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/LiveChannelsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/LiveChannelsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchInfoAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/MatchInfoAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/NewsAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/NewsAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RuneAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/adapters/RuneAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionSkinsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllChampionsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllItemsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/AllItemsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionOverviewFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionOverviewFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSkinsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/ChampionSkinsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/LiveChannelsFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/MatchHistoryFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/yrazlik/loltr/fragments/NewItemsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/adapters/MatchHistoryRVAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/adapters/MatchHistoryRVAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/data/Game.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/data/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/MatchHistoryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/MatchHistoryFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/AdUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/AdUtils.java" />
     </list>
     <ignored path="LoL-Guide.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -131,17 +107,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list_row_ad_matchinfo_appinstall.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="list_row_ad_matchinfo_appinstall.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_ad_matchinfo_appinstall.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+            <state relative-caret-position="90">
+              <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
               <folding>
                 <element signature="e#3900#3919#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/Utils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="735">
+              <caret line="98" column="49" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/AdUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2568,7 +2564,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_small_contentadview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/NewItemsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/WeeklyFreeChampionsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/AdUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SummonerOverviewFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/Utils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_summoner_overview.xml" />
@@ -2584,6 +2579,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/data/Game.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_ad_matchinfo_adcontent.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_ad_matchinfo_appinstall.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/AdUtils.java" />
       </list>
     </option>
   </component>
@@ -3546,26 +3542,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/AdUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="184" column="41" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/fragments/SummonerOverviewFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="248" column="19" selection-start-line="248" selection-start-column="19" selection-end-line="248" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="98" column="49" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -3874,11 +3854,27 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+        <state relative-caret-position="90">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
           <folding>
             <element signature="e#3900#3919#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="98" column="49" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/loltr/utils/AdUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

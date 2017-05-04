@@ -47,7 +47,7 @@ public class AdUtils {
 
     public void disableAds() {
         //TODO: make it false
-        adsEnabled = true;
+        adsEnabled = false;
     }
 
     public boolean isAdsEnabled() {
