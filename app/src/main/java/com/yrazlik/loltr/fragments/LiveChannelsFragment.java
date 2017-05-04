@@ -80,7 +80,7 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
             ad.setAd(true);
             ad.setNativeAd(nativeAd);
             try {
-                channels.add(3, ad);
+                channels.add(1, ad);
                 channels.add(11, ad);
                 channels.add(19, ad);
             } catch (Exception ignored) {}
