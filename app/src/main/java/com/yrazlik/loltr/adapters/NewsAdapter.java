@@ -145,7 +145,9 @@ public class NewsAdapter extends ArrayAdapter<News> {
             }
             adView.setIconView(holder.smallImage);
 
-            holder.txtSeeMore.setText(Utils.makeCamelCase(nativeAppInstallAd.getCallToAction().toString()));
+            if(nativeAppInstallAd.getCallToAction() != null) {
+                holder.txtSeeMore.setText(Utils.makeCamelCase(nativeAppInstallAd.getCallToAction().toString()));
+            }
             adView.setCallToActionView(holder.adContainerView);
 
             adView.setNativeAd(nativeAppInstallAd);
@@ -170,7 +172,9 @@ public class NewsAdapter extends ArrayAdapter<News> {
             }
             adView.setImageView(holder.smallImage);
 
-            holder.txtSeeMore.setText(Utils.makeCamelCase(nativeContentAd.getCallToAction().toString()));
+            if(nativeContentAd.getCallToAction() != null) {
+                holder.txtSeeMore.setText(Utils.makeCamelCase(nativeContentAd.getCallToAction().toString()));
+            }
             adView.setCallToActionView(holder.adContainerView);
 
             adView.setNativeAd(nativeContentAd);

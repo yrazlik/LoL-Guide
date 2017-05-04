@@ -74,7 +74,7 @@ public class ChampionDiscountsAdapter extends ArrayAdapter<ChampionDiscount>{
                     holder.adImage = (CircularImageView) holder.nativeAdView.findViewById(R.id.adImage);
                     break;
                 case ROW_CONTENT_AD:
-                    holder.nativeAdView = (NativeAppInstallAdView) inflater.inflate(R.layout.list_row_small_contentadview, parent, false);
+                    holder.nativeAdView = (NativeContentAdView) inflater.inflate(R.layout.list_row_small_contentadview, parent, false);
                     convertView = holder.nativeAdView;
                     holder.adContainerView = (RelativeLayout) holder.nativeAdView.findViewById(R.id.adContainerView);
                     holder.adHeadline = (RobotoTextView) holder.nativeAdView.findViewById(R.id.adHeadline);

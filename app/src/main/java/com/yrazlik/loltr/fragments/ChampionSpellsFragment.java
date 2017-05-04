@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -21,6 +22,7 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionSpellsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,6 +60,18 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
 		adapter = new ChampionSpellsListAdapter(getContext(), R.layout.list_row_abilities, championSpells, champId);
 		list.setAdapter(adapter);
 	}
+
+    private void addAdsToArray() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            Spell ad = new Spell();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+            try {
+                championSpells.add(2, ad);
+            } catch (Exception ignored) {}
+        }
+    }
 	
 	private String getSpellKey(int i) {
 		switch (i) {
@@ -91,6 +105,7 @@ public class ChampionSpellsFragment extends BaseFragment implements ResponseList
                     spell.setSpellKey(getSpellKey(i));
                     championSpells.add(spell);
                 }
+                addAdsToArray();
                 adapter.notifyDataSetChanged();
             }catch (Exception ignored){}
 		}

@@ -1,12 +1,17 @@
 package com.yrazlik.loltr.data;
 
+import com.google.android.gms.ads.formats.NativeAd;
+
 public class Spell {
 
 	private String name;
 	private String sanitizedDescription;
 	private ItemImage image;
 	private String spellKey;
-	
+
+    private boolean isAd;
+    private NativeAd nativeAd;
+
 	public Spell(){
 		
 	}
@@ -53,4 +58,19 @@ public class Spell {
 		this.spellKey = spellKey;
 	}
 
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
+    }
+
+    public NativeAd getNativeAd() {
+        return nativeAd;
+    }
+
+    public void setNativeAd(NativeAd nativeAd) {
+        this.nativeAd = nativeAd;
+    }
 }
