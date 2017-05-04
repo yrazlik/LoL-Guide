@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -21,10 +22,16 @@ import com.google.gson.Gson;
 import com.yrazlik.loltr.BuildConfig;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.adapters.MatchInfoAdapter;
+import com.yrazlik.loltr.api.ApiHelper;
+import com.yrazlik.loltr.api.error.ApiResponseListener;
+import com.yrazlik.loltr.api.error.RetrofitResponseHandler;
 import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Summoner;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.model.ChampionDto;
+import com.yrazlik.loltr.model.ChampionListDto;
 import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.MatchInfoResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
@@ -36,9 +43,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by yrazlik on 3/10/15.
@@ -59,10 +70,13 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
     private String selectedRegion;
     private AdView adView;
     private RobotoTextView team1TV, team2TV;
+    private List<ChampionDto> allChampions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        allChampions = DbHelper.getInstance().getAllChampionsData();
+
         if(AdUtils.getInstance().isAdsEnabled()) {
             setContentView(R.layout.activity_match_info);
         } else {
@@ -118,19 +132,8 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
                     }
                 }
 
-                ArrayList<String> pathParams = new ArrayList<String>();
-                pathParams.add("static-data");
-                pathParams.add(Commons.getInstance(getContext().getApplicationContext()).getRegion());
-                pathParams.add("v1.2");
-                pathParams.add("champion");
-                HashMap<String, String> queryParams = new HashMap<String, String>();
-                queryParams.put("locale", LocalizationUtils.getInstance().getLocale());
-                queryParams.put("version", Commons.LATEST_VERSION);
-                queryParams.put("champData", "altimages");
-                queryParams.put("api_key", BuildConfig.API_KEY);
-
-                if(Commons.allChampions == null || Commons.allChampions.size() <= 0) {
-                    ServiceRequest.getInstance(getContext()).makeGetRequest(Commons.ALL_CHAMPIONS_REQUEST, pathParams, queryParams, null, this);
+                if(allChampions == null || allChampions.size() <= 0) {
+                    requestAllChampions();
                 }else{
                     setAdapters();
                 }
@@ -161,14 +164,77 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
         }, 0, 1000);
     }
 
+    private void requestAllChampions() {
+        ApiHelper.getInstance(getContext()).getAllChampions(new RetrofitResponseHandler(new ApiResponseListener() {
+            @Override
+            public void onResponseFromCache(Object response) {
+                allChampions = (List<ChampionDto>) response;
+                setAdapters();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                ChampionListDto resp = (ChampionListDto) response.body();
+                DbHelper.getInstance().saveAllChampionsData(resp);
+                allChampions = convertAllChampionsDataIntoList(resp);
+                setAdapters();
+            }
+
+            @Override
+            public void onUnknownError() {
+
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+
+            }
+
+            @Override
+            public void onNetworkError() {
+
+            }
+        }));
+    }
+
+    private List<ChampionDto> convertAllChampionsDataIntoList (ChampionListDto championListDto){
+        try {
+            Map<String, ChampionDto> champsData = championListDto.getData();
+            if (champsData != null && champsData.size() > 0) {
+                try {
+                    List<ChampionDto> allChampions = new ArrayList<>();
+
+                    for (Map.Entry<String, ChampionDto> entry : champsData.entrySet()) {
+                        ChampionDto c = new ChampionDto(entry.getValue().getId(),
+                                entry.getValue().getKey(),
+                                entry.getValue().getName(),
+                                Commons.CHAMPION_IMAGE_BASE_URL + entry.getKey() + ".png",
+                                "\"" + entry.getValue().getTitle());
+                        allChampions.add(c);
+                    }
+
+                    return allChampions;
+                } catch (Exception e) {
+                    Log.d("DB", "Error parsing all champions list");
+                }
+            }
+        } catch (Exception e) {}
+        return null;
+    }
+
     private void setAdapters(){
       //  ArrayList<Summoner>team1SummonersWithNames = new ArrayList<Summoner>();
       //  ArrayList<Summoner>team2SummonersWithNames = new ArrayList<Summoner>();
 
         for(Summoner s : team1Summoners){
-            for(Champion c : Commons.allChampions){
+            for(ChampionDto c : allChampions){
                 if(c.getId() == s.getChampionId()){
-                    s.setChampName(c.getChampionName());
+                    s.setChampName(c.getName());
                     s.setKey(c.getKey());
                     break;
                 }
@@ -176,9 +242,9 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
         }
 
         for(Summoner s : team2Summoners){
-            for(Champion c : Commons.allChampions){
+            for(ChampionDto c : allChampions){
                 if(c.getId() == s.getChampionId()){
-                    s.setChampName(c.getChampionName());
+                    s.setChampName(c.getName());
                     s.setKey(c.getKey());
                     break;
                 }
@@ -235,14 +301,6 @@ public class MatchInfoActivity extends ActionBarActivity implements ResponseList
 
     @Override
     public void onSuccess(Object response) {
-
-        if(response instanceof AllChampionsResponse){
-            AllChampionsResponse resp = (AllChampionsResponse) response;
-            Map<String, Map<String, String>> data = resp.getData();
-            Commons.setAllChampions(resp);
-            setAdapters();
-
-        }
 
     }
 

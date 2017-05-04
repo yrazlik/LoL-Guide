@@ -13,14 +13,10 @@ import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Item;
 import com.yrazlik.loltr.data.Items;
 import com.yrazlik.loltr.data.SummonerSpell;
-import com.yrazlik.loltr.responseclasses.AllChampionsResponse;
 import com.yrazlik.loltr.responseclasses.SummonerInfo;
 import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Map;
 
 public class Commons {
 	
@@ -142,7 +138,6 @@ public class Commons {
     public static final int ANIM_SLIDE_TOP_OUT_FADE_OUT = 11;
     public static final int ANIM_FLIP_WITH_POPSTACK = 12;
 
-	public static ArrayList<Champion> allChampions;
     public static ArrayList<SummonerSpell> allSpells;
 	public static ArrayList<Items> allItems;
     public static ArrayList<Item> allItemsNew;
@@ -241,36 +236,6 @@ public class Commons {
         SharedPreferences prefs = mContext.getSharedPreferences(Commons.LOL_TR_SHARED_PREFS, Context.MODE_PRIVATE);
         boolean isPurchased = prefs.getBoolean(Commons.LOL_TR_PURCHASED_AD_FREE, false);
         return isPurchased;
-    }
-
-    public static void setAllChampions(AllChampionsResponse resp) {
-        try {
-            Map<String, Map<String, String>> data = resp.getData();
-            if (Commons.allChampions != null) {
-                Commons.allChampions.clear();
-            } else {
-                Commons.allChampions = new ArrayList<>();
-            }
-            for (Map.Entry<String, Map<String, String>> entry : data.entrySet()) {
-                String key = entry.getKey();
-                String imageUrl = Commons.CHAMPION_IMAGE_BASE_URL + key + ".png";
-                Champion c = new Champion();
-                c.setChampionImageUrl(imageUrl);
-                c.setChampionName(entry.getValue().get("name"));
-                c.setId(Integer.parseInt(entry.getValue().get("id")));
-                c.setKey(entry.getValue().get("key"));
-                c.setTitle("\"" + entry.getValue().get("title") + "\"");
-                Commons.allChampions.add(c);
-            }
-            if (Commons.allChampions != null) {
-                Collections.sort(Commons.allChampions, new Comparator<Champion>() {
-                    @Override
-                    public int compare(Champion c1, Champion c2) {
-                        return c1.getChampionName().compareTo(c2.getChampionName());
-                    }
-                });
-            }
-        } catch (Exception ignored) {}
     }
 
     public static void openInBrowser(Context context, String url) {

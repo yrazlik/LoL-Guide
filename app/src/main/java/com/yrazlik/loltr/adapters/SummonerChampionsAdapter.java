@@ -20,6 +20,8 @@ import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.ChampionStatsDto;
 import com.yrazlik.loltr.data.Image;
 import com.yrazlik.loltr.data.Statistics;
+import com.yrazlik.loltr.db.DbHelper;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
 
@@ -40,6 +42,7 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
     private LayoutInflater inflater;
     private Context mContext;
     private int layoutResourceId;
+    private List<ChampionDto> allChampions;
 
 
     public SummonerChampionsAdapter(Context context, int resource, List<ChampionStatsDto> champions) {
@@ -48,6 +51,7 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
         this.champions = champions;
         this.mContext = context;
         this.layoutResourceId = resource;
+        allChampions = DbHelper.getInstance().getAllChampionsData();
     }
 
     @Override
@@ -130,8 +134,8 @@ public class SummonerChampionsAdapter extends ArrayAdapter<ChampionStatsDto> imp
         if (champion != null) {
             final int champId = champion.getId();
             String champImageUrl = "";
-            if (Commons.allChampions != null && Commons.allChampions.size() > 0) {
-                for (Champion champ : Commons.allChampions) {
+            if (allChampions != null && allChampions.size() > 0) {
+                for (ChampionDto champ : allChampions) {
                     if (champ != null && champ.getId() == champId) {
                         champImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                         break;

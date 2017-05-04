@@ -31,7 +31,9 @@ import com.yrazlik.loltr.data.Statistics;
 import com.yrazlik.loltr.data.Stats;
 import com.yrazlik.loltr.data.SummonerNames;
 import com.yrazlik.loltr.data.SummonerSpell;
+import com.yrazlik.loltr.db.DbHelper;
 import com.yrazlik.loltr.listener.ResponseListener;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.responseclasses.SummonerNamesResponse;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
@@ -237,8 +239,10 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
 
                 int championID = game.getChampionId();
                 String champImageUrl = null;
-                if (Commons.allChampions != null && Commons.allChampions.size() > 0) {
-                    for (Champion champ : Commons.allChampions) {
+
+                List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
+                if (allChampions != null && allChampions.size() > 0) {
+                    for (ChampionDto champ : allChampions) {
                         if (champ.getId() == championID) {
                             champImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             break;
@@ -390,8 +394,10 @@ public class MatchDetailActivity extends Activity implements ResponseListener{
         RobotoTextView summonerNameTV = (RobotoTextView) summonerLayout.findViewById(R.id.summonerNameTV);
 
         String champImageUrl = null;
-        if(Commons.allChampions != null && Commons.allChampions.size() > 0){
-            for(Champion champ : Commons.allChampions){
+
+        List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
+        if(allChampions != null && allChampions.size() > 0){
+            for(ChampionDto champ : allChampions){
                 if(champ.getId() == championID){
                     champImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                     break;

@@ -17,6 +17,8 @@ import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Game;
 import com.yrazlik.loltr.data.Stats;
 import com.yrazlik.loltr.data.SummonerSpell;
+import com.yrazlik.loltr.db.DbHelper;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.service.ServiceRequest;
 import com.yrazlik.loltr.view.FadeInNetworkImageView;
 import com.yrazlik.loltr.view.RobotoTextView;
@@ -119,8 +121,9 @@ public class MatchHistoryRVAdapter extends RecyclerView.Adapter<MatchHistoryRVAd
 
                 int championID = game.getChampionId();
                 String champImageUrl = null;
-                if (Commons.allChampions != null && Commons.allChampions.size() > 0) {
-                    for (Champion champ : Commons.allChampions) {
+                List<ChampionDto> allChampions = DbHelper.getInstance().getAllChampionsData();
+                if (allChampions != null && allChampions.size() > 0) {
+                    for (ChampionDto champ : allChampions) {
                         if (champ.getId() == championID) {
                             champImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
                             break;

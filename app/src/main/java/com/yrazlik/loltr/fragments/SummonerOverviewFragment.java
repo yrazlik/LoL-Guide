@@ -28,6 +28,8 @@ import com.yrazlik.loltr.data.Entries;
 import com.yrazlik.loltr.data.Game;
 import com.yrazlik.loltr.data.LeagueDto;
 import com.yrazlik.loltr.data.Stats;
+import com.yrazlik.loltr.db.DbHelper;
+import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.responseclasses.LeagueInfoResponse;
 import com.yrazlik.loltr.responseclasses.RankedStatsResponse;
 import com.yrazlik.loltr.responseclasses.RecentMatchesResponse;
@@ -113,6 +115,14 @@ public class SummonerOverviewFragment extends BaseFragment {
     private ChampionStatsDto averageStats;
     private String kdaString = "?/?/?", minionsString = "???", winRateString = "?%";
     private String region = "";
+
+    private List<ChampionDto> allChampions;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        allChampions = DbHelper.getInstance().getAllChampionsData();
+    }
 
     @Nullable
     @Override
@@ -414,17 +424,17 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 String champ1Name = "???", champ2Name = "???", champ3Name = "???";
-                if (Commons.allChampions != null && Commons.allChampions.size() > 0) {
-                    for (Champion champ : Commons.allChampions) {
+                if (allChampions != null && allChampions.size() > 0) {
+                    for (ChampionDto champ : allChampions) {
                         if (champ1Id != null && champ.getId() == champ1Id) {
                             champ1ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
-                            champ1Name = champ.getChampionName();
+                            champ1Name = champ.getName();
                         } else if ((champ2Id != null) && (champ.getId() == champ2Id)) {
                             champ2ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
-                            champ2Name = champ.getChampionName();
+                            champ2Name = champ.getName();
                         } else if ((champ3Id != null) && (champ.getId() == champ3Id)) {
                             champ3ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
-                            champ3Name = champ.getChampionName();
+                            champ3Name = champ.getName();
                         }
                     }
                 }
@@ -582,17 +592,17 @@ public class SummonerOverviewFragment extends BaseFragment {
                 }
 
                 String champ1Name = "???", champ2Name = "???", champ3Name = "???";
-                if (Commons.allChampions != null && Commons.allChampions.size() > 0) {
-                    for (Champion champ : Commons.allChampions) {
+                if (allChampions != null && allChampions.size() > 0) {
+                    for (ChampionDto champ : allChampions) {
                         if (champ1Id != null && champ.getId() == champ1Id) {
                             champ1ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
-                            champ1Name = champ.getChampionName();
+                            champ1Name = champ.getName();
                         } else if ((champ2Id != null) && (champ.getId() == champ2Id)) {
                             champ2ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
-                            champ2Name = champ.getChampionName();
+                            champ2Name = champ.getName();
                         } else if ((champ3Id != null) && (champ.getId() == champ3Id)) {
                             champ3ImageUrl = Commons.CHAMPION_IMAGE_BASE_URL + champ.getKey() + ".png";
-                            champ3Name = champ.getChampionName();
+                            champ3Name = champ.getName();
                         }
                     }
                 }
