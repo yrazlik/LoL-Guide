@@ -6,10 +6,10 @@
                 android:padding="10dp">
 
 
-    <ImageView
+    <com.pkmmte.view.CircularImageView
         android:id="@+id/item_image"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"/>
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
@@ -29,11 +31,13 @@ import com.yrazlik.loltr.data.Data;
 import com.yrazlik.loltr.responseclasses.ItemsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -42,7 +46,7 @@ import java.util.Map;
 public class NewItemsFragment extends BaseFragment implements ResponseListener, TextWatcher{
 
     private ListView itemsLV;
-    private ArrayList<Item> allItems;
+    private List<Item> listItems;
     private ItemsAdapter itemsLVAdapter;
     private EditText searchBar;
     private ImageView filterIcon;
@@ -52,6 +56,23 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
     private final String EXTRA_FILTER = "EXTRA_FILTER";
     private final String EXTRA_FIRST_ITEM_STACK = "EXTRA_FIRST_ITEM_STACK";
     private ArrayList<String> filters;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        listItems = new ArrayList<>();
+        copyAllItemsToListArray();
+    }
+
+    private void copyAllItemsToListArray() {
+        listItems.clear();
+        if(Commons.allItemsNew != null) {
+            for (int i = 0; i <Commons.allItemsNew.size(); i++) {
+                listItems.add(Commons.allItemsNew.get(i));
+            }
+            addAdsToItemsArray();
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,34 +94,49 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
             ServiceHelper.getInstance(getContext()).makeGetAllItemsRequest(this);
         } else {
             dismissProgress();
-            try {
-                Collections.sort(Commons.allItemsNew, new Comparator<Item>() {
-                    @Override
-                    public int compare(Item i1, Item i2) {
-                        return i1.getData().getName().compareTo(i2.getData().getName());
-                    }
-                });
-            } catch (Exception ignored) {}
-
-            allItems = Commons.allItemsNew;
 
             if(itemsLVAdapter == null || itemsLVAdapter.getCount() == 0) {
-                itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, Commons.allItemsNew);
+                itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, listItems);
                 itemsLV.setAdapter(itemsLVAdapter);
             } else {
-                itemsLVAdapter.notifyDataSetChanged();
+                notifyDataSetChanged();
             }
+        }
+    }
+
+    private void addAdsToItemsArray() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            Item ad = new Item();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+
+            try {
+                listItems.add(ad);
+                listItems.add(3, ad);
+                listItems.add(15, ad);
+                listItems.add(27, ad);
+                listItems.add(39, ad);
+                listItems.add(51, ad);
+            } catch (Exception ignored) {}
+            notifyDataSetChanged();
+        }
+    }
+
+    private void notifyDataSetChanged() {
+        if(itemsLVAdapter != null) {
+            itemsLVAdapter.notifyDataSetChanged();;
         }
     }
 
     private void initUI(View v){
 
-        filters = new ArrayList<String>();
+        filters = new ArrayList<>();
         itemsLV = (ListView) v.findViewById(R.id.itemsLV);
         searchBar = (EditText) v.findViewById(R.id.searchBar);
         searchBar.addTextChangedListener(this);
         filterIcon = (ImageView) v.findViewById(R.id.filterIcon);
-        allItems = new ArrayList<Item>();
+
         itemsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -108,7 +144,6 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                     Item item = itemsLVAdapter.getItem(position);
                     if(item != null) {
                         Gson gson = new Gson();
-                        Gson gson2 = new Gson();
                         String extraItemDataJSON = gson.toJson(item);
                         Intent i = new Intent(getContext(), ItemDetailActivity.class);
                         i.putExtra(EXTRA_ITEM_DETAIL, extraItemDataJSON);
@@ -157,23 +192,20 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
         dismissProgress();
         if(response instanceof ItemsResponse){
             ItemsResponse resp = (ItemsResponse)response;
-            if(allItems == null){
-                allItems = new ArrayList<Item>();
-            }
+
             if(Commons.allItemsNew == null){
-                Commons.allItemsNew = new ArrayList<Item>();
+                Commons.allItemsNew = new ArrayList<>();
             }
-            allItems.clear();
+            Commons.allItemsNew.clear();
             Map<String, Data> data = resp.getData();
             for(Map.Entry<String, Data> entry : data.entrySet()) {
                 Item item = new Item();
                 item.setData(entry.getValue());
-                allItems.add(item);
                 Commons.allItemsNew.add(item);
             }
 
             try {
-                Collections.sort(allItems, new Comparator<Item>() {
+                Collections.sort(Commons.allItemsNew, new Comparator<Item>() {
                     @Override
                     public int compare(Item i1, Item i2) {
                         return i1.getData().getName().compareTo(i2.getData().getName());
@@ -181,12 +213,9 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
                 });
             }catch (Exception ignored){}
 
-            try {
-                if(getContext() != null) {
-                    itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, allItems);
-                    itemsLV.setAdapter(itemsLVAdapter);
-                }
-            }catch (Exception ignored){}
+            listItems.clear();
+            copyAllItemsToListArray();
+            setItemsAdapter();
         }
     }
 
@@ -241,19 +270,19 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
             if(filters != null && filters.size() > 0){
                 filters.clear();
             }
-            ArrayList<Item> searchResultItems = new ArrayList<Item>();
-            for(Item i : allItems){
+            listItems.clear();
+            for(Item i : Commons.allItemsNew){
                 if(containsIgnoreCase(i.getData().getName(), String.valueOf(s))){
-                    searchResultItems.add(i);
+                    listItems.add(i);
                 }
             }
-            itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, searchResultItems);
-            itemsLV.setAdapter(itemsLVAdapter);
-            itemsLVAdapter.notifyDataSetChanged();
+            if(listItems.size() > 0) {
+                addAdsToItemsArray();
+            }
+            notifyDataSetChanged();
         }else{
-            itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, allItems);
-            itemsLV.setAdapter(itemsLVAdapter);
-            itemsLVAdapter.notifyDataSetChanged();
+            copyAllItemsToListArray();
+            notifyDataSetChanged();
         }
     }
 
@@ -274,28 +303,30 @@ public class NewItemsFragment extends BaseFragment implements ResponseListener, 
         if(requestCode == FILTER_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK){
                 if(data != null){
-                    ArrayList<Item> filteredItems = new ArrayList<Item>();
+                    listItems.clear();
+
                     filters = data.getStringArrayListExtra(EXTRA_FILTER);
-                    if(filters != null && filters.size() > 0 && allItems != null && allItems.size() > 0){
+                    if(filters != null && filters.size() > 0 && Commons.allItemsNew != null && Commons.allItemsNew.size() > 0){
                         for (String filter : filters){
-                            for(Item i : allItems){
+                            for(Item i : Commons.allItemsNew){
                                 Data itemData = i.getData();
                                 if(itemData != null){
                                     ArrayList<String> tags = itemData.getTags();
                                     if(tags != null && tags.size() > 0){
                                         if(tags.contains(filter)){
-                                            filteredItems.add(i);
+                                            listItems.add(i);
                                         }
                                     }
                                 }
                             }
                         }
-
-                        itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, filteredItems);
-                        itemsLV.setAdapter(itemsLVAdapter);
+                        if(listItems.size() > 0) {
+                            addAdsToItemsArray();
+                        }
+                        notifyDataSetChanged();
                     }else {
-                        itemsLVAdapter = new ItemsAdapter(getContext(), R.layout.list_row_items, Commons.allItemsNew);
-                        itemsLV.setAdapter(itemsLVAdapter);
+                        copyAllItemsToListArray();
+                        notifyDataSetChanged();
                     }
                 }
             }
