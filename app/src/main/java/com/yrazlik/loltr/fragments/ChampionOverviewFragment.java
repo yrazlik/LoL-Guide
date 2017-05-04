@@ -19,6 +19,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -43,6 +44,8 @@ import com.yrazlik.loltr.model.ChampionDto;
 import com.yrazlik.loltr.responseclasses.ChampionOverviewResponse;
 import com.yrazlik.loltr.responseclasses.RecommendedItemsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
+import com.yrazlik.loltr.utils.AdUtils;
+import com.yrazlik.loltr.utils.Utils;
 import com.yrazlik.loltr.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +73,8 @@ import retrofit2.Response;
 	private GridView gridviewStartingItems, gridviewEssentialItems, gridviewOffensiveItems, gridviewDeffensiveItems;
 	private GridViewItemsAdapter startingItemsAdapter, essentialItemsAdapter, offensiveItemsAdapter, deffensiveItemsAdapter;
     private RobotoTextView textViewStartingItems, textViewEssentialItems, textViewOffensiveItems, textViewDeffensiveItems;
+
+    private FrameLayout adLayout;
 
     private ChampionOverviewTable championOverviewResponse;
     private RecommendedItemsResponse recommendedItemsResponse;
@@ -127,6 +132,9 @@ import retrofit2.Response;
         barDefense = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarDefense);
         barMagic = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarMagic);
         barDifficulty = (RelativeLayout)v.findViewById(R.id.relativeLayoutBarDifficulty);
+        adLayout = (FrameLayout) v.findViewById(R.id.adLayout);
+        adLayout.removeAllViews();
+        Utils.addView(adLayout, AdUtils.getInstance().createSmallAdView());
     }
 
     private void getFragmentData() {

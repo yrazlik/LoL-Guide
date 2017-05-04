@@ -320,6 +320,17 @@
                     </GridView>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
+            <FrameLayout
+                android:id="@+id/adLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayoutRecommendedItems"
+                android:layout_marginTop="5dp"
+                android:visibility="gone">
+
+
+            </FrameLayout>
         </RelativeLayout>
     </ScrollView>
 
