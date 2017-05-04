@@ -9,14 +9,18 @@ import com.google.android.gms.ads.formats.NativeContentAd;
 import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 
+import java.util.Date;
+
 /**
  * Created by yrazlik on 03/05/17.
  */
 
 public class AdUtils {
 
+    private static final long AD_CACHE_TIMEOUT = 60 * 1000;
     private static AdUtils mInstance;
 
+    private long lastAdRequestTime;
     private boolean adsEnabled = true;
 
     private NativeAd nativeAd;
@@ -48,17 +52,19 @@ public class AdUtils {
             new NativeAdLoader().loadAd(context, adUnitId, new NativeAdLoader.NativeAdLoadedListener() {
                 @Override
                 public void onAppInstallAdLoaded(NativeAppInstallAd nativeAppInstallAd) {
+                    lastAdRequestTime = new Date().getTime();
                     updateAds(nativeAppInstallAd);
                 }
 
                 @Override
                 public void onContentAdLoaded(NativeContentAd nativeContentAd) {
+                    lastAdRequestTime = new Date().getTime();
                     updateAds(nativeContentAd);
                 }
 
                 @Override
                 public void onAdFailedToLoad() {
-                    Log.d("", "");
+                    lastAdRequestTime = new Date().getTime();
                 }
             });
         } else {
@@ -79,7 +85,17 @@ public class AdUtils {
     }
 
     public NativeAd getCachedAd() {
-        loadNativeAd(LolApplication.getAppContext(), LolApplication.getAppContext().getString(R.string.native_ad_unit_id));
+        if(shouldRequestNewAd()) {
+            loadNativeAd(LolApplication.getAppContext(), LolApplication.getAppContext().getString(R.string.native_ad_unit_id));
+        }
         return nativeAd;
+    }
+
+    private boolean shouldRequestNewAd() {
+        long now = new Date().getTime();
+        if(now - lastAdRequestTime > AD_CACHE_TIMEOUT) {
+            return true;
+        }
+        return false;
     }
 }

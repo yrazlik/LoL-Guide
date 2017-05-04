@@ -67,7 +67,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
                     holder.adContainerView = (RelativeLayout) holder.nativeAdView.findViewById(R.id.adContainerView);
                     break;
                 case ROW_CONTENT_AD:
-                    holder.nativeAdView = (NativeContentAdView) inflater.inflate(R.layout.list_row_news_nativeinstallad, parent, false);
+                    holder.nativeAdView = (NativeContentAdView) inflater.inflate(R.layout.list_row_news_nativecontentad, parent, false);
                     convertView = holder.nativeAdView;
                     holder.adContainerView = (RelativeLayout) holder.nativeAdView.findViewById(R.id.adContainerView);
                     break;
