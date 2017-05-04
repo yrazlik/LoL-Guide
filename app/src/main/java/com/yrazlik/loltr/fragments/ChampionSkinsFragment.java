@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.yrazlik.loltr.LolApplication;
@@ -25,6 +26,7 @@ import com.yrazlik.loltr.listener.ResponseListener;
 import com.yrazlik.loltr.responseclasses.ChampionSkinsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.service.ServiceRequest;
+import com.yrazlik.loltr.utils.AdUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,11 +71,31 @@ public class ChampionSkinsFragment extends BaseFragment implements ResponseListe
         } else {
             if(adapter == null || adapter.getCount() == 0) {
                 dismissProgress();
+                addAdsToNewsArray();
                 adapter = new ChampionSkinsAdapter(getContext(), R.layout.listrow_champion_skins, skins, key);
                 skinsList.setAdapter(adapter);
             } else {
-                adapter.notifyDataSetChanged();
+                notifyDataSetChanged();
             }
+        }
+    }
+
+    private void addAdsToNewsArray() {
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd();
+        if(nativeAd != null) {
+            Skin ad = new Skin();
+            ad.setAd(true);
+            ad.setNativeAd(nativeAd);
+            try {
+                skins.add(2, ad);
+            } catch (Exception ignored) {}
+            notifyDataSetChanged();
+        }
+    }
+
+    private void notifyDataSetChanged() {
+        if(adapter != null) {
+            adapter.notifyDataSetChanged();
         }
     }
 
