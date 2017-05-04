@@ -83,6 +83,7 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
                 channels.add(1, ad);
                 channels.add(11, ad);
                 channels.add(19, ad);
+                channels.add(ad);
             } catch (Exception ignored) {}
         }
     }
