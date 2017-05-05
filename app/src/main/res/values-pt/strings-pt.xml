@@ -258,4 +258,6 @@
     <string name="rankedWinLose">Classificação ganha/perde:</string>
     <string name="noRecentNEws">Não foi possível encontrar nenhuma notícias para ser exibida.</string>
 
+    <string name="native_ad_unit_id">ca-app-pub-3219973945608696/8638691568</string>
+
 </resources>
