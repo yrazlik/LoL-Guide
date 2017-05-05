@@ -62,6 +62,6 @@ public class NativeAdLoader {
                 }).withNativeAdOptions(new NativeAdOptions.Builder().build())
                 .build();
 
-        adLoader.loadAd(new AdRequest.Builder().addTestDevice("30A5B8102FD434AF380A8BC930C13642").build());
+        adLoader.loadAd(new AdRequest.Builder().addTestDevice("CE1FD6986514D2A99F38024A84763514").build());
     }
 }
