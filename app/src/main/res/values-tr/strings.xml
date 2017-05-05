@@ -259,6 +259,4 @@
     <string name="playing_against">Rakip %1$s iken:</string>
     <string name="rankedWinLose">Dereceli Kazanma/Kaybetme:</string>
     <string name="noRecentNEws">Listelenecek yeni haber bulunamadı.</string>
-
-    <string name="native_ad_unit_id">ca-app-pub-3219973945608696/8638691568</string>
 </resources>
