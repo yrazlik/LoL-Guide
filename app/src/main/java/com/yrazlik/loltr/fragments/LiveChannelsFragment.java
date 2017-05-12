@@ -34,6 +34,7 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
     private LiveChannelsAdapter adapter;
     private ListView liveChannelsList;
     private TextView errorText;
+    private ArrayList<Streams> channels;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,7 +64,13 @@ public class LiveChannelsFragment extends BaseFragment implements ResponseListen
         if(response instanceof LiveChannelsResponse){
             errorText.setVisibility(View.GONE);
             LiveChannelsResponse resp = (LiveChannelsResponse) response;
-            ArrayList<Streams> channels = resp.getStreams();
+            channels = resp.getStreams();
+            for(int i = 0; i < channels.size(); i++) {
+                Streams ch = channels.get(i);
+                if(ch != null && ch.getChannel() != null) {
+                    ch.getChannel().setUrl("https://player.twitch.tv/?channel=" + ch.getChannel().getName());
+                }
+            }
             adapter = new LiveChannelsAdapter(getContext(), R.layout.list_row_livechannel, channels);
             liveChannelsList.setAdapter(adapter);
         }
