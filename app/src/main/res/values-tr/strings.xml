@@ -262,4 +262,7 @@
     <string name="rankedWinLose">Dereceli Kazanma/Kaybetme:</string>
     <string name="noRecentNEws">Listelenecek yeni haber bulunamadı.</string>
     <string name="install">Yükle</string>
+    <string name="follow">Takip Et</string>
+    <string name="like">Beğen</string>
+    <string name="socialMedia">Facebook ve Twitter sayfamızı beğenerek RP çekilişleri ve daha fazlasından haberdar olabilirsiniz!</string>
 </resources>

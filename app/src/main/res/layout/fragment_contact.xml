@@ -18,12 +18,80 @@
             android:background="@color/cardview_bg">
 
             <com.yrazlik.loltr.view.RobotoTextView
-                android:id="@+id/textviewContactText"
+                android:id="@+id/socialMediaTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
+                android:text="@string/socialMedia"
+                android:textAppearance="@style/sp13BlackRegular"/>
+
+            <LinearLayout
+                android:id="@+id/socialMediaButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/socialMediaTxt"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/facebookButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/fb_logo"/>
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/like"
+                        android:layout_marginTop="1dp"
+                        android:textAppearance="@style/sp12BlueRegular"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/twitterButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/twitter_logo"
+                        />
+
+                    <com.yrazlik.loltr.view.RobotoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/follow"
+                        android:layout_marginTop="1dp"
+                        android:textAppearance="@style/sp12BlueRegular"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <com.yrazlik.loltr.view.RobotoTextView
+                android:id="@+id/textviewContactText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/socialMediaButtons"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/contact_text"
                 android:textAppearance="@style/sp13BlackRegular"/>
 
@@ -60,12 +128,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edittextContactBoxContainer"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:text="@string/send"
-                android:minHeight="35dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/tab_color"
+                android:minHeight="35dp"
+                android:text="@string/send"
                 android:textColor="@color/white"
                 android:textSize="13sp"/>
         </RelativeLayout>

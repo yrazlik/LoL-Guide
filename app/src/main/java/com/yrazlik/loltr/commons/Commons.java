@@ -474,4 +474,21 @@ public class Commons {
             return new ArrayList<>(Arrays.asList(regions));
         }
     }
+
+    public static void openFacebookPage(Context context) {
+        try {
+            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/226593987828490")));
+        } catch (Exception e) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/lolguidetr")));
+        }
+    }
+
+    public static void openTwitterPage(Context context) {
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=lolguidetr")));
+        }catch (Exception e) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/lolguidetr")));
+        }
+    }
 }

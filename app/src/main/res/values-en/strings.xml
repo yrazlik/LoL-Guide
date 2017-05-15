@@ -270,4 +270,7 @@
     <string name="rankedWinLose">Ranked Win/Lose:</string>
     <string name="noRecentNEws">There are no recent news to display.</string>
     <string name="install">Install</string>
+    <string name="follow">Follow</string>
+    <string name="like">Like</string>
+    <string name="socialMedia">You can follow us on Facebook and Twitter. We will start RP draws soon and announce it through our social media channels! So follow us and have a chance to win free RP!</string>
 </resources>

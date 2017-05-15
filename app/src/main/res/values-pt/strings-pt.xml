@@ -260,4 +260,7 @@
     <string name="rankedWinLose">Classificação ganha/perde:</string>
     <string name="noRecentNEws">Não foi possível encontrar nenhuma notícias para ser exibida.</string>
     <string name="install">Instalar</string>
+    <string name="follow">Seguir</string>
+    <string name="like">Gostar</string>
+    <string name="socialMedia">Você pode nos seguir no Facebook e Twitter. Vamos começar RP desenha em breve e anunciá-lo através de nossos canais de mídia social! Então siga-nos e ter uma chance de ganhar RP livre!</string>
 </resources>
