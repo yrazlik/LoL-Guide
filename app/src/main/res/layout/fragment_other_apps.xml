@@ -3,7 +3,7 @@
           android:id="@+id/otherAppsList"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:divider="@drawable/list_divider_left_margin_dashed"
+          android:divider="@drawable/list_divider_gray_with_margin"
           android:dividerHeight="0.5dp"
           android:scrollbars="none">
 
