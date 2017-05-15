@@ -41,5 +41,6 @@
     <color name="loading_bg_color">#33000000</color>
     <color name="twitter_blue">#1dcaff</color>
     <color name="facebook_blue">#3b5999</color>
+    <color name="transparent_dark">#80202121</color>
 
 </resources>

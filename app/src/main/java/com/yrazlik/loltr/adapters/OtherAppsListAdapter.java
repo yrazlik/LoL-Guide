@@ -2,6 +2,7 @@ package com.yrazlik.loltr.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +21,12 @@ import java.util.List;
 
 public class OtherAppsListAdapter extends ArrayAdapter<App> {
 
-    private Context mContext;
+    private Activity activity;
     private List apps;
 
     public OtherAppsListAdapter(Context context, int resource, List<App> objects) {
         super(context, resource, objects);
-        this.mContext = context;
+        this.activity = scanForActivity(context);
         this.apps= objects;
     }
 
@@ -33,7 +34,7 @@ public class OtherAppsListAdapter extends ArrayAdapter<App> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if(convertView == null){
-            LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
+            LayoutInflater inflater = activity.getLayoutInflater();
             convertView = inflater.inflate(R.layout.list_row_otherapps, parent, false);
 
             holder = new ViewHolder();
@@ -62,5 +63,15 @@ public class OtherAppsListAdapter extends ArrayAdapter<App> {
     static class ViewHolder {
         public CircularImageView appImg;
         public RobotoTextView appName;
+    }
+
+    private Activity scanForActivity(Context cont) {
+        if (cont == null)
+            return null;
+        else if (cont instanceof Activity)
+            return (Activity)cont;
+        else if (cont instanceof ContextWrapper)
+            return scanForActivity(((ContextWrapper)cont).getBaseContext());
+        return null;
     }
 }

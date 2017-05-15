@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -48,7 +47,7 @@ import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.NewsFragment;
-import com.yrazlik.loltr.fragments.OtherAppsFragment;
+import com.yrazlik.loltr.fragments.OtherAppsDialog;
 import com.yrazlik.loltr.fragments.RemoveAdsFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
@@ -895,21 +894,13 @@ public class MainActivity extends ActionBarActivity implements ResponseListener,
             closeFabMenu();
             Commons.openTwitterPage(this);
         } else if(v == fabOtherApps) {
-            closeFabMenu();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            final FragmentTransaction ft = fragmentManager.beginTransaction();
             try {
+                closeFabMenu();
                 mDrawerLayout.closeDrawer(mDrawer);
             } catch (Exception e) {}
 
-            Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_frame);
-            if(!(currentFragment instanceof  OtherAppsFragment)) {
-                OtherAppsFragment otherAppsFragment = new OtherAppsFragment();
-                Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
-                ft.replace(R.id.content_frame, otherAppsFragment).addToBackStack(Commons.OTHERAPPS_FRAGMENT);
-                ft.commit();
-                showInterstitial();
-            }
+            OtherAppsDialog otherAppsDialog = new OtherAppsDialog(this);
+            otherAppsDialog.show();
         }
     }
 

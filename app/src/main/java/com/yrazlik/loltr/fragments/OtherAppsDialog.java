@@ -1,12 +1,17 @@
 package com.yrazlik.loltr.fragments;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.firebase.client.DataSnapshot;
@@ -30,34 +35,38 @@ import java.util.Map;
  * Created by yrazlik on 15/05/17.
  */
 
-public class OtherAppsFragment extends BaseFragment implements AdapterView.OnItemClickListener{
+public class OtherAppsDialog extends Dialog implements AdapterView.OnItemClickListener{
 
     private ArrayList<App> otherApps;
 
+    private Context mContext;
     private ListView otherAppsList;
     private OtherAppsListAdapter otherAppsListAdapter;
+
+    public OtherAppsDialog(@NonNull Context context) {
+        super(context);
+        this.mContext = context;
+    }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.fragment_other_apps);
         otherApps = new ArrayList<>();
         createDefaultApps();
         sortAppsById();
-    }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_other_apps, container, false);
         if(otherAppsList == null) {
-            otherAppsList = (ListView) v.findViewById(R.id.otherAppsList);
+            otherAppsList = (ListView) findViewById(R.id.otherAppsList);
             otherAppsList.setOnItemClickListener(this);
             setAdapter();
             updateAppsFromFirebase();
+            reportGoogleAnalytics();
         } else {
             notifyDataSetChanged();
         }
-        return v;
     }
 
     private void setAdapter() {
@@ -85,7 +94,7 @@ public class OtherAppsFragment extends BaseFragment implements AdapterView.OnIte
     }
 
     private void updateAppsFromFirebase() {
-        Firebase firebase = new Firebase(getResources().getString(R.string.lol_firebase));
+        Firebase firebase = new Firebase(mContext.getResources().getString(R.string.lol_firebase));
         firebase.child("other-apps").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -112,9 +121,8 @@ public class OtherAppsFragment extends BaseFragment implements AdapterView.OnIte
         });
     }
 
-    @Override
     public void reportGoogleAnalytics() {
-        Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
+        Tracker t = ((LolApplication) ((AppCompatActivity) mContext).getApplication()).getTracker();
         t.setScreenName("OtherAppsFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
     }
@@ -130,7 +138,7 @@ public class OtherAppsFragment extends BaseFragment implements AdapterView.OnIte
     private void openInMarket(App app) {
         try {
             if(Commons.isValidString(app.getPackageName())) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + app.getPackageName())));
+                mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + app.getPackageName())));
             } else {
                 Commons.openInBrowser(getContext(), app.getUrl());
             }

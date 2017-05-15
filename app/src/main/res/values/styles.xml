@@ -47,10 +47,22 @@
         <item name="android:windowIsFloating">false</item>
     </style>
 
-    <style name="DialogFullScreenTheme2" parent="android:Theme.Dialog">
+    <style name="DialogFullScreenThemeTransparentBg" parent="android:Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="DialogFullScreenWidthTransparentBg" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@color/transparent_dark</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_gravity">center_vertical</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
     </style>
