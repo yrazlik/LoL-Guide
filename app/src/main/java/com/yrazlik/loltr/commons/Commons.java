@@ -9,6 +9,7 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
@@ -489,6 +490,26 @@ public class Commons {
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=lolguidetr")));
         }catch (Exception e) {
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/lolguidetr")));
+        }
+    }
+
+    public static void showAppPickerShareDialog(Context context, String extraText) {
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        if (isValidString(extraText)) {
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, extraText);
+        }
+
+        try {
+            Intent chooserIntent = Intent.createChooser(shareIntent, context.getResources().getString(R.string.share));
+            if (chooserIntent != null) {
+                context.startActivity(chooserIntent);
+            } else {
+                Toast.makeText(context, context.getResources().getString(R.string.anErrorOccured), Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(context, context.getResources().getString(R.string.anErrorOccured), Toast.LENGTH_SHORT).show();
         }
     }
 }

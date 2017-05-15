@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -27,6 +28,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
@@ -66,7 +69,7 @@ import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_LIVE_
 import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_NEWS;
 import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_REMOVE_ADS;
 
-public class MainActivity extends ActionBarActivity implements ResponseListener {
+public class MainActivity extends ActionBarActivity implements ResponseListener, View.OnClickListener {
 
     private Intent deeplinkIntent;
     int mPosition = -1;
@@ -76,7 +79,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     String[] leftMenuItems;
 
     // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] icons = new int[]{R.drawable.android, R.drawable.ic_account_circle_black_24dp, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+    int[] icons = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
             R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
             R.drawable.info};
 
@@ -86,6 +89,12 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private NavigationView mDrawer;
     private List<LeftMenuItem> mList;
 
+    private FloatingActionMenu fabMenu;
+    private FloatingActionButton fabShare;
+    private FloatingActionButton fabFacebook;
+    private FloatingActionButton fabTwitter;
+    private FloatingActionButton fabOtherApps;
+
     private LeftMenuListAdapter mAdapter;
     private AdView adView;
     private Toolbar mToolBar;
@@ -93,15 +102,26 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private void continueSetup() {
         if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.activity_main);
-            icons = new int[]{R.drawable.android, R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+            icons = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
                     R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_block, R.drawable.ic_mail,
                     R.drawable.ic_info};
         } else {
             setContentView(R.layout.activity_main_noad);
-            icons = new int[]{R.drawable.android, R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+            icons = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
                     R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_mail,
                     R.drawable.ic_info};
         }
+
+        fabMenu = (FloatingActionMenu) findViewById(R.id.menu_like);
+        fabShare = (FloatingActionButton) findViewById(R.id.fabShare);
+        fabTwitter = (FloatingActionButton) findViewById(R.id.fabTwitter);
+        fabFacebook = (FloatingActionButton) findViewById(R.id.fabFacebook);
+        fabOtherApps = (FloatingActionButton) findViewById(R.id.fabOtherApps);
+        fabMenu.setOnClickListener(this);
+        fabShare.setOnClickListener(this);
+        fabTwitter.setOnClickListener(this);
+        fabFacebook.setOnClickListener(this);
+        fabOtherApps.setOnClickListener(this);
 
         ServiceHelper.getInstance(getContext()).makeGetAllSpellsRequest(this);
 
@@ -117,14 +137,13 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
         setDrawer();
-        performDrawerMenuItemClick(2);
+        performDrawerMenuItemClick(1);
 
 
-        String cat = leftMenuItems[2];
+        String cat = leftMenuItems[1];
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(cat);
-        //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
-        highlightSelectedMenuRow(3);
+        highlightSelectedMenuRow(2);
     }
 
     @SuppressLint("NewApi")
@@ -238,14 +257,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     // Highlight the selected country : 0 to 4
     public void highlightSelectedMenuRow() {
         int selectedItem = mDrawerList.getCheckedItemPosition() - mDrawerList.getHeaderViewsCount();
@@ -357,19 +368,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
 
-            if(position == 0) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        OtherAppsFragment pFragment = new OtherAppsFragment();
-                        ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.OTHERAPPS_FRAGMENT);
-                        ft.commitAllowingStateLoss();
-                        showInterstitial();
-                    }
-                }, 350);
-            } else if (position == 1) {
+            if (position == 0) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -381,7 +380,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 2) {
+            } else if (position == 1) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -394,7 +393,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                     }
                 }, 350);
 
-            } else if (position == 3) {
+            } else if (position == 2) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -406,7 +405,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 4) {
+            } else if (position == 3) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -418,7 +417,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 5) {
+            } else if (position == 4) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -430,7 +429,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 6) {
+            } else if (position == 5) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -442,7 +441,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 7) {
+            } else if (position == 6) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -454,7 +453,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 8) {
+            } else if (position == 7) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -466,7 +465,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 9) {
+            } else if (position == 8) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -478,7 +477,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 10) {
+            } else if (position == 9) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -490,7 +489,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 11) {
+            } else if (position == 10) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -502,7 +501,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            }  else if (position == 12) {
+            }  else if (position == 11) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -515,7 +514,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                     }
                 }, 350);
             }
-            else if (position == 13) {
+            else if (position == 12) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -527,7 +526,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 14) {
+            } else if (position == 13) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -557,19 +556,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
 
-            if(position == 0) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        OtherAppsFragment pFragment = new OtherAppsFragment();
-                        ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.OTHERAPPS_FRAGMENT);
-                        ft.commitAllowingStateLoss();
-                        showInterstitial();
-                    }
-                }, 350);
-            } else if (position == 1) {
+           if (position == 0) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -581,7 +568,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 2) {
+            } else if (position == 1) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -594,7 +581,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                     }
                 }, 350);
 
-            } else if (position == 3) {
+            } else if (position == 2) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -606,7 +593,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 4) {
+            } else if (position == 3) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -618,7 +605,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 5) {
+            } else if (position == 4) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -630,7 +617,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 6) {
+            } else if (position == 5) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -642,7 +629,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 7) {
+            } else if (position == 6) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -654,7 +641,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 8) {
+            } else if (position == 7) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -666,7 +653,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 9) {
+            } else if (position == 8) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -678,7 +665,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 10) {
+            } else if (position == 9) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -690,7 +677,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 11) {
+            } else if (position == 10) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -702,7 +689,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 12) {
+            } else if (position == 11) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -714,7 +701,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 13) {
+            } else if (position == 12) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -864,27 +851,71 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private int getDeeplinkActionPositionOnDrawerMenu(LolNotification.NOTIFICATION_ACTION notificationAction) {
         try {
             if(notificationAction == ACTION_HOME) {
-               return 2;
+               return 1;
             } else if(notificationAction == ACTION_REMOVE_ADS) {
                 if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
-                    return 12;
+                    return 11;
                 }
             } else if(notificationAction == ACTION_DISCOUNTS) {
-                return 3;
+                return 2;
             } else if(notificationAction == ACTION_NEWS) {
-                return 4;
+                return 3;
             } else if(notificationAction == ACTION_LIVE_CHANNELS) {
-                return 10;
+                return 9;
             }
         } catch (Exception e) {
-            return 2;
+            return 1;
         }
-        return 2;
+        return 1;
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         deeplinkIntent = intent;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == fabShare) {
+            closeFabMenu();
+            Commons.showAppPickerShareDialog(getContext(), "https://play.google.com/store/apps/details?id=com.yrazlik.loltr");
+        } else if(v == fabFacebook) {
+            closeFabMenu();
+            Commons.openFacebookPage(this);
+        } else if(v == fabTwitter) {
+            closeFabMenu();
+            Commons.openTwitterPage(this);
+        } else if(v == fabOtherApps) {
+            closeFabMenu();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            final FragmentTransaction ft = fragmentManager.beginTransaction();
+            try {
+                mDrawerLayout.closeDrawer(mDrawer);
+            } catch (Exception e) {}
+
+            Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_frame);
+            if(!(currentFragment instanceof  OtherAppsFragment)) {
+                OtherAppsFragment otherAppsFragment = new OtherAppsFragment();
+                Commons.setAnimation(ft, Commons.ANIM_OPEN_FROM_RIGHT_WITH_POPSTACK);
+                ft.replace(R.id.content_frame, otherAppsFragment).addToBackStack(Commons.OTHERAPPS_FRAGMENT);
+                ft.commit();
+                showInterstitial();
+            }
+        }
+    }
+
+    private void closeFabMenu() {
+        if(fabMenu.isOpened()) {
+            fabMenu.close(true);
+        }
     }
 }

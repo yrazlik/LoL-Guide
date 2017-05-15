@@ -149,4 +149,6 @@ public class OtherAppsFragment extends BaseFragment implements AdapterView.OnIte
             });
         } catch (Exception ignored) {}
     }
+
+
 }

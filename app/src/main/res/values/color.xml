@@ -31,11 +31,15 @@
     <color name="material_green">#CC4F59C2</color>
     <color name="app_color">@color/new_app_color</color>
     <color name="tab_color">#248F46</color>
+    <color name="tab_color_pressed">#2EC960</color>
+    <color name="tab_color_ripple">#176E33</color>
     <color name="dark_dark_red">#FFFFFF</color>
 
     <color name="new_app_color">#CC040F34</color>
 
     <color name="menu_color">#FFFFFF</color>
     <color name="loading_bg_color">#33000000</color>
+    <color name="twitter_blue">#1dcaff</color>
+    <color name="facebook_blue">#3b5999</color>
 
 </resources>
