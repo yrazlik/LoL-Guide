@@ -12,6 +12,7 @@
     <string name="question_mark">\?\?\?</string>
 
     <string-array name="titles">
+        <item>More Apps</item>
         <item>Summoners</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
@@ -31,6 +32,7 @@
 
 
     <string-array name="titles_noad">
+        <item>More Apps</item>
         <item>Summoners</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
@@ -271,4 +273,5 @@
     <string name="rankedWinLose">Ranked Win/Lose:</string>
     <string name="noRecentNEws">There are no recent news to display.</string>
 
+    <string name="install">Install</string>
 </resources>

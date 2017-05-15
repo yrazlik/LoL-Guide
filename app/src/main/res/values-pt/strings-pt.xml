@@ -9,6 +9,7 @@
     <string name="question_mark">\?\?\?</string>
 
     <string-array name="titles">
+        <item>Nossos Outros Aplicativos</item>
         <item>Invocadores</item>
         <item>Campeões Livres Semanais</item>
         <item>Descontos</item>
@@ -28,6 +29,7 @@
 
 
     <string-array name="titles_noad">
+        <item>Nossos Outros Aplicativos</item>
         <item>Invocadores</item>
         <item>Campeões Livres Semanais</item>
         <item>Descontos</item>
@@ -257,5 +259,5 @@
     <string name="playing_against">Quando o oponente é %1$s :</string>
     <string name="rankedWinLose">Classificação ganha/perde:</string>
     <string name="noRecentNEws">Não foi possível encontrar nenhuma notícias para ser exibida.</string>
-
+    <string name="install">Instalar</string>
 </resources>

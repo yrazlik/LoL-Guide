@@ -11,6 +11,7 @@
     <string name="enter_text_here">Buraya yazın...</string>
 
     <string-array name="titles">
+        <item>Diğer Uygulamalarımız</item>
         <item>Oyuncular</item>
         <item>Haftalık Ücretsizler</item>
         <item>İndirimler</item>
@@ -28,6 +29,7 @@
     </string-array>
 
     <string-array name="titles_noad">
+        <item>Diğer Uygulamalarımız</item>
         <item>Oyuncular</item>
         <item>Haftalık Ücretsizler</item>
         <item>İndirimler</item>
@@ -259,4 +261,5 @@
     <string name="playing_against">Rakip %1$s iken:</string>
     <string name="rankedWinLose">Dereceli Kazanma/Kaybetme:</string>
     <string name="noRecentNEws">Listelenecek yeni haber bulunamadı.</string>
+    <string name="install">Yükle</string>
 </resources>

@@ -15,6 +15,7 @@
     <string name="enter_text_here">Enter text here...</string>
 
     <string-array name="titles">
+        <item>More Apps</item>
         <item>Summoners</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
@@ -32,6 +33,7 @@
     </string-array>
 
     <string-array name="titles_noad">
+        <item>More Apps</item>
         <item>Summoners</item>
         <item>Weekly Free Champions</item>
         <item>Discounts</item>
@@ -267,5 +269,5 @@
     <string name="playing_against">When you are playing against %1$s :</string>
     <string name="rankedWinLose">Ranked Win/Lose:</string>
     <string name="noRecentNEws">There are no recent news to display.</string>
-
+    <string name="install">Install</string>
 </resources>

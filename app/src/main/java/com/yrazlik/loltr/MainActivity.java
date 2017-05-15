@@ -20,7 +20,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -28,8 +27,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
@@ -48,6 +45,7 @@ import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.NewsFragment;
+import com.yrazlik.loltr.fragments.OtherAppsFragment;
 import com.yrazlik.loltr.fragments.RemoveAdsFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
@@ -58,7 +56,6 @@ import com.yrazlik.loltr.responseclasses.SummonerSpellsResponse;
 import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.view.PushNotificationDialog;
 import com.yrazlik.loltr.view.RobotoTextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,12 +76,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     String[] leftMenuItems;
 
     // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] mFlags = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+    int[] icons = new int[]{R.drawable.android, R.drawable.ic_account_circle_black_24dp, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
             R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
             R.drawable.info};
-
-    // Array of strings to initial counts
-    String[] mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -99,16 +93,14 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private void continueSetup() {
         if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
             setContentView(R.layout.activity_main);
-            mFlags = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+            icons = new int[]{R.drawable.android, R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
                     R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_block, R.drawable.ic_mail,
                     R.drawable.ic_info};
-            mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         } else {
             setContentView(R.layout.activity_main_noad);
-            mFlags = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+            icons = new int[]{R.drawable.android, R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
                     R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_mail,
                     R.drawable.ic_info};
-            mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         }
 
         ServiceHelper.getInstance(getContext()).makeGetAllSpellsRequest(this);
@@ -125,14 +117,14 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         }
 
         setDrawer();
-        performDrawerMenuItemClick(1);
+        performDrawerMenuItemClick(2);
 
 
-        String cat = leftMenuItems[1];
+        String cat = leftMenuItems[2];
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(cat);
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
-        highlightSelectedMenuRow(2);
+        highlightSelectedMenuRow(3);
     }
 
     @SuppressLint("NewApi")
@@ -184,7 +176,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         mList = new ArrayList<>();
 
         for (int i = 0; i < leftMenuItems.length; i++) {
-            LeftMenuItem item = new LeftMenuItem(mFlags[i], leftMenuItems[i]);
+            LeftMenuItem item = new LeftMenuItem(icons[i], leftMenuItems[i]);
             mList.add(item);
         }
 
@@ -365,7 +357,19 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
 
-            if (position == 0) {
+            if(position == 0) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        OtherAppsFragment pFragment = new OtherAppsFragment();
+                        ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.OTHERAPPS_FRAGMENT);
+                        ft.commitAllowingStateLoss();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 1) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -377,7 +381,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 1) {
+            } else if (position == 2) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -390,7 +394,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                     }
                 }, 350);
 
-            } else if (position == 2) {
+            } else if (position == 3) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -402,7 +406,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 3) {
+            } else if (position == 4) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -414,7 +418,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 4) {
+            } else if (position == 5) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -426,7 +430,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 5) {
+            } else if (position == 6) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -438,7 +442,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 6) {
+            } else if (position == 7) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -450,7 +454,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 7) {
+            } else if (position == 8) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -462,7 +466,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 8) {
+            } else if (position == 9) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -474,7 +478,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 9) {
+            } else if (position == 10) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -486,7 +490,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 10) {
+            } else if (position == 11) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -498,7 +502,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            }  else if (position == 11) {
+            }  else if (position == 12) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -511,7 +515,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                     }
                 }, 350);
             }
-            else if (position == 12) {
+            else if (position == 13) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -523,7 +527,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 13) {
+            } else if (position == 14) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -553,7 +557,19 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
 
-            if (position == 0) {
+            if(position == 0) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        OtherAppsFragment pFragment = new OtherAppsFragment();
+                        ft.replace(R.id.content_frame, pFragment).addToBackStack(Commons.OTHERAPPS_FRAGMENT);
+                        ft.commitAllowingStateLoss();
+                        showInterstitial();
+                    }
+                }, 350);
+            } else if (position == 1) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -565,7 +581,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 1) {
+            } else if (position == 2) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -578,7 +594,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                     }
                 }, 350);
 
-            } else if (position == 2) {
+            } else if (position == 3) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -590,7 +606,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 3) {
+            } else if (position == 4) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -602,7 +618,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 4) {
+            } else if (position == 5) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -614,7 +630,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 5) {
+            } else if (position == 6) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -626,7 +642,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 6) {
+            } else if (position == 7) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -638,7 +654,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 7) {
+            } else if (position == 8) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -650,7 +666,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 8) {
+            } else if (position == 9) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -662,7 +678,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 9) {
+            } else if (position == 10) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -674,7 +690,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 10) {
+            } else if (position == 11) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -686,7 +702,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 11) {
+            } else if (position == 12) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -698,7 +714,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                         showInterstitial();
                     }
                 }, 350);
-            } else if (position == 12) {
+            } else if (position == 13) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -848,22 +864,22 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private int getDeeplinkActionPositionOnDrawerMenu(LolNotification.NOTIFICATION_ACTION notificationAction) {
         try {
             if(notificationAction == ACTION_HOME) {
-               return 1;
+               return 2;
             } else if(notificationAction == ACTION_REMOVE_ADS) {
                 if(Commons.getInstance(getApplicationContext()).ADS_ENABLED) {
-                    return 11;
+                    return 12;
                 }
             } else if(notificationAction == ACTION_DISCOUNTS) {
-                return 2;
-            } else if(notificationAction == ACTION_NEWS) {
                 return 3;
+            } else if(notificationAction == ACTION_NEWS) {
+                return 4;
             } else if(notificationAction == ACTION_LIVE_CHANNELS) {
-                return 9;
+                return 10;
             }
         } catch (Exception e) {
-            return 1;
+            return 2;
         }
-        return 1;
+        return 2;
     }
 
     @Override

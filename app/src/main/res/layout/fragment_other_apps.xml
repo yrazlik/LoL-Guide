@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/otherAppsList"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:divider="@drawable/list_divider_left_margin_dashed"
+          android:dividerHeight="0.5dp"
+          android:scrollbars="none">
+
+
+
+</ListView>

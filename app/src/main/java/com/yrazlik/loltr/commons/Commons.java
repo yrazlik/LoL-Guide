@@ -143,6 +143,7 @@ public class Commons {
     public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/4affa8a1f849a587ce5277de61922e04b871737a/championcosts";
 	public static final String URL_CHAMPION_SKIN_BASE = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
+    public static final String OTHERAPPS_FRAGMENT = "com.yrazlik.loltr.fragments.otherappsfragment";
     public static final String PROFILE_FRAGMENT = "com.yrazlik.loltr.fragments.profilefragment";
     public static final String WEEKLY_FREE_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.weeklyfreechampionsfragment";
     public static final String ALL_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsfragment";
