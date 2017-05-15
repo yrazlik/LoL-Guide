@@ -2,32 +2,67 @@
 <items version="2" >
 
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/jars/classes.jar"
+        is-multidex="true"
+        jar="/Users/yrazlik/.android/build-cache/e611a36de054ecfefad14931413031914cf8c67a/output/jars/classes.jar"
         jumboMode="false"
-        revision="23.0.0"
-        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-wearable-8.4.0_db6e24acc5a75b30e4748cee82aa1fc4c1efb8ad.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="1c3b9743fe8bb166a90a7e98b9b9f1f8021d80cd">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c6276cc8d7cf7654815894d5db7f14aeed7f6798/classes.dex" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars/classes.jar"
+        is-multidex="true"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/libs/nineoldandroids-2.4.0.jar"
         jumboMode="false"
-        revision="23.0.0"
-        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-measurement-8.4.0_e1f8f67c099309a7bc2318658bd3f826e2b0bf0f.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/2/nineoldandroids-2.4.0_2ed3ceaae3e36f87990001b3e2784fa9c0a873e9/classes.dex" />
     </item>
     <item
-        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/jars/classes.jar"
+        is-multidex="true"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/libs/bolts-android-1.1.4.jar"
         jumboMode="false"
-        revision="23.0.0"
-        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-games-8.4.0_54009ee176ac6e79174d0f00ab6f9a2002ae11b8.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/2/bolts-android-1.1.4_a1283a19f1a9a5c39f39126ab4ded630cf1417ec/classes.dex" />
     </item>
     <item
+        is-multidex="true"
         jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
         jumboMode="false"
-        revision="23.0.0"
+        optimize="true"
+        revision="25.0.0"
         sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/pre-dexed/debug/gson-2.3_03c4567695276ab9b1f1f185de56be86e9aaa477.jar" />
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.3_03c4567695276ab9b1f1f185de56be86e9aaa477/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yrazlik/.android/build-cache/f2d822e3b43c2e2fec661f928371d3539b96cd0c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3dc8c9ba86d8bb0febd3087ecd02269fa8fc4ceb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/libs/android-query-full.0.26.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4055bed8ed6f6aa573fa3e7d979c66101c48e182">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/2/android-query-full.0.26.7_bc7f11cef7389b7a76042ec7a17c96628536b174/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/libs/universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="/Users/yrazlik/AndroidstudioProjects/Lol/LoL-Guide/app/build/intermediates/transforms/dex/debug/folders/1000/2/universal-image-loader-1.9.4_e9ff0c58b0dd2c9ea215bf8ea75e853ddf86f4f3/classes.dex" />
     </item>
 
 </items>

@@ -116,7 +116,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener,
         fabTwitter = (FloatingActionButton) findViewById(R.id.fabTwitter);
         fabFacebook = (FloatingActionButton) findViewById(R.id.fabFacebook);
         fabOtherApps = (FloatingActionButton) findViewById(R.id.fabOtherApps);
-        fabMenu.setOnClickListener(this);
+        fabMenu.setClosedOnTouchOutside(true);
         fabShare.setOnClickListener(this);
         fabTwitter.setOnClickListener(this);
         fabFacebook.setOnClickListener(this);
@@ -311,24 +311,28 @@ public class MainActivity extends ActionBarActivity implements ResponseListener,
 
         @Override
         public void onBackPressed () {
-            if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                mDrawerLayout.closeDrawer(Gravity.LEFT);
+            if(fabMenu != null && fabMenu.isOpened()) {
+                fabMenu.close(true);
             } else {
-                int count = getSupportFragmentManager().getBackStackEntryCount();
-                if (count <= 1) {
-                    SharedPreferences prefs = getApplicationContext().getSharedPreferences(AppRater.SHARED_PREFS_APPRATER, 0);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    if (AppRater.showRateDialog(this, editor, new AppRater.DialogDismissedListener() {
-                        @Override
-                        public void onDialogDismissed() {
+                if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+                } else {
+                    int count = getSupportFragmentManager().getBackStackEntryCount();
+                    if (count <= 1) {
+                        SharedPreferences prefs = getApplicationContext().getSharedPreferences(AppRater.SHARED_PREFS_APPRATER, 0);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        if (AppRater.showRateDialog(this, editor, new AppRater.DialogDismissedListener() {
+                            @Override
+                            public void onDialogDismissed() {
+                                showAlertDialog();
+                            }
+                        })) {
+                        } else {
                             showAlertDialog();
                         }
-                    })) {
                     } else {
-                        showAlertDialog();
+                        getSupportFragmentManager().popBackStack();
                     }
-                } else {
-                    getSupportFragmentManager().popBackStack();
                 }
             }
         }
