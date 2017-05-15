@@ -19,6 +19,8 @@ public class LolNotification {
     public static final String DEEPLINK_NEWS = "news";
     public static final String DEEPLINK_LIVE_CHANNELS = "live_channels";
     public static final String DEEPLINK_PLAY_STORE = "market";
+    public static final String DEEPLINK_FACEBOOK = "fb";
+    public static final String DEEPLINK_TWITTER = "twitter";
     public static final String DEEPLINK_LOLTR = "loltr";
     public static final String DEEPLINK_HTTP = "http";
     public static final String DEEPLINK_HTTPS = "https";
@@ -45,6 +47,8 @@ public class LolNotification {
         ACTION_NEWS,
         ACTION_LIVE_CHANNELS,
         ACTION_PLAY_STORE,
+        ACTION_FACEBOOK,
+        ACTION_TWITTER,
         ACTION_WEB_URL
     }
 
@@ -118,6 +122,10 @@ public class LolNotification {
         if(deeplinkScheme != null) {
             if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_PLAY_STORE)) {
                 return NOTIFICATION_ACTION.ACTION_PLAY_STORE;
+            }  else if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_TWITTER)) {
+                return NOTIFICATION_ACTION.ACTION_TWITTER;
+            }  else if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_FACEBOOK)) {
+                return NOTIFICATION_ACTION.ACTION_FACEBOOK;
             } else if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_HTTP) || deeplinkScheme.equalsIgnoreCase(DEEPLINK_HTTPS)) {
                 return NOTIFICATION_ACTION.ACTION_WEB_URL;
             } else if(deeplinkScheme.equalsIgnoreCase(DEEPLINK_LOLTR)) {

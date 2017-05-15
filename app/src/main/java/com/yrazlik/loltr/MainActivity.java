@@ -749,6 +749,14 @@ public class MainActivity extends ActionBarActivity implements ResponseListener,
                try {
                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
                } catch (Exception ignored) {}
+           } else if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_FACEBOOK) {
+               try {
+                   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
+               } catch (Exception ignored) {}
+           } else if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_TWITTER) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
+                } catch (Exception ignored) {}
            } else if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_WEB_URL) {
                try {
                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
