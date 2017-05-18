@@ -1,6 +1,7 @@
 package com.yrazlik.loltr.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -19,17 +20,20 @@ import com.yrazlik.loltr.LolApplication;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.utils.Utils;
+import com.yrazlik.loltr.commons.Commons;
 import com.yrazlik.loltr.view.RobotoButton;
 import com.yrazlik.loltr.view.RobotoEditText;
 
 /**
  * Created by yrazlik on 1/6/15.
  */
-public class ContactFragment extends BaseFragment{
+public class ContactFragment extends BaseFragment implements View.OnClickListener{
 
     private LinearLayout parentView;
     private RobotoButton send;
     private RobotoEditText message;
+
+    private LinearLayout facebookButton, twitterButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,6 +43,11 @@ public class ContactFragment extends BaseFragment{
         parentView = (LinearLayout) v.findViewById(R.id.parentView);
         send = (RobotoButton) v.findViewById(R.id.buttonContact);
         message = (RobotoEditText) v.findViewById(R.id.edittextContactBox);
+        facebookButton = (LinearLayout) v.findViewById(R.id.facebookButton);
+        twitterButton = (LinearLayout) v.findViewById(R.id.twitterButton);
+
+        facebookButton.setOnClickListener(this);
+        twitterButton.setOnClickListener(this);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,5 +77,14 @@ public class ContactFragment extends BaseFragment{
         Tracker t = ((LolApplication) getActivity().getApplication()).getTracker();
         t.setScreenName("ContactFragment");
         t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == facebookButton) {
+            Commons.openFacebookPage(getContext());
+        } else if(v == twitterButton) {
+            Commons.openTwitterPage(getContext());
+        }
     }
 }

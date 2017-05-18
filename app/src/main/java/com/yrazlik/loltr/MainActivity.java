@@ -20,7 +20,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -28,8 +27,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
@@ -48,6 +47,7 @@ import com.yrazlik.loltr.fragments.LiveChannelsFragment;
 import com.yrazlik.loltr.fragments.MatchInfoFragment;
 import com.yrazlik.loltr.fragments.NewItemsFragment;
 import com.yrazlik.loltr.fragments.NewsFragment;
+import com.yrazlik.loltr.fragments.OtherAppsDialog;
 import com.yrazlik.loltr.fragments.RemoveAdsFragment;
 import com.yrazlik.loltr.fragments.RunesFragment;
 import com.yrazlik.loltr.fragments.SettingsFragment;
@@ -59,7 +59,6 @@ import com.yrazlik.loltr.service.ServiceHelper;
 import com.yrazlik.loltr.utils.AdUtils;
 import com.yrazlik.loltr.view.PushNotificationDialog;
 import com.yrazlik.loltr.view.RobotoTextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +69,7 @@ import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_LIVE_
 import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_NEWS;
 import static com.yrazlik.loltr.LolNotification.NOTIFICATION_ACTION.ACTION_REMOVE_ADS;
 
-public class MainActivity extends ActionBarActivity implements ResponseListener {
+public class MainActivity extends ActionBarActivity implements ResponseListener, View.OnClickListener {
 
     private Intent deeplinkIntent;
     int mPosition = -1;
@@ -80,12 +79,9 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     String[] leftMenuItems;
 
     // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] mFlags = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
+    int[] icons = new int[]{R.drawable.ic_account_circle_black_24dp, R.drawable.coin, R.drawable.discount, R.drawable.news, R.drawable.champion,
             R.drawable.item, R.drawable.rune, R.drawable.costume, R.drawable.swords2, R.drawable.tv2, R.drawable.settings, R.drawable.block, R.drawable.contact,
             R.drawable.info};
-
-    // Array of strings to initial counts
-    String[] mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -93,23 +89,38 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     private NavigationView mDrawer;
     private List<LeftMenuItem> mList;
 
+    private FloatingActionMenu fabMenu;
+    private FloatingActionButton fabShare;
+    private FloatingActionButton fabFacebook;
+    private FloatingActionButton fabTwitter;
+    private FloatingActionButton fabOtherApps;
+
     private LeftMenuListAdapter mAdapter;
     private Toolbar mToolBar;
 
     private void continueSetup() {
         if(AdUtils.getInstance().isAdsEnabled()) {
             setContentView(R.layout.activity_main);
-            mFlags = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+            icons = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
                     R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_block, R.drawable.ic_mail,
                     R.drawable.ic_info};
-            mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         } else {
             setContentView(R.layout.activity_main_noad);
-            mFlags = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
+            icons = new int[]{R.drawable.ic_profile, R.drawable.dollar, R.drawable.ic_discount, R.drawable.ic_newspaper, R.drawable.ic_face,
                     R.drawable.ic_hourglass, R.drawable.rune, R.drawable.ic_tshirt, R.drawable.ic_shield, R.drawable.ic_camera, R.drawable.ic_settings, R.drawable.ic_mail,
                     R.drawable.ic_info};
-            mCount = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
         }
+
+        fabMenu = (FloatingActionMenu) findViewById(R.id.menu_like);
+        fabShare = (FloatingActionButton) findViewById(R.id.fabShare);
+        fabTwitter = (FloatingActionButton) findViewById(R.id.fabTwitter);
+        fabFacebook = (FloatingActionButton) findViewById(R.id.fabFacebook);
+        fabOtherApps = (FloatingActionButton) findViewById(R.id.fabOtherApps);
+        fabMenu.setClosedOnTouchOutside(true);
+        fabShare.setOnClickListener(this);
+        fabTwitter.setOnClickListener(this);
+        fabFacebook.setOnClickListener(this);
+        fabOtherApps.setOnClickListener(this);
 
         ServiceHelper.getInstance(getContext()).makeGetAllSpellsRequest(this);
 
@@ -125,7 +136,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         String cat = leftMenuItems[1];
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         ((RobotoTextView)toolbar.findViewById(R.id.toolbarTitle)).setText(cat);
-        //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>" + cat + "</font>"));
         highlightSelectedMenuRow(2);
     }
 
@@ -178,7 +188,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
         mList = new ArrayList<>();
 
         for (int i = 0; i < leftMenuItems.length; i++) {
-            LeftMenuItem item = new LeftMenuItem(mFlags[i], leftMenuItems[i]);
+            LeftMenuItem item = new LeftMenuItem(icons[i], leftMenuItems[i]);
             mList.add(item);
         }
 
@@ -240,14 +250,6 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     // Highlight the selected country : 0 to 4
     public void highlightSelectedMenuRow() {
         int selectedItem = mDrawerList.getCheckedItemPosition() - mDrawerList.getHeaderViewsCount();
@@ -303,24 +305,28 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
 
         @Override
         public void onBackPressed () {
-            if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                mDrawerLayout.closeDrawer(Gravity.LEFT);
+            if(fabMenu != null && fabMenu.isOpened()) {
+                fabMenu.close(true);
             } else {
-                int count = getSupportFragmentManager().getBackStackEntryCount();
-                if (count <= 1) {
-                    SharedPreferences prefs = getApplicationContext().getSharedPreferences(AppRater.SHARED_PREFS_APPRATER, 0);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    if (AppRater.showRateDialog(this, editor, new AppRater.DialogDismissedListener() {
-                        @Override
-                        public void onDialogDismissed() {
+                if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+                } else {
+                    int count = getSupportFragmentManager().getBackStackEntryCount();
+                    if (count <= 1) {
+                        SharedPreferences prefs = getApplicationContext().getSharedPreferences(AppRater.SHARED_PREFS_APPRATER, 0);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        if (AppRater.showRateDialog(this, editor, new AppRater.DialogDismissedListener() {
+                            @Override
+                            public void onDialogDismissed() {
+                                showAlertDialog();
+                            }
+                        })) {
+                        } else {
                             showAlertDialog();
                         }
-                    })) {
                     } else {
-                        showAlertDialog();
+                        getSupportFragmentManager().popBackStack();
                     }
-                } else {
-                    getSupportFragmentManager().popBackStack();
                 }
             }
         }
@@ -547,7 +553,7 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
 
-            if (position == 0) {
+           if (position == 0) {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -737,6 +743,14 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
                try {
                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
                } catch (Exception ignored) {}
+           } else if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_FACEBOOK) {
+               try {
+                   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
+               } catch (Exception ignored) {}
+           } else if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_TWITTER) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
+                } catch (Exception ignored) {}
            } else if(notification.getNotificationAction() == LolNotification.NOTIFICATION_ACTION.ACTION_WEB_URL) {
                try {
                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
@@ -864,5 +878,41 @@ public class MainActivity extends ActionBarActivity implements ResponseListener 
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         deeplinkIntent = intent;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == fabShare) {
+            closeFabMenu();
+            Commons.showAppPickerShareDialog(getContext(), "https://play.google.com/store/apps/details?id=com.yrazlik.loltr");
+        } else if(v == fabFacebook) {
+            closeFabMenu();
+            Commons.openFacebookPage(this);
+        } else if(v == fabTwitter) {
+            closeFabMenu();
+            Commons.openTwitterPage(this);
+        } else if(v == fabOtherApps) {
+            try {
+                closeFabMenu();
+                mDrawerLayout.closeDrawer(mDrawer);
+            } catch (Exception e) {}
+
+            OtherAppsDialog otherAppsDialog = new OtherAppsDialog(this);
+            otherAppsDialog.show();
+        }
+    }
+
+    private void closeFabMenu() {
+        if(fabMenu.isOpened()) {
+            fabMenu.close(true);
+        }
     }
 }

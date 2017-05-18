@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.yrazlik.loltr.R;
 import com.yrazlik.loltr.data.Champion;
 import com.yrazlik.loltr.data.Item;
@@ -103,6 +105,7 @@ public class Commons {
     public static final String URL_CHAMPION_PRICES = "https://gist.githubusercontent.com/yrazlik/d6b1c6644c7d40019063/raw/4affa8a1f849a587ce5277de61922e04b871737a/championcosts";
 	public static final String URL_CHAMPION_SKIN_BASE = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/";
 
+    public static final String OTHERAPPS_FRAGMENT = "com.yrazlik.loltr.fragments.otherappsfragment";
     public static final String PROFILE_FRAGMENT = "com.yrazlik.loltr.fragments.profilefragment";
     public static final String WEEKLY_FREE_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.weeklyfreechampionsfragment";
     public static final String ALL_CHAMPIONS_FRAGMENT = "com.yrazlik.loltr.fragments.allchampionsfragment";
@@ -280,6 +283,42 @@ public class Commons {
             return sortedRegions;
         } catch (Exception e) {
             return new ArrayList<>(Arrays.asList(regions));
+        }
+    }
+
+    public static void openFacebookPage(Context context) {
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/226593987828490")));
+        } catch (Exception e) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/lolguidetr")));
+        }
+    }
+
+    public static void openTwitterPage(Context context) {
+        try {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=lolguidetr")));
+        }catch (Exception e) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/lolguidetr")));
+        }
+    }
+
+    public static void showAppPickerShareDialog(Context context, String extraText) {
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        if (isValidString(extraText)) {
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, extraText);
+        }
+
+        try {
+            Intent chooserIntent = Intent.createChooser(shareIntent, context.getResources().getString(R.string.share));
+            if (chooserIntent != null) {
+                context.startActivity(chooserIntent);
+            } else {
+                Toast.makeText(context, context.getResources().getString(R.string.anErrorOccured), Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(context, context.getResources().getString(R.string.anErrorOccured), Toast.LENGTH_SHORT).show();
         }
     }
 }

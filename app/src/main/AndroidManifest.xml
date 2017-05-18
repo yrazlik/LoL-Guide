@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.yrazlik.loltr">
+          package="com.yrazlik.loltr"
+          android:versionCode="27"
+          android:versionName="2.9">
 
     <uses-sdk
         android:minSdkVersion="14"

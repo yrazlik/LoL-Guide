@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:ads="http://schemas.android.res-auto"
+                xmlns:fab="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -59,5 +60,67 @@
         </android.support.design.widget.NavigationView>
 
     </android.support.v4.widget.DrawerLayout>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_like"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        fab:menu_icon="@drawable/like"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        fab:menu_labels_ellipsize="end"
+        fab:menu_labels_singleLine="true"
+        fab:menu_backgroundColor="@android:color/transparent">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/share"
+            fab:fab_size="mini"
+            fab:fab_label="@string/share" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabTwitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/twitter_bird"
+            fab:fab_size="mini"
+            fab:fab_shadowColor="#444"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_colorPressed="@color/bg_gray"
+            fab:fab_colorRipple="@color/bg_gray"
+            fab:fab_label="@string/twitterPage" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/facebook_letter"
+            fab:fab_size="mini"
+            fab:fab_shadowColor="#444"
+            fab:fab_colorNormal="@color/facebook_blue"
+            fab:fab_colorPressed="@color/button_blue"
+            fab:fab_colorRipple="@color/button_blue"
+            fab:fab_label="@string/facebookPage" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabOtherApps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/android"
+            fab:fab_size="mini"
+            fab:fab_shadowColor="#444"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_colorPressed="@color/bg_gray"
+            fab:fab_colorRipple="@color/bg_gray"
+            fab:fab_label="@string/otherApps" />
+
+    </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>
